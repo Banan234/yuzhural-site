@@ -54,6 +54,8 @@ const DEFAULT_SMTP_GREETING_TIMEOUT_MS = 10_000;
 const DEFAULT_SMTP_SOCKET_TIMEOUT_MS = 20_000;
 const DEFAULT_SMTP_SEND_RETRIES = 1;
 const DEFAULT_SMTP_RETRY_DELAY_MS = 750;
+const DEFAULT_VK_CALLBACK_PUBLIC_PROBE_INTERVAL_MS = 5 * 60 * 1000;
+const MAX_VK_CALLBACK_PUBLIC_PROBE_INTERVAL_MS = 24 * 60 * 60 * 1000;
 const QUOTE_RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 const LEAD_RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 const CHAT_RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
@@ -506,6 +508,108 @@ function getVkHealthSnapshot(vkBridge) {
       },
     },
   };
+}
+
+function getVkCallbackProbeIntervalMs(env = process.env) {
+  return parseIntegerEnv(
+    env.VK_CALLBACK_PUBLIC_PROBE_INTERVAL_MS,
+    DEFAULT_VK_CALLBACK_PUBLIC_PROBE_INTERVAL_MS,
+    {
+      min: 0,
+      max: MAX_VK_CALLBACK_PUBLIC_PROBE_INTERVAL_MS,
+    }
+  );
+}
+
+function logVkCallbackOperationalRisk(vkBridge) {
+  const snapshot =
+    vkBridge && typeof vkBridge.getStatusSnapshot === 'function'
+      ? vkBridge.getStatusSnapshot()
+      : null;
+  const publicEndpoint = snapshot?.callback?.publicEndpoint || null;
+  if (!snapshot?.enabled || !publicEndpoint?.configured) {
+    return;
+  }
+
+  if (!publicEndpoint.isStablePublicEntryPoint) {
+    logger.warn('startup.vk_callback_operational_risk', {
+      exposure: publicEndpoint.exposure || 'unknown',
+      tunnelProvider: publicEndpoint.tunnelProvider || null,
+      callbackUrl: snapshot.callback?.url || null,
+      hint: 'VK callback использует tunnel/private URL и остаётся операционно хрупким до выноса на постоянный публичный endpoint',
+    });
+  }
+}
+
+function attachVkCallbackProbeScheduler({ server, vkBridge, env }) {
+  const intervalMs = getVkCallbackProbeIntervalMs(env);
+  if (
+    intervalMs <= 0 ||
+    !vkBridge ||
+    typeof vkBridge.probePublicCallbackEndpoint !== 'function' ||
+    typeof vkBridge.getStatusSnapshot !== 'function'
+  ) {
+    return null;
+  }
+
+  let lastHealthyState = vkBridge.getStatusSnapshot()?.callback?.publicEndpoint
+    ?.healthy;
+  const runProbe = async () => {
+    try {
+      const result = await vkBridge.probePublicCallbackEndpoint();
+      const snapshot = vkBridge.getStatusSnapshot();
+      const publicEndpoint = snapshot?.callback?.publicEndpoint || {};
+      const isHealthy = publicEndpoint.healthy;
+
+      if (isHealthy === false && lastHealthyState !== false) {
+        logger.warn('vk.callback.public_probe_unhealthy', {
+          callbackUrl: snapshot?.callback?.url || null,
+          exposure: publicEndpoint.exposure || 'unknown',
+          tunnelProvider: publicEndpoint.tunnelProvider || null,
+          consecutiveFailures: publicEndpoint.consecutiveFailures || 0,
+          lastHttpStatus: publicEndpoint.lastHttpStatus || null,
+          error: publicEndpoint.lastError || null,
+        });
+      } else if (isHealthy === true && lastHealthyState === false) {
+        logger.info('vk.callback.public_probe_recovered', {
+          callbackUrl: snapshot?.callback?.url || null,
+          exposure: publicEndpoint.exposure || 'unknown',
+          lastHttpStatus: publicEndpoint.lastHttpStatus || null,
+        });
+      } else if (
+        isHealthy === false &&
+        Number(publicEndpoint.consecutiveFailures) > 0 &&
+        Number(publicEndpoint.consecutiveFailures) % 5 === 0
+      ) {
+        logger.warn('vk.callback.public_probe_still_unhealthy', {
+          callbackUrl: snapshot?.callback?.url || null,
+          consecutiveFailures: publicEndpoint.consecutiveFailures,
+          lastHttpStatus: publicEndpoint.lastHttpStatus || null,
+        });
+      }
+
+      lastHealthyState = isHealthy;
+      return result;
+    } catch (error) {
+      logger.error('vk.callback.public_probe_scheduler_failed', { err: error });
+      return null;
+    }
+  };
+
+  const timer = setInterval(() => {
+    void runProbe();
+  }, intervalMs);
+  if (typeof timer.unref === 'function') {
+    timer.unref();
+  }
+
+  if (server && typeof server.once === 'function') {
+    server.once('close', () => {
+      clearInterval(timer);
+    });
+  }
+
+  return { intervalMs, runProbe };
 }
 
 function bytesToMb(value) {
@@ -1186,6 +1290,16 @@ export function createApp({
         reason: 'secret_mismatch',
         type,
       });
+      const statusSnapshot = bridge?.getStatusSnapshot?.();
+      const mismatchCount =
+        Number(statusSnapshot?.runtime?.secretMismatchCount) || 0;
+      if (mismatchCount === 1 || mismatchCount % 5 === 0) {
+        logger.warn('vk.callback.secret_mismatch_threshold', {
+          mismatchCount,
+          managerPeerId: statusSnapshot?.managerPeerId || null,
+          callbackUrl: statusSnapshot?.callback?.url || null,
+        });
+      }
       logger.warn('vk.callback.rejected', {
         reason: 'secret_mismatch',
         type: type || 'unknown',
@@ -1963,6 +2077,17 @@ export async function startServer({
     }
   } catch (error) {
     logger.error('startup.vk_callback_public_probe_failed', { err: error });
+  }
+  logVkCallbackOperationalRisk(vkBridge);
+  const vkCallbackProbeScheduler = attachVkCallbackProbeScheduler({
+    server,
+    vkBridge,
+    env,
+  });
+  if (vkCallbackProbeScheduler) {
+    logger.info('startup.vk_callback_probe_scheduler_started', {
+      intervalMs: vkCallbackProbeScheduler.intervalMs,
+    });
   }
 
   return { app, server };
