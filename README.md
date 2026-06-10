@@ -140,6 +140,94 @@ pool: `SMTP_POOL=true`, `SMTP_POOL_MAX_CONNECTIONS=2`,
 он не отменяет уже начатую SMTP-операцию и может показать ошибку при фактически
 доставленном письме.
 
+### VK callback и временные tunnel URL
+
+Для локальной отладки связки `сайт -> VK -> сайт` можно временно пробрасывать
+`/api/vk/callback` наружу через tunnel (`cloudflared`, `ngrok`,
+`localtunnel`). Это удобно для разработки, но такие URL не стоит считать
+стабильной точкой входа:
+
+- tunnel может умереть из-за сна ноутбука, смены сети/VPN, падения локального
+  процесса или проблем у shared tunnel-сервиса;
+- при этом backend на `localhost:3001` может продолжать работать, но VK уже не
+  сможет доставить callback, и ответы менеджера перестанут возвращаться в чат
+  сайта;
+- ошибка в VK Callback API вида `Сервер вернул неправильный ответ` в таком
+  сценарии часто означает именно сломанный tunnel, а не дефект backend-логики.
+
+Быстрая проверка tunnel:
+
+```bash
+curl -X POST <public-callback-url> \
+  -H 'content-type: application/json' \
+  -d '{"type":"confirmation","group_id":<VK_GROUP_ID>}'
+```
+
+Исправный tunnel должен вернуть строку из `VK_CALLBACK_CONFIRMATION_TOKEN`.
+Если приходит `503`, `502`, DNS-ошибка или нет ответа, проблема во внешнем
+туннеле.
+
+На постоянном сервере/VPS этой проблемы в таком виде быть не должно: VK будет
+ходить напрямую на стабильный публичный URL backend, без временной прокладки до
+локального `localhost`.
+
+### VK callback auto-config
+
+Backend умеет автоматически синхронизировать callback-сервер VK при старте.
+Это убирает ручные шаги в UI сообщества для production/staging.
+
+Минимальный набор переменных:
+
+- `VK_CALLBACK_AUTO_CONFIGURE=true`
+- `VK_GROUP_ID=<group_id сообщества>`
+- `VK_CALLBACK_SECRET=<secret key из Callback API>`
+- `VK_CALLBACK_URL=<публичный https URL до /api/vk/callback>`
+
+Если `VK_CALLBACK_URL` пуст, backend попробует собрать его как
+`<SITE_URL>/api/vk/callback` или `<VITE_SITE_URL>/api/vk/callback`.
+
+Необязательные переменные:
+
+- `VK_CALLBACK_SERVER_ID` — если нужно обновлять конкретный callback-сервер в VK
+- `VK_CALLBACK_SERVER_TITLE` — имя callback-сервера при создании/поиске
+
+Что делает автоконфиг на старте:
+
+- получает актуальный confirmation code через VK API и использует его для
+  `/api/vk/callback`;
+- находит существующий callback-сервер по `server_id`, URL или title;
+- обновляет его либо создаёт новый;
+- включает обязательные события `message_new` и `message_reply`, сохраняя
+  остальные callback-флаги.
+
+Практическое ограничение: обычного community token только с правом
+`messages` недостаточно. Для методов `groups.getCallbackServers`,
+`groups.getCallbackSettings` и смежных нужен токен сообщества с доступом к
+Callback API-методам. Если scope недостаточен, сервер стартует, но запишет
+ошибку `startup.vk_callback_failed`, а автосинхронизация не выполнится.
+
+Для диагностики runtime есть внутренний endpoint `GET /api/vk/health`. Он
+доступен только с тем же bearer token, что и `GET /api/runtime`
+(`INTERNAL_METRICS_TOKEN`), и показывает:
+
+- включён ли VK bridge и достаточно ли конфигурации для callback;
+- `managerPeerId` и allowlist manager user id;
+- результат последнего auto-config;
+- время последнего успешного callback;
+- последнее `secret_mismatch` и счётчик таких отклонений;
+- состояние публичного callback URL, включая live probe;
+- operational risk публичной точки входа (`public`, `tunnel`, `private`).
+
+Если добавить `?refresh=1`, backend принудительно выполнит live probe:
+
+```bash
+curl -H "Authorization: Bearer $INTERNAL_METRICS_TOKEN" \
+  "http://localhost:3001/api/vk/health?refresh=1"
+```
+
+Это полезно, чтобы быстро отличить ошибку в backend-логике от умершего tunnel
+или неработающего публичного URL.
+
 ### Reverse proxy
 
 `TRUSTED_PROXY_IPS` задаёт, от каких proxy Express принимает
@@ -360,6 +448,12 @@ jobs:
 - plist: `~/Library/LaunchAgents/ru.yuzhural.price-import.plist`
 - логи: `~/Library/Logs/yuzhural-price-import.log` и
   `~/Library/Logs/yuzhural-price-import.error.log`
+
+Это временный вариант для локальной машины. Риски такого подхода: импорт
+зависит от включённого ноутбука, пользовательской сессии, сети и может
+сдвигаться по времени после сна/выключения. Когда появится стабильный сервер,
+перенесите расписание на server-side scheduler (`cron`, `systemd timer` или
+аналогичный always-on инструмент) и настройте уведомление при ошибке импорта.
 
 **Примечание про Codex automation.** Если запускать импорт через локальную
 automation в Codex app, это удобно для личной машины, но не стоит считать такой

@@ -86,6 +86,67 @@ function createMockVkBridge(overrides = {}) {
     notifyCustomerMessage: vi.fn(async () => null),
     handleCallbackUpdate: vi.fn(async () => ({ ok: true, handled: false })),
     configureWebhook: vi.fn(async () => false),
+    noteWebhookConfigureFailed: vi.fn(() => null),
+    noteCallbackRejected: vi.fn(() => null),
+    noteCallbackHandled: vi.fn(() => null),
+    noteCallbackFailed: vi.fn(() => null),
+    probePublicCallbackEndpoint: vi.fn(async () => ({
+      ok: true,
+      statusCode: 200,
+      bodyMatched: true,
+    })),
+    getStatusSnapshot: vi.fn(() => ({
+      enabled: true,
+      configured: true,
+      managerPeerId: '2000000005',
+      managerUserIds: [],
+      callback: {
+        groupId: '123',
+        apiVersion: '5.199',
+        url: 'https://vk.example.test/api/vk/callback',
+        confirmationTokenConfigured: true,
+        secretRequired: true,
+        autoConfigureEnabled: false,
+        autoConfigure: {
+          lastAttemptAt: null,
+          lastSuccessAt: null,
+          lastFailureAt: null,
+          lastResult: null,
+          lastError: null,
+        },
+        publicEndpoint: {
+          configured: true,
+          exposure: 'public',
+          isHttps: true,
+          isLikelyTunnel: false,
+          tunnelProvider: null,
+          isStablePublicEntryPoint: true,
+          lastProbeAt: null,
+          lastSuccessAt: null,
+          lastFailureAt: null,
+          lastOk: true,
+          lastHttpStatus: 200,
+          lastBodyMatched: true,
+          lastError: null,
+          healthy: true,
+        },
+      },
+      runtime: {
+        lastSuccessfulAt: null,
+        lastSuccessfulType: null,
+        lastSuccessfulConversationId: null,
+        totalSuccessful: 0,
+        lastRejectedAt: null,
+        lastRejectedReason: null,
+        lastRejectedType: null,
+        totalRejected: 0,
+        lastSecretMismatchAt: null,
+        secretMismatchCount: 0,
+        lastFailureAt: null,
+        lastFailureType: null,
+        lastFailureError: null,
+      },
+    })),
     callbackSecret: 'vk-secret',
     confirmationToken: 'vk-confirmation-token',
     ...overrides,
@@ -462,6 +523,271 @@ describe('GET /api/runtime', () => {
           smtpReady: true,
           missingConfig: [],
         });
+        expect(data.vk).toMatchObject({
+          enabled: true,
+          configured: true,
+          managerPeerId: '2000000005',
+          callback: {
+            url: 'https://vk.example.test/api/vk/callback',
+            publicEndpoint: {
+              exposure: 'public',
+              healthy: true,
+            },
+          },
+        });
+      });
+    } finally {
+      if (originalToken === undefined) {
+        delete process.env.INTERNAL_METRICS_TOKEN;
+      } else {
+        process.env.INTERNAL_METRICS_TOKEN = originalToken;
+      }
+    }
+  });
+});
+
+describe('GET /api/vk/health', () => {
+  it('скрывает VK runtime-статус без внутреннего токена', async () => {
+    const app = createTestApp();
+
+    await withTestServer(app, async (localBaseUrl) => {
+      const res = await fetch(`${localBaseUrl}/api/vk/health`);
+      const data = await res.json();
+
+      expect(res.status).toBe(404);
+      expect(data.ok).toBe(false);
+      expect(data.vk).toBeUndefined();
+    });
+  });
+
+  it('возвращает VK bridge status с последним success и secret mismatch', async () => {
+    const originalToken = process.env.INTERNAL_METRICS_TOKEN;
+    process.env.INTERNAL_METRICS_TOKEN = 'test-runtime-token';
+    const { createVkChatBridge } = await import('./lib/vkChat.js');
+    const chatStore = createInMemoryChatStore();
+    const vkBridge = createVkChatBridge({
+      env: createTestEnv({
+        VK_COMMUNITY_ACCESS_TOKEN: 'vk-token',
+        VK_MANAGER_PEER_ID: '2000000005',
+        VK_MANAGER_USER_IDS: '42',
+        VK_CALLBACK_SECRET: 'vk-secret',
+        VK_CALLBACK_CONFIRMATION_TOKEN: 'vk-confirmation-token',
+        VK_CALLBACK_URL: 'https://vk.example.test/api/vk/callback',
+        VK_GROUP_ID: '123',
+      }),
+      fetchImpl: vi.fn(async () => ({
+        ok: true,
+        json: async () => ({
+          response: {
+            peer_id: 2000000005,
+            message_id: 900,
+            conversation_message_id: 500,
+          },
+        }),
+      })),
+    });
+    const app = createTestApp({ chatStore, vkBridge });
+
+    try {
+      await withTestServer(app, async (localBaseUrl) => {
+        const createRes = await postJsonTo(
+          localBaseUrl,
+          '/api/chat/conversations',
+          validChatPayload
+        );
+        const created = await createRes.json();
+
+        await chatStore.registerManagerNotification(created.conversationId, {
+          channel: 'vk',
+          peerId: '2000000005',
+          messageId: 500,
+          conversationMessageId: 500,
+        });
+
+        const rejectedRes = await postJsonTo(
+          localBaseUrl,
+          '/api/vk/callback',
+          {
+            type: 'message_reply',
+            event_id: 'evt-secret-mismatch',
+            group_id: 123,
+            secret: 'wrong-secret',
+            object: {
+              id: 777,
+              out: 1,
+              peer_id: 2000000005,
+              from_id: 123,
+              admin_author_id: 42,
+              conversation_message_id: 778,
+              text: 'Не должен пройти.',
+              reply_message: {
+                id: 500,
+                conversation_message_id: 500,
+                peer_id: 2000000005,
+                text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
+              },
+            },
+          }
+        );
+        expect(rejectedRes.status).toBe(404);
+
+        const callbackRes = await postJsonTo(
+          localBaseUrl,
+          '/api/vk/callback',
+          {
+            type: 'message_reply',
+            event_id: 'evt-status-success',
+            group_id: 123,
+            secret: 'vk-secret',
+            object: {
+              id: 888,
+              out: 1,
+              peer_id: 2000000005,
+              from_id: 123,
+              admin_author_id: 42,
+              conversation_message_id: 889,
+              text: 'Статусный ответ менеджера.',
+              reply_message: {
+                id: 500,
+                conversation_message_id: 500,
+                peer_id: 2000000005,
+                text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
+              },
+            },
+          }
+        );
+        expect(callbackRes.status).toBe(200);
+
+        const res = await fetch(`${localBaseUrl}/api/vk/health`, {
+          headers: { authorization: 'Bearer test-runtime-token' },
+        });
+        const data = await res.json();
+
+        expect(res.status).toBe(200);
+        expect(data).toMatchObject({
+          ok: true,
+          status: 'ready',
+          vk: {
+            enabled: true,
+            configured: true,
+            managerPeerId: '2000000005',
+            callback: {
+              groupId: '123',
+              url: 'https://vk.example.test/api/vk/callback',
+            },
+            runtime: {
+              lastSuccessfulType: 'message_reply',
+              lastSuccessfulConversationId: created.conversationId,
+              lastRejectedReason: 'secret_mismatch',
+              secretMismatchCount: 1,
+            },
+          },
+        });
+        expect(data.vk.runtime.lastSuccessfulAt).toEqual(expect.any(String));
+        expect(data.vk.runtime.lastSecretMismatchAt).toEqual(expect.any(String));
+      });
+    } finally {
+      if (originalToken === undefined) {
+        delete process.env.INTERNAL_METRICS_TOKEN;
+      } else {
+        process.env.INTERNAL_METRICS_TOKEN = originalToken;
+      }
+    }
+  });
+
+  it('умеет форсировать live probe callback URL через refresh=1', async () => {
+    const originalToken = process.env.INTERNAL_METRICS_TOKEN;
+    process.env.INTERNAL_METRICS_TOKEN = 'test-runtime-token';
+    const snapshot = {
+      enabled: true,
+      configured: true,
+      managerPeerId: '2000000005',
+      managerUserIds: [],
+      callback: {
+        groupId: '123',
+        apiVersion: '5.199',
+        url: 'https://demo.loca.lt/api/vk/callback',
+        confirmationTokenConfigured: true,
+        secretRequired: true,
+        autoConfigureEnabled: false,
+        autoConfigure: {
+          lastAttemptAt: null,
+          lastSuccessAt: null,
+          lastFailureAt: null,
+          lastResult: null,
+          lastError: null,
+        },
+        publicEndpoint: {
+          configured: true,
+          url: 'https://demo.loca.lt/api/vk/callback',
+          hostname: 'demo.loca.lt',
+          protocol: 'https:',
+          exposure: 'tunnel',
+          isHttps: true,
+          isLikelyTunnel: true,
+          tunnelProvider: 'localtunnel',
+          isStablePublicEntryPoint: false,
+          lastProbeAt: null,
+          lastSuccessAt: null,
+          lastFailureAt: null,
+          lastOk: null,
+          lastHttpStatus: null,
+          lastBodyMatched: null,
+          lastError: null,
+          healthy: false,
+        },
+      },
+      runtime: {
+        lastSuccessfulAt: null,
+        lastSuccessfulType: null,
+        lastSuccessfulConversationId: null,
+        totalSuccessful: 0,
+        lastRejectedAt: null,
+        lastRejectedReason: null,
+        lastRejectedType: null,
+        totalRejected: 0,
+        lastSecretMismatchAt: null,
+        secretMismatchCount: 0,
+        lastFailureAt: null,
+        lastFailureType: null,
+        lastFailureError: null,
+      },
+    };
+    const vkBridge = createMockVkBridge({
+      probePublicCallbackEndpoint: vi.fn(async () => {
+        snapshot.callback.publicEndpoint.lastProbeAt = new Date().toISOString();
+        snapshot.callback.publicEndpoint.lastSuccessAt =
+          snapshot.callback.publicEndpoint.lastProbeAt;
+        snapshot.callback.publicEndpoint.lastOk = true;
+        snapshot.callback.publicEndpoint.lastHttpStatus = 200;
+        snapshot.callback.publicEndpoint.lastBodyMatched = true;
+        snapshot.callback.publicEndpoint.healthy = true;
+        return { ok: true, statusCode: 200, bodyMatched: true };
+      }),
+      getStatusSnapshot: vi.fn(() => snapshot),
+    });
+    const app = createTestApp({ vkBridge });
+
+    try {
+      await withTestServer(app, async (localBaseUrl) => {
+        const res = await fetch(
+          `${localBaseUrl}/api/vk/health?refresh=1`,
+          {
+            headers: { authorization: 'Bearer test-runtime-token' },
+          }
+        );
+        const data = await res.json();
+
+        expect(vkBridge.probePublicCallbackEndpoint).toHaveBeenCalledTimes(1);
+        expect(res.status).toBe(200);
+        expect(data.status).toBe('tunnel_or_ephemeral');
+        expect(data.vk.callback.publicEndpoint).toMatchObject({
+          exposure: 'tunnel',
+          tunnelProvider: 'localtunnel',
+          operationalRisk: 'high',
+          healthy: true,
+          lastHttpStatus: 200,
+        });
       });
     } finally {
       if (originalToken === undefined) {
@@ -574,6 +900,38 @@ describe('forms diagnostics', () => {
     ).toThrow(/VK callback не настроен безопасно/);
   });
 
+  it('fails production startup when VK insecure callback mode is enabled', () => {
+    expect(() =>
+      validateVkEnv({
+        NODE_ENV: 'production',
+        VK_COMMUNITY_ACCESS_TOKEN: 'vk-token',
+        VK_MANAGER_PEER_ID: '2000000005',
+        VK_CALLBACK_SECRET: 'vk-secret',
+        VK_CALLBACK_ALLOW_INSECURE: 'true',
+      })
+    ).toThrow(/insecure-режиме/);
+  });
+
+  it('fails VK auto-config without group id', () => {
+    expect(() =>
+      validateVkEnv({
+        NODE_ENV: 'development',
+        VK_CALLBACK_AUTO_CONFIGURE: 'true',
+        VK_CALLBACK_URL: 'https://example.test/api/vk/callback',
+      })
+    ).toThrow(/VK_GROUP_ID/);
+  });
+
+  it('fails VK auto-config without callback URL or site URL', () => {
+    expect(() =>
+      validateVkEnv({
+        NODE_ENV: 'development',
+        VK_CALLBACK_AUTO_CONFIGURE: 'true',
+        VK_GROUP_ID: '123',
+      })
+    ).toThrow(/VK_CALLBACK_URL или SITE_URL\/VITE_SITE_URL/);
+  });
+
   it('marks SMTP as verified after transporter.verify succeeds', async () => {
     const mailTransporter = {
       verify: vi.fn().mockResolvedValue(true),
@@ -635,6 +993,183 @@ describe('forms diagnostics', () => {
         smtpReady: false,
       },
     });
+  });
+
+  it('starts listening before VK callback auto-config runs', async () => {
+    const steps = [];
+    const vkBridge = createMockVkBridge({
+      configureWebhook: vi.fn(async () => {
+        steps.push('configureWebhook');
+        return false;
+      }),
+    });
+    const listen = vi.fn((app, port, onListening) => {
+      steps.push(`listen:${port}`);
+      onListening();
+      steps.push('listening-callback-fired');
+      return { once: vi.fn() };
+    });
+
+    await startServer({
+      env: createTestEnv({
+        FORMS_ENABLED: 'false',
+      }),
+      vkBridge,
+      listen,
+      warmCatalogOnStart: false,
+    });
+
+    expect(steps).toEqual([
+      'listen:3001',
+      'listening-callback-fired',
+      'configureWebhook',
+    ]);
+  });
+});
+
+describe('VK callback auto-config', () => {
+  it('updates an existing callback server and preserves unrelated callback events', async () => {
+    const { createVkChatBridge } = await import('./lib/vkChat.js');
+    const requests = [];
+    const vkBridge = createVkChatBridge({
+      env: createTestEnv({
+        VK_COMMUNITY_ACCESS_TOKEN: 'vk-token',
+        VK_MANAGER_PEER_ID: '2000000005',
+        VK_CALLBACK_SECRET: 'vk-secret',
+        VK_CALLBACK_AUTO_CONFIGURE: 'true',
+        VK_CALLBACK_URL: 'https://example.test/api/vk/callback',
+        VK_CALLBACK_SERVER_ID: '7',
+        VK_GROUP_ID: '238733404',
+        VK_API_VERSION: '5.199',
+      }),
+      fetchImpl: vi.fn(async (url, init) => {
+        const method = new URL(url).pathname.split('/').pop();
+        const body = init.body;
+        requests.push({
+          method,
+          body: body instanceof URLSearchParams ? new URLSearchParams(body) : body,
+        });
+
+        const responses = {
+          'groups.getCallbackConfirmationCode': {
+            response: { code: '8e0f944f' },
+          },
+          'groups.getCallbackServers': {
+            response: {
+              count: 1,
+              items: [
+                {
+                  id: 7,
+                  title: 'legacy-server',
+                  url: 'https://old.example.test/api/vk/callback',
+                },
+              ],
+            },
+          },
+          'groups.editCallbackServer': { response: 1 },
+          'groups.getCallbackSettings': {
+            response: {
+              api_version: '5.199',
+              message_new: 0,
+              message_reply: 0,
+              message_edit: 1,
+            },
+          },
+          'groups.setCallbackSettings': { response: 1 },
+        };
+
+        return {
+          ok: true,
+          json: async () => responses[method],
+        };
+      }),
+    });
+
+    await expect(vkBridge.configureWebhook()).resolves.toEqual({
+      mode: 'updated',
+      serverId: 7,
+      callbackUrl: 'https://example.test/api/vk/callback',
+      confirmationToken: '8e0f944f',
+    });
+
+    expect(vkBridge.confirmationToken).toBe('8e0f944f');
+    expect(requests.map((entry) => entry.method)).toEqual([
+      'groups.getCallbackConfirmationCode',
+      'groups.getCallbackServers',
+      'groups.editCallbackServer',
+      'groups.getCallbackSettings',
+      'groups.setCallbackSettings',
+    ]);
+
+    expect(requests[2].body.get('group_id')).toBe('238733404');
+    expect(requests[2].body.get('server_id')).toBe('7');
+    expect(requests[2].body.get('title')).toBe('yuzhural-site');
+    expect(requests[2].body.get('url')).toBe(
+      'https://example.test/api/vk/callback'
+    );
+    expect(requests[2].body.get('secret_key')).toBe('vk-secret');
+
+    expect(requests[4].body.get('group_id')).toBe('238733404');
+    expect(requests[4].body.get('server_id')).toBe('7');
+    expect(requests[4].body.get('api_version')).toBe('5.199');
+    expect(requests[4].body.get('message_new')).toBe('1');
+    expect(requests[4].body.get('message_reply')).toBe('1');
+    expect(requests[4].body.get('message_edit')).toBe('1');
+  });
+
+  it('creates a callback server and derives callback URL from SITE_URL', async () => {
+    const { createVkChatBridge } = await import('./lib/vkChat.js');
+    const requests = [];
+    const vkBridge = createVkChatBridge({
+      env: createTestEnv({
+        VK_COMMUNITY_ACCESS_TOKEN: 'vk-token',
+        VK_MANAGER_PEER_ID: '2000000005',
+        VK_CALLBACK_SECRET: 'vk-secret',
+        VK_CALLBACK_AUTO_CONFIGURE: 'true',
+        SITE_URL: 'https://prod.example.test/',
+        VK_GROUP_ID: '238733404',
+      }),
+      fetchImpl: vi.fn(async (url, init) => {
+        const method = new URL(url).pathname.split('/').pop();
+        const body = init.body;
+        requests.push({
+          method,
+          body: body instanceof URLSearchParams ? new URLSearchParams(body) : body,
+        });
+
+        const responses = {
+          'groups.getCallbackConfirmationCode': { response: 'prod-confirm' },
+          'groups.getCallbackServers': { response: { count: 0, items: [] } },
+          'groups.addCallbackServer': { response: { server_id: 11 } },
+          'groups.getCallbackSettings': { response: {} },
+          'groups.setCallbackSettings': { response: 1 },
+        };
+
+        return {
+          ok: true,
+          json: async () => responses[method],
+        };
+      }),
+    });
+
+    await expect(vkBridge.configureWebhook()).resolves.toEqual({
+      mode: 'created',
+      serverId: 11,
+      callbackUrl: 'https://prod.example.test/api/vk/callback',
+      confirmationToken: 'prod-confirm',
+    });
+
+    expect(requests.map((entry) => entry.method)).toEqual([
+      'groups.getCallbackConfirmationCode',
+      'groups.getCallbackServers',
+      'groups.addCallbackServer',
+      'groups.getCallbackSettings',
+      'groups.setCallbackSettings',
+    ]);
+    expect(requests[2].body.get('url')).toBe(
+      'https://prod.example.test/api/vk/callback'
+    );
+    expect(requests[2].body.get('title')).toBe('yuzhural-site');
   });
 });
 
@@ -2163,6 +2698,101 @@ describe('chat conversations API', () => {
     });
   });
 
+  it('принимает ответ из интерфейса сообщества через message_reply', async () => {
+    const { createVkChatBridge } = await import('./lib/vkChat.js');
+    const chatStore = createInMemoryChatStore();
+    const outboundCalls = [];
+    const vkBridge = createVkChatBridge({
+      env: createTestEnv({
+        VK_COMMUNITY_ACCESS_TOKEN: 'vk-token',
+        VK_MANAGER_PEER_ID: '2000000005',
+        VK_MANAGER_USER_IDS: '42',
+        VK_CALLBACK_SECRET: 'vk-secret',
+        VK_CALLBACK_CONFIRMATION_TOKEN: 'vk-confirmation-token',
+        VK_GROUP_ID: '123',
+      }),
+      fetchImpl: vi.fn(async (url, init) => {
+        outboundCalls.push({ url, init });
+        return {
+          ok: true,
+          json: async () => ({
+            response: {
+              peer_id: 2000000005,
+              message_id: 900,
+              conversation_message_id: 500,
+            },
+          }),
+        };
+      }),
+    });
+    const app = createTestApp({ chatStore, vkBridge });
+
+    await withTestServer(app, async (localBaseUrl) => {
+      const createRes = await postJsonTo(
+        localBaseUrl,
+        '/api/chat/conversations',
+        validChatPayload
+      );
+      const created = await createRes.json();
+
+      await chatStore.registerManagerNotification(created.conversationId, {
+        channel: 'vk',
+        peerId: '2000000005',
+        messageId: 500,
+        conversationMessageId: 500,
+      });
+
+      const callbackRes = await postJsonTo(
+        localBaseUrl,
+        '/api/vk/callback',
+        {
+          type: 'message_reply',
+          event_id: 'evt-community-reply',
+          group_id: 123,
+          secret: 'vk-secret',
+          object: {
+            id: 777,
+            out: 1,
+            peer_id: 2000000005,
+            from_id: 123,
+            admin_author_id: 42,
+            conversation_message_id: 778,
+            text: 'Отвечаю из интерфейса сообщества.',
+            reply_message: {
+              id: 500,
+              conversation_message_id: 500,
+              peer_id: 2000000005,
+              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
+            },
+          },
+        }
+      );
+
+      expect(callbackRes.status).toBe(200);
+      expect(await callbackRes.text()).toBe('ok');
+
+      const customerRes = await fetch(
+        `${localBaseUrl}/api/chat/conversations/${created.conversationId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${created.customerToken}`,
+          },
+        }
+      );
+      const customerData = await customerRes.json();
+      const lastMessage =
+        customerData.conversation.messages[
+          customerData.conversation.messages.length - 1
+        ];
+
+      expect(lastMessage).toMatchObject({
+        role: 'manager',
+        text: 'Отвечаю из интерфейса сообщества.',
+      });
+      expect(outboundCalls).toHaveLength(2);
+    });
+  });
+
   it('не теряет ответ менеджера, если VK ack не отправился', async () => {
     const { createVkChatBridge } = await import('./lib/vkChat.js');
     const chatStore = createInMemoryChatStore();
@@ -2256,6 +2886,90 @@ describe('chat conversations API', () => {
     });
   });
 
+  it('игнорирует исходящие сообщения сообщества без admin_author_id', async () => {
+    const { createVkChatBridge } = await import('./lib/vkChat.js');
+    const chatStore = createInMemoryChatStore();
+    const vkBridge = createVkChatBridge({
+      env: createTestEnv({
+        VK_COMMUNITY_ACCESS_TOKEN: 'vk-token',
+        VK_MANAGER_PEER_ID: '2000000005',
+        VK_CALLBACK_SECRET: 'vk-secret',
+        VK_CALLBACK_CONFIRMATION_TOKEN: 'vk-confirmation-token',
+        VK_GROUP_ID: '123',
+      }),
+      fetchImpl: vi.fn(async () => ({
+        ok: true,
+        json: async () => ({
+          response: {
+            peer_id: 2000000005,
+            message_id: 900,
+            conversation_message_id: 500,
+          },
+        }),
+      })),
+    });
+    const app = createTestApp({ chatStore, vkBridge });
+
+    await withTestServer(app, async (localBaseUrl) => {
+      const createRes = await postJsonTo(
+        localBaseUrl,
+        '/api/chat/conversations',
+        validChatPayload
+      );
+      const created = await createRes.json();
+
+      await chatStore.registerManagerNotification(created.conversationId, {
+        channel: 'vk',
+        peerId: '2000000005',
+        messageId: 500,
+        conversationMessageId: 500,
+      });
+
+      const callbackRes = await postJsonTo(
+        localBaseUrl,
+        '/api/vk/callback',
+        {
+          type: 'message_reply',
+          event_id: 'evt-service-reply',
+          group_id: 123,
+          secret: 'vk-secret',
+          object: {
+            id: 777,
+            out: 1,
+            peer_id: 2000000005,
+            from_id: 123,
+            conversation_message_id: 778,
+            text: 'Служебное исходящее сообщение сообщества.',
+            reply_message: {
+              id: 500,
+              conversation_message_id: 500,
+              peer_id: 2000000005,
+              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
+            },
+          },
+        }
+      );
+
+      expect(callbackRes.status).toBe(200);
+      expect(await callbackRes.text()).toBe('ok');
+
+      const customerRes = await fetch(
+        `${localBaseUrl}/api/chat/conversations/${created.conversationId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${created.customerToken}`,
+          },
+        }
+      );
+      const customerData = await customerRes.json();
+      const managerMessages = customerData.conversation.messages.filter(
+        (message) => message.role === 'manager' && message.createdAt
+      );
+
+      expect(managerMessages).toHaveLength(0);
+    });
+  });
+
   it('игнорирует повторную доставку одного и того же VK event_id', async () => {
     const { createVkChatBridge } = await import('./lib/vkChat.js');
     const chatStore = createInMemoryChatStore();
@@ -2343,6 +3057,187 @@ describe('chat conversations API', () => {
     });
   });
 
+  it('не дублирует manager reply без event_id при повторной доставке одного и того же VK message', async () => {
+    const { createVkChatBridge } = await import('./lib/vkChat.js');
+    const chatStore = createInMemoryChatStore();
+    const vkBridge = createVkChatBridge({
+      env: createTestEnv({
+        VK_COMMUNITY_ACCESS_TOKEN: 'vk-token',
+        VK_MANAGER_PEER_ID: '2000000005',
+        VK_MANAGER_USER_IDS: '42',
+        VK_CALLBACK_SECRET: 'vk-secret',
+        VK_CALLBACK_CONFIRMATION_TOKEN: 'vk-confirmation-token',
+        VK_GROUP_ID: '123',
+      }),
+      fetchImpl: vi.fn(async () => ({
+        ok: true,
+        json: async () => ({
+          response: {
+            peer_id: 2000000005,
+            message_id: 900,
+            conversation_message_id: 500,
+          },
+        }),
+      })),
+    });
+    const app = createTestApp({ chatStore, vkBridge });
+
+    await withTestServer(app, async (localBaseUrl) => {
+      const createRes = await postJsonTo(
+        localBaseUrl,
+        '/api/chat/conversations',
+        validChatPayload
+      );
+      const created = await createRes.json();
+
+      await chatStore.registerManagerNotification(created.conversationId, {
+        channel: 'vk',
+        peerId: '2000000005',
+        messageId: 500,
+        conversationMessageId: 500,
+      });
+
+      const payload = {
+        type: 'message_reply',
+        group_id: 123,
+        secret: 'vk-secret',
+        object: {
+          id: 777,
+          out: 1,
+          peer_id: 2000000005,
+          from_id: 123,
+          admin_author_id: 42,
+          conversation_message_id: 778,
+          text: 'Один и тот же manager reply без event_id.',
+          reply_message: {
+            id: 500,
+            conversation_message_id: 500,
+            peer_id: 2000000005,
+            text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
+          },
+        },
+      };
+
+      expect(
+        (await postJsonTo(localBaseUrl, '/api/vk/callback', payload)).status
+      ).toBe(200);
+      expect(
+        (await postJsonTo(localBaseUrl, '/api/vk/callback', payload)).status
+      ).toBe(200);
+
+      const customerRes = await fetch(
+        `${localBaseUrl}/api/chat/conversations/${created.conversationId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${created.customerToken}`,
+          },
+        }
+      );
+      const customerData = await customerRes.json();
+      const managerMessages = customerData.conversation.messages.filter(
+        (message) =>
+          message.role === 'manager' &&
+          message.text === 'Один и тот же manager reply без event_id.'
+      );
+
+      expect(managerMessages).toHaveLength(1);
+    });
+  });
+
+  it('не принимает manager reply длиннее лимита и не показывает его клиенту', async () => {
+    const { createVkChatBridge } = await import('./lib/vkChat.js');
+    const chatStore = createInMemoryChatStore();
+    const outboundCalls = [];
+    const vkBridge = createVkChatBridge({
+      env: createTestEnv({
+        VK_COMMUNITY_ACCESS_TOKEN: 'vk-token',
+        VK_MANAGER_PEER_ID: '2000000005',
+        VK_MANAGER_USER_IDS: '42',
+        VK_CALLBACK_SECRET: 'vk-secret',
+        VK_CALLBACK_CONFIRMATION_TOKEN: 'vk-confirmation-token',
+        VK_GROUP_ID: '123',
+      }),
+      fetchImpl: vi.fn(async (url, init) => {
+        outboundCalls.push({ url, init });
+        return {
+          ok: true,
+          json: async () => ({
+            response: {
+              peer_id: 2000000005,
+              message_id: 900,
+              conversation_message_id: 500,
+            },
+          }),
+        };
+      }),
+    });
+    const app = createTestApp({ chatStore, vkBridge });
+
+    await withTestServer(app, async (localBaseUrl) => {
+      const createRes = await postJsonTo(
+        localBaseUrl,
+        '/api/chat/conversations',
+        validChatPayload
+      );
+      const created = await createRes.json();
+
+      await chatStore.registerManagerNotification(created.conversationId, {
+        channel: 'vk',
+        peerId: '2000000005',
+        messageId: 500,
+        conversationMessageId: 500,
+      });
+
+      const callbackRes = await postJsonTo(
+        localBaseUrl,
+        '/api/vk/callback',
+        {
+          type: 'message_reply',
+          event_id: 'evt-overlong-manager-reply',
+          group_id: 123,
+          secret: 'vk-secret',
+          object: {
+            id: 777,
+            out: 1,
+            peer_id: 2000000005,
+            from_id: 123,
+            admin_author_id: 42,
+            conversation_message_id: 778,
+            text: 'L'.repeat(2001),
+            reply_message: {
+              id: 500,
+              conversation_message_id: 500,
+              peer_id: 2000000005,
+              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
+            },
+          },
+        }
+      );
+
+      expect(callbackRes.status).toBe(200);
+      expect(await callbackRes.text()).toBe('ok');
+
+      const customerRes = await fetch(
+        `${localBaseUrl}/api/chat/conversations/${created.conversationId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${created.customerToken}`,
+          },
+        }
+      );
+      const customerData = await customerRes.json();
+      const managerMessages = customerData.conversation.messages.filter(
+        (message) => message.role === 'manager' && message.createdAt
+      );
+
+      expect(managerMessages).toHaveLength(0);
+      expect(outboundCalls).toHaveLength(2);
+      const ackBody = outboundCalls[1]?.init?.body;
+      expect(ackBody).toBeInstanceOf(URLSearchParams);
+      expect(ackBody.get('message')).toContain('от 1 до 2000 символов');
+    });
+  });
+
   it('не принимает VK callback без secret', async () => {
     const { createVkChatBridge } = await import('./lib/vkChat.js');
     const app = createTestApp({
@@ -2372,6 +3267,91 @@ describe('chat conversations API', () => {
 
       expect(res.status).toBe(404);
       expect(data.ok).toBe(false);
+    });
+  });
+
+  it('принимает VK callback с несовпадающим secret в локальном insecure-режиме', async () => {
+    const { createVkChatBridge } = await import('./lib/vkChat.js');
+    const chatStore = createInMemoryChatStore();
+    const vkBridge = createVkChatBridge({
+      env: createTestEnv({
+        VK_COMMUNITY_ACCESS_TOKEN: 'vk-token',
+        VK_MANAGER_PEER_ID: '2000000005',
+        VK_MANAGER_USER_IDS: '42',
+        VK_CALLBACK_SECRET: 'vk-secret',
+        VK_CALLBACK_ALLOW_INSECURE: 'true',
+      }),
+      fetchImpl: vi.fn(async () => ({
+        ok: true,
+        json: async () => ({
+          response: {
+            peer_id: 2000000005,
+            message_id: 900,
+            conversation_message_id: 500,
+          },
+        }),
+      })),
+    });
+    const app = createTestApp({ chatStore, vkBridge });
+
+    await withTestServer(app, async (localBaseUrl) => {
+      const createRes = await postJsonTo(
+        localBaseUrl,
+        '/api/chat/conversations',
+        validChatPayload
+      );
+      const created = await createRes.json();
+
+      await chatStore.registerManagerNotification(created.conversationId, {
+        channel: 'vk',
+        peerId: '2000000005',
+        messageId: 500,
+        conversationMessageId: 500,
+      });
+
+      const callbackRes = await postJsonTo(
+        localBaseUrl,
+        '/api/vk/callback',
+        {
+          type: 'message_reply',
+          event_id: 'evt-insecure-local-reply',
+          group_id: 123,
+          secret: 'unexpected-secret',
+          object: {
+            id: 777,
+            out: 1,
+            peer_id: 2000000005,
+            from_id: 123,
+            admin_author_id: 42,
+            conversation_message_id: 778,
+            text: 'Локальный reply без строгой проверки secret.',
+            reply_message: {
+              id: 500,
+              conversation_message_id: 500,
+              peer_id: 2000000005,
+              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
+            },
+          },
+        }
+      );
+
+      expect(callbackRes.status).toBe(200);
+      expect(await callbackRes.text()).toBe('ok');
+
+      const customerRes = await fetch(
+        `${localBaseUrl}/api/chat/conversations/${created.conversationId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${created.customerToken}`,
+          },
+        }
+      );
+      const customerData = await customerRes.json();
+
+      expect(customerData.conversation.messages.at(-1)).toMatchObject({
+        role: 'manager',
+        text: 'Локальный reply без строгой проверки secret.',
+      });
     });
   });
 

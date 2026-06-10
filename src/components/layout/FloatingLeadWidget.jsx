@@ -13,7 +13,7 @@ import { trackEvent } from '../../lib/analytics';
 import { messages } from '../../../shared/messages.js';
 
 const CHAT_SESSION_STORAGE_KEY = 'yuzhural-chat-session';
-const CHAT_POLL_INTERVAL_MS = 5_000;
+const CHAT_POLL_INTERVAL_MS = 2_000;
 const INITIAL_MESSAGES = Object.freeze([
   {
     id: 'greeting',

@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /cart
 
-Sitemap: https://yu-uek.ru/sitemap.xml
+Sitemap: http://localhost:5173/sitemap.xml

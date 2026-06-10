@@ -377,17 +377,56 @@ export function validateVkEnv(env = process.env) {
   const accessToken = readNonEmptyEnv(env.VK_COMMUNITY_ACCESS_TOKEN);
   const managerPeerId = readNonEmptyEnv(env.VK_MANAGER_PEER_ID);
   const callbackSecret = readNonEmptyEnv(env.VK_CALLBACK_SECRET);
+  const allowInsecureCallback = parseBooleanEnv(
+    env.VK_CALLBACK_ALLOW_INSECURE,
+    false
+  );
+  const callbackAutoConfigure = parseBooleanEnv(
+    env.VK_CALLBACK_AUTO_CONFIGURE,
+    false
+  );
+  const callbackUrl = readNonEmptyEnv(env.VK_CALLBACK_URL);
   const vkEnabled = Boolean(accessToken || managerPeerId);
 
-  if (env.NODE_ENV === 'production' && vkEnabled && !callbackSecret) {
+  if (env.NODE_ENV === 'production' && vkEnabled && allowInsecureCallback) {
+    throw new Error(
+      'VK callback не может работать в insecure-режиме в production'
+    );
+  }
+
+  if (
+    env.NODE_ENV === 'production' &&
+    vkEnabled &&
+    !callbackSecret &&
+    !allowInsecureCallback
+  ) {
     throw new Error(
       'VK callback не настроен безопасно: задайте VK_CALLBACK_SECRET или отключите VK bridge'
+    );
+  }
+
+  if (callbackAutoConfigure && !readNonEmptyEnv(env.VK_GROUP_ID)) {
+    throw new Error(
+      'VK callback auto-config требует VK_GROUP_ID'
+    );
+  }
+
+  if (
+    callbackAutoConfigure &&
+    !callbackUrl &&
+    !readNonEmptyEnv(env.SITE_URL) &&
+    !readNonEmptyEnv(env.VITE_SITE_URL)
+  ) {
+    throw new Error(
+      'VK callback auto-config требует VK_CALLBACK_URL или SITE_URL/VITE_SITE_URL'
     );
   }
 
   return {
     vkEnabled,
     callbackSecretConfigured: Boolean(callbackSecret),
+    allowInsecureCallback,
+    callbackAutoConfigure,
   };
 }
 
@@ -413,6 +452,60 @@ function hasInternalMetricsAccess(req) {
     getBearerToken(req) === token ||
     String(req.get('x-internal-metrics-token') || '').trim() === token
   );
+}
+
+function getVkHealthSnapshot(vkBridge) {
+  const snapshot =
+    vkBridge && typeof vkBridge.getStatusSnapshot === 'function'
+      ? vkBridge.getStatusSnapshot()
+      : null;
+  if (!snapshot) {
+    return {
+      ok: false,
+      status: 'unavailable',
+      vk: null,
+    };
+  }
+
+  const publicEndpoint = snapshot.callback?.publicEndpoint || {};
+  const callbackReady =
+    snapshot.configured &&
+    snapshot.callback?.confirmationTokenConfigured &&
+    Boolean(snapshot.callback?.url);
+  const publicEndpointHealthy = publicEndpoint.healthy !== false;
+
+  let status = 'ready';
+  if (!snapshot.enabled) {
+    status = 'unavailable';
+  } else if (!callbackReady) {
+    status = 'callback_unconfigured';
+  } else if (publicEndpoint.healthy === false) {
+    status = 'callback_unreachable';
+  } else if (!publicEndpoint.isStablePublicEntryPoint) {
+    status = 'tunnel_or_ephemeral';
+  }
+
+  return {
+    ok: snapshot.enabled && callbackReady && publicEndpointHealthy,
+    status,
+    vk: {
+      ...snapshot,
+      callback: {
+        ...snapshot.callback,
+        publicEndpoint: {
+          ...publicEndpoint,
+          operationalRisk:
+            publicEndpoint.exposure === 'tunnel' ||
+            publicEndpoint.exposure === 'private' ||
+            publicEndpoint.exposure === 'insecure_public'
+              ? 'high'
+              : publicEndpoint.exposure === 'public'
+                ? 'low'
+                : 'unknown',
+        },
+      },
+    },
+  };
 }
 
 function bytesToMb(value) {
@@ -1022,7 +1115,34 @@ export function createApp({
         smtpReady: app.locals.formsDiagnostic.smtpReady,
         missingConfig: app.locals.formsDiagnostic.missing,
       },
+      vk: getVkHealthSnapshot(app.locals.vkBridge).vk,
     });
+  });
+
+  app.get('/api/vk/health', async (req, res) => {
+    if (!hasInternalMetricsAccess(req)) {
+      return res.status(404).json({
+        ok: false,
+        message: 'Не найдено',
+      });
+    }
+
+    const shouldRefresh = parseBooleanEnv(req.query.refresh, false);
+    if (
+      shouldRefresh &&
+      app.locals.vkBridge &&
+      typeof app.locals.vkBridge.probePublicCallbackEndpoint === 'function'
+    ) {
+      try {
+        await app.locals.vkBridge.probePublicCallbackEndpoint();
+      } catch (error) {
+        logger.error('vk.health.probe_failed', { err: error });
+      }
+    }
+
+    const snapshot = getVkHealthSnapshot(app.locals.vkBridge);
+    const httpStatus = snapshot.ok ? 200 : 503;
+    return res.status(httpStatus).json(snapshot);
   });
 
   app.get('/api/forms/health', (req, res) => {
@@ -1042,6 +1162,15 @@ export function createApp({
     const secret = String(update.secret || '').trim();
 
     if (!bridge?.isConfigured?.() && type !== 'confirmation') {
+      bridge?.noteCallbackRejected?.({
+        reason: 'not_configured',
+        type,
+      });
+      logger.warn('vk.callback.rejected', {
+        reason: 'not_configured',
+        type: type || 'unknown',
+        groupId: String(update.group_id || '').trim() || null,
+      });
       return res.status(404).json({
         ok: false,
         message: 'Не найдено',
@@ -1053,6 +1182,16 @@ export function createApp({
       bridge?.requiresCallbackSecret?.() &&
       (!bridge.callbackSecret || !secret || secret !== bridge.callbackSecret)
     ) {
+      bridge?.noteCallbackRejected?.({
+        reason: 'secret_mismatch',
+        type,
+      });
+      logger.warn('vk.callback.rejected', {
+        reason: 'secret_mismatch',
+        type: type || 'unknown',
+        groupId: String(update.group_id || '').trim() || null,
+        secretPresent: Boolean(secret),
+      });
       return res.status(404).json({
         ok: false,
         message: 'Не найдено',
@@ -1063,6 +1202,7 @@ export function createApp({
       const result = await bridge.handleCallbackUpdate(update, {
         chatStore: app.locals.chatStore,
       });
+      bridge?.noteCallbackHandled?.(update, result);
 
       if (result?.confirmation) {
         return res.type('text/plain').send(bridge.confirmationToken || '');
@@ -1070,6 +1210,7 @@ export function createApp({
 
       return res.type('text/plain').send('ok');
     } catch (error) {
+      bridge?.noteCallbackFailed?.(update, error);
       logger.error('vk.callback.failed', { err: error });
       return res.status(500).type('text/plain').send('error');
     }
@@ -1770,6 +1911,14 @@ export async function startServer({
     mailTransporter,
   });
   logFormsStartupState(formsStartup.diagnostic || startup.forms);
+  if (startup.vk.allowInsecureCallback) {
+    logger.warn('startup.vk_callback_insecure', {
+      hint: 'VK_CALLBACK_ALLOW_INSECURE=true: проверка secret отключена только для локальной диагностики',
+    });
+  }
+  if (startup.vk.callbackAutoConfigure) {
+    logger.info('startup.vk_callback_autoconfigure_enabled');
+  }
 
   const app = createApp({
     env,
@@ -1778,17 +1927,43 @@ export async function startServer({
     vkBridge,
     formsDiagnostic: formsStartup.diagnostic,
   });
+  let server;
+  await new Promise((resolve, reject) => {
+    let settled = false;
+    server = listen(app, port, () => {
+      logger.info('startup.listening', { port });
+      settled = true;
+      resolve();
+    });
+
+    if (server && typeof server.once === 'function') {
+      server.once('error', (error) => {
+        if (!settled) {
+          reject(error);
+        }
+      });
+    }
+  });
+
   try {
     const webhookConfigured = await vkBridge.configureWebhook?.();
     if (webhookConfigured) {
-      logger.info('startup.vk_callback_configured');
+      logger.info('startup.vk_callback_configured', webhookConfigured);
     }
   } catch (error) {
+    vkBridge.noteWebhookConfigureFailed?.(error);
     logger.error('startup.vk_callback_failed', { err: error });
   }
-  const server = listen(app, port, () => {
-    logger.info('startup.listening', { port });
-  });
+  try {
+    const publicProbe = await vkBridge.probePublicCallbackEndpoint?.();
+    if (publicProbe && publicProbe.ok) {
+      logger.info('startup.vk_callback_public_endpoint_ready', publicProbe);
+    } else if (publicProbe) {
+      logger.warn('startup.vk_callback_public_endpoint_degraded', publicProbe);
+    }
+  } catch (error) {
+    logger.error('startup.vk_callback_public_probe_failed', { err: error });
+  }
 
   return { app, server };
 }

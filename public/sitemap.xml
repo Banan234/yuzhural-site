@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://yu-uek.ru/sitemap-pages.xml</loc>
-    <lastmod>2026-05-17T04:38:59.003Z</lastmod>
+    <loc>http://localhost:5173/sitemap-pages.xml</loc>
+    <lastmod>2026-06-10T05:31:17.419Z</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://yu-uek.ru/sitemap-categories.xml</loc>
-    <lastmod>2026-05-17T04:38:59.003Z</lastmod>
+    <loc>http://localhost:5173/sitemap-categories.xml</loc>
+    <lastmod>2026-06-10T05:31:17.419Z</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://yu-uek.ru/sitemap-products.xml</loc>
-    <lastmod>2026-05-17T04:38:59.003Z</lastmod>
+    <loc>http://localhost:5173/sitemap-products.xml</loc>
+    <lastmod>2026-06-10T05:31:17.419Z</lastmod>
   </sitemap>
 </sitemapindex>
