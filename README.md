@@ -18,33 +18,39 @@ npm run up             # build/prerender + API на 3001 + фронт на 5173
 
 Полный набор команд:
 
-| Команда                                           | Что делает                                                                                                                                |
-| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run up`                                      | Полный локальный подъём: `build:prod`, API на 3001 и Vite-фронт на 5173                                                                   |
-| `npm run dev`                                     | Только Vite-фронт на 5173; API-запросы проксируются на уже запущенный `server`                                                            |
-| `npm run server`                                  | Только Express API на 3001                                                                                                                |
-| `npm run build`                                   | Прод-сборка в `dist/`                                                                                                                     |
-| `npm run preview`                                 | Локальный smoke-тест прод-сборки                                                                                                          |
-| `npx vitest run`                                  | Тесты (39 кейсов)                                                                                                                         |
-| `npm run e2e`                                     | Playwright E2E smoke/user-flow тесты                                                                                                      |
-| `npm run load:test`                               | Короткий нагрузочный прогон API; настраивается `API_BASE`, `LOAD_CONCURRENCY`                                                             |
-| `npm run load:soak`                               | Длинный soak-прогон API на 30 минут для контроля RSS/event loop                                                                           |
-| `node scripts/importPrice.js [path/to/price.xls]` | Импорт прайса → `data/products.json`, отчёты, `public/sitemap.xml`, `public/robots.txt`, runtime HTML карточек при `PUBLIC_ARTIFACTS_DIR` |
-| `npm run import:price:scheduled`                  | Guard-запуск для планировщика: импортирует прайс только если сегодняшний запуск после 04:30 ещё не выполнялся                            |
-| `npm run check:product-prerender`                 | Проверка, что все product URL из sitemap имеют HTML с meta/JSON-LD, включая long-tail за `PRODUCT_PRERENDER_LIMIT`                        |
-| `node scripts/importPrice.js --dry-run`           | То же, но без записи файлов                                                                                                               |
+| Команда                                           | Что делает                                                                                                                                                                                     |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run up`                                      | Полный локальный подъём: `build:prod`, API на 3001 и Vite-фронт на 5173                                                                                                                        |
+| `npm run dev`                                     | Только Vite-фронт на 5173; API-запросы проксируются на уже запущенный `server`                                                                                                                 |
+| `npm run server`                                  | Только Express API на 3001                                                                                                                                                                     |
+| `npm run build`                                   | Прод-сборка в `dist/`                                                                                                                                                                          |
+| `npm run preview`                                 | Локальный smoke-тест прод-сборки                                                                                                                                                               |
+| `npm test`                                        | Vitest unit/integration tests                                                                                                                                                                  |
+| `npm run e2e`                                     | Playwright E2E smoke/user-flow тесты                                                                                                                                                           |
+| `npm run load:test`                               | Короткий нагрузочный прогон API; настраивается `API_BASE`, `LOAD_CONCURRENCY`                                                                                                                  |
+| `npm run load:soak`                               | Длинный soak-прогон API на 30 минут для контроля RSS/event loop                                                                                                                                |
+| `node scripts/importPrice.js [path/to/price.xls]` | Импорт прайса → `data/products.json`, отчёты, `public/sitemap.xml`, `public/robots.txt`, runtime HTML карточек при `PUBLIC_ARTIFACTS_DIR`                                                      |
+| `npm run import:price:scheduled`                  | Guard-запуск для планировщика: импортирует прайс только если сегодняшний запуск после 04:30 ещё не выполнялся                                                                                  |
+| `npm run check:product-prerender`                 | Проверка, что все product URL из sitemap имеют HTML с meta/JSON-LD, включая long-tail за `PRODUCT_PRERENDER_LIMIT`                                                                             |
+| `node scripts/importPrice.js --dry-run`           | То же, но без записи файлов                                                                                                                                                                    |
+| `./deploy/post-deploy-smoke.sh`                   | Post-deploy smoke: локальный `/healthz`, `/api/health`, homepage shell, sitemap/robots, `/api/forms/health`, `/api/runtime` и `/api/vk/health?refresh=1` при токене, runtime product-prerender |
+| `./deploy/deploy-release.sh --tag <release-tag>`  | Production build + `compose up -d --no-build` + smoke + запись release state в `deploy/state/production-release.env`                                                                           |
+| `./deploy/rollback.sh [--tag <release-tag>]`      | Rollback на предыдущий good release tag из state-файла или на явно переданный tag                                                                                                              |
 
 ## Конфигурация (`.env`)
 
-Все переменные описаны в [`.env.example`](./.env.example). Кратко:
+Все локальные переменные описаны в [`.env.example`](./.env.example).
+Production-основа без секретов лежит отдельно:
+[`.env.production.example`](./.env.production.example). Кратко:
 
 ### Хранение секретов
 
-В репозитории хранится только безопасный [`.env.example`](./.env.example) с
-пустыми значениями и плейсхолдерами. Локальные файлы `.env`, `.env.staging`,
-`.env.production` и другие `.env.*` игнорируются Git; `.dockerignore` также
-исключает их из Docker build context, оставляя в контексте только
-`.env.example`.
+В репозитории хранятся только безопасные шаблоны:
+[`.env.example`](./.env.example) для локальной разработки и
+[`.env.production.example`](./.env.production.example) для приватного
+production env. Локальные файлы `.env`, `.env.staging`, `.env.production` и
+другие `.env.*` игнорируются Git; `.dockerignore` также исключает их из Docker
+build context, оставляя в контексте только шаблоны без реальных секретов.
 
 Для production не коммитьте реальные `SMTP_PASS`, `INTERNAL_METRICS_TOKEN`,
 Sentry DSN, URL прайса с токеном и другие секреты. Храните их вне репозитория:
@@ -58,6 +64,18 @@ Sentry DSN, URL прайса с токеном и другие секреты. �
   GitLab CI variables и т.п.);
 - в managed-инфраструктуре — через secret manager/Vault/SSM/Secrets Manager и
   инъекцию переменных окружения при запуске контейнера.
+
+Подготовка production env:
+
+```bash
+sudo install -m 600 .env.production.example /etc/yuzhural-site/production.env
+sudoedit /etc/yuzhural-site/production.env
+npm run check:env -- --production --env-file /etc/yuzhural-site/production.env
+```
+
+Шаблон специально оставляет секреты пустыми, поэтому preflight должен падать,
+пока оператор не заполнит обязательные production-значения вроде
+`INTERNAL_METRICS_TOKEN` и, если формы включены, SMTP-блок.
 
 Build args в `docker-compose.yml` предназначены только для публичных значений,
 которые попадают во фронтовый bundle (`VITE_*`, `SITE_URL`, release tag).
@@ -78,6 +96,21 @@ Build args в `docker-compose.yml` предназначены только дл�
 проходит, сервер завершит старт с ошибкой до `listen()`. В staging/dev сервер
 пишет явную ошибку с инструкцией в лог, а формы отвечают пользовательским
 сообщением без SMTP-деталей.
+
+Для локальной разработки без реального SMTP есть явный dev-only режим:
+
+```env
+FORMS_ENABLED=true
+FORMS_DELIVERY_MODE=local_file
+FORMS_LOCAL_OUTBOX_DIR=./data/forms-outbox
+```
+
+В этом режиме `/api/quote` и `/api/lead-request` работают, `/api/forms/health`
+возвращает `200`, а письма сохраняются JSON-файлами в локальный outbox.
+В `production` режим `FORMS_DELIVERY_MODE=local_file` запрещён. Для production
+форм используйте только `FORMS_ENABLED=true`, `FORMS_DELIVERY_MODE=smtp` и
+заполненные `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`,
+`QUOTE_TO_EMAIL`. Если формы временно не готовы, задайте `FORMS_ENABLED=false`.
 
 1. Заведите ящик на корпоративном домене (Яндекс.360, Mail для бизнеса и т.п.).
 2. Включите двухфакторную аутентификацию и выпустите **app password** —
@@ -110,8 +143,20 @@ Build args в `docker-compose.yml` предназначены только дл�
      "status": "ready"
    }
    ```
+   Если формы отключены или SMTP недоступен, этот endpoint вернёт `503` и:
+   ```json
+   {
+     "ok": false,
+     "status": "unavailable"
+   }
+   ```
    Подробная SMTP-диагностика доступна только в `/api/runtime` при заданном
-   `INTERNAL_METRICS_TOKEN`.
+   `INTERNAL_METRICS_TOKEN` и передаче токена через `Authorization: Bearer <token>`
+   или `x-internal-metrics-token: <token>`.
+
+Если планируете использовать именно `Yandex 360`, есть отдельная пошаговая
+инструкция с production env, preflight и smoke-check:
+[docs/yandex-360-smtp-setup.md](./docs/yandex-360-smtp-setup.md).
    Затем можно отправить тестовую заявку:
    ```bash
    curl -X POST http://localhost:3001/api/quote \
@@ -181,15 +226,20 @@ Backend умеет автоматически синхронизировать c
 - `VK_CALLBACK_AUTO_CONFIGURE=true`
 - `VK_GROUP_ID=<group_id сообщества>`
 - `VK_CALLBACK_SECRET=<secret key из Callback API>`
-- `VK_CALLBACK_URL=<публичный https URL до /api/vk/callback>`
+- `VK_CALLBACK_URL=https://<domain>/api/vk/callback`
 
 Если `VK_CALLBACK_URL` пуст, backend попробует собрать его как
 `<SITE_URL>/api/vk/callback` или `<VITE_SITE_URL>/api/vk/callback`.
+Для production `SITE_URL` и `VITE_SITE_URL` должны совпадать и указывать на
+публичный `https://yu-uek.ru` или актуальный домен; `localhost`, private IP и
+tunnel-домены в production preflight не проходят.
 
 Необязательные переменные:
 
 - `VK_CALLBACK_SERVER_ID` — если нужно обновлять конкретный callback-сервер в VK
 - `VK_CALLBACK_SERVER_TITLE` — имя callback-сервера при создании/поиске
+- `VK_CALLBACK_PUBLIC_PROBE_INTERVAL_MS` — интервал фоновой live-probe
+  проверки публичного callback URL; `0` отключает scheduler
 
 Что делает автоконфиг на старте:
 
@@ -207,8 +257,9 @@ Callback API-методам. Если scope недостаточен, серве
 ошибку `startup.vk_callback_failed`, а автосинхронизация не выполнится.
 
 Для диагностики runtime есть внутренний endpoint `GET /api/vk/health`. Он
-доступен только с тем же bearer token, что и `GET /api/runtime`
-(`INTERNAL_METRICS_TOKEN`), и показывает:
+доступен только с тем же токеном, что и `GET /api/runtime`
+(`INTERNAL_METRICS_TOKEN`), через `Authorization: Bearer <token>` или
+`x-internal-metrics-token: <token>`, и показывает:
 
 - включён ли VK bridge и достаточно ли конфигурации для callback;
 - `managerPeerId` и allowlist manager user id;
@@ -228,6 +279,30 @@ curl -H "Authorization: Bearer $INTERNAL_METRICS_TOKEN" \
 Это полезно, чтобы быстро отличить ошибку в backend-логике от умершего tunnel
 или неработающего публичного URL.
 
+`deploy/post-deploy-smoke.sh` автоматически проверяет этот endpoint после
+`/api/runtime`, если задан `INTERNAL_METRICS_TOKEN`. Для включённого VK bridge
+smoke требует `"ok": true` и `"status": "ready"`. Если VK bridge на конкретной
+среде намеренно отключён, задайте `VK_SMOKE_ALLOW_DISABLED=true`; тогда smoke
+примет только явный disabled response `"ok": false`, `"status": "unavailable"`.
+
+При запущенном сервере backend также сам делает периодический live probe
+публичного callback URL и пишет transition-based логи:
+
+- `vk.callback.public_probe_unhealthy` — публичный endpoint перестал отвечать
+  корректно;
+- `vk.callback.public_probe_recovered` — endpoint восстановился;
+- `vk.callback.public_probe_still_unhealthy` — деградация продолжается;
+- `vk.callback.secret_mismatch_threshold` — накопились отклонённые callback по
+  неверному `secret`.
+
+Для браузерной диагностики есть скрытая внутренняя страница
+`/internal/runtime`. Она не добавлена в публичную навигацию, требует
+`INTERNAL_METRICS_TOKEN` и показывает runtime, VK bridge status и кнопку
+принудительного `refresh=1` probe без `curl`. Токен на этой странице хранится
+только в `sessionStorage` текущей вкладки браузера; legacy-значение из
+`localStorage`, если оно осталось от старой версии, автоматически переносится и
+удаляется.
+
 ### Reverse proxy
 
 `TRUSTED_PROXY_IPS` задаёт, от каких proxy Express принимает
@@ -239,9 +314,11 @@ Nginx на той же машине. Если перед приложением 
 TRUSTED_PROXY_IPS=loopback,10.0.0.0/8,172.16.0.0/12
 ```
 
-В Docker compose production/staging значение по умолчанию — `uniquelocal`,
-чтобы Express доверял `X-Forwarded-For` от Nginx в bridge-сети и rate-limit
-форм считался по реальному клиентскому IP, а не по IP контейнера Nginx.
+В Docker compose production/staging значение по умолчанию — точечный IP
+контейнера `web` в bridge-сети (`172.30.0.10` для production и `172.31.0.10`
+для staging), чтобы Express доверял `X-Forwarded-For` только от локального
+Nginx и rate-limit форм считался по реальному клиентскому IP, а не по IP
+контейнера proxy.
 
 ### Логи и нагрузочные проверки
 
@@ -253,8 +330,10 @@ Access-log пишет JSON в stdout/stderr, но под production-нагруз
 
 `/api/health` публичный и отдаёт только liveness-данные. Runtime-метрики
 доступны отдельно на `/api/runtime` только при заданном `INTERNAL_METRICS_TOKEN`
-и запросе с `Authorization: Bearer <token>`: RSS/heap в MB, active requests,
-CPU usage и event-loop delay. Для локального stress-test:
+и запросе с `Authorization: Bearer <token>` или
+`x-internal-metrics-token: <token>`: RSS/heap в MB, active requests, CPU usage
+и event-loop delay. Без валидного токена endpoint отвечает `404`. Для
+локального stress-test:
 
 ```bash
 npm run server
@@ -306,7 +385,8 @@ Performance tracing включается только через `VITE_SENTRY_TR
 ### SEO / canonical-домен
 
 `SITE_URL` (для Node-скриптов) и `VITE_SITE_URL` (для сборки фронта) должны
-совпадать. Подставляются в:
+совпадать. В production это должен быть публичный `https://yu-uek.ru` или
+актуальный домен без слэша на конце. Подставляются в:
 
 - `public/sitemap.xml` / `public/robots.txt` (генерация после импорта прайса);
 - `<link rel="canonical">`, `og:url`, JSON-LD (`Product.url`, `Organization.url`).
@@ -395,71 +475,33 @@ build-time prerender.
 ### Автоматический ежедневный импорт (production)
 
 `data/products.json` лежит в `.gitignore` — после `npm ci` каталог пустой,
-пока не запустится импортёр. На проде нужен один из двух подходов:
+пока не запустится импортёр. Для production теперь есть воспроизводимый путь
+через файлы из репозитория:
 
-**Системный cron (рекомендуется).** Скачивает свежий прайс с сайта поставщика
-каждый день в 04:30 утра по Москве:
+1. Подготовьте production env-файл, например `/etc/yuzhural-site/production.env`.
+2. Убедитесь, что production compose уже поднят и `app` service работает.
+3. Установите systemd timer из репозитория:
 
-```cron
-30 4 * * * cd /var/www/yuzhural-site && /usr/bin/env PRICE_PAGE_URL=https://www.cablehome.ru/price/ /usr/bin/node scripts/importPrice.js >> /var/log/yuzhural-import.log 2>&1
+```bash
+./deploy/install-price-import-timer.sh /opt/yuzhural-site /etc/yuzhural-site/production.env
+systemctl list-timers --all | grep yuzhural-price-import
 ```
 
-Если Excel лежит по неизменному прямому URL, вместо `PRICE_PAGE_URL` можно
-использовать `PRICE_URL`. Если же поставщик меняет имя файла, удобнее
-оставить стабильную страницу прайса, а ссылку на `.xls/.xlsx` импортёр
-найдёт сам.
+Что делает этот automation-контур:
 
-**Если cron недоступен (shared hosting).** Скрипт `import:price:remote` можно
-вызывать по расписанию из панели хостинга, systemd-таймера или
-GitHub Actions schedule. Минимальный workflow:
+- systemd каждые 30 минут вызывает `deploy/run-price-import.sh --scheduled`;
+- внутри контейнера `app` запускается `npm run import:price:scheduled`;
+- guard `scripts/runScheduledPriceImport.js` импортирует прайс только один раз
+  в день после окна `04:30`, а пропущенный запуск догоняется на ближайшем тике;
+  в шаблоне systemd unit из репозитория это окно считается в `TZ=Europe/Moscow`;
+- source URL (`PRICE_URL` или `PRICE_PAGE_URL`) и SEO/runtime-настройки берутся
+  из того же env-файла, что и production deploy.
 
-```yaml
-# .github/workflows/import-price.yml
-on:
-  schedule: [{ cron: '30 1 * * *' }] # 04:30 МСК
-jobs:
-  import:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '20' }
-      - run: npm ci
-      - run: npm run import:price:remote
-        env:
-          PRICE_URL: ${{ secrets.PRICE_URL }}
-      # дальше — деплой data/products.json и public/sitemap.xml на прод
+Для внепланового ручного запуска используйте:
+
+```bash
+./deploy/run-price-import.sh --env-file /etc/yuzhural-site/production.env --force
 ```
-
-В случае ошибки импортёр завершается с ненулевым кодом — и cron, и Actions
-пришлют письмо/уведомление, ничего не теряется молча.
-
-**macOS `launchd` (для личной машины).** Если импорт должен переживать сон,
-выключение ноутбука и поздний вход в систему, используйте
-`scripts/runScheduledPriceImport.js` вместе с user LaunchAgent. Этот guard:
-
-- ничего не делает до сегодняшних `04:30`;
-- не запускает повторный импорт, если он уже успешно прошёл сегодня после `04:30`;
-- при `RunAtLoad` догоняет пропущенный запуск сразу после входа в систему или
-  старта пользовательской сессии, если к этому моменту `04:30` уже прошли.
-
-Локальная установленная конфигурация:
-
-- plist: `~/Library/LaunchAgents/ru.yuzhural.price-import.plist`
-- логи: `~/Library/Logs/yuzhural-price-import.log` и
-  `~/Library/Logs/yuzhural-price-import.error.log`
-
-Это временный вариант для локальной машины. Риски такого подхода: импорт
-зависит от включённого ноутбука, пользовательской сессии, сети и может
-сдвигаться по времени после сна/выключения. Когда появится стабильный сервер,
-перенесите расписание на server-side scheduler (`cron`, `systemd timer` или
-аналогичный always-on инструмент) и настройте уведомление при ошибке импорта.
-
-**Примечание про Codex automation.** Если запускать импорт через локальную
-automation в Codex app, это удобно для личной машины, но не стоит считать такой
-вариант полностью надёжным при закрытом приложении или спящем компьютере. Для
-гарантированного ежедневного обновления прайса используйте системный `cron`,
-`systemd` timer или другой always-on scheduler на сервере.
 
 ## Docker deploy, staging и rollback
 
@@ -504,15 +546,40 @@ Production `web` в `docker-compose.yml` по умолчанию слушает 
 `WEB_HTTP_BIND=127.0.0.1:8081`. Не используйте значения вида `0.0.0.0:80` на
 публичном хосте: сайт не должен открываться в интернет по plain HTTP.
 
-```bash
-export DEPLOY_TAG=$(date +%Y%m%d%H%M)-$(git rev-parse --short HEAD)
-export VITE_SENTRY_RELEASE=$DEPLOY_TAG
+Production deploy теперь сводится к одной команде:
 
-docker compose build
-docker compose --env-file /etc/yuzhural-site/production.env up -d --no-build
-docker compose ps
-curl -fsS http://127.0.0.1:8080/healthz
-docker compose exec app npm run check:product-prerender
+```bash
+./deploy/deploy-release.sh \
+  --env-file /etc/yuzhural-site/production.env \
+  --tag "$(date +%Y%m%d%H%M)-$(git rev-parse --short HEAD)"
+```
+
+Для первого деплоя до переключения внешнего DNS/TLS можно временно пропустить
+публичные проверки:
+
+```bash
+./deploy/deploy-release.sh \
+  --env-file /etc/yuzhural-site/production.env \
+  --skip-public-checks
+```
+
+Скрипт делает:
+
+- `docker compose build`;
+- `docker compose up -d --no-build` c тем же env-файлом, который попадает в контейнеры;
+- `./deploy/post-deploy-smoke.sh` с проверками `/healthz`, `/api/health`,
+  homepage shell, sitemap/robots, `/api/forms/health`, `/api/runtime` при токене,
+  `/api/vk/health?refresh=1` при токене и `npm run check:product-prerender`
+  внутри `app`;
+- запись release state в `deploy/state/production-release.env`.
+
+Для быстрого операционного прогона перед релизом и сразу после него используйте
+[docs/production-readiness-checklist.md](./docs/production-readiness-checklist.md).
+
+Smoke можно вызывать и отдельно:
+
+```bash
+./deploy/post-deploy-smoke.sh --env-file /etc/yuzhural-site/production.env
 ```
 
 Перед деплоем убедитесь, что на хосте есть `./data/products.json`: этот каталог
@@ -524,18 +591,25 @@ fallback из build-time prerender в образе.
 
 ### Rollback
 
-Rollback — это переключение `DEPLOY_TAG` на предыдущий рабочий release tag без
-`--build`.
+Rollback — это переключение на предыдущий рабочий release tag без `--build`.
 
 ```bash
-export DEPLOY_TAG=<previous-good-tag>
-export VITE_SENTRY_RELEASE=$DEPLOY_TAG
-
-docker compose up -d --no-build
-docker compose ps
-curl -fsS http://127.0.0.1:8080/healthz
+./deploy/rollback.sh --env-file /etc/yuzhural-site/production.env
 ```
 
-Если образы хранятся в registry, перед `up` выполните `docker compose pull`.
-Если предыдущего образа нет локально или в registry, `--no-build` специально
-остановит rollback вместо того, чтобы случайно пересобрать новый образ.
+По умолчанию скрипт сам выбирает target:
+
+- `LAST_GOOD_RELEASE_TAG`, если последний deploy уже сломал production и smoke не прошёл;
+- `PREVIOUS_GOOD_RELEASE_TAG`, если нужен откат от текущего успешного релиза.
+
+Явный tag тоже поддержан:
+
+```bash
+./deploy/rollback.sh \
+  --env-file /etc/yuzhural-site/production.env \
+  --tag <previous-good-tag>
+```
+
+Если образы хранятся в registry, перед rollback выполните `docker compose pull`.
+Если нужного образа нет локально или в registry, `--no-build` специально
+остановит rollback вместо случайной пересборки текущей рабочей директории.

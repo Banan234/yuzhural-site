@@ -173,11 +173,21 @@ describe('nginx reverse proxy canonical redirects', () => {
     expect(config).toContain('location = /delivery/ {');
     expect(config).toContain('location = /payment/ {');
     expect(config).toContain('location = /cart {');
+    expect(config).toContain('location = /internal/runtime {');
     expect(config).toContain('location ~ ^/catalog/([A-Za-z0-9-]+)$ {');
     expect(config).toContain('try_files /catalog/$1/index.html =404;');
     expect(config).toContain('location / {');
     expect(config).toContain('try_files $uri =404;');
     expect(config).not.toContain('try_files $uri $uri/ /index.html;');
+  });
+
+  it('serves the internal runtime SPA route without opening a wildcard fallback', () => {
+    const runtimeBlock = getLocationBlock('= /internal/runtime');
+    const rootFallbackBlock = getLocationBlock('/');
+
+    expect(runtimeBlock).toContain('try_files /index.html =404;');
+    expect(rootFallbackBlock).toContain('try_files $uri =404;');
+    expect(rootFallbackBlock).not.toContain('/index.html');
   });
 });
 

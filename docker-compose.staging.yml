@@ -17,7 +17,7 @@ services:
     container_name: yuzhural-staging-app
     restart: unless-stopped
     env_file:
-      - path: .env.staging
+      - path: ${STAGING_ENV_FILE:-.env.staging}
         required: false
     environment:
       NODE_ENV: production

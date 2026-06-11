@@ -20,6 +20,7 @@ function createMemoryStorage() {
 }
 
 const testStorage = createMemoryStorage();
+const testSessionStorage = createMemoryStorage();
 
 Object.defineProperty(globalThis, 'localStorage', {
   value: testStorage,
@@ -28,6 +29,16 @@ Object.defineProperty(globalThis, 'localStorage', {
 
 Object.defineProperty(window, 'localStorage', {
   value: testStorage,
+  configurable: true,
+});
+
+Object.defineProperty(globalThis, 'sessionStorage', {
+  value: testSessionStorage,
+  configurable: true,
+});
+
+Object.defineProperty(window, 'sessionStorage', {
+  value: testSessionStorage,
   configurable: true,
 });
 
@@ -41,6 +52,7 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
   localStorage.clear();
+  sessionStorage.clear();
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
 });

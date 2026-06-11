@@ -1,0 +1,10 @@
+[Unit]
+Description=Yuzhural daily price import
+Wants=network-online.target
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__PROJECT_ROOT__
+Environment=TZ=Europe/Moscow
+ExecStart=__PROJECT_ROOT__/deploy/run-price-import.sh --project-root __PROJECT_ROOT__ --env-file __ENV_FILE__ --scheduled

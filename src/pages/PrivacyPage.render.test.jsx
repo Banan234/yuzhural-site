@@ -6,12 +6,14 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import {
+  SITE_URL,
   SITE_EMAIL,
   SITE_EMAIL_HREF,
   SITE_PHONE_DISPLAY,
   SITE_PHONE_HREF,
   SITE_REQUISITES,
 } from '../lib/siteConfig.js';
+import { STATIC_PAGE_SEO } from '../lib/staticSeo.js';
 import PrivacyPage from './PrivacyPage.jsx';
 
 function renderPrivacyPage() {
@@ -26,6 +28,15 @@ function renderPrivacyPage() {
 }
 
 describe('PrivacyPage', () => {
+  it('оставляет canonical без завершающего слэша', () => {
+    renderPrivacyPage();
+
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      `${SITE_URL}${STATIC_PAGE_SEO.privacy.path}`
+    );
+  });
+
   it('показывает разделы политики, данные оператора и каналы связи', () => {
     renderPrivacyPage();
 
@@ -45,10 +56,9 @@ describe('PrivacyPage', () => {
     expect(
       screen.getAllByText(SITE_REQUISITES.fullLegalName).length
     ).toBeGreaterThan(0);
-    expect(screen.getAllByRole('link', { name: SITE_EMAIL })[0]).toHaveAttribute(
-      'href',
-      SITE_EMAIL_HREF
-    );
+    expect(
+      screen.getAllByRole('link', { name: SITE_EMAIL })[0]
+    ).toHaveAttribute('href', SITE_EMAIL_HREF);
     expect(
       screen.getAllByRole('link', { name: SITE_PHONE_DISPLAY })[0]
     ).toHaveAttribute('href', SITE_PHONE_HREF);

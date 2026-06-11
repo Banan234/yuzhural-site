@@ -43,7 +43,9 @@ function normalizePhoneDigits(value) {
 }
 
 function normalizeTelegramUsername(value) {
-  return String(value || '').trim().replace(/^@+/, '');
+  return String(value || '')
+    .trim()
+    .replace(/^@+/, '');
 }
 
 export const SITE_URL = trimTrailingSlash(readSiteUrl());

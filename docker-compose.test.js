@@ -24,6 +24,12 @@ function extractTopLevelBlock(source, key) {
   return blockLines.join('\n');
 }
 
+function expectOptionalEnvFile(serviceBlock, envFilePathExpression) {
+  expect(serviceBlock).toContain('env_file:');
+  expect(serviceBlock).toContain(`path: ${envFilePathExpression}`);
+  expect(serviceBlock).toContain('required: false');
+}
+
 describe('docker-compose.yml', () => {
   it('tags production images with DEPLOY_TAG for rollback', () => {
     const source = readFileSync('docker-compose.yml', 'utf8');
@@ -46,8 +52,7 @@ describe('docker-compose.yml', () => {
     const appBlock = extractTopLevelBlock(source, 'app');
     const webBlock = extractTopLevelBlock(source, 'web');
 
-    expect(appBlock).toContain('path: .env');
-    expect(appBlock).toContain('required: false');
+    expectOptionalEnvFile(appBlock, '${APP_ENV_FILE:-.env}');
     expect(appBlock).toContain('volumes:');
     expect(appBlock).toContain('- ./data:/app/data');
     expect(appBlock).toContain('PUBLIC_ARTIFACTS_DIR: /app/data/public');
@@ -82,8 +87,7 @@ describe('docker-compose.staging.yml', () => {
     const webBlock = extractTopLevelBlock(source, 'web');
 
     expect(appBlock).toContain('container_name: yuzhural-staging-app');
-    expect(appBlock).toContain('path: .env.staging');
-    expect(appBlock).toContain('required: false');
+    expectOptionalEnvFile(appBlock, '${STAGING_ENV_FILE:-.env.staging}');
     expect(appBlock).toContain('- ./data-staging:/app/data');
     expect(appBlock).toContain('PUBLIC_ARTIFACTS_DIR: /app/data/public');
     expect(appBlock).toContain(

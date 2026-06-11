@@ -29,7 +29,11 @@ describe('syncRuntimeArtifacts', () => {
     const categoriesPath = path.join(root, 'shared', 'catalogCategories.json');
     const priceSource = path.join(root, 'data', 'price.xls');
     const redirectsJsonSource = path.join(root, 'public', 'redirects.json');
-    const redirectsNginxSource = path.join(root, 'public', 'redirects.nginx.conf');
+    const redirectsNginxSource = path.join(
+      root,
+      'public',
+      'redirects.nginx.conf'
+    );
 
     await mkdir(path.join(root, 'data'), { recursive: true });
     await mkdir(path.join(root, 'shared'), { recursive: true });
@@ -136,14 +140,22 @@ describe('syncRuntimeArtifacts', () => {
       path.join(runtimePublicDir, 'product', 'test-product.html'),
       'utf8'
     );
-    const runtime404 = await readFile(path.join(runtimePublicDir, 'robots.txt'), 'utf8');
-    const runtimePrice = await readFile(path.join(runtimePublicDir, 'price.xls'), 'utf8');
+    const runtime404 = await readFile(
+      path.join(runtimePublicDir, 'robots.txt'),
+      'utf8'
+    );
+    const runtimePrice = await readFile(
+      path.join(runtimePublicDir, 'price.xls'),
+      'utf8'
+    );
     const runtimeRedirects = await readFile(
       path.join(runtimePublicDir, 'redirects.nginx.conf'),
       'utf8'
     );
 
-    expect(runtimeSitemapPages).toContain('<loc>https://yu-uek.ru/catalog/</loc>');
+    expect(runtimeSitemapPages).toContain(
+      '<loc>https://yu-uek.ru/catalog/</loc>'
+    );
     expect(runtimeProductHtml).toContain(
       '<link rel="canonical" href="https://yu-uek.ru/product/test-product">'
     );
@@ -161,7 +173,9 @@ describe('syncRuntimeArtifacts', () => {
     const productsPath = path.join(root, 'data', 'products.json');
     const categoriesPath = path.join(root, 'shared', 'catalogCategories.json');
 
-    await mkdir(path.join(root, 'data', 'public', 'product'), { recursive: true });
+    await mkdir(path.join(root, 'data', 'public', 'product'), {
+      recursive: true,
+    });
     await mkdir(path.join(root, 'shared'), { recursive: true });
     await mkdir(path.join(distDir, 'assets'), { recursive: true });
 

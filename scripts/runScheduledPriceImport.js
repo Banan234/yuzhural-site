@@ -117,7 +117,9 @@ async function main() {
     await acquireLock(now.getTime());
   } catch (error) {
     if (error.code === 'EEXIST') {
-      console.log('[scheduled-import] Skip: another scheduled import is already running.');
+      console.log(
+        '[scheduled-import] Skip: another scheduled import is already running.'
+      );
       return;
     }
     throw error;

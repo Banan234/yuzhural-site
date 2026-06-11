@@ -8,8 +8,11 @@ playwright-report/
 .env
 .env.*
 !.env.example
+!.env.production.example
 
 # Генерируемые файлы импорта прайса
+data/chat-store.json
+data/forms-outbox/
 data/products.json
 data/productRegistry.json
 data/import-history.json
@@ -19,3 +22,4 @@ data/public/
 public/redirects.json
 public/redirects.nginx.conf
 public/product/
+deploy/state/

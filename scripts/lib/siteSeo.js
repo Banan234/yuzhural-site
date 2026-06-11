@@ -58,6 +58,11 @@ const STATIC_ROUTES = [
     changefreq: 'monthly',
     priority: '0.5',
   },
+  {
+    path: toCanonicalSitePath('/privacy'),
+    changefreq: 'yearly',
+    priority: '0.2',
+  },
 ];
 
 const PRODUCT_SITEMAP_FILE_RE = /^sitemap-products(?:-\d+)?\.xml$/;

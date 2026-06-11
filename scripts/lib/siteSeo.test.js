@@ -28,10 +28,14 @@ describe('buildSitemapPagesXml', () => {
     expect(xml).toContain(`<loc>${SITE}/</loc>`);
     expect(xml).toContain(`<loc>${SITE}/catalog/</loc>`);
     expect(xml).toContain(`<loc>${SITE}/contacts/</loc>`);
+    expect(xml).toContain(`<loc>${SITE}/privacy</loc>`);
+    expect(xml).not.toContain(`<loc>${SITE}/privacy/</loc>`);
     expect(xml).toContain('<lastmod>2026-01-01</lastmod>');
-    // Не должно быть карточек или категорий-уровня-2.
+    // Не должно быть карточек, категорий-уровня-2 или внутренних страниц.
     expect(xml).not.toContain('/product/');
     expect(xml).not.toContain('/catalog/silovoy-kabel');
+    expect(xml).not.toContain('/cart');
+    expect(xml).not.toContain('/internal/runtime');
   });
 
   it('убирает завершающий слэш у siteUrl', () => {

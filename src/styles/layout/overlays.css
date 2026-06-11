@@ -283,6 +283,14 @@
   margin: 12px 12px 0;
 }
 
+.floating-lead-widget__composer-meta {
+  display: grid;
+  gap: 6px;
+  padding: 10px 14px 8px;
+  border-top: 1px solid #e4e8ec;
+  background: #fff;
+}
+
 .floating-lead-widget__messages {
   flex: 1 1 auto;
   min-height: 315px;
@@ -394,6 +402,11 @@
 
 .floating-lead-widget__consent a {
   color: var(--primary-dark);
+}
+
+.floating-lead-widget__consent-error {
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 .floating-lead-widget__composer {

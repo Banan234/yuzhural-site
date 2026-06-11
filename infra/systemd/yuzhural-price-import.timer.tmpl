@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Yuzhural price import schedule checks every 30 minutes
+
+[Timer]
+OnCalendar=*-*-* *:00:00
+OnCalendar=*-*-* *:30:00
+Persistent=true
+Unit=yuzhural-price-import.service
+
+[Install]
+WantedBy=timers.target

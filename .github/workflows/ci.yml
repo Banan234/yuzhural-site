@@ -15,9 +15,23 @@ concurrency:
 
 jobs:
   verify:
-    name: Lint, test, build
+    name: Lint, test, production pipeline
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      CI: true
+      FORMS_ENABLED: 'false'
+      SITE_URL: https://example.com
+      VITE_SITE_URL: https://example.com
+      VITE_YANDEX_METRIKA_ID: ''
+      VITE_SENTRY_DSN: ''
+      VITE_SENTRY_ENVIRONMENT: production
+      VITE_SENTRY_RELEASE: ci-${{ github.sha }}
+      VITE_SENTRY_TRACES_SAMPLE_RATE: '0'
+      PUBLIC_ARTIFACTS_DIR: data/public
+      PRERENDER_TEMPLATE_DIR: dist
+      PRODUCT_PRERENDER_LIMIT: '720'
+      PRODUCT_PRERENDER_INCLUDE: ''
 
     steps:
       - uses: actions/checkout@v4
@@ -46,5 +60,14 @@ jobs:
       - name: E2E tests (playwright)
         run: npm run e2e
 
-      - name: Build (vite)
-        run: npm run build
+      - name: Build production pipeline
+        run: npm run build:prod
+
+      - name: Verify runtime artifact sync outputs
+        run: |
+          test -f data/public/sitemap.xml
+          test -f data/public/robots.txt
+          test -d data/public/product
+
+      - name: Verify product prerender coverage
+        run: npm run check:product-prerender

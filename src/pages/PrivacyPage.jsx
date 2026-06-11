@@ -165,8 +165,7 @@ export default function PrivacyPage() {
               посетители сайта, лица, направляющие заявки через формы обратной
               связи, а также представители организаций и контрагентов, которые
               обращаются к оператору по вопросам поставки продукции,
-              коммерческих предложений, договоров и сопроводительных
-              документов.
+              коммерческих предложений, договоров и сопроводительных документов.
             </p>
             <NumberedClauses
               items={PERSONAL_DATA_ITEMS.map((item, index) => ({
@@ -354,7 +353,8 @@ export default function PrivacyPage() {
 
             <div className="privacy-doc__contacts">
               <p>
-                <strong>Email:</strong> <a href={SITE_EMAIL_HREF}>{SITE_EMAIL}</a>
+                <strong>Email:</strong>{' '}
+                <a href={SITE_EMAIL_HREF}>{SITE_EMAIL}</a>
               </p>
               <p>
                 <strong>Телефон:</strong>{' '}

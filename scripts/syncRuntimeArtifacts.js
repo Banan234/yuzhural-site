@@ -17,7 +17,11 @@ const DEFAULT_CATEGORIES_PATH = path.join(
 const DEFAULT_TEMPLATE_DIR = path.join(projectRoot, 'dist');
 const DEFAULT_RUNTIME_PUBLIC_DIR = path.join(projectRoot, 'data', 'public');
 const DEFAULT_PRICE_SOURCE = path.join(projectRoot, 'data', 'price.xls');
-const DEFAULT_REDIRECTS_JSON = path.join(projectRoot, 'public', 'redirects.json');
+const DEFAULT_REDIRECTS_JSON = path.join(
+  projectRoot,
+  'public',
+  'redirects.json'
+);
 const DEFAULT_REDIRECTS_NGINX = path.join(
   projectRoot,
   'public',
@@ -110,7 +114,9 @@ export async function syncRuntimeArtifacts({
   const template = await loadTemplate({ outputDir: templateDir });
   const productsPayload = await loadJson(productsPath);
   const categoriesData = await loadJson(categoriesPath);
-  const products = extractProductsPayload(productsPayload, { source: productsPath });
+  const products = extractProductsPayload(productsPayload, {
+    source: productsPath,
+  });
 
   const seoSummary = await writeSeoArtifacts({
     outputDir: runtimePublicDir,

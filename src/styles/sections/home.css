@@ -475,8 +475,7 @@
   padding-top: 58px;
   padding-bottom: 64px;
   background:
-    linear-gradient(135deg, rgba(246, 249, 252, 0.96) 0%, #ffffff 58%),
-    #ffffff;
+    linear-gradient(135deg, rgba(246, 249, 252, 0.96) 0%, #ffffff 58%), #ffffff;
   border-top: 1px solid #e3edf6;
   border-bottom: 1px solid #e3edf6;
 }

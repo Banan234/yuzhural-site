@@ -1,5 +1,8 @@
 // Файл проверяет Express API, валидацию заявок, антибот-защиту, каталожные endpoints и health checks.
 
+import { promises as fs } from 'fs';
+import os from 'os';
+import path from 'path';
 import {
   afterAll,
   beforeAll,
@@ -518,10 +521,14 @@ describe('GET /api/runtime', () => {
         });
         expect(data.forms).toEqual({
           formsEnabled: true,
+          deliveryMode: 'smtp',
+          deliveryConfigured: true,
+          deliveryVerified: null,
           smtpConfigured: true,
           smtpVerified: null,
           smtpReady: true,
           missingConfig: [],
+          localOutboxDir: null,
         });
         expect(data.vk).toMatchObject({
           enabled: true,
@@ -604,58 +611,50 @@ describe('GET /api/vk/health', () => {
           conversationMessageId: 500,
         });
 
-        const rejectedRes = await postJsonTo(
-          localBaseUrl,
-          '/api/vk/callback',
-          {
-            type: 'message_reply',
-            event_id: 'evt-secret-mismatch',
-            group_id: 123,
-            secret: 'wrong-secret',
-            object: {
-              id: 777,
-              out: 1,
+        const rejectedRes = await postJsonTo(localBaseUrl, '/api/vk/callback', {
+          type: 'message_reply',
+          event_id: 'evt-secret-mismatch',
+          group_id: 123,
+          secret: 'wrong-secret',
+          object: {
+            id: 777,
+            out: 1,
+            peer_id: 2000000005,
+            from_id: 123,
+            admin_author_id: 42,
+            conversation_message_id: 778,
+            text: 'Не должен пройти.',
+            reply_message: {
+              id: 500,
+              conversation_message_id: 500,
               peer_id: 2000000005,
-              from_id: 123,
-              admin_author_id: 42,
-              conversation_message_id: 778,
-              text: 'Не должен пройти.',
-              reply_message: {
-                id: 500,
-                conversation_message_id: 500,
-                peer_id: 2000000005,
-                text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
-              },
+              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
             },
-          }
-        );
+          },
+        });
         expect(rejectedRes.status).toBe(404);
 
-        const callbackRes = await postJsonTo(
-          localBaseUrl,
-          '/api/vk/callback',
-          {
-            type: 'message_reply',
-            event_id: 'evt-status-success',
-            group_id: 123,
-            secret: 'vk-secret',
-            object: {
-              id: 888,
-              out: 1,
+        const callbackRes = await postJsonTo(localBaseUrl, '/api/vk/callback', {
+          type: 'message_reply',
+          event_id: 'evt-status-success',
+          group_id: 123,
+          secret: 'vk-secret',
+          object: {
+            id: 888,
+            out: 1,
+            peer_id: 2000000005,
+            from_id: 123,
+            admin_author_id: 42,
+            conversation_message_id: 889,
+            text: 'Статусный ответ менеджера.',
+            reply_message: {
+              id: 500,
+              conversation_message_id: 500,
               peer_id: 2000000005,
-              from_id: 123,
-              admin_author_id: 42,
-              conversation_message_id: 889,
-              text: 'Статусный ответ менеджера.',
-              reply_message: {
-                id: 500,
-                conversation_message_id: 500,
-                peer_id: 2000000005,
-                text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
-              },
+              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
             },
-          }
-        );
+          },
+        });
         expect(callbackRes.status).toBe(200);
 
         const res = await fetch(`${localBaseUrl}/api/vk/health`, {
@@ -684,7 +683,9 @@ describe('GET /api/vk/health', () => {
           },
         });
         expect(data.vk.runtime.lastSuccessfulAt).toEqual(expect.any(String));
-        expect(data.vk.runtime.lastSecretMismatchAt).toEqual(expect.any(String));
+        expect(data.vk.runtime.lastSecretMismatchAt).toEqual(
+          expect.any(String)
+        );
       });
     } finally {
       if (originalToken === undefined) {
@@ -770,12 +771,9 @@ describe('GET /api/vk/health', () => {
 
     try {
       await withTestServer(app, async (localBaseUrl) => {
-        const res = await fetch(
-          `${localBaseUrl}/api/vk/health?refresh=1`,
-          {
-            headers: { authorization: 'Bearer test-runtime-token' },
-          }
-        );
+        const res = await fetch(`${localBaseUrl}/api/vk/health?refresh=1`, {
+          headers: { authorization: 'Bearer test-runtime-token' },
+        });
         const data = await res.json();
 
         expect(vkBridge.probePublicCallbackEndpoint).toHaveBeenCalledTimes(1);
@@ -834,8 +832,34 @@ describe('forms diagnostics', () => {
       })
     ).toEqual({
       formsEnabled: true,
+      deliveryMode: 'smtp',
+      deliveryConfigured: false,
       smtpConfigured: false,
       missing: ['SMTP_USER'],
+      localOutboxDir: null,
+    });
+  });
+
+  it('treats local_file as a valid non-production delivery mode without SMTP secrets', () => {
+    expect(
+      getFormsDiagnostic({
+        NODE_ENV: 'development',
+        FORMS_ENABLED: 'true',
+        FORMS_DELIVERY_MODE: 'local_file',
+      })
+    ).toMatchObject({
+      formsEnabled: true,
+      deliveryMode: 'local_file',
+      deliveryConfigured: true,
+      smtpConfigured: false,
+      missing: [
+        'SMTP_HOST',
+        'SMTP_USER',
+        'SMTP_PASS',
+        'SMTP_FROM',
+        'QUOTE_TO_EMAIL',
+      ],
+      localOutboxDir: expect.stringContaining('data/forms-outbox'),
     });
   });
 
@@ -848,8 +872,20 @@ describe('forms diagnostics', () => {
       validateFormsEnv({ NODE_ENV: 'production', FORMS_ENABLED: 'false' })
     ).toMatchObject({
       formsEnabled: false,
+      deliveryMode: 'smtp',
+      deliveryConfigured: false,
       smtpConfigured: false,
     });
+  });
+
+  it('rejects local_file delivery mode in production', () => {
+    expect(() =>
+      validateFormsEnv({
+        NODE_ENV: 'production',
+        FORMS_ENABLED: 'true',
+        FORMS_DELIVERY_MODE: 'local_file',
+      })
+    ).toThrow(/local_file/);
   });
 
   it('accepts production startup when forms are explicitly disabled', () => {
@@ -860,6 +896,8 @@ describe('forms diagnostics', () => {
       }).forms
     ).toEqual({
       formsEnabled: false,
+      deliveryMode: 'smtp',
+      deliveryConfigured: false,
       smtpConfigured: false,
       missing: [
         'SMTP_HOST',
@@ -868,6 +906,7 @@ describe('forms diagnostics', () => {
         'SMTP_FROM',
         'QUOTE_TO_EMAIL',
       ],
+      localOutboxDir: null,
     });
   });
 
@@ -885,8 +924,11 @@ describe('forms diagnostics', () => {
       }).forms
     ).toEqual({
       formsEnabled: true,
+      deliveryMode: 'smtp',
+      deliveryConfigured: true,
       smtpConfigured: true,
       missing: [],
+      localOutboxDir: null,
     });
   });
 
@@ -947,6 +989,9 @@ describe('forms diagnostics', () => {
       transporter: mailTransporter,
       diagnostic: {
         formsEnabled: true,
+        deliveryMode: 'smtp',
+        deliveryConfigured: true,
+        deliveryVerified: true,
         smtpConfigured: true,
         smtpVerified: true,
         smtpReady: true,
@@ -988,11 +1033,41 @@ describe('forms diagnostics', () => {
       transporter: null,
       diagnostic: {
         formsEnabled: true,
+        deliveryMode: 'smtp',
+        deliveryConfigured: true,
+        deliveryVerified: false,
         smtpConfigured: true,
         smtpVerified: false,
         smtpReady: false,
       },
     });
+  });
+
+  it('initializes local_file delivery mode without SMTP secrets', async () => {
+    const result = await initializeFormsForStartup({
+      env: createTestEnv({
+        NODE_ENV: 'development',
+        FORMS_DELIVERY_MODE: 'local_file',
+        SMTP_HOST: '',
+        SMTP_USER: '',
+        SMTP_PASS: '',
+        SMTP_FROM: '',
+        QUOTE_TO_EMAIL: '',
+      }),
+    });
+
+    expect(result).toMatchObject({
+      diagnostic: {
+        formsEnabled: true,
+        deliveryMode: 'local_file',
+        deliveryConfigured: true,
+        deliveryVerified: true,
+        smtpConfigured: false,
+        smtpVerified: null,
+        smtpReady: true,
+      },
+    });
+    expect(result.transporter).toBeDefined();
   });
 
   it('starts listening before VK callback auto-config runs', async () => {
@@ -1047,7 +1122,8 @@ describe('VK callback auto-config', () => {
         const body = init.body;
         requests.push({
           method,
-          body: body instanceof URLSearchParams ? new URLSearchParams(body) : body,
+          body:
+            body instanceof URLSearchParams ? new URLSearchParams(body) : body,
         });
 
         const responses = {
@@ -1134,7 +1210,8 @@ describe('VK callback auto-config', () => {
         const body = init.body;
         requests.push({
           method,
-          body: body instanceof URLSearchParams ? new URLSearchParams(body) : body,
+          body:
+            body instanceof URLSearchParams ? new URLSearchParams(body) : body,
         });
 
         const responses = {
@@ -2322,6 +2399,62 @@ describe('POST /api/lead-request', () => {
     expect(mailArgs.html).toContain('ВВГ 3х2.5');
   });
 
+  it('local_file mode stores the lead in outbox and returns ok', async () => {
+    const outboxDir = await fs.mkdtemp(
+      path.join(os.tmpdir(), 'yuzhural-leads-outbox-')
+    );
+    const app = createTestApp({
+      env: createTestEnv({
+        NODE_ENV: 'development',
+        FORMS_DELIVERY_MODE: 'local_file',
+        FORMS_LOCAL_OUTBOX_DIR: outboxDir,
+        SMTP_HOST: '',
+        SMTP_USER: '',
+        SMTP_PASS: '',
+        SMTP_FROM: '',
+        QUOTE_TO_EMAIL: '',
+      }),
+      formResponseDelayRange: { min: 0, max: 0 },
+    });
+
+    try {
+      await withTestServer(app, async (localBaseUrl) => {
+        const res = await postJsonTo(
+          localBaseUrl,
+          '/api/lead-request',
+          validLeadPayload
+        );
+        const data = await res.json();
+
+        expect(res.status).toBe(200);
+        expect(data).toEqual({
+          ok: true,
+          message: 'Заявка отправлена. Мы скоро свяжемся с вами.',
+        });
+
+        const files = await fs.readdir(outboxDir);
+        expect(files).toHaveLength(1);
+
+        const saved = JSON.parse(
+          await fs.readFile(path.join(outboxDir, files[0]), 'utf8')
+        );
+        expect(saved).toMatchObject({
+          deliveryMode: 'local_file',
+          envelope: {
+            from: 'local-forms@yuzhural-site.test',
+            to: ['local-sales@yuzhural-site.test'],
+          },
+          message: {
+            subject: 'Новая короткая заявка — ЮжУралЭлектроКабель',
+            html: expect.stringContaining('ВВГ 3х2.5'),
+          },
+        });
+      });
+    } finally {
+      await fs.rm(outboxDir, { recursive: true, force: true });
+    }
+  });
+
   it('500 с пользовательским сообщением при SMTP-ошибке', async () => {
     const mailTransporter = {
       sendMail: vi.fn().mockRejectedValue(new Error('535 auth failed')),
@@ -2639,7 +2772,9 @@ describe('chat conversations API', () => {
       const firstNotificationBody = outboundCalls[0]?.init?.body;
 
       expect(firstNotificationBody).toBeInstanceOf(URLSearchParams);
-      expect(firstNotificationBody.get('message')).toContain('Контакт: не указан');
+      expect(firstNotificationBody.get('message')).toContain(
+        'Контакт: не указан'
+      );
       await chatStore.registerManagerNotification(created.conversationId, {
         channel: 'vk',
         peerId: '2000000005',
@@ -2647,31 +2782,27 @@ describe('chat conversations API', () => {
         conversationMessageId: 500,
       });
 
-      const callbackRes = await postJsonTo(
-        localBaseUrl,
-        '/api/vk/callback',
-        {
-          type: 'message_new',
-          event_id: 'evt-101',
-          group_id: 123,
-          secret: 'vk-secret',
-          object: {
-            message: {
-              id: 777,
-              conversation_message_id: 778,
+      const callbackRes = await postJsonTo(localBaseUrl, '/api/vk/callback', {
+        type: 'message_new',
+        event_id: 'evt-101',
+        group_id: 123,
+        secret: 'vk-secret',
+        object: {
+          message: {
+            id: 777,
+            conversation_message_id: 778,
+            peer_id: 2000000005,
+            from_id: 42,
+            text: 'Подтверждаю, 400 метров есть на складе.',
+            reply_message: {
+              id: 500,
+              conversation_message_id: 500,
               peer_id: 2000000005,
-              from_id: 42,
-              text: 'Подтверждаю, 400 метров есть на складе.',
-              reply_message: {
-                id: 500,
-                conversation_message_id: 500,
-                peer_id: 2000000005,
-                text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
-              },
+              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
             },
           },
-        }
-      );
+        },
+      });
 
       expect(callbackRes.status).toBe(200);
       expect(await callbackRes.text()).toBe('ok');
@@ -2742,31 +2873,27 @@ describe('chat conversations API', () => {
         conversationMessageId: 500,
       });
 
-      const callbackRes = await postJsonTo(
-        localBaseUrl,
-        '/api/vk/callback',
-        {
-          type: 'message_reply',
-          event_id: 'evt-community-reply',
-          group_id: 123,
-          secret: 'vk-secret',
-          object: {
-            id: 777,
-            out: 1,
+      const callbackRes = await postJsonTo(localBaseUrl, '/api/vk/callback', {
+        type: 'message_reply',
+        event_id: 'evt-community-reply',
+        group_id: 123,
+        secret: 'vk-secret',
+        object: {
+          id: 777,
+          out: 1,
+          peer_id: 2000000005,
+          from_id: 123,
+          admin_author_id: 42,
+          conversation_message_id: 778,
+          text: 'Отвечаю из интерфейса сообщества.',
+          reply_message: {
+            id: 500,
+            conversation_message_id: 500,
             peer_id: 2000000005,
-            from_id: 123,
-            admin_author_id: 42,
-            conversation_message_id: 778,
-            text: 'Отвечаю из интерфейса сообщества.',
-            reply_message: {
-              id: 500,
-              conversation_message_id: 500,
-              peer_id: 2000000005,
-              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
-            },
+            text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
           },
-        }
-      );
+        },
+      });
 
       expect(callbackRes.status).toBe(200);
       expect(await callbackRes.text()).toBe('ok');
@@ -2840,31 +2967,27 @@ describe('chat conversations API', () => {
         conversationMessageId: 500,
       });
 
-      const callbackRes = await postJsonTo(
-        localBaseUrl,
-        '/api/vk/callback',
-        {
-          type: 'message_new',
-          event_id: 'evt-ack-failure',
-          group_id: 123,
-          secret: 'vk-secret',
-          object: {
-            message: {
-              id: 777,
-              conversation_message_id: 778,
+      const callbackRes = await postJsonTo(localBaseUrl, '/api/vk/callback', {
+        type: 'message_new',
+        event_id: 'evt-ack-failure',
+        group_id: 123,
+        secret: 'vk-secret',
+        object: {
+          message: {
+            id: 777,
+            conversation_message_id: 778,
+            peer_id: 2000000005,
+            from_id: 42,
+            text: 'Подтверждаю, 400 метров есть на складе.',
+            reply_message: {
+              id: 500,
+              conversation_message_id: 500,
               peer_id: 2000000005,
-              from_id: 42,
-              text: 'Подтверждаю, 400 метров есть на складе.',
-              reply_message: {
-                id: 500,
-                conversation_message_id: 500,
-                peer_id: 2000000005,
-                text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
-              },
+              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
             },
           },
-        }
-      );
+        },
+      });
 
       expect(callbackRes.status).toBe(200);
       expect(await callbackRes.text()).toBe('ok');
@@ -2925,30 +3048,26 @@ describe('chat conversations API', () => {
         conversationMessageId: 500,
       });
 
-      const callbackRes = await postJsonTo(
-        localBaseUrl,
-        '/api/vk/callback',
-        {
-          type: 'message_reply',
-          event_id: 'evt-service-reply',
-          group_id: 123,
-          secret: 'vk-secret',
-          object: {
-            id: 777,
-            out: 1,
+      const callbackRes = await postJsonTo(localBaseUrl, '/api/vk/callback', {
+        type: 'message_reply',
+        event_id: 'evt-service-reply',
+        group_id: 123,
+        secret: 'vk-secret',
+        object: {
+          id: 777,
+          out: 1,
+          peer_id: 2000000005,
+          from_id: 123,
+          conversation_message_id: 778,
+          text: 'Служебное исходящее сообщение сообщества.',
+          reply_message: {
+            id: 500,
+            conversation_message_id: 500,
             peer_id: 2000000005,
-            from_id: 123,
-            conversation_message_id: 778,
-            text: 'Служебное исходящее сообщение сообщества.',
-            reply_message: {
-              id: 500,
-              conversation_message_id: 500,
-              peer_id: 2000000005,
-              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
-            },
+            text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
           },
-        }
-      );
+        },
+      });
 
       expect(callbackRes.status).toBe(200);
       expect(await callbackRes.text()).toBe('ok');
@@ -3188,31 +3307,27 @@ describe('chat conversations API', () => {
         conversationMessageId: 500,
       });
 
-      const callbackRes = await postJsonTo(
-        localBaseUrl,
-        '/api/vk/callback',
-        {
-          type: 'message_reply',
-          event_id: 'evt-overlong-manager-reply',
-          group_id: 123,
-          secret: 'vk-secret',
-          object: {
-            id: 777,
-            out: 1,
+      const callbackRes = await postJsonTo(localBaseUrl, '/api/vk/callback', {
+        type: 'message_reply',
+        event_id: 'evt-overlong-manager-reply',
+        group_id: 123,
+        secret: 'vk-secret',
+        object: {
+          id: 777,
+          out: 1,
+          peer_id: 2000000005,
+          from_id: 123,
+          admin_author_id: 42,
+          conversation_message_id: 778,
+          text: 'L'.repeat(2001),
+          reply_message: {
+            id: 500,
+            conversation_message_id: 500,
             peer_id: 2000000005,
-            from_id: 123,
-            admin_author_id: 42,
-            conversation_message_id: 778,
-            text: 'L'.repeat(2001),
-            reply_message: {
-              id: 500,
-              conversation_message_id: 500,
-              peer_id: 2000000005,
-              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
-            },
+            text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
           },
-        }
-      );
+        },
+      });
 
       expect(callbackRes.status).toBe(200);
       expect(await callbackRes.text()).toBe('ok');
@@ -3309,31 +3424,27 @@ describe('chat conversations API', () => {
         conversationMessageId: 500,
       });
 
-      const callbackRes = await postJsonTo(
-        localBaseUrl,
-        '/api/vk/callback',
-        {
-          type: 'message_reply',
-          event_id: 'evt-insecure-local-reply',
-          group_id: 123,
-          secret: 'unexpected-secret',
-          object: {
-            id: 777,
-            out: 1,
+      const callbackRes = await postJsonTo(localBaseUrl, '/api/vk/callback', {
+        type: 'message_reply',
+        event_id: 'evt-insecure-local-reply',
+        group_id: 123,
+        secret: 'unexpected-secret',
+        object: {
+          id: 777,
+          out: 1,
+          peer_id: 2000000005,
+          from_id: 123,
+          admin_author_id: 42,
+          conversation_message_id: 778,
+          text: 'Локальный reply без строгой проверки secret.',
+          reply_message: {
+            id: 500,
+            conversation_message_id: 500,
             peer_id: 2000000005,
-            from_id: 123,
-            admin_author_id: 42,
-            conversation_message_id: 778,
-            text: 'Локальный reply без строгой проверки secret.',
-            reply_message: {
-              id: 500,
-              conversation_message_id: 500,
-              peer_id: 2000000005,
-              text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
-            },
+            text: `Новый диалог с сайта\n#chat_${created.conversationId}`,
           },
-        }
-      );
+        },
+      });
 
       expect(callbackRes.status).toBe(200);
       expect(await callbackRes.text()).toBe('ok');

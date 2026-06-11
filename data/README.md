@@ -8,6 +8,9 @@
 
 Файлы:
 
+- `chat-store.json` — runtime-хранилище истории диалогов чат-виджета.
+  Создаётся сервером локально и игнорируется Git; путь можно переопределить
+  через `CHAT_STORE_FILE`.
 - `price.xlsx` или `price.xls` — исходный прайс поставщика
 - `products.json` — результат работы `scripts/importPrice.js`
 - `importConfig.json` — настройки импорта: fallback-пороги подозрительных цен,

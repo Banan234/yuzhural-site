@@ -82,6 +82,8 @@ export default function FloatingLeadWidget({
   sourceLabel = 'Главная страница',
 }) {
   const [form, setForm] = useState(initialForm);
+  const [consent, setConsent] = useState(false);
+  const [consentError, setConsentError] = useState('');
   const [honeypot, setHoneypot] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -97,6 +99,8 @@ export default function FloatingLeadWidget({
   const messagesEndRef = useRef(null);
   const fieldIds = {
     comment: 'floating-lead-comment',
+    consent: 'floating-lead-consent',
+    consentError: 'floating-lead-consent-error',
   };
   const hasSession = Boolean(session);
   const isSessionRestoring = hasSession && !conversation;
@@ -208,6 +212,12 @@ export default function FloatingLeadWidget({
     setStatus({ kind: '', text: '' });
   }
 
+  function handleConsentChange(event) {
+    setConsent(event.target.checked);
+    setConsentError('');
+    setStatus({ kind: '', text: '' });
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -220,9 +230,16 @@ export default function FloatingLeadWidget({
       return;
     }
 
+    if (!session && !consent) {
+      setConsentError(messages.errors.leadForm.consentRequired);
+      setStatus({ kind: '', text: '' });
+      return;
+    }
+
     try {
       setIsSubmitting(true);
       setStatus({ kind: '', text: '' });
+      setConsentError('');
 
       if (isSessionRestoring) {
         setStatus({
@@ -389,6 +406,36 @@ export default function FloatingLeadWidget({
                 <div ref={messagesEndRef} />
               </div>
             </div>
+
+            {!session ? (
+              <div className="floating-lead-widget__composer-meta">
+                <label className="floating-lead-widget__consent">
+                  <input
+                    id={fieldIds.consent}
+                    name="consent"
+                    type="checkbox"
+                    checked={consent}
+                    onChange={handleConsentChange}
+                    aria-invalid={consentError ? 'true' : undefined}
+                    aria-describedby={
+                      consentError ? fieldIds.consentError : undefined
+                    }
+                  />
+                  <span>
+                    Даю согласие на{' '}
+                    <a href="/privacy">обработку персональных&nbsp;данных</a>
+                  </span>
+                </label>
+                {consentError ? (
+                  <span
+                    id={fieldIds.consentError}
+                    className="field-error floating-lead-widget__consent-error"
+                  >
+                    {consentError}
+                  </span>
+                ) : null}
+              </div>
+            ) : null}
 
             <div className="floating-lead-widget__composer">
               <label

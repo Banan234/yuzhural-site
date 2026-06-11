@@ -6,8 +6,11 @@ import compression from 'compression';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import nodemailer from 'nodemailer';
+import { promises as fs } from 'fs';
+import path from 'path';
 import proxyaddr from 'proxy-addr';
 import rateLimit from 'express-rate-limit';
+import { randomUUID } from 'crypto';
 import { monitorEventLoopDelay } from 'perf_hooks';
 import { pathToFileURL } from 'url';
 import { createCatalogStore } from './lib/catalog.js';
@@ -54,6 +57,9 @@ const DEFAULT_SMTP_GREETING_TIMEOUT_MS = 10_000;
 const DEFAULT_SMTP_SOCKET_TIMEOUT_MS = 20_000;
 const DEFAULT_SMTP_SEND_RETRIES = 1;
 const DEFAULT_SMTP_RETRY_DELAY_MS = 750;
+const DEFAULT_FORMS_DELIVERY_MODE = 'smtp';
+const LOCAL_FILE_FORMS_DELIVERY_MODE = 'local_file';
+const DEFAULT_FORMS_LOCAL_OUTBOX_DIR = 'data/forms-outbox';
 const DEFAULT_VK_CALLBACK_PUBLIC_PROBE_INTERVAL_MS = 5 * 60 * 1000;
 const MAX_VK_CALLBACK_PUBLIC_PROBE_INTERVAL_MS = 24 * 60 * 60 * 1000;
 const QUOTE_RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
@@ -340,33 +346,84 @@ const SMTP_REQUIRED_ENV_KEYS = Object.freeze([
   'QUOTE_TO_EMAIL',
 ]);
 
+function getFormsDeliveryMode(env = process.env) {
+  const normalized = String(env.FORMS_DELIVERY_MODE || '')
+    .trim()
+    .toLowerCase();
+
+  return normalized === LOCAL_FILE_FORMS_DELIVERY_MODE
+    ? LOCAL_FILE_FORMS_DELIVERY_MODE
+    : DEFAULT_FORMS_DELIVERY_MODE;
+}
+
+function resolveFormsLocalOutboxDir(env = process.env) {
+  const raw =
+    String(env.FORMS_LOCAL_OUTBOX_DIR || '').trim() ||
+    DEFAULT_FORMS_LOCAL_OUTBOX_DIR;
+
+  return path.isAbsolute(raw) ? raw : path.resolve(process.cwd(), raw);
+}
+
 export function getFormsDiagnostic(env = process.env) {
+  const deliveryMode = getFormsDeliveryMode(env);
   const missing = SMTP_REQUIRED_ENV_KEYS.filter(
     (key) => !String(env[key] || '').trim()
   );
   const formsEnabled = parseBooleanEnv(env.FORMS_ENABLED, true);
+  const deliveryConfigured =
+    deliveryMode === LOCAL_FILE_FORMS_DELIVERY_MODE || missing.length === 0;
 
   return {
     formsEnabled,
+    deliveryMode,
+    deliveryConfigured,
     smtpConfigured: missing.length === 0,
     missing,
+    localOutboxDir:
+      deliveryMode === LOCAL_FILE_FORMS_DELIVERY_MODE
+        ? resolveFormsLocalOutboxDir(env)
+        : null,
   };
 }
 
-function withFormsSmtpStatus(diagnostic, { smtpVerified = null } = {}) {
+function withFormsDeliveryStatus(
+  diagnostic,
+  { deliveryVerified = null, env = process.env } = {}
+) {
+  const deliveryMode = diagnostic.deliveryMode || DEFAULT_FORMS_DELIVERY_MODE;
+  const deliveryConfigured = Object.hasOwn(diagnostic, 'deliveryConfigured')
+    ? diagnostic.deliveryConfigured
+    : Boolean(diagnostic.smtpConfigured);
+
   return {
     ...diagnostic,
-    smtpVerified,
+    deliveryMode,
+    deliveryConfigured,
+    localOutboxDir:
+      deliveryMode === LOCAL_FILE_FORMS_DELIVERY_MODE
+        ? diagnostic.localOutboxDir || resolveFormsLocalOutboxDir(env)
+        : null,
+    deliveryVerified,
+    smtpVerified:
+      deliveryMode === DEFAULT_FORMS_DELIVERY_MODE ? deliveryVerified : null,
     smtpReady:
       diagnostic.formsEnabled &&
-      diagnostic.smtpConfigured &&
-      smtpVerified !== false,
+      deliveryConfigured &&
+      deliveryVerified !== false,
   };
 }
 
 export function validateFormsEnv(env = process.env) {
   const diagnostic = getFormsDiagnostic(env);
   if (!diagnostic.formsEnabled) return diagnostic;
+  if (
+    env.NODE_ENV === 'production' &&
+    diagnostic.deliveryMode === LOCAL_FILE_FORMS_DELIVERY_MODE
+  ) {
+    throw new Error(
+      'FORMS_DELIVERY_MODE=local_file доступен только вне production'
+    );
+  }
   if (env.NODE_ENV === 'production' && diagnostic.missing.length > 0) {
     throw new Error(
       `SMTP не настроен: задайте ${diagnostic.missing.join(', ')} или FORMS_ENABLED=false`
@@ -408,9 +465,7 @@ export function validateVkEnv(env = process.env) {
   }
 
   if (callbackAutoConfigure && !readNonEmptyEnv(env.VK_GROUP_ID)) {
-    throw new Error(
-      'VK callback auto-config требует VK_GROUP_ID'
-    );
+    throw new Error('VK callback auto-config требует VK_GROUP_ID');
   }
 
   if (
@@ -552,8 +607,8 @@ function attachVkCallbackProbeScheduler({ server, vkBridge, env }) {
     return null;
   }
 
-  let lastHealthyState = vkBridge.getStatusSnapshot()?.callback?.publicEndpoint
-    ?.healthy;
+  let lastHealthyState =
+    vkBridge.getStatusSnapshot()?.callback?.publicEndpoint?.healthy;
   const runProbe = async () => {
     try {
       const result = await vkBridge.probePublicCallbackEndpoint();
@@ -739,6 +794,73 @@ export function getSmtpTransportOptions(env = process.env) {
   return options;
 }
 
+function normalizeMailRecipients(value) {
+  if (Array.isArray(value)) {
+    return value.map((item) => String(item || '').trim()).filter(Boolean);
+  }
+
+  return String(value || '')
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function createLocalFileMailTransporter(env = process.env) {
+  const outboxDir = resolveFormsLocalOutboxDir(env);
+
+  return {
+    async verify() {
+      await fs.mkdir(outboxDir, { recursive: true });
+      return true;
+    },
+    async sendMail(mailOptions) {
+      await fs.mkdir(outboxDir, { recursive: true });
+
+      const createdAt = new Date();
+      const messageId = `<${randomUUID()}@local-file.forms>`;
+      const fileName = `${createdAt.toISOString().replace(/[:.]/g, '-')}-${randomUUID()}.json`;
+      const filePath = path.join(outboxDir, fileName);
+      const from =
+        String(mailOptions?.from || '').trim() ||
+        'local-forms@yuzhural-site.test';
+      const to = normalizeMailRecipients(
+        mailOptions?.to || 'local-sales@yuzhural-site.test'
+      );
+      const payload = {
+        createdAt: createdAt.toISOString(),
+        deliveryMode: LOCAL_FILE_FORMS_DELIVERY_MODE,
+        messageId,
+        envelope: {
+          from,
+          to,
+          replyTo: String(mailOptions?.replyTo || '').trim() || null,
+        },
+        message: {
+          subject: String(mailOptions?.subject || '').trim(),
+          text: mailOptions?.text || '',
+          html: mailOptions?.html || '',
+        },
+      };
+
+      await fs.writeFile(filePath, `${JSON.stringify(payload, null, 2)}\n`);
+
+      logger.info('forms.local_outbox_saved', {
+        outboxFile: filePath,
+        messageId,
+        to: payload.envelope.to,
+      });
+
+      return {
+        accepted: payload.envelope.to,
+        rejected: [],
+        envelope: payload.envelope,
+        messageId,
+        localOutboxFile: filePath,
+      };
+    },
+  };
+}
+
 export function getMailSendOptions(env = process.env) {
   return {
     maxRetries: parseIntegerEnv(
@@ -755,6 +877,10 @@ export function getMailSendOptions(env = process.env) {
 }
 
 export function createTransporter(env = process.env) {
+  if (getFormsDeliveryMode(env) === LOCAL_FILE_FORMS_DELIVERY_MODE) {
+    return createLocalFileMailTransporter(env);
+  }
+
   return nodemailer.createTransport(getSmtpTransportOptions(env));
 }
 
@@ -776,14 +902,18 @@ export async function initializeFormsForStartup({
   if (!diagnostic.formsEnabled) {
     return {
       transporter: null,
-      diagnostic: withFormsSmtpStatus(diagnostic, { smtpVerified: null }),
+      diagnostic: withFormsDeliveryStatus(diagnostic, {
+        deliveryVerified: null,
+      }),
     };
   }
 
-  if (!diagnostic.smtpConfigured) {
+  if (!diagnostic.deliveryConfigured) {
     return {
       transporter: null,
-      diagnostic: withFormsSmtpStatus(diagnostic, { smtpVerified: false }),
+      diagnostic: withFormsDeliveryStatus(diagnostic, {
+        deliveryVerified: false,
+      }),
     };
   }
 
@@ -793,12 +923,15 @@ export async function initializeFormsForStartup({
     await verifySmtpTransporter(transporter);
     return {
       transporter,
-      diagnostic: withFormsSmtpStatus(diagnostic, { smtpVerified: true }),
+      diagnostic: withFormsDeliveryStatus(diagnostic, {
+        deliveryVerified: true,
+      }),
     };
   } catch (error) {
     const message =
-      'SMTP verify не прошёл: проверьте SMTP_HOST/SMTP_PORT/SMTP_SECURE, логин, app password и доступность SMTP-сервера. ' +
-      'Для временного отключения заявок задайте FORMS_ENABLED=false.';
+      diagnostic.deliveryMode === LOCAL_FILE_FORMS_DELIVERY_MODE
+        ? `Local outbox недоступен: проверьте путь ${diagnostic.localOutboxDir}. Для временного отключения заявок задайте FORMS_ENABLED=false.`
+        : 'SMTP verify не прошёл: проверьте SMTP_HOST/SMTP_PORT/SMTP_SECURE, логин, app password и доступность SMTP-сервера. Для временного отключения заявок задайте FORMS_ENABLED=false.';
 
     if (env.NODE_ENV === 'production') {
       throw new Error(message, { cause: error });
@@ -811,7 +944,9 @@ export async function initializeFormsForStartup({
 
     return {
       transporter: null,
-      diagnostic: withFormsSmtpStatus(diagnostic, { smtpVerified: false }),
+      diagnostic: withFormsDeliveryStatus(diagnostic, {
+        deliveryVerified: false,
+      }),
     };
   }
 }
@@ -1000,20 +1135,23 @@ export function createApp({
 } = {}) {
   const app = express();
   app.disable('x-powered-by');
-  const startupFormsDiagnostic = withFormsSmtpStatus(
+  const startupFormsDiagnostic = withFormsDeliveryStatus(
     formsDiagnostic || validateFormsEnv(env),
     {
-      smtpVerified:
-        formsDiagnostic && Object.hasOwn(formsDiagnostic, 'smtpVerified')
-          ? formsDiagnostic.smtpVerified
-          : null,
+      env,
+      deliveryVerified:
+        formsDiagnostic && Object.hasOwn(formsDiagnostic, 'deliveryVerified')
+          ? formsDiagnostic.deliveryVerified
+          : formsDiagnostic && Object.hasOwn(formsDiagnostic, 'smtpVerified')
+            ? formsDiagnostic.smtpVerified
+            : null,
     }
   );
   const resolvedMailTransporter =
     mailTransporter ||
     (startupFormsDiagnostic.formsEnabled &&
-    startupFormsDiagnostic.smtpConfigured &&
-    startupFormsDiagnostic.smtpVerified !== false
+    startupFormsDiagnostic.deliveryConfigured &&
+    startupFormsDiagnostic.deliveryVerified !== false
       ? createTransporter(env)
       : null);
 
@@ -1214,10 +1352,14 @@ export function createApp({
       }),
       forms: {
         formsEnabled: app.locals.formsDiagnostic.formsEnabled,
+        deliveryMode: app.locals.formsDiagnostic.deliveryMode,
+        deliveryConfigured: app.locals.formsDiagnostic.deliveryConfigured,
+        deliveryVerified: app.locals.formsDiagnostic.deliveryVerified,
         smtpConfigured: app.locals.formsDiagnostic.smtpConfigured,
         smtpVerified: app.locals.formsDiagnostic.smtpVerified,
         smtpReady: app.locals.formsDiagnostic.smtpReady,
         missingConfig: app.locals.formsDiagnostic.missing,
+        localOutboxDir: app.locals.formsDiagnostic.localOutboxDir,
       },
       vk: getVkHealthSnapshot(app.locals.vkBridge).vk,
     });
@@ -1464,10 +1606,7 @@ export function createApp({
 
         if (
           !token ||
-          !isNonEmptyTrimmedStringWithinLength(
-            message,
-            MAX_CHAT_MESSAGE_LENGTH
-          )
+          !isNonEmptyTrimmedStringWithinLength(message, MAX_CHAT_MESSAGE_LENGTH)
         ) {
           return res.status(400).json({
             ok: false,
@@ -1989,15 +2128,32 @@ const isMain =
 
 // Проверка обязательных env-переменных на старте.
 function logFormsStartupState(formsDiagnostic) {
-  const diagnostic = formsDiagnostic || withFormsSmtpStatus(validateFormsEnv());
-  if (diagnostic.formsEnabled && diagnostic.missing.length > 0) {
+  const diagnostic =
+    formsDiagnostic || withFormsDeliveryStatus(validateFormsEnv());
+  if (
+    diagnostic.formsEnabled &&
+    diagnostic.deliveryMode === DEFAULT_FORMS_DELIVERY_MODE &&
+    diagnostic.missing.length > 0
+  ) {
     logger.warn('startup.smtp_misconfigured', {
       missing: diagnostic.missing,
       hint: 'в production процесс завершится; локально формы вернут 503',
     });
-  } else if (diagnostic.formsEnabled && diagnostic.smtpVerified === false) {
+  } else if (
+    diagnostic.formsEnabled &&
+    diagnostic.deliveryMode === LOCAL_FILE_FORMS_DELIVERY_MODE &&
+    diagnostic.deliveryVerified === true
+  ) {
+    logger.info('startup.forms_local_file_ready', {
+      outboxDir: diagnostic.localOutboxDir,
+      hint: 'FORMS_DELIVERY_MODE=local_file: заявки сохраняются в локальный outbox',
+    });
+  } else if (diagnostic.formsEnabled && diagnostic.deliveryVerified === false) {
     logger.error('startup.smtp_unverified', {
-      hint: 'SMTP verify не прошёл: проверьте .env или задайте FORMS_ENABLED=false',
+      hint:
+        diagnostic.deliveryMode === LOCAL_FILE_FORMS_DELIVERY_MODE
+          ? 'Local outbox недоступен: проверьте FORMS_LOCAL_OUTBOX_DIR или задайте FORMS_ENABLED=false'
+          : 'SMTP verify не прошёл: проверьте .env или задайте FORMS_ENABLED=false',
     });
   } else if (diagnostic.formsEnabled && diagnostic.smtpVerified === true) {
     logger.info('startup.smtp_verified', {
