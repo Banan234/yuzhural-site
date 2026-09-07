@@ -1,5 +1,6 @@
 // Файл рендерит главную страницу: hero, лид-форма, категории, товары в наличии и SEO-блоки.
 
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Container from '../components/ui/Container';
 import CategoryShowcase from '../components/home/CategoryShowcase';
@@ -201,6 +202,12 @@ export default function HomePage() {
                 >
                   Запросить КП
                 </button>
+                <Link
+                  to={CATALOG_CANONICAL_PATH}
+                  className="home-hero__btn-secondary"
+                >
+                  Смотреть каталог
+                </Link>
               </div>
             </div>
           </Container>

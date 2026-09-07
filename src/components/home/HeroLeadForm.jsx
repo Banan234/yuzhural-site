@@ -1,6 +1,6 @@
 // Файл реализует лид-форму на главном экране, включая отправку, аналитику и антибот-поля.
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import HoneypotField from '../forms/HoneypotField';
 import { expectOkApiJson } from '../../lib/apiResponse';
 import { captureException } from '../../lib/errorTracking';
@@ -50,6 +50,7 @@ export default function HeroLeadForm({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const commentRef = useRef(null);
   const renderedAtRef = useRef(Date.now());
+  const previousDefaultCommentRef = useRef(defaultComment);
   const fieldIds = {
     phone: `${idPrefix}-phone`,
     comment: `${idPrefix}-comment`,
@@ -124,6 +125,32 @@ export default function HeroLeadForm({
       commentRef.current?.focus();
     });
   }
+
+  useEffect(() => {
+    const previousDefaultComment = previousDefaultCommentRef.current;
+    previousDefaultCommentRef.current = defaultComment;
+
+    if (previousDefaultComment === defaultComment) {
+      return;
+    }
+
+    setForm((prev) => {
+      const hasUntouchedComment =
+        prev.comment.trim() === '' || prev.comment === previousDefaultComment;
+
+      if (!hasUntouchedComment) {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        comment: defaultComment,
+      };
+    });
+    setErrors({});
+    setServerMessage('');
+    setIsSubmitted(false);
+  }, [defaultComment]);
 
   async function handleSubmit(event) {
     event.preventDefault();

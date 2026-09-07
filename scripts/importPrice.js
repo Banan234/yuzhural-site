@@ -27,6 +27,13 @@ import {
 } from './lib/productRegistry.js';
 import { assertProductPrerenderCoverage } from './lib/productPrerenderAudit.js';
 import { writeSeoArtifacts } from './lib/siteSeo.js';
+import {
+  DEFAULT_PUBLISH_GUARD_CONFIG,
+  evaluatePublishGuard,
+  formatPublishGuardFailure,
+  normalizePublishGuardConfig,
+} from './lib/importPublishGuard.js';
+import { createBackup } from './backupData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,6 +44,7 @@ const cliArgs = process.argv.slice(2);
 const cliFlags = new Set(cliArgs.filter((arg) => arg.startsWith('--')));
 const positionalArgs = cliArgs.filter((arg) => !arg.startsWith('--'));
 const isDryRun = cliFlags.has('--dry-run');
+const isPublishGuardOverride = cliFlags.has('--override-publish-guard');
 
 const URL_RE = /^https?:\/\//i;
 const SPREADSHEET_URL_RE = /\.(xls|xlsx)(?:[?#].*)?$/i;
@@ -88,6 +96,7 @@ const DEFAULT_IMPORT_CONFIG = {
     productLimit: 500,
     topPrefixLimit: 20,
   },
+  publishGuard: DEFAULT_PUBLISH_GUARD_CONFIG,
 };
 
 let priceOverrides = null;
@@ -196,6 +205,7 @@ export function mergeImportConfig(config) {
       ...DEFAULT_IMPORT_CONFIG.classificationReport,
       ...(config.classificationReport || {}),
     },
+    publishGuard: normalizePublishGuardConfig(config.publishGuard),
   };
 }
 
@@ -215,9 +225,9 @@ const PAGE_COLUMNS = {
   right: [5, 6, 7, 8],
 };
 
-async function loadWorkbookRows() {
+async function loadWorkbookRows({ sourceBuffer = null } = {}) {
   try {
-    const workbookBuffer = await fs.readFile(inputFile);
+    const workbookBuffer = sourceBuffer || (await fs.readFile(inputFile));
     const xlsx = await import('@e965/xlsx');
     const workbook = xlsx.read(workbookBuffer, {
       type: 'buffer',
@@ -604,8 +614,8 @@ async function ensurePublicArtifactsDir() {
   await fs.mkdir(publicDir, { recursive: true });
 }
 
-async function savePublicPriceFile() {
-  const priceBuffer = await fs.readFile(inputFile);
+async function savePublicPriceFile(sourceBuffer = null) {
+  const priceBuffer = sourceBuffer || (await fs.readFile(inputFile));
   await writeFileAtomic(publicPriceFile, priceBuffer);
 }
 
@@ -678,9 +688,9 @@ async function writeRuntimeProductPrerender(products, seoSummary = null) {
     });
     const productDir = path.join(tmpDir, 'product');
     const writtenCount = await countHtmlFiles(productDir);
-    await replaceDirectory(productDir, path.join(publicDir, 'product'));
     const coverage = await assertProductPrerenderCoverage({
       publicDir,
+      productDir,
       products,
       productSitemapPaths: seoSummary?.productSitemapPaths || [],
     });
@@ -689,6 +699,7 @@ async function writeRuntimeProductPrerender(products, seoSummary = null) {
         `Runtime prerender записал ${writtenCount} HTML, но product sitemap содержит ${coverage.htmlCount} URL.`
       );
     }
+    await replaceDirectory(productDir, path.join(publicDir, 'product'));
     return writtenCount;
   } finally {
     await fs.rm(tmpDir, { recursive: true, force: true }).catch(() => {});
@@ -2094,16 +2105,16 @@ async function downloadPriceFile() {
   if (!buffer) {
     throw lastError || new Error('Не удалось скачать прайс');
   }
-  await fs.mkdir(path.dirname(inputFile), { recursive: true });
-  await fs.writeFile(inputFile, buffer);
   console.log(
-    `Сохранено в ${inputFile} (${(buffer.length / 1024).toFixed(1)} КБ)`
+    `Скачано ${downloadUrl} (${(buffer.length / 1024).toFixed(1)} КБ)`
   );
+  return buffer;
 }
 
 async function main() {
+  let downloadedPriceBuffer = null;
   if (remoteSourceUrl) {
-    await downloadPriceFile();
+    downloadedPriceBuffer = await downloadPriceFile();
   }
   console.log(`Чтение прайса: ${inputFile}`);
   if (isDryRun) {
@@ -2117,7 +2128,7 @@ async function main() {
   const registry = await loadProductRegistry(registryFile);
   await loadPriceOverrides();
 
-  const rows = await loadWorkbookRows();
+  const rows = await loadWorkbookRows({ sourceBuffer: downloadedPriceBuffer });
   const schema = detectSchema(rows);
 
   if (schema.headerRowsFound === 0) {
@@ -2172,14 +2183,118 @@ async function main() {
 
   const products = productsWithIdentity.map(stripClassificationDiagnostics);
 
+  const diff = buildDiff(previousProducts, products);
+  const skipsByReason = summarizeSkips(importResult.skippedRows);
+  const byCategory = summarizeByCategory(products);
+  const historicalSnapshots = getHistoricalSnapshots(
+    importHistory,
+    previousProducts,
+    inputFile
+  );
+  const suspiciousPriceStats = buildSuspiciousPriceStats(
+    importConfig,
+    historicalSnapshots
+  );
+  const suspicious = detectSuspicious(products, suspiciousPriceStats);
+  const classification = buildClassificationReport(
+    classifiedProducts,
+    importConfig
+  );
+
+  const publishGuard = evaluatePublishGuard({
+    config: importConfig.publishGuard,
+    previousProducts,
+    products,
+    diff,
+    suspicious,
+    skippedRows: importResult.skippedRows,
+    totalRows: importResult.totalRows,
+    fallbackToOther: classification.fallbackToOther.count,
+  });
+  let backup = null;
+
+  const report = {
+    generatedAt,
+    sourceFile: inputFile,
+    dryRun: isDryRun,
+    schema,
+    registryFile: path.relative(projectRoot, registryFile),
+    registryEntries: Object.keys(registry.entries).length,
+    registryNextId: registry.nextId,
+    importConfigFile: path.relative(projectRoot, importConfigFile),
+    priceAlertPercent: PRICE_JUMP_ALERT_PERCENT,
+    summary: {
+      totalRowsInSheet: importResult.totalRows,
+      categoriesDetected: importResult.categoriesSeen.size,
+      productsImported: products.length,
+      productsPrevious: previousProducts.length,
+      skippedRows: importResult.skippedRows.length,
+      suspicious: suspicious.length,
+      added: diff.added.length,
+      removed: diff.removed.length,
+      priceChanged: diff.priceChanged.length,
+      priceAlerts: diff.priceAlerts.length,
+      stockChanged: diff.stockChanged.length,
+      categoryChanged: diff.categoryChanged.length,
+      fallbackToOther: classification.fallbackToOther.count,
+    },
+    skipsByReason,
+    productsByCategory: byCategory,
+    skippedRows: importResult.skippedRows,
+    suspicious,
+    suspiciousPriceStats,
+    classification,
+    diff,
+    publishGuard: {
+      ...publishGuard,
+      overridden: isPublishGuardOverride,
+    },
+    backup: backup
+      ? {
+          id: backup.id,
+          path: path.relative(projectRoot, backup.backupPath),
+          files: backup.files.length,
+        }
+      : null,
+  };
+
+  if (!publishGuard.ok && !isPublishGuardOverride) {
+    const message = formatPublishGuardFailure(publishGuard);
+    if (!isDryRun) {
+      report.blocked = true;
+      report.message = message;
+      await saveReport(report);
+      await saveHtmlReport(report);
+    }
+    throw new Error(message);
+  }
+
+  if (
+    !isDryRun &&
+    String(process.env.BACKUP_ENABLED || 'true')
+      .trim()
+      .toLowerCase() !== 'false'
+  ) {
+    backup = await createBackup();
+    report.backup = {
+      id: backup.id,
+      path: path.relative(projectRoot, backup.backupPath),
+      files: backup.files.length,
+    };
+  }
+
   let seoSummary = null;
   let runtimeProductPrerenderCount = null;
 
   if (!isDryRun) {
+    if (downloadedPriceBuffer) {
+      await fs.mkdir(path.dirname(inputFile), { recursive: true });
+      await writeFileAtomic(inputFile, downloadedPriceBuffer);
+    }
     await ensurePublicArtifactsDir();
     await saveProducts(products);
     await saveProductRegistry(registryFile, registry);
-    await savePublicPriceFile();
+    await savePublicPriceFile(downloadedPriceBuffer);
     await writeFileAtomic(
       redirectsFile,
       JSON.stringify(slugRedirects, null, 2)
@@ -2214,61 +2329,6 @@ async function main() {
       products,
       seoSummary
     );
-  }
-
-  const diff = buildDiff(previousProducts, products);
-  const skipsByReason = summarizeSkips(importResult.skippedRows);
-  const byCategory = summarizeByCategory(products);
-  const historicalSnapshots = getHistoricalSnapshots(
-    importHistory,
-    previousProducts,
-    inputFile
-  );
-  const suspiciousPriceStats = buildSuspiciousPriceStats(
-    importConfig,
-    historicalSnapshots
-  );
-  const suspicious = detectSuspicious(products, suspiciousPriceStats);
-  const classification = buildClassificationReport(
-    classifiedProducts,
-    importConfig
-  );
-
-  const report = {
-    generatedAt,
-    sourceFile: inputFile,
-    dryRun: isDryRun,
-    schema,
-    registryFile: path.relative(projectRoot, registryFile),
-    registryEntries: Object.keys(registry.entries).length,
-    registryNextId: registry.nextId,
-    importConfigFile: path.relative(projectRoot, importConfigFile),
-    priceAlertPercent: PRICE_JUMP_ALERT_PERCENT,
-    summary: {
-      totalRowsInSheet: importResult.totalRows,
-      categoriesDetected: importResult.categoriesSeen.size,
-      productsImported: products.length,
-      productsPrevious: previousProducts.length,
-      skippedRows: importResult.skippedRows.length,
-      suspicious: suspicious.length,
-      added: diff.added.length,
-      removed: diff.removed.length,
-      priceChanged: diff.priceChanged.length,
-      priceAlerts: diff.priceAlerts.length,
-      stockChanged: diff.stockChanged.length,
-      categoryChanged: diff.categoryChanged.length,
-      fallbackToOther: classification.fallbackToOther.count,
-    },
-    skipsByReason,
-    productsByCategory: byCategory,
-    skippedRows: importResult.skippedRows,
-    suspicious,
-    suspiciousPriceStats,
-    classification,
-    diff,
-  };
-
-  if (!isDryRun) {
     await saveReport(report);
     await saveHtmlReport(report);
     await saveImportHistory(
@@ -2336,6 +2396,18 @@ async function main() {
       console.log(
         `    … ещё ${diff.priceAlerts.length - 5} (см. diff.priceAlerts в отчёте)`
       );
+    }
+  }
+
+  console.log('');
+  console.log(
+    `Защита публикации: ${publishGuard.ok ? 'PASS' : 'BLOCKED'}${
+      isPublishGuardOverride ? ' (ручной override)' : ''
+    }`
+  );
+  if (!publishGuard.ok) {
+    for (const issue of publishGuard.issues) {
+      console.log(`    - ${issue.message}`);
     }
   }
 

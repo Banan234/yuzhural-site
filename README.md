@@ -31,6 +31,12 @@ npm run up             # build/prerender + API на 3001 + фронт на 5173
 | `npm run load:soak`                               | Длинный soak-прогон API на 30 минут для контроля RSS/event loop                                                                                                                                |
 | `node scripts/importPrice.js [path/to/price.xls]` | Импорт прайса → `data/products.json`, отчёты, `public/sitemap.xml`, `public/robots.txt`, runtime HTML карточек при `PUBLIC_ARTIFACTS_DIR`                                                      |
 | `npm run import:price:scheduled`                  | Guard-запуск для планировщика: импортирует прайс только если сегодняшний запуск после 04:30 ещё не выполнялся                                                                                  |
+| `npm run backup:create`                           | Снимок runtime-данных перед ручным изменением или импортом                                                                                                                                     |
+| `npm run backup:list`                             | Список доступных резервных копий                                                                                                                                                               |
+| `npm run backup:verify -- <id>`                   | Проверка SHA-256 выбранной резервной копии                                                                                                                                                     |
+| `npm run backup:restore -- <id> [--apply]`        | Проверка или восстановление копии; без `--apply` файлы не меняются                                                                                                                             |
+| `npm run monitor:health`                          | Проверка доступности сайта/API/форм и приватных runtime/VK endpoints при токене                                                                                                                |
+| `npm run check:import`                            | Безопасный dry-run импорта и проверка защитных порогов без записи файлов                                                                                                                       |
 | `npm run check:product-prerender`                 | Проверка, что все product URL из sitemap имеют HTML с meta/JSON-LD, включая long-tail за `PRODUCT_PRERENDER_LIMIT`                                                                             |
 | `node scripts/importPrice.js --dry-run`           | То же, но без записи файлов                                                                                                                                                                    |
 | `./deploy/post-deploy-smoke.sh`                   | Post-deploy smoke: локальный `/healthz`, `/api/health`, homepage shell, sitemap/robots, `/api/forms/health`, `/api/runtime` и `/api/vk/health?refresh=1` при токене, runtime product-prerender |
@@ -157,12 +163,13 @@ FORMS_LOCAL_OUTBOX_DIR=./data/forms-outbox
 Если планируете использовать именно `Yandex 360`, есть отдельная пошаговая
 инструкция с production env, preflight и smoke-check:
 [docs/yandex-360-smtp-setup.md](./docs/yandex-360-smtp-setup.md).
-   Затем можно отправить тестовую заявку:
-   ```bash
-   curl -X POST http://localhost:3001/api/quote \
-     -H 'content-type: application/json' \
-     -d '{"customer":{"name":"Test","phone":"+79991112233"},"items":[{"title":"ВВГнг 3х2.5","quantity":100,"unit":"м","price":120}]}'
-   ```
+Затем можно отправить тестовую заявку:
+
+```bash
+curl -X POST http://localhost:3001/api/quote \
+  -H 'content-type: application/json' \
+  -d '{"customer":{"name":"Test","phone":"+79991112233"},"items":[{"title":"ВВГнг 3х2.5","quantity":100,"unit":"м","price":120}]}'
+```
 
 > `From:` и `SMTP_USER` должны указывать на один и тот же ящик (или его алиас),
 > иначе провайдер отклонит письмо. `Reply-To:` сервер подставляет из email
@@ -440,6 +447,62 @@ node scripts/importPrice.js https://www.cablehome.ru/price/
 После успешного запуска перезаписываются:
 `data/products.json`, `data/import-report.{json,html}`, `data/import-history.json`,
 `data/productRegistry.json`, `public/sitemap.xml`, `public/robots.txt`.
+
+Перед публикацией обычный импорт автоматически создаёт резервную копию в
+`data/backups` (или в `BACKUP_DIR`). Защитный контроль сравнивает размер
+каталога, удалённые позиции, пропущенные строки, подозрительные цены, резкие
+изменения цен и попадание в fallback «Прочее». При превышении порога рабочие
+данные не заменяются, а отчёт помечается как заблокированный. Для осознанного
+ручного обхода используется `--override-publish-guard`; результат фиксируется
+в отчёте. `--dry-run` не записывает и не заменяет даже скачанный удалённый
+`price.xls`.
+
+Резервные копии нужно дополнительно копировать за пределы сервера: локальный
+backup защищает от ошибочного импорта, но не от потери диска или самого VPS.
+Проверка и восстановление:
+
+```bash
+npm run backup:list
+npm run backup:verify -- 20260907T120000Z
+npm run backup:restore -- 20260907T120000Z       # только проверка
+npm run backup:restore -- 20260907T120000Z --apply
+```
+
+### Внешний health-монитор
+
+`npm run monitor:health` рассчитан на запуск cron/systemd каждые 5 минут. Он
+проверяет `/healthz`, главную, sitemap, `/api/health`, состояние форм и, если задан
+`INTERNAL_METRICS_TOKEN`, закрытые `/api/runtime` и `/api/vk/health?refresh=1`.
+При сбое команда возвращает ненулевой код. Если задан `MONITOR_WEBHOOK_URL`,
+уведомление отправляется только при переходе в ошибку, изменении набора проблем
+или восстановлении; состояние хранится в `MONITOR_STATE_FILE`.
+
+Пример ручного запуска:
+
+```bash
+MONITOR_BASE_URL=https://yu-uek.ru \
+INTERNAL_METRICS_TOKEN='...' \
+npm run monitor:health
+```
+
+Для production установите systemd timer после запуска compose:
+
+```bash
+./deploy/install-health-monitor-timer.sh \
+  /opt/yuzhural-site /etc/yuzhural-site/production.env
+systemctl list-timers --all | grep yuzhural-health-monitor
+```
+
+Timer запускает монитор внутри `app`-контейнера каждые 5 минут. В production
+состояние (`MONITOR_STATE_FILE`) и backup-каталог должны лежать на persistent
+volume; резервные копии дополнительно выгружайте на отдельное хранилище.
+
+Webhook получает JSON с полем `text`, поэтому его можно подключить к небольшому
+адаптеру для Telegram, Slack, Mattermost или другого выбранного канала. Сам
+монитор не хранит и не выводит токены.
+
+Для дополнительной проверки HTML карточки задайте
+`MONITOR_PRODUCT_PATH=/product/<актуальный-slug>`.
 
 HTML-отчёт открывается прямо из консоли (выводится ссылка `file://...`).
 

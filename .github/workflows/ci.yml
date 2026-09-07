@@ -2,6 +2,9 @@
 
 name: CI
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [main]
@@ -53,6 +56,14 @@ jobs:
 
       - name: Tests (vitest)
         run: npm test
+
+      - name: Import dry-run and publication guard
+        run: npm run check:import
+
+      - name: Validate operational scripts
+        run: |
+          bash -n deploy/*.sh
+          npm run monitor:health -- --help
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium

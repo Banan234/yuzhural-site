@@ -1,0 +1,9 @@
+[Unit]
+Description=Check Yuzhural site health and notify on state transitions
+Wants=network-online.target
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__PROJECT_ROOT__
+ExecStart=__PROJECT_ROOT__/deploy/run-health-monitor.sh --project-root __PROJECT_ROOT__ --env-file __ENV_FILE__

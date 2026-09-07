@@ -19,6 +19,8 @@ data/import-history.json
 data/import-report.json
 data/import-report.html
 data/public/
+data/backups/
+data/monitor-state.json
 public/redirects.json
 public/redirects.nginx.conf
 public/product/

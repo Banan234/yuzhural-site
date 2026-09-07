@@ -177,6 +177,26 @@ describe('assertProductPrerenderCoverage', () => {
     });
   });
 
+  it('может проверять новую product-папку до её публикации', async () => {
+    const publicDir = await makeTempDir();
+    const stagedProductDir = path.join(publicDir, 'staged-product');
+    await writeRuntimeFixture(publicDir, ['staged-product']);
+    await mkdir(stagedProductDir, { recursive: true });
+    await writeFile(
+      path.join(stagedProductDir, 'staged-product.html'),
+      buildProductHtml('staged-product'),
+      'utf8'
+    );
+
+    await expect(
+      assertProductPrerenderCoverage({
+        publicDir,
+        productDir: stagedProductDir,
+        products: [{ slug: 'staged-product' }],
+      })
+    ).resolves.toMatchObject({ sitemapCount: 1, htmlCount: 1 });
+  });
+
   it('не проходит молча, если sitemap не содержит product URL', async () => {
     const publicDir = await makeTempDir();
     await writeFile(

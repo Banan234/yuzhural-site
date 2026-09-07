@@ -124,6 +124,7 @@ export class ProductPrerenderCoverageError extends Error {
 
 export async function assertProductPrerenderCoverage({
   publicDir,
+  productDir: explicitProductDir,
   products,
   productSitemapPaths = [],
   buildLimit = parseProductPrerenderLimit(process.env.PRODUCT_PRERENDER_LIMIT),
@@ -149,7 +150,7 @@ export async function assertProductPrerenderCoverage({
     );
   }
 
-  const productDir = path.join(publicDir, 'product');
+  const productDir = explicitProductDir || path.join(publicDir, 'product');
   const missing = [];
   const bare = [];
 

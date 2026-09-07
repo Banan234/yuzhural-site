@@ -150,7 +150,7 @@ curl -fsS http://127.0.0.1:3001/api/forms/health
 Ожидаемо:
 
 ```json
-{"ok":true,"status":"ready"}
+{ "ok": true, "status": "ready" }
 ```
 
 ## 9. Проверить реальную отправку письма

@@ -16,5 +16,15 @@
   "classificationReport": {
     "productLimit": 500,
     "topPrefixLimit": 20
+  },
+  "publishGuard": {
+    "enabled": true,
+    "minProducts": 100,
+    "maxRemovedPercent": 5,
+    "maxSkippedPercent": 5,
+    "maxSuspiciousPercent": 1,
+    "maxFallbackPercent": 10,
+    "maxPriceAlerts": 100,
+    "maxCategoryChangedPercent": 10
   }
 }
