@@ -56,7 +56,7 @@ export async function auditPriceParsing(input, output) {
     }
     if (
       attributes.some((value) =>
-        /^[хx×gG]\s*\d|^\+\d|^\/\d|^Э(?:Ф|М|А|Э)?нг/u.test(value)
+        /^[хx×gG]\s*\d|^\+\d|^\/\d|^[ЭЗ](?:Ф|М|А|Э|ЭЛ)?нг/u.test(value)
       )
     ) {
       addError('Unconsumed specification or joined screen/fire attribute');

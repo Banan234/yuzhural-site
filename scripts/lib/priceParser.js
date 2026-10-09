@@ -651,8 +651,10 @@ function extractEmbeddedNgAttributes(mark) {
   for (const match of mark.matchAll(NG_ATTRIBUTE_START_RE)) {
     const nextCharacter = mark[match.index + match[0].length] || '';
     const before = mark.slice(0, match.index).trim();
-    const screen = extractScreenAttribute(before);
-    const baseBefore = screen.mark.replace(/[\s-]+$/, '');
+    const construction = extractTrailingConstructionAttributes(before, {
+      includeFill: true,
+    });
+    const baseBefore = construction.mark.replace(/[\s-]+$/, '');
     const rawAfter = mark.slice(match.index + match[0].length);
     const suffixMatch = rawAfter.match(NG_SUFFIX_PREFIX_RE);
     const rawClass = match[1];
@@ -680,7 +682,7 @@ function extractEmbeddedNgAttributes(mark) {
       .slice(suffix.length)
       .replace(/^[\s-]+/, '')
       .trim();
-    const attributes = [...screen.attributes, modifier];
+    const attributes = [...construction.attributes, modifier];
 
     if (after) {
       attributes.push(...splitAttributes(after));
@@ -695,34 +697,46 @@ function extractEmbeddedNgAttributes(mark) {
   const standalone =
     mark.match(/^(.*?)((?:[\s-]+(?:эф|эа|эм|ээ|э|зэл|з|хл|уф))+)[\s-]*$/iu) ||
     mark.match(/^(.+?)(хл|уф)$/iu);
-  const screen = extractScreenAttribute(standalone ? standalone[1] : mark);
+  const construction = extractTrailingConstructionAttributes(
+    standalone ? standalone[1] : mark
+  );
   return {
-    mark: screen.mark,
+    mark: construction.mark,
     attributes: [
-      ...screen.attributes,
+      ...construction.attributes,
       ...(standalone ? splitAttributes(standalone[2].replace(/-/g, ' ')) : []),
     ],
   };
 }
 
-function extractScreenAttribute(mark) {
+function extractTrailingConstructionAttributes(
+  mark,
+  { includeFill = false } = {}
+) {
   const source = String(mark || '').trim();
 
-  // Не принимаем финальную «э» за экран, если перед ней стоит неизвестное
-  // обозначение вида нг(12): это часть марки, а не пожарный суффикс.
+  // Не отделяем конструктивный индекс после неизвестного нг(12): вся эта
+  // последовательность может быть частью марки, а не пожарным суффиксом.
   if (/нг\s*\([^АБВГДСA-D][^)]*\)/iu.test(source)) {
     return { mark: source, attributes: [] };
   }
 
-  const match = source.match(/^(.+?)(?:-?(эф|эа|эм|ээ|э))$/iu);
-
-  if (!match || !match[1].trim()) {
-    return { mark: source, attributes: [] };
+  let rest = source;
+  const attributes = [];
+  // Конструктивные признаки могут быть слитными с маркой прямо перед нг:
+  // РУТЕКзнг(А), КВВГЭнг(А), ...ЭФЗнг(А). Отделяем их справа налево,
+  // чтобы не ломать внутренние буквы марки.
+  while (rest) {
+    const suffixes = includeFill ? 'эф|эа|эм|ээ|зэл|э|з' : 'эф|эа|эм|ээ|э';
+    const match = rest.match(new RegExp(`^(.+?)(?:-?(${suffixes}))$`, 'iu'));
+    if (!match || !match[1].trim()) break;
+    rest = match[1].trim();
+    attributes.unshift(normalizeConstructionAttribute(match[2]));
   }
 
   return {
-    mark: match[1].trim(),
-    attributes: [normalizeConstructionAttribute(match[2])],
+    mark: rest,
+    attributes,
   };
 }
 
