@@ -59,6 +59,43 @@ describe('parseProductName', () => {
     }
   );
 
+  test('shows the restored closing group in the product name', () => {
+    expect(
+      normalizeImportedProduct({
+        name: 'НИКИ-КУПсКШЭф-Внг(А)LS-С 6х(2х1мкл2',
+        unit: 'м',
+        price: 1,
+        stock: 1,
+      }).fullName
+    ).toBe('НИКИ-КУПсКШЭф-Внг(А)-LS-С 6х(2х1мкл2)');
+  });
+
+  test.each([
+    ['ОКДН-1х2/1х4М6-2.7 LS-HF', 'ОКДН-1х2/1х4М6-2.7', null, ['LS-HF']],
+    [
+      'КОС-ОКД-4х657-нг(А)-HF-T/H-1кН',
+      'КОС-ОКД',
+      null,
+      ['нг(А)-HF-T/H', '1кН'],
+    ],
+    [
+      'НИКИ-КУПсКШЭф-Внг(А)LS-С 6х(2х1мкл2',
+      'НИКИ-КУПсКШЭф-В',
+      '6х(2х1мкл2)',
+      ['нг(А)-LS', 'С'],
+    ],
+  ])(
+    'разбирает специальные хвостовые суффиксы и восстанавливаемую группу: %s',
+    (name, mark, conductorConfiguration, attributes) => {
+      expect(parseProductName(name)).toMatchObject({
+        mark,
+        conductorConfiguration,
+        attributes,
+        parsingWarnings: [],
+      });
+    }
+  );
+
   test('разбирает сечение, слитное с полным пожарным суффиксом', () => {
     expect(parseProductName('КПВСВ нг(А)FRLS Ltx1x2x0.75')).toMatchObject({
       mark: 'КПВСВ',

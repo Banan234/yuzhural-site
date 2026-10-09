@@ -170,16 +170,26 @@ describe('findCableSpecification', () => {
     );
   });
 
-  test('preserves the real unclosed group without falling back to its inner pair', () => {
+  test('restores the real missing close after a known mkl pairing annotation', () => {
     const source =
       '\u041d\u0418\u041a\u0418-\u041a\u0423\u041f\u0441\u041a\u0428\u042d\u0444-\u0412\u043d\u0433(\u0410)LS-\u0421 6\u0445(2\u04451\u043c\u043a\u043b2';
     parseSpan(source, '6\u0445(2\u04451\u043c\u043a\u043b2', {
-      configuration: '6\u0445(2\u04451\u043c\u043a\u043b2',
-      warnings: ['unclosed_group'],
-      cores: null,
-      groupCores: null,
-      crossSection: null,
+      configuration: '6\u0445(2\u04451\u043c\u043a\u043b2)',
+      warnings: [],
+      cores: 6,
+      groupCores: 2,
+      crossSection: 1,
     });
+  });
+
+  test('recognises a size after a mark hyphen only before a fire suffix', () => {
+    parseSpan('КОС-ОКД-4х657-нг(А)-HF', '4х657', {
+      configuration: null,
+      warnings: [],
+      cores: 4,
+      crossSection: 657,
+    });
+    expect(findCableSpecification('123456-2х3')).toBeNull();
   });
 
   test.each([

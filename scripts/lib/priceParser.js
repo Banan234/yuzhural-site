@@ -264,10 +264,14 @@ export function parseProductName(value) {
   if (specification) {
     const specIndex = specification.index;
     const markEnd = source[specIndex - 1] === '(' ? specIndex - 1 : specIndex;
-    mark = source.slice(0, markEnd).replace(voltagePattern, '').trim();
-    const embedded = extractEmbeddedNgAttributes(mark);
-    mark = embedded.mark;
-    attributes = embedded.attributes;
+    mark = source
+      .slice(0, markEnd)
+      .replace(voltagePattern, '')
+      .replace(/[\s-]+$/u, '')
+      .trim();
+    const extracted = extractMarkAttributes(mark);
+    mark = extracted.mark;
+    attributes = extracted.attributes;
     // Если перед спецификацией нет марки (напр. "SIEMENS 1Х2Х0.32" после
     // отсечения префикса-производителя), используем производителя как марку.
     if (!mark && manufacturer) {
@@ -304,9 +308,9 @@ export function parseProductName(value) {
       isLikelySingleCoreSection(plainSectionMatch[2])
     ) {
       mark = normalizeText(plainSectionMatch[1]);
-      const embedded = extractEmbeddedNgAttributes(mark);
-      mark = embedded.mark;
-      attributes = embedded.attributes;
+      const extracted = extractMarkAttributes(mark);
+      mark = extracted.mark;
+      attributes = extracted.attributes;
       markFamily = normalizeMarkFamily(mark);
       cores = 1;
       crossSection = Number(plainSectionMatch[2].replace(',', '.'));
@@ -316,9 +320,9 @@ export function parseProductName(value) {
       ];
       isImplicitSingleCore = true;
     } else {
-      const embedded = extractEmbeddedNgAttributes(source);
-      mark = embedded.mark;
-      attributes = embedded.attributes;
+      const extracted = extractMarkAttributes(source);
+      mark = extracted.mark;
+      attributes = extracted.attributes;
       markFamily = normalizeMarkFamily(mark);
     }
   }
@@ -329,7 +333,8 @@ export function parseProductName(value) {
   if (
     !specification &&
     !isImplicitSingleCore &&
-    /\d\s*[хx×]\s*(?:\d|AWG)/iu.test(source)
+    /\d\s*[хx×]\s*(?:\d|AWG)/iu.test(source) &&
+    !isOpticalCableMark(mark)
   ) {
     parsingWarnings.push('unrecognized_specification');
   }
@@ -484,9 +489,10 @@ function normalizeProductName(value) {
       /(\d|\))\s*[×xXхХ]\s*(?=\d|\(\s*\d|AWG)/giu,
       '$1х'
     );
+    const repaired = spec.recoveredClosingGroup ? `${normalized})` : normalized;
     source =
       source.slice(0, spec.index) +
-      normalized +
+      repaired +
       source.slice(spec.index + spec.length);
   }
   return normalizeScreenBeforeNg(source);
@@ -562,8 +568,10 @@ function splitAttributes(value) {
     .filter(Boolean)
     .flatMap((token) => {
       const screen = token.match(/^(эф|эа|эм|ээ|э)(?=нг(?:\(|-|$))/iu);
-      if (screen) return [screen[1], token.slice(screen[0].length)];
-      return token;
+      const parts = screen
+        ? [screen[1], token.slice(screen[0].length)]
+        : [token];
+      return parts.flatMap(splitNgAttributeToken);
     })
     .map(normalizeNgModification)
     .map(normalizeConstructionAttribute);
@@ -606,7 +614,8 @@ function normalizeNgModification(token) {
   return `нг${cls}-${normalizeNgSuffix(suffix)}`;
 }
 
-const NG_SUFFIX_IN_TEXT_SOURCE = 'FRLS|FRHF|FR|LS|HF|LTx|хк\\([^)]*\\)вэ|хл|нд';
+const NG_SUFFIX_IN_TEXT_SOURCE =
+  'FRLS|FRHF|FR|LS|HF|LTx|хк\\([^)]*\\)вэ|хл|нд|t/h|т/н';
 const NG_CLASS_IN_TEXT_SOURCE = '\\([АБВГДСA-D]\\)';
 const NG_MODIFICATION_IN_TEXT_RE = new RegExp(
   `нг(?:\\s*(${NG_CLASS_IN_TEXT_SOURCE}))?((?:[\\s-]*(?:${NG_SUFFIX_IN_TEXT_SOURCE}))+)?`,
@@ -650,6 +659,50 @@ function normalizeNgModificationsInText(value) {
 
 function normalizeNgClass(value) {
   return value ? String(value).toUpperCase() : '';
+}
+
+function splitNgAttributeToken(token) {
+  const source = String(token || '').trim();
+  const match = source.match(/^нг(\([АБВГДСA-D]\))?/iu);
+  if (!match) return [source];
+
+  const rawAfter = source.slice(match[0].length);
+  if (!match[1] && rawAfter.startsWith('(')) return [source];
+  const suffix = rawAfter.match(NG_SUFFIX_PREFIX_RE)?.[0] || '';
+  const modifier = suffix
+    ? `нг${normalizeNgClass(match[1])}-${normalizeNgSuffix(suffix)}`
+    : `нг${normalizeNgClass(match[1])}`;
+  const tail = rawAfter
+    .slice(suffix.length)
+    .replace(/^[\s-]+/u, '')
+    .trim();
+  return tail ? [modifier, tail] : [modifier];
+}
+
+function isOpticalCableMark(value) {
+  return /^ок[\p{L}\p{N}-]*/iu.test(String(value || '').trim());
+}
+
+function extractMarkAttributes(value) {
+  const embedded = extractEmbeddedNgAttributes(value);
+  const standalone = extractStandaloneFireSuffix(embedded.mark);
+  return {
+    mark: standalone.mark,
+    attributes: [...embedded.attributes, ...standalone.attributes],
+  };
+}
+
+function extractStandaloneFireSuffix(value) {
+  const source = String(value || '').trim();
+  const match = source.match(
+    /^(.*?)\s+((?:FRLS|FRHF|FR|LS|HF)(?:[-\s]+(?:FRLS|FRHF|FR|LS|HF|LTx|T\/H|Т\/Н|ХЛ|НД))+)$/iu
+  );
+  if (!match || !match[1].trim()) return { mark: source, attributes: [] };
+
+  return {
+    mark: match[1].trim(),
+    attributes: [normalizeNgSuffix(match[2])],
+  };
 }
 
 function extractEmbeddedNgAttributes(mark) {
@@ -843,6 +896,8 @@ const NG_SUFFIX_TOKENS = [
   [/^хк\([^)]*\)вэ/i, 'ХК(LX)ВЭ'],
   [/^хл/i, 'ХЛ'],
   [/^нд/i, 'НД'],
+  [/^t\/h/i, 'T/H'],
+  [/^т\/н/i, 'Т/Н'],
 ];
 
 function normalizeNgSuffix(suffix) {

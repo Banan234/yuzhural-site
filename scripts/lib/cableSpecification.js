@@ -33,7 +33,7 @@ export function findCableSpecification(source) {
   for (const match of source.matchAll(candidates)) {
     const index = match.index;
     // A dimension cannot start in a decimal, article, or alphanumeric mark.
-    if (index > 0 && !/[\s()]/u.test(source[index - 1])) continue;
+    if (!hasSpecificationBoundary(source, index)) continue;
     const afterNumber = index + match[0].length;
     if (
       !/^\s*(?:[+xX\u0445\u0425\u00d7]|[gG](?=\s*\d)|[\p{L}][\p{L}\p{N}_/-]{0,31}\s*[xX\u0445\u0425\u00d7]\s*(?=\d|\())/u.test(
@@ -53,6 +53,18 @@ export function findCableSpecification(source) {
       parser.warn('specification_too_long');
     }
     let raw = source.slice(index, index + length);
+    const recoveredClosingGroup = canRecoverMissingClosingGroup(
+      source,
+      index,
+      raw,
+      parser
+    );
+    if (recoveredClosingGroup) {
+      raw += ')';
+      parser.warnings = parser.warnings.filter(
+        (warning) => warning !== 'unclosed_group'
+      );
+    }
     const edits = [
       ...parser.screenSpans.map(([start, end]) => ({ start, end, text: '' })),
       ...parser.multipliers.map((start) => ({
@@ -85,9 +97,33 @@ export function findCableSpecification(source) {
         ...new Set([...parser.attributes, ...(parser.hasAwg ? ['AWG'] : [])]),
       ],
       warnings,
+      ...(recoveredClosingGroup ? { recoveredClosingGroup: true } : {}),
     };
   }
   return null;
+}
+
+function hasSpecificationBoundary(source, index) {
+  if (index === 0 || /[\s()]/u.test(source[index - 1])) return true;
+  if (source[index - 1] !== '-') return false;
+
+  // A cable size may follow a mark through a hyphen, but only when a
+  // recognised fire index immediately follows the size. This avoids treating
+  // article fragments such as "123456-2x3" as a conductor configuration.
+  return /^\d+(?:[.,]\d+)?\s*[xX\u0445\u0425\u00d7]\s*(?:\d+(?:[.,]\d+)?|\(\s*\d)[\s\S]{0,96}-нг(?:\s*\([АБВГДСA-D]\))?/iu.test(
+    source.slice(index)
+  );
+}
+
+function canRecoverMissingClosingGroup(source, index, raw, parser) {
+  if (!parser.warnings.includes('unclosed_group')) return false;
+  if (source.slice(index + raw.length).trim()) return false;
+  if ((raw.match(/\(/gu) || []).length !== (raw.match(/\)/gu) || []).length + 1)
+    return false;
+
+  // In this supplier's control-cable notation mklN is a bounded pairing
+  // annotation. A lone final group close is safe to restore after it.
+  return /мкл\d+\s*$/iu.test(raw);
 }
 
 class SpecificationReader {
