@@ -248,6 +248,17 @@ describe('parseProductName', () => {
     }
   );
 
+  test.each([
+    ['ИнСил-ОЭ нг(А)FRHF 5х2х0,75', 'ИнСил-ОЭ', ['нг(А)-FRHF']],
+    ['ИнСил-ОЭзнг(А)FRLS 19х1', 'ИнСил-ОЭ', ['З', 'нг(А)-FRLS']],
+    ['ИнСил-ОЭВэнг(А)LS хл 6х2х1', 'ИнСил-ОЭВ', ['Э', 'нг(А)-LS-ХЛ']],
+  ])(
+    'сохраняет подтверждённое окончание марки Э перед нг: %s',
+    (name, mark, attributes) => {
+      expect(parseProductName(name)).toMatchObject({ mark, attributes });
+    }
+  );
+
   test('сохраняет составную групповую конфигурацию без ложных числовых полей', () => {
     expect(parseProductName('LIY(ST)CY 3х(2х0.22)+1х(3х0.56)')).toMatchObject({
       mark: 'LIY(ST)CY',

@@ -581,6 +581,11 @@ const CONSTRUCTION_ATTRIBUTE_TOKENS = new Map([
   ['уф', 'УФ'],
 ]);
 
+// Подтверждённые в исходном прайсе окончания марок, которые внешне похожи
+// на конструктивный суффикс. Например, ИнСил-ОЭ — цельная марка, а не
+// ИнСил-О с отдельным экраном Э.
+const PROTECTED_MARK_TERMINALS = new Set(['инсил-оэ']);
+
 function normalizeConstructionAttribute(token) {
   const normalized = String(token || '')
     .trim()
@@ -727,6 +732,8 @@ function extractTrailingConstructionAttributes(
   // РУТЕКзнг(А), КВВГЭнг(А), ...ЭФЗнг(А). Отделяем их справа налево,
   // чтобы не ломать внутренние буквы марки.
   while (rest) {
+    if (PROTECTED_MARK_TERMINALS.has(rest.toLocaleLowerCase('ru'))) break;
+
     const suffixes = includeFill ? 'эф|эа|эм|ээ|зэл|э|з' : 'эф|эа|эм|ээ|э';
     const match = rest.match(new RegExp(`^(.+?)(?:-?(${suffixes}))$`, 'iu'));
     if (!match || !match[1].trim()) break;
