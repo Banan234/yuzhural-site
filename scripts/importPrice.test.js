@@ -17,6 +17,7 @@ import {
   isServiceRow,
   productKey,
   buildDiff,
+  buildRegistryKeyMigrations,
   normalizeImportHistory,
   buildHistorySnapshot,
   getHistoricalSnapshots,
@@ -64,6 +65,133 @@ describe('normalizeMarkKey', () => {
   it('возвращает пустую строку для null/undefined', () => {
     expect(normalizeMarkKey(null)).toBe('');
     expect(normalizeMarkKey(undefined)).toBe('');
+  });
+});
+
+describe('buildRegistryKeyMigrations', () => {
+  it('не переносит ключ, который всё ещё принадлежит живой позиции', () => {
+    const old = {
+      name: 'МГТФ 1х0,035',
+      mark: 'МГТФ',
+      cores: 1,
+      crossSection: 35,
+      attributes: [],
+    };
+    const oldKey = 'мгтф|1|35|||||';
+    const nextKey = 'мгтф|1|0.035|||||';
+    const result = buildRegistryKeyMigrations(
+      [old],
+      new Set([oldKey, nextKey])
+    );
+    expect(result.migrations.size).toBe(0);
+  });
+
+  it('сохраняет ID, когда классификатор определяет производителя', () => {
+    const old = {
+      name: 'НИКИ-КУВШЭмнг(А)-LS 7х(2х1)',
+      mark: 'НИКИ-КУВШЭм',
+      manufacturer: 'НИКИ',
+      cores: 7,
+      groupCores: 2,
+      crossSection: 1,
+      conductorConfiguration: '7х(2х1)',
+      attributes: ['нг(А)-LS'],
+    };
+    const nextKey = 'ники-кувш|7|1||||ники|конфигурация:7х(2х1),нг(а)-ls,эм';
+    expect(
+      buildRegistryKeyMigrations([old], new Set([nextKey])).migrations.size
+    ).toBe(1);
+  });
+
+  it('восстанавливает прежнее искажённое название по единственной исходной строке', () => {
+    const old = {
+      name: 'Греющий 25SHTL-LT-2-0270- 1х40',
+      mark: 'Греющий 25SHTL-LT-2-0270-',
+      cores: 1,
+      crossSection: 40,
+      attributes: [],
+    };
+    const current = {
+      name: 'Греющий 25SHTL-LT-2-0270-040',
+      sourceName: 'Греющий 25SHTL-LT-2-0270-040',
+      mark: 'Греющий 25SHTL-LT-2-0270-040',
+      attributes: [],
+    };
+    const nextKey = 'греющий 25shtl-lt-2-0270-040|||||||';
+    expect(
+      buildRegistryKeyMigrations([old], new Set([nextKey]), [current])
+        .migrations.size
+    ).toBe(1);
+  });
+  it('строит миграцию для суффикса, вынесенного из марки в attributes', () => {
+    const previous = {
+      name: 'КА9СПвПнг(А)-HF 1х120-1',
+      fullName: 'КА9СПвПнг(А)-HF 1х120-1',
+      mark: 'КА9СПвПнг(А)-HF',
+      cores: 1,
+      crossSection: 120,
+      attributes: ['1'],
+      unit: 'м',
+      price: 100,
+      stock: 1,
+    };
+    const newKey = 'ка9спвп|1|120|||||1,нг(а)-hf';
+
+    const result = buildRegistryKeyMigrations([previous], new Set([newKey]));
+
+    expect(result.ambiguous).toBe(0);
+    expect(result.migrations.get('ка9спвпнг(а)-hf|1|120|||||1')).toBe(newKey);
+  });
+});
+
+describe('source parsing boundaries', () => {
+  it.each([
+    'Зажим анкерный РА 25 2х16-4х25',
+    'Клемма 3х(1,5-2,5)х1 пол.DKC В273/3',
+    'Щит ЩУ 1/1-1 IP54 (310х300х150)мет',
+  ])('не считает размеры оборудования сечением кабеля: %s', (name) => {
+    const { value } = createProductRecord(
+      { name, unit: 'шт', price: 10, stock: 1 },
+      'Без категории'
+    );
+    expect(value).toMatchObject({
+      sourceName: name,
+      cores: null,
+      crossSection: null,
+      conductorConfiguration: null,
+    });
+    expect(value.name).toBe(name);
+  });
+
+  it('сравнивает переименование по стабильному ID', () => {
+    const before = { id: 42, name: 'ВВГнгLS 3х1', price: 10, stock: 1 };
+    const after = { ...before, name: 'ВВГнг-LS 3х1' };
+    expect(buildDiff([before], [after])).toMatchObject({
+      added: [],
+      removed: [],
+      priceChanged: [],
+      stockChanged: [],
+    });
+  });
+  it('отличает переименование семейства от смены раздела каталога', () => {
+    const before = {
+      id: 42,
+      name: 'КГ хл 3х1',
+      category: 'Кабель КГ хл',
+      catalogCategory: 'Гибкий кабель',
+    };
+    const after = { ...before, category: 'Кабель КГ' };
+    expect(buildDiff([before], [after]).categoryChanged).toEqual([]);
+    expect(
+      buildDiff([before], [{ ...after, catalogCategory: 'Контрольный кабель' }])
+        .categoryChanged
+    ).toEqual([
+      {
+        name: before.name,
+        categoryBefore: 'Гибкий кабель',
+        categoryAfter: 'Контрольный кабель',
+      },
+    ]);
   });
 });
 

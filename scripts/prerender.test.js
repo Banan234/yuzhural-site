@@ -7,6 +7,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   buildJsonLdScripts,
   buildHomePrerenderData,
+  buildCatalogPrerenderData,
   buildMetaTags,
   buildCompactProductBodyShell,
   buildPrerenderDataScript,
@@ -56,7 +57,7 @@ const product = {
   crossSection: '2,5',
   cores: 3,
   groundCores: 1,
-  voltage: 660,
+  voltage: 0.66,
   price: 125.5,
   stock: 42,
   catalogSection: 'Силовой кабель',
@@ -331,10 +332,51 @@ describe('prerender HTML helpers', () => {
     expect(html).toContain('<h1>ВВГ &lt;опасный тег&gt;</h1>');
     expect(html).toContain('aria-label="Хлебные крошки"');
     expect(html).toContain('Кабель &amp; провод');
-    expect(html).toContain('<dt>Жилы</dt><dd>3+1</dd>');
+    expect(html).toContain('<dt>Количество жил</dt><dd>3</dd>');
+    expect(html).toContain('<dt>Напряжение</dt><dd>0,66 кВ</dd>');
     expect(html).toContain('<dt>Производитель</dt><dd>Завод &amp; Ко</dd>');
     expect(html).not.toContain('display:none');
     expect(html).not.toContain('<опасный тег>');
+  });
+
+  it.each(['4х24 AWG', '1,8х4,0/1,92', '7х(2х1,5)', '3х2,5+'])(
+    'keeps full configuration %s and attributes in prerendered cards',
+    (configuration) => {
+      const input = {
+        ...product,
+        conductorConfiguration: configuration,
+        groupCores: 2,
+        groundSection: 1.5,
+        attributes: ['Э', 'нг(А)-LS'],
+      };
+      const item = buildCatalogPrerenderData([input]).items[0];
+      expect(item).toMatchObject({
+        conductorConfiguration: configuration,
+        groupCores: 2,
+        groundCores: 1,
+        groundSection: 1.5,
+        attributes: ['Э', 'нг(А)-LS'],
+      });
+      expect(item.shortDescription).toBe(
+        `${input.mark} · ${configuration} · Э, нг(А)-LS`
+      );
+      const html = buildProductBodyShell(input);
+      expect(html).toContain(
+        `<dt>Конфигурация жил</dt><dd>${configuration}</dd>`
+      );
+      expect(html).toContain('<dt>Особенности</dt><dd>Э, нг(А)-LS</dd>');
+      expect(html).not.toContain('<dt>Количество жил</dt>');
+      expect(html).not.toContain(`${configuration} мм`);
+    }
+  );
+
+  it('includes legacy additional conductor sections in prerendered descriptions', () => {
+    const input = { ...product, crossSection: 2.5, groundSection: 1.5 };
+    const item = buildCatalogPrerenderData([input]).items[0];
+    expect(item.shortDescription).toContain('3х2,5+1х1,5 мм2');
+    expect(buildProductBodyShell(input)).toContain(
+      '<dt>Доп. жила</dt><dd>1х1,5 мм2</dd>'
+    );
   });
 
   it('строит компактный product-shell без дублирования JSON-LD данных', () => {
@@ -487,7 +529,13 @@ describe('prerender IO flow', () => {
     expect(productHtml).toContain('ВВГнг(A)-LS 3х2,5');
     expect(productHtml).toContain('id="yuzhural-prerender-data"');
     expect(renderApp).toHaveBeenCalledWith('/product/vvgng-ls-3h2-5', {
-      prerenderData: { product },
+      prerenderData: {
+        product: expect.objectContaining({
+          ...product,
+          specs: expect.objectContaining({ Напряжение: '0,66 кВ' }),
+          shortDescription: expect.any(String),
+        }),
+      },
     });
     expect(renderApp).toHaveBeenCalledWith('/catalog/kabel-i-provod', {
       prerenderData: {
@@ -504,6 +552,51 @@ describe('prerender IO flow', () => {
     );
     expect(productHtml).not.toContain('OpenGraph / Twitter');
     expect(log).toHaveBeenCalledWith('[prerender] done.');
+  });
+
+  it('provides full specs and traceability in product hydration data without visible warnings', async () => {
+    const outputDir = await makeTempDir();
+    const input = {
+      ...product,
+      fullName: 'Кабель 4х24 AWG нг(А)-LS',
+      conductorConfiguration: '4х24 AWG',
+      attributes: ['нг(А)-LS'],
+      sourceName: 'Original source cable',
+      parsingWarnings: ['incomplete-specification'],
+    };
+    const renderApp = createRenderAppMock();
+    await prerenderProducts(template, [input], {
+      outputDir,
+      renderApp,
+      log: vi.fn(),
+    });
+    const rendered = renderApp.mock.calls[0][1].prerenderData.product;
+    expect(rendered).toMatchObject({
+      fullName: input.fullName,
+      sourceName: input.sourceName,
+      parsingWarnings: input.parsingWarnings,
+      specs: {
+        'Конфигурация жил': '4х24 AWG',
+        Особенности: 'нг(А)-LS',
+        Напряжение: '0,66 кВ',
+      },
+    });
+    const html = await readFile(
+      path.join(outputDir, 'product', `${input.slug}.html`),
+      'utf8'
+    );
+    const payload = JSON.parse(
+      html.match(
+        /<script type="application\/json" id="yuzhural-prerender-data">([^]*?)<\/script>/
+      )[1]
+    );
+    expect(payload.product).toEqual(rendered);
+    expect(buildProductBodyShell(rendered)).not.toContain(
+      'incomplete-specification'
+    );
+    expect(buildCompactProductBodyShell(rendered)).not.toContain(
+      'incomplete-specification'
+    );
   });
 
   it('добавляет артикул в product title только для дублей', async () => {

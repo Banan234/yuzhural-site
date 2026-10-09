@@ -17,6 +17,7 @@
     "backup:restore": "node scripts/backupData.js restore",
     "monitor:health": "node scripts/monitorHealth.js",
     "check:import": "node scripts/importPrice.js --dry-run",
+    "check:price-parsing": "node scripts/auditPriceParsing.js",
     "check:env": "node scripts/checkEnv.js",
     "check:product-prerender": "node scripts/checkProductPrerender.js",
     "format": "prettier --write .",

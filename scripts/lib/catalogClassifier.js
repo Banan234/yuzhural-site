@@ -181,7 +181,9 @@ export function classifyProduct(product) {
   // (HELUKABEL, Герда, КРУИН и т.п.): priceParser отрезает его от mark/markFamily,
   // но бренд-специфичные правила должны продолжать срабатывать.
   const searchStr = normalize(
-    [manufacturer, mark, markFamily].filter(Boolean).join(' ')
+    [manufacturer, mark, markFamily, ...(product.attributes ?? [])]
+      .filter(Boolean)
+      .join(' ')
   );
 
   // --- 1. Явные правила ---

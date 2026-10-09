@@ -7,6 +7,7 @@ import {
   buildSlugRedirects,
   buildSpecKey,
   buildStableKey,
+  migrateStableIdentityKeys,
   specKeyFromStableKey,
 } from './productRegistry.js';
 
@@ -67,9 +68,246 @@ describe('assignStableIdentity', () => {
     expect(second.slug).toBe(first.slug);
     expect(registry.entries[buildStableKey(product)].lastSeen).toBe(LATER);
   });
+
+  it('retains the latest supplied source name without clearing it on legacy imports', () => {
+    const registry = emptyRegistry();
+    const product = {
+      mark: 'ВВГ',
+      cores: 3,
+      crossSection: 2.5,
+      sourceName: 'ВВГ 3 x 2,5',
+    };
+    const first = assignStableIdentity(registry, product, NOW);
+    expect(registry.entries[first.stableKey].sourceName).toBe(
+      product.sourceName
+    );
+    assignStableIdentity(
+      registry,
+      { ...product, sourceName: 'ВВГ 3х2.5' },
+      LATER
+    );
+    assignStableIdentity(
+      registry,
+      { ...product, sourceName: undefined },
+      LATER
+    );
+    expect(registry.entries[first.stableKey].sourceName).toBe('ВВГ 3х2.5');
+    expect(registry.nextId).toBe(2);
+  });
+});
+
+describe('migrateStableIdentityKeys', () => {
+  it('переносит запись на новый ключ, сохраняя id, slug и sku', () => {
+    const registry = emptyRegistry();
+    const oldKey = 'ка9спвпнг(а)-hf|1|120|||||1';
+    const newKey = 'ка9спвп|1|120|||||1,нг(а)-hf';
+    registry.entries[oldKey] = {
+      id: 297,
+      slug: 'ka9spvpng-a-hf-1h120-1-89',
+      sku: 'YU-0000297',
+    };
+
+    const result = migrateStableIdentityKeys(
+      registry,
+      new Map([[oldKey, newKey]])
+    );
+
+    expect(result).toEqual({ migrated: 1, skipped: 0 });
+    expect(registry.entries[oldKey]).toBeUndefined();
+    expect(registry.entries[newKey]).toMatchObject({
+      id: 297,
+      slug: 'ka9spvpng-a-hf-1h120-1-89',
+      sku: 'YU-0000297',
+    });
+  });
+
+  it('не затирает существующую запись другого товара', () => {
+    const registry = emptyRegistry();
+    registry.entries.old = { id: 1, slug: 'old-1', sku: 'YU-0000001' };
+    registry.entries.new = { id: 2, slug: 'new-2', sku: 'YU-0000002' };
+
+    const result = migrateStableIdentityKeys(
+      registry,
+      new Map([['old', 'new']])
+    );
+
+    expect(result).toEqual({ migrated: 0, skipped: 1 });
+    expect(registry.entries.old.id).toBe(1);
+    expect(registry.entries.new.id).toBe(2);
+  });
 });
 
 describe('rename detection (orphan по spec-ключу)', () => {
+  it.each([
+    ['ВВГ', 'ВВГнг(А)-LS'],
+    ['ВВГнг-LS', 'ВВГ'],
+    ['КВВГЭ', 'КВВГ'],
+    ['КВВГЭФнг(А)-FRLS-LTx', 'КВВГнг-HF'],
+    ['КВВГнг(A)-FRHF-ХЛ-ЭМ', 'КВВГЭА'],
+    ['КВВГЭЭ', 'КВВГ Э'],
+    ['КВВГЭнг(А)-ХК(LX)ВЭ', 'КВВГ'],
+    ['КВВГнг(А)-ХК(LX)ВЭ-ЭФ', 'КВВГ'],
+    ['ВВГ нг (А) LS LTx', 'ввг'],
+  ])('reuses a unique equivalent base mark: %s -> %s', (oldMark, newMark) => {
+    const registry = emptyRegistry();
+    const original = {
+      mark: oldMark,
+      cores: 3,
+      crossSection: 2.5,
+      fullName: `${oldMark} 3х2.5`,
+      sourceName: 'original source',
+    };
+    const renamed = {
+      ...original,
+      mark: newMark,
+      fullName: `${newMark} 3х2.5`,
+      sourceName: 'renamed source',
+    };
+    const before = assignStableIdentity(registry, original, NOW);
+    const orphanIndex = buildOrphanSpecIndex(
+      registry,
+      new Set([buildStableKey(renamed)])
+    );
+    const after = assignStableIdentity(registry, renamed, LATER, {
+      orphanIndex,
+    });
+    expect(after.id).toBe(before.id);
+    expect(after.sku).toBe(before.sku);
+    expect(registry.entries[before.stableKey]).toBeUndefined();
+    expect(registry.entries[after.stableKey]).toMatchObject({
+      sourceName: 'renamed source',
+      firstSeen: NOW,
+      lastSeen: LATER,
+      slugHistory: [before.slug],
+    });
+    expect(buildSlugRedirects(registry)[before.slug]).toBe(after.slug);
+    expect(orphanIndex.size).toBe(0);
+  });
+
+  it.each([
+    ['ВВГ', 'ПВС'],
+    ['ВВГнг-LS', 'ПВСнг-LS'],
+    ['ВВГ', 'АВВГ'],
+    ['ВВГ', 'ВВГнг(12)-LS'],
+    ['ВВГ', 'ВВГнг(А)-UNKNOWN'],
+    ['ВВГ', 'ВВГнг(А)-LS-extra'],
+    ['ВВГ', 'ВВГ-ХЛ'],
+    ['ВВГ', 'ВВГЭК'],
+    ['', 'нг'],
+    ['Э', 'ЭФ'],
+  ])(
+    'does not reuse unrelated or unrecognized marks: %s -> %s',
+    (oldMark, newMark) => {
+      const registry = emptyRegistry();
+      const original = { mark: oldMark, cores: 3, crossSection: 2.5 };
+      const next = { ...original, mark: newMark };
+      const before = assignStableIdentity(registry, original, NOW);
+      const savedEntry = { ...registry.entries[before.stableKey] };
+      const orphanIndex = buildOrphanSpecIndex(
+        registry,
+        new Set([buildStableKey(next)])
+      );
+      const after = assignStableIdentity(registry, next, LATER, {
+        orphanIndex,
+      });
+      expect(after.id).not.toBe(before.id);
+      expect(registry.entries[before.stableKey]).toEqual(savedEntry);
+      expect(buildSlugRedirects(registry)).toEqual({});
+      expect(orphanIndex.get(buildSpecKey(next))).toEqual([before.stableKey]);
+    }
+  );
+
+  it.each([
+    ['ВВГ', 'ВВГЭ'],
+    ['ВВГЭ', 'ВВГ'],
+    ['ВВГ', 'ПВС'],
+    ['ПВС', 'ВВГ'],
+  ])(
+    'rejects ambiguous same-spec candidates regardless of order: %s, %s',
+    (firstMark, secondMark) => {
+      const registry = emptyRegistry();
+      const originals = [firstMark, secondMark].map((mark) => ({
+        mark,
+        cores: 3,
+        crossSection: 2.5,
+      }));
+      const before = originals.map((p) =>
+        assignStableIdentity(registry, p, NOW)
+      );
+      const renamed = { ...originals[0], mark: 'ВВГнг(А)-LS' };
+      const orphanIndex = buildOrphanSpecIndex(
+        registry,
+        new Set([buildStableKey(renamed)])
+      );
+      const after = assignStableIdentity(registry, renamed, LATER, {
+        orphanIndex,
+      });
+      expect(before.map((p) => p.id)).not.toContain(after.id);
+      expect(
+        before.every((p) => registry.entries[p.stableKey]?.id === p.id)
+      ).toBe(true);
+      expect(orphanIndex.get(buildSpecKey(renamed))).toHaveLength(2);
+      expect(buildSlugRedirects(registry)).toEqual({});
+    }
+  );
+
+  it('leaves a rejected orphan available for a subsequent equivalent rename', () => {
+    const registry = emptyRegistry();
+    const original = { mark: 'ВВГ', cores: 3, crossSection: 2.5 };
+    const unrelated = { ...original, mark: 'ПВС' };
+    const renamed = { ...original, mark: 'ВВГнг-LS' };
+    const before = assignStableIdentity(registry, original, NOW);
+    const orphanIndex = buildOrphanSpecIndex(
+      registry,
+      new Set([unrelated, renamed].map(buildStableKey))
+    );
+    const rejected = assignStableIdentity(registry, unrelated, LATER, {
+      orphanIndex,
+    });
+    const accepted = assignStableIdentity(registry, renamed, LATER, {
+      orphanIndex,
+    });
+    expect(rejected.id).not.toBe(before.id);
+    expect(accepted.id).toBe(before.id);
+  });
+
+  it('preserves sourceName across a rename when the new product does not supply it', () => {
+    const registry = emptyRegistry();
+    const original = {
+      mark: 'ВВГ',
+      cores: 3,
+      crossSection: 2.5,
+      sourceName: 'ВВГ 3 x 2,5',
+    };
+    const renamed = { ...original, mark: 'ВВГнг-LS', sourceName: undefined };
+    assignStableIdentity(registry, original, NOW);
+    const orphanIndex = buildOrphanSpecIndex(
+      registry,
+      new Set([buildStableKey(renamed)])
+    );
+    const after = assignStableIdentity(registry, renamed, LATER, {
+      orphanIndex,
+    });
+    expect(registry.entries[after.stableKey].sourceName).toBe(
+      original.sourceName
+    );
+  });
+
+  it('ignores a stale orphan entry instead of consuming a missing registry record', () => {
+    const registry = emptyRegistry();
+    const original = { mark: 'ВВГ', cores: 3, crossSection: 2.5 };
+    const renamed = { ...original, mark: 'ВВГнг-LS' };
+    const before = assignStableIdentity(registry, original, NOW);
+    const orphanIndex = buildOrphanSpecIndex(
+      registry,
+      new Set([buildStableKey(renamed)])
+    );
+    delete registry.entries[before.stableKey];
+    expect(
+      assignStableIdentity(registry, renamed, LATER, { orphanIndex }).id
+    ).not.toBe(before.id);
+  });
+
   it('переименование сохраняет id/sku и пушит старый slug в slugHistory', () => {
     const registry = emptyRegistry();
     const original = {

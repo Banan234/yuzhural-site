@@ -8,9 +8,10 @@
   },
   "matchers": [
     {
-      "mark": "ПВВГ нг(А)LS",
+      "mark": "ПВВГ",
       "cores": 4,
       "crossSection": 185,
+      "attributes": ["нг(А)-LS"],
       "priceDivide": 1000,
       "reason": "В прайсе цена за км, единица 'м' — делим на 1000"
     }

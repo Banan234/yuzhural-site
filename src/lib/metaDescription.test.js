@@ -65,4 +65,61 @@ describe('buildProductMetaDescription', () => {
     expect(description).toContain('сечение 50 мм²');
     expect(description).toContain('Цена от 258,9 ₽/м');
   });
+
+  it.each(['4х24 AWG', '1,8х4,0/1,92', '7х(2х1,5)', '3х2,5+'])(
+    'preserves full configuration %s without an assumed section unit',
+    (conductorConfiguration) => {
+      const description = buildProductMetaDescription({
+        fullName: 'Кабель',
+        conductorConfiguration,
+        cores: 7,
+        groupCores: 2,
+        crossSection: 1.5,
+        attributes: ['Э', 'нг(А)-LS'],
+        parsingWarnings: ['incomplete-specification'],
+      });
+      expect(description).toContain(
+        `конфигурация жил ${conductorConfiguration}`
+      );
+      expect(description).toContain('Э, нг(А)-LS');
+      expect(description).not.toContain('мм²');
+      expect(description).not.toContain('7 жилы');
+      expect(description).not.toContain('incomplete-specification');
+    }
+  );
+
+  it('keeps additional conductor sections and voltage in kV', () => {
+    const description = buildProductMetaDescription({
+      fullName: 'Кабель',
+      cores: 3,
+      crossSection: 2.5,
+      groundCores: 1,
+      groundSection: 1.5,
+      voltage: 0.66,
+    });
+    expect(description).toContain('3х2,5+1х1,5 мм²');
+    expect(description).toContain('0,66 кВ');
+    expect(description).not.toContain('0,66 В');
+  });
+
+  it('does not round a 0.035 square millimetre section to 0.04', () => {
+    const description = buildProductMetaDescription({
+      fullName: 'МГТФ',
+      cores: 1,
+      crossSection: 0.035,
+    });
+    expect(description).toContain('сечение 0,035 мм²');
+    expect(description).not.toContain('0,04');
+  });
+
+  it('preserves grouped legacy specifications when full configuration is absent', () => {
+    const description = buildProductMetaDescription({
+      fullName: 'Кабель',
+      cores: 7,
+      groupCores: 2,
+      crossSection: 1.5,
+    });
+    expect(description).toContain('7х(2х1,5) мм²');
+    expect(description).not.toContain('7 жилы');
+  });
 });

@@ -52,8 +52,14 @@ function slugify(value) {
 }
 
 export function buildStableKey(product) {
-  const attrs = Array.isArray(product.attributes)
+  const stableAttributes = Array.isArray(product.attributes)
     ? [...product.attributes]
+    : [];
+  if (product.conductorConfiguration) {
+    stableAttributes.push(`конфигурация:${product.conductorConfiguration}`);
+  }
+  const attrs = stableAttributes.length
+    ? stableAttributes
         .map((a) => String(a).toLowerCase().trim())
         .sort()
         .join(',')
@@ -76,9 +82,8 @@ export function buildStableKey(product) {
 }
 
 // Спек-ключ — stableKey без первой компоненты (mark). Используется для
-// детекции переименований: если у позиции в импорте новый mark, но все
-// остальные характеристики совпадают с осиротевшей записью реестра — это
-// та же позиция, переименованная поставщиком.
+// детекции переименований. Совпадение характеристик требует дополнительной
+// проверки единственного кандидата и эквивалентности базовых марок.
 export function specKeyFromStableKey(stableKey) {
   const idx = String(stableKey).indexOf('|');
   return idx === -1 ? '' : stableKey.slice(idx);
@@ -86,6 +91,26 @@ export function specKeyFromStableKey(stableKey) {
 
 export function buildSpecKey(product) {
   return specKeyFromStableKey(buildStableKey(product));
+}
+
+const NG_MARK_SUFFIX_RE =
+  /-?нг(?:\([абвгдсa-d]\))?(?:-?(?:frls|frhf|fr|ls|hf|ltx|хк\([^)]*\)вэ|хл|нд))*$/iu;
+const SCREEN_MARK_SUFFIX_RE = /-?(?:эф|эа|эм|ээ|э)$/iu;
+
+function baseMarkForRename(mark) {
+  const normalized = String(mark || '')
+    .toLowerCase()
+    .replace(/\s+/gu, '');
+  // Strip the complete fire suffix first: its recognized tail may itself end in Э.
+  const withoutFireSuffix = normalized.replace(NG_MARK_SUFFIX_RE, '');
+  if (withoutFireSuffix !== normalized) {
+    return withoutFireSuffix.replace(SCREEN_MARK_SUFFIX_RE, '');
+  }
+  const withoutScreen = normalized.replace(SCREEN_MARK_SUFFIX_RE, '');
+  const withoutNg = withoutScreen.replace(NG_MARK_SUFFIX_RE, '');
+  return withoutNg === withoutScreen
+    ? withoutScreen
+    : withoutNg.replace(SCREEN_MARK_SUFFIX_RE, '');
 }
 
 function buildSlug(product, id) {
@@ -142,6 +167,34 @@ export function buildOrphanSpecIndex(registry, currentStableKeys) {
   return index;
 }
 
+export function migrateStableIdentityKeys(registry, migrations) {
+  let migrated = 0;
+  let skipped = 0;
+
+  for (const [oldStableKey, newStableKey] of migrations) {
+    if (!oldStableKey || !newStableKey || oldStableKey === newStableKey) {
+      continue;
+    }
+
+    const oldEntry = registry.entries[oldStableKey];
+    if (!oldEntry) {
+      continue;
+    }
+
+    const existingEntry = registry.entries[newStableKey];
+    if (existingEntry && existingEntry.id !== oldEntry.id) {
+      skipped += 1;
+      continue;
+    }
+
+    registry.entries[newStableKey] = existingEntry || oldEntry;
+    delete registry.entries[oldStableKey];
+    migrated += 1;
+  }
+
+  return { migrated, skipped };
+}
+
 export function assignStableIdentity(
   registry,
   product,
@@ -149,10 +202,15 @@ export function assignStableIdentity(
   options = {}
 ) {
   const stableKey = buildStableKey(product);
+  const sourceName =
+    typeof product.sourceName === 'string' && product.sourceName.trim()
+      ? product.sourceName
+      : null;
   let entry = registry.entries[stableKey];
 
   if (entry) {
     entry.lastSeen = now;
+    if (sourceName) entry.sourceName = sourceName;
     return { id: entry.id, slug: entry.slug, sku: entry.sku, stableKey };
   }
 
@@ -160,10 +218,16 @@ export function assignStableIdentity(
   if (orphanIndex) {
     const specKey = specKeyFromStableKey(stableKey);
     const candidates = orphanIndex.get(specKey);
-    if (candidates && candidates.length > 0) {
-      const oldStableKey = candidates.shift();
-      if (candidates.length === 0) orphanIndex.delete(specKey);
-      const oldEntry = registry.entries[oldStableKey];
+    const oldStableKey = candidates?.length === 1 ? candidates[0] : null;
+    const oldEntry = oldStableKey ? registry.entries[oldStableKey] : null;
+    const baseMark = baseMarkForRename(product.mark);
+    if (
+      oldEntry &&
+      baseMark &&
+      baseMarkForRename(oldStableKey.slice(0, oldStableKey.indexOf('|'))) ===
+        baseMark
+    ) {
+      orphanIndex.delete(specKey);
       delete registry.entries[oldStableKey];
       const newSlug = buildSlug(product, oldEntry.id);
       const slugHistory = Array.isArray(oldEntry.slugHistory)
@@ -178,6 +242,7 @@ export function assignStableIdentity(
       );
       entry = {
         ...oldEntry,
+        ...(sourceName ? { sourceName } : {}),
         slug: newSlug,
         slugHistory: dedupedHistory,
         lastSeen: now,
@@ -191,7 +256,14 @@ export function assignStableIdentity(
   registry.nextId += 1;
   const slug = buildSlug(product, id);
   const sku = `YU-${String(id).padStart(7, '0').slice(-7)}`;
-  entry = { id, slug, sku, firstSeen: now, lastSeen: now };
+  entry = {
+    id,
+    slug,
+    sku,
+    firstSeen: now,
+    lastSeen: now,
+    ...(sourceName ? { sourceName } : {}),
+  };
   registry.entries[stableKey] = entry;
   return { id: entry.id, slug: entry.slug, sku: entry.sku, stableKey };
 }

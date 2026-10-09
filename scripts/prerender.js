@@ -39,6 +39,7 @@ import {
   getStaticPageJsonLdId,
 } from '../src/lib/staticPageJsonLd.js';
 import { getProductImage } from '../shared/productImages.js';
+import { buildShortDescription, buildSpecs } from '../lib/catalog.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -140,9 +141,11 @@ const OPTIONAL_STRING_FIELDS = [
   'title',
   'fullName',
   'name',
+  'sourceName',
   'mark',
   'description',
   'shortDescription',
+  'conductorConfiguration',
   'sku',
   'unit',
   'category',
@@ -158,6 +161,7 @@ const OPTIONAL_SLUG_FIELDS = ['catalogSectionSlug', 'catalogCategorySlug'];
 const OPTIONAL_NON_NEGATIVE_NUMBER_FIELDS = ['price', 'stock'];
 const OPTIONAL_POSITIVE_NUMBER_FIELDS = [
   'cores',
+  'groupCores',
   'crossSection',
   'groundCores',
   'groundSection',
@@ -711,6 +715,7 @@ function buildCatalogListItem(product) {
     slug: product.slug,
     sku: product.sku || '',
     title,
+    fullName: product.fullName || title,
     mark: product.mark || title,
     category: product.category || product.catalogCategory || '',
     catalogSection: product.catalogSection || '',
@@ -721,17 +726,15 @@ function buildCatalogListItem(product) {
     unit: product.unit || 'м',
     stock: Number(product.stock) || 0,
     shortDescription:
-      product.shortDescription ||
-      [
-        product.mark,
-        product.cores ? `${product.cores} жил` : '',
-        product.crossSection ? `${product.crossSection} мм2` : '',
-      ]
-        .filter(Boolean)
-        .join(' · '),
+      product.shortDescription || buildShortDescription(product),
     image: getCatalogProductImage(product),
     cores: product.cores ?? null,
+    groupCores: product.groupCores ?? null,
     crossSection: product.crossSection ?? null,
+    conductorConfiguration: product.conductorConfiguration || null,
+    groundCores: product.groundCores ?? null,
+    groundSection: product.groundSection ?? null,
+    attributes: Array.isArray(product.attributes) ? product.attributes : [],
     voltage: product.voltage ?? null,
     catalogType: product.catalogType || null,
     catalogApplicationType: product.catalogApplicationType || null,
@@ -818,17 +821,7 @@ export function buildProductBodyShell(product) {
 
   // Минимальный shell для краулеров и пользователей без JS. Он видимый, чтобы
   // не превращать prerender в скрытый SEO-блок; React при mount() заменит #root.
-  const specs = [];
-  if (product.mark) specs.push(['Марка', product.mark]);
-  if (product.crossSection)
-    specs.push(['Сечение', `${product.crossSection} мм²`]);
-  if (product.cores) {
-    const groundLabel = product.groundCores
-      ? `${product.cores}+${product.groundCores}`
-      : product.cores;
-    specs.push(['Жилы', String(groundLabel)]);
-  }
-  if (product.voltage) specs.push(['Напряжение', `${product.voltage} В`]);
+  const specs = Object.entries(product.specs || buildSpecs(product));
   if (product.catalogCategory)
     specs.push(['Категория', product.catalogCategory]);
   if (product.manufacturer || product.catalogBrand) {
@@ -1369,7 +1362,13 @@ export async function prerenderProducts(
   let written = 0;
   for (const product of products) {
     const productImage = getProductImage(product);
-    const productWithImage = { ...product, image: productImage };
+    const productWithImage = {
+      ...product,
+      image: productImage,
+      shortDescription:
+        product.shortDescription || buildShortDescription(product),
+      specs: product.specs || buildSpecs(product),
+    };
     const canonical = absoluteUrl(`/product/${productWithImage.slug}`);
     const productLabel = buildProductMetaTitle(productWithImage, {
       disambiguate:

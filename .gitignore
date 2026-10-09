@@ -18,6 +18,8 @@ data/productRegistry.json
 data/import-history.json
 data/import-report.json
 data/import-report.html
+data/price-parsing-audit.json
+data/price-parsing-audit.md
 data/public/
 data/backups/
 data/monitor-state.json

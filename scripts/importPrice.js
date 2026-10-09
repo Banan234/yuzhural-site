@@ -9,6 +9,7 @@ import {
   createEmptyImportResult,
   normalizeImportedProduct,
   parseCombinedCell,
+  parseProductName,
   resolveCategory,
 } from './lib/priceParser.js';
 import {
@@ -23,6 +24,7 @@ import {
   buildSlugRedirects,
   buildStableKey,
   loadProductRegistry,
+  migrateStableIdentityKeys,
   saveProductRegistry,
 } from './lib/productRegistry.js';
 import { assertProductPrerenderCoverage } from './lib/productPrerenderAudit.js';
@@ -54,7 +56,9 @@ const positionalSource = positionalArgs[0] || '';
 // прайса, импортёр сам ищет на ней ссылку на .xls/.xlsx и скачивает файл.
 const remoteSourceUrl = URL_RE.test(positionalSource)
   ? positionalSource
-  : process.env.PRICE_URL || process.env.PRICE_PAGE_URL || '';
+  : positionalSource
+    ? ''
+    : process.env.PRICE_URL || process.env.PRICE_PAGE_URL || '';
 const inputFile =
   (remoteSourceUrl ? '' : positionalSource) ||
   path.join(projectRoot, 'data', 'price.xls');
@@ -144,6 +148,16 @@ function findMatcherOverride(product) {
       if (
         matcher.voltage != null &&
         Number(matcher.voltage) !== Number(product.voltage)
+      ) {
+        return false;
+      }
+      if (
+        Array.isArray(matcher.attributes) &&
+        !matcher.attributes.every(
+          (attribute) =>
+            Array.isArray(product.attributes) &&
+            product.attributes.includes(attribute)
+        )
       ) {
         return false;
       }
@@ -452,9 +466,30 @@ export function createProductRecord(
   sourceRow = null,
   rowIndex = null
 ) {
+  const sourceName = product.sourceName || product.name;
+  const sourceClassification = classifyProduct({
+    name: sourceName,
+    mark: sourceName,
+  });
+  const sourceRule = String(
+    sourceClassification.catalogClassificationMatch || ''
+  )
+    .trim()
+    .toLowerCase();
+  const explicitNonCable =
+    /^(?:зажим\s|клемм(?:а|ник)|коробк|щит\s|свет(?:\.|ильник)|изолент|труб(?:а|ка)|угол\s|розет|выключ|након|гильз|контакт|катушк|автомат|пускател|предохран|блок\s|муфта\s|таймер|кнопк|шина\s|клипс)/iu.test(
+      sourceName
+    );
+  const isNonCable =
+    explicitNonCable ||
+    (sourceClassification.catalogSectionSlug === 'nekabelnaya-produkciya' &&
+      sourceRule &&
+      String(sourceName).toLowerCase().startsWith(sourceRule) &&
+      !/^ПМЛ\s+\d+\s*[хx×]/iu.test(sourceName));
   const normalized = applyPriceOverride(
     normalizeImportedProduct({
       ...product,
+      parseCable: !isNonCable,
       category,
     })
   );
@@ -755,15 +790,17 @@ export function productKey(product) {
 }
 
 export function buildDiff(previous, current) {
+  const identityKey = (product) =>
+    product.id != null ? `id:${product.id}` : productKey(product);
   const prevMap = new Map();
   for (const product of previous) {
-    const key = productKey(product);
+    const key = identityKey(product);
     if (key) prevMap.set(key, product);
   }
 
   const currMap = new Map();
   for (const product of current) {
-    const key = productKey(product);
+    const key = identityKey(product);
     if (key) currMap.set(key, product);
   }
 
@@ -818,11 +855,15 @@ export function buildDiff(previous, current) {
       });
     }
 
-    if ((prev.category || '') !== (product.category || '')) {
+    // category may be a generated "Кабель <mark>" label. Publication checks
+    // must compare actual navigation categories when classification is present.
+    const categoryBefore = prev.catalogCategory || prev.category || '';
+    const categoryAfter = product.catalogCategory || product.category || '';
+    if (categoryBefore !== categoryAfter) {
       categoryChanged.push({
         name: product.name,
-        categoryBefore: prev.category || '',
-        categoryAfter: product.category || '',
+        categoryBefore,
+        categoryAfter,
       });
     }
   }
@@ -851,6 +892,125 @@ export function buildDiff(previous, current) {
     stockChanged,
     categoryChanged,
   };
+}
+
+export function buildRegistryKeyMigrations(
+  previousProducts,
+  currentStableKeys,
+  currentProducts = []
+) {
+  const candidatesByNewKey = new Map();
+
+  const bySource = new Map();
+  const sourceKey = (name) =>
+    String(name || '')
+      .toLowerCase()
+      .replace(/[\s-]+/gu, '')
+      .replace(/(\d)[x×х](?=\d|\()/gu, '$1х');
+  for (const product of currentProducts) {
+    const names = [product.sourceName || product.fullName || product.name];
+    const legacyName = buildLegacyImplicitName(
+      product.fullName || product.name
+    );
+    if (legacyName) names.push(legacyName);
+    for (const name of names) {
+      const key = sourceKey(name);
+      if (!bySource.has(key)) bySource.set(key, new Set());
+      bySource.get(key).add(buildStableKey(product));
+    }
+  }
+
+  for (const previousProduct of previousProducts) {
+    const oldStableKey = buildStableKey(previousProduct);
+    const reparsed = normalizeImportedProduct({
+      ...previousProduct,
+      name:
+        previousProduct.sourceName ||
+        previousProduct.fullName ||
+        previousProduct.name,
+      parseCable:
+        previousProduct.catalogSectionSlug !== 'nekabelnaya-produkciya',
+    });
+    const classified = classifyProduct(reparsed);
+    let newStableKey = buildStableKey({
+      ...previousProduct,
+      ...reparsed,
+      manufacturer: classified.manufacturer || reparsed.manufacturer,
+    });
+
+    if (!currentStableKeys.has(newStableKey)) {
+      const name =
+        previousProduct.sourceName ||
+        previousProduct.fullName ||
+        previousProduct.name;
+      const direct = bySource.get(sourceKey(name));
+      // Старые версии добавляли «1х» даже к артикулам. Восстанавливаем связь
+      // только при единственном полном совпадении с исходной строкой прайса.
+      const implicit =
+        !previousProduct.sourceName && previousProduct.cores === 1
+          ? bySource.get(
+              sourceKey(String(name).replace(/\s+1[хx×](?=\d)/iu, ' '))
+            )
+          : null;
+      const candidates = direct || implicit;
+      if (candidates?.size === 1) newStableKey = [...candidates][0];
+    }
+
+    if (
+      oldStableKey === newStableKey ||
+      currentStableKeys.has(oldStableKey) ||
+      !currentStableKeys.has(newStableKey)
+    ) {
+      continue;
+    }
+
+    if (!candidatesByNewKey.has(newStableKey)) {
+      candidatesByNewKey.set(newStableKey, new Set());
+    }
+    candidatesByNewKey.get(newStableKey).add(oldStableKey);
+  }
+
+  const migrations = new Map();
+  let ambiguous = 0;
+  const destinations = new Map();
+  for (const [newKey, oldKeys] of candidatesByNewKey) {
+    for (const oldKey of oldKeys) {
+      if (!destinations.has(oldKey)) destinations.set(oldKey, new Set());
+      destinations.get(oldKey).add(newKey);
+    }
+  }
+
+  for (const [newStableKey, oldStableKeys] of candidatesByNewKey) {
+    if (
+      oldStableKeys.size !== 1 ||
+      destinations.get([...oldStableKeys][0]).size !== 1
+    ) {
+      ambiguous += 1;
+      continue;
+    }
+
+    migrations.set([...oldStableKeys][0], newStableKey);
+  }
+
+  return { migrations, ambiguous };
+}
+
+// Только для миграции старых данных: воспроизводит прежнее ошибочное добавление
+// «1х» к числам в артикулах. Новый импорт эту эвристику не использует.
+function buildLegacyImplicitName(name) {
+  const parsed = parseProductName(name);
+  if (parsed.cores && !parsed.isImplicitSingleCore) return null;
+  let source = String(name || '');
+  if (parsed.manufacturer) source = source.replace(/^[А-ЯЁA-Z]{4,}[-\s]/iu, '');
+  const match = source.match(/^(.*?)(\d+(?:[.,]\d+)?)(?:\s+([^\d].*))?$/u);
+  if (!match) return null;
+  const number = Number(match[2].replace(',', '.'));
+  if (!(number > 0 && number <= 1000)) return null;
+  const prefix = parseProductName(match[1].trim());
+  const attrs = [...prefix.attributes, match[3] || '']
+    .filter(Boolean)
+    .join(' ');
+  return `${prefix.mark} 1х${Number(number.toFixed(3))}${attrs ? ` ${attrs}` : ''}`;
 }
 
 const PRICE_JUMP_ALERT_PERCENT = 50;
@@ -2165,6 +2325,15 @@ async function main() {
   const currentStableKeys = new Set(
     classifiedProducts.map((product) => buildStableKey(product))
   );
+  const keyMigrationPlan = buildRegistryKeyMigrations(
+    previousProducts,
+    currentStableKeys,
+    classifiedProducts
+  );
+  const keyMigration = migrateStableIdentityKeys(
+    registry,
+    keyMigrationPlan.migrations
+  );
   const orphanIndex = buildOrphanSpecIndex(registry, currentStableKeys);
 
   const productsWithIdentity = classifiedProducts.map((product) => {
@@ -2221,6 +2390,10 @@ async function main() {
     registryFile: path.relative(projectRoot, registryFile),
     registryEntries: Object.keys(registry.entries).length,
     registryNextId: registry.nextId,
+    registryKeyMigration: {
+      ...keyMigration,
+      ambiguous: keyMigrationPlan.ambiguous,
+    },
     importConfigFile: path.relative(projectRoot, importConfigFile),
     priceAlertPercent: PRICE_JUMP_ALERT_PERCENT,
     summary: {
@@ -2414,6 +2587,9 @@ async function main() {
   console.log('');
   console.log(
     `Реестр товаров: ${path.relative(projectRoot, registryFile)} · записей: ${Object.keys(registry.entries).length} · nextId: ${registry.nextId}`
+  );
+  console.log(
+    `Миграция ключей: перенесено=${keyMigration.migrated}, пропущено=${keyMigration.skipped}, неоднозначно=${keyMigrationPlan.ambiguous}`
   );
   const redirectsCount = Object.keys(slugRedirects).length;
   if (redirectsCount > 0) {

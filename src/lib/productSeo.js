@@ -52,12 +52,12 @@ function pushUnique(parts, value) {
   parts.push(next);
 }
 
-function formatNumber(value) {
+function formatNumber(value, maximumFractionDigits = 3) {
   if (value === null || value === undefined || value === '') return '';
-  const number = Number(value);
+  const number = Number(String(value).replace(',', '.'));
   if (!Number.isFinite(number)) return '';
   return number.toLocaleString('ru-RU', {
-    maximumFractionDigits: 2,
+    maximumFractionDigits,
   });
 }
 
@@ -66,17 +66,30 @@ function formatPrice(product) {
   if (!Number.isFinite(price) || price <= 0) return '';
 
   const unit = normalizeText(product.unit);
-  return `Цена от ${formatNumber(price)} ₽${unit ? `/${unit}` : ''}`;
+  return `Цена от ${formatNumber(price, 2)} ₽${unit ? `/${unit}` : ''}`;
 }
 
 function formatProductSpecs(product) {
   const specs = [];
+  const conductorConfiguration = normalizeText(product?.conductorConfiguration);
   const cores = Number(product?.cores);
   const groundCores = Number(product?.groundCores);
+  const groupCores = Number(product?.groupCores);
+  const groundSection = formatNumber(product?.groundSection);
   const crossSection = formatNumber(product?.crossSection);
   const voltage = formatNumber(product?.voltage);
 
-  if (Number.isFinite(cores) && cores > 0) {
+  if (conductorConfiguration) {
+    specs.push(`конфигурация жил ${conductorConfiguration}`);
+  } else if (cores > 0 && groupCores > 0 && crossSection) {
+    const additional =
+      groundCores > 0 && groundSection
+        ? `+${formatNumber(groundCores)}х${groundSection}`
+        : '';
+    specs.push(
+      `сечение ${formatNumber(cores)}х(${formatNumber(groupCores)}х${crossSection})${additional} мм²`
+    );
+  } else if (Number.isFinite(cores) && cores > 0) {
     const coresLabel =
       Number.isFinite(groundCores) && groundCores > 0
         ? `${formatNumber(cores)}+${formatNumber(groundCores)} жилы`
@@ -84,12 +97,25 @@ function formatProductSpecs(product) {
     specs.push(coresLabel);
   }
 
-  if (crossSection) {
-    specs.push(`сечение ${crossSection} мм²`);
+  if (
+    !conductorConfiguration &&
+    !(cores > 0 && groupCores > 0) &&
+    crossSection
+  ) {
+    const section =
+      cores > 0 && groundCores > 0 && groundSection
+        ? `${formatNumber(cores)}х${crossSection}+${formatNumber(groundCores)}х${groundSection}`
+        : crossSection;
+    specs.push(`сечение ${section} мм²`);
   }
 
   if (voltage) {
-    specs.push(`${voltage} В`);
+    specs.push(`${voltage} кВ`);
+  }
+
+  if (Array.isArray(product?.attributes)) {
+    const attributes = product.attributes.map(normalizeText).filter(Boolean);
+    if (attributes.length > 0) specs.push(attributes.join(', '));
   }
 
   return specs.join(', ');

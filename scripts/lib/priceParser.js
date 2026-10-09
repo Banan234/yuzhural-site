@@ -1,4 +1,5 @@
 // Файл парсит строки XLS-прайса, извлекает марки, характеристики, единицы измерения и цены.
+import { findCableSpecification } from './cableSpecification.js';
 
 const UNIT_ALIASES = ['км', 'м', 'шт', 'штука', 'бухта', 'упак', 'упаковка'];
 
@@ -46,8 +47,19 @@ export function createEmptyImportResult() {
 }
 
 export function normalizeImportedProduct(product) {
-  const fullName = normalizeText(product.name);
-  const parsedName = parseProductName(fullName);
+  const sourceName = String(product.sourceName ?? product.name ?? '').trim();
+  const fullName =
+    product.parseCable === false
+      ? normalizeText(sourceName)
+      : normalizeProductName(sourceName);
+  const parsedName =
+    product.parseCable === false
+      ? {
+          ...createEmptyNameParts(),
+          mark: fullName,
+          markFamily: normalizeMarkFamily(fullName),
+        }
+      : parseProductName(fullName);
   const normalizedName = buildNormalizedProductName(fullName, parsedName);
   const normalizedUnit = normalizeUnit(product.unit);
   const normalizedPrice = normalizeNumber(product.price);
@@ -65,6 +77,7 @@ export function normalizeImportedProduct(product) {
   });
 
   return {
+    sourceName,
     name: normalizedName,
     fullName: normalizedName,
     mark: parsedName.mark,
@@ -72,6 +85,9 @@ export function normalizeImportedProduct(product) {
     manufacturer: parsedName.manufacturer,
     cores: parsedName.cores,
     crossSection: parsedName.crossSection,
+    groupCores: parsedName.groupCores,
+    conductorConfiguration: parsedName.conductorConfiguration,
+    parsingWarnings: parsedName.parsingWarnings || [],
     hasGroundCore: parsedName.hasGroundCore,
     groundCores: parsedName.groundCores,
     groundSection: parsedName.groundSection,
@@ -152,7 +168,10 @@ function inferMissingUnit({ unit, price, stock, parsedName }) {
     return unit;
   }
 
-  const looksLikeCable = Boolean(parsedName?.cores && parsedName?.crossSection);
+  const looksLikeCable = Boolean(
+    (parsedName?.cores && parsedName?.crossSection) ||
+    parsedName?.conductorConfiguration
+  );
   if (!looksLikeCable) {
     return unit;
   }
@@ -191,7 +210,7 @@ function stripManufacturerPrefix(value) {
 
 export function parseProductName(value) {
   const { name: stripped, manufacturer } = stripManufacturerPrefix(
-    normalizeText(value)
+    normalizeProductName(value)
   );
   const source = stripped;
 
@@ -199,54 +218,120 @@ export function parseProductName(value) {
     return createEmptyNameParts();
   }
 
-  const voltageMatch = source.match(/(\d+(?:[.,]\d+)?)\s*[кkК]\s*[вvВV]/);
-  const specPattern =
-    /(\d+)\s*[xх×]\s*(\d+(?:[.,]\d+)?)(?:\s*\+\s*(\d+)\s*[xх×]\s*(\d+(?:[.,]\d+)?))?/i;
-  const specMatch = source.match(specPattern);
+  const voltagePattern =
+    /(?<![\d.,/])(\d+(?:[.,]\d+)?)(?:\s*\/\s*(\d+(?:[.,]\d+)?))?\s*[кk]\s*[вv](?![а-яa-z])/iu;
+  const voltageMatch = source.match(voltagePattern);
+  let specification = findCableSpecification(source);
+  if (!specification) {
+    // В прайсе разделитель после полного пожарного суффикса бывает пропущен.
+    const joined =
+      /нг(?:\s*\([АБВГДСA-D]\))?[-\s]*(?:FRLS|FRHF|LS|HF|FR)(?:[-\s]*LTx)?(?=\d)/giu;
+    const end = [...source.matchAll(joined)][0];
+    if (end) {
+      const offset = end.index + end[0].length;
+      const candidate = findCableSpecification(source.slice(offset));
+      if (candidate?.index === 0)
+        specification = { ...candidate, index: offset };
+    }
+  }
+  if (!specification) {
+    const awg = source.match(/\d+\s*[хx×]\s*\d+\s*[хx×]\s*AWG\s*\d+/iu);
+    if (awg) {
+      const candidate = findCableSpecification(source.slice(awg.index));
+      if (candidate?.index === 0)
+        specification = { ...candidate, index: awg.index };
+    }
+  }
+  const parsingWarnings = specification?.warnings || [];
+  if (
+    specification?.warnings.includes('missing_operand') &&
+    /^\s*\p{L}/u.test(source.slice(specification.index + specification.length))
+  ) {
+    specification = null;
+  }
 
   let mark = source;
   let markFamily = source;
   let cores = null;
   let crossSection = null;
+  let groupCores = null;
+  let conductorConfiguration = null;
   let groundCores = null;
   let groundSection = null;
   let attributes = [];
   let isImplicitSingleCore = false;
 
-  if (specMatch) {
-    const specIndex = specMatch.index ?? source.length;
-    mark = source.slice(0, specIndex).trim();
+  if (specification) {
+    const specIndex = specification.index;
+    const markEnd = source[specIndex - 1] === '(' ? specIndex - 1 : specIndex;
+    mark = source.slice(0, markEnd).replace(voltagePattern, '').trim();
+    const embedded = extractEmbeddedNgAttributes(mark);
+    mark = embedded.mark;
+    attributes = embedded.attributes;
     // Если перед спецификацией нет марки (напр. "SIEMENS 1Х2Х0.32" после
     // отсечения префикса-производителя), используем производителя как марку.
     if (!mark && manufacturer) {
       mark = manufacturer;
     }
     markFamily = normalizeMarkFamily(mark);
-    cores = Number(specMatch[1]);
-    crossSection = normalizeNumber(specMatch[2]);
-    groundCores = specMatch[3] ? Number(specMatch[3]) : null;
-    groundSection = specMatch[4] ? normalizeNumber(specMatch[4]) : null;
+    ({ cores, groupCores, crossSection, groundCores, groundSection } =
+      specification);
+    conductorConfiguration = specification.configuration;
 
-    const tail = normalizeText(source.slice(specIndex + specMatch[0].length));
-    attributes = splitAttributes(tail).filter(
-      (token) => !/^(\d+(?:[.,]\d+)?)\s*[кkК]\s*[вvВV]$/.test(token)
+    const tailResult = extractLeadingConstructionAttributes(
+      normalizeText(
+        source
+          .slice(specIndex + specification.length)
+          .replace(voltagePattern, '')
+      )
     );
+    attributes = [
+      ...attributes,
+      ...(specification.attributes || []),
+      ...tailResult.attributes,
+      ...splitAttributes(tailResult.tail).filter(
+        (token) => !/^(\d+(?:[.,]\d+)?)\s*[кkК]\s*[вvВV]$/.test(token)
+      ),
+    ];
   } else {
     const plainSectionMatch = source.match(
-      /^(.*?)(\d+(?:[.,]\d+)?)(?:\s+([^\d].*))?$/
+      /^(.*?)\s+(\d+(?:[.,]\d+)?)(?:\s+([^\d].*))?$/
     );
 
-    if (plainSectionMatch && isLikelySingleCoreSection(plainSectionMatch[2])) {
+    if (
+      plainSectionMatch &&
+      isSingleCoreMark(plainSectionMatch[1]) &&
+      isLikelySingleCoreSection(plainSectionMatch[2])
+    ) {
       mark = normalizeText(plainSectionMatch[1]);
+      const embedded = extractEmbeddedNgAttributes(mark);
+      mark = embedded.mark;
+      attributes = embedded.attributes;
       markFamily = normalizeMarkFamily(mark);
       cores = 1;
-      crossSection = normalizeNumber(plainSectionMatch[2]);
-      attributes = splitAttributes(plainSectionMatch[3] || '');
+      crossSection = Number(plainSectionMatch[2].replace(',', '.'));
+      attributes = [
+        ...attributes,
+        ...splitAttributes(plainSectionMatch[3] || ''),
+      ];
       isImplicitSingleCore = true;
     } else {
-      mark = source;
+      const embedded = extractEmbeddedNgAttributes(source);
+      mark = embedded.mark;
+      attributes = embedded.attributes;
       markFamily = normalizeMarkFamily(mark);
     }
+  }
+
+  attributes = consolidateNgAttributes(attributes);
+  if (voltageMatch?.[2])
+    attributes.push(`${voltageMatch[1]}/${voltageMatch[2]} кВ`);
+  if (
+    !specification &&
+    !isImplicitSingleCore &&
+    /\d\s*[хx×]\s*(?:\d|AWG)/iu.test(source)
+  ) {
+    parsingWarnings.push('unrecognized_specification');
   }
 
   return {
@@ -255,10 +340,15 @@ export function parseProductName(value) {
     manufacturer,
     cores,
     crossSection,
+    groupCores,
+    conductorConfiguration,
+    parsingWarnings,
     hasGroundCore: Boolean(groundCores && groundSection),
     groundCores,
     groundSection,
-    voltage: voltageMatch ? normalizeNumber(voltageMatch[1]) : null,
+    voltage: voltageMatch
+      ? Number((voltageMatch[2] || voltageMatch[1]).replace(',', '.'))
+      : null,
     attributes,
     isImplicitSingleCore,
   };
@@ -378,14 +468,38 @@ function roundTo(value, precision) {
 }
 
 function normalizeText(value) {
-  return (
-    String(value || '')
-      .replace(/\s+/g, ' ')
-      // Унифицируем оператор умножения в размерах (3x2.5, 3×2.5, 3 х 2.5 → 3х2.5).
-      // Важно: заменяем только между цифрами, чтобы не ломать латинские буквы
-      // в суффиксах вроде «LTx», «нг(А)-LS-LTx».
-      .replace(/(\d)\s*[×xXхХ]\s*(\d)/g, '$1х$2')
-      .trim()
+  return String(value || '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Приводим пожаробезопасные модификации к единому виду во всём названии,
+// независимо от того, стоят они до или после спецификации жил и сечения.
+function normalizeProductName(value) {
+  let source = normalizeNgModificationsInText(normalizeText(value));
+  const spec = findCableSpecification(source);
+  if (spec) {
+    const raw = source.slice(spec.index, spec.index + spec.length);
+    const normalized = raw.replace(
+      /(\d|\))\s*[×xXхХ]\s*(?=\d|\(\s*\d|AWG)/giu,
+      '$1х'
+    );
+    source =
+      source.slice(0, spec.index) +
+      normalized +
+      source.slice(spec.index + spec.length);
+  }
+  return normalizeScreenBeforeNg(source);
+}
+
+// Обозначение экрана «Э» относится к марке, но перед пожаробезопасной
+// модификацией пишется слитно: КВВГЭнг(А)-LS, а не КВВГЭ нг(А)-LS.
+function normalizeScreenBeforeNg(value) {
+  const source = String(value);
+  const specIndex = findCableSpecification(source)?.index ?? source.length;
+  return source.replace(
+    /-?(эф|эа|эм|ээ|э)\s+(?=нг(?:[(-]|\s|$))/giu,
+    (match, token, offset) => (offset < specIndex ? token.toUpperCase() : match)
   );
 }
 
@@ -410,6 +524,9 @@ function createEmptyNameParts() {
     manufacturer: null,
     cores: null,
     crossSection: null,
+    groupCores: null,
+    conductorConfiguration: null,
+    parsingWarnings: [],
     hasGroundCore: false,
     groundCores: null,
     groundSection: null,
@@ -428,18 +545,8 @@ function buildNormalizedProductName(source, parsedName) {
     return source;
   }
 
-  const suffix = parsedName.attributes.length
-    ? ` ${parsedName.attributes.join(' ')}`
-    : '';
-
-  return `${parsedName.mark} 1х${formatSectionValue(parsedName.crossSection)}${suffix}`;
-}
-
-function formatSectionValue(value) {
-  return Number(value).toLocaleString('en-US', {
-    maximumFractionDigits: 3,
-    useGrouping: false,
-  });
+  // Вставляем число жил в исходное название, сохраняя производителя и суффиксы.
+  return source.replace(/\s+(\d+(?:[.,]\d+)?)(?=\s+[^\d].*$|$)/u, ' 1х$1');
 }
 
 function splitAttributes(value) {
@@ -453,25 +560,263 @@ function splitAttributes(value) {
     .split(/\s+/)
     .map((token) => token.trim())
     .filter(Boolean)
-    .map(normalizeNgModification);
+    .flatMap((token) => {
+      const screen = token.match(/^(эф|эа|эм|ээ|э)(?=нг(?:\(|-|$))/iu);
+      if (screen) return [screen[1], token.slice(screen[0].length)];
+      return token;
+    })
+    .map(normalizeNgModification)
+    .map(normalizeConstructionAttribute);
+}
+
+const CONSTRUCTION_ATTRIBUTE_TOKENS = new Map([
+  ['эф', 'ЭФ'],
+  ['эа', 'ЭА'],
+  ['эм', 'ЭМ'],
+  ['ээ', 'ЭЭ'],
+  ['э', 'Э'],
+  ['зэл', 'ЗЭЛ'],
+  ['з', 'З'],
+  ['хл', 'ХЛ'],
+  ['уф', 'УФ'],
+]);
+
+function normalizeConstructionAttribute(token) {
+  const normalized = String(token || '')
+    .trim()
+    .toLowerCase();
+  return CONSTRUCTION_ATTRIBUTE_TOKENS.get(normalized) || token;
 }
 
 // нгLS → нг-LS, нг(А)LSLtx → нг(А)-LS-LTx, нгхл → нг-ХЛ
 function normalizeNgModification(token) {
-  const match = token.match(/^нг(\([^)]*\))?-?(.*)$/i);
+  const match = token.match(/^нг(\([АБВГДСA-D]\))?-?(.*)$/iu);
   if (!match) return token;
+  if (match[2].startsWith('(')) return token;
 
-  const cls = match[1] || '';
+  const cls = normalizeNgClass(match[1]);
   const suffix = match[2] || '';
   if (!suffix) return `нг${cls}`;
 
   return `нг${cls}-${normalizeNgSuffix(suffix)}`;
 }
 
+const NG_SUFFIX_IN_TEXT_SOURCE = 'FRLS|FRHF|FR|LS|HF|LTx|хк\\([^)]*\\)вэ|хл|нд';
+const NG_CLASS_IN_TEXT_SOURCE = '\\([АБВГДСA-D]\\)';
+const NG_MODIFICATION_IN_TEXT_RE = new RegExp(
+  `нг(?:\\s*(${NG_CLASS_IN_TEXT_SOURCE}))?((?:[\\s-]*(?:${NG_SUFFIX_IN_TEXT_SOURCE}))+)?`,
+  'gi'
+);
+const NG_ATTRIBUTE_START_RE = new RegExp(
+  `нг(?:\\s*(${NG_CLASS_IN_TEXT_SOURCE}))?`,
+  'gi'
+);
+const NG_SUFFIX_PREFIX_RE = new RegExp(
+  `^(?:[\\s-]*(?:${NG_SUFFIX_IN_TEXT_SOURCE}))+(?=$|[^A-Za-zА-Яа-яЁё])`,
+  'i'
+);
+
+function normalizeNgModificationsInText(value) {
+  return value.replace(
+    NG_MODIFICATION_IN_TEXT_RE,
+    (match, rawClass, rawSuffix, offset, source) => {
+      const nextCharacter = source[offset + match.length] || '';
+
+      // Не исправляем случайное «нг» внутри обычного слова или неизвестного
+      // обозначения. После распознанной последовательности должна быть граница.
+      if (/[A-Za-zА-Яа-яЁё]/.test(nextCharacter)) {
+        return match;
+      }
+
+      if (!rawClass && !rawSuffix) {
+        return match;
+      }
+
+      const cls = normalizeNgClass(rawClass);
+      const suffix = String(rawSuffix || '').trim();
+      if (!suffix) {
+        return `нг${cls}`;
+      }
+
+      return `нг${cls}-${normalizeNgSuffix(suffix)}`;
+    }
+  );
+}
+
+function normalizeNgClass(value) {
+  return value ? String(value).toUpperCase() : '';
+}
+
+function extractEmbeddedNgAttributes(mark) {
+  for (const match of mark.matchAll(NG_ATTRIBUTE_START_RE)) {
+    const nextCharacter = mark[match.index + match[0].length] || '';
+    const before = mark.slice(0, match.index).trim();
+    const screen = extractScreenAttribute(before);
+    const baseBefore = screen.mark.replace(/[\s-]+$/, '');
+    const rawAfter = mark.slice(match.index + match[0].length);
+    const suffixMatch = rawAfter.match(NG_SUFFIX_PREFIX_RE);
+    const rawClass = match[1];
+    const isStandaloneBareNg =
+      !rawClass && match.index > 0 && /\s/.test(mark[match.index - 1]);
+    const isJoinedLowercaseBareNg =
+      !rawClass && match[0] === 'нг' && !rawAfter.trim();
+
+    if (
+      !baseBefore ||
+      (!rawClass &&
+        !suffixMatch &&
+        !isStandaloneBareNg &&
+        !isJoinedLowercaseBareNg) ||
+      (!rawClass && !suffixMatch && /[A-Za-zА-Яа-яЁё]/.test(nextCharacter))
+    ) {
+      continue;
+    }
+
+    const suffix = suffixMatch?.[0] || '';
+    const modifier = suffix
+      ? `нг${normalizeNgClass(rawClass)}-${normalizeNgSuffix(suffix)}`
+      : `нг${normalizeNgClass(rawClass)}`;
+    const after = rawAfter
+      .slice(suffix.length)
+      .replace(/^[\s-]+/, '')
+      .trim();
+    const attributes = [...screen.attributes, modifier];
+
+    if (after) {
+      attributes.push(...splitAttributes(after));
+    }
+
+    return {
+      mark: baseBefore,
+      attributes,
+    };
+  }
+
+  const standalone =
+    mark.match(/^(.*?)((?:[\s-]+(?:эф|эа|эм|ээ|э|зэл|з|хл|уф))+)[\s-]*$/iu) ||
+    mark.match(/^(.+?)(хл|уф)$/iu);
+  const screen = extractScreenAttribute(standalone ? standalone[1] : mark);
+  return {
+    mark: screen.mark,
+    attributes: [
+      ...screen.attributes,
+      ...(standalone ? splitAttributes(standalone[2].replace(/-/g, ' ')) : []),
+    ],
+  };
+}
+
+function extractScreenAttribute(mark) {
+  const source = String(mark || '').trim();
+
+  // Не принимаем финальную «э» за экран, если перед ней стоит неизвестное
+  // обозначение вида нг(12): это часть марки, а не пожарный суффикс.
+  if (/нг\s*\([^АБВГДСA-D][^)]*\)/iu.test(source)) {
+    return { mark: source, attributes: [] };
+  }
+
+  const match = source.match(/^(.+?)(?:-?(эф|эа|эм|ээ|э))$/iu);
+
+  if (!match || !match[1].trim()) {
+    return { mark: source, attributes: [] };
+  }
+
+  return {
+    mark: match[1].trim(),
+    attributes: [normalizeConstructionAttribute(match[2])],
+  };
+}
+
+function extractLeadingConstructionAttributes(value) {
+  let tail = normalizeText(value);
+  const attributes = [];
+
+  while (tail) {
+    tail = tail.replace(/^[-\s]+/, '').trim();
+
+    const wrapper = tail.match(/^\)+/);
+    if (wrapper) {
+      tail = tail.slice(wrapper[0].length).trim();
+      continue;
+    }
+
+    const match = tail.match(
+      /^(эф|эа|эм|ээ|э|зэл|з)(?=нг(?:\(|-|$)|$|[\s)\-])/iu
+    );
+    if (!match) break;
+
+    attributes.push(normalizeConstructionAttribute(match[1]));
+    tail = tail.slice(match[0].length).trim();
+  }
+
+  return {
+    tail,
+    attributes: [...new Set(attributes)],
+  };
+}
+
+function consolidateNgAttributes(attributes) {
+  const result = [...attributes];
+
+  for (let index = 0; index < result.length; index += 1) {
+    const ngMatch = String(result[index]).match(/^нг(\([^)]*\))?$/i);
+    if (!ngMatch) {
+      continue;
+    }
+
+    for (
+      let continuationIndex = index + 1;
+      continuationIndex < result.length;
+      continuationIndex += 1
+    ) {
+      const continuation = parseNgContinuation(result[continuationIndex]);
+      if (!continuation) {
+        continue;
+      }
+
+      const cls = continuation.cls || normalizeNgClass(ngMatch[1]);
+      result[index] = continuation.suffix
+        ? `нг${cls}-${continuation.suffix}`
+        : `нг${cls}`;
+      result.splice(continuationIndex, 1);
+      break;
+    }
+  }
+
+  return [...new Set(result)];
+}
+
+function parseNgContinuation(value) {
+  const source = String(value || '').trim();
+  const match = source.match(/^(\([АБВГДСA-D]\))?[-\s]*(.*)$/iu);
+  if (!match) {
+    return null;
+  }
+
+  const cls = normalizeNgClass(match[1]);
+  const rawSuffix = match[2] || '';
+  if (!cls && !rawSuffix) {
+    return null;
+  }
+
+  const suffixPattern = new RegExp(
+    `^(?:(?:${NG_SUFFIX_IN_TEXT_SOURCE})(?:[\\s-]*|$))+$`,
+    'i'
+  );
+  if (rawSuffix && !suffixPattern.test(rawSuffix)) {
+    return null;
+  }
+
+  return {
+    cls,
+    suffix: rawSuffix ? normalizeNgSuffix(rawSuffix) : '',
+  };
+}
+
 const NG_SUFFIX_TOKENS = [
   [/^FRLS/i, 'FRLS'],
-  [/^LS/i, 'LS'],
   [/^FRHF/i, 'FRHF'],
+  [/^FR/i, 'FR'],
+  [/^LS/i, 'LS'],
   [/^HF/i, 'HF'],
   [/^LTx/i, 'LTx'],
   [/^хк\([^)]*\)вэ/i, 'ХК(LX)ВЭ'],
@@ -484,8 +829,9 @@ function normalizeNgSuffix(suffix) {
   let rest = suffix;
 
   while (rest) {
-    if (rest[0] === '-') {
-      rest = rest.slice(1);
+    const separator = rest.match(/^[\s-]+/);
+    if (separator) {
+      rest = rest.slice(separator[0].length);
       continue;
     }
 
@@ -510,7 +856,7 @@ function normalizeNgSuffix(suffix) {
 }
 
 function isLikelySingleCoreSection(value) {
-  const normalized = normalizeNumber(value);
+  const normalized = Number(String(value).replace(',', '.'));
 
   if (!normalized) {
     return false;
@@ -518,6 +864,16 @@ function isLikelySingleCoreSection(value) {
 
   // Filters out article-like numeric tails while keeping realistic cable sections.
   return normalized > 0 && normalized <= 1000;
+}
+
+// Без NхS число может быть артикулом, категорией LAN или мощностью нагревателя.
+// Неявную одну жилу допускаем только у известных семейств проводов.
+function isSingleCoreMark(value) {
+  const { mark } = extractEmbeddedNgAttributes(normalizeText(value));
+  if (/^ПуГ?П$/iu.test(mark)) return true;
+  return /^(?:А|АПВ|АПР|АПУВ|БИН|БПВЛМ?|БПВП|БПДО|БФС|МЛП|ПВЛТТ|ПТЛ-\d+|КИМЭП-К|ЛПГРС|ПГРО|ППСРВМ|ПР|РКГМ|ПАЛ|ПВ[134]|ПВАМ?|ПВВ|ПВЖ|ПВКВ|ПУВ|ПГВА|ПУГВ|МГШВ|МГТФ|НВ[134]?|ПСШ|ПВКФ|НВМ|П|ПРКА|ПВПО|ПРТО|ПМСВ|МГ|ТЭСА-ХК|ФТЭХ|H0[57][A-Z\d-]+|HABIA Cable E\d+|МП \d+-\d+|ПЭТВ?-\d+)(?:Э)?$/iu.test(
+    mark
+  );
 }
 
 function isSpecificSourceCategory(value) {
@@ -542,7 +898,7 @@ function isCategoryCompatible(category, family) {
     return false;
   }
 
-  if (categoryKey.includes(familyKey)) {
+  if (getCategoryFamilyKeys(category).includes(familyKey)) {
     return true;
   }
 
@@ -557,6 +913,15 @@ function isCategoryCompatible(category, family) {
   }
 
   return false;
+}
+
+function getCategoryFamilyKeys(category) {
+  const categoryName = normalizeText(category).replace(/^Кабель\s+/i, '');
+
+  return categoryName
+    .split(/[,;/]+/)
+    .map((part) => toComparisonKey(part))
+    .filter(Boolean);
 }
 
 function toComparisonKey(value) {
