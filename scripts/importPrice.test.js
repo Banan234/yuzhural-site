@@ -33,15 +33,17 @@ import {
   formatThresholdSource,
   summarizeSkips,
   summarizeByCategory,
+  assertWorksheetWithinRowLimit,
+  MAX_PRICE_WORKSHEET_ROWS,
+} from './importPrice.js';
+import {
+  assertPriceBufferWithinLimit,
+  DEFAULT_PRICE_DOWNLOAD_MAX_BYTES,
   extractSpreadsheetUrlFromHtml,
   fetchPriceWithTimeout,
   parsePriceDownloadMaxBytes,
-  DEFAULT_PRICE_DOWNLOAD_MAX_BYTES,
   resolveRemotePriceUrl,
-  assertWorksheetWithinRowLimit,
-  MAX_PRICE_WORKSHEET_ROWS,
-  assertPriceBufferWithinLimit,
-} from './importPrice.js';
+} from './lib/priceSource.js';
 import { resolveProductDisposition } from './lib/importDisposition.js';
 
 describe('resolveProductDisposition', () => {
@@ -525,6 +527,24 @@ describe('remote price source resolution', () => {
     expect(requestCount).toBe(2);
   });
 
+  it('разрешает относительную Excel-ссылку относительно конечной страницы после редиректа', async () => {
+    let requestCount = 0;
+    await expect(
+      resolveRemotePriceUrl('https://example.test/price/', 1000, {
+        fetchImpl: async () => {
+          requestCount += 1;
+          if (requestCount === 1) {
+            return new Response(null, {
+              status: 302,
+              headers: { location: '/published/current/' },
+            });
+          }
+          return new Response('<a href="today.xls">Скачать прайс</a>');
+        },
+      })
+    ).resolves.toBe('https://example.test/published/current/today.xls');
+  });
+
   it('падает с понятной ошибкой, если на странице нет Excel-ссылки', async () => {
     await expect(
       resolveRemotePriceUrl('https://example.test/price/', 1000, {
@@ -942,11 +962,19 @@ describe('normalizeImportHistory / buildHistorySnapshot', () => {
       generatedAt: '2026-01-01',
       sourceFile: 'data/price.xls',
       sourceUrl: 'https://example.test/price.xls',
+      source: {
+        kind: 'remote',
+        requestedUrl: 'https://example.test/price.xls',
+        downloadUrl: 'https://example.test/price.xls',
+        sha256: 'a'.repeat(64),
+        sizeBytes: 100,
+      },
     });
 
     expect(snapshot).toMatchObject({
       sourceFile: 'data/price.xls',
       sourceUrl: 'https://example.test/price.xls',
+      source: { sha256: 'a'.repeat(64), sizeBytes: 100 },
     });
   });
 

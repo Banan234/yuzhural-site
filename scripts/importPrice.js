@@ -6,12 +6,8 @@ import { randomUUID } from 'crypto';
 import dotenv from 'dotenv';
 import { fileURLToPath, pathToFileURL } from 'url';
 import {
-  buildCategoryMap,
-  createEmptyImportResult,
   normalizeImportedProduct,
-  parseCombinedCell,
   parseProductName,
-  resolveCategory,
 } from './lib/priceParser.js';
 import {
   loadTemplate as loadPrerenderTemplate,
@@ -20,7 +16,6 @@ import {
 } from './prerender.js';
 import {
   classifyProduct,
-  decodeCable,
   isCableCatalogProduct,
 } from './lib/catalogClassifier.js';
 import {
@@ -41,10 +36,33 @@ import {
   normalizePublishGuardConfig,
 } from './lib/importPublishGuard.js';
 import { createBackup } from './backupData.js';
-import { resolveProductDisposition } from './lib/importDisposition.js';
 import { validateNormalizedProducts } from './lib/importDiagnostics.js';
 import { commitArtifactBatch } from './lib/artifactTransaction.js';
 import { acquirePriceImportLock } from './lib/importLock.js';
+import {
+  acquirePriceSource,
+  readLocalPriceFile,
+  resolvePriceSourceSelection,
+} from './lib/priceSource.js';
+import {
+  classifyEligibleProducts,
+  detectSchema,
+  extractProducts,
+} from './lib/priceCatalogPreparation.js';
+export {
+  buildBookReadingOrder,
+  classifyEligibleProducts,
+  createProductRecord,
+  detectSchema,
+  extractProducts,
+  isCategoryRow,
+  isHeaderRow,
+  isServiceRow,
+  looksLikeCategoryHeading,
+  parsePageRow,
+  pickPageCells,
+  splitRowsIntoBlocks,
+} from './lib/priceCatalogPreparation.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -57,20 +75,11 @@ const positionalArgs = cliArgs.filter((arg) => !arg.startsWith('--'));
 const isDryRun = cliFlags.has('--dry-run');
 const isPublishGuardOverride = cliFlags.has('--override-publish-guard');
 
-const URL_RE = /^https?:\/\//i;
-const SPREADSHEET_URL_RE = /\.(xls|xlsx)(?:[?#].*)?$/i;
-const positionalSource = positionalArgs[0] || '';
-// Источник прайса: явный URL/путь в argv → переменные окружения PRICE_URL /
-// PRICE_PAGE_URL → дефолтный data/price.xls. Если передана HTML-страница
-// прайса, импортёр сам ищет на ней ссылку на .xls/.xlsx и скачивает файл.
-const remoteSourceUrl = URL_RE.test(positionalSource)
-  ? positionalSource
-  : positionalSource
-    ? ''
-    : process.env.PRICE_URL || process.env.PRICE_PAGE_URL || '';
-const inputFile =
-  (remoteSourceUrl ? '' : positionalSource) ||
-  path.join(projectRoot, 'data', 'price.xls');
+const { remoteSourceUrl, inputFile } = resolvePriceSourceSelection({
+  positionalSource: positionalArgs[0] || '',
+  env: process.env,
+  defaultPath: path.join(projectRoot, 'data', 'price.xls'),
+});
 const outputFile = path.join(projectRoot, 'data', 'products.json');
 const reportFile = path.join(projectRoot, 'data', 'import-report.json');
 const reportHtmlFile = path.join(projectRoot, 'data', 'import-report.html');
@@ -94,8 +103,6 @@ const catalogCategoriesFile = path.join(
   'shared',
   'catalogCategories.json'
 );
-
-const REQUIRED_HEADER_TOKENS = ['наименование', 'ед.изм', 'цена', 'остаток'];
 
 const DEFAULT_IMPORT_CONFIG = {
   suspiciousPriceThresholds: {},
@@ -281,10 +288,6 @@ function resolveProjectPath(value) {
 function getImportHistoryFile(config) {
   return resolveProjectPath(config.suspiciousPriceStats.historyFile);
 }
-const PAGE_COLUMNS = {
-  left: [0, 1, 2, 3],
-  right: [5, 6, 7, 8],
-};
 export const MAX_PRICE_WORKSHEET_ROWS = 100_000;
 
 export function assertWorksheetWithinRowLimit(
@@ -337,379 +340,6 @@ async function loadWorkbookRows({ sourceBuffer = null } = {}) {
   }
 }
 
-async function readLocalPriceFile(filePath) {
-  const handle = await fs.open(filePath, 'r');
-  try {
-    const stat = await handle.stat();
-    assertPriceBufferWithinLimit(stat.size, filePath);
-    const buffer = await handle.readFile();
-    assertPriceBufferWithinLimit(buffer.length, filePath);
-    return buffer;
-  } finally {
-    await handle.close();
-  }
-}
-
-export function detectSchema(rows) {
-  const headerRowIndexes = [];
-  const detectedHeaders = new Set();
-
-  rows.forEach((row, index) => {
-    if (!isHeaderRow(row)) return;
-    headerRowIndexes.push(index);
-    for (const cell of row) {
-      const value = String(cell ?? '')
-        .trim()
-        .toLowerCase();
-      if (!value) continue;
-      for (const token of REQUIRED_HEADER_TOKENS) {
-        if (value.includes(token)) {
-          detectedHeaders.add(token);
-        }
-      }
-    }
-  });
-
-  const missingHeaders = REQUIRED_HEADER_TOKENS.filter(
-    (token) => !detectedHeaders.has(token)
-  );
-
-  return {
-    headerRowsFound: headerRowIndexes.length,
-    detectedHeaders: [...detectedHeaders].sort(),
-    missingHeaders,
-    pageColumns: PAGE_COLUMNS,
-    pagePattern:
-      'left=cols[0,1,2,3] / right=cols[5,6,7,8]; чтение «по книге»: верх→правый,левый; низ→левый,правый',
-  };
-}
-
-export function extractProducts(rows) {
-  const result = createEmptyImportResult();
-  result.totalRows = rows.length;
-  result.categoriesSeen = new Set();
-
-  const orderedPages = buildBookReadingOrder(splitRowsIntoBlocks(rows));
-
-  for (const page of orderedPages) {
-    let currentCategory = 'Без категории';
-
-    for (const item of page.rows) {
-      const { row, rowIndex } = item;
-      const pageCells = pickPageCells(row, page.side);
-      const record = parsePageRow(pageCells, row, currentCategory, rowIndex);
-
-      if (!record) {
-        continue;
-      }
-
-      if (record.type === 'category') {
-        currentCategory = record.value;
-        result.categoriesSeen.add(currentCategory);
-        continue;
-      }
-
-      if (record.type === 'header' || record.type === 'service') {
-        continue;
-      }
-
-      if (record.type === 'skip' || record.type === 'invalid') {
-        result.skippedRows.push(record.value);
-        continue;
-      }
-
-      if (record.type === 'excluded') {
-        result.excludedNonCable += 1;
-        continue;
-      }
-
-      result.products.push(record.value);
-      if (record.review) {
-        result.reviewRows.push(record.review);
-      }
-    }
-  }
-
-  return result;
-}
-
-export function splitRowsIntoBlocks(rows) {
-  const headerIndexes = [];
-
-  rows.forEach((row, index) => {
-    if (isHeaderRow(row)) {
-      headerIndexes.push(index);
-    }
-  });
-
-  return headerIndexes.map((startIndex, blockIndex) => {
-    const endIndex = headerIndexes[blockIndex + 1] ?? rows.length;
-    const blockRows = [];
-    for (let i = startIndex + 1; i < endIndex; i += 1) {
-      blockRows.push({ row: rows[i], rowIndex: i });
-    }
-
-    return {
-      index: blockIndex,
-      rows: blockRows,
-    };
-  });
-}
-
-export function buildBookReadingOrder(blocks) {
-  const orderedPages = [];
-
-  for (let index = 0; index < blocks.length; index += 2) {
-    const topBlock = blocks[index];
-    const bottomBlock = blocks[index + 1];
-
-    if (topBlock) {
-      orderedPages.push({
-        blockIndex: topBlock.index,
-        side: 'right',
-        rows: topBlock.rows,
-      });
-      orderedPages.push({
-        blockIndex: topBlock.index,
-        side: 'left',
-        rows: topBlock.rows,
-      });
-    }
-
-    if (bottomBlock) {
-      orderedPages.push({
-        blockIndex: bottomBlock.index,
-        side: 'left',
-        rows: bottomBlock.rows,
-      });
-      orderedPages.push({
-        blockIndex: bottomBlock.index,
-        side: 'right',
-        rows: bottomBlock.rows,
-      });
-    }
-  }
-
-  return orderedPages;
-}
-
-export function pickPageCells(row, side) {
-  const indexes = PAGE_COLUMNS[side];
-
-  return indexes.map((columnIndex) => String(row?.[columnIndex] ?? '').trim());
-}
-
-export function parsePageRow(cells, sourceRow, category, rowIndex = null) {
-  const filledCells = cells.filter(Boolean);
-
-  if (filledCells.length === 0) {
-    return null;
-  }
-
-  if (isHeaderRow(cells)) {
-    return { type: 'header' };
-  }
-
-  if (isServiceRow(cells)) {
-    return { type: 'service' };
-  }
-
-  if (filledCells.length === 1) {
-    const singleValue = filledCells[0];
-
-    const parsed = parseCombinedCell(singleValue);
-
-    if (parsed) {
-      return createProductRecord(parsed, category, sourceRow, rowIndex);
-    }
-
-    if (looksLikeCategoryHeading(singleValue)) {
-      return {
-        type: 'category',
-        value: singleValue,
-      };
-    }
-
-    return {
-      type: 'invalid',
-      value: {
-        rowIndex,
-        row: sourceRow,
-        category,
-        reason: 'Не удалось распознать товарную строку из одной ячейки',
-      },
-    };
-  }
-
-  return createProductRecord(
-    {
-      name: cells[0],
-      unit: cells[1] || '',
-      price: cells[2] || 0,
-      stock: cells[3] || 0,
-    },
-    category,
-    sourceRow,
-    rowIndex
-  );
-}
-
-export function createProductRecord(
-  product,
-  category,
-  sourceRow = null,
-  rowIndex = null
-) {
-  const sourceName = product.sourceName || product.name;
-  if (!String(sourceName ?? '').trim()) {
-    return {
-      type: 'skip',
-      value: {
-        rowIndex,
-        row: sourceRow,
-        category,
-        reason: 'Пустое наименование после нормализации',
-      },
-    };
-  }
-  const disposition = resolveProductDisposition({
-    name: sourceName,
-    sourceCategory: category,
-    unit: product.unit,
-  });
-  if (disposition.status === 'exclude') {
-    return { type: 'excluded' };
-  }
-
-  const normalizedProduct = applyPriceOverride(
-    normalizeImportedProduct({
-      ...product,
-      category,
-    })
-  );
-  const normalized = {
-    ...normalizedProduct,
-    sourceRowIndex: rowIndex,
-    importDisposition: disposition.status,
-    dispositionReason: disposition.reason,
-    dispositionEvidence: disposition.evidence,
-  };
-
-  if (!normalized.name) {
-    return {
-      type: 'skip',
-      value: {
-        rowIndex,
-        row: sourceRow,
-        category,
-        reason: 'Пустое наименование после нормализации',
-      },
-    };
-  }
-
-  if (
-    normalized.price <= 0 &&
-    normalized.stock <= 0 &&
-    isCategoryRow(normalized.name)
-  ) {
-    return {
-      type: 'category',
-      value: normalized.name,
-    };
-  }
-
-  if (normalized.stock <= 0) {
-    return {
-      type: 'skip',
-      value: {
-        rowIndex,
-        row: sourceRow,
-        category,
-        reason: 'Нулевой или отрицательный остаток',
-        product: normalized.name,
-        price: normalized.price,
-        stock: normalized.stock,
-      },
-    };
-  }
-
-  if (normalized.price <= 0) {
-    return {
-      type: 'skip',
-      value: {
-        rowIndex,
-        row: sourceRow,
-        category,
-        reason: 'Отсутствует цена',
-        product: normalized.name,
-        stock: normalized.stock,
-      },
-    };
-  }
-
-  return {
-    type: 'product',
-    value: normalized,
-    ...(disposition.status === 'review' ||
-    normalized.manufacturerMatch?.ambiguous
-      ? {
-          review: {
-            rowIndex,
-            row: sourceRow,
-            category,
-            product: normalized.name,
-            reason:
-              [
-                disposition.status === 'review'
-                  ? `Требуется проверить решение импорта: ${disposition.reason} (${disposition.evidence})`
-                  : null,
-                normalized.manufacturerMatch?.ambiguous
-                  ? 'В названии найдено несколько возможных производителей'
-                  : null,
-              ]
-                .filter(Boolean)
-                .join('; ') + '; позиция сохранена, требуется проверка',
-          },
-        }
-      : {}),
-  };
-}
-
-function classifyEligibleProducts(products) {
-  const categoryByFamily = buildCategoryMap(products);
-  const classifiedProducts = products.map((product) => {
-    const resolved = {
-      ...product,
-      category: resolveCategory(product, categoryByFamily),
-    };
-
-    return {
-      ...resolved,
-      ...classifyProduct(resolved),
-      cableDecoded: decodeCable(resolved.mark),
-    };
-  });
-
-  const conflicts = classifiedProducts.filter(
-    (product) => !isCableCatalogProduct(product)
-  );
-  if (conflicts.length > 0) {
-    const examples = conflicts
-      .slice(0, 10)
-      .map(
-        (product) =>
-          `${product.name} [${product.sourceCategory || 'Без категории'}]`
-      )
-      .join('; ');
-    throw new Error(
-      `Классификатор вернул некабельные позиции после решения импорта (${conflicts.length}). ` +
-        `Расширь правила importDisposition. Примеры: ${examples}`
-    );
-  }
-
-  return classifiedProducts;
-}
-
 export function summarizeManufacturers(products = []) {
   const counts = new Map();
   const positions = new Map();
@@ -740,72 +370,6 @@ export function summarizeManufacturers(products = []) {
     positions: Object.fromEntries(positions),
     confidence: Object.fromEntries(confidence),
   };
-}
-
-export function isHeaderRow(cells) {
-  const joined = cells
-    .map((cell) => String(cell ?? ''))
-    .join(' ')
-    .toLowerCase();
-
-  return (
-    joined.includes('наименование') ||
-    joined.includes('ед.изм') ||
-    (joined.includes('цена') && joined.includes('остаток'))
-  );
-}
-
-export function isCategoryRow(value) {
-  const normalized = value.trim();
-
-  if (!normalized) {
-    return false;
-  }
-
-  if (/\d/.test(normalized)) {
-    return false;
-  }
-
-  return normalized.length > 2;
-}
-
-// Эвристика для подзаголовков внутри страницы, когда parseCombinedCell
-// не смог распознать товар. Разрешаем цифры (например, «Кабель КВПЭфВП-5е»),
-// но отсекаем мусор: слишком короткое, без букв, одни числа.
-export function looksLikeCategoryHeading(value) {
-  const normalized = String(value || '').trim();
-
-  if (normalized.length < 3) {
-    return false;
-  }
-
-  const hasLetters = /[A-Za-zА-Яа-яЁё]/.test(normalized);
-  if (!hasLetters) {
-    return false;
-  }
-
-  // Отфильтровываем строки-хвосты прайса (ИНН, телефон и т.п.)
-  if (isServiceRow([normalized])) {
-    return false;
-  }
-
-  return true;
-}
-
-export function isServiceRow(cells) {
-  const joined = cells.join(' ').toLowerCase();
-
-  return (
-    joined.includes('ооо') ||
-    joined.includes('инн') ||
-    joined.includes('адрес') ||
-    joined.includes('телефон') ||
-    joined.includes('e-mail') ||
-    joined.includes('р/с') ||
-    joined.includes('к/с') ||
-    joined.includes('прайс-лист') ||
-    joined.includes('цены действительны')
-  );
 }
 
 async function writeFileAtomic(filePath, data, { mode } = {}) {
@@ -1265,7 +829,7 @@ export function parseImportHistory(raw) {
 
 export function buildHistorySnapshot(
   products,
-  { generatedAt, sourceFile, sourceUrl = null }
+  { generatedAt, sourceFile, sourceUrl = null, source = null }
 ) {
   const unitPrices = {};
 
@@ -1292,6 +856,7 @@ export function buildHistorySnapshot(
     generatedAt,
     sourceFile,
     ...(sourceUrl ? { sourceUrl } : {}),
+    ...(source ? { source } : {}),
     productsImported: products.length,
     unitPrices,
   };
@@ -1987,6 +1552,17 @@ function buildReportHtml(report) {
     report.priceAlertPercent || PRICE_JUMP_ALERT_PERCENT
   );
   const sourceFileName = path.basename(report.sourceFile || inputFile);
+  const sourceMetadata = report.source || {};
+  const sourceReference =
+    sourceMetadata.downloadUrl ||
+    sourceMetadata.requestedUrl ||
+    report.sourceUrl ||
+    report.sourceFile ||
+    inputFile;
+  const sourceSize = Number.isFinite(Number(sourceMetadata.sizeBytes))
+    ? `${formatNumber(sourceMetadata.sizeBytes)} байт`
+    : 'неизвестен';
+  const sourceFingerprint = sourceMetadata.sha256 || 'не рассчитана';
   const categoryRows = Object.entries(report.productsByCategory || {}).map(
     ([category, count]) => ({ category, count })
   );
@@ -2106,6 +1682,9 @@ function buildReportHtml(report) {
         Сформирован: ${formatReportDate(report.generatedAt)} ·
         Источник: <span title="${escapeHtml(report.sourceFile)}">${escapeHtml(sourceFileName)}</span> ·
         JSON: ${escapeHtml(path.relative(projectRoot, reportFile))}
+      </p>
+      <p class="panel-note">
+        Файл источника: ${escapeHtml(sourceReference)} · Размер: ${escapeHtml(sourceSize)} · SHA-256: <code>${escapeHtml(sourceFingerprint)}</code>
       </p>
     </section>
 
@@ -2252,513 +1831,22 @@ function buildReportHtml(report) {
 </html>`;
 }
 
-const PRICE_DOWNLOAD_TIMEOUT_MS =
-  Number(process.env.PRICE_DOWNLOAD_TIMEOUT_MS) || 60_000;
-const PRICE_DOWNLOAD_RETRIES = Number(process.env.PRICE_DOWNLOAD_RETRIES) || 3;
-const PRICE_SOURCE_PAGE_MAX_BYTES = 2 * 1024 * 1024;
-const PRICE_SOURCE_MAX_REDIRECTS = 5;
-export const DEFAULT_PRICE_DOWNLOAD_MAX_BYTES = 50 * 1024 * 1024;
-
-class PriceDownloadError extends Error {
-  constructor(message, { retryable = true } = {}) {
-    super(message);
-    this.name = 'PriceDownloadError';
-    this.retryable = retryable;
-  }
-}
-
-function safeRemoteUrlLabel(value) {
-  try {
-    const url = new URL(value);
-    url.username = '';
-    url.password = '';
-    if (url.search) url.search = '?redacted';
-    url.hash = '';
-    return url.href;
-  } catch {
-    return '[invalid URL]';
-  }
-}
-
-export function parsePriceDownloadMaxBytes(value) {
-  if (value == null || value === '') {
-    return DEFAULT_PRICE_DOWNLOAD_MAX_BYTES;
-  }
-
-  const parsed = Number(value);
-  if (!Number.isFinite(parsed) || parsed <= 0) {
-    return DEFAULT_PRICE_DOWNLOAD_MAX_BYTES;
-  }
-
-  return Math.floor(parsed);
-}
-
-const PRICE_DOWNLOAD_MAX_BYTES = parsePriceDownloadMaxBytes(
-  process.env.PRICE_DOWNLOAD_MAX_BYTES
-);
-
-function formatBytes(value) {
-  if (!Number.isFinite(value)) return '0 Б';
-  if (value >= 1024 * 1024) {
-    return `${(value / (1024 * 1024)).toFixed(1)} МБ`;
-  }
-  if (value >= 1024) {
-    return `${(value / 1024).toFixed(1)} КБ`;
-  }
-  return `${value} Б`;
-}
-
-function createPriceDownloadLimitError(url, actualBytes, maxBytes, source) {
-  return new PriceDownloadError(
-    `Прайс по URL ${safeRemoteUrlLabel(url)} слишком большой: ${source} ${formatBytes(
-      actualBytes
-    )}, лимит ${formatBytes(
-      maxBytes
-    )}. Увеличь PRICE_DOWNLOAD_MAX_BYTES, если файл ожидаемо больше.`,
-    { retryable: false }
-  );
-}
-
-export function assertPriceBufferWithinLimit(
-  byteLength,
-  source,
-  maxBytes = PRICE_DOWNLOAD_MAX_BYTES
-) {
-  if (byteLength > maxBytes) {
-    throw createPriceDownloadLimitError(
-      source,
-      byteLength,
-      maxBytes,
-      'размер файла'
-    );
-  }
-}
-
-function isSpreadsheetUrl(url) {
-  if (!url) return false;
-  try {
-    return SPREADSHEET_URL_RE.test(new URL(url).pathname || '');
-  } catch {
-    return SPREADSHEET_URL_RE.test(String(url));
-  }
-}
-
-function normalizeRemoteUrl(
-  value,
-  trustedSourceUrl,
-  { allowHttpsUpgrade = true } = {}
-) {
-  let url;
-  let trusted;
-  try {
-    url = new URL(value);
-    trusted = new URL(trustedSourceUrl);
-  } catch {
-    throw new PriceDownloadError('Некорректный URL источника прайса', {
-      retryable: false,
-    });
-  }
-
-  if (
-    !['http:', 'https:'].includes(url.protocol) ||
-    url.username ||
-    url.password
-  ) {
-    throw new PriceDownloadError(
-      `Недопустимый URL источника прайса: ${safeRemoteUrlLabel(url.href)}`,
-      { retryable: false }
-    );
-  }
-
-  const sameHost =
-    url.hostname.toLowerCase() === trusted.hostname.toLowerCase();
-  const sameOrigin = url.origin === trusted.origin;
-  const upgradesToHttps =
-    allowHttpsUpgrade &&
-    trusted.protocol === 'http:' &&
-    url.protocol === 'https:' &&
-    !trusted.port &&
-    !url.port;
-  if (!sameHost || (!sameOrigin && !upgradesToHttps)) {
-    throw new PriceDownloadError(
-      `Ссылка прайса должна оставаться на исходном хосте (${trusted.host}): ${safeRemoteUrlLabel(url.href)}`,
-      { retryable: false }
-    );
-  }
-
-  if (trusted.protocol === 'https:' && url.protocol !== 'https:') {
-    throw new PriceDownloadError(
-      `Запрещено понижать HTTPS-соединение источника прайса: ${safeRemoteUrlLabel(url.href)}`,
-      { retryable: false }
-    );
-  }
-
-  return url;
-}
-
-async function fetchPriceSourceResponse(
-  url,
-  signal,
-  { fetchImpl = fetch, trustedSourceUrl = url } = {}
-) {
-  let currentUrl = normalizeRemoteUrl(url, trustedSourceUrl).href;
-
-  for (let redirects = 0; ; redirects += 1) {
-    const response = await fetchImpl(currentUrl, {
-      signal,
-      redirect: 'manual',
-    });
-    if (![301, 302, 303, 307, 308].includes(response.status)) {
-      return response;
-    }
-    const location = response.headers.get('location');
-    await response.body?.cancel().catch(() => {});
-    if (redirects >= PRICE_SOURCE_MAX_REDIRECTS) {
-      throw new PriceDownloadError(
-        'Слишком много перенаправлений источника прайса',
-        {
-          retryable: false,
-        }
-      );
-    }
-
-    if (!location) {
-      throw new PriceDownloadError(
-        'Редирект источника прайса без заголовка Location',
-        {
-          retryable: false,
-        }
-      );
-    }
-    try {
-      currentUrl = normalizeRemoteUrl(
-        new URL(location, currentUrl).href,
-        trustedSourceUrl
-      ).href;
-    } catch (error) {
-      if (error instanceof PriceDownloadError) throw error;
-      throw new PriceDownloadError(
-        `Некорректный Location у редиректа источника прайса: ${safeRemoteUrlLabel(location)}`,
-        { retryable: false }
-      );
-    }
-  }
-}
-
-function decodeHtmlAttribute(value) {
-  return String(value || '')
-    .replace(/&amp;/gi, '&')
-    .replace(/&quot;/gi, '"')
-    .replace(/&#39;|&apos;/gi, "'")
-    .replace(/&lt;/gi, '<')
-    .replace(/&gt;/gi, '>');
-}
-
-export function extractSpreadsheetUrlFromHtml(
-  html,
-  baseUrl,
-  trustedSourceUrl = null
-) {
-  const hrefRe = /href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
-  const candidates = [];
-  let match;
-
-  while ((match = hrefRe.exec(html))) {
-    const rawHref = decodeHtmlAttribute(match[1] || match[2] || match[3] || '');
-    if (!rawHref) continue;
-    if (
-      rawHref.startsWith('#') ||
-      rawHref.startsWith('javascript:') ||
-      rawHref.startsWith('mailto:') ||
-      rawHref.startsWith('tel:')
-    ) {
-      continue;
-    }
-
-    let resolvedUrl;
-    try {
-      resolvedUrl = new URL(rawHref, baseUrl).toString();
-    } catch {
-      continue;
-    }
-
-    if (!isSpreadsheetUrl(resolvedUrl)) {
-      continue;
-    }
-    if (trustedSourceUrl) {
-      try {
-        normalizeRemoteUrl(resolvedUrl, trustedSourceUrl);
-      } catch {
-        continue;
-      }
-    }
-
-    const snippet = html
-      .slice(
-        Math.max(0, match.index - 160),
-        match.index + match[0].length + 160
-      )
-      .toLowerCase();
-    const hrefLower = rawHref.toLowerCase();
-    let score = 100;
-
-    if (snippet.includes('скач')) score += 25;
-    if (snippet.includes('прайс')) score += 20;
-    if (snippet.includes('price')) score += 15;
-    if (hrefLower.includes('price') || hrefLower.includes('pric')) score += 10;
-
-    candidates.push({ url: resolvedUrl, score });
-  }
-
-  candidates.sort((left, right) => right.score - left.score);
-  return candidates[0]?.url || '';
-}
-
-async function readResponseBodyWithLimit(response, url, maxBytes, controller) {
-  if (!response.body) {
-    return Buffer.alloc(0);
-  }
-
-  const reader = response.body.getReader();
-  const chunks = [];
-  let totalBytes = 0;
-
-  try {
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-
-      totalBytes += value.byteLength;
-      if (totalBytes > maxBytes) {
-        controller.abort(
-          createPriceDownloadLimitError(url, totalBytes, maxBytes, 'скачано')
-        );
-        throw createPriceDownloadLimitError(
-          url,
-          totalBytes,
-          maxBytes,
-          'скачано'
-        );
-      }
-
-      chunks.push(Buffer.from(value));
-    }
-  } finally {
-    reader.releaseLock();
-  }
-
-  return Buffer.concat(chunks, totalBytes);
-}
-
-async function fetchRemoteTextWithTimeout(
-  url,
-  timeoutMs,
-  { fetchImpl = fetch, maxBytes = PRICE_SOURCE_PAGE_MAX_BYTES } = {}
-) {
-  const controller = new AbortController();
-  const timer = setTimeout(
-    () => controller.abort(new Error(`timeout ${timeoutMs}ms`)),
-    timeoutMs
-  );
-  try {
-    const response = await fetchPriceSourceResponse(url, controller.signal, {
-      fetchImpl,
-    });
-    if (!response.ok) {
-      throw new Error(
-        `Не удалось открыть страницу ${safeRemoteUrlLabel(url)}: HTTP ${response.status}`
-      );
-    }
-
-    const contentLengthHeader = response.headers.get('content-length');
-    const contentLength = Number(contentLengthHeader);
-    if (
-      contentLengthHeader &&
-      Number.isFinite(contentLength) &&
-      contentLength > maxBytes
-    ) {
-      throw createPriceDownloadLimitError(
-        url,
-        contentLength,
-        maxBytes,
-        'Content-Length'
-      );
-    }
-
-    const body = await readResponseBodyWithLimit(
-      response,
-      url,
-      maxBytes,
-      controller
-    );
-    const text = body.toString('utf8');
-    if (!text.trim()) {
-      throw new PriceDownloadError(
-        `Страница прайса пустая: ${safeRemoteUrlLabel(url)}`,
-        {
-          retryable: false,
-        }
-      );
-    }
-
-    return text;
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-export async function fetchPriceWithTimeout(
-  url,
-  timeoutMs,
-  { maxBytes = PRICE_DOWNLOAD_MAX_BYTES, fetchImpl = fetch } = {}
-) {
-  const controller = new AbortController();
-  const timer = setTimeout(
-    () => controller.abort(new Error(`timeout ${timeoutMs}ms`)),
-    timeoutMs
-  );
-  try {
-    const response = await fetchPriceSourceResponse(url, controller.signal, {
-      fetchImpl,
-    });
-    if (!response.ok) {
-      throw new Error(
-        `Не удалось скачать прайс по URL ${safeRemoteUrlLabel(url)}: HTTP ${response.status}`
-      );
-    }
-
-    const contentLengthHeader = response.headers.get('content-length');
-    if (contentLengthHeader) {
-      const contentLength = Number(contentLengthHeader);
-      if (Number.isFinite(contentLength) && contentLength > maxBytes) {
-        throw createPriceDownloadLimitError(
-          url,
-          contentLength,
-          maxBytes,
-          'Content-Length'
-        );
-      }
-    }
-
-    const buffer = await readResponseBodyWithLimit(
-      response,
-      url,
-      maxBytes,
-      controller
-    );
-    if (buffer.length === 0) {
-      throw new PriceDownloadError(
-        `Скачанный файл пустой: ${safeRemoteUrlLabel(url)}`,
-        {
-          retryable: false,
-        }
-      );
-    }
-
-    return buffer;
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-function isRetryableHttpError(error) {
-  if (typeof error?.retryable === 'boolean') {
-    return error.retryable;
-  }
-  // Network errors / timeouts ретраим всегда; HTTP ретраим только 5xx и 429.
-  const httpMatch = /HTTP (\d{3})/.exec(error?.message || '');
-  if (!httpMatch) return true;
-  const status = Number(httpMatch[1]);
-  return status >= 500 || status === 429;
-}
-
-export async function resolveRemotePriceUrl(
-  sourceUrl,
-  timeoutMs,
-  { fetchImpl = fetch } = {}
-) {
-  if (!sourceUrl) {
-    throw new PriceDownloadError('Не задан URL удалённого прайса', {
-      retryable: false,
-    });
-  }
-
-  normalizeRemoteUrl(sourceUrl, sourceUrl);
-
-  if (isSpreadsheetUrl(sourceUrl)) {
-    return new URL(sourceUrl).href;
-  }
-
-  const html = await fetchRemoteTextWithTimeout(sourceUrl, timeoutMs, {
-    fetchImpl,
-  });
-  const spreadsheetUrl = extractSpreadsheetUrlFromHtml(
-    html,
-    sourceUrl,
-    sourceUrl
-  );
-  if (!spreadsheetUrl) {
-    throw new PriceDownloadError(
-      `На странице ${safeRemoteUrlLabel(sourceUrl)} не найдена ссылка на .xls/.xlsx прайс`,
-      { retryable: false }
-    );
-  }
-
-  return spreadsheetUrl;
-}
-
-async function downloadPriceFile() {
-  const downloadUrl = await resolveRemotePriceUrl(
-    remoteSourceUrl,
-    PRICE_DOWNLOAD_TIMEOUT_MS
-  );
-  console.log(
-    `Скачивание прайса: ${safeRemoteUrlLabel(downloadUrl)} (источник ${safeRemoteUrlLabel(remoteSourceUrl)}, лимит ${formatBytes(
-      PRICE_DOWNLOAD_MAX_BYTES
-    )})`
-  );
-  let buffer;
-  let lastError;
-  for (let attempt = 1; attempt <= PRICE_DOWNLOAD_RETRIES; attempt += 1) {
-    try {
-      buffer = await fetchPriceWithTimeout(
-        downloadUrl,
-        PRICE_DOWNLOAD_TIMEOUT_MS
-      );
-      break;
-    } catch (error) {
-      lastError = error;
-      if (attempt === PRICE_DOWNLOAD_RETRIES || !isRetryableHttpError(error)) {
-        throw error;
-      }
-      const backoffMs = 1000 * 2 ** (attempt - 1);
-      console.warn(
-        `Попытка ${attempt}/${PRICE_DOWNLOAD_RETRIES} провалена (${error.message}). Ретрай через ${backoffMs} мс.`
-      );
-      await new Promise((resolve) => setTimeout(resolve, backoffMs));
-    }
-  }
-  if (!buffer) {
-    throw lastError || new Error('Не удалось скачать прайс');
-  }
-  console.log(
-    `Скачано ${safeRemoteUrlLabel(downloadUrl)} (${(buffer.length / 1024).toFixed(1)} КБ)`
-  );
-  return buffer;
-}
-
 async function main() {
-  let downloadedPriceBuffer = null;
-  if (remoteSourceUrl) {
-    downloadedPriceBuffer = await downloadPriceFile();
-  }
-  const sourcePriceBuffer =
-    downloadedPriceBuffer || (await readLocalPriceFile(inputFile));
-  console.log(`Чтение прайса: ${inputFile}`);
+  const priceSource = await acquirePriceSource({
+    remoteUrl: remoteSourceUrl,
+    filePath: inputFile,
+  });
+  const sourcePriceBuffer = priceSource.buffer;
+  const downloadedPriceBuffer = remoteSourceUrl ? sourcePriceBuffer : null;
+  console.log(
+    `Чтение прайса: ${priceSource.metadata.downloadUrl || inputFile}`
+  );
+  console.log(
+    `Источник проверен: ${priceSource.metadata.kind}, ${priceSource.metadata.sizeBytes} байт, SHA-256 ${priceSource.metadata.sha256}`
+  );
   if (isDryRun) {
     console.log('Режим: --dry-run (файлы не записываются)');
   }
-
   const generatedAt = new Date().toISOString();
   const importConfig = await loadImportConfig();
   const previousProducts = await loadPreviousProducts();
@@ -2781,7 +1869,7 @@ async function main() {
     );
   }
 
-  const importResult = extractProducts(rows);
+  const importResult = extractProducts(rows, { applyPriceOverride });
   const manufacturerSummary = summarizeManufacturers(importResult.products);
   const classifiedProducts = classifyEligibleProducts(importResult.products);
   const diagnostics = validateNormalizedProducts(classifiedProducts, {
@@ -2876,8 +1964,9 @@ async function main() {
   const report = {
     generatedAt,
     sourceFile: inputFile,
-    ...(remoteSourceUrl
-      ? { sourceUrl: safeRemoteUrlLabel(remoteSourceUrl) }
+    source: priceSource.metadata,
+    ...(priceSource.metadata.requestedUrl
+      ? { sourceUrl: priceSource.metadata.requestedUrl }
       : {}),
     dryRun: isDryRun,
     schema,
@@ -3064,9 +2153,8 @@ async function main() {
         buildHistorySnapshot(products, {
           generatedAt,
           sourceFile: inputFile,
-          sourceUrl: remoteSourceUrl
-            ? safeRemoteUrlLabel(remoteSourceUrl)
-            : null,
+          sourceUrl: priceSource.metadata.requestedUrl,
+          source: priceSource.metadata,
         })
       );
       await writeFileAtomic(
