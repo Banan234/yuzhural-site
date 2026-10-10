@@ -56,7 +56,10 @@ describe('docker-compose.yml', () => {
     expect(appBlock).toContain('volumes:');
     expect(appBlock).toContain('- ./data:/app/data');
     expect(appBlock).toContain(
-      'PUBLIC_ARTIFACTS_DIR: /app/data/public-current'
+      'CATALOG_PRODUCTS_FILE: /app/data/catalog-current/products.json'
+    );
+    expect(appBlock).toContain(
+      'PUBLIC_ARTIFACTS_DIR: /app/data/catalog-current/public'
     );
     expect(webBlock).toContain('volumes:');
     expect(webBlock).toContain('- ./data:/usr/share/nginx/runtime-data:ro');
@@ -92,7 +95,10 @@ describe('docker-compose.staging.yml', () => {
     expectOptionalEnvFile(appBlock, '${STAGING_ENV_FILE:-.env.staging}');
     expect(appBlock).toContain('- ./data-staging:/app/data');
     expect(appBlock).toContain(
-      'PUBLIC_ARTIFACTS_DIR: /app/data/public-current'
+      'CATALOG_PRODUCTS_FILE: /app/data/catalog-current/products.json'
+    );
+    expect(appBlock).toContain(
+      'PUBLIC_ARTIFACTS_DIR: /app/data/catalog-current/public'
     );
     expect(appBlock).toContain(
       'TRUSTED_PROXY_IPS: ${TRUSTED_PROXY_IPS:-172.31.0.10}'

@@ -23,6 +23,8 @@ data/price-parsing-audit.md
 data/public/
 data/public-current
 data/.public-current-releases/
+data/catalog-current
+data/.catalog-current-releases/
 data/backups/
 data/monitor-state.json
 public/redirects.json

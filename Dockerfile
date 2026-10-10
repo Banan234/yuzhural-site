@@ -128,7 +128,7 @@ RUN { \
     && mv /tmp/nginx.conf /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /home/node/app/dist /usr/share/nginx/html
-RUN mkdir -p /usr/share/nginx/runtime-data/public-current
+RUN mkdir -p /usr/share/nginx/runtime-data/catalog-current/public
 
 EXPOSE 80
 

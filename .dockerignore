@@ -4,6 +4,11 @@ node_modules
 npm-debug.log
 dist
 public/product
+data/public
+data/catalog-current
+data/.catalog-current-releases
+data/public-current
+data/.public-current-releases
 .git
 .gitignore
 .github

@@ -29,7 +29,7 @@ npm run up             # build/prerender + API на 3001 + фронт на 5173
 | `npm run e2e`                                     | Playwright E2E smoke/user-flow тесты                                                                                                                                                           |
 | `npm run load:test`                               | Короткий нагрузочный прогон API; настраивается `API_BASE`, `LOAD_CONCURRENCY`                                                                                                                  |
 | `npm run load:soak`                               | Длинный soak-прогон API на 30 минут для контроля RSS/event loop                                                                                                                                |
-| `node scripts/importPrice.js [path/to/price.xls]` | Импорт прайса → `data/products.json`, отчёты и атомарный выпуск в `data/public-current/`                                                                                                     |
+| `node scripts/importPrice.js [path/to/price.xls]` | Импорт прайса → отчёты и единый атомарный каталог в `data/catalog-current/`                                                                                                                    |
 | `npm run import:price:scheduled`                  | Guard-запуск для планировщика: импортирует прайс только если сегодняшний запуск после 04:30 ещё не выполнялся                                                                                  |
 | `npm run backup:create`                           | Снимок runtime-данных перед ручным изменением или импортом                                                                                                                                     |
 | `npm run backup:list`                             | Список доступных резервных копий                                                                                                                                                               |
@@ -395,7 +395,7 @@ Performance tracing включается только через `VITE_SENTRY_TR
 совпадать. В production это должен быть публичный `https://yu-uek.ru` или
 актуальный домен без слэша на конце. Подставляются в:
 
-- `data/public-current/sitemap.xml` / `data/public-current/robots.txt` (генерация после импорта прайса);
+- `data/catalog-current/public/sitemap.xml` / `robots.txt` (генерация после импорта прайса);
 - `<link rel="canonical">`, `og:url`, JSON-LD (`Product.url`, `Organization.url`).
 
 ## Структура
@@ -421,12 +421,12 @@ shared/
   quoteValidation.js       # общая серверная/клиентская валидация заявок
   catalogCategories.json   # статичное дерево категорий каталога
 data/
-  products.json            # выход импортёра, читается сервером
-  productRegistry.json     # стабильные id/slug между импортами
+  catalog-current -> .catalog-current-releases/<release>
+                            # продукты, реестр, sitemap и runtime HTML одной версии
+  products.json             # совместимая копия каталога текущего выпуска
+  productRegistry.json      # совместимая копия реестра текущего выпуска
 public/
   redirects.json           # исходные redirects для сборки
-data/public-current -> .public-current-releases/<release>
-                           # SEO и runtime-артефакты последнего импорта
 server.js                  # Express + nodemailer
 ```
 
@@ -446,10 +446,9 @@ PRICE_PAGE_URL=https://www.cablehome.ru/price/ npm run import:price:remote
 node scripts/importPrice.js https://www.cablehome.ru/price/
 ```
 
-После успешного запуска перезаписываются:
-`data/products.json`, `data/import-report.{json,html}`, `data/import-history.json`,
-`data/productRegistry.json`, `data/public-current/sitemap.xml`,
-`data/public-current/robots.txt`.
+После успешного запуска одним переключением активируется новый каталог с
+`products.json`, `productRegistry.json`, SEO-файлами и runtime HTML карточек.
+Отчёт и история импорта записываются отдельно в `data/`.
 
 Перед публикацией обычный импорт автоматически создаёт резервную копию в
 `data/backups` (или в `BACKUP_DIR`). Защитный контроль сравнивает размер
@@ -510,9 +509,11 @@ Webhook получает JSON с полем `text`, поэтому его мож
 HTML-отчёт открывается прямо из консоли (выводится ссылка `file://...`).
 
 Если импорт запускается внутри Docker app-контейнера, compose задаёт
-`PUBLIC_ARTIFACTS_DIR=/app/data/public-current`: туда атомарно переключается
-символическая ссылка на подготовленный каталог выпуска; nginx видит каталог
-целиком до или после переключения. Файлы выпуска включают `price.xls`,
+`CATALOG_PRODUCTS_FILE=/app/data/catalog-current/products.json` и
+`PUBLIC_ARTIFACTS_DIR=/app/data/catalog-current/public`. `catalog-current` —
+символическая ссылка на подготовленный выпуск. Одним переключением API и nginx
+получают продукты и публичные файлы одной версии. Выпуск включает
+`products.json`, `productRegistry.json`, `price.xls`,
 `redirects.*`, `sitemap*.xml`, `robots.txt` и runtime HTML карточек
 `product/<slug>.html`, а Nginx отдаёт эти файлы поверх версий, собранных в
 web-образ.
@@ -524,14 +525,16 @@ runtime volume после импорта прайса.
 
 Production-контракт такой:
 
-1. `app` запускает `importPrice.js` с `PUBLIC_ARTIFACTS_DIR=/app/data/public-current`.
+1. `app` и `web` читают продукты и публичные файлы из одного пути
+   `/app/data/catalog-current` внутри общего bind-mount.
 2. Импортёр пишет свежие `sitemap*.xml`, затем генерирует
    `product/<slug>.html` для всех product URL из sitemap.
 3. В конце импортёр запускает аудит runtime-prerender. Если хотя бы один URL из
    sitemap не имеет HTML с canonical/meta/JSON-LD, или случайная карточка за
    `PRODUCT_PRERENDER_LIMIT` выглядит как голый `index.html`, импорт падает с
    ненулевым кодом.
-4. Nginx отдаёт `/product/<slug>` из `./data/public-current/product/<slug>.html`, затем
+4. Nginx отдаёт `/product/<slug>` из
+   `./data/catalog-current/public/product/<slug>.html`, затем
    из build-time fallback для важных SKU. До успешного runtime-импорта long-tail
    URL могут попасть в SPA fallback, поэтому после деплоя/импорта держите
    `npm run check:product-prerender` в smoke-check.
@@ -650,13 +653,12 @@ Smoke можно вызывать и отдельно:
 ./deploy/post-deploy-smoke.sh --env-file /etc/yuzhural-site/production.env
 ```
 
-Перед деплоем убедитесь, что на хосте есть `./data/products.json`: этот каталог
-смонтирован в `app` как `/app/data`, чтобы импорт прайса не терялся при
-пересоздании контейнера. Runtime-артефакты импорта для Nginx лежат в
-`./data/public-current` (symlink) и каталогами выпусков рядом с ним создаются
-автоматически при импорте внутри app-контейнера. `web` сначала отдаёт runtime
-HTML карточек из `./data/public-current/product`, затем
-fallback из build-time prerender в образе.
+Перед деплоем проверьте, что в `./data/` есть прежние
+`products.json` и `productRegistry.json` либо активный `catalog-current`.
+Старые файлы используются до первого успешного импорта после обновления кода.
+Импорт создаёт `./data/catalog-current` как symlink на полный выпуск; API и nginx
+переключаются на него вместе. Nginx сначала отдаёт runtime HTML карточек из
+`./data/catalog-current/public/product`, затем использует build-time fallback.
 
 ### Rollback
 

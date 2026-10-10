@@ -72,13 +72,14 @@ describe('publishImportArtifacts', () => {
   it('готовит и устанавливает data, SEO, отчёт и историю как один пакет', async () => {
     tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'price-import-publish-'));
     const projectRoot = tempDir;
-    const publicDir = path.join(projectRoot, 'public');
+    const catalogDir = path.join(projectRoot, 'data', 'catalog-current');
+    const publicDir = path.join(catalogDir, 'public');
     const dataDir = path.join(projectRoot, 'data');
     const sharedDir = path.join(projectRoot, 'shared');
     await fs.mkdir(sharedDir, { recursive: true });
     const paths = {
-      outputFile: path.join(dataDir, 'products.json'),
-      registryFile: path.join(dataDir, 'productRegistry.json'),
+      outputFile: path.join(catalogDir, 'products.json'),
+      registryFile: path.join(catalogDir, 'productRegistry.json'),
       reportFile: path.join(dataDir, 'import-report.json'),
       reportHtmlFile: path.join(dataDir, 'import-report.html'),
       historyFile: path.join(dataDir, 'import-history.json'),
@@ -105,6 +106,7 @@ describe('publishImportArtifacts', () => {
 
     const result = await publishImportArtifacts({
       projectRoot,
+      catalogDir,
       publicDir,
       ...paths,
       runtimePrerenderTemplateDir: path.join(projectRoot, 'dist'),
@@ -127,8 +129,30 @@ describe('publishImportArtifacts', () => {
       'price workbook'
     );
     expect(await fs.readFile(paths.redirectsFile, 'utf-8')).toBe('{}');
-    expect((await fs.lstat(publicDir)).isSymbolicLink()).toBe(true);
-    expect(await fs.readlink(publicDir)).toContain('.public-releases/release-');
+    expect((await fs.lstat(catalogDir)).isSymbolicLink()).toBe(true);
+    expect(await fs.readlink(catalogDir)).toContain(
+      '.catalog-current-releases/release-'
+    );
+    const activeRelease = await fs.realpath(catalogDir);
+    expect(await fs.realpath(paths.outputFile)).toBe(
+      path.join(activeRelease, 'products.json')
+    );
+    expect(await fs.realpath(paths.publicPriceFile)).toBe(
+      path.join(activeRelease, 'public', 'price.xls')
+    );
+    expect(await fs.readFile(paths.outputFile, 'utf-8')).toBe('[]');
+    expect((await fs.lstat(paths.outputFile)).isSymbolicLink()).toBe(false);
+    expect(
+      (await fs.lstat(path.join(dataDir, 'products.json'))).isSymbolicLink()
+    ).toBe(false);
+    expect(
+      await fs.readFile(path.join(dataDir, 'products.json'), 'utf-8')
+    ).toBe('[]');
+    expect(
+      JSON.parse(
+        await fs.readFile(path.join(dataDir, 'productRegistry.json'), 'utf-8')
+      )
+    ).toEqual({ version: 1, nextId: 1, entries: {} });
     expect(result.seoSummary.indexPath).toBe(
       path.join(publicDir, 'sitemap.xml')
     );

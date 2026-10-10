@@ -88,6 +88,15 @@ async function countHtmlFiles(dir) {
   }
 }
 
+async function refreshCompatibilityFile(sourcePath, targetPath) {
+  try {
+    await writeFileAtomic(targetPath, await fs.readFile(sourcePath));
+    return null;
+  } catch (error) {
+    return `Не удалось обновить совместимый файл ${targetPath}: ${error.message}`;
+  }
+}
+
 async function writeRuntimeProductPrerender({
   enabled,
   products,
@@ -180,6 +189,7 @@ export function mapSeoSummaryToPublishedPaths(
 
 export async function publishImportArtifacts({
   projectRoot,
+  catalogDir,
   publicDir,
   outputFile,
   registryFile,
@@ -208,32 +218,38 @@ export async function publishImportArtifacts({
   const dataStageRoot = await fs.mkdtemp(
     path.join(projectRoot, '.price-import-stage-data-')
   );
+  let stagedCatalogDir;
   let stagedPublicDir;
   try {
-    await fs.mkdir(path.dirname(publicDir), { recursive: true });
-    stagedPublicDir = await fs.mkdtemp(
+    await fs.mkdir(path.dirname(catalogDir), { recursive: true });
+    stagedCatalogDir = await fs.mkdtemp(
       path.join(
-        path.dirname(publicDir),
-        `.${path.basename(publicDir)}.price-import-stage-`
+        path.dirname(catalogDir),
+        `.${path.basename(catalogDir)}.price-import-stage-`
       )
     );
+    stagedPublicDir = path.join(stagedCatalogDir, 'public');
+    await fs.mkdir(stagedPublicDir, { recursive: true });
   } catch (error) {
     await fs
       .rm(dataStageRoot, { recursive: true, force: true })
       .catch(() => {});
+    if (stagedCatalogDir) {
+      await fs
+        .rm(stagedCatalogDir, { recursive: true, force: true })
+        .catch(() => {});
+    }
     throw error;
   }
 
   try {
-    const stagedProductsFile = getStagedPath(
-      dataStageRoot,
-      outputFile,
-      projectRoot
+    const stagedProductsFile = path.join(
+      stagedCatalogDir,
+      path.basename(outputFile)
     );
-    const stagedRegistryFile = getStagedPath(
-      dataStageRoot,
-      registryFile,
-      projectRoot
+    const stagedRegistryFile = path.join(
+      stagedCatalogDir,
+      path.basename(registryFile)
     );
     const stagedReportFile = getStagedPath(
       dataStageRoot,
@@ -329,13 +345,25 @@ export async function publishImportArtifacts({
         ),
       })),
       {
-        stagedPath: stagedPublicDir,
-        targetPath: publicDir,
+        stagedPath: stagedCatalogDir,
+        targetPath: catalogDir,
         atomicDirectory: true,
       },
     ];
 
     await commitArtifactBatch(artifacts);
+    const compatibilityWarnings = (
+      await Promise.all([
+        refreshCompatibilityFile(
+          path.join(catalogDir, path.basename(outputFile)),
+          path.join(projectRoot, 'data', 'products.json')
+        ),
+        refreshCompatibilityFile(
+          path.join(catalogDir, path.basename(registryFile)),
+          path.join(projectRoot, 'data', 'productRegistry.json')
+        ),
+      ])
+    ).filter(Boolean);
     return {
       seoSummary: mapSeoSummaryToPublishedPaths(
         seoSummary,
@@ -343,11 +371,12 @@ export async function publishImportArtifacts({
         publicDir
       ),
       runtimeProductPrerenderCount,
+      compatibilityWarnings,
     };
   } finally {
     await Promise.all([
       fs.rm(dataStageRoot, { recursive: true, force: true }),
-      fs.rm(stagedPublicDir, { recursive: true, force: true }),
+      fs.rm(stagedCatalogDir, { recursive: true, force: true }),
     ]).catch(() => {});
   }
 }

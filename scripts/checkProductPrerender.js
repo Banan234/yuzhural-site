@@ -16,13 +16,20 @@ async function resolvePublicArtifactsDir() {
     return path.resolve(projectRoot, process.env.PUBLIC_ARTIFACTS_DIR);
   }
 
-  const runtimePublicDir = path.join(projectRoot, 'data', 'public');
-  try {
-    await fs.access(runtimePublicDir);
-    return runtimePublicDir;
-  } catch {
-    return path.join(projectRoot, 'public');
+  const runtimePublicDirs = [
+    path.join(projectRoot, 'data', 'catalog-current', 'public'),
+    path.join(projectRoot, 'data', 'public-current'),
+    path.join(projectRoot, 'data', 'public'),
+  ];
+  for (const runtimePublicDir of runtimePublicDirs) {
+    try {
+      await fs.access(runtimePublicDir);
+      return runtimePublicDir;
+    } catch {
+      // Проверяем предыдущий путь runtime-публикации.
+    }
   }
+  return path.join(projectRoot, 'public');
 }
 
 async function main() {

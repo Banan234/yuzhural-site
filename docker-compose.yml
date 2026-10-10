@@ -22,9 +22,9 @@ services:
       NODE_ENV: production
       PORT: 3001
       TRUSTED_PROXY_IPS: ${TRUSTED_PROXY_IPS:-172.30.0.10}
-      # importPrice пишет runtime-public артефакты сюда, а web отдаёт их
-      # поверх файлов, запечённых в образ при build.
-      PUBLIC_ARTIFACTS_DIR: /app/data/public-current
+      # API и Nginx читают один каталог выпуска; importPrice переключает его целиком.
+      CATALOG_PRODUCTS_FILE: /app/data/catalog-current/products.json
+      PUBLIC_ARTIFACTS_DIR: /app/data/catalog-current/public
     expose:
       - '3001'
     volumes:

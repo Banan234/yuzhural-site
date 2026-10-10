@@ -110,17 +110,21 @@ const { remoteSourceUrl, inputFile } = resolvePriceSourceSelection({
   env: process.env,
   defaultPath: path.join(projectRoot, 'data', 'price.xls'),
 });
-const outputFile = path.join(projectRoot, 'data', 'products.json');
+const catalogDir = path.join(projectRoot, 'data', 'catalog-current');
+const legacyOutputFile = path.join(projectRoot, 'data', 'products.json');
+const outputFile = path.join(catalogDir, 'products.json');
 const reportFile = path.join(projectRoot, 'data', 'import-report.json');
 const reportHtmlFile = path.join(projectRoot, 'data', 'import-report.html');
 const overridesFile = path.join(projectRoot, 'data', 'priceOverrides.json');
 const importConfigFile = path.join(projectRoot, 'data', 'importConfig.json');
-const registryFile = path.join(projectRoot, 'data', 'productRegistry.json');
-const importLockFile = path.join(projectRoot, 'data', '.price-import.lock');
-const publicDir = path.resolve(
+const legacyRegistryFile = path.join(
   projectRoot,
-  process.env.PUBLIC_ARTIFACTS_DIR || 'data/public-current'
+  'data',
+  'productRegistry.json'
 );
+const registryFile = path.join(catalogDir, 'productRegistry.json');
+const importLockFile = path.join(projectRoot, 'data', '.price-import.lock');
+const publicDir = path.join(catalogDir, 'public');
 const redirectsFile = path.join(publicDir, 'redirects.json');
 const redirectsNginxFile = path.join(publicDir, 'redirects.nginx.conf');
 const publicPriceFile = path.join(publicDir, 'price.xls');
@@ -408,13 +412,31 @@ async function loadPreviousProducts() {
     raw = await fs.readFile(outputFile, 'utf-8');
   } catch (error) {
     if (error.code === 'ENOENT') {
-      return [];
+      try {
+        raw = await fs.readFile(legacyOutputFile, 'utf-8');
+      } catch (legacyError) {
+        if (legacyError.code === 'ENOENT') return [];
+        throw new Error(
+          `Не удалось прочитать предыдущий products.json: ${legacyError.message}`
+        );
+      }
+    } else {
+      throw new Error(
+        `Не удалось прочитать предыдущий products.json: ${error.message}`
+      );
     }
-    throw new Error(
-      `Не удалось прочитать предыдущий products.json: ${error.message}`
-    );
   }
   return parsePreviousProducts(raw);
+}
+
+async function loadCurrentProductRegistry() {
+  try {
+    await fs.access(registryFile);
+    return loadProductRegistry(registryFile);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    return loadProductRegistry(legacyRegistryFile);
+  }
 }
 
 export function buildRegistryKeyMigrations(
@@ -672,6 +694,23 @@ async function saveHtmlReport(report) {
 }
 
 async function main() {
+  if (
+    process.env.CATALOG_PRODUCTS_FILE &&
+    path.resolve(projectRoot, process.env.CATALOG_PRODUCTS_FILE) !== outputFile
+  ) {
+    throw new Error(
+      `CATALOG_PRODUCTS_FILE должен указывать внутрь общего выпуска: ${outputFile}`
+    );
+  }
+  if (
+    process.env.PUBLIC_ARTIFACTS_DIR &&
+    path.resolve(projectRoot, process.env.PUBLIC_ARTIFACTS_DIR) !== publicDir
+  ) {
+    throw new Error(
+      `PUBLIC_ARTIFACTS_DIR должен указывать внутрь общего выпуска: ${publicDir}`
+    );
+  }
+
   const priceSource = await acquirePriceSource({
     remoteUrl: remoteSourceUrl,
     filePath: inputFile,
@@ -691,7 +730,7 @@ async function main() {
   const importConfig = await loadImportConfig();
   const previousProducts = await loadPreviousProducts();
   const importHistory = await loadImportHistory(importConfig);
-  const registry = await loadProductRegistry(registryFile);
+  const registry = await loadCurrentProductRegistry();
   await loadPriceOverrides();
 
   const rows = await loadWorkbookRows({ sourceBuffer: sourcePriceBuffer });
@@ -926,6 +965,7 @@ async function main() {
     try {
       const published = await publishImportArtifacts({
         projectRoot,
+        catalogDir,
         publicDir,
         outputFile,
         registryFile,
@@ -953,6 +993,9 @@ async function main() {
       });
       seoSummary = published.seoSummary;
       runtimeProductPrerenderCount = published.runtimeProductPrerenderCount;
+      for (const warning of published.compatibilityWarnings || []) {
+        console.warn(`[price-import] ${warning}`);
+      }
     } catch (error) {
       report.blocked = true;
       report.message = `Транзакция публикации прервана; старые артефакты восстановлены, если замена уже началась. Причина: ${error.message}`;

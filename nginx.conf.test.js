@@ -99,7 +99,7 @@ describe('nginx product prerender routing', () => {
   it('serves flat product prerender files for pretty product URLs', () => {
     expect(config).toContain('location ~ ^/product/([A-Za-z0-9-]+)$');
     expect(config).toContain(
-      'try_files /runtime-data/public-current/product/$1.html /runtime-data/public/product/$1.html /html/product/$1.html =404;'
+      'try_files /runtime-data/catalog-current/public/product/$1.html /runtime-data/public-current/product/$1.html /runtime-data/public/product/$1.html /html/product/$1.html =404;'
     );
   });
 
@@ -208,7 +208,7 @@ describe('nginx runtime import artifacts', () => {
     );
     expect(config).toContain('root /usr/share/nginx;');
     expect(config).toContain(
-      'try_files /runtime-data/public-current/$1 /runtime-data/public/$1 /html/$1 =404;'
+      'try_files /runtime-data/catalog-current/public/$1 /runtime-data/public-current/$1 /runtime-data/public/$1 /html/$1 =404;'
     );
   });
 
