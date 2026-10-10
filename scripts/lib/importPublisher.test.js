@@ -127,6 +127,8 @@ describe('publishImportArtifacts', () => {
       'price workbook'
     );
     expect(await fs.readFile(paths.redirectsFile, 'utf-8')).toBe('{}');
+    expect((await fs.lstat(publicDir)).isSymbolicLink()).toBe(true);
+    expect(await fs.readlink(publicDir)).toContain('.public-releases/release-');
     expect(result.seoSummary.indexPath).toBe(
       path.join(publicDir, 'sitemap.xml')
     );

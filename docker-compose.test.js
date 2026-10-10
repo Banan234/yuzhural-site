@@ -55,7 +55,9 @@ describe('docker-compose.yml', () => {
     expectOptionalEnvFile(appBlock, '${APP_ENV_FILE:-.env}');
     expect(appBlock).toContain('volumes:');
     expect(appBlock).toContain('- ./data:/app/data');
-    expect(appBlock).toContain('PUBLIC_ARTIFACTS_DIR: /app/data/public');
+    expect(appBlock).toContain(
+      'PUBLIC_ARTIFACTS_DIR: /app/data/public-current'
+    );
     expect(webBlock).toContain('volumes:');
     expect(webBlock).toContain('- ./data:/usr/share/nginx/runtime-data:ro');
   });
@@ -89,7 +91,9 @@ describe('docker-compose.staging.yml', () => {
     expect(appBlock).toContain('container_name: yuzhural-staging-app');
     expectOptionalEnvFile(appBlock, '${STAGING_ENV_FILE:-.env.staging}');
     expect(appBlock).toContain('- ./data-staging:/app/data');
-    expect(appBlock).toContain('PUBLIC_ARTIFACTS_DIR: /app/data/public');
+    expect(appBlock).toContain(
+      'PUBLIC_ARTIFACTS_DIR: /app/data/public-current'
+    );
     expect(appBlock).toContain(
       'TRUSTED_PROXY_IPS: ${TRUSTED_PROXY_IPS:-172.31.0.10}'
     );

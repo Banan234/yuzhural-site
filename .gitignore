@@ -21,6 +21,8 @@ data/import-report.html
 data/price-parsing-audit.json
 data/price-parsing-audit.md
 data/public/
+data/public-current
+data/.public-current-releases/
 data/backups/
 data/monitor-state.json
 public/redirects.json

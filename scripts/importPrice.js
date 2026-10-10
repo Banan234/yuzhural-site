@@ -119,7 +119,7 @@ const registryFile = path.join(projectRoot, 'data', 'productRegistry.json');
 const importLockFile = path.join(projectRoot, 'data', '.price-import.lock');
 const publicDir = path.resolve(
   projectRoot,
-  process.env.PUBLIC_ARTIFACTS_DIR || 'public'
+  process.env.PUBLIC_ARTIFACTS_DIR || 'data/public-current'
 );
 const redirectsFile = path.join(publicDir, 'redirects.json');
 const redirectsNginxFile = path.join(publicDir, 'redirects.nginx.conf');

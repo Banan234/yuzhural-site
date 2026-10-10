@@ -78,16 +78,6 @@ async function listFilesRecursively(rootDir) {
   return files;
 }
 
-function isPathInside(rootDir, candidatePath) {
-  const relativePath = path.relative(rootDir, candidatePath);
-  return (
-    relativePath === '' ||
-    (relativePath !== '..' &&
-      !relativePath.startsWith(`..${path.sep}`) &&
-      !path.isAbsolute(relativePath))
-  );
-}
-
 async function countHtmlFiles(dir) {
   try {
     const entries = await fs.readdir(dir);
@@ -330,12 +320,6 @@ export async function publishImportArtifacts({
     );
 
     const stagedDataFiles = await listFilesRecursively(dataStageRoot);
-    const stagedPublicFiles = (
-      await listFilesRecursively(stagedPublicDir)
-    ).filter(
-      (filePath) =>
-        !isPathInside(path.join(stagedPublicDir, 'product'), filePath)
-    );
     const artifacts = [
       ...stagedDataFiles.map((stagedPath) => ({
         stagedPath,
@@ -344,49 +328,12 @@ export async function publishImportArtifacts({
           path.relative(dataStageRoot, stagedPath)
         ),
       })),
-      ...stagedPublicFiles.map((stagedPath) => ({
-        stagedPath,
-        targetPath: path.join(
-          publicDir,
-          path.relative(stagedPublicDir, stagedPath)
-        ),
-        ...(path.basename(stagedPath) === 'redirects.nginx.conf'
-          ? { mode: 0o444 }
-          : {}),
-      })),
+      {
+        stagedPath: stagedPublicDir,
+        targetPath: publicDir,
+        atomicDirectory: true,
+      },
     ];
-    const publicProductDir = path.join(stagedPublicDir, 'product');
-    try {
-      if ((await fs.stat(publicProductDir)).isDirectory()) {
-        artifacts.push({
-          stagedPath: publicProductDir,
-          targetPath: path.join(publicDir, 'product'),
-        });
-      }
-    } catch (error) {
-      if (error.code !== 'ENOENT') throw error;
-    }
-
-    const stagedPublicNames = new Set(
-      artifacts
-        .filter((artifact) =>
-          artifact.targetPath.startsWith(`${publicDir}${path.sep}`)
-        )
-        .map((artifact) => path.basename(artifact.targetPath))
-    );
-    try {
-      const existingPublicFiles = await fs.readdir(publicDir);
-      for (const filename of existingPublicFiles) {
-        if (
-          /^sitemap-products(?:-\d+)?\.xml$/u.test(filename) &&
-          !stagedPublicNames.has(filename)
-        ) {
-          artifacts.push({ targetPath: path.join(publicDir, filename) });
-        }
-      }
-    } catch (error) {
-      if (error.code !== 'ENOENT') throw error;
-    }
 
     await commitArtifactBatch(artifacts);
     return {

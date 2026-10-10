@@ -24,7 +24,7 @@ services:
       TRUSTED_PROXY_IPS: ${TRUSTED_PROXY_IPS:-172.30.0.10}
       # importPrice пишет runtime-public артефакты сюда, а web отдаёт их
       # поверх файлов, запечённых в образ при build.
-      PUBLIC_ARTIFACTS_DIR: /app/data/public
+      PUBLIC_ARTIFACTS_DIR: /app/data/public-current
     expose:
       - '3001'
     volumes:

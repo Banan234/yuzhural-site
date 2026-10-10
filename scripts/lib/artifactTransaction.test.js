@@ -83,6 +83,46 @@ describe('commitArtifactBatch', () => {
     ).rejects.toMatchObject({ code: 'ENOENT' });
   });
 
+  it('переключает symlink на целый выпуск и восстанавливает его при ошибке пакета', async () => {
+    const root = await createTempDir();
+    const targetDir = path.join(root, 'public-current');
+    const stagedFirst = path.join(root, 'stage-first');
+    const stagedSecond = path.join(root, 'stage-second');
+    const invalidParent = path.join(root, 'not-a-directory');
+    await fs.mkdir(stagedFirst);
+    await fs.mkdir(stagedSecond);
+    await fs.writeFile(path.join(stagedFirst, 'sitemap.xml'), 'first');
+    await fs.writeFile(path.join(stagedSecond, 'sitemap.xml'), 'second');
+
+    await commitArtifactBatch([
+      { stagedPath: stagedFirst, targetPath: targetDir, atomicDirectory: true },
+    ]);
+    const firstRelease = await fs.readFile(
+      path.join(targetDir, 'sitemap.xml'),
+      'utf8'
+    );
+    await fs.writeFile(invalidParent, 'file');
+
+    await expect(
+      commitArtifactBatch([
+        {
+          stagedPath: stagedSecond,
+          targetPath: targetDir,
+          atomicDirectory: true,
+        },
+        {
+          stagedPath: stagedSecond,
+          targetPath: path.join(invalidParent, 'artifact.json'),
+        },
+      ])
+    ).rejects.toThrow();
+
+    await expect(
+      fs.readFile(path.join(targetDir, 'sitemap.xml'), 'utf8')
+    ).resolves.toBe(firstRelease);
+    expect((await fs.lstat(targetDir)).isSymbolicLink()).toBe(true);
+  });
+
   it('проверяет наличие всех staged файлов до замены', async () => {
     const root = await createTempDir();
     const target = path.join(root, 'products.json');

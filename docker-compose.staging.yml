@@ -23,7 +23,7 @@ services:
       NODE_ENV: production
       PORT: 3001
       TRUSTED_PROXY_IPS: ${TRUSTED_PROXY_IPS:-172.31.0.10}
-      PUBLIC_ARTIFACTS_DIR: /app/data/public
+      PUBLIC_ARTIFACTS_DIR: /app/data/public-current
       VITE_SENTRY_ENVIRONMENT: staging
     expose:
       - '3001'
