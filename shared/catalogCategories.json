@@ -528,17 +528,6 @@
           "keywords": ["ВПВ", "КЭВТ", "ЭКС-ГВПВ"]
         }
       ]
-    },
-    {
-      "name": "Некабельная продукция",
-      "slug": "nekabelnaya-produkciya",
-      "categories": [
-        {
-          "name": "Некабельная продукция",
-          "slug": "nekabelnaya-produkciya",
-          "keywords": []
-        }
-      ]
     }
   ]
 }

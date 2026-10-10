@@ -3,11 +3,90 @@
 import { describe, expect, test } from 'vitest';
 import {
   buildCategoryMap,
+  extractManufacturer,
   normalizeImportedProduct,
   parseCombinedCell,
   parseProductName,
   resolveCategory,
 } from './priceParser.js';
+
+describe('extractManufacturer', () => {
+  test.each([
+    ['Контактор 3RT1036-1В 50А SIEMENS', 'SIEMENS'],
+    ['HELUKABEL H07RN-F 3G1.5', 'HELUKABEL'],
+    ['ВВГ 3х2.5', null],
+  ])(
+    'выделяет производителя из исходного названия: %s',
+    (name, manufacturer) => {
+      expect(extractManufacturer(name).manufacturer).toBe(manufacturer);
+    }
+  );
+
+  test('возвращает каноническое имя, вариант, позицию и уверенность', () => {
+    expect(extractManufacturer('HELUKABEL H07RN-F 3G1.5')).toMatchObject({
+      manufacturer: 'HELUKABEL',
+      matchedAlias: 'HELUKABEL',
+      position: 'prefix',
+      confidence: 'high',
+      ambiguous: false,
+      nameWithoutManufacturer: 'H07RN-F 3G1.5',
+    });
+  });
+
+  test.each([
+    ['Контактор 3RT1036 SIEMENS', 'suffix'],
+    ['Кабель 3х1.5 (SIEMENS)', 'parenthetical'],
+  ])('распознаёт производителя в позиции %s', (name, position) => {
+    expect(extractManufacturer(name)).toMatchObject({
+      manufacturer: 'SIEMENS',
+      position,
+      confidence: 'high',
+    });
+  });
+
+  test('не считает совпадение внутри слова производителем', () => {
+    expect(extractManufacturer('HELUKABELXYZ 3х1')).toMatchObject({
+      manufacturer: null,
+      ambiguous: false,
+      confidence: 'none',
+    });
+  });
+
+  test('не выбирает произвольно между равными совпадениями', () => {
+    expect(extractManufacturer('LAPPKABEL товар HELUKABEL')).toMatchObject({
+      manufacturer: null,
+      position: 'ambiguous',
+      confidence: 'low',
+      ambiguous: true,
+      candidates: expect.arrayContaining(['LAPP KABEL', 'HELUKABEL']),
+    });
+  });
+
+  test('сохраняет исходное написание найденного варианта', () => {
+    expect(extractManufacturer('lapp kabel H07RN-F')).toMatchObject({
+      manufacturer: 'LAPP KABEL',
+      matchedAlias: 'lapp kabel',
+      position: 'prefix',
+      nameWithoutManufacturer: 'H07RN-F',
+    });
+  });
+
+  test.each([
+    ['LAPPKABEL H07RN-F', 'LAPP KABEL', 'LAPPKABEL'],
+    ['LAPP GROUP H07RN-F', 'LAPP KABEL', 'LAPP GROUP'],
+    ['ВИКАБ КВВГ 3х1', 'VIKAB', 'ВИКАБ'],
+  ])(
+    'сводит алиас %s к каноническому производителю',
+    (name, canonical, alias) => {
+      expect(extractManufacturer(name)).toMatchObject({
+        manufacturer: canonical,
+        matchedAlias: alias,
+        confidence: 'high',
+        ambiguous: false,
+      });
+    }
+  );
+});
 
 describe('parseProductName', () => {
   test.each([
@@ -80,7 +159,7 @@ describe('parseProductName', () => {
     ],
     [
       'НИКИ-КУПсКШЭф-Внг(А)LS-С 6х(2х1мкл2',
-      'НИКИ-КУПсКШЭф-В',
+      'КУПсКШЭф-В',
       '6х(2х1мкл2)',
       ['нг(А)-LS', 'С'],
     ],
@@ -347,7 +426,7 @@ describe('parseProductName', () => {
     ['КИМВ-э нг 5х1', 'КИМВ', 'нг'],
     ['ТППнг 10х2х0.5 (А)HF', 'ТПП', 'нг(А)-HF'],
     ['КУИН нг(А)FR 3х0.5', 'КУИН', 'нг(А)-FR'],
-    ['Сегмент-КУнг(А)K-LS хл 5х10', 'Сегмент-КУ', 'нг(А)-ХЛ'],
+    ['Сегмент-КУнг(А)K-LS хл 5х10', 'КУ', 'нг(А)-ХЛ'],
   ])(
     'отделяет пожаробезопасный суффикс от любой марки: %s',
     (name, expectedMark, expectedAttribute) => {

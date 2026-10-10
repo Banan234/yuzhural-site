@@ -33,11 +33,4 @@ export const CABLE_SECTION_NAME = cableSection?.name || 'Кабель и про�
 
 export const CATALOG_MENU = [
   ...(cableSection?.categories || []).map(buildCategoryMenuItem),
-  {
-    title: 'Некабельная продукция',
-    slug: 'nekabelnaya-produkciya',
-    links: [
-      { label: 'Некабельная продукция', to: '/catalog/nekabelnaya-produkciya' },
-    ],
-  },
 ];

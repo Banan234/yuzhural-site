@@ -38,6 +38,7 @@ describe('evaluatePublishGuard', () => {
       products: Array.from({ length: 100 }, () => ({})),
       totalRows: 100,
       skippedRows: [{}, {}],
+      errors: [],
       suspicious: [{}],
       fallbackToOther: 3,
       diff: {
@@ -64,6 +65,16 @@ describe('evaluatePublishGuard', () => {
     expect(result.issues.map((issue) => issue.key)).toContain(
       'maxRemovedPercent'
     );
+  });
+
+  it('останавливает публикацию, если есть ошибки нормализации', () => {
+    const result = evaluatePublishGuard({
+      products: Array.from({ length: 100 }, () => ({})),
+      errors: [{}],
+      totalRows: 100,
+    });
+    expect(result.ok).toBe(false);
+    expect(result.issues.map((issue) => issue.key)).toContain('maxErrors');
   });
 
   it('учитывает отключение guard', () => {

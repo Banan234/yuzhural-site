@@ -69,6 +69,29 @@ describe('assignStableIdentity', () => {
     expect(registry.entries[buildStableKey(product)].lastSeen).toBe(LATER);
   });
 
+  it('сохраняет одинаковые позиции отдельными стабильными записями', () => {
+    const registry = emptyRegistry();
+    const product = {
+      mark: 'ВВГ',
+      cores: 3,
+      crossSection: 2.5,
+      fullName: 'ВВГ 3х2.5',
+    };
+    const first = assignStableIdentity(registry, product, NOW);
+    const second = assignStableIdentity(registry, product, NOW, {
+      identityDiscriminator: 'row-12-occurrence-1',
+    });
+    const secondAgain = assignStableIdentity(registry, product, LATER, {
+      identityDiscriminator: 'row-12-occurrence-1',
+    });
+
+    expect(second.id).not.toBe(first.id);
+    expect(secondAgain.id).toBe(second.id);
+    expect(Object.keys(registry.entries)).toHaveLength(2);
+    expect(buildSpecKey(product)).toBe(buildSpecKey({ ...product }));
+    expect(specKeyFromStableKey(second.stableKey)).toBe(buildSpecKey(product));
+  });
+
   it('retains the latest supplied source name without clearing it on legacy imports', () => {
     const registry = emptyRegistry();
     const product = {

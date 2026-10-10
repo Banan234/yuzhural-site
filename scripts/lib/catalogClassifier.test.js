@@ -1,7 +1,10 @@
 // Файл проверяет классификацию товаров, декодирование кабельных марок и приоритеты правил.
 
 import { describe, expect, test } from 'vitest';
-import { classifyProduct } from './catalogClassifier.js';
+import {
+  classifyProduct,
+  isCableCatalogProduct,
+} from './catalogClassifier.js';
 import { normalizeImportedProduct } from './priceParser.js';
 
 function classifyName(name, overrides = {}) {
@@ -112,15 +115,31 @@ describe('classifyProduct', () => {
     });
   });
 
-  test('некабельные sourceCategory сворачиваются в единую категорию', () => {
-    expect(
-      classifyName('Автомат 16А', { sourceCategory: 'Автоматы' })
-    ).toMatchObject({
+  test('сохраняет кабельную позицию, если в её марке есть фрагмент «лон»', () => {
+    const classified = classifyName('СКЛОН Р6 24х0,35', {
+      sourceCategory: 'Кабель монтажный для цифровых и аналоговых сист.',
+    });
+
+    expect(classified).toMatchObject({
+      catalogSection: 'Кабель и провод',
+      catalogCategory: 'Монтажный кабель',
+      catalogClassificationSource: 'sourceCategory',
+    });
+    expect(isCableCatalogProduct(classified)).toBe(true);
+  });
+
+  test('помечает некабельную sourceCategory для исключения из импорта', () => {
+    const classified = classifyName('Автомат 16А', {
+      sourceCategory: 'Автоматы',
+    });
+
+    expect(classified).toMatchObject({
       catalogSection: 'Некабельная продукция',
       catalogCategory: 'Некабельная продукция',
       catalogCategorySlug: 'nekabelnaya-produkciya',
       catalogClassificationSource: 'sourceCategory',
     });
+    expect(isCableCatalogProduct(classified)).toBe(false);
   });
 
   test('prefix keyword классифицирует обычные провода', () => {

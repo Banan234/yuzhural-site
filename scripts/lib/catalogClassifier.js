@@ -15,7 +15,6 @@ const catalogCategoriesRaw = readJson('../../shared/catalogCategories.json');
 const catalogRulesRaw = readJson('../../data/catalogRules.json');
 const sourceCategoryMapRaw = readJson('../../data/catalogSourceMap.json');
 const brandMapRaw = readJson('../../data/catalogBrandMap.json');
-const manufacturersRaw = readJson('../../data/catalogManufacturers.json');
 const cableLetters = readJson('../../data/cableLetters.json');
 
 // ---------------------------------------------------------------------------
@@ -103,15 +102,6 @@ const brandPrefixes = [...brandMapRaw]
   .sort((a, b) => b.normalizedBrand.length - a.normalizedBrand.length);
 
 // Производители — только для извлечения названия, не влияют на категорию
-const manufacturerPrefixes = [...manufacturersRaw]
-  .map((m) => ({
-    name: m,
-    normalized: normalize(m),
-    compact: compactForPrefix(m),
-    tokenPattern: createManufacturerTokenPattern(m),
-  }))
-  .sort((a, b) => b.normalized.length - a.normalized.length);
-
 // ---------------------------------------------------------------------------
 // Порядок токенов для декодировщика марки
 // ---------------------------------------------------------------------------
@@ -165,16 +155,10 @@ export function classifyProduct(product) {
   const markFamily = product.markFamily ?? product.mark ?? '';
   const name = product.name ?? '';
 
-  // Извлекаем производителя из prefixа наименования (catalogManufacturers.json)
-  let manufacturer = product.manufacturer ?? null;
-  let effectiveMarkFamily = markFamily;
-  if (!manufacturer) {
-    const detected = detectManufacturer(product);
-    if (detected) {
-      manufacturer = detected.name;
-      effectiveMarkFamily = detected.markFamily;
-    }
-  }
+  // Производитель уже извлечён парсером из исходного названия. Здесь поле
+  // только читается, чтобы классификация не меняла результат разбора.
+  const manufacturer = product.manufacturer ?? null;
+  const effectiveMarkFamily = markFamily;
 
   // Строка для явных правил — марка, семейство + производитель (если известен).
   // Имя производителя нужно, чтобы правила могли целиться в бренд
@@ -287,7 +271,6 @@ export function classifyProduct(product) {
     ...FALLBACK,
     catalogApplicationType: null,
     catalogBrand: manufacturer,
-    manufacturer,
     catalogClassificationSource: 'fallback',
     catalogClassificationMatch: null,
   };
@@ -333,57 +316,14 @@ function findByKeyword(value, predicate, brand = null) {
   return null;
 }
 
-function detectManufacturer(product) {
-  const markFamily = product.markFamily ?? product.mark ?? '';
-  const familyNormForMfr = normalize(markFamily);
-  const familyCompact = compactForPrefix(markFamily);
-
-  for (const mfr of manufacturerPrefixes) {
-    if (
-      familyNormForMfr.startsWith(mfr.normalized) ||
-      familyCompact.startsWith(mfr.compact)
-    ) {
-      return {
-        name: mfr.name,
-        markFamily: stripManufacturerFromStart(markFamily, mfr),
-      };
-    }
-  }
-
-  const searchable = normalize(
-    [product.name, product.fullName, product.mark, product.markFamily]
-      .filter(Boolean)
-      .join(' ')
-  );
-
-  for (const mfr of manufacturerPrefixes) {
-    if (mfr.tokenPattern.test(searchable)) {
-      return {
-        name: mfr.name,
-        markFamily,
-      };
-    }
-  }
-
-  return null;
-}
-
-function stripManufacturerFromStart(value, mfr) {
-  const source = String(value ?? '');
-  if (!source) return source;
-
-  const normalized = normalize(source);
-  if (normalized.startsWith(mfr.normalized)) {
-    return source.slice(mfr.name.length).replace(/^[-\s]+/, '');
-  }
-
-  return source.replace(/^[^-_\s]+[-\s]*/, '');
-}
-
-// Разделы, относящиеся к кабельной продукции. Всё остальное (электрооборудование,
-// кабельная арматура, расходники, прочие товары) схлопывается в единую категорию
-// «Некабельная продукция» — по требованию бизнеса её не разбиваем по типам.
+// Разделы, относящиеся к кабельной продукции. Импортёр использует этот же
+// критерий как allow-list: всё, что не является кабелем или проводом, не
+// публикуется в каталог.
 const CABLE_SECTIONS = new Set(['Кабель и провод', 'Специальные кабели']);
+
+export function isCableCatalogProduct(product) {
+  return CABLE_SECTIONS.has(String(product?.catalogSection || '').trim());
+}
 
 function toCatalogResult({
   section,
@@ -405,7 +345,6 @@ function toCatalogResult({
       catalogType: type,
       catalogApplicationType: applicationType,
       catalogBrand: brand,
-      manufacturer: brand,
       catalogClassificationSource: source,
       catalogClassificationMatch: match,
     };
@@ -418,7 +357,6 @@ function toCatalogResult({
     catalogType: type,
     catalogApplicationType: applicationType,
     catalogBrand: brand,
-    manufacturer: brand,
     catalogClassificationSource: source,
     catalogClassificationMatch: match,
   };
@@ -455,15 +393,6 @@ function normalize(value) {
 
 function compactForPrefix(value) {
   return normalize(value).replace(/[^a-zа-яё0-9]+/giu, '');
-}
-
-function createManufacturerTokenPattern(value) {
-  const escaped = escapeRegExp(normalize(value));
-  return new RegExp(`(^|[^a-zа-яё0-9])${escaped}([^a-zа-яё0-9]|$)`, 'iu');
-}
-
-function escapeRegExp(value) {
-  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function tokenizeMark(mark) {

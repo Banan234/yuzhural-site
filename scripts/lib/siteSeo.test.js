@@ -38,6 +38,11 @@ describe('buildSitemapPagesXml', () => {
     expect(xml).not.toContain('/internal/runtime');
   });
 
+  it('не ставит сегодняшнюю дату, если фактическая дата изменения неизвестна', () => {
+    const xml = buildSitemapPagesXml({ siteUrl: SITE });
+    expect(xml).not.toContain('<lastmod>');
+  });
+
   it('убирает завершающий слэш у siteUrl', () => {
     const xml = buildSitemapPagesXml({ siteUrl: `${SITE}//` });
     expect(xml).toContain(`<loc>${SITE}/</loc>`);
@@ -76,8 +81,7 @@ describe('buildSitemapCategoriesXml', () => {
 
     expect(xml).toContain(`<loc>${SITE}/catalog/kabel-i-provod</loc>`);
     expect(xml).toContain(`<loc>${SITE}/catalog/silovoy-kabel</loc>`);
-    // Дополнительная подкатегория добавляется автоматически.
-    expect(xml).toContain(`<loc>${SITE}/catalog/nekabelnaya-produkciya</loc>`);
+    expect(xml).not.toContain('/catalog/nekabelnaya-produkciya</loc>');
     const matches = xml.match(/\/catalog\/silovoy-kabel</g) || [];
     expect(matches.length).toBe(1);
   });
@@ -174,7 +178,7 @@ describe('buildSitemapIndexXml', () => {
     expect(xml).toContain(`<loc>${SITE}/${SITEMAP_FILES.pages}</loc>`);
     expect(xml).toContain(`<loc>${SITE}/${SITEMAP_FILES.categories}</loc>`);
     expect(xml).toContain(`<loc>${SITE}/${SITEMAP_FILES.products}</loc>`);
-    // Поисковики ждут lastmod на каждом sitemap-entry.
+    // Когда lastmod задан, он указывается на каждой записи sitemap-index.
     const lastmods = xml.match(/<lastmod>2026-01-01<\/lastmod>/g) || [];
     expect(lastmods.length).toBe(3);
   });
@@ -208,6 +212,30 @@ describe('buildRobotsTxt', () => {
 });
 
 describe('writeSeoArtifacts', () => {
+  it('не приписывает дату обновления, когда она не передана', async () => {
+    const outputDir = await mkdtemp(path.join(os.tmpdir(), 'yuzhural-seo-'));
+    try {
+      await writeSeoArtifacts({
+        outputDir,
+        siteUrl: SITE,
+        products: [{ slug: 'p-1' }],
+        categoriesData: { sections: [] },
+      });
+
+      for (const filename of [
+        SITEMAP_FILES.index,
+        SITEMAP_FILES.pages,
+        SITEMAP_FILES.categories,
+        SITEMAP_FILES.products,
+      ]) {
+        const xml = await readFile(path.join(outputDir, filename), 'utf-8');
+        expect(xml).not.toContain('<lastmod>');
+      }
+    } finally {
+      await rm(outputDir, { recursive: true, force: true });
+    }
+  });
+
   it('пишет sitemap-index со всеми product chunks и удаляет старые chunks', async () => {
     const outputDir = await mkdtemp(path.join(os.tmpdir(), 'yuzhural-seo-'));
     try {

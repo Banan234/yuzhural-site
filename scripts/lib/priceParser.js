@@ -1,32 +1,183 @@
 // Файл парсит строки XLS-прайса, извлекает марки, характеристики, единицы измерения и цены.
+import { readFileSync } from 'fs';
 import { findCableSpecification } from './cableSpecification.js';
-
 const UNIT_ALIASES = ['км', 'м', 'шт', 'штука', 'бухта', 'упак', 'упаковка'];
 
-// Торговые марки заводов-производителей, предшествующие обозначению кабеля через дефис
-const MANUFACTURER_PREFIXES = new Set([
-  // Российские производители
-  'ПИРОКОР',
-  'КИВИ',
-  'ГЕРДА',
-  'СОББИТ',
-  'МЕТРОЛАН',
-  'ТРАНСКАБ',
-  'ЛОУТОКС',
-  'КРУИНВЭЛК',
-  'КРУИН',
-  'АРМОФЛЕКС',
-  'КУПТЕКС',
-  'VIKAB',
-  'ВИКАБ',
-  // Иностранные производители
-  'LAPPKABEL',
-  'HELUKABEL',
-  'BELDEN',
-  'HOLDCAB',
-  'PRYSMIAN',
-  'SIEMENS',
-]);
+// Производитель извлекается один раз, непосредственно из исходного
+// названия. Справочник общий для всего импорта; классификатор это поле уже
+// не переопределяет.
+const MANUFACTURER_SOURCE = JSON.parse(
+  readFileSync(
+    new URL('../../data/catalogManufacturers.json', import.meta.url),
+    'utf8'
+  )
+);
+const MANUFACTURERS = MANUFACTURER_SOURCE.map((entry) => {
+  if (typeof entry === 'string') {
+    const canonical = entry.trim();
+    return { canonical, aliases: [canonical] };
+  }
+
+  const canonical = String(entry?.canonical || entry?.name || '').trim();
+  const aliases = [
+    ...new Set(
+      [canonical, ...(Array.isArray(entry?.aliases) ? entry.aliases : [])]
+        .map((alias) => String(alias ?? '').trim())
+        .filter(Boolean)
+    ),
+  ];
+  return { canonical, aliases };
+}).filter((entry) => entry.canonical);
+const MANUFACTURER_PREFIXES = MANUFACTURERS.flatMap(({ canonical, aliases }) =>
+  aliases.map((alias) => ({
+    canonical,
+    alias,
+    normalized: normalizeManufacturer(alias),
+    compact: compactManufacturer(alias),
+    pattern: buildManufacturerPattern(alias),
+  }))
+).sort((a, b) => b.compact.length - a.compact.length);
+
+function normalizeManufacturer(value) {
+  return String(value ?? '')
+    .toUpperCase()
+    .replace(/Ё/g, 'Е')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function compactManufacturer(value) {
+  return normalizeManufacturer(value).replace(/[\s_-]+/g, '');
+}
+
+function escapeManufacturerPart(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function buildManufacturerPattern(value) {
+  return String(value)
+    .trim()
+    .split(/\s+/u)
+    .map(escapeManufacturerPart)
+    .join('[\\s-]*');
+}
+
+export function extractManufacturer(value) {
+  const source = String(value ?? '').trim();
+  const candidates = [];
+  for (const entry of MANUFACTURER_PREFIXES) {
+    const aliasPattern = buildManufacturerPattern(entry.alias);
+    const prefix = source.match(
+      new RegExp(`^(${aliasPattern})(?=$|[^\\p{L}\\p{N}])`, 'iu')
+    );
+    if (prefix) {
+      candidates.push({
+        ...entry,
+        matchedAlias: prefix[1],
+        position: 'prefix',
+        start: 0,
+        end: prefix[1].length,
+        confidence: 'high',
+      });
+    }
+
+    const parentheticalPattern = new RegExp(
+      `\\(\\s*(${aliasPattern})\\s*\\)`,
+      'iu'
+    );
+    const parenthetical = parentheticalPattern.exec(source);
+    if (parenthetical) {
+      const start =
+        parenthetical.index + parenthetical[0].indexOf(parenthetical[1]);
+      candidates.push({
+        ...entry,
+        matchedAlias: parenthetical[1],
+        position: 'parenthetical',
+        start,
+        end: start + parenthetical[1].length,
+        confidence: 'high',
+      });
+    }
+
+    const suffixPattern = new RegExp(
+      `(?:^|[^\\p{L}\\p{N}])(${aliasPattern})$`,
+      'iu'
+    );
+    const suffix = suffixPattern.exec(source);
+    if (suffix) {
+      const start = suffix.index + suffix[0].lastIndexOf(suffix[1]);
+      candidates.push({
+        ...entry,
+        matchedAlias: suffix[1],
+        position: 'suffix',
+        start,
+        end: start + suffix[1].length,
+        confidence: 'high',
+      });
+    }
+  }
+
+  if (candidates.length === 0) {
+    return {
+      manufacturer: null,
+      matchedAlias: null,
+      position: null,
+      confidence: 'none',
+      ambiguous: false,
+      candidates: [],
+      nameWithoutManufacturer: source,
+      name: source,
+    };
+  }
+
+  candidates.sort(
+    (a, b) => b.compact.length - a.compact.length || a.start - b.start
+  );
+  const best = candidates[0];
+  const tied = candidates.filter(
+    (candidate) => candidate.compact.length === best.compact.length
+  );
+  const exactAliasMatches = tied.filter(
+    (candidate) =>
+      normalizeManufacturer(candidate.matchedAlias) ===
+      normalizeManufacturer(candidate.alias)
+  );
+  const resolvedTies = exactAliasMatches.length > 0 ? exactAliasMatches : tied;
+  const canonicalMatches = [
+    ...new Set(resolvedTies.map((candidate) => candidate.canonical)),
+  ];
+  if (canonicalMatches.length > 1) {
+    return {
+      manufacturer: null,
+      matchedAlias: null,
+      position: 'ambiguous',
+      confidence: 'low',
+      ambiguous: true,
+      candidates: canonicalMatches,
+      nameWithoutManufacturer: source,
+      name: source,
+    };
+  }
+
+  const selected = resolvedTies[0];
+  const nameWithoutManufacturer =
+    selected.position === 'prefix'
+      ? source
+          .slice(selected.end)
+          .replace(/^[-\\s]+/u, '')
+          .trim()
+      : source;
+  return {
+    manufacturer: selected.canonical,
+    matchedAlias: selected.matchedAlias,
+    position: selected.position,
+    confidence: selected.confidence,
+    ambiguous: false,
+    candidates: [selected.canonical],
+    nameWithoutManufacturer,
+    name: nameWithoutManufacturer,
+  };
+}
 
 const FAMILY_CATEGORY_ALIASES = {
   NYM: 'Кабель NYY, NUM',
@@ -42,6 +193,8 @@ const FAMILY_CATEGORY_ALIASES = {
 export function createEmptyImportResult() {
   return {
     products: [],
+    excludedNonCable: 0,
+    reviewRows: [],
     skippedRows: [],
   };
 }
@@ -59,7 +212,7 @@ export function normalizeImportedProduct(product) {
           mark: fullName,
           markFamily: normalizeMarkFamily(fullName),
         }
-      : parseProductName(fullName);
+      : parseProductName(sourceName);
   const normalizedName = buildNormalizedProductName(fullName, parsedName);
   const normalizedUnit = normalizeUnit(product.unit);
   const normalizedPrice = normalizeNumber(product.price);
@@ -83,6 +236,7 @@ export function normalizeImportedProduct(product) {
     mark: parsedName.mark,
     markFamily: parsedName.markFamily,
     manufacturer: parsedName.manufacturer,
+    manufacturerMatch: parsedName.manufacturerMatch,
     cores: parsedName.cores,
     crossSection: parsedName.crossSection,
     groupCores: parsedName.groupCores,
@@ -198,20 +352,12 @@ function normalizeCommercialFields({ unit, price, stock }) {
   };
 }
 
-function stripManufacturerPrefix(value) {
-  const match = value.match(/^([А-ЯЁA-Z]{4,})[-\s](.+)$/i);
-  if (!match) return { name: value, manufacturer: null };
-  const upper = match[1].toUpperCase();
-  if (MANUFACTURER_PREFIXES.has(upper)) {
-    return { name: match[2].trim(), manufacturer: upper };
-  }
-  return { name: value, manufacturer: null };
-}
-
 export function parseProductName(value) {
-  const { name: stripped, manufacturer } = stripManufacturerPrefix(
-    normalizeProductName(value)
+  const extractedManufacturer = extractManufacturer(value);
+  const stripped = normalizeProductName(
+    extractedManufacturer.nameWithoutManufacturer
   );
+  const manufacturer = extractedManufacturer.manufacturer;
   const source = stripped;
 
   if (!source) {
@@ -343,6 +489,14 @@ export function parseProductName(value) {
     mark,
     markFamily,
     manufacturer,
+    manufacturerMatch: {
+      matchedAlias: extractedManufacturer.matchedAlias,
+      position: extractedManufacturer.position,
+      confidence: extractedManufacturer.confidence,
+      ambiguous: extractedManufacturer.ambiguous,
+      candidates: extractedManufacturer.candidates,
+      nameWithoutManufacturer: extractedManufacturer.nameWithoutManufacturer,
+    },
     cores,
     crossSection,
     groupCores,
@@ -528,6 +682,14 @@ function createEmptyNameParts() {
     mark: '',
     markFamily: '',
     manufacturer: null,
+    manufacturerMatch: {
+      matchedAlias: null,
+      position: null,
+      confidence: 'none',
+      ambiguous: false,
+      candidates: [],
+      nameWithoutManufacturer: '',
+    },
     cores: null,
     crossSection: null,
     groupCores: null,

@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
+import { acquirePriceImportLock } from './lib/importLock.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,7 +12,6 @@ const lockFile = path.join(projectRoot, 'data', '.price-import.lock');
 
 const SCHEDULE_HOUR = 4;
 const SCHEDULE_MINUTE = 30;
-const STALE_LOCK_MS = 6 * 60 * 60 * 1000;
 
 function formatLocal(date) {
   return new Intl.DateTimeFormat('ru-RU', {
@@ -38,39 +38,6 @@ async function readLastImportAt() {
   }
 }
 
-async function removeLockIfStale(now) {
-  try {
-    const stat = await fs.stat(lockFile);
-    if (now - stat.mtimeMs > STALE_LOCK_MS) {
-      await fs.unlink(lockFile);
-      console.log(`[scheduled-import] Removed stale lock: ${lockFile}`);
-    }
-  } catch (error) {
-    if (error.code !== 'ENOENT') throw error;
-  }
-}
-
-async function acquireLock(now) {
-  await removeLockIfStale(now);
-  const payload = JSON.stringify(
-    {
-      pid: process.pid,
-      startedAt: new Date(now).toISOString(),
-    },
-    null,
-    2
-  );
-  await fs.writeFile(lockFile, payload, { flag: 'wx' });
-}
-
-async function releaseLock() {
-  try {
-    await fs.unlink(lockFile);
-  } catch (error) {
-    if (error.code !== 'ENOENT') throw error;
-  }
-}
-
 function runImport() {
   return new Promise((resolve, reject) => {
     const child = spawn(
@@ -79,7 +46,10 @@ function runImport() {
       {
         cwd: projectRoot,
         stdio: 'inherit',
-        env: process.env,
+        env: {
+          ...process.env,
+          PRICE_IMPORT_LOCK_HELD_BY_SCHEDULER: '1',
+        },
       }
     );
 
@@ -113,16 +83,14 @@ async function main() {
     return;
   }
 
-  try {
-    await acquireLock(now.getTime());
-  } catch (error) {
-    if (error.code === 'EEXIST') {
-      console.log(
-        '[scheduled-import] Skip: another scheduled import is already running.'
-      );
-      return;
-    }
-    throw error;
+  const releaseLock = await acquirePriceImportLock(lockFile, {
+    now: now.getTime(),
+  });
+  if (!releaseLock) {
+    console.log(
+      '[scheduled-import] Skip: another price import is already running.'
+    );
+    return;
   }
 
   try {

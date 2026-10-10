@@ -952,7 +952,7 @@
   },
   {
     "type": "Лампа/Светильник/ЛОН",
-    "patterns": ["лампа", "светильник", "свет.", "светил", "патрон", "лон "],
+    "patterns": ["лампа", "светильник", "свет.", "светил", "патрон"],
     "catalogSection": "Электрооборудование",
     "catalogSectionSlug": "elektrooborudovanie",
     "catalogCategory": "Освещение",
@@ -1092,16 +1092,6 @@
     "catalogCategorySlug": "raskhod-materialy",
     "priority": 130
   },
-  {
-    "type": "Protectowire",
-    "patterns": ["protectowire"],
-    "catalogSection": "Прочие товары",
-    "catalogSectionSlug": "prochie-tovary",
-    "catalogCategory": "Расходные материалы",
-    "catalogCategorySlug": "raskhod-materialy",
-    "priority": 100
-  },
-
   {
     "_comment": "=== ФОЛЛБЭК-ПРАВИЛА для КИП/КУП/ИНСИЛ/Прочих контрольных (закрывает остатки в 'Прочее') ===",
     "type": "КИП*/КУП* контрольные",

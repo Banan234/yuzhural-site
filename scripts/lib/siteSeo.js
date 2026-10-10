@@ -196,14 +196,6 @@ function collectCategoryRoutes(categoriesData) {
     }
   }
 
-  // Доп. подкатегория — некабельная продукция (она прописана в роутере,
-  // но не лежит в sections). Дублирование с фильтром через slug допустимо.
-  routes.push({
-    path: '/catalog/nekabelnaya-produkciya',
-    changefreq: 'weekly',
-    priority: '0.6',
-  });
-
   // Дедупликация по path — на случай если какая-то подкатегория совпадёт.
   const seen = new Set();
   return routes.filter((route) => {
@@ -234,7 +226,7 @@ function collectProductRoutes(products) {
 
 export function buildSitemapPagesXml({
   siteUrl = DEFAULT_SITE_URL,
-  lastmod = new Date().toISOString(),
+  lastmod = null,
 } = {}) {
   return buildUrlSet(STATIC_ROUTES, normalizeSitemapSiteUrl(siteUrl), lastmod);
 }
@@ -242,7 +234,7 @@ export function buildSitemapPagesXml({
 export function buildSitemapCategoriesXml({
   siteUrl = DEFAULT_SITE_URL,
   categoriesData = null,
-  lastmod = new Date().toISOString(),
+  lastmod = null,
 } = {}) {
   return buildUrlSet(
     collectCategoryRoutes(categoriesData),
@@ -254,7 +246,7 @@ export function buildSitemapCategoriesXml({
 export function buildSitemapProductsXml({
   siteUrl = DEFAULT_SITE_URL,
   products = [],
-  lastmod = new Date().toISOString(),
+  lastmod = null,
 } = {}) {
   const routes = collectProductRoutes(products);
   if (routes.length > MAX_SITEMAP_URLS) {
@@ -268,7 +260,7 @@ export function buildSitemapProductsXml({
 export function buildSitemapProductXmlFiles({
   siteUrl = DEFAULT_SITE_URL,
   products = [],
-  lastmod = new Date().toISOString(),
+  lastmod = null,
   maxUrlsPerSitemap = MAX_SITEMAP_URLS,
 } = {}) {
   const base = normalizeSitemapSiteUrl(siteUrl);
@@ -292,17 +284,18 @@ export function buildSitemapIndexXml({
     SITEMAP_FILES.categories,
     SITEMAP_FILES.products,
   ],
-  lastmod = new Date().toISOString(),
+  lastmod = null,
 } = {}) {
   const base = normalizeSitemapSiteUrl(siteUrl);
-  const entries = sitemaps.map((file) =>
-    [
+  const entries = sitemaps.map((file) => {
+    const lines = [
       '  <sitemap>',
       `    <loc>${escapeXml(`${base}/${file}`)}</loc>`,
-      `    <lastmod>${escapeXml(lastmod)}</lastmod>`,
-      '  </sitemap>',
-    ].join('\n')
-  );
+    ];
+    if (lastmod) lines.push(`    <lastmod>${escapeXml(lastmod)}</lastmod>`);
+    lines.push('  </sitemap>');
+    return lines.join('\n');
+  });
 
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -354,7 +347,7 @@ export async function writeSeoArtifacts({
   siteUrl,
   products,
   categoriesData,
-  lastmod = new Date().toISOString(),
+  lastmod = null,
   maxUrlsPerSitemap = MAX_SITEMAP_URLS,
 }) {
   await fs.mkdir(outputDir, { recursive: true });

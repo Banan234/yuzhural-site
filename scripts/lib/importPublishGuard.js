@@ -3,6 +3,7 @@
 const DEFAULT_PUBLISH_GUARD = Object.freeze({
   enabled: true,
   minProducts: 100,
+  maxErrors: 0,
   maxRemovedPercent: 5,
   maxSkippedPercent: 5,
   maxSuspiciousPercent: 1,
@@ -39,6 +40,10 @@ export function normalizePublishGuardConfig(config = {}) {
     minProducts: parseNonNegativeInteger(
       source.minProducts,
       DEFAULT_PUBLISH_GUARD.minProducts
+    ),
+    maxErrors: parseNonNegativeInteger(
+      source.maxErrors,
+      DEFAULT_PUBLISH_GUARD.maxErrors
     ),
     maxRemovedPercent: parseNonNegativeNumber(
       source.maxRemovedPercent,
@@ -94,15 +99,19 @@ export function evaluatePublishGuard({
   diff = {},
   suspicious = [],
   skippedRows = [],
+  reviewRows = [],
+  errors = [],
   totalRows = 0,
   fallbackToOther = 0,
 } = {}) {
   const normalizedConfig = normalizePublishGuardConfig(config);
   const metrics = {
     products: products.length,
+    errors: Array.isArray(errors) ? errors.length : 0,
     previousProducts: previousProducts.length,
     removed: Array.isArray(diff.removed) ? diff.removed.length : 0,
     skipped: Array.isArray(skippedRows) ? skippedRows.length : 0,
+    review: Array.isArray(reviewRows) ? reviewRows.length : 0,
     totalRows: Number(totalRows) || 0,
     suspicious: Array.isArray(suspicious) ? suspicious.length : 0,
     fallbackToOther: Number(fallbackToOther) || 0,
@@ -147,6 +156,17 @@ export function evaluatePublishGuard({
         actual: metrics.products,
         limit: normalizedConfig.minProducts,
         message: `Импортировано ${metrics.products} товаров, минимум ${normalizedConfig.minProducts}.`,
+      })
+    );
+  }
+
+  if (metrics.errors > normalizedConfig.maxErrors) {
+    issues.push(
+      createIssue({
+        key: 'maxErrors',
+        actual: metrics.errors,
+        limit: normalizedConfig.maxErrors,
+        message: `Ошибок проверки нормализованных товаров: ${metrics.errors}, допустимо не более ${normalizedConfig.maxErrors}.`,
       })
     );
   }

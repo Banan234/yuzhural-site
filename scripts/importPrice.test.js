@@ -11,6 +11,7 @@ import {
   pickPageCells,
   parsePageRow,
   createProductRecord,
+  summarizeManufacturers,
   isHeaderRow,
   isCategoryRow,
   looksLikeCategoryHeading,
@@ -19,6 +20,9 @@ import {
   buildDiff,
   buildRegistryKeyMigrations,
   normalizeImportHistory,
+  parseImportHistory,
+  parsePriceOverrides,
+  parsePreviousProducts,
   buildHistorySnapshot,
   getHistoricalSnapshots,
   buildSuspiciousPriceStats,
@@ -34,7 +38,113 @@ import {
   parsePriceDownloadMaxBytes,
   DEFAULT_PRICE_DOWNLOAD_MAX_BYTES,
   resolveRemotePriceUrl,
+  assertWorksheetWithinRowLimit,
+  MAX_PRICE_WORKSHEET_ROWS,
+  assertPriceBufferWithinLimit,
 } from './importPrice.js';
+import { resolveProductDisposition } from './lib/importDisposition.js';
+
+describe('resolveProductDisposition', () => {
+  it('сразу отбрасывает некабельную строку', () => {
+    const record = createProductRecord(
+      {
+        name: 'Контактор 3RT1036-1В 50А SIEMENS',
+        unit: 'шт',
+        price: 10,
+        stock: 1,
+      },
+      'Пускатели,контакторы'
+    );
+    expect(record).toEqual({ type: 'excluded' });
+    expect(
+      resolveProductDisposition({
+        name: 'Контактор 3RT1036-1В 50А SIEMENS',
+        sourceCategory: 'Пускатели,контакторы',
+        unit: 'м',
+      })
+    ).toMatchObject({
+      status: 'exclude',
+      reason: 'explicit_non_cable_name',
+      evidence: 'Контактор',
+    });
+  });
+
+  it('публикует кабельную позицию из кабельной категории', () => {
+    expect(
+      resolveProductDisposition({
+        name: 'ВВГ 3х2.5',
+        sourceCategory: 'Кабель ВВГ, ВВГнг, ВВГнгLS, ВВГнгхл, ВВГнгFRLS',
+      })
+    ).toMatchObject({
+      status: 'publish',
+      reason: 'source_category_cable',
+      evidence: 'Кабель ВВГ, ВВГнг, ВВГнгLS, ВВГнгхл, ВВГнгFRLS',
+    });
+  });
+
+  it('использует единицу измерения как fallback для неизвестной строки', () => {
+    expect(
+      resolveProductDisposition({ name: 'Неизвестная позиция', unit: 'м' })
+    ).toMatchObject({
+      status: 'publish',
+      reason: 'unit_meter_fallback',
+      evidence: 'м',
+    });
+    expect(
+      resolveProductDisposition({ name: 'Неизвестная позиция', unit: 'км' })
+    ).toMatchObject({
+      status: 'publish',
+      reason: 'unit_meter_fallback',
+      evidence: 'м',
+    });
+    expect(
+      resolveProductDisposition({ name: 'Неизвестная позиция', unit: 'штука' })
+    ).toMatchObject({
+      status: 'exclude',
+      reason: 'unit_piece_fallback',
+      evidence: 'шт',
+    });
+  });
+
+  it('не позволяет fallback по единице отменить явные признаки', () => {
+    expect(
+      resolveProductDisposition({ name: 'Контактор SIEMENS', unit: 'м' })
+    ).toMatchObject({ status: 'exclude', reason: 'explicit_non_cable_name' });
+    expect(
+      resolveProductDisposition({ name: 'ВВГ 3х2.5', unit: 'шт' })
+    ).toMatchObject({ status: 'publish', reason: 'cable_name_evidence' });
+    expect(
+      resolveProductDisposition({
+        name: 'Металлорукав РЗЦПнг d=32мм',
+        unit: 'м',
+      })
+    ).toMatchObject({
+      status: 'exclude',
+      reason: 'explicit_non_cable_name',
+      evidence: 'Металлорукав',
+    });
+  });
+});
+
+describe('import summaries', () => {
+  it('summarizes recognized and missing manufacturers', () => {
+    expect(
+      summarizeManufacturers([
+        { manufacturer: 'SIEMENS' },
+        { manufacturer: 'SIEMENS' },
+        { manufacturer: null },
+      ])
+    ).toEqual({
+      total: 3,
+      recognized: 2,
+      withoutManufacturer: 1,
+      uniqueCount: 1,
+      top: [{ manufacturer: 'SIEMENS', count: 2 }],
+      positions: { unknown: 2 },
+      confidence: { unknown: 2 },
+    });
+  });
+});
 
 describe('mergeImportConfig', () => {
   it('возвращает дефолты при пустом объекте', () => {
@@ -54,6 +164,33 @@ describe('mergeImportConfig', () => {
     expect(result.suspiciousPriceStats.minimumSamples).toBe(5);
     expect(result.suspiciousPriceStats.thresholdPercentile).toBe(0.99);
     expect(result.suspiciousPriceThresholds).toEqual({ м: 1000 });
+  });
+});
+
+describe('import state parsing', () => {
+  it('rejects a corrupt previous product file instead of treating it as empty', () => {
+    expect(() => parsePreviousProducts('{broken')).toThrow(/products\.json/);
+    expect(() => parsePreviousProducts('{"products":[]}')).toThrow(/массив/);
+    expect(parsePreviousProducts('[{"id":1}]')).toEqual([{ id: 1 }]);
+  });
+
+  it('rejects malformed manual overrides instead of silently disabling them', () => {
+    expect(() => parsePriceOverrides('{broken')).toThrow(/priceOverrides/);
+    expect(() => parsePriceOverrides('{"overrides":[]}')).toThrow(/overrides/);
+    expect(() => parsePriceOverrides('{"matchers":{}}')).toThrow(/matchers/);
+    expect(parsePriceOverrides('{"overrides":{"A":{"price":10}}}')).toEqual({
+      overrides: { A: { price: 10 } },
+      matchers: [],
+    });
+  });
+
+  it('rejects invalid price history instead of resetting thresholds silently', () => {
+    expect(() => parseImportHistory('{broken')).toThrow(/истории импортов/);
+    expect(() => parseImportHistory('{"imports":{}}')).toThrow(/массив/);
+    expect(parseImportHistory('{"imports":[]}')).toEqual({
+      version: 1,
+      imports: [],
+    });
   });
 });
 
@@ -86,7 +223,7 @@ describe('buildRegistryKeyMigrations', () => {
     expect(result.migrations.size).toBe(0);
   });
 
-  it('сохраняет ID, когда классификатор определяет производителя', () => {
+  it('не меняет ключ только из-за повторного определения производителя', () => {
     const old = {
       name: 'НИКИ-КУВШЭмнг(А)-LS 7х(2х1)',
       mark: 'НИКИ-КУВШЭм',
@@ -100,7 +237,7 @@ describe('buildRegistryKeyMigrations', () => {
     const nextKey = 'ники-кувш|7|1||||ники|конфигурация:7х(2х1),нг(а)-ls,эм';
     expect(
       buildRegistryKeyMigrations([old], new Set([nextKey])).migrations.size
-    ).toBe(1);
+    ).toBe(0);
   });
 
   it('восстанавливает прежнее искажённое название по единственной исходной строке', () => {
@@ -149,18 +286,12 @@ describe('source parsing boundaries', () => {
     'Зажим анкерный РА 25 2х16-4х25',
     'Клемма 3х(1,5-2,5)х1 пол.DKC В273/3',
     'Щит ЩУ 1/1-1 IP54 (310х300х150)мет',
-  ])('не считает размеры оборудования сечением кабеля: %s', (name) => {
-    const { value } = createProductRecord(
+  ])('исключает некабельную строку до разбора характеристик: %s', (name) => {
+    const record = createProductRecord(
       { name, unit: 'шт', price: 10, stock: 1 },
       'Без категории'
     );
-    expect(value).toMatchObject({
-      sourceName: name,
-      cores: null,
-      crossSection: null,
-      conductorConfiguration: null,
-    });
-    expect(value.name).toBe(name);
+    expect(record).toEqual({ type: 'excluded' });
   });
 
   it('сравнивает переименование по стабильному ID', () => {
@@ -196,6 +327,13 @@ describe('source parsing boundaries', () => {
 });
 
 describe('download price limits', () => {
+  it('applies the configured byte limit to local and remote source buffers', () => {
+    expect(() => assertPriceBufferWithinLimit(5, 'price.xls', 5)).not.toThrow();
+    expect(() => assertPriceBufferWithinLimit(6, 'price.xls', 5)).toThrow(
+      /размер файла.*лимит/iu
+    );
+  });
+
   it('parsePriceDownloadMaxBytes возвращает разумный дефолт для пустых и невалидных значений', () => {
     expect(parsePriceDownloadMaxBytes()).toBe(DEFAULT_PRICE_DOWNLOAD_MAX_BYTES);
     expect(parsePriceDownloadMaxBytes('')).toBe(
@@ -267,6 +405,29 @@ describe('download price limits', () => {
     ).rejects.toThrow(/скачано.*лимит/);
     expect(signal.aborted).toBe(true);
   });
+
+  it('не следует редиректу прайса на другой хост', async () => {
+    const requestedUrls = [];
+    let caughtError;
+    try {
+      await fetchPriceWithTimeout('https://example.test/price.xls', 1000, {
+        fetchImpl: async (url) => {
+          requestedUrls.push(url);
+          return new Response(null, {
+            status: 302,
+            headers: {
+              location: 'http://127.0.0.1/private.xls?token=do-not-log',
+            },
+          });
+        },
+      });
+    } catch (error) {
+      caughtError = error;
+    }
+    expect(caughtError?.message).toMatch(/исходном хосте/);
+    expect(caughtError?.message).not.toContain('do-not-log');
+    expect(requestedUrls).toEqual(['https://example.test/price.xls']);
+  });
 });
 
 describe('remote price source resolution', () => {
@@ -310,6 +471,60 @@ describe('remote price source resolution', () => {
     );
   });
 
+  it('игнорирует Excel-ссылки на другой хост', async () => {
+    await expect(
+      resolveRemotePriceUrl('https://example.test/price/', 1000, {
+        fetchImpl: async () =>
+          new Response(
+            '<a href="http://127.0.0.1/private.xls">Скачать прайс</a>'
+          ),
+      })
+    ).rejects.toThrow(/не найдена ссылка на \.xls\/\.xlsx/i);
+  });
+
+  it('ограничивает размер HTML-страницы источника', async () => {
+    let bodyRead = false;
+    const response = {
+      ok: true,
+      status: 200,
+      headers: new Headers({ 'content-length': String(2 * 1024 * 1024 + 1) }),
+      get body() {
+        bodyRead = true;
+        return new ReadableStream({
+          start(controller) {
+            controller.close();
+          },
+        });
+      },
+    };
+
+    await expect(
+      resolveRemotePriceUrl('https://example.test/price/', 1000, {
+        fetchImpl: async () => response,
+      })
+    ).rejects.toThrow(/Content-Length.*лимит/);
+    expect(bodyRead).toBe(false);
+  });
+
+  it('следует редиректу на том же хосте', async () => {
+    let requestCount = 0;
+    await expect(
+      resolveRemotePriceUrl('https://example.test/price/', 1000, {
+        fetchImpl: async () => {
+          requestCount += 1;
+          if (requestCount === 1) {
+            return new Response(null, {
+              status: 302,
+              headers: { location: '/today/' },
+            });
+          }
+          return new Response('<a href="/files/price.xls">Скачать прайс</a>');
+        },
+      })
+    ).resolves.toBe('https://example.test/files/price.xls');
+    expect(requestCount).toBe(2);
+  });
+
   it('падает с понятной ошибкой, если на странице нет Excel-ссылки', async () => {
     await expect(
       resolveRemotePriceUrl('https://example.test/price/', 1000, {
@@ -317,6 +532,32 @@ describe('remote price source resolution', () => {
           new Response('<html><a href="/docs/file.pdf">PDF</a></html>'),
       })
     ).rejects.toThrow(/не найдена ссылка на \.xls\/\.xlsx/i);
+  });
+});
+
+describe('workbook resource limits', () => {
+  it('rejects sheets whose original row range exceeds the import cap', () => {
+    const xlsx = {
+      utils: {
+        decode_range: () => ({ s: { r: 0, c: 0 }, e: { r: 100_000, c: 8 } }),
+      },
+    };
+    expect(() =>
+      assertWorksheetWithinRowLimit({ '!fullref': 'A1:I100001' }, xlsx)
+    ).toThrow(/лимиту безопасности/);
+  });
+
+  it('accepts normal sheets and exposes a conservative row cap', () => {
+    const xlsx = {
+      utils: {
+        decode_range: () => ({ s: { r: 0, c: 0 }, e: { r: 99_999, c: 8 } }),
+      },
+    };
+    expect(MAX_PRICE_WORKSHEET_ROWS).toBe(100_000);
+    expect(() =>
+      assertWorksheetWithinRowLimit({ '!fullref': 'A1:I100000' }, xlsx)
+    ).not.toThrow();
+    expect(() => assertWorksheetWithinRowLimit({}, xlsx)).not.toThrow();
   });
 });
 
@@ -459,11 +700,24 @@ describe('parsePageRow / createProductRecord', () => {
     expect(parsePageRow(['', '', '', ''], [], 'cat')).toBeNull();
   });
 
-  it('возвращает null для header/service строки', () => {
+  it('возвращает явный тип header/service строки', () => {
     expect(
       parsePageRow(['Наименование', 'Ед.изм', 'Цена', 'Остаток'], [], 'cat')
-    ).toBeNull();
-    expect(parsePageRow(['ИНН 123', '', '', ''], [], 'cat')).toBeNull();
+    ).toEqual({ type: 'header' });
+    expect(parsePageRow(['ИНН 123', '', '', ''], [], 'cat')).toEqual({
+      type: 'service',
+    });
+  });
+
+  it('помечает нераспознанную строку как invalid с исходными данными', () => {
+    expect(parsePageRow(['12345'], ['12345'], 'cat', 8)).toMatchObject({
+      type: 'invalid',
+      value: {
+        rowIndex: 8,
+        category: 'cat',
+        reason: expect.stringMatching(/распознать/i),
+      },
+    });
   });
 
   it('создаёт product при валидных 4 ячейках', () => {
@@ -506,6 +760,35 @@ describe('parsePageRow / createProductRecord', () => {
     );
     expect(result.type).toBe('skip');
     expect(result.value.reason).toMatch(/наимен/i);
+  });
+
+  it('публикует неизвестную строку в метрах по fallback-правилу', () => {
+    const result = createProductRecord(
+      { name: 'Неизвестная марка', unit: 'м', price: 100, stock: 10 },
+      'Без категории',
+      ['Неизвестная марка', 'м', '100', '10'],
+      12
+    );
+    expect(result.type).toBe('product');
+    expect(result.value.name).toContain('Неизвестная марка');
+    expect(result.value).toMatchObject({
+      importDisposition: 'publish',
+      dispositionReason: 'unit_meter_fallback',
+      dispositionEvidence: 'м',
+    });
+    expect(result.review).toBeUndefined();
+  });
+
+  it('сохраняет товар с неоднозначным производителем и направляет его на review', () => {
+    const result = createProductRecord(
+      { name: 'LAPPKABEL товар HELUKABEL', unit: 'м', price: 100, stock: 10 },
+      'Кабель силовой',
+      [],
+      20
+    );
+    expect(result.type).toBe('product');
+    expect(result.value.manufacturer).toBeNull();
+    expect(result.review.reason).toMatch(/производител/i);
   });
 });
 
@@ -652,6 +935,19 @@ describe('normalizeImportHistory / buildHistorySnapshot', () => {
     expect(snapshot.productsImported).toBe(5);
     expect(snapshot.unitPrices.м).toEqual([50, 100]);
     expect(snapshot.unitPrices.шт).toEqual([200]);
+  });
+
+  it('сохраняет источник прайса в истории импорта отдельно от локального файла', () => {
+    const snapshot = buildHistorySnapshot([{ unit: 'м', price: 100 }], {
+      generatedAt: '2026-01-01',
+      sourceFile: 'data/price.xls',
+      sourceUrl: 'https://example.test/price.xls',
+    });
+
+    expect(snapshot).toMatchObject({
+      sourceFile: 'data/price.xls',
+      sourceUrl: 'https://example.test/price.xls',
+    });
   });
 
   it('getHistoricalSnapshots возвращает history.imports когда они есть', () => {

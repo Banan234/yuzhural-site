@@ -85,8 +85,9 @@ export function buildStableKey(product) {
 // детекции переименований. Совпадение характеристик требует дополнительной
 // проверки единственного кандидата и эквивалентности базовых марок.
 export function specKeyFromStableKey(stableKey) {
-  const idx = String(stableKey).indexOf('|');
-  return idx === -1 ? '' : stableKey.slice(idx);
+  const baseKey = String(stableKey).split('#source:')[0];
+  const idx = baseKey.indexOf('|');
+  return idx === -1 ? '' : baseKey.slice(idx);
 }
 
 export function buildSpecKey(product) {
@@ -201,7 +202,10 @@ export function assignStableIdentity(
   now = new Date().toISOString(),
   options = {}
 ) {
-  const stableKey = buildStableKey(product);
+  const baseStableKey = buildStableKey(product);
+  const stableKey = options.identityDiscriminator
+    ? `${baseStableKey}#source:${encodeURIComponent(options.identityDiscriminator)}`
+    : baseStableKey;
   const sourceName =
     typeof product.sourceName === 'string' && product.sourceName.trim()
       ? product.sourceName

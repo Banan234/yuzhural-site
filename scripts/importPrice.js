@@ -2,6 +2,7 @@
 
 import fs from 'fs/promises';
 import path from 'path';
+import { randomUUID } from 'crypto';
 import dotenv from 'dotenv';
 import { fileURLToPath, pathToFileURL } from 'url';
 import {
@@ -17,7 +18,11 @@ import {
   prerenderProducts,
   validatePrerenderProducts,
 } from './prerender.js';
-import { classifyProduct, decodeCable } from './lib/catalogClassifier.js';
+import {
+  classifyProduct,
+  decodeCable,
+  isCableCatalogProduct,
+} from './lib/catalogClassifier.js';
 import {
   assignStableIdentity,
   buildOrphanSpecIndex,
@@ -36,6 +41,10 @@ import {
   normalizePublishGuardConfig,
 } from './lib/importPublishGuard.js';
 import { createBackup } from './backupData.js';
+import { resolveProductDisposition } from './lib/importDisposition.js';
+import { validateNormalizedProducts } from './lib/importDiagnostics.js';
+import { commitArtifactBatch } from './lib/artifactTransaction.js';
+import { acquirePriceImportLock } from './lib/importLock.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -68,6 +77,7 @@ const reportHtmlFile = path.join(projectRoot, 'data', 'import-report.html');
 const overridesFile = path.join(projectRoot, 'data', 'priceOverrides.json');
 const importConfigFile = path.join(projectRoot, 'data', 'importConfig.json');
 const registryFile = path.join(projectRoot, 'data', 'productRegistry.json');
+const importLockFile = path.join(projectRoot, 'data', '.price-import.lock');
 const publicDir = path.resolve(
   projectRoot,
   process.env.PUBLIC_ARTIFACTS_DIR || 'public'
@@ -105,17 +115,54 @@ const DEFAULT_IMPORT_CONFIG = {
 
 let priceOverrides = null;
 let priceMatchers = null;
+
+export function parsePriceOverrides(raw) {
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    throw new Error(`Некорректный JSON priceOverrides.json: ${error.message}`);
+  }
+
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error('priceOverrides.json должен содержать JSON-объект.');
+  }
+
+  const overrides = parsed.overrides ?? {};
+  const matchers = parsed.matchers ?? [];
+  if (!overrides || typeof overrides !== 'object' || Array.isArray(overrides)) {
+    throw new Error(
+      'Поле overrides в priceOverrides.json должно быть объектом.'
+    );
+  }
+  if (!Array.isArray(matchers)) {
+    throw new Error(
+      'Поле matchers в priceOverrides.json должно быть массивом.'
+    );
+  }
+
+  return { overrides, matchers };
+}
+
 async function loadPriceOverrides() {
   if (priceOverrides) return priceOverrides;
+  let raw;
   try {
-    const raw = await fs.readFile(overridesFile, 'utf-8');
-    const parsed = JSON.parse(raw);
-    priceOverrides = parsed?.overrides || {};
-    priceMatchers = Array.isArray(parsed?.matchers) ? parsed.matchers : [];
-  } catch {
+    raw = await fs.readFile(overridesFile, 'utf-8');
+  } catch (error) {
+    // Отсутствующий файл допустим, но прочие ошибки не должны отключать
+    // ручные корректировки незаметно.
+    if (error.code !== 'ENOENT') {
+      throw new Error(
+        `Не удалось прочитать priceOverrides.json: ${error.message}`
+      );
+    }
     priceOverrides = {};
     priceMatchers = [];
+    return priceOverrides;
   }
+  ({ overrides: priceOverrides, matchers: priceMatchers } =
+    parsePriceOverrides(raw));
   return priceOverrides;
 }
 
@@ -238,14 +285,31 @@ const PAGE_COLUMNS = {
   left: [0, 1, 2, 3],
   right: [5, 6, 7, 8],
 };
+export const MAX_PRICE_WORKSHEET_ROWS = 100_000;
+
+export function assertWorksheetWithinRowLimit(
+  worksheet,
+  xlsx,
+  maxRows = MAX_PRICE_WORKSHEET_ROWS
+) {
+  if (!worksheet?.['!fullref']) return;
+  const fullRange = xlsx.utils.decode_range(worksheet['!fullref']);
+  if (fullRange.e.r + 1 > maxRows) {
+    throw new Error(
+      `В листе прайса больше ${maxRows} строк; импорт остановлен по лимиту безопасности.`
+    );
+  }
+}
 
 async function loadWorkbookRows({ sourceBuffer = null } = {}) {
   try {
-    const workbookBuffer = sourceBuffer || (await fs.readFile(inputFile));
+    const workbookBuffer =
+      sourceBuffer || (await readLocalPriceFile(inputFile));
     const xlsx = await import('@e965/xlsx');
     const workbook = xlsx.read(workbookBuffer, {
       type: 'buffer',
       cellDates: false,
+      sheetRows: MAX_PRICE_WORKSHEET_ROWS + 1,
     });
     const firstSheetName = workbook.SheetNames[0];
 
@@ -254,6 +318,7 @@ async function loadWorkbookRows({ sourceBuffer = null } = {}) {
     }
 
     const worksheet = workbook.Sheets[firstSheetName];
+    assertWorksheetWithinRowLimit(worksheet, xlsx);
 
     return xlsx.utils.sheet_to_json(worksheet, {
       header: 1,
@@ -269,6 +334,19 @@ async function loadWorkbookRows({ sourceBuffer = null } = {}) {
     }
 
     throw error;
+  }
+}
+
+async function readLocalPriceFile(filePath) {
+  const handle = await fs.open(filePath, 'r');
+  try {
+    const stat = await handle.stat();
+    assertPriceBufferWithinLimit(stat.size, filePath);
+    const buffer = await handle.readFile();
+    assertPriceBufferWithinLimit(buffer.length, filePath);
+    return buffer;
+  } finally {
+    await handle.close();
   }
 }
 
@@ -331,12 +409,24 @@ export function extractProducts(rows) {
         continue;
       }
 
-      if (record.type === 'skip') {
+      if (record.type === 'header' || record.type === 'service') {
+        continue;
+      }
+
+      if (record.type === 'skip' || record.type === 'invalid') {
         result.skippedRows.push(record.value);
         continue;
       }
 
+      if (record.type === 'excluded') {
+        result.excludedNonCable += 1;
+        continue;
+      }
+
       result.products.push(record.value);
+      if (record.review) {
+        result.reviewRows.push(record.review);
+      }
     }
   }
 
@@ -416,8 +506,12 @@ export function parsePageRow(cells, sourceRow, category, rowIndex = null) {
     return null;
   }
 
-  if (isHeaderRow(cells) || isServiceRow(cells)) {
-    return null;
+  if (isHeaderRow(cells)) {
+    return { type: 'header' };
+  }
+
+  if (isServiceRow(cells)) {
+    return { type: 'service' };
   }
 
   if (filledCells.length === 1) {
@@ -437,12 +531,12 @@ export function parsePageRow(cells, sourceRow, category, rowIndex = null) {
     }
 
     return {
-      type: 'skip',
+      type: 'invalid',
       value: {
         rowIndex,
         row: sourceRow,
         category,
-        reason: 'Не удалось распарсить строку из одной ячейки',
+        reason: 'Не удалось распознать товарную строку из одной ячейки',
       },
     };
   }
@@ -467,32 +561,39 @@ export function createProductRecord(
   rowIndex = null
 ) {
   const sourceName = product.sourceName || product.name;
-  const sourceClassification = classifyProduct({
+  if (!String(sourceName ?? '').trim()) {
+    return {
+      type: 'skip',
+      value: {
+        rowIndex,
+        row: sourceRow,
+        category,
+        reason: 'Пустое наименование после нормализации',
+      },
+    };
+  }
+  const disposition = resolveProductDisposition({
     name: sourceName,
-    mark: sourceName,
+    sourceCategory: category,
+    unit: product.unit,
   });
-  const sourceRule = String(
-    sourceClassification.catalogClassificationMatch || ''
-  )
-    .trim()
-    .toLowerCase();
-  const explicitNonCable =
-    /^(?:зажим\s|клемм(?:а|ник)|коробк|щит\s|свет(?:\.|ильник)|изолент|труб(?:а|ка)|угол\s|розет|выключ|након|гильз|контакт|катушк|автомат|пускател|предохран|блок\s|муфта\s|таймер|кнопк|шина\s|клипс)/iu.test(
-      sourceName
-    );
-  const isNonCable =
-    explicitNonCable ||
-    (sourceClassification.catalogSectionSlug === 'nekabelnaya-produkciya' &&
-      sourceRule &&
-      String(sourceName).toLowerCase().startsWith(sourceRule) &&
-      !/^ПМЛ\s+\d+\s*[хx×]/iu.test(sourceName));
-  const normalized = applyPriceOverride(
+  if (disposition.status === 'exclude') {
+    return { type: 'excluded' };
+  }
+
+  const normalizedProduct = applyPriceOverride(
     normalizeImportedProduct({
       ...product,
-      parseCable: !isNonCable,
       category,
     })
   );
+  const normalized = {
+    ...normalizedProduct,
+    sourceRowIndex: rowIndex,
+    importDisposition: disposition.status,
+    dispositionReason: disposition.reason,
+    dispositionEvidence: disposition.evidence,
+  };
 
   if (!normalized.name) {
     return {
@@ -549,6 +650,95 @@ export function createProductRecord(
   return {
     type: 'product',
     value: normalized,
+    ...(disposition.status === 'review' ||
+    normalized.manufacturerMatch?.ambiguous
+      ? {
+          review: {
+            rowIndex,
+            row: sourceRow,
+            category,
+            product: normalized.name,
+            reason:
+              [
+                disposition.status === 'review'
+                  ? `Требуется проверить решение импорта: ${disposition.reason} (${disposition.evidence})`
+                  : null,
+                normalized.manufacturerMatch?.ambiguous
+                  ? 'В названии найдено несколько возможных производителей'
+                  : null,
+              ]
+                .filter(Boolean)
+                .join('; ') + '; позиция сохранена, требуется проверка',
+          },
+        }
+      : {}),
+  };
+}
+
+function classifyEligibleProducts(products) {
+  const categoryByFamily = buildCategoryMap(products);
+  const classifiedProducts = products.map((product) => {
+    const resolved = {
+      ...product,
+      category: resolveCategory(product, categoryByFamily),
+    };
+
+    return {
+      ...resolved,
+      ...classifyProduct(resolved),
+      cableDecoded: decodeCable(resolved.mark),
+    };
+  });
+
+  const conflicts = classifiedProducts.filter(
+    (product) => !isCableCatalogProduct(product)
+  );
+  if (conflicts.length > 0) {
+    const examples = conflicts
+      .slice(0, 10)
+      .map(
+        (product) =>
+          `${product.name} [${product.sourceCategory || 'Без категории'}]`
+      )
+      .join('; ');
+    throw new Error(
+      `Классификатор вернул некабельные позиции после решения импорта (${conflicts.length}). ` +
+        `Расширь правила importDisposition. Примеры: ${examples}`
+    );
+  }
+
+  return classifiedProducts;
+}
+
+export function summarizeManufacturers(products = []) {
+  const counts = new Map();
+  const positions = new Map();
+  const confidence = new Map();
+  let recognized = 0;
+
+  for (const product of products) {
+    const manufacturer = String(product?.manufacturer || '').trim();
+    if (!manufacturer) continue;
+    recognized += 1;
+    counts.set(manufacturer, (counts.get(manufacturer) || 0) + 1);
+    const position = product?.manufacturerMatch?.position || 'unknown';
+    positions.set(position, (positions.get(position) || 0) + 1);
+    const confidenceLevel = product?.manufacturerMatch?.confidence || 'unknown';
+    confidence.set(confidenceLevel, (confidence.get(confidenceLevel) || 0) + 1);
+  }
+
+  const top = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ru'))
+    .map(([manufacturer, count]) => ({ manufacturer, count }));
+
+  return {
+    total: products.length,
+    recognized,
+    withoutManufacturer: products.length - recognized,
+    uniqueCount: counts.size,
+    top,
+    positions: Object.fromEntries(positions),
+    confidence: Object.fromEntries(confidence),
   };
 }
 
@@ -620,10 +810,10 @@ export function isServiceRow(cells) {
 
 async function writeFileAtomic(filePath, data, { mode } = {}) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
-  const tmpPath = `${filePath}.${process.pid}.${Date.now()}.tmp`;
+  const tmpPath = `${filePath}.${randomUUID()}.tmp`;
   let handle;
   try {
-    handle = await fs.open(tmpPath, 'w', mode);
+    handle = await fs.open(tmpPath, 'wx', mode ?? 0o666);
     await handle.writeFile(data);
     await handle.sync();
     await handle.close();
@@ -641,41 +831,51 @@ async function writeFileAtomic(filePath, data, { mode } = {}) {
   }
 }
 
-async function saveProducts(products) {
-  await writeFileAtomic(outputFile, JSON.stringify(products, null, 2));
-}
-
-async function ensurePublicArtifactsDir() {
-  await fs.mkdir(publicDir, { recursive: true });
-}
-
-async function savePublicPriceFile(sourceBuffer = null) {
-  const priceBuffer = sourceBuffer || (await fs.readFile(inputFile));
-  await writeFileAtomic(publicPriceFile, priceBuffer);
-}
-
-async function replaceDirectory(sourceDir, targetDir) {
-  const backupDir = `${targetDir}.${process.pid}.${Date.now()}.old`;
-  let hasBackup = false;
-
-  try {
-    await fs.rename(targetDir, backupDir);
-    hasBackup = true;
-  } catch (error) {
-    if (error.code !== 'ENOENT') throw error;
+function getStagedPath(stageRoot, targetPath) {
+  const relativePath = path.relative(projectRoot, path.resolve(targetPath));
+  if (
+    relativePath === '..' ||
+    relativePath.startsWith(`..${path.sep}`) ||
+    path.isAbsolute(relativePath)
+  ) {
+    throw new Error(
+      `Артефакт импорта должен находиться внутри проекта: ${targetPath}`
+    );
   }
+  return path.join(stageRoot, relativePath);
+}
 
-  try {
-    await fs.rename(sourceDir, targetDir);
-    if (hasBackup) {
-      await fs.rm(backupDir, { recursive: true, force: true });
+async function listFilesRecursively(rootDir) {
+  const files = [];
+  async function visit(currentDir) {
+    let entries;
+    try {
+      entries = await fs.readdir(currentDir, { withFileTypes: true });
+    } catch (error) {
+      if (error.code === 'ENOENT') return;
+      throw error;
     }
-  } catch (error) {
-    if (hasBackup) {
-      await fs.rename(backupDir, targetDir).catch(() => {});
+    for (const entry of entries) {
+      const entryPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        await visit(entryPath);
+      } else if (entry.isFile()) {
+        files.push(entryPath);
+      }
     }
-    throw error;
   }
+  await visit(rootDir);
+  return files;
+}
+
+function isPathInside(rootDir, candidatePath) {
+  const relativePath = path.relative(rootDir, candidatePath);
+  return (
+    relativePath === '' ||
+    (relativePath !== '..' &&
+      !relativePath.startsWith(`..${path.sep}`) &&
+      !path.isAbsolute(relativePath))
+  );
 }
 
 async function countHtmlFiles(dir) {
@@ -688,7 +888,11 @@ async function countHtmlFiles(dir) {
   }
 }
 
-async function writeRuntimeProductPrerender(products, seoSummary = null) {
+async function writeRuntimeProductPrerender(
+  products,
+  seoSummary = null,
+  outputDir = publicDir
+) {
   if (!process.env.PUBLIC_ARTIFACTS_DIR) return null;
   if (!seoSummary) {
     throw new Error(
@@ -702,43 +906,31 @@ async function writeRuntimeProductPrerender(products, seoSummary = null) {
       outputDir: runtimePrerenderTemplateDir,
     });
   } catch (error) {
-    console.warn(
-      'Не удалось прочитать шаблон runtime-prerender карточек товара:',
-      error.message
+    throw new Error(
+      `Не удалось прочитать шаблон runtime-prerender карточек товара: ${error.message}`
     );
-    return null;
   }
 
-  const tmpDir = path.join(
-    path.dirname(publicDir),
-    `${path.basename(publicDir)}.product-prerender-${process.pid}-${Date.now()}`
-  );
-
-  try {
-    validatePrerenderProducts(products, { source: outputFile });
-    await prerenderProducts(template, products, {
-      outputDir: tmpDir,
-      log: null,
-      validate: false,
-    });
-    const productDir = path.join(tmpDir, 'product');
-    const writtenCount = await countHtmlFiles(productDir);
-    const coverage = await assertProductPrerenderCoverage({
-      publicDir,
-      productDir,
-      products,
-      productSitemapPaths: seoSummary?.productSitemapPaths || [],
-    });
-    if (writtenCount !== coverage.htmlCount) {
-      throw new Error(
-        `Runtime prerender записал ${writtenCount} HTML, но product sitemap содержит ${coverage.htmlCount} URL.`
-      );
-    }
-    await replaceDirectory(productDir, path.join(publicDir, 'product'));
-    return writtenCount;
-  } finally {
-    await fs.rm(tmpDir, { recursive: true, force: true }).catch(() => {});
+  validatePrerenderProducts(products, { source: outputFile });
+  await prerenderProducts(template, products, {
+    outputDir,
+    log: null,
+    validate: false,
+  });
+  const productDir = path.join(outputDir, 'product');
+  const writtenCount = await countHtmlFiles(productDir);
+  const coverage = await assertProductPrerenderCoverage({
+    publicDir: outputDir,
+    productDir,
+    products,
+    productSitemapPaths: seoSummary?.productSitemapPaths || [],
+  });
+  if (writtenCount !== coverage.htmlCount) {
+    throw new Error(
+      `Runtime prerender записал ${writtenCount} HTML, но product sitemap содержит ${coverage.htmlCount} URL.`
+    );
   }
+  return writtenCount;
 }
 
 // Slug может попасть в URL только через [a-z0-9-], всё остальное транслит/чистка
@@ -767,20 +959,35 @@ export function buildRedirectsNginxConf(redirects) {
 }
 
 async function loadPreviousProducts() {
+  let raw;
   try {
-    const raw = await fs.readFile(outputFile, 'utf-8');
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    raw = await fs.readFile(outputFile, 'utf-8');
   } catch (error) {
     if (error.code === 'ENOENT') {
       return [];
     }
-    console.warn(
-      'Не удалось прочитать предыдущий products.json:',
-      error.message
+    throw new Error(
+      `Не удалось прочитать предыдущий products.json: ${error.message}`
     );
-    return [];
   }
+  return parsePreviousProducts(raw);
+}
+
+export function parsePreviousProducts(raw) {
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    throw new Error(
+      `Некорректный JSON предыдущего products.json: ${error.message}`
+    );
+  }
+  if (!Array.isArray(parsed)) {
+    throw new Error(
+      'Предыдущий products.json должен содержать массив товаров.'
+    );
+  }
+  return parsed;
 }
 
 export function productKey(product) {
@@ -928,6 +1135,9 @@ export function buildRegistryKeyMigrations(
         previousProduct.sourceName ||
         previousProduct.fullName ||
         previousProduct.name,
+      // Старый реестр уже содержит выделенного производителя. Передаём его
+      // явно, чтобы повторный разбор не менял стабильный ключ.
+      manufacturer: previousProduct.manufacturer,
       parseCable:
         previousProduct.catalogSectionSlug !== 'nekabelnaya-produkciya',
     });
@@ -1018,17 +1228,14 @@ const PRICE_JUMP_ALERT_PERCENT = 50;
 async function loadImportHistory(config) {
   const historyFile = getImportHistoryFile(config);
 
+  let raw;
   try {
-    const raw = await fs.readFile(historyFile, 'utf-8');
-    const parsed = JSON.parse(raw);
-    return normalizeImportHistory(parsed);
+    raw = await fs.readFile(historyFile, 'utf-8');
   } catch (error) {
-    if (error.code !== 'ENOENT') {
-      console.warn('Не удалось прочитать историю импортов:', error.message);
-    }
-
-    return normalizeImportHistory({});
+    if (error.code === 'ENOENT') return normalizeImportHistory({});
+    throw new Error(`Не удалось прочитать историю импортов: ${error.message}`);
   }
+  return parseImportHistory(raw);
 }
 
 export function normalizeImportHistory(history) {
@@ -1040,7 +1247,26 @@ export function normalizeImportHistory(history) {
   };
 }
 
-export function buildHistorySnapshot(products, { generatedAt, sourceFile }) {
+export function parseImportHistory(raw) {
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    throw new Error(`Некорректный JSON истории импортов: ${error.message}`);
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error('История импортов должна содержать JSON-объект.');
+  }
+  if (parsed.imports != null && !Array.isArray(parsed.imports)) {
+    throw new Error('Поле imports в истории импортов должно быть массивом.');
+  }
+  return normalizeImportHistory(parsed);
+}
+
+export function buildHistorySnapshot(
+  products,
+  { generatedAt, sourceFile, sourceUrl = null }
+) {
   const unitPrices = {};
 
   for (const product of products) {
@@ -1065,6 +1291,7 @@ export function buildHistorySnapshot(products, { generatedAt, sourceFile }) {
   return {
     generatedAt,
     sourceFile,
+    ...(sourceUrl ? { sourceUrl } : {}),
     productsImported: products.length,
     unitPrices,
   };
@@ -1087,21 +1314,16 @@ export function getHistoricalSnapshots(history, previousProducts, sourceFile) {
   ];
 }
 
-async function saveImportHistory(config, history, snapshot) {
-  const historyFile = getImportHistoryFile(config);
+function buildNextImportHistory(config, history, snapshot) {
   const historyLimit = Math.max(
     1,
     Number(config.suspiciousPriceStats.historyLimit) || 1
   );
-  const nextHistory = {
+  return {
     version: 1,
     generatedAt: new Date().toISOString(),
     imports: [...history.imports, snapshot].slice(-historyLimit),
   };
-
-  await writeFileAtomic(historyFile, JSON.stringify(nextHistory, null, 2));
-
-  return nextHistory;
 }
 
 export function buildSuspiciousPriceStats(config, historySnapshots) {
@@ -1344,6 +1566,11 @@ function stripClassificationDiagnostics(product) {
   const {
     catalogClassificationSource,
     catalogClassificationMatch,
+    manufacturerMatch,
+    sourceRowIndex,
+    importDisposition,
+    dispositionReason,
+    dispositionEvidence,
     ...publicProduct
   } = product;
 
@@ -1772,10 +1999,23 @@ function buildReportHtml(report) {
   const skippedRows = Array.isArray(report.skippedRows)
     ? report.skippedRows
     : [];
+  const reviewRows = Array.isArray(report.reviewRows) ? report.reviewRows : [];
+  const diagnostics = report.diagnostics || {};
+  const diagnosticRows = [
+    ...(diagnostics.errors || []),
+    ...(diagnostics.warnings || []),
+    ...(diagnostics.info || []),
+  ];
+  const manufacturerRows = Array.isArray(report.manufacturers?.top)
+    ? report.manufacturers.top
+    : [];
   const statCards = [
     ['Импортировано', summary.productsImported],
     ['Было ранее', summary.productsPrevious],
     ['Категорий найдено', summary.categoriesDetected],
+    ['На проверке', summary.reviewRows],
+    ['Ошибки проверки', summary.validationErrors],
+    ['Предупреждения', summary.validationWarnings],
     ['Строк пропущено', summary.skippedRows],
     ['Изменений цен', summary.priceChanged],
     ['Изменений остатков', summary.stockChanged],
@@ -1885,6 +2125,18 @@ function buildReportHtml(report) {
     <section class="panel">
       ${renderReportTabs(report, alertPercent)}
       ${renderStockChanges(report)}
+      <details class="details-block">
+        <summary>Производители (${formatNumber(report.manufacturers?.uniqueCount || 0)} уникальных)</summary>
+        <p class="panel-note">Производитель берётся из исходного названия строки. Неопознанных строк: ${formatNumber(report.manufacturers?.withoutManufacturer || 0)}.</p>
+        ${renderTable(
+          manufacturerRows,
+          [
+            { key: 'manufacturer', label: 'Производитель' },
+            { key: 'count', label: 'Строк' },
+          ],
+          'Производители не выделены.'
+        )}
+      </details>
     </section>
 
     <section class="secondary-grid">
@@ -1932,6 +2184,50 @@ function buildReportHtml(report) {
         </details>
       </article>
       <article class="panel">
+        <h2>Строки на проверке</h2>
+        <p class="panel-note">Эти позиции не удалены: они импортированы, но исходная категория не подтверждает кабельный раздел.</p>
+        ${renderTable(
+          reviewRows,
+          [
+            {
+              label: 'Строка',
+              render: (row) =>
+                Number.isInteger(row.rowIndex)
+                  ? formatNumber(row.rowIndex + 1)
+                  : '—',
+            },
+            { key: 'product', label: 'Позиция' },
+            { key: 'category', label: 'Категория источника' },
+            { key: 'reason', label: 'Причина' },
+          ],
+          'Строк на проверке нет.'
+        )}
+      </article>
+      <article class="panel">
+        <h2>Диагностика товара</h2>
+        <p class="panel-note">Ошибки блокируют публикацию; предупреждения и информация сохраняются для разбора.</p>
+        ${renderTable(
+          diagnosticRows,
+          [
+            { key: 'severity', label: 'Уровень' },
+            {
+              label: 'Строка',
+              render: (row) =>
+                Number.isInteger(row.rowIndex)
+                  ? formatNumber(row.rowIndex + 1)
+                  : Array.isArray(row.rows)
+                    ? row.rows
+                        .map((index) => formatNumber(index + 1))
+                        .join(', ')
+                    : '—',
+            },
+            { key: 'product', label: 'Позиция' },
+            { key: 'message', label: 'Сообщение' },
+          ],
+          'Диагностических замечаний нет.'
+        )}
+      </article>
+      <article class="panel">
         <h2>Пороги подозрительных цен</h2>
         <p class="panel-note">
           Импортов в расчёте: ${formatNumber(report.suspiciousPriceStats?.historyImports || 0)} ·
@@ -1959,6 +2255,8 @@ function buildReportHtml(report) {
 const PRICE_DOWNLOAD_TIMEOUT_MS =
   Number(process.env.PRICE_DOWNLOAD_TIMEOUT_MS) || 60_000;
 const PRICE_DOWNLOAD_RETRIES = Number(process.env.PRICE_DOWNLOAD_RETRIES) || 3;
+const PRICE_SOURCE_PAGE_MAX_BYTES = 2 * 1024 * 1024;
+const PRICE_SOURCE_MAX_REDIRECTS = 5;
 export const DEFAULT_PRICE_DOWNLOAD_MAX_BYTES = 50 * 1024 * 1024;
 
 class PriceDownloadError extends Error {
@@ -1966,6 +2264,19 @@ class PriceDownloadError extends Error {
     super(message);
     this.name = 'PriceDownloadError';
     this.retryable = retryable;
+  }
+}
+
+function safeRemoteUrlLabel(value) {
+  try {
+    const url = new URL(value);
+    url.username = '';
+    url.password = '';
+    if (url.search) url.search = '?redacted';
+    url.hash = '';
+    return url.href;
+  } catch {
+    return '[invalid URL]';
   }
 }
 
@@ -1999,7 +2310,7 @@ function formatBytes(value) {
 
 function createPriceDownloadLimitError(url, actualBytes, maxBytes, source) {
   return new PriceDownloadError(
-    `Прайс по URL ${url} слишком большой: ${source} ${formatBytes(
+    `Прайс по URL ${safeRemoteUrlLabel(url)} слишком большой: ${source} ${formatBytes(
       actualBytes
     )}, лимит ${formatBytes(
       maxBytes
@@ -2008,12 +2319,129 @@ function createPriceDownloadLimitError(url, actualBytes, maxBytes, source) {
   );
 }
 
+export function assertPriceBufferWithinLimit(
+  byteLength,
+  source,
+  maxBytes = PRICE_DOWNLOAD_MAX_BYTES
+) {
+  if (byteLength > maxBytes) {
+    throw createPriceDownloadLimitError(
+      source,
+      byteLength,
+      maxBytes,
+      'размер файла'
+    );
+  }
+}
+
 function isSpreadsheetUrl(url) {
   if (!url) return false;
   try {
     return SPREADSHEET_URL_RE.test(new URL(url).pathname || '');
   } catch {
     return SPREADSHEET_URL_RE.test(String(url));
+  }
+}
+
+function normalizeRemoteUrl(
+  value,
+  trustedSourceUrl,
+  { allowHttpsUpgrade = true } = {}
+) {
+  let url;
+  let trusted;
+  try {
+    url = new URL(value);
+    trusted = new URL(trustedSourceUrl);
+  } catch {
+    throw new PriceDownloadError('Некорректный URL источника прайса', {
+      retryable: false,
+    });
+  }
+
+  if (
+    !['http:', 'https:'].includes(url.protocol) ||
+    url.username ||
+    url.password
+  ) {
+    throw new PriceDownloadError(
+      `Недопустимый URL источника прайса: ${safeRemoteUrlLabel(url.href)}`,
+      { retryable: false }
+    );
+  }
+
+  const sameHost =
+    url.hostname.toLowerCase() === trusted.hostname.toLowerCase();
+  const sameOrigin = url.origin === trusted.origin;
+  const upgradesToHttps =
+    allowHttpsUpgrade &&
+    trusted.protocol === 'http:' &&
+    url.protocol === 'https:' &&
+    !trusted.port &&
+    !url.port;
+  if (!sameHost || (!sameOrigin && !upgradesToHttps)) {
+    throw new PriceDownloadError(
+      `Ссылка прайса должна оставаться на исходном хосте (${trusted.host}): ${safeRemoteUrlLabel(url.href)}`,
+      { retryable: false }
+    );
+  }
+
+  if (trusted.protocol === 'https:' && url.protocol !== 'https:') {
+    throw new PriceDownloadError(
+      `Запрещено понижать HTTPS-соединение источника прайса: ${safeRemoteUrlLabel(url.href)}`,
+      { retryable: false }
+    );
+  }
+
+  return url;
+}
+
+async function fetchPriceSourceResponse(
+  url,
+  signal,
+  { fetchImpl = fetch, trustedSourceUrl = url } = {}
+) {
+  let currentUrl = normalizeRemoteUrl(url, trustedSourceUrl).href;
+
+  for (let redirects = 0; ; redirects += 1) {
+    const response = await fetchImpl(currentUrl, {
+      signal,
+      redirect: 'manual',
+    });
+    if (![301, 302, 303, 307, 308].includes(response.status)) {
+      return response;
+    }
+    const location = response.headers.get('location');
+    await response.body?.cancel().catch(() => {});
+    if (redirects >= PRICE_SOURCE_MAX_REDIRECTS) {
+      throw new PriceDownloadError(
+        'Слишком много перенаправлений источника прайса',
+        {
+          retryable: false,
+        }
+      );
+    }
+
+    if (!location) {
+      throw new PriceDownloadError(
+        'Редирект источника прайса без заголовка Location',
+        {
+          retryable: false,
+        }
+      );
+    }
+    try {
+      currentUrl = normalizeRemoteUrl(
+        new URL(location, currentUrl).href,
+        trustedSourceUrl
+      ).href;
+    } catch (error) {
+      if (error instanceof PriceDownloadError) throw error;
+      throw new PriceDownloadError(
+        `Некорректный Location у редиректа источника прайса: ${safeRemoteUrlLabel(location)}`,
+        { retryable: false }
+      );
+    }
   }
 }
 
@@ -2026,7 +2454,11 @@ function decodeHtmlAttribute(value) {
     .replace(/&gt;/gi, '>');
 }
 
-export function extractSpreadsheetUrlFromHtml(html, baseUrl) {
+export function extractSpreadsheetUrlFromHtml(
+  html,
+  baseUrl,
+  trustedSourceUrl = null
+) {
   const hrefRe = /href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
   const candidates = [];
   let match;
@@ -2052,6 +2484,13 @@ export function extractSpreadsheetUrlFromHtml(html, baseUrl) {
 
     if (!isSpreadsheetUrl(resolvedUrl)) {
       continue;
+    }
+    if (trustedSourceUrl) {
+      try {
+        normalizeRemoteUrl(resolvedUrl, trustedSourceUrl);
+      } catch {
+        continue;
+      }
     }
 
     const snippet = html
@@ -2114,7 +2553,7 @@ async function readResponseBodyWithLimit(response, url, maxBytes, controller) {
 async function fetchRemoteTextWithTimeout(
   url,
   timeoutMs,
-  { fetchImpl = fetch } = {}
+  { fetchImpl = fetch, maxBytes = PRICE_SOURCE_PAGE_MAX_BYTES } = {}
 ) {
   const controller = new AbortController();
   const timer = setTimeout(
@@ -2122,18 +2561,44 @@ async function fetchRemoteTextWithTimeout(
     timeoutMs
   );
   try {
-    const response = await fetchImpl(url, { signal: controller.signal });
+    const response = await fetchPriceSourceResponse(url, controller.signal, {
+      fetchImpl,
+    });
     if (!response.ok) {
       throw new Error(
-        `Не удалось открыть страницу ${url}: HTTP ${response.status}`
+        `Не удалось открыть страницу ${safeRemoteUrlLabel(url)}: HTTP ${response.status}`
       );
     }
 
-    const text = await response.text();
+    const contentLengthHeader = response.headers.get('content-length');
+    const contentLength = Number(contentLengthHeader);
+    if (
+      contentLengthHeader &&
+      Number.isFinite(contentLength) &&
+      contentLength > maxBytes
+    ) {
+      throw createPriceDownloadLimitError(
+        url,
+        contentLength,
+        maxBytes,
+        'Content-Length'
+      );
+    }
+
+    const body = await readResponseBodyWithLimit(
+      response,
+      url,
+      maxBytes,
+      controller
+    );
+    const text = body.toString('utf8');
     if (!text.trim()) {
-      throw new PriceDownloadError(`Страница прайса пустая: ${url}`, {
-        retryable: false,
-      });
+      throw new PriceDownloadError(
+        `Страница прайса пустая: ${safeRemoteUrlLabel(url)}`,
+        {
+          retryable: false,
+        }
+      );
     }
 
     return text;
@@ -2153,10 +2618,12 @@ export async function fetchPriceWithTimeout(
     timeoutMs
   );
   try {
-    const response = await fetchImpl(url, { signal: controller.signal });
+    const response = await fetchPriceSourceResponse(url, controller.signal, {
+      fetchImpl,
+    });
     if (!response.ok) {
       throw new Error(
-        `Не удалось скачать прайс по URL ${url}: HTTP ${response.status}`
+        `Не удалось скачать прайс по URL ${safeRemoteUrlLabel(url)}: HTTP ${response.status}`
       );
     }
 
@@ -2180,9 +2647,12 @@ export async function fetchPriceWithTimeout(
       controller
     );
     if (buffer.length === 0) {
-      throw new PriceDownloadError(`Скачанный файл пустой: ${url}`, {
-        retryable: false,
-      });
+      throw new PriceDownloadError(
+        `Скачанный файл пустой: ${safeRemoteUrlLabel(url)}`,
+        {
+          retryable: false,
+        }
+      );
     }
 
     return buffer;
@@ -2213,17 +2683,23 @@ export async function resolveRemotePriceUrl(
     });
   }
 
+  normalizeRemoteUrl(sourceUrl, sourceUrl);
+
   if (isSpreadsheetUrl(sourceUrl)) {
-    return sourceUrl;
+    return new URL(sourceUrl).href;
   }
 
   const html = await fetchRemoteTextWithTimeout(sourceUrl, timeoutMs, {
     fetchImpl,
   });
-  const spreadsheetUrl = extractSpreadsheetUrlFromHtml(html, sourceUrl);
+  const spreadsheetUrl = extractSpreadsheetUrlFromHtml(
+    html,
+    sourceUrl,
+    sourceUrl
+  );
   if (!spreadsheetUrl) {
     throw new PriceDownloadError(
-      `На странице ${sourceUrl} не найдена ссылка на .xls/.xlsx прайс`,
+      `На странице ${safeRemoteUrlLabel(sourceUrl)} не найдена ссылка на .xls/.xlsx прайс`,
       { retryable: false }
     );
   }
@@ -2237,7 +2713,7 @@ async function downloadPriceFile() {
     PRICE_DOWNLOAD_TIMEOUT_MS
   );
   console.log(
-    `Скачивание прайса: ${downloadUrl} (источник ${remoteSourceUrl}, лимит ${formatBytes(
+    `Скачивание прайса: ${safeRemoteUrlLabel(downloadUrl)} (источник ${safeRemoteUrlLabel(remoteSourceUrl)}, лимит ${formatBytes(
       PRICE_DOWNLOAD_MAX_BYTES
     )})`
   );
@@ -2266,7 +2742,7 @@ async function downloadPriceFile() {
     throw lastError || new Error('Не удалось скачать прайс');
   }
   console.log(
-    `Скачано ${downloadUrl} (${(buffer.length / 1024).toFixed(1)} КБ)`
+    `Скачано ${safeRemoteUrlLabel(downloadUrl)} (${(buffer.length / 1024).toFixed(1)} КБ)`
   );
   return buffer;
 }
@@ -2276,6 +2752,8 @@ async function main() {
   if (remoteSourceUrl) {
     downloadedPriceBuffer = await downloadPriceFile();
   }
+  const sourcePriceBuffer =
+    downloadedPriceBuffer || (await readLocalPriceFile(inputFile));
   console.log(`Чтение прайса: ${inputFile}`);
   if (isDryRun) {
     console.log('Режим: --dry-run (файлы не записываются)');
@@ -2288,7 +2766,7 @@ async function main() {
   const registry = await loadProductRegistry(registryFile);
   await loadPriceOverrides();
 
-  const rows = await loadWorkbookRows({ sourceBuffer: downloadedPriceBuffer });
+  const rows = await loadWorkbookRows({ sourceBuffer: sourcePriceBuffer });
   const schema = detectSchema(rows);
 
   if (schema.headerRowsFound === 0) {
@@ -2304,20 +2782,13 @@ async function main() {
   }
 
   const importResult = extractProducts(rows);
-  const categoryByFamily = buildCategoryMap(importResult.products);
-
-  const classifiedProducts = importResult.products.map((product) => {
-    const resolved = {
-      ...product,
-      category: resolveCategory(product, categoryByFamily),
-    };
-
-    return {
-      ...resolved,
-      ...classifyProduct(resolved),
-      cableDecoded: decodeCable(resolved.mark),
-    };
+  const manufacturerSummary = summarizeManufacturers(importResult.products);
+  const classifiedProducts = classifyEligibleProducts(importResult.products);
+  const diagnostics = validateNormalizedProducts(classifiedProducts, {
+    excludedNonCable: importResult.excludedNonCable,
+    reviewRows: importResult.reviewRows,
   });
+  const previousCableProducts = previousProducts.filter(isCableCatalogProduct);
 
   // Pre-pass: считаем стабильные ключи всех текущих позиций, чтобы
   // отличить осиротевшие записи (исчезли из импорта) от просто новых.
@@ -2336,9 +2807,24 @@ async function main() {
   );
   const orphanIndex = buildOrphanSpecIndex(registry, currentStableKeys);
 
+  const stableKeyCounts = new Map();
+  for (const product of classifiedProducts) {
+    const stableKey = buildStableKey(product);
+    stableKeyCounts.set(stableKey, (stableKeyCounts.get(stableKey) || 0) + 1);
+  }
+  const stableKeyOccurrences = new Map();
+
   const productsWithIdentity = classifiedProducts.map((product) => {
+    const stableKey = buildStableKey(product);
+    const occurrence = stableKeyOccurrences.get(stableKey) || 0;
+    stableKeyOccurrences.set(stableKey, occurrence + 1);
     const identity = assignStableIdentity(registry, product, generatedAt, {
-      orphanIndex,
+      ...(occurrence === 0 ? { orphanIndex } : {}),
+      ...(stableKeyCounts.get(stableKey) > 1 && occurrence > 0
+        ? {
+            identityDiscriminator: `row-${product.sourceRowIndex ?? 'unknown'}-occurrence-${occurrence}`,
+          }
+        : {}),
     });
     return {
       id: identity.id,
@@ -2370,13 +2856,18 @@ async function main() {
     importConfig
   );
 
+  // Исключение некабельных позиций — ожидаемая бизнес-операция, а не
+  // аварийное удаление каталога. Поэтому guard сравнивает только кабельную
+  // часть предыдущего каталога; полный diff всё равно сохраняется в отчёте.
   const publishGuard = evaluatePublishGuard({
     config: importConfig.publishGuard,
-    previousProducts,
+    previousProducts: previousCableProducts,
     products,
-    diff,
+    diff: buildDiff(previousCableProducts, products),
     suspicious,
     skippedRows: importResult.skippedRows,
+    reviewRows: importResult.reviewRows,
+    errors: diagnostics.errors,
     totalRows: importResult.totalRows,
     fallbackToOther: classification.fallbackToOther.count,
   });
@@ -2385,6 +2876,9 @@ async function main() {
   const report = {
     generatedAt,
     sourceFile: inputFile,
+    ...(remoteSourceUrl
+      ? { sourceUrl: safeRemoteUrlLabel(remoteSourceUrl) }
+      : {}),
     dryRun: isDryRun,
     schema,
     registryFile: path.relative(projectRoot, registryFile),
@@ -2401,6 +2895,12 @@ async function main() {
       categoriesDetected: importResult.categoriesSeen.size,
       productsImported: products.length,
       productsPrevious: previousProducts.length,
+      excludedNonCable: importResult.excludedNonCable,
+      reviewRows: importResult.reviewRows.length,
+      validationErrors: diagnostics.summary.errors,
+      validationWarnings: diagnostics.summary.warnings,
+      duplicateGroups: diagnostics.summary.duplicateGroups,
+      manufacturers: manufacturerSummary,
       skippedRows: importResult.skippedRows.length,
       suspicious: suspicious.length,
       added: diff.added.length,
@@ -2412,8 +2912,11 @@ async function main() {
       fallbackToOther: classification.fallbackToOther.count,
     },
     skipsByReason,
+    manufacturers: manufacturerSummary,
     productsByCategory: byCategory,
     skippedRows: importResult.skippedRows,
+    reviewRows: importResult.reviewRows,
+    diagnostics,
     suspicious,
     suspiciousPriceStats,
     classification,
@@ -2432,7 +2935,32 @@ async function main() {
   };
 
   if (!publishGuard.ok && !isPublishGuardOverride) {
-    const message = formatPublishGuardFailure(publishGuard);
+    const validationDetails = diagnostics.errors.length
+      ? [
+          `Ошибки диагностики (${diagnostics.errors.length}):`,
+          ...diagnostics.errors.slice(0, 8).map((item) => {
+            const row = Number.isInteger(item.rowIndex)
+              ? `строка ${item.rowIndex + 1}: `
+              : Array.isArray(item.rows) && item.rows.length > 0
+                ? `строки ${item.rows.map((index) => index + 1).join(', ')}: `
+                : '';
+            const subject = Array.isArray(item.products)
+              ? `${item.products.join(' / ')} — `
+              : item.product
+                ? `${item.product} — `
+                : '';
+            return `- ${row}${subject}${item.message}`;
+          }),
+          ...(diagnostics.errors.length > 8
+            ? [
+                `… ещё ${diagnostics.errors.length - 8}; подробности в import-report.json при обычном запуске.`,
+              ]
+            : []),
+        ].join('\n')
+      : '';
+    const message = [formatPublishGuardFailure(publishGuard), validationDetails]
+      .filter(Boolean)
+      .join('\n');
     if (!isDryRun) {
       report.blocked = true;
       report.message = message;
@@ -2460,66 +2988,189 @@ async function main() {
   let runtimeProductPrerenderCount = null;
 
   if (!isDryRun) {
-    if (downloadedPriceBuffer) {
-      await fs.mkdir(path.dirname(inputFile), { recursive: true });
-      await writeFileAtomic(inputFile, downloadedPriceBuffer);
-    }
-    await ensurePublicArtifactsDir();
-    await saveProducts(products);
-    await saveProductRegistry(registryFile, registry);
-    await savePublicPriceFile(downloadedPriceBuffer);
-    await writeFileAtomic(
-      redirectsFile,
-      JSON.stringify(slugRedirects, null, 2)
+    const dataStageRoot = await fs.mkdtemp(
+      path.join(projectRoot, '.price-import-stage-data-')
     );
-    await writeFileAtomic(
-      redirectsNginxFile,
-      buildRedirectsNginxConf(slugRedirects),
-      { mode: 0o444 }
-    );
-
+    let stagedPublicDir;
     try {
+      await fs.mkdir(path.dirname(publicDir), { recursive: true });
+      stagedPublicDir = await fs.mkdtemp(
+        path.join(
+          path.dirname(publicDir),
+          `.${path.basename(publicDir)}.price-import-stage-`
+        )
+      );
+    } catch (error) {
+      await fs
+        .rm(dataStageRoot, { recursive: true, force: true })
+        .catch(() => {});
+      throw error;
+    }
+    try {
+      const stagedProductsFile = getStagedPath(dataStageRoot, outputFile);
+      const stagedRegistryFile = getStagedPath(dataStageRoot, registryFile);
+      const stagedReportFile = getStagedPath(dataStageRoot, reportFile);
+      const stagedReportHtmlFile = getStagedPath(dataStageRoot, reportHtmlFile);
+      const stagedHistoryFile = getStagedPath(
+        dataStageRoot,
+        getImportHistoryFile(importConfig)
+      );
+
+      await writeFileAtomic(
+        stagedProductsFile,
+        JSON.stringify(products, null, 2)
+      );
+      await saveProductRegistry(stagedRegistryFile, registry);
+      await writeFileAtomic(
+        path.join(stagedPublicDir, path.basename(publicPriceFile)),
+        sourcePriceBuffer
+      );
+      if (downloadedPriceBuffer) {
+        await writeFileAtomic(
+          getStagedPath(dataStageRoot, inputFile),
+          downloadedPriceBuffer
+        );
+      }
+      await writeFileAtomic(
+        path.join(stagedPublicDir, path.basename(redirectsFile)),
+        JSON.stringify(slugRedirects, null, 2)
+      );
+      await writeFileAtomic(
+        path.join(stagedPublicDir, path.basename(redirectsNginxFile)),
+        buildRedirectsNginxConf(slugRedirects),
+        { mode: 0o444 }
+      );
+
       const categoriesRaw = await fs.readFile(catalogCategoriesFile, 'utf-8');
       const categoriesData = JSON.parse(categoriesRaw);
       seoSummary = await writeSeoArtifacts({
-        outputDir: publicDir,
+        outputDir: stagedPublicDir,
         siteUrl: process.env.SITE_URL || process.env.VITE_SITE_URL,
         products,
         categoriesData,
-        lastmod: generatedAt,
       });
-    } catch (error) {
-      console.warn(
-        'Не удалось сгенерировать sitemap.xml/robots.txt:',
-        error.message
+      runtimeProductPrerenderCount = await writeRuntimeProductPrerender(
+        products,
+        seoSummary,
+        stagedPublicDir
       );
-      if (process.env.PUBLIC_ARTIFACTS_DIR) {
-        throw error;
-      }
-    }
+      report.seo = seoSummary.counts;
+      report.runtimeProductPrerenderCount = runtimeProductPrerenderCount;
+      await writeFileAtomic(stagedReportFile, JSON.stringify(report, null, 2));
+      await writeFileAtomic(stagedReportHtmlFile, buildReportHtml(report));
+      const nextHistory = buildNextImportHistory(
+        importConfig,
+        importHistory,
+        buildHistorySnapshot(products, {
+          generatedAt,
+          sourceFile: inputFile,
+          sourceUrl: remoteSourceUrl
+            ? safeRemoteUrlLabel(remoteSourceUrl)
+            : null,
+        })
+      );
+      await writeFileAtomic(
+        stagedHistoryFile,
+        JSON.stringify(nextHistory, null, 2)
+      );
 
-    runtimeProductPrerenderCount = await writeRuntimeProductPrerender(
-      products,
-      seoSummary
-    );
-    await saveReport(report);
-    await saveHtmlReport(report);
-    await saveImportHistory(
-      importConfig,
-      importHistory,
-      buildHistorySnapshot(products, {
-        generatedAt,
-        sourceFile: inputFile,
-      })
-    );
+      const stagedDataFiles = await listFilesRecursively(dataStageRoot);
+      const stagedPublicFiles = (
+        await listFilesRecursively(stagedPublicDir)
+      ).filter(
+        (filePath) =>
+          !isPathInside(path.join(stagedPublicDir, 'product'), filePath)
+      );
+      const artifacts = [
+        ...stagedDataFiles.map((stagedPath) => ({
+          stagedPath,
+          targetPath: path.join(
+            projectRoot,
+            path.relative(dataStageRoot, stagedPath)
+          ),
+        })),
+        ...stagedPublicFiles.map((stagedPath) => ({
+          stagedPath,
+          targetPath: path.join(
+            publicDir,
+            path.relative(stagedPublicDir, stagedPath)
+          ),
+          ...(path.basename(stagedPath) === 'redirects.nginx.conf'
+            ? { mode: 0o444 }
+            : {}),
+        })),
+      ];
+      const publicProductDir = path.join(stagedPublicDir, 'product');
+      try {
+        if ((await fs.stat(publicProductDir)).isDirectory()) {
+          artifacts.push({
+            stagedPath: publicProductDir,
+            targetPath: path.join(publicDir, 'product'),
+          });
+        }
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+      }
+
+      const stagedPublicNames = new Set(
+        artifacts
+          .filter((artifact) =>
+            artifact.targetPath.startsWith(`${publicDir}${path.sep}`)
+          )
+          .map((artifact) => path.basename(artifact.targetPath))
+      );
+      try {
+        const existingPublicFiles = await fs.readdir(publicDir);
+        for (const filename of existingPublicFiles) {
+          if (
+            /^sitemap-products(?:-\d+)?\.xml$/u.test(filename) &&
+            !stagedPublicNames.has(filename)
+          ) {
+            artifacts.push({ targetPath: path.join(publicDir, filename) });
+          }
+        }
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+      }
+
+      await commitArtifactBatch(artifacts);
+    } catch (error) {
+      report.blocked = true;
+      report.message = `Транзакция публикации прервана; старые артефакты восстановлены, если замена уже началась. Причина: ${error.message}`;
+      await Promise.all([saveReport(report), saveHtmlReport(report)]).catch(
+        (reportError) => {
+          console.error(
+            `Не удалось сохранить отчёт об ошибке публикации: ${reportError.message}`
+          );
+        }
+      );
+      throw error;
+    } finally {
+      await Promise.all([
+        fs.rm(dataStageRoot, { recursive: true, force: true }),
+        fs.rm(stagedPublicDir, { recursive: true, force: true }),
+      ]).catch(() => {});
+    }
   }
 
   console.log('');
   console.log('=== Импорт завершён ===');
   console.log(`  Товаров импортировано: ${products.length}`);
+  console.log(`  Исключено некабельных:  ${importResult.excludedNonCable}`);
+  console.log(
+    `  Производители: ${manufacturerSummary.uniqueCount} уникальных, ` +
+      `${manufacturerSummary.recognized} строк распознано, ` +
+      `${manufacturerSummary.withoutManufacturer} без производителя`
+  );
   console.log(`  Было ранее:            ${previousProducts.length}`);
   console.log(`  Категорий:             ${importResult.categoriesSeen.size}`);
   console.log(`  Пропущено строк:       ${importResult.skippedRows.length}`);
+  console.log(`  На ручной проверке:    ${importResult.reviewRows.length}`);
+  console.log(`  Ошибки нормализации:   ${diagnostics.summary.errors}`);
+  console.log(`  Предупреждения:        ${diagnostics.summary.warnings}`);
+  console.log(
+    `  Группы дублей:         ${diagnostics.summary.duplicateGroups}`
+  );
   if (Object.keys(skipsByReason).length > 0) {
     for (const [reason, count] of Object.entries(skipsByReason)) {
       console.log(`    - ${reason}: ${count}`);
@@ -2637,7 +3288,22 @@ const isMainModule =
   import.meta.url === pathToFileURL(process.argv[1] || '').href;
 
 if (isMainModule) {
-  main().catch((error) => {
+  const run = async () => {
+    if (process.env.PRICE_IMPORT_LOCK_HELD_BY_SCHEDULER === '1') {
+      return main();
+    }
+    const releaseLock = await acquirePriceImportLock(importLockFile);
+    if (!releaseLock) {
+      throw new Error('Импорт прайса уже выполняется в другом процессе.');
+    }
+    try {
+      return await main();
+    } finally {
+      await releaseLock();
+    }
+  };
+
+  run().catch((error) => {
     console.error('Ошибка импорта прайса:', error.message);
     process.exitCode = 1;
   });

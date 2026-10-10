@@ -20,6 +20,7 @@
   "publishGuard": {
     "enabled": true,
     "minProducts": 100,
+    "maxErrors": 0,
     "maxRemovedPercent": 5,
     "maxSkippedPercent": 5,
     "maxSuspiciousPercent": 1,

@@ -13,10 +13,23 @@
   "BELDEN",
   "ЛОУТОКС",
   "HOLDCAB",
+  "HELUKABEL",
+  {
+    "canonical": "LAPP KABEL",
+    "aliases": ["LAPPKABEL", "LAPP GROUP"]
+  },
+  "DRAKA",
+  "NEXANS",
+  "LEONI",
+  "NIKOLAN",
+  "REXANT",
+  "CABUS",
   "PRYSMIAN",
   "АРМОФЛЕКС",
   "КУПТЕКС",
   "SIEMENS",
-  "VIKAB",
-  "ВИКАБ"
+  {
+    "canonical": "VIKAB",
+    "aliases": ["ВИКАБ"]
+  }
 ]
