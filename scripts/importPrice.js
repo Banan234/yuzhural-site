@@ -2,18 +2,12 @@
 
 import fs from 'fs/promises';
 import path from 'path';
-import { randomUUID } from 'crypto';
 import dotenv from 'dotenv';
 import { fileURLToPath, pathToFileURL } from 'url';
 import {
   normalizeImportedProduct,
   parseProductName,
 } from './lib/priceParser.js';
-import {
-  loadTemplate as loadPrerenderTemplate,
-  prerenderProducts,
-  validatePrerenderProducts,
-} from './prerender.js';
 import {
   classifyProduct,
   isCableCatalogProduct,
@@ -25,10 +19,7 @@ import {
   buildStableKey,
   loadProductRegistry,
   migrateStableIdentityKeys,
-  saveProductRegistry,
 } from './lib/productRegistry.js';
-import { assertProductPrerenderCoverage } from './lib/productPrerenderAudit.js';
-import { writeSeoArtifacts } from './lib/siteSeo.js';
 import {
   DEFAULT_PUBLISH_GUARD_CONFIG,
   evaluatePublishGuard,
@@ -37,8 +28,11 @@ import {
 } from './lib/importPublishGuard.js';
 import { createBackup } from './backupData.js';
 import { validateNormalizedProducts } from './lib/importDiagnostics.js';
-import { commitArtifactBatch } from './lib/artifactTransaction.js';
 import { acquirePriceImportLock } from './lib/importLock.js';
+import {
+  publishImportArtifacts,
+  writeFileAtomic,
+} from './lib/importPublisher.js';
 import {
   acquirePriceSource,
   readLocalPriceFile,
@@ -51,6 +45,7 @@ import {
 } from './lib/priceCatalogPreparation.js';
 import { buildReportHtml } from './lib/importReport.js';
 export { buildReportHtml } from './lib/importReport.js';
+export { buildRedirectsNginxConf } from './lib/importPublisher.js';
 import {
   PRICE_JUMP_ALERT_PERCENT,
   buildDiff,
@@ -405,156 +400,6 @@ export function summarizeManufacturers(products = []) {
     positions: Object.fromEntries(positions),
     confidence: Object.fromEntries(confidence),
   };
-}
-
-async function writeFileAtomic(filePath, data, { mode } = {}) {
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-  const tmpPath = `${filePath}.${randomUUID()}.tmp`;
-  let handle;
-  try {
-    handle = await fs.open(tmpPath, 'wx', mode ?? 0o666);
-    await handle.writeFile(data);
-    await handle.sync();
-    await handle.close();
-    handle = null;
-    await fs.rename(tmpPath, filePath);
-    if (mode != null) {
-      await fs.chmod(filePath, mode);
-    }
-  } catch (error) {
-    if (handle) {
-      await handle.close().catch(() => {});
-    }
-    await fs.unlink(tmpPath).catch(() => {});
-    throw error;
-  }
-}
-
-function getStagedPath(stageRoot, targetPath) {
-  const relativePath = path.relative(projectRoot, path.resolve(targetPath));
-  if (
-    relativePath === '..' ||
-    relativePath.startsWith(`..${path.sep}`) ||
-    path.isAbsolute(relativePath)
-  ) {
-    throw new Error(
-      `Артефакт импорта должен находиться внутри проекта: ${targetPath}`
-    );
-  }
-  return path.join(stageRoot, relativePath);
-}
-
-async function listFilesRecursively(rootDir) {
-  const files = [];
-  async function visit(currentDir) {
-    let entries;
-    try {
-      entries = await fs.readdir(currentDir, { withFileTypes: true });
-    } catch (error) {
-      if (error.code === 'ENOENT') return;
-      throw error;
-    }
-    for (const entry of entries) {
-      const entryPath = path.join(currentDir, entry.name);
-      if (entry.isDirectory()) {
-        await visit(entryPath);
-      } else if (entry.isFile()) {
-        files.push(entryPath);
-      }
-    }
-  }
-  await visit(rootDir);
-  return files;
-}
-
-function isPathInside(rootDir, candidatePath) {
-  const relativePath = path.relative(rootDir, candidatePath);
-  return (
-    relativePath === '' ||
-    (relativePath !== '..' &&
-      !relativePath.startsWith(`..${path.sep}`) &&
-      !path.isAbsolute(relativePath))
-  );
-}
-
-async function countHtmlFiles(dir) {
-  try {
-    const entries = await fs.readdir(dir);
-    return entries.filter((entry) => entry.endsWith('.html')).length;
-  } catch (error) {
-    if (error.code === 'ENOENT') return 0;
-    throw error;
-  }
-}
-
-async function writeRuntimeProductPrerender(
-  products,
-  seoSummary = null,
-  outputDir = publicDir
-) {
-  if (!process.env.PUBLIC_ARTIFACTS_DIR) return null;
-  if (!seoSummary) {
-    throw new Error(
-      'Runtime product-prerender требует свежий sitemap из writeSeoArtifacts.'
-    );
-  }
-
-  let template;
-  try {
-    template = await loadPrerenderTemplate({
-      outputDir: runtimePrerenderTemplateDir,
-    });
-  } catch (error) {
-    throw new Error(
-      `Не удалось прочитать шаблон runtime-prerender карточек товара: ${error.message}`
-    );
-  }
-
-  validatePrerenderProducts(products, { source: outputFile });
-  await prerenderProducts(template, products, {
-    outputDir,
-    log: null,
-    validate: false,
-  });
-  const productDir = path.join(outputDir, 'product');
-  const writtenCount = await countHtmlFiles(productDir);
-  const coverage = await assertProductPrerenderCoverage({
-    publicDir: outputDir,
-    productDir,
-    products,
-    productSitemapPaths: seoSummary?.productSitemapPaths || [],
-  });
-  if (writtenCount !== coverage.htmlCount) {
-    throw new Error(
-      `Runtime prerender записал ${writtenCount} HTML, но product sitemap содержит ${coverage.htmlCount} URL.`
-    );
-  }
-  return writtenCount;
-}
-
-// Slug может попасть в URL только через [a-z0-9-], всё остальное транслит/чистка
-// в slugify. На всякий случай отбрасываем записи с подозрительными символами:
-// этот файл исполняется nginx из immutable web-образа, поэтому не даём
-// протащить директивы через runtime/import data.
-const SAFE_SLUG_RE = /^[a-z0-9-]+$/;
-
-export function buildRedirectsNginxConf(redirects) {
-  const lines = [
-    '# Сгенерировано scripts/importPrice.js — не редактируй вручную.',
-    '# Подключается из nginx.conf через include.',
-  ];
-  const entries = Object.entries(redirects || {})
-    .filter(
-      ([oldSlug, newSlug]) =>
-        SAFE_SLUG_RE.test(oldSlug) && SAFE_SLUG_RE.test(newSlug)
-    )
-    .sort(([a], [b]) => a.localeCompare(b));
-  for (const [oldSlug, newSlug] of entries) {
-    lines.push(
-      `location = /product/${oldSlug} { return 301 /product/${newSlug}; }`
-    );
-  }
-  return lines.join('\n') + '\n';
 }
 
 async function loadPreviousProducts() {
@@ -1078,158 +923,36 @@ async function main() {
   let runtimeProductPrerenderCount = null;
 
   if (!isDryRun) {
-    const dataStageRoot = await fs.mkdtemp(
-      path.join(projectRoot, '.price-import-stage-data-')
-    );
-    let stagedPublicDir;
     try {
-      await fs.mkdir(path.dirname(publicDir), { recursive: true });
-      stagedPublicDir = await fs.mkdtemp(
-        path.join(
-          path.dirname(publicDir),
-          `.${path.basename(publicDir)}.price-import-stage-`
-        )
-      );
-    } catch (error) {
-      await fs
-        .rm(dataStageRoot, { recursive: true, force: true })
-        .catch(() => {});
-      throw error;
-    }
-    try {
-      const stagedProductsFile = getStagedPath(dataStageRoot, outputFile);
-      const stagedRegistryFile = getStagedPath(dataStageRoot, registryFile);
-      const stagedReportFile = getStagedPath(dataStageRoot, reportFile);
-      const stagedReportHtmlFile = getStagedPath(dataStageRoot, reportHtmlFile);
-      const stagedHistoryFile = getStagedPath(
-        dataStageRoot,
-        getImportHistoryFile(importConfig)
-      );
-
-      await writeFileAtomic(
-        stagedProductsFile,
-        JSON.stringify(products, null, 2)
-      );
-      await saveProductRegistry(stagedRegistryFile, registry);
-      await writeFileAtomic(
-        path.join(stagedPublicDir, path.basename(publicPriceFile)),
-        sourcePriceBuffer
-      );
-      if (downloadedPriceBuffer) {
-        await writeFileAtomic(
-          getStagedPath(dataStageRoot, inputFile),
-          downloadedPriceBuffer
-        );
-      }
-      await writeFileAtomic(
-        path.join(stagedPublicDir, path.basename(redirectsFile)),
-        JSON.stringify(slugRedirects, null, 2)
-      );
-      await writeFileAtomic(
-        path.join(stagedPublicDir, path.basename(redirectsNginxFile)),
-        buildRedirectsNginxConf(slugRedirects),
-        { mode: 0o444 }
-      );
-
-      const categoriesRaw = await fs.readFile(catalogCategoriesFile, 'utf-8');
-      const categoriesData = JSON.parse(categoriesRaw);
-      seoSummary = await writeSeoArtifacts({
-        outputDir: stagedPublicDir,
+      const published = await publishImportArtifacts({
+        projectRoot,
+        publicDir,
+        outputFile,
+        registryFile,
+        reportFile,
+        reportHtmlFile,
+        historyFile: getImportHistoryFile(importConfig),
+        publicPriceFile,
+        redirectsFile,
+        redirectsNginxFile,
+        inputFile,
+        categoriesFile: catalogCategoriesFile,
+        runtimePrerenderTemplateDir,
+        runtimePrerenderEnabled: Boolean(process.env.PUBLIC_ARTIFACTS_DIR),
         siteUrl: process.env.SITE_URL || process.env.VITE_SITE_URL,
         products,
-        categoriesData,
-      });
-      runtimeProductPrerenderCount = await writeRuntimeProductPrerender(
-        products,
-        seoSummary,
-        stagedPublicDir
-      );
-      report.seo = seoSummary.counts;
-      report.runtimeProductPrerenderCount = runtimeProductPrerenderCount;
-      await writeFileAtomic(stagedReportFile, JSON.stringify(report, null, 2));
-      await writeFileAtomic(
-        stagedReportHtmlFile,
-        buildReportHtml(report, {
-          fallbackSourceFile: inputFile,
-          jsonReportPath: path.relative(projectRoot, reportFile),
-        })
-      );
-      const nextHistory = buildNextImportHistory(
+        registry,
+        report,
+        sourcePriceBuffer,
+        downloadedPriceBuffer,
+        slugRedirects,
         importConfig,
         importHistory,
-        buildHistorySnapshot(products, {
-          generatedAt,
-          sourceFile: inputFile,
-          sourceUrl: priceSource.metadata.requestedUrl,
-          source: priceSource.metadata,
-        }),
-        generatedAt
-      );
-      await writeFileAtomic(
-        stagedHistoryFile,
-        JSON.stringify(nextHistory, null, 2)
-      );
-
-      const stagedDataFiles = await listFilesRecursively(dataStageRoot);
-      const stagedPublicFiles = (
-        await listFilesRecursively(stagedPublicDir)
-      ).filter(
-        (filePath) =>
-          !isPathInside(path.join(stagedPublicDir, 'product'), filePath)
-      );
-      const artifacts = [
-        ...stagedDataFiles.map((stagedPath) => ({
-          stagedPath,
-          targetPath: path.join(
-            projectRoot,
-            path.relative(dataStageRoot, stagedPath)
-          ),
-        })),
-        ...stagedPublicFiles.map((stagedPath) => ({
-          stagedPath,
-          targetPath: path.join(
-            publicDir,
-            path.relative(stagedPublicDir, stagedPath)
-          ),
-          ...(path.basename(stagedPath) === 'redirects.nginx.conf'
-            ? { mode: 0o444 }
-            : {}),
-        })),
-      ];
-      const publicProductDir = path.join(stagedPublicDir, 'product');
-      try {
-        if ((await fs.stat(publicProductDir)).isDirectory()) {
-          artifacts.push({
-            stagedPath: publicProductDir,
-            targetPath: path.join(publicDir, 'product'),
-          });
-        }
-      } catch (error) {
-        if (error.code !== 'ENOENT') throw error;
-      }
-
-      const stagedPublicNames = new Set(
-        artifacts
-          .filter((artifact) =>
-            artifact.targetPath.startsWith(`${publicDir}${path.sep}`)
-          )
-          .map((artifact) => path.basename(artifact.targetPath))
-      );
-      try {
-        const existingPublicFiles = await fs.readdir(publicDir);
-        for (const filename of existingPublicFiles) {
-          if (
-            /^sitemap-products(?:-\d+)?\.xml$/u.test(filename) &&
-            !stagedPublicNames.has(filename)
-          ) {
-            artifacts.push({ targetPath: path.join(publicDir, filename) });
-          }
-        }
-      } catch (error) {
-        if (error.code !== 'ENOENT') throw error;
-      }
-
-      await commitArtifactBatch(artifacts);
+        generatedAt,
+        source: priceSource.metadata,
+      });
+      seoSummary = published.seoSummary;
+      runtimeProductPrerenderCount = published.runtimeProductPrerenderCount;
     } catch (error) {
       report.blocked = true;
       report.message = `Транзакция публикации прервана; старые артефакты восстановлены, если замена уже началась. Причина: ${error.message}`;
@@ -1241,11 +964,6 @@ async function main() {
         }
       );
       throw error;
-    } finally {
-      await Promise.all([
-        fs.rm(dataStageRoot, { recursive: true, force: true }),
-        fs.rm(stagedPublicDir, { recursive: true, force: true }),
-      ]).catch(() => {});
     }
   }
 
