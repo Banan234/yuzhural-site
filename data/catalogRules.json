@@ -1114,13 +1114,132 @@
     "priority": 90
   },
   {
-    "type": "ИНСИЛ контрольные",
-    "patterns": ["инсил-"],
+    "type": "ИнСил силовые",
+    "patterns": ["инсил-вв", "инсил-вбв"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Силовой кабель",
+    "catalogCategorySlug": "silovoy-kabel",
+    "manufacturer": "ИнСил",
+    "priority": 160
+  },
+  {
+    "type": "ИнСил монтажные серии",
+    "patterns": [
+      "инсил-а", "инсил-б", "инсил-к", "инсил-оэ", "инсил-оэб",
+      "инсил-оэв", "инсил-иэ", "инсил-и ", "инсил-иэоэк", "инсил-иээк",
+      "инсил-оэкв", "инсил-оэк"
+    ],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Монтажный кабель",
+    "catalogCategorySlug": "montazhnyy-kabel",
+    "manufacturer": "ИнСил",
+    "priority": 150
+  },
+  {
+    "type": "ИнСил марка без подтверждённой категории",
+    "patterns": ["инсил-вков-в", "инсил-пкоп"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Прочее",
+    "catalogCategorySlug": "prochee",
+    "manufacturer": "ИнСил",
+    "priority": 150
+  },
+  {
+    "type": "СИП-2 — приоритет перед исходной общей категорией провода",
+    "patterns": ["сип-2"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "СИП",
+    "catalogCategorySlug": "sip",
+    "priority": 260
+  },
+  {
+    "type": "ППсТВМ — провод для подвижного состава",
+    "patterns": ["ппствм"],
+    "catalogSection": "Специальные кабели",
+    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogCategory": "Кабели для подвижного состава",
+    "catalogCategorySlug": "kabeli-podvizhnogo-sostava",
+    "priority": 260
+  },
+  {
+    "type": "Неидентифицированная модификация ППсТВМ(В)",
+    "patterns": ["ппствм(в) 1000"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Прочее",
+    "catalogCategorySlug": "prochee",
+    "priority": 270
+  },
+  {
+    "type": "КМПВВ — судовая линейка; исправление совпадения ПВВ",
+    "patterns": ["кмпвв"],
+    "catalogSection": "Специальные кабели",
+    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogCategory": "Кабели судовые",
+    "catalogCategorySlug": "kabeli-sudovye",
+    "priority": 260
+  },
+  {
+    "type": "КИМ — монтажный кабель производителя СМК",
+    "patterns": ["кимв", "кимэ", "кимп"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Монтажный кабель",
+    "catalogCategorySlug": "montazhnyy-kabel",
+    "priority": 150
+  },
+  {
+    "type": "Оптические марки DPD/DPL/DPO/DOL/DPT/TOL/TOS/OKD/OKLST/OKSL",
+    "patterns": [
+      "дпд", "дпл", "дпо", "дол", "дпт-", "тол-п-", "тос",
+      "окдн-", "оклст-", "оксл-т-"
+    ],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Кабели связи",
+    "catalogCategorySlug": "kabeli-svyazi",
+    "priority": 150
+  },
+  {
+    "type": "КУВ — кабель управления",
+    "patterns": ["кув"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Контрольный кабель",
     "catalogCategorySlug": "kontrolnyy-kabel",
-    "priority": 90
+    "priority": 150
+  },
+  {
+    "type": "КГВВ/КГВЭВ — неоднозначная классификация без производителя",
+    "patterns": ["кгвв", "кгвэв"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Прочее",
+    "catalogCategorySlug": "prochee",
+    "priority": 260
+  },
+  {
+    "type": "КГПЭф — категория требует подтверждения исполнения",
+    "patterns": ["кгпэф"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Прочее",
+    "catalogCategorySlug": "prochee",
+    "priority": 270
+  },
+  {
+    "type": "Провод П 1х274 / П 1х296 — отдельная марка не подтверждена",
+    "patterns": [],
+    "exactNames": ["П 1х274", "П 1х296"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Прочее",
+    "catalogCategorySlug": "prochee",
+    "priority": 270
   },
   {
     "type": "FLEX/GaalFLEX/Kabeltec/FQLQ/FQAR (импортные)",

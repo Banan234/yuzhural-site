@@ -27,7 +27,8 @@ const rules = [...catalogRulesRaw]
   .sort((a, b) => b.priority - a.priority)
   .map((rule) => ({
     ...rule,
-    normalizedPatterns: rule.patterns.map((pattern) => ({
+    normalizedExactNames: (rule.exactNames ?? []).map(normalize),
+    normalizedPatterns: (rule.patterns ?? []).map((pattern) => ({
       raw: pattern,
       normalized: normalize(pattern),
     })),
@@ -158,6 +159,8 @@ export function classifyProduct(product) {
   // Производитель уже извлечён парсером из исходного названия. Здесь поле
   // только читается, чтобы классификация не меняла результат разбора.
   const manufacturer = product.manufacturer ?? null;
+  const displayBrand =
+    manufacturer ?? (/^инсил(?:-|$)/iu.test(markFamily) ? 'ИнСил' : null);
   const effectiveMarkFamily = markFamily;
 
   // Строка для явных правил — марка, семейство + производитель (если известен).
@@ -172,6 +175,19 @@ export function classifyProduct(product) {
 
   // --- 1. Явные правила ---
   for (const rule of rules) {
+    if (rule.normalizedExactNames.includes(normalize(name))) {
+      return toCatalogResult({
+        section: rule.catalogSection,
+        sectionSlug: rule.catalogSectionSlug,
+        category: rule.catalogCategory,
+        categorySlug: rule.catalogCategorySlug,
+        type: rule.type,
+        applicationType: rule.applicationType ?? null,
+        brand: rule.manufacturer ?? displayBrand,
+        source: 'rule',
+        match: name,
+      });
+    }
     for (const pattern of rule.normalizedPatterns) {
       if (searchStr.includes(pattern.normalized)) {
         return toCatalogResult({
@@ -181,7 +197,7 @@ export function classifyProduct(product) {
           categorySlug: rule.catalogCategorySlug,
           type: rule.type,
           applicationType: rule.applicationType ?? null,
-          brand: rule.manufacturer ?? manufacturer,
+          brand: rule.manufacturer ?? displayBrand,
           source: 'rule',
           match: pattern.raw,
         });
@@ -198,7 +214,7 @@ export function classifyProduct(product) {
         sectionSlug: match.sectionSlug,
         category: match.category,
         categorySlug: match.categorySlug,
-        brand: manufacturer,
+        brand: displayBrand,
         source: 'sourceCategory',
         match: product.sourceCategory,
       });
@@ -213,7 +229,7 @@ export function classifyProduct(product) {
     const prefixMatch = findByKeyword(
       familyNorm,
       (kw) => familyNorm.startsWith(kw),
-      manufacturer
+      displayBrand
     );
     if (prefixMatch) return prefixMatch;
 
@@ -261,7 +277,7 @@ export function classifyProduct(product) {
       const subMatch = findByKeyword(
         familyNorm,
         (kw) => familyNorm.includes(kw),
-        manufacturer
+        displayBrand
       );
       if (subMatch) return subMatch;
     }
@@ -270,7 +286,7 @@ export function classifyProduct(product) {
   return {
     ...FALLBACK,
     catalogApplicationType: null,
-    catalogBrand: manufacturer,
+    catalogBrand: displayBrand,
     catalogClassificationSource: 'fallback',
     catalogClassificationMatch: null,
   };
