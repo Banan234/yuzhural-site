@@ -1,6 +1,6 @@
 // Файл рендерит список товаров каталога, состояния загрузки, пустые результаты и управление выдачей.
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ProductCard from '../ui/ProductCard';
 import { formatVoltage } from '../../lib/catalogFilters';
 import {
@@ -9,11 +9,9 @@ import {
   filterProductsBySearch,
   normalizeCatalogFilterQuery,
 } from '../../../shared/catalogQuery.js';
-import { trackEvent } from '../../lib/analytics';
 import { useCatalogFilters } from '../../hooks/useCatalogFilters';
 
 const PAGE_SIZE = 24;
-const CATALOG_SEARCH_ID = 'catalog-search';
 const PRICE_MIN_ID = 'price-min';
 const PRICE_MAX_ID = 'price-max';
 const SORT_SELECT_ID = 'sort-select';
@@ -89,17 +87,12 @@ export default function ProductListingView({
     onlySPE,
   } = filters;
 
-  const [searchInput, setSearchInput] = useState(search);
   const [priceMinInput, setPriceMinInput] = useState(priceMin);
   const [priceMaxInput, setPriceMaxInput] = useState(priceMax);
   const [localPage, setLocalPage] = useState(1);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const isServerPaged = Boolean(pagination);
   const filterPanelBodyId = `${idPrefix}-filter-panel-body`;
-
-  useEffect(() => {
-    setSearchInput(search);
-  }, [search]);
 
   useEffect(() => {
     setPriceMinInput(priceMin);
@@ -122,36 +115,6 @@ export default function ProductListingView({
       setLocalPage(1);
     }
   }, [filtersKey, isServerPaged]);
-
-  const searchDebounceRef = useRef(null);
-
-  function commitSearch() {
-    if (searchDebounceRef.current) {
-      clearTimeout(searchDebounceRef.current);
-      searchDebounceRef.current = null;
-    }
-    const value = searchInput.trim();
-    const previous = search.trim();
-    if (value === previous) return;
-    if (value) {
-      trackEvent('search-submit', { query: value, source: 'catalog' });
-    }
-    updateParam('search', value);
-  }
-
-  // Дебаунсим автокоммит, чтобы клик по соседнему фильтру не отправлял
-  // незаконченный запрос. Enter и кнопка очистки коммитят сразу.
-  useEffect(() => {
-    if (searchInput.trim() === search.trim()) return undefined;
-    const timer = setTimeout(() => {
-      searchDebounceRef.current = null;
-      commitSearch();
-    }, 400);
-    searchDebounceRef.current = timer;
-    return () => clearTimeout(timer);
-    // commitSearch замкнута на актуальный searchInput через сам эффект
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchInput, search]);
 
   function commitPriceRange() {
     const minVal = priceMinInput.trim();
@@ -283,48 +246,6 @@ export default function ProductListingView({
 
   return (
     <>
-      <div className="catalog-search-bar">
-        <form
-          className="catalog-search-bar__form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            commitSearch();
-          }}
-        >
-          <label className="visually-hidden" htmlFor={CATALOG_SEARCH_ID}>
-            Поиск по каталогу
-          </label>
-          <input
-            id={CATALOG_SEARCH_ID}
-            type="search"
-            name="catalog-search"
-            className="catalog-search-bar__input"
-            placeholder="Поиск по марке или названию: ВВГнг-LS 3×2.5"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-          <button type="submit" className="visually-hidden">
-            Искать
-          </button>
-          {search && (
-            <button
-              type="button"
-              className="catalog-search-bar__clear"
-              onClick={() => {
-                if (searchDebounceRef.current) {
-                  clearTimeout(searchDebounceRef.current);
-                  searchDebounceRef.current = null;
-                }
-                setSearchInput('');
-                updateParam('search', '');
-              }}
-              aria-label="Очистить поиск"
-            >
-              ✕
-            </button>
-          )}
-        </form>
-
         <form
           className="catalog-price-range"
           onSubmit={(e) => {
@@ -366,7 +287,6 @@ export default function ProductListingView({
             OK
           </button>
         </form>
-      </div>
 
       {hasAnyFilterOption && (
         <div className="catalog-filter-panel">

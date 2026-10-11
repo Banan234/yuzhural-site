@@ -45,24 +45,16 @@ test('catalog loads products from API and opens a product page', async ({
   ).toBeVisible();
 });
 
-test('catalog search updates URL and keeps results visible', async ({
+test('catalog listing does not show a separate mark search', async ({
   page,
 }) => {
   await page.goto('/catalog');
 
-  const searchInput = page.getByPlaceholder(
-    'Поиск по марке или названию: ВВГнг-LS 3×2.5'
-  );
-  await expect(searchInput).toBeVisible();
-
-  await searchInput.fill('ВВГ');
-  await searchInput.press('Enter');
-
-  await expect(page).toHaveURL(/search=%D0%92%D0%92%D0%93|search=ВВГ/);
+  await expect(page.locator('.catalog-search-bar')).toHaveCount(0);
   await expect(page.getByText(/Найдено:/)).toBeVisible();
 });
 
-test('mobile category page keeps search and products ahead of long filters', async ({
+test('mobile category page shows products without a separate mark search', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 900 });
@@ -72,10 +64,7 @@ test('mobile category page keeps search and products ahead of long filters', asy
     page.getByRole('heading', { name: 'Силовой кабель' })
   ).toBeVisible();
 
-  const searchInput = page.getByPlaceholder(
-    'Поиск по марке или названию: ВВГнг-LS 3×2.5'
-  );
-  await expect(searchInput).toBeVisible();
+  await expect(page.locator('.catalog-search-bar')).toHaveCount(0);
 
   const filtersButton = page.getByRole('button', { name: /Все параметры/ });
   await expect(filtersButton).toBeVisible();
@@ -85,20 +74,15 @@ test('mobile category page keeps search and products ahead of long filters', asy
   await expect(firstProduct).toBeVisible();
 
   const firstScreen = await page.evaluate(() => {
-    const search = document
-      .querySelector('.catalog-search-bar')
-      ?.getBoundingClientRect();
     const product = document
       .querySelector('.product-card')
       ?.getBoundingClientRect();
 
     return {
-      searchTop: search?.top ?? Number.POSITIVE_INFINITY,
       productTop: product?.top ?? Number.POSITIVE_INFINITY,
       viewportHeight: window.innerHeight,
     };
   });
 
-  expect(firstScreen.searchTop).toBeLessThan(firstScreen.viewportHeight);
   expect(firstScreen.productTop).toBeLessThan(firstScreen.viewportHeight);
 });

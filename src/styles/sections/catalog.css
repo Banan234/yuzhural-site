@@ -481,65 +481,7 @@
   color: #08121e;
 }
 
-/* SEARCH + PRICE RANGE BAR */
-.catalog-search-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: stretch;
-  margin-bottom: 14px;
-}
-.catalog-search-bar__form {
-  position: relative;
-  flex: 1 1 320px;
-  min-width: 240px;
-}
-.catalog-search-bar__input {
-  width: 100%;
-  height: 44px;
-  padding: 0 40px 0 16px;
-  border-radius: 14px;
-  border: 1px solid #d7e3ef;
-  background: #fff;
-  font-size: 14px;
-  color: #102238;
-  font-weight: 500;
-  outline: none;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-.catalog-search-bar__input::placeholder {
-  color: #8aa0b6;
-  font-weight: 400;
-}
-.catalog-search-bar__input:focus {
-  border-color: #f2b705;
-  box-shadow: 0 0 0 3px rgba(242, 183, 5, 0.18);
-}
-.catalog-search-bar__clear {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  width: 26px;
-  height: 26px;
-  border: none;
-  border-radius: 50%;
-  background: #e8f0f7;
-  color: #5a6f87;
-  font-size: 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.15s ease;
-}
-.catalog-search-bar__clear:hover {
-  background: #d7e3ef;
-  color: #0a1628;
-}
-
+/* PRICE RANGE BAR */
 .catalog-price-range {
   display: flex;
   align-items: center;
@@ -610,13 +552,6 @@
 }
 
 @media (max-width: 640px) {
-  .catalog-search-bar {
-    flex-direction: column;
-  }
-  .catalog-search-bar__form {
-    flex: 0 1 auto;
-    min-width: 0;
-  }
   .catalog-price-range {
     flex-wrap: wrap;
     height: auto;
