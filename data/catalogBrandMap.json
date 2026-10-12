@@ -1,17 +1,17 @@
 [
   {
-    "_comment": "Иностранные производители — всё идёт в Кабели связи",
+    "_comment": "Бренд подтверждает только торговую группу импорта, не назначение кабеля",
     "brand": "LAPPKABEL",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Импортные кабели",
+    "categorySlug": "importnye-kabeli"
   },
   {
     "brand": "HELUKABEL",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Импортные кабели",
+    "categorySlug": "importnye-kabeli"
   }
 ]

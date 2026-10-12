@@ -280,6 +280,27 @@ export default function HeaderSearch() {
           }
         />
 
+        <button
+          type="submit"
+          className="site-header__search-button"
+          aria-label="Найти"
+        >
+          <svg
+            width="19"
+            height="19"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-4-4" />
+          </svg>
+        </button>
+
         <div
           id={HEADER_SEARCH_LISTBOX_ID}
           className="site-header__search-suggestions"
@@ -327,9 +348,6 @@ export default function HeaderSearch() {
           )}
         </div>
       </div>
-      <button type="submit" className="site-header__search-button">
-        Найти
-      </button>
     </form>
   );
 }

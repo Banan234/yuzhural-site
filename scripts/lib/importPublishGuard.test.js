@@ -77,6 +77,19 @@ describe('evaluatePublishGuard', () => {
     expect(result.issues.map((issue) => issue.key)).toContain('maxErrors');
   });
 
+  it('останавливает новые неопределённые позиции и избыток Прочего', () => {
+    const result = evaluatePublishGuard({
+      products: Array.from({ length: 100 }, () => ({})),
+      reviewRows: [{}],
+      newReviewRows: [{}],
+      otherProducts: 11,
+      totalRows: 100,
+    });
+    expect(result.issues.map((issue) => issue.key)).toEqual(
+      expect.arrayContaining(['maxNewReviewRows', 'maxOtherPercent'])
+    );
+  });
+
   it('учитывает отключение guard', () => {
     const result = evaluatePublishGuard({
       config: { enabled: false },

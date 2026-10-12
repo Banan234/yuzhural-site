@@ -1,0 +1,1052 @@
+[
+  {
+    "rowIndex": 9,
+    "name": "АПБ 1,8х4,0/1,92",
+    "sourceCategory": "К А Б Е Л Ь Н А Я    П Р О Д У К Ц И Я",
+    "reason": "Требуется проверить решение импорта: insufficient_cable_evidence (К А Б Е Л Ь Н А Я    П Р О Д У К Ц И Я); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 151,
+    "name": "АПСВГ 3х95+1х50",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 205,
+    "name": "ПБШв 4х50",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 281,
+    "name": "ВбШ 2х16 нг(А)-ХЛ",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 358,
+    "name": "ВВБ 5х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 360,
+    "name": "ВКШВ 3х4 нг(А)-LS",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 372,
+    "name": "ИнСил-Вков-внг(А)-LS-ХЛ 3х16",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 373,
+    "name": "ИнСил-Вков-внг(А)-LS-ХЛ 3х4",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 374,
+    "name": "ИнСил-Вков-внг(А)-LS-ХЛ 4х2,5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 375,
+    "name": "ИнСил-Вков-внг(А)-LS-ХЛ 5х2,5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 339,
+    "name": "FRZXOHR 1х2х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 340,
+    "name": "MEDIAstrip BH 3х4 06/1кв",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 341,
+    "name": "MEDIAstrip BH 5х6 06/1кв",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 342,
+    "name": "MEDIAstrip H 1х25",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 343,
+    "name": "MEDIAstrip H 3х4",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 344,
+    "name": "MEDIAstrip H 4х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 345,
+    "name": "MEDIAstrip H 4х6",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 543,
+    "name": "ВЭкВКВ-ВП нг(А)-FRLS 10х2х1.5л",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 544,
+    "name": "ВЭкВКВ-ВП нг(А)-FRLS 6х2х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 545,
+    "name": "ВЭкВКВ-ВП нг(А)-FRLS 6х2х1.5 л",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 605,
+    "name": "НУД 3х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 607,
+    "name": "ТБТ 3х2,5 нг(А)-uc",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 632,
+    "name": "ИнСил-ПКо пнг(А)-FRHF 3х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 674,
+    "name": "КОУ-В нг(А)-LS g-B-0.6/1.8",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 679,
+    "name": "КПМВКВГм-В нг(А)-ХЛ 3х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 687,
+    "name": "КПМСЭКВГ нг(А)-FRLS 2х2х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 688,
+    "name": "КПМСЭфКПГм-В нг(А)-FRLS-ХЛ 3х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 957,
+    "name": "AVC ELECTRONICS 4c",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 961,
+    "name": "BETA THERM 145HALOGEN 1х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 962,
+    "name": "BETA THERM 145HALOGEN 1х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1016,
+    "name": "FLEX 2х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1059,
+    "name": "H05z-K 1х0.5 сер",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1060,
+    "name": "H05z1-k 1х0.5 оранж",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1061,
+    "name": "H05z1-k 1х0.75 оранж",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1024,
+    "name": "H07z1-K 1х2.5 красн",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1025,
+    "name": "H07z1-K 1х2.5 черн",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1079,
+    "name": "J-O2YSCH PIMF 2х2х24AWG(SWB)",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1080,
+    "name": "JAMAK 4х(2+1)х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1096,
+    "name": "JY(5t)YLg 2х2х0.8 VDE",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1105,
+    "name": "KРУИН-МПЭфКнг(А)-HF-ХЛ 8х2х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1138,
+    "name": "MCMO 19х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1139,
+    "name": "MCMO 37х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1140,
+    "name": "Meinhart KVM-OY 25х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1149,
+    "name": "NOMAK 48х2х0.5+0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1159,
+    "name": "Palettenlager H16 1х2х0.8",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1160,
+    "name": "POLYCAB ELECRIC 1100 2х1.5 FRLS",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1167,
+    "name": "PYROHALON 3х25-1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1171,
+    "name": "RE2G(ST)H...Ci 7х0.75",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1175,
+    "name": "REDAK 4х2х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1176,
+    "name": "REDAK 24х2х0.5+0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1177,
+    "name": "RLAFH 2х8(2х10)AWG",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1178,
+    "name": "RT-RH экр 2х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1183,
+    "name": "S/STP cat.7 4х2хAWG 23 Pirelli 6605",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1193,
+    "name": "Silflex AWG14-7C(ul)TUPE 7х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1194,
+    "name": "Silflex Trey-er 4х16",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1195,
+    "name": "SWITZERLAND BETATRANS 1х10",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1197,
+    "name": "TE CONNECTIVITY SYSTEM",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1198,
+    "name": "TELDOR",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1199,
+    "name": "Teldor 95А979М02В",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1200,
+    "name": "Topflex-EMV 2XSLCH-j 3х4+3х0.75",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1201,
+    "name": "U-DQ(ZN)BH 1х4 SM7A1 Blue",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1204,
+    "name": "VZN PIMF L-Y 1х2х0.86",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1205,
+    "name": "WR-SX 2х1.3",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1206,
+    "name": "YSLY-JS 5х10",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1217,
+    "name": "ЭКС-МВП 25х2х0.51",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1218,
+    "name": "ЭКС-МВПБШП 2х2х0.64",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1219,
+    "name": "ЭКС-МВПБШП 4х2х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1220,
+    "name": "ЭКС-МВПБШП-5 4х2х0.64",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1221,
+    "name": "ЭКС-МВПзБШПб 4х2х0.52",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1223,
+    "name": "ЭКС-ШВППЭ/Э 2х2х0.6",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1224,
+    "name": "ЭКС-ШВППЭ/Э-5 2х2х0.6",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1335,
+    "name": "КПБП 4х1.5 нг(А)-FRHF",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1336,
+    "name": "КПБП 5х1.5 нг(А)-HF",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1337,
+    "name": "КПБП 19х1 нг(А)-FRHF",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1618,
+    "name": "КПОПЭнг(А)-FRHF 4х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1575,
+    "name": "МВЭфз нг(А)-LS УФ-ТС 5х2х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1647,
+    "name": "ТТГ 4х1.5 э нг(А)-LS",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1708,
+    "name": "Brandmeldekabel H 20х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1709,
+    "name": "Brandmeldekabel H 4х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1710,
+    "name": "BRK2-E-2 corning 2 9.5/125 желт",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1711,
+    "name": "Commscope 1х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1713,
+    "name": "FK-D-IN/OUT-504-8-HFFR-BK",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1714,
+    "name": "LMR 400",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1715,
+    "name": "MOHAWK/CDT 4PR 24AWG",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1716,
+    "name": "NMF-4IS-008S2C-YL 8 X Single MODE",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1729,
+    "name": "RS-485 1х2х0.6 нг(А)-HF",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1730,
+    "name": "Sevkabel optic DPL 024E04-06",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1732,
+    "name": "АОЛ-П-12Y(1х8х1х4)2.7",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1733,
+    "name": "ДКН 7-0-4/10",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1734,
+    "name": "ДН6К нг(А)-HF 2,0-1-1/4",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1758,
+    "name": "КИП 8х1,5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1759,
+    "name": "КИП нг(D) 1х2х0.6",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1760,
+    "name": "КИП нг(А)-HF 4х2х0,6",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1761,
+    "name": "КИП нг(А)-LS 4х2х0.6",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1762,
+    "name": "КИП нг(А)-LS 2х2х0.6",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1720,
+    "name": "КИПэ 1х2х0.6 нг(А)-HF",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1721,
+    "name": "КИПэ 2х2х0.6 нг(А)-HF",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1722,
+    "name": "КИПэ 4х2х0.6 нг(А)-HF",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1756,
+    "name": "КЛКПэв 4х2х0.52",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1795,
+    "name": "ОФС СВС-1 (оптика)",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1796,
+    "name": "ТехноКИП 2х2х0.9 нг(А)-FRLS",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1802,
+    "name": "ЭКБ-СПЛ-П-04Г (62.5/125)",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 1933,
+    "name": "ПСэВКВ 3х2х0,78 нг(А)-LS",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2003,
+    "name": "ЦААШВ- 10 3х120",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2004,
+    "name": "ЦААШВ- 6 3х120",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2005,
+    "name": "ЦААШВ-10 3х95",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2006,
+    "name": "ЦАСБ-10 3х185",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2007,
+    "name": "ЦАСБ2л-10 3х185",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2008,
+    "name": "ЦАСБГ-10 3х95",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2009,
+    "name": "ЦАСБГ-10 3х150",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2010,
+    "name": "ЦАСБГ-10 3х185",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2107,
+    "name": "КРВ Гидротек 4х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2112,
+    "name": "КРШУ 10х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2113,
+    "name": "КРШУ 19х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2114,
+    "name": "КРШУ 7х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2135,
+    "name": "НРГ 1х240",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2155,
+    "name": "ПБР 1х0.35",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2168,
+    "name": "ППсТВМ(В) 1000 4",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2169,
+    "name": "ПР 1х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2170,
+    "name": "ПРГН 1х10",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2176,
+    "name": "РВШЭ-1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2212,
+    "name": "тофлекс РКП нг(А)-FRHF 4х70",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2243,
+    "name": "МРМП 2х1.2",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2244,
+    "name": "МРМПБ 2х1.2",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2245,
+    "name": "МРМПэ 2х1.2",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2246,
+    "name": "МРПэПэ 2х1.2",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2249,
+    "name": "СППС 2х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2253,
+    "name": "ТЗАПАШП 7х4х0.9",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2246,
+    "name": "СБЭВББШВ нг(А)-LS 19х2х0.9",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2263,
+    "name": "ТЗАБп 19х4х0,9",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2329,
+    "name": "ТЦПмП 1х2х0.9",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2330,
+    "name": "ТЦПП 2х2х0.52",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2331,
+    "name": "ШТЛ-2",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2332,
+    "name": "ШТЛ-5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2333,
+    "name": "ШТЛП-4",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2370,
+    "name": "ТРВ 2х0.4",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2371,
+    "name": "ТРВтр 2х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2397,
+    "name": "РУТЕКзнг(А)LSxh(KH)14х(2х1)э ВВБ-80",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2399,
+    "name": "Сегмент-КУнг(А) К-LS хл 3х10",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2400,
+    "name": "Сегмент-КУнг(А)-F-FRHF-C 5х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2401,
+    "name": "Сегмент-КУнг(А)-FRLS-с 1х2х1эв",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2402,
+    "name": "Сегмент-КУнг(А)-Эиф-эфк-LS 2х2х1з",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2403,
+    "name": "Сегмент-КУнг(А)-Эм-FRLS-с 7х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2404,
+    "name": "Сегмент-КУнг(А)-Эм-LS 2х2х0.75",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2405,
+    "name": "Сегмент-КУнг(А)-Эф LS хл 4х2х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2406,
+    "name": "Сегмент-КУнг(А)-Эф-LSхл 1х2х1.5з",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2407,
+    "name": "Сегмент-КУнг(А)-Эфк-LS 1х2х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2408,
+    "name": "Сегмент-КУнг(А)-Эфк-LS 6х2х1з",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2409,
+    "name": "Сегмент-КУнг(А)-FRHF-ХЛ 3х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2410,
+    "name": "Сегмент-КУнг(А)K-LS хл 5х10",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2411,
+    "name": "Сегмент-КУнг(А)K-LSхл 1х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2412,
+    "name": "Сегмент-КУнг(А)-LS-ХЛ 4х0.75",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2413,
+    "name": "Сегмент-КУнг(А)Эиф эф-LS хл 2х2х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2589,
+    "name": "ПТФ 1+1х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2590,
+    "name": "ПТФ МТ 1х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2591,
+    "name": "ПТФФГхк 2х1.5 зелен",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2726,
+    "name": "ШВЭВ 5х0.12",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2799,
+    "name": "КУПд нг(А)-FRLS ВЭКхл 10х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2800,
+    "name": "КУПд нг(А)-LS 4х2х1",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2821,
+    "name": "КЭВВ 6х0.75 нг(А)-LS",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2825,
+    "name": "МЛТП 1х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2855,
+    "name": "А 1х120",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2873,
+    "name": "ПС 1000 35",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2874,
+    "name": "ПСШ 1х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2900,
+    "name": "ПМПЭВ 2х0.35",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2901,
+    "name": "ПРТО 1х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2926,
+    "name": "ПТГВ-ХК 2х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2927,
+    "name": "ПТГВ-ХК 2х2.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2928,
+    "name": "ПТГВэВнг-ха 2х1.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2929,
+    "name": "ПТНГ-ХА 2х0.7",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2931,
+    "name": "ПТТВ 7х2х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2933,
+    "name": "ТЕРК-Г 4х2х1 нг(А)-LS ха(кх)эвб",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2934,
+    "name": "ТЭСА-ХК 1х0.2",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 2935,
+    "name": "ФТЭХ 1х0.5",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  },
+  {
+    "rowIndex": 3349,
+    "name": "РТЗ-51.01 УХЛ4",
+    "sourceCategory": "Без категории",
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+  }
+]

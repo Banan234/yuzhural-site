@@ -133,7 +133,7 @@ test('home hero lead form submits valid payload successfully', async ({
   expect(leadPayload).toMatchObject({
     phone: VALID_PHONE,
     comment: 'ВВГ 3x2.5, 500 метров',
-    source: 'Форма в герое главной',
+    source: 'Форма на главной',
     company_website: '',
   });
   expect(leadPayload.createdAt).toEqual(expect.any(String));

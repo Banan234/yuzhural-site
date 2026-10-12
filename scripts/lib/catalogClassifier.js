@@ -3,6 +3,7 @@
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { normalizeCatalogHierarchy } from '../../shared/catalogCategoryHierarchy.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,6 +17,126 @@ const catalogRulesRaw = readJson('../../data/catalogRules.json');
 const sourceCategoryMapRaw = readJson('../../data/catalogSourceMap.json');
 const brandMapRaw = readJson('../../data/catalogBrandMap.json');
 const cableLetters = readJson('../../data/cableLetters.json');
+const importedCableSubcategoryRules = readJson(
+  '../../shared/importedCableSubcategories.json'
+);
+
+export function validateClassificationMaps({
+  sections = [],
+  rules = [],
+  sourceEntries = [],
+  importedFamilies = [],
+  importedProducts = [],
+} = {}) {
+  const check = (entries, keyField, destination, label) => {
+    const seen = new Map();
+    for (const entry of entries) {
+      const key = normalize(entry[keyField]);
+      if (!key) throw new Error(`Пустой ключ в справочнике ${label}.`);
+      const target = destination(entry);
+      if (seen.has(key) && seen.get(key) !== target) {
+        throw new Error(
+          `Противоречивый ключ «${entry[keyField]}» в справочнике ${label}.`
+        );
+      }
+      seen.set(key, target);
+    }
+  };
+  check(
+    sourceEntries,
+    'sourceCategory',
+    (entry) =>
+      [entry.sectionSlug, entry.categorySlug, entry.subcategorySlug].join('/'),
+    'исходных категорий'
+  );
+  check(
+    importedFamilies,
+    'markFamily',
+    (entry) => entry.subcategorySlug,
+    'импортных семейств'
+  );
+  check(
+    importedProducts,
+    'name',
+    (entry) => entry.subcategorySlug,
+    'импортных товаров'
+  );
+
+  if (sections.length > 0) {
+    const findCategory = (sectionSlug, categorySlug) =>
+      sections
+        .find((section) => section.slug === sectionSlug)
+        ?.categories?.find((category) => category.slug === categorySlug);
+    for (const entry of [...rules, ...sourceEntries]) {
+      const sectionSlug = entry.catalogSectionSlug || entry.sectionSlug;
+      if (!['kabel-i-provod', 'specialnye-kabeli'].includes(sectionSlug))
+        continue;
+      const categorySlug = entry.catalogCategorySlug || entry.categorySlug;
+      const category = findCategory(sectionSlug, categorySlug);
+      if (!category) {
+        throw new Error(
+          `Неизвестная категория «${sectionSlug}/${categorySlug}» в справочнике.`
+        );
+      }
+      const subcategorySlug =
+        entry.catalogSubcategorySlug || entry.subcategorySlug;
+      if (
+        subcategorySlug &&
+        !category.subcategories?.some((item) => item.slug === subcategorySlug)
+      ) {
+        throw new Error(
+          `Неизвестная подкатегория «${subcategorySlug}» в справочнике.`
+        );
+      }
+    }
+    const importedCategory = sections
+      .flatMap((section) => section.categories)
+      .find((category) => category.slug === 'importnye-kabeli');
+    for (const entry of [...importedFamilies, ...importedProducts]) {
+      if (
+        !importedCategory?.subcategories?.some(
+          (item) => item.slug === entry.subcategorySlug
+        )
+      ) {
+        throw new Error(
+          `Неизвестная импортная подкатегория «${entry.subcategorySlug}».`
+        );
+      }
+    }
+  }
+}
+
+validateClassificationMaps({
+  sections: catalogCategoriesRaw.sections,
+  rules: catalogRulesRaw,
+  sourceEntries: sourceCategoryMapRaw,
+  importedFamilies: importedCableSubcategoryRules.families,
+  importedProducts: importedCableSubcategoryRules.products,
+});
+
+const importedFamilySubcategories = new Map(
+  (importedCableSubcategoryRules.families ?? []).map((entry) => [
+    normalize(entry.markFamily),
+    entry,
+  ])
+);
+const importedProductSubcategories = new Map(
+  (importedCableSubcategoryRules.products ?? []).map((entry) => [
+    normalize(entry.name),
+    entry,
+  ])
+);
+const importedApplicationBySubcategory = new Map([
+  ['importnye-silovye-kabeli', 'Силовой'],
+  ['importnye-kontrolnye-kabeli', 'Контрольный'],
+  ['importnye-kabeli-svyazi', 'Связь'],
+  ['importnye-lan-kabeli', 'Связь'],
+  ['importnye-montazhnye-kabeli', 'Монтажный'],
+  ['importnye-provoda', 'Провода'],
+  ['importnye-gibkie-kabeli', 'Гибкий'],
+  ['importnye-kabeli-signalizacii', 'Пожарная'],
+  ['importnye-kabeli-sudovye', 'Судовой'],
+]);
 
 // ---------------------------------------------------------------------------
 // 1. Явные правила (catalogRules.json)
@@ -31,7 +152,13 @@ const rules = [...catalogRulesRaw]
     normalizedPatterns: (rule.patterns ?? []).map((pattern) => ({
       raw: pattern,
       normalized: normalize(pattern),
+      requireNextBoundary: /\s$/u.test(pattern),
     })),
+    normalizedManufacturer: normalize(rule.manufacturerEquals),
+    normalizedFamilyPrefixes: (rule.familyPrefixes ?? []).map(normalize),
+    normalizedOriginalNamePrefixes: (rule.originalNamePrefixes ?? []).map(
+      normalize
+    ),
   }));
 
 // ---------------------------------------------------------------------------
@@ -44,6 +171,17 @@ const rules = [...catalogRulesRaw]
 const sourceCategoryMap = new Map(
   sourceCategoryMapRaw.map((entry) => [normalize(entry.sourceCategory), entry])
 );
+
+export function getSourceCategoryCandidate(sourceCategory) {
+  const entry = sourceCategoryMap.get(normalize(sourceCategory));
+  return entry && !entry.generic
+    ? {
+        sectionSlug: entry.sectionSlug,
+        categorySlug: entry.categorySlug,
+        subcategorySlug: entry.subcategorySlug || '',
+      }
+    : null;
+}
 
 // ---------------------------------------------------------------------------
 // 3. Индекс ключевых слов из catalogCategories.json
@@ -60,6 +198,7 @@ for (const section of catalogCategoriesRaw.sections) {
         categoryKeywords.push({
           keyword: normalized,
           rawKeyword: kw,
+          requireNextBoundary: /\s$/u.test(kw),
           section: section.name,
           sectionSlug: section.slug,
           category: cat.name,
@@ -74,10 +213,13 @@ for (const section of catalogCategoriesRaw.sections) {
           categoryKeywords.push({
             keyword: normalized,
             rawKeyword: kw,
+            requireNextBoundary: /\s$/u.test(kw),
             section: section.name,
             sectionSlug: section.slug,
-            category: subcat.name,
-            categorySlug: subcat.slug,
+            category: cat.name,
+            categorySlug: cat.slug,
+            subcategory: subcat.name,
+            subcategorySlug: subcat.slug,
           });
         }
       }
@@ -86,6 +228,22 @@ for (const section of catalogCategoriesRaw.sections) {
 }
 
 categoryKeywords.sort((a, b) => b.keyword.length - a.keyword.length);
+const keywordTargets = new Map();
+for (const entry of categoryKeywords) {
+  const target = [
+    entry.sectionSlug,
+    entry.categorySlug,
+    entry.subcategorySlug || '',
+  ].join('/');
+  if (!keywordTargets.has(entry.keyword))
+    keywordTargets.set(entry.keyword, new Set());
+  keywordTargets.get(entry.keyword).add(target);
+}
+const ambiguousKeywords = new Set(
+  [...keywordTargets]
+    .filter(([, targets]) => targets.size > 1)
+    .map(([keyword]) => keyword)
+);
 
 // ---------------------------------------------------------------------------
 // 4. Карта брендовых префиксов (catalogBrandMap.json)
@@ -152,6 +310,50 @@ const FALLBACK = {
  *  6. Fallback → "Прочее"
  */
 export function classifyProduct(product) {
+  const result = classifyProductBase(product);
+  if (result.catalogCategorySlug !== 'importnye-kabeli') return result;
+
+  const exactProductRule = importedProductSubcategories.get(
+    normalize(product?.name)
+  );
+  const familyRule = importedFamilySubcategories.get(
+    normalize(product?.markFamily ?? product?.mark)
+  );
+  const rule = exactProductRule ?? familyRule;
+  if (!rule) return withImportedApplication(result);
+
+  // Явную подкатегорию из правил/источника сохраняем; карта используется как
+  // точное уточнение общего родителя «Импортные кабели».
+  if (
+    result.catalogSubcategorySlug &&
+    result.catalogSubcategorySlug !== 'importnye-drugie-kabeli'
+  ) {
+    return withImportedApplication(result);
+  }
+
+  const subcategory = catalogCategoriesRaw.sections
+    .flatMap((section) => section.categories)
+    .find((category) => category.slug === 'importnye-kabeli')
+    ?.subcategories?.find((entry) => entry.slug === rule.subcategorySlug);
+  if (!subcategory) return withImportedApplication(result);
+
+  return withImportedApplication({
+    ...result,
+    catalogSubcategory: subcategory.name,
+    catalogSubcategorySlug: subcategory.slug,
+  });
+}
+
+function withImportedApplication(result) {
+  const application = importedApplicationBySubcategory.get(
+    result.catalogSubcategorySlug
+  );
+  return application
+    ? { ...result, catalogApplicationType: application }
+    : result;
+}
+
+function classifyProductBase(product) {
   const mark = product.mark ?? '';
   const markFamily = product.markFamily ?? product.mark ?? '';
   const name = product.name ?? '';
@@ -163,38 +365,53 @@ export function classifyProduct(product) {
     manufacturer ?? (/^инсил(?:-|$)/iu.test(markFamily) ? 'ИнСил' : null);
   const effectiveMarkFamily = markFamily;
 
-  // Строка для явных правил — марка, семейство + производитель (если известен).
-  // Имя производителя нужно, чтобы правила могли целиться в бренд
-  // (HELUKABEL, Герда, КРУИН и т.п.): priceParser отрезает его от mark/markFamily,
-  // но бренд-специфичные правила должны продолжать срабатывать.
+  // Поля сравниваются по границе обозначения. Вхождение внутри марки (например,
+  // КПС в МКПС) не доказывает принадлежность к семейству.
   const searchStr = normalize(
     [manufacturer, mark, markFamily, ...(product.attributes ?? [])]
       .filter(Boolean)
       .join(' ')
   );
+  const normalizedName = normalize(name);
+  const normalizedManufacturer = normalize(manufacturer);
+  const normalizedFamily = normalize(markFamily);
 
   // --- 1. Явные правила ---
   for (const rule of rules) {
-    if (rule.normalizedExactNames.includes(normalize(name))) {
+    if (
+      rule.normalizedExactNames.includes(normalizedName) ||
+      (rule.normalizedManufacturer &&
+        rule.normalizedManufacturer === normalizedManufacturer &&
+        rule.normalizedFamilyPrefixes.some((prefix) =>
+          normalizedFamily.startsWith(prefix)
+        )) ||
+      rule.normalizedOriginalNamePrefixes.some((prefix) =>
+        normalizedName.startsWith(prefix)
+      )
+    ) {
       return toCatalogResult({
         section: rule.catalogSection,
         sectionSlug: rule.catalogSectionSlug,
         category: rule.catalogCategory,
         categorySlug: rule.catalogCategorySlug,
+        subcategory: rule.catalogSubcategory ?? null,
+        subcategorySlug: rule.catalogSubcategorySlug ?? null,
         type: rule.type,
         applicationType: rule.applicationType ?? null,
         brand: rule.manufacturer ?? displayBrand,
         source: 'rule',
-        match: name,
+        match: rule.type ?? name,
       });
     }
     for (const pattern of rule.normalizedPatterns) {
-      if (searchStr.includes(pattern.normalized)) {
+      if (matchesAtTokenStart(searchStr, pattern)) {
         return toCatalogResult({
           section: rule.catalogSection,
           sectionSlug: rule.catalogSectionSlug,
           category: rule.catalogCategory,
           categorySlug: rule.catalogCategorySlug,
+          subcategory: rule.catalogSubcategory ?? null,
+          subcategorySlug: rule.catalogSubcategorySlug ?? null,
           type: rule.type,
           applicationType: rule.applicationType ?? null,
           brand: rule.manufacturer ?? displayBrand,
@@ -208,12 +425,14 @@ export function classifyProduct(product) {
   // --- 2. Карта sourceCategory ---
   if (product.sourceCategory) {
     const match = sourceCategoryMap.get(normalize(product.sourceCategory));
-    if (match) {
+    if (match && !match.generic) {
       return toCatalogResult({
         section: match.section,
         sectionSlug: match.sectionSlug,
         category: match.category,
         categorySlug: match.categorySlug,
+        subcategory: match.subcategory ?? null,
+        subcategorySlug: match.subcategorySlug ?? null,
         brand: displayBrand,
         source: 'sourceCategory',
         match: product.sourceCategory,
@@ -228,10 +447,22 @@ export function classifyProduct(product) {
     // --- 3. Prefix-matching: markFamily.startsWith(keyword) ---
     const prefixMatch = findByKeyword(
       familyNorm,
-      (kw) => familyNorm.startsWith(kw),
+      (entry) => matchesKeywordPrefix(familyNorm, entry),
       displayBrand
     );
     if (prefixMatch) return prefixMatch;
+
+    // markFamily может склеить марку и размер (АС 16/2.7 → АС16/2.7).
+    // Для ключей с требуемым пробелом сверяем также исходную mark.
+    const markNorm = normalize(mark);
+    if (markNorm !== familyNorm) {
+      const markMatch = findByKeyword(
+        markNorm,
+        (entry) => matchesKeywordPrefix(markNorm, entry),
+        displayBrand
+      );
+      if (markMatch) return markMatch;
+    }
 
     // --- 4. Стриппинг брендового префикса ---
     for (const brandEntry of brandPrefixes) {
@@ -254,7 +485,7 @@ export function classifyProduct(product) {
         // Пробуем классифицировать по остатку марки
         const remMatch = findByKeyword(
           remainder,
-          (kw) => remainder.startsWith(kw),
+          (entry) => matchesKeywordPrefix(remainder, entry),
           detectedBrand
         );
         if (remMatch) return remMatch;
@@ -266,17 +497,23 @@ export function classifyProduct(product) {
         sectionSlug: brandEntry.sectionSlug,
         category: brandEntry.category,
         categorySlug: brandEntry.categorySlug,
+        subcategory: brandEntry.subcategory ?? null,
+        subcategorySlug: brandEntry.subcategorySlug ?? null,
         brand: detectedBrand,
         source: 'brandDefault',
         match: brandEntry.brand,
       });
     }
 
-    // --- 5. Substring-matching для марок с дефисом (ИНСИЛ-КВВЭ, ГЕРДА-КВ) ---
+    // --- 5. Поиск только с начала компонента марки после дефиса ---
     if (familyNorm.includes('-')) {
       const subMatch = findByKeyword(
         familyNorm,
-        (kw) => familyNorm.includes(kw),
+        (entry) =>
+          familyNorm
+            .split('-')
+            .slice(1)
+            .some((part) => matchesKeywordPrefix(part, entry)),
         displayBrand
       );
       if (subMatch) return subMatch;
@@ -315,12 +552,15 @@ export function decodeCable(mark) {
 
 function findByKeyword(value, predicate, brand = null) {
   for (const entry of categoryKeywords) {
-    if (predicate(entry.keyword)) {
+    if (ambiguousKeywords.has(entry.keyword)) continue;
+    if (predicate(entry)) {
       return toCatalogResult({
         section: entry.section,
         sectionSlug: entry.sectionSlug,
         category: entry.category,
         categorySlug: entry.categorySlug,
+        subcategory: entry.subcategory ?? null,
+        subcategorySlug: entry.subcategorySlug ?? null,
         brand,
         source: value.startsWith(entry.keyword)
           ? 'keywordPrefix'
@@ -346,6 +586,8 @@ function toCatalogResult({
   sectionSlug,
   category,
   categorySlug,
+  subcategory = null,
+  subcategorySlug = null,
   type = null,
   applicationType = null,
   brand = null,
@@ -365,11 +607,17 @@ function toCatalogResult({
       catalogClassificationMatch: match,
     };
   }
+  const hierarchy = normalizeCatalogHierarchy({
+    catalogCategory: category,
+    catalogCategorySlug: categorySlug,
+    catalogSubcategory: subcategory,
+    catalogSubcategorySlug: subcategorySlug,
+  });
+
   return {
     catalogSection: section,
     catalogSectionSlug: sectionSlug,
-    catalogCategory: category,
-    catalogCategorySlug: categorySlug,
+    ...hierarchy,
     catalogType: type,
     catalogApplicationType: applicationType,
     catalogBrand: brand,
@@ -409,6 +657,29 @@ function normalize(value) {
 
 function compactForPrefix(value) {
   return normalize(value).replace(/[^a-zа-яё0-9]+/giu, '');
+}
+
+function matchesAtTokenStart(haystack, pattern) {
+  const needle = pattern.normalized;
+  if (!needle) return false;
+  let start = haystack.indexOf(needle);
+  while (start !== -1) {
+    const beforeIsBoundary =
+      start === 0 || !/[\p{L}\p{N}]/u.test(haystack[start - 1]);
+    const after = haystack[start + needle.length];
+    const afterIsBoundary = !after || !/[\p{L}\p{N}]/u.test(after);
+    if (beforeIsBoundary && (!pattern.requireNextBoundary || afterIsBoundary)) {
+      return true;
+    }
+    start = haystack.indexOf(needle, start + 1);
+  }
+  return false;
+}
+
+function matchesKeywordPrefix(value, entry) {
+  if (!value.startsWith(entry.keyword)) return false;
+  const after = value[entry.keyword.length];
+  return !entry.requireNextBoundary || !after || !/[\p{L}\p{N}]/u.test(after);
 }
 
 function tokenizeMark(mark) {

@@ -10,6 +10,7 @@ import {
 } from './lib/priceParser.js';
 import {
   classifyProduct,
+  getSourceCategoryCandidate,
   isCableCatalogProduct,
 } from './lib/catalogClassifier.js';
 import {
@@ -607,7 +608,41 @@ function buildClassificationReport(products, config) {
     .sort((a, b) => b.count - a.count || a.prefix.localeCompare(b.prefix, 'ru'))
     .slice(0, topPrefixLimit);
 
+  const decisions = products.map((product) => {
+    const sourceCandidate = getSourceCategoryCandidate(product.sourceCategory);
+    const sourceCategoryConflict = Boolean(
+      sourceCandidate &&
+      (sourceCandidate.sectionSlug !== product.catalogSectionSlug ||
+        sourceCandidate.categorySlug !== product.catalogCategorySlug ||
+        (sourceCandidate.subcategorySlug &&
+          sourceCandidate.subcategorySlug !==
+            (product.catalogSubcategorySlug || '')))
+    );
+    return {
+      id: product.id,
+      sourceRowIndex: product.sourceRowIndex,
+      name: product.name,
+      sourceCategory: product.sourceCategory || '',
+      catalogSectionSlug: product.catalogSectionSlug || '',
+      catalogCategorySlug: product.catalogCategorySlug || '',
+      catalogSubcategorySlug: product.catalogSubcategorySlug || '',
+      classificationSource: product.catalogClassificationSource || '',
+      classificationMatch: product.catalogClassificationMatch || '',
+      dispositionReason: product.dispositionReason || '',
+      ...(sourceCandidate
+        ? {
+            sourceCategoryCandidate: sourceCandidate,
+            sourceCategoryConflict,
+          }
+        : {}),
+    };
+  });
+
   return {
+    decisions,
+    sourceCategoryConflicts: decisions.filter(
+      (decision) => decision.sourceCategoryConflict
+    ).length,
     fallbackToOther: {
       count: fallbackProducts.length,
       productLimit,
@@ -825,8 +860,23 @@ async function main() {
   );
   const suspicious = detectSuspicious(products, suspiciousPriceStats);
   const classification = buildClassificationReport(
-    classifiedProducts,
+    productsWithIdentity,
     importConfig
+  );
+  const previousProductNames = new Set(
+    previousProducts.map((product) =>
+      String(product.name || '')
+        .trim()
+        .toLowerCase()
+    )
+  );
+  const newReviewRows = importResult.reviewRows.filter(
+    (row) =>
+      !previousProductNames.has(
+        String(row.product || '')
+          .trim()
+          .toLowerCase()
+      )
   );
 
   // Исключение некабельных позиций — ожидаемая бизнес-операция, а не
@@ -840,9 +890,13 @@ async function main() {
     suspicious,
     skippedRows: importResult.skippedRows,
     reviewRows: importResult.reviewRows,
+    newReviewRows,
     errors: diagnostics.errors,
     totalRows: importResult.totalRows,
     fallbackToOther: classification.fallbackToOther.count,
+    otherProducts: products.filter(
+      (product) => product.catalogCategorySlug === 'prochee'
+    ).length,
   });
   let backup = null;
 
@@ -871,6 +925,7 @@ async function main() {
       productsPrevious: previousProducts.length,
       excludedNonCable: importResult.excludedNonCable,
       reviewRows: importResult.reviewRows.length,
+      newReviewRows: newReviewRows.length,
       validationErrors: diagnostics.summary.errors,
       validationWarnings: diagnostics.summary.warnings,
       duplicateGroups: diagnostics.summary.duplicateGroups,
@@ -884,6 +939,8 @@ async function main() {
       stockChanged: diff.stockChanged.length,
       categoryChanged: diff.categoryChanged.length,
       fallbackToOther: classification.fallbackToOther.count,
+      otherProducts: publishGuard.metrics.otherProducts,
+      sourceCategoryConflicts: classification.sourceCategoryConflicts,
     },
     skipsByReason,
     manufacturers: manufacturerSummary,

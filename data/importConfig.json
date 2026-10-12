@@ -25,7 +25,9 @@
     "maxSkippedPercent": 5,
     "maxSuspiciousPercent": 1,
     "maxFallbackPercent": 10,
+    "maxOtherPercent": 10,
+    "maxNewReviewRows": 0,
     "maxPriceAlerts": 100,
-    "maxCategoryChangedPercent": 10
+    "maxCategoryChangedPercent": 1
   }
 }

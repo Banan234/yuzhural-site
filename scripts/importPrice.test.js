@@ -84,19 +84,19 @@ describe('resolveProductDisposition', () => {
     });
   });
 
-  it('использует единицу измерения как fallback для неизвестной строки', () => {
+  it('отправляет неизвестную строку с метрами на проверку', () => {
     expect(
       resolveProductDisposition({ name: 'Неизвестная позиция', unit: 'м' })
     ).toMatchObject({
-      status: 'publish',
-      reason: 'unit_meter_fallback',
+      status: 'review',
+      reason: 'unit_meter_requires_classification',
       evidence: 'м',
     });
     expect(
       resolveProductDisposition({ name: 'Неизвестная позиция', unit: 'км' })
     ).toMatchObject({
-      status: 'publish',
-      reason: 'unit_meter_fallback',
+      status: 'review',
+      reason: 'unit_meter_requires_classification',
       evidence: 'м',
     });
     expect(
@@ -108,12 +108,37 @@ describe('resolveProductDisposition', () => {
     });
   });
 
+  it('не считает размерность или внутреннее «ок» доказательством кабеля', () => {
+    for (const name of ['Болт 2х10', 'Прокат 20х20', 'Цепь оцинкованная']) {
+      expect(
+        resolveProductDisposition({
+          name,
+          unit: 'м',
+          sourceCategory: 'Без категории',
+        })
+      ).toMatchObject({ status: 'review' });
+    }
+  });
+
+  it('не считает общий заголовок прайса подтверждением кабеля', () => {
+    expect(
+      resolveProductDisposition({
+        name: 'АПБ 1,8х4,0/1,92',
+        unit: 'м',
+        sourceCategory: 'К А Б Е Л Ь Н А Я   П Р О Д У К Ц И Я',
+      })
+    ).toMatchObject({ status: 'review' });
+  });
+
   it('не позволяет fallback по единице отменить явные признаки', () => {
     expect(
       resolveProductDisposition({ name: 'Контактор SIEMENS', unit: 'м' })
     ).toMatchObject({ status: 'exclude', reason: 'explicit_non_cable_name' });
     expect(
       resolveProductDisposition({ name: 'ВВГ 3х2.5', unit: 'шт' })
+    ).toMatchObject({ status: 'publish', reason: 'cable_name_evidence' });
+    expect(
+      resolveProductDisposition({ name: 'ПМТК нг(А) 1х0.5', unit: 'шт' })
     ).toMatchObject({ status: 'publish', reason: 'cable_name_evidence' });
     expect(
       resolveProductDisposition({
@@ -323,6 +348,26 @@ describe('source parsing boundaries', () => {
         name: before.name,
         categoryBefore: 'Гибкий кабель',
         categoryAfter: 'Контрольный кабель',
+      },
+    ]);
+  });
+  it('видит смену подкатегории при сохранении родителя', () => {
+    const before = {
+      id: 42,
+      name: 'Test',
+      catalogSectionSlug: 'kabel-i-provod',
+      catalogCategory: 'Импортные кабели',
+      catalogCategorySlug: 'importnye-kabeli',
+      catalogSubcategorySlug: 'importnye-provoda',
+    };
+    const after = {
+      ...before,
+      catalogSubcategorySlug: 'importnye-silovye-kabeli',
+    };
+    expect(buildDiff([before], [after]).categoryChanged).toMatchObject([
+      {
+        subcategorySlugBefore: 'importnye-provoda',
+        subcategorySlugAfter: 'importnye-silovye-kabeli',
       },
     ]);
   });
@@ -782,7 +827,7 @@ describe('parsePageRow / createProductRecord', () => {
     expect(result.value.reason).toMatch(/наимен/i);
   });
 
-  it('публикует неизвестную строку в метрах по fallback-правилу', () => {
+  it('сохраняет неизвестную строку в метрах для проверки', () => {
     const result = createProductRecord(
       { name: 'Неизвестная марка', unit: 'м', price: 100, stock: 10 },
       'Без категории',
@@ -792,11 +837,11 @@ describe('parsePageRow / createProductRecord', () => {
     expect(result.type).toBe('product');
     expect(result.value.name).toContain('Неизвестная марка');
     expect(result.value).toMatchObject({
-      importDisposition: 'publish',
-      dispositionReason: 'unit_meter_fallback',
+      importDisposition: 'review',
+      dispositionReason: 'unit_meter_requires_classification',
       dispositionEvidence: 'м',
     });
-    expect(result.review).toBeUndefined();
+    expect(result.review).toMatchObject({ product: 'Неизвестная марка' });
   });
 
   it('сохраняет товар с неоднозначным производителем и направляет его на review', () => {

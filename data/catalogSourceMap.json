@@ -655,6 +655,7 @@
   },
   {
     "sourceCategory": "К А Б Е Л Ь Н А Я   П Р О Д У К Ц И Я",
+    "generic": true,
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
     "category": "Прочее",

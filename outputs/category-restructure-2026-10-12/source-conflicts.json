@@ -1,0 +1,3232 @@
+[
+  {
+    "sourceRowIndex": 14,
+    "name": "NYM 2х1.5",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 15,
+    "name": "NYM 2х1.5-O",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 16,
+    "name": "NYM 2х2.5",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 17,
+    "name": "NYM 2х2.5-O",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 18,
+    "name": "NYY 12х2.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 19,
+    "name": "NYY 1х16-O RM",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 20,
+    "name": "NYY 2х4",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 21,
+    "name": "NYY 2х4-O",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 22,
+    "name": "NYY 3х1.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 23,
+    "name": "NYY 3х16-J RM Class 2",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 24,
+    "name": "NYY 3х25-J RM/16RE",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 25,
+    "name": "NYY 3х4-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 26,
+    "name": "NYY 4х1.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 27,
+    "name": "NYY 4х16-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 28,
+    "name": "NYY 4х2.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 29,
+    "name": "NYY 4х4-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 30,
+    "name": "NYY 4х6-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 31,
+    "name": "NYY 5х1.5",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 32,
+    "name": "NYY 5х1.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 33,
+    "name": "NYY 5х2.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 34,
+    "name": "NYY 7х1.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nyy"
+  },
+  {
+    "sourceRowIndex": 35,
+    "name": "NYМ 12х1.5-j",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 36,
+    "name": "NYМ 3х1.5",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 37,
+    "name": "NYМ 3х1.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 38,
+    "name": "NYМ 3х1.5-O",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 39,
+    "name": "NYМ 3х2.5",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 40,
+    "name": "NYМ 3х2.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 41,
+    "name": "NYМ 3х4",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 42,
+    "name": "NYМ 3х4-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 43,
+    "name": "NYМ 3х6-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 44,
+    "name": "NYМ 4х1.5",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 45,
+    "name": "NYМ 4х1.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 46,
+    "name": "NYМ 4х10-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 47,
+    "name": "NYМ 4х2.5",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 48,
+    "name": "NYМ 4х2.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 49,
+    "name": "NYМ 4х6-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 50,
+    "name": "NYМ 5х1.5",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 51,
+    "name": "NYМ 5х1.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 52,
+    "name": "NYМ 5х10-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 53,
+    "name": "NYМ 5х2.5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 54,
+    "name": "NYМ 5х4-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 55,
+    "name": "NYМ 7х1,5-J",
+    "sourceCategory": "Кабель NYY, NUM",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nym"
+  },
+  {
+    "sourceRowIndex": 555,
+    "name": "CE-Y(ST)Y BD SI 4х2х0.8(FR)",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kabeli-signalizacii"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ce-y"
+  },
+  {
+    "sourceRowIndex": 556,
+    "name": "RE-(ST)Y-FL нг(А)-LS 12х2х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-(st)y"
+  },
+  {
+    "sourceRowIndex": 557,
+    "name": "RE-2x(LS)HSwAH 3х1.5 06/1 RoSH",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2x"
+  },
+  {
+    "sourceRowIndex": 558,
+    "name": "RE-2x(ST)H 2х1.5",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2x"
+  },
+  {
+    "sourceRowIndex": 559,
+    "name": "RE-2x(ST)H 5х1.5",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2x"
+  },
+  {
+    "sourceRowIndex": 560,
+    "name": "RE-2x(ST)H нг(А)-HF 2х2х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2x"
+  },
+  {
+    "sourceRowIndex": 561,
+    "name": "RE-2x(ST)Y-FL нг(А)-LS 16х2х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2x"
+  },
+  {
+    "sourceRowIndex": 562,
+    "name": "RE-2X(ST)Y-FL нг(А)-LS 24х2х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2x"
+  },
+  {
+    "sourceRowIndex": 563,
+    "name": "RE-2x(ST)Y-FL нг(А)-LS 32х2х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2x"
+  },
+  {
+    "sourceRowIndex": 564,
+    "name": "RE-2x(ST)YFL нг(А)-LS 12х2х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2x"
+  },
+  {
+    "sourceRowIndex": 565,
+    "name": "RE-2x(ST)YFL нг(А)-LS 12х3х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2x"
+  },
+  {
+    "sourceRowIndex": 566,
+    "name": "RE-2Y(ST)Yv PIMF 4х2х0.5",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-2y"
+  },
+  {
+    "sourceRowIndex": 567,
+    "name": "RE-Y(ST)Y-FL нг(А)-LS 12х2х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-y"
+  },
+  {
+    "sourceRowIndex": 568,
+    "name": "RE-Y(ST)Y-FL нг(А)-LS 24х2х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-y"
+  },
+  {
+    "sourceRowIndex": 569,
+    "name": "RE-Y(ST)Y-FL-PiMF 4х2х0.75",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-y"
+  },
+  {
+    "sourceRowIndex": 570,
+    "name": "RE-Y(ST)Y-TP 1х2х1.5",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-y"
+  },
+  {
+    "sourceRowIndex": 571,
+    "name": "RE-Y(ST)YBY-FL 7х3х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-y"
+  },
+  {
+    "sourceRowIndex": 572,
+    "name": "RE-Y-(ST)TL 10х1",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "re-y"
+  },
+  {
+    "sourceRowIndex": 574,
+    "name": "YY-FL нг(А)-LS 12х2.5",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "yy-fl"
+  },
+  {
+    "sourceRowIndex": 581,
+    "name": "ВЭОВКВ-ВП нг(А)-LS 12х2х1,5",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "вэовкв"
+  },
+  {
+    "sourceRowIndex": 582,
+    "name": "ВЭОВКВ-ВП нг(А)-LS 14х2х1,5л",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "вэовкв"
+  },
+  {
+    "sourceRowIndex": 583,
+    "name": "ВЭОВКВ-ВП нг(А)-LS 4х2х1,5л",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "вэовкв"
+  },
+  {
+    "sourceRowIndex": 584,
+    "name": "ВЭОВКВ-ВП нг(А)-LS 8х2х1,5",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "вэовкв"
+  },
+  {
+    "sourceRowIndex": 585,
+    "name": "ВЭОВКВ-ВП нг(А)-LS 8х2х1,5л",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "вэовкв"
+  },
+  {
+    "sourceRowIndex": 586,
+    "name": "ВЭОВКВ-ВЭОП нг(А)-LS 12х2х1,5л",
+    "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "вэовкв"
+  },
+  {
+    "sourceRowIndex": 947,
+    "name": "КПЭТИ нг(В)-FRHF 2х2х0.7",
+    "sourceCategory": "Кабель для Атомной промышленности КПЭТИ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпэти"
+  },
+  {
+    "sourceRowIndex": 948,
+    "name": "КПЭТИ нг(В)-FRHF 7х2х0.35",
+    "sourceCategory": "Кабель для Атомной промышленности КПЭТИ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпэти"
+  },
+  {
+    "sourceRowIndex": 949,
+    "name": "КПЭТИ нг(В)-FRHF 7х2х0.7",
+    "sourceCategory": "Кабель для Атомной промышленности КПЭТИ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпэти"
+  },
+  {
+    "sourceRowIndex": 967,
+    "name": "КМВВ 1х2х0.5",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвв "
+  },
+  {
+    "sourceRowIndex": 968,
+    "name": "КМВВ 1х2х0.75",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвв "
+  },
+  {
+    "sourceRowIndex": 969,
+    "name": "КМВВ 1х2х0.75 нг-LS",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвв "
+  },
+  {
+    "sourceRowIndex": 970,
+    "name": "КМВэВ 1х2х0.5 нг(А)-LS",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвэв"
+  },
+  {
+    "sourceRowIndex": 971,
+    "name": "КМВэВ 2х2х0.5 нг(А)-LS",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвэв"
+  },
+  {
+    "sourceRowIndex": 972,
+    "name": "КМВэВ 2х2х0.75 нг(А)-LS",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвэв"
+  },
+  {
+    "sourceRowIndex": 973,
+    "name": "КМВэВ 2х2х1 нг(А)-LS",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвэв"
+  },
+  {
+    "sourceRowIndex": 974,
+    "name": "КМВэВ 4х2х1",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвэв"
+  },
+  {
+    "sourceRowIndex": 975,
+    "name": "КМВэВ-3 2х2х0.64",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвэв"
+  },
+  {
+    "sourceRowIndex": 976,
+    "name": "КМВэВ-3 2х2х0.7",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмвэв"
+  },
+  {
+    "sourceRowIndex": 978,
+    "name": "КСВэВ 1х2х0.97 нг(А)-LS",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ксвэв"
+  },
+  {
+    "sourceRowIndex": 979,
+    "name": "КСВэВ 2х0.5",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ксвэв"
+  },
+  {
+    "sourceRowIndex": 980,
+    "name": "КСВэВ 2х2х0.8 нг(А)-LS",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ксвэв"
+  },
+  {
+    "sourceRowIndex": 981,
+    "name": "КСВэВ 4х0.5",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ксвэв"
+  },
+  {
+    "sourceRowIndex": 982,
+    "name": "КСВэВ 4х0.5 нг(А)-LS",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ксвэв"
+  },
+  {
+    "sourceRowIndex": 983,
+    "name": "КСВэВ 6х0.5 нг(А)-LS",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ксвэв"
+  },
+  {
+    "sourceRowIndex": 984,
+    "name": "КСВэВ 6х0.64",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ксвэв"
+  },
+  {
+    "sourceRowIndex": 985,
+    "name": "КунРс Внг(А)-FRLS 2х0.75",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кунрсв"
+  },
+  {
+    "sourceRowIndex": 988,
+    "name": "Лоутокс 20нг(А)-FRLS-LTx 1х2х0.75",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "лоутокс"
+  },
+  {
+    "sourceRowIndex": 989,
+    "name": "Лоутокс 20нг(А)-FRLS-LTx 1х2х1",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "лоутокс"
+  },
+  {
+    "sourceRowIndex": 990,
+    "name": "Лоутокс 20нг(А)-FRLS-LTx 2х2х0.75",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "лоутокс"
+  },
+  {
+    "sourceRowIndex": 991,
+    "name": "Лоутокс 20нг(А)-FRLS-LTx 2х2х1",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "лоутокс"
+  },
+  {
+    "sourceRowIndex": 992,
+    "name": "Лоутокс 30нг(А)-FRLS-LTx 2х2х0.52",
+    "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "лоутокс"
+  },
+  {
+    "sourceRowIndex": 1339,
+    "name": "ВВГ 2х4",
+    "sourceCategory": "Кабель КВВГ, КВВГнг, КВВГнгls",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ввг"
+  },
+  {
+    "sourceRowIndex": 1605,
+    "name": "КГПЭф 1х2х1.2 нг-HF",
+    "sourceCategory": "Кабель КВПЭфВП-5е",
+    "sourceCandidate": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "lan-kabeli",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "prochee",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "КГПЭф — категория требует подтверждения исполнения"
+  },
+  {
+    "sourceRowIndex": 1606,
+    "name": "КГПЭфП 1х2х0.78",
+    "sourceCategory": "Кабель КВПЭфВП-5е",
+    "sourceCandidate": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "lan-kabeli",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "prochee",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "КГПЭф — категория требует подтверждения исполнения"
+  },
+  {
+    "sourceRowIndex": 1614,
+    "name": "ПУВП 2х1.5 бел",
+    "sourceCategory": "Кабель лифтовой",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "пувп"
+  },
+  {
+    "sourceRowIndex": 1616,
+    "name": "ВП 1х0.8",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "prochee",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "вп вп"
+  },
+  {
+    "sourceRowIndex": 1617,
+    "name": "ВПВ 1х25",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabel-vodopogr",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "впв "
+  },
+  {
+    "sourceRowIndex": 1618,
+    "name": "ВПП 1х2.5",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "впп"
+  },
+  {
+    "sourceRowIndex": 1619,
+    "name": "ВПП 1х10",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "впп"
+  },
+  {
+    "sourceRowIndex": 1620,
+    "name": "ВПП 1х35",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "впп"
+  },
+  {
+    "sourceRowIndex": 1621,
+    "name": "ВППз 1х6",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "впп"
+  },
+  {
+    "sourceRowIndex": 1697,
+    "name": "Belden 275 МТ",
+    "sourceCategory": "Кабель оптический коаксиальный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-drugie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "belden"
+  },
+  {
+    "sourceRowIndex": 1822,
+    "name": "КПКЭВ 1х2х0.5 нг(А)-FRLS",
+    "sourceCategory": "Кабель пожарный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпкэв"
+  },
+  {
+    "sourceRowIndex": 1823,
+    "name": "КПКЭВ 1х2х0.75 нг(А)-FRLS",
+    "sourceCategory": "Кабель пожарный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпкэв"
+  },
+  {
+    "sourceRowIndex": 1824,
+    "name": "КПКЭВ 1х2х1 нг(А)-FRLS",
+    "sourceCategory": "Кабель пожарный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпкэв"
+  },
+  {
+    "sourceRowIndex": 1825,
+    "name": "КПКЭП 3х2х2,5 нг(А)-FRHF",
+    "sourceCategory": "Кабель пожарный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпкэ"
+  },
+  {
+    "sourceRowIndex": 1826,
+    "name": "КПКЭП 4х2х1,5 нг(А)-FRHF",
+    "sourceCategory": "Кабель пожарный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпкэ"
+  },
+  {
+    "sourceRowIndex": 1827,
+    "name": "КПКЭП 4х2х2,5 нг(А)-FRHF",
+    "sourceCategory": "Кабель пожарный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпкэ"
+  },
+  {
+    "sourceRowIndex": 1828,
+    "name": "КПКЭП 5х2х2,5 нг(А)-FRHF",
+    "sourceCategory": "Кабель пожарный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кпкэ"
+  },
+  {
+    "sourceRowIndex": 1829,
+    "name": "КППСЭП 9х2х1.0 нг(А)-FRHF",
+    "sourceCategory": "Кабель пожарный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кппсэп"
+  },
+  {
+    "sourceRowIndex": 2012,
+    "name": "Nexans К7 ВВМ нг(А)-FRLS(180) 2х2.5",
+    "sourceCategory": "Кабель с резиновой изоляцией - КГ,КНР,РПШ,РКГМ,НРШМ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "gibkiy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-drugie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nexans"
+  },
+  {
+    "sourceRowIndex": 2270,
+    "name": "СБВБПу 10х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сбвбпу"
+  },
+  {
+    "sourceRowIndex": 2271,
+    "name": "СБВБПу 12х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сбвбпу"
+  },
+  {
+    "sourceRowIndex": 2272,
+    "name": "СБВБПу 14х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сбвбпу"
+  },
+  {
+    "sourceRowIndex": 2273,
+    "name": "СБВБПу 16х2х1",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сбвбпу"
+  },
+  {
+    "sourceRowIndex": 2274,
+    "name": "СБВБПу 19х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сбвбпу"
+  },
+  {
+    "sourceRowIndex": 2275,
+    "name": "СБВБПу 24х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сбвбпу"
+  },
+  {
+    "sourceRowIndex": 2298,
+    "name": "СБП нг(А)-HF 30х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сбп "
+  },
+  {
+    "sourceRowIndex": 2299,
+    "name": "СБП нг(А)-HF 3х2х1",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сбп "
+  },
+  {
+    "sourceRowIndex": 2359,
+    "name": "КМПЭВ 2х1.5 нг(А)-LS",
+    "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмпэ"
+  },
+  {
+    "sourceRowIndex": 2360,
+    "name": "КМПЭВ 4х0.5 нг(А)-LS",
+    "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмпэ"
+  },
+  {
+    "sourceRowIndex": 2361,
+    "name": "КМПЭВ 4х0.75 нг(А)-LS",
+    "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмпэ"
+  },
+  {
+    "sourceRowIndex": 2362,
+    "name": "КМПЭВ 4х1 нг(А)-LS",
+    "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмпэ"
+  },
+  {
+    "sourceRowIndex": 2363,
+    "name": "КМПЭВ 7х0.5 нг(А)-500",
+    "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмпэ"
+  },
+  {
+    "sourceRowIndex": 2364,
+    "name": "КМПЭВ 7х0.75 нг(А)-LS",
+    "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмпэ"
+  },
+  {
+    "sourceRowIndex": 2365,
+    "name": "КМПЭВЭ 12х0.75",
+    "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмпэ"
+  },
+  {
+    "sourceRowIndex": 2366,
+    "name": "КМПЭВЭ 4х0.35",
+    "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмпэ"
+  },
+  {
+    "sourceRowIndex": 2367,
+    "name": "КМПЭВЭВ нг-LS 4х0.5",
+    "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kontrolnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "кмпэ"
+  },
+  {
+    "sourceRowIndex": 2510,
+    "name": "СИП-2 2х70+1х70",
+    "sourceCategory": "Провод изолированный алюминиевый СИП, АПВ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "sip",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сип-2"
+  },
+  {
+    "sourceRowIndex": 2511,
+    "name": "СИП-2 3х16+1х25",
+    "sourceCategory": "Провод изолированный алюминиевый СИП, АПВ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "sip",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сип-2"
+  },
+  {
+    "sourceRowIndex": 2512,
+    "name": "СИП-2 3х25+1х35",
+    "sourceCategory": "Провод изолированный алюминиевый СИП, АПВ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "sip",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сип-2"
+  },
+  {
+    "sourceRowIndex": 2513,
+    "name": "СИП-2 3х25+1х35+1х25 0.6/1",
+    "sourceCategory": "Провод изолированный алюминиевый СИП, АПВ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "sip",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "сип-2"
+  },
+  {
+    "sourceRowIndex": 2732,
+    "name": "МПО 0.33-11 0.5",
+    "sourceCategory": "Провод монтажные и спец.назначения МПО, МГШВ, МСЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "мпо "
+  },
+  {
+    "sourceRowIndex": 2733,
+    "name": "МПО 1х0.75 белый",
+    "sourceCategory": "Провод монтажные и спец.назначения МПО, МГШВ, МСЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "мпо "
+  },
+  {
+    "sourceRowIndex": 2734,
+    "name": "МПО 1х0.75 зеленый",
+    "sourceCategory": "Провод монтажные и спец.назначения МПО, МГШВ, МСЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "мпо "
+  },
+  {
+    "sourceRowIndex": 2735,
+    "name": "МПО 33-11 1х0.5 белый",
+    "sourceCategory": "Провод монтажные и спец.назначения МПО, МГШВ, МСЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "мпо "
+  },
+  {
+    "sourceRowIndex": 2736,
+    "name": "МПО 33-11 1х0.5 голубой",
+    "sourceCategory": "Провод монтажные и спец.назначения МПО, МГШВ, МСЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "мпо "
+  },
+  {
+    "sourceRowIndex": 2737,
+    "name": "МПО 33-11 1х0.5 фиолетовый",
+    "sourceCategory": "Провод монтажные и спец.назначения МПО, МГШВ, МСЭ",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "мпо "
+  },
+  {
+    "sourceRowIndex": 2744,
+    "name": "HELUKABEL 2х2х0.75",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-drugie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2745,
+    "name": "HELUKABEL 4х2х0.75",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-drugie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2746,
+    "name": "HELUKABEL 12х2х0.75",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-drugie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2747,
+    "name": "HELUKABEL 1х2хAWG24+1х2хAWG22",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-drugie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2748,
+    "name": "HELUKABEL 24х2х0.20",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-drugie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2749,
+    "name": "HELUKABEL H05BQ-F 3х0.75",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2750,
+    "name": "HELUKABEL H05SS-F 2х1.5",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-gibkie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2751,
+    "name": "HELUKABEL HSLH-JZ 3х0.75",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2752,
+    "name": "HELUKABEL JY-(ST) 2х2х0.8",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kabeli-signalizacii"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2753,
+    "name": "HELUKABEL JZ-500 4х1.5",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2754,
+    "name": "HELUKABEL JZ-500 6х1",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2755,
+    "name": "HELUKABEL JZ-500 HMH 10х0.75",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2756,
+    "name": "HELUKABEL JZ-500 HMH 34х0.75",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2757,
+    "name": "HELUKABEL JZ-500 HMH-C 5х6",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2758,
+    "name": "HELUKABEL JZ-600 5х2.5",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2759,
+    "name": "HELUKABEL JZ-600-У-СУ 18х1.5",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2760,
+    "name": "HELUKABEL JZ-602-СУ 9J 12AWG 4х4",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2761,
+    "name": "HELUKABEL JZ-602-СУ 9J 14AWG 4х2.5",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2762,
+    "name": "HELUKABEL JZ-604 TC-ER 4х2.5",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2763,
+    "name": "HELUKABEL LIYV SPULE 1х1",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-provoda"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "liyv"
+  },
+  {
+    "sourceRowIndex": 2764,
+    "name": "HELUKABEL Multiflex 512-PUR 12х0.75",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-gibkie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2765,
+    "name": "HELUKABEL OZ-BL-CY 2х0.75",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-kontrolnye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2766,
+    "name": "HELUKABEL SiF 1х0.5 бел",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-provoda"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2767,
+    "name": "HELUKABEL SiF 1х0.5 голуб",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-provoda"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2768,
+    "name": "HELUKABEL SiF 1х0.5 красн",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-provoda"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2769,
+    "name": "HELUKABEL SiF 1х1 коричн",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-provoda"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2770,
+    "name": "HELUKABEL SiF 1х2.5 красн",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-provoda"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2771,
+    "name": "HELUKABEL Topflex 611-PUR 4х1.5",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2772,
+    "name": "HELUKABEL Topflex 611-PUR 4х2.5",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "helukabel"
+  },
+  {
+    "sourceRowIndex": 2773,
+    "name": "Kabeltec 2xslchk JB 4х10",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-drugie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "kabeltec"
+  },
+  {
+    "sourceRowIndex": 2774,
+    "name": "NEXANS 500-Y-JS 4х6",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-drugie-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nexans"
+  },
+  {
+    "sourceRowIndex": 2775,
+    "name": "NEXANS Mediastrip 2х2.5",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nexans"
+  },
+  {
+    "sourceRowIndex": 2776,
+    "name": "NEXANS N2AXS(F)2Y 1х240/50 6/10KB",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nexans"
+  },
+  {
+    "sourceRowIndex": 2777,
+    "name": "NEXANS NYL 1.5 5000/10000",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-provoda"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nexans"
+  },
+  {
+    "sourceRowIndex": 2778,
+    "name": "NEXANS А2XSEY 3х50/16(6-10)",
+    "sourceCategory": "Провод монтажный",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "importnye-kabeli",
+      "subcategorySlug": "importnye-silovye-kabeli"
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "nexans"
+  },
+  {
+    "sourceRowIndex": 2881,
+    "name": "П 1х274",
+    "sourceCategory": "Провод судовой",
+    "sourceCandidate": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "prochee",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "Провод П 1х274 / П 1х296 — отдельная марка не подтверждена"
+  },
+  {
+    "sourceRowIndex": 2883,
+    "name": "П 1х296",
+    "sourceCategory": "Провод судовой",
+    "sourceCandidate": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-sudovye",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "prochee",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "Провод П 1х274 / П 1х296 — отдельная марка не подтверждена"
+  },
+  {
+    "sourceRowIndex": 2890,
+    "name": "ПРКА 1х1 ж/з",
+    "sourceCategory": "Провод термостойкие монтажные",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "прка"
+  },
+  {
+    "sourceRowIndex": 2891,
+    "name": "ПРКА 1х1 коричн",
+    "sourceCategory": "Провод термостойкие монтажные",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "прка"
+  },
+  {
+    "sourceRowIndex": 2892,
+    "name": "ПРКА 1х1 черн",
+    "sourceCategory": "Провод термостойкие монтажные",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "прка"
+  },
+  {
+    "sourceRowIndex": 2893,
+    "name": "ПРКА 1х2.5",
+    "sourceCategory": "Провод термостойкие монтажные",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "прка"
+  },
+  {
+    "sourceRowIndex": 2894,
+    "name": "ПРКА 1х2.5 бел",
+    "sourceCategory": "Провод термостойкие монтажные",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "прка"
+  },
+  {
+    "sourceRowIndex": 2895,
+    "name": "ПРКА 1х2.5 красн",
+    "sourceCategory": "Провод термостойкие монтажные",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "прка"
+  },
+  {
+    "sourceRowIndex": 2896,
+    "name": "ПРКА 1х2.5 черн",
+    "sourceCategory": "Провод термостойкие монтажные",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "прка"
+  },
+  {
+    "sourceRowIndex": 2897,
+    "name": "ПРКА 1х16 черн",
+    "sourceCategory": "Провод термостойкие монтажные",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "прка"
+  },
+  {
+    "sourceRowIndex": 2898,
+    "name": "ПРКС 2х2,5",
+    "sourceCategory": "Провод термостойкие монтажные",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "montazhnyy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "пркс"
+  },
+  {
+    "sourceRowIndex": 2903,
+    "name": "ПМСВ 1х1.2",
+    "sourceCategory": "Провод нагревательный для бетона",
+    "sourceCandidate": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-nagrevatelnye",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "пмсв"
+  },
+  {
+    "sourceRowIndex": 2904,
+    "name": "ПМСВ 2х1.2 оц",
+    "sourceCategory": "Провод нагревательный для бетона",
+    "sourceCandidate": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-nagrevatelnye",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "пмсв"
+  },
+  {
+    "sourceRowIndex": 2905,
+    "name": "ПМСВ 4х1.2 оц",
+    "sourceCategory": "Провод нагревательный для бетона",
+    "sourceCandidate": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-nagrevatelnye",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "пмсв"
+  },
+  {
+    "sourceRowIndex": 2906,
+    "name": "ПМСП 4х1.2 оц",
+    "sourceCategory": "Провод нагревательный для бетона",
+    "sourceCandidate": {
+      "sectionSlug": "specialnye-kabeli",
+      "categorySlug": "kabeli-nagrevatelnye",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "provoda",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "пмсп"
+  }
+]

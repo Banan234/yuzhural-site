@@ -1673,6 +1673,7 @@ export function createApp({
         categorySlug,
         search: req.query.search,
         catalogItems: allItems,
+        filters: req.query,
       });
       const filteredItems = applyCatalogFiltersAndSort(
         searchedItems,

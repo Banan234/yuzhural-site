@@ -1,0 +1,139 @@
+{
+  "sourceSha256": "3ddb6f6ce230a349e4e8415930864393dd5d1955a65db45ec9c1f8effa8dfe35",
+  "productsBefore": 5714,
+  "productsAfter": 5712,
+  "excluded": 1170,
+  "review": 175,
+  "newReview": 0,
+  "moved": 128,
+  "decisionOnlyChanges": 353,
+  "removed": [
+    {
+      "cell": "F3315",
+      "name": "Прибор показыв.КП1м-231R"
+    },
+    {
+      "cell": "A3406",
+      "name": "ПМТК нг(А) 1х0.5"
+    }
+  ],
+  "pairs": [
+    [
+      "silovoy-kabel → gibkiy-kabel",
+      23
+    ],
+    [
+      "kabeli-pozharnoy-signalizacii → montazhnyy-kabel",
+      17
+    ],
+    [
+      "silovoy-kabel → prochee",
+      11
+    ],
+    [
+      "kabeli-pozharnoy-signalizacii → kabeli-podvizhnogo-sostava",
+      9
+    ],
+    [
+      "provoda → prochee",
+      8
+    ],
+    [
+      "kabeli-svyazi → kabeli-pozharnoy-signalizacii",
+      7
+    ],
+    [
+      "kontrolnyy-kabel → montazhnyy-kabel",
+      6
+    ],
+    [
+      "prochee → kontrolnyy-kabel",
+      6
+    ],
+    [
+      "kabeli-svyazi → prochee",
+      5
+    ],
+    [
+      "kabeli-pozharnoy-signalizacii → silovoy-kabel",
+      5
+    ],
+    [
+      "provoda → kabeli-svyazi",
+      5
+    ],
+    [
+      "prochee → kabeli-svyazi",
+      2
+    ],
+    [
+      "kabel-vodopogr → lan-kabeli",
+      2
+    ],
+    [
+      "gibkiy-kabel → kabeli-svyazi",
+      2
+    ],
+    [
+      "soedinitelnyy-kabel → kabeli-pozharnoy-signalizacii",
+      2
+    ],
+    [
+      "soedinitelnyy-kabel → kabeli-svyazi",
+      2
+    ],
+    [
+      "kabeli-pozharnoy-signalizacii → kabeli-svyazi",
+      2
+    ],
+    [
+      "kabeli-svyazi → montazhnyy-kabel",
+      2
+    ],
+    [
+      "kabeli-shakhtnye → kontrolnyy-kabel",
+      2
+    ],
+    [
+      "kabeli-svyazi → silovoy-kabel",
+      1
+    ],
+    [
+      "kontrolnyy-kabel → prochee",
+      1
+    ],
+    [
+      "soedinitelnyy-kabel → prochee",
+      1
+    ],
+    [
+      "montazhnyy-kabel → prochee",
+      1
+    ],
+    [
+      "kabeli-neftepogr → kabeli-svyazi",
+      1
+    ],
+    [
+      "importnye-kabeli → prochee",
+      1
+    ],
+    [
+      "lan-kabeli → prochee",
+      1
+    ],
+    [
+      "kabeli-pozharnoy-signalizacii → importnye-kabeli",
+      1
+    ],
+    [
+      "kabel-vodopogr → kabeli-svyazi",
+      1
+    ],
+    [
+      "kabeli-sudovye → prochee",
+      1
+    ]
+  ],
+  "sourceCategoryConflicts": 190
+}

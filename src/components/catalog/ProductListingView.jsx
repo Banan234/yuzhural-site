@@ -5,16 +5,18 @@ import ProductCard from '../ui/ProductCard';
 import { formatVoltage } from '../../lib/catalogFilters';
 import {
   applyCatalogFiltersAndSort,
-  buildCatalogFacets,
+  buildCatalogFacetsForQuery,
   filterProductsBySearch,
   normalizeCatalogFilterQuery,
 } from '../../../shared/catalogQuery.js';
-import { useCatalogFilters } from '../../hooks/useCatalogFilters';
+import {
+  CATALOG_PAGE_SIZE_OPTIONS,
+  useCatalogFilters,
+} from '../../hooks/useCatalogFilters';
 
 const PAGE_SIZE = 24;
 const PRICE_MIN_ID = 'price-min';
 const PRICE_MAX_ID = 'price-max';
-const SORT_SELECT_ID = 'sort-select';
 
 function getPageNumbers(currentPage, totalPages) {
   if (totalPages <= 7) {
@@ -38,6 +40,20 @@ function getPageNumbers(currentPage, totalPages) {
   return result;
 }
 
+function formatPriceValue(value) {
+  return new Intl.NumberFormat('ru-RU', {
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function normalizePriceInput(value) {
+  const trimmed = String(value ?? '').trim();
+  if (!trimmed) return '';
+
+  const number = Number(trimmed);
+  return Number.isFinite(number) ? String(Math.max(0, Math.round(number))) : '';
+}
+
 function scrollCatalogGridIntoView() {
   const grid = document.getElementById('catalog-grid');
   if (!grid) return;
@@ -53,7 +69,6 @@ export default function ProductListingView({
   scopeKey,
   pagination = null,
   filterOptions: serverFilterOptions = null,
-  idPrefix = 'catalog',
 }) {
   const {
     showAppType = false,
@@ -63,6 +78,7 @@ export default function ProductListingView({
   const {
     filters,
     filtersKey: catalogFiltersKey,
+    searchParams,
     updateParam,
     updateParams,
     toggleCsvParam,
@@ -87,27 +103,36 @@ export default function ProductListingView({
     onlySPE,
   } = filters;
 
-  const [priceMinInput, setPriceMinInput] = useState(priceMin);
-  const [priceMaxInput, setPriceMaxInput] = useState(priceMax);
+  const [priceMinInput, setPriceMinInput] = useState(() =>
+    normalizePriceInput(priceMin)
+  );
+  const [priceMaxInput, setPriceMaxInput] = useState(() =>
+    normalizePriceInput(priceMax)
+  );
   const [localPage, setLocalPage] = useState(1);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [viewMode, setViewMode] = useState('tiles');
   const isServerPaged = Boolean(pagination);
-  const filterPanelBodyId = `${idPrefix}-filter-panel-body`;
+  const requestedPageSize = Number(searchParams.get('limit'));
+  const pageSize = CATALOG_PAGE_SIZE_OPTIONS.includes(pagination?.limit)
+    ? pagination.limit
+    : CATALOG_PAGE_SIZE_OPTIONS.includes(requestedPageSize)
+      ? requestedPageSize
+      : PAGE_SIZE;
 
   useEffect(() => {
-    setPriceMinInput(priceMin);
+    setPriceMinInput(normalizePriceInput(priceMin));
   }, [priceMin]);
 
   useEffect(() => {
-    setPriceMaxInput(priceMax);
+    setPriceMaxInput(normalizePriceInput(priceMax));
   }, [priceMax]);
 
   // Сбрасываем страницу при любой смене фильтров. Ключ строим один раз
   // из релевантных параметров — без этого зависимости пересоздавались бы
   // на каждый ререндер, провоцируя лишние прогоны эффекта.
   const filtersKey = useMemo(
-    () => [scopeKey, catalogFiltersKey].join('|'),
-    [scopeKey, catalogFiltersKey]
+    () => [scopeKey, catalogFiltersKey, pageSize].join('|'),
+    [scopeKey, catalogFiltersKey, pageSize]
   );
 
   useEffect(() => {
@@ -117,8 +142,10 @@ export default function ProductListingView({
   }, [filtersKey, isServerPaged]);
 
   function commitPriceRange() {
-    const minVal = priceMinInput.trim();
-    const maxVal = priceMaxInput.trim();
+    const minVal = normalizePriceInput(priceMinInput);
+    const maxVal = normalizePriceInput(priceMaxInput);
+    setPriceMinInput(minVal);
+    setPriceMaxInput(maxVal);
     updateParams({
       priceMin: minVal,
       priceMax: maxVal,
@@ -128,10 +155,6 @@ export default function ProductListingView({
   const searchedProducts = useMemo(() => {
     return filterProductsBySearch(products, search);
   }, [products, search]);
-
-  const localFilterOptions = useMemo(() => {
-    return buildCatalogFacets(searchedProducts);
-  }, [searchedProducts]);
 
   const clientFilterQuery = useMemo(() => {
     return normalizeCatalogFilterQuery({
@@ -164,6 +187,11 @@ export default function ProductListingView({
     sortBy,
   ]);
 
+  const localFilterOptions = useMemo(
+    () => buildCatalogFacetsForQuery(searchedProducts, clientFilterQuery),
+    [searchedProducts, clientFilterQuery]
+  );
+
   const filteredProducts = useMemo(() => {
     if (isServerPaged) return products;
 
@@ -186,15 +214,40 @@ export default function ProductListingView({
           : localFilterOptions.powerGroups || [],
     };
   }, [localFilterOptions, serverFilterOptions]);
+  const priceSliderMax = Math.max(
+    1,
+    Math.ceil(
+      Math.max(
+        Number(filterOptions.maxPrice) || 0,
+        Math.max(0, ...products.map((product) => Number(product.price) || 0))
+      )
+    )
+  );
+  const priceRangeMin = Math.min(
+    priceSliderMax,
+    Math.max(0, Math.round(Number(priceMinInput) || 0))
+  );
+  const priceRangeMax = Math.max(
+    priceRangeMin,
+    Math.min(
+      priceSliderMax,
+      priceMaxInput.trim()
+        ? Math.round(Number(priceMaxInput) || 0)
+        : priceSliderMax
+    )
+  );
+  const priceMinPercent = (priceRangeMin / priceSliderMax) * 100;
+  const priceMaxPercent = (priceRangeMax / priceSliderMax) * 100;
+  const priceScaleValues = [0, priceSliderMax];
   const page = pagination?.page || localPage;
   const resultCount = pagination?.total ?? filteredProducts.length;
   const totalPages =
-    pagination?.totalPages || Math.ceil(filteredProducts.length / PAGE_SIZE);
+    pagination?.totalPages || Math.ceil(filteredProducts.length / pageSize);
   const visibleProducts = isServerPaged
     ? products
     : filteredProducts.slice(
-        (localPage - 1) * PAGE_SIZE,
-        localPage * PAGE_SIZE
+        (localPage - 1) * pageSize,
+        localPage * pageSize
       );
 
   const hasActiveFilters =
@@ -209,29 +262,6 @@ export default function ProductListingView({
     !!priceMin ||
     !!priceMax ||
     !!search;
-  const activeFilterCount = [
-    search,
-    priceMin || priceMax,
-    selectedMaterials.length,
-    selectedConstructions.length,
-    selectedCores.length,
-    selectedSections.length,
-    selectedVoltages.length,
-    showPowerGroups && selectedPowerGroups.length,
-    showAppType && selectedAppTypes.length,
-    showSPE && onlySPE,
-  ].filter(Boolean).length;
-
-  const hasAnyFilterOption =
-    filterOptions.materials.length > 0 ||
-    filterOptions.constructions.length > 0 ||
-    filterOptions.cores.length > 0 ||
-    filterOptions.sections.length > 0 ||
-    filterOptions.voltages.length > 0 ||
-    (showPowerGroups && filterOptions.powerGroups.length > 0) ||
-    (showAppType && filterOptions.appTypes.length > 0) ||
-    (showSPE && filterOptions.hasSPE);
-
   function handlePageChange(nextPage) {
     const normalizedPage = Math.min(Math.max(nextPage, 1), totalPages);
     if (normalizedPage === page) return;
@@ -245,81 +275,117 @@ export default function ProductListingView({
   }
 
   return (
-    <>
-        <form
-          className="catalog-price-range"
-          onSubmit={(e) => {
-            e.preventDefault();
-            commitPriceRange();
-          }}
-        >
-          <span className="catalog-price-range__label">Цена, ₽</span>
-          <label className="visually-hidden" htmlFor={PRICE_MIN_ID}>
-            Цена от, ₽
-          </label>
-          <input
-            id={PRICE_MIN_ID}
-            type="number"
-            inputMode="numeric"
-            min="0"
-            className="catalog-price-range__input"
-            placeholder="от"
-            value={priceMinInput}
-            onChange={(e) => setPriceMinInput(e.target.value)}
-            onBlur={commitPriceRange}
-          />
-          <span className="catalog-price-range__dash">—</span>
-          <label className="visually-hidden" htmlFor={PRICE_MAX_ID}>
-            Цена до, ₽
-          </label>
-          <input
-            id={PRICE_MAX_ID}
-            type="number"
-            inputMode="numeric"
-            min="0"
-            className="catalog-price-range__input"
-            placeholder="до"
-            value={priceMaxInput}
-            onChange={(e) => setPriceMaxInput(e.target.value)}
-            onBlur={commitPriceRange}
-          />
-          <button type="submit" className="catalog-price-range__apply">
-            OK
-          </button>
-        </form>
+    <div className="catalog-listing-layout">
+      <aside className="catalog-filters-sidebar" aria-label="Фильтры товаров">
+        <div className="catalog-filter-panel catalog-filter-panel--sidebar">
+            <div className="catalog-filter-panel__head">
+              <span className="catalog-filter-panel__title">Фильтры</span>
+            </div>
 
-      {hasAnyFilterOption && (
-        <div className="catalog-filter-panel">
-          <button
-            type="button"
-            className="catalog-filter-panel__head"
-            onClick={() => setIsFilterOpen((v) => !v)}
-            aria-controls={filterPanelBodyId}
-            aria-expanded={isFilterOpen}
-          >
-            <span className="catalog-filter-panel__title">
-              Все параметры
-              {activeFilterCount > 0 && (
-                <span className="catalog-filter-panel__badge">
-                  {activeFilterCount}
-                </span>
-              )}
-            </span>
-            <span
-              className={`catalog-filter-panel__chevron${
-                isFilterOpen ? ' catalog-filter-panel__chevron--open' : ''
-              }`}
-              aria-hidden="true"
+            <div
+              className="catalog-filter-panel__body"
             >
-              &#8679;
-            </span>
-          </button>
+            <form
+              className="catalog-price-range"
+              onSubmit={(e) => {
+                e.preventDefault();
+                commitPriceRange();
+              }}
+            >
+              <span className="catalog-price-range__label">Цена, ₽</span>
+              <div className="catalog-price-range__inputs">
+              <label className="visually-hidden" htmlFor={PRICE_MIN_ID}>
+                Цена от, ₽
+              </label>
+              <input
+                id={PRICE_MIN_ID}
+                type="number"
+                inputMode="numeric"
+                min="0"
+                max={priceSliderMax}
+                step="1"
+                className="catalog-price-range__input"
+                placeholder={formatPriceValue(0)}
+                value={priceMinInput}
+                onChange={(e) => setPriceMinInput(e.target.value)}
+                onBlur={commitPriceRange}
+              />
+              <label className="visually-hidden" htmlFor={PRICE_MAX_ID}>
+                Цена до, ₽
+              </label>
+              <input
+                id={PRICE_MAX_ID}
+                type="number"
+                inputMode="numeric"
+                min="0"
+                max={priceSliderMax}
+                step="1"
+                className="catalog-price-range__input"
+                placeholder={formatPriceValue(priceSliderMax)}
+                value={priceMaxInput}
+                onChange={(e) => setPriceMaxInput(e.target.value)}
+                onBlur={commitPriceRange}
+              />
+            </div>
+            <div className="catalog-price-range__slider">
+              <div className="catalog-price-range__track" />
+              <div
+                className="catalog-price-range__track-fill"
+                style={{
+                  left: `${priceMinPercent}%`,
+                  width: `${priceMaxPercent - priceMinPercent}%`,
+                }}
+              />
+              <input
+                type="range"
+                aria-label="Минимальная цена"
+                min="0"
+                max={priceSliderMax}
+                step="1"
+                value={priceRangeMin}
+                onChange={(event) =>
+                  setPriceMinInput(
+                    String(Math.min(Number(event.target.value), priceRangeMax))
+                  )
+                }
+                onPointerUp={commitPriceRange}
+                onKeyUp={commitPriceRange}
+                className="catalog-price-range__range catalog-price-range__range--min"
+                style={{ zIndex: priceRangeMin > priceSliderMax * 0.9 ? 4 : 3 }}
+              />
+              <input
+                type="range"
+                aria-label="Максимальная цена"
+                min="0"
+                max={priceSliderMax}
+                step="1"
+                value={priceRangeMax}
+                onChange={(event) =>
+                  setPriceMaxInput(
+                    String(Math.max(Number(event.target.value), priceRangeMin))
+                  )
+                }
+                onPointerUp={commitPriceRange}
+                onKeyUp={commitPriceRange}
+                className="catalog-price-range__range catalog-price-range__range--max"
+              />
+            </div>
+            <div className="catalog-price-range__scale" aria-hidden="true">
+              {priceScaleValues.map((value, index) => (
+                <span
+                  key={index}
+                  className={
+                    index > 0 && index < priceScaleValues.length - 1
+                      ? 'catalog-price-range__tick catalog-price-range__tick--marked'
+                      : 'catalog-price-range__tick'
+                  }
+                >
+                  {formatPriceValue(value)}
+                </span>
+              ))}
+            </div>
+            </form>
 
-          <div
-            id={filterPanelBodyId}
-            className="catalog-filter-panel__body"
-            hidden={!isFilterOpen}
-          >
             {filterOptions.materials.length > 0 && (
               <div className="catalog-filter-row">
                 <span className="catalog-filter-row__label">Материал жилы</span>
@@ -509,7 +575,7 @@ export default function ProductListingView({
               </div>
             )}
 
-            <div className="catalog-filter-panel__footer">
+              <div className="catalog-filter-panel__footer">
               {hasActiveFilters && (
                 <button
                   type="button"
@@ -519,46 +585,104 @@ export default function ProductListingView({
                   ✕ Сбросить фильтр
                 </button>
               )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+      </aside>
 
+      <div className="catalog-results-main">
       {!error && (
         <div className="catalog-filter-summary">
-          <div className="catalog-filter-panel__sort">
-            <label
-              className="catalog-filter-panel__sort-label"
-              htmlFor={SORT_SELECT_ID}
+          <div className="catalog-sort-row" aria-label="Сортировать товары">
+            <strong className="catalog-sort-row__label">Сортировать по:</strong>
+            <button
+              type="button"
+              className={`catalog-sort-row__option${sortBy === 'popular' ? ' catalog-sort-row__option--active' : ''}`}
+              aria-pressed={sortBy === 'popular'}
+              onClick={() => updateParam('sort', 'popular')}
             >
-              Сортировка:
+              <svg viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M3 14V9m4 5V5m4 9V7m4 7V3" />
+              </svg>
+              <span>Популярности</span>
+            </button>
+            <button
+              type="button"
+              className={`catalog-sort-row__option${sortBy === 'price-asc' ? ' catalog-sort-row__option--active' : ''}`}
+              aria-pressed={sortBy === 'price-asc'}
+              onClick={() => updateParam('sort', 'price-asc')}
+            >
+              <svg viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M3 5h12M5 9h8m-6 4h4" />
+              </svg>
+              <span>Цене</span>
+            </button>
+            <button
+              type="button"
+              className={`catalog-sort-row__option${sortBy === 'title-asc' ? ' catalog-sort-row__option--active' : ''}`}
+              aria-pressed={sortBy === 'title-asc'}
+              onClick={() => updateParam('sort', 'title-asc')}
+            >
+              <svg viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M4 14V4m-2 2 2-2 2 2m3 7h5m-5-4h4m-4-4h3" />
+              </svg>
+              <span>Алфавиту</span>
+            </button>
+            <label className="catalog-page-size">
+              <span>Выводить по:</span>
+              <select
+                className="catalog-page-size__select"
+                aria-label="Количество товаров на странице"
+                value={pageSize}
+                onChange={(event) => updateParam('limit', event.target.value)}
+              >
+                {CATALOG_PAGE_SIZE_OPTIONS.map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
             </label>
-            <select
-              id={SORT_SELECT_ID}
-              value={sortBy}
-              onChange={(e) =>
-                updateParam(
-                  'sort',
-                  e.target.value === 'default' ? '' : e.target.value
-                )
-              }
-              className="catalog-sidebar__select catalog-filter-panel__sort-select"
-            >
-              <option value="default">По умолчанию</option>
-              <option value="price-asc">Цена: по возрастанию</option>
-              <option value="price-desc">Цена: по убыванию</option>
-              <option value="title-asc">По названию</option>
-              <option value="popular">По наличию</option>
-            </select>
-          </div>
-          <div className="catalog-filter-panel__results">
-            {isLoading ? (
-              'Загружаем...'
-            ) : (
-              <>
-                Найдено: <strong>{resultCount}</strong> товаров
-              </>
-            )}
+            <div className="catalog-view-switch" aria-label="Вид списка товаров">
+              <button
+                type="button"
+                className={`catalog-view-switch__button${
+                  viewMode === 'tiles'
+                    ? ' catalog-view-switch__button--active'
+                    : ''
+                }`}
+                aria-label="Плиточное отображение"
+                aria-pressed={viewMode === 'tiles'}
+                title="Плиточное отображение"
+                onClick={() => setViewMode('tiles')}
+              >
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <rect x="2.5" y="2.5" width="5.5" height="5.5" rx="1" />
+                  <rect x="12" y="2.5" width="5.5" height="5.5" rx="1" />
+                  <rect x="2.5" y="12" width="5.5" height="5.5" rx="1" />
+                  <rect x="12" y="12" width="5.5" height="5.5" rx="1" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                className={`catalog-view-switch__button${
+                  viewMode === 'list'
+                    ? ' catalog-view-switch__button--active'
+                    : ''
+                }`}
+                aria-label="Прайс-лист"
+                aria-pressed={viewMode === 'list'}
+                title="Прайс-лист"
+                onClick={() => setViewMode('list')}
+              >
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M7.5 4h10M7.5 10h10M7.5 16h10" />
+                  <circle cx="3.5" cy="4" r=".8" />
+                  <circle cx="3.5" cy="10" r=".8" />
+                  <circle cx="3.5" cy="16" r=".8" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -575,9 +699,15 @@ export default function ProductListingView({
             aria-hidden="true"
           />
           <h2 className="visually-hidden">Товары каталога</h2>
-          <div className="products-grid products-grid--catalog">
+          <div
+            className={`products-grid products-grid--catalog products-grid--catalog-${viewMode}`}
+          >
             {visibleProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                variant={viewMode === 'list' ? 'catalog-list' : 'catalog-tile'}
+              />
             ))}
           </div>
 
@@ -627,6 +757,7 @@ export default function ProductListingView({
           По вашему запросу товары не найдены.
         </div>
       )}
-    </>
+      </div>
+    </div>
   );
 }

@@ -18,7 +18,6 @@ import {
   buildProductJsonLd,
   buildProductMetaDescription,
   buildProductMetaTitle,
-  getProductBreadcrumbs,
 } from '../lib/productSeo';
 import {
   getProductImage,
@@ -225,31 +224,6 @@ export default function ProductPage() {
   return (
     <section className="section">
       <Container>
-        <nav className="breadcrumbs" aria-label="Хлебные крошки">
-          <ol className="breadcrumbs__list">
-            {getProductBreadcrumbs(product).map((item, index, items) => {
-              const isLast = index === items.length - 1;
-              return (
-                <li
-                  key={`${item.label}-${index}`}
-                  className="breadcrumbs__item"
-                >
-                  {index > 0 && (
-                    <span className="breadcrumbs__sep" aria-hidden="true">
-                      {' / '}
-                    </span>
-                  )}
-                  {isLast ? (
-                    <span aria-current="page">{item.label}</span>
-                  ) : (
-                    <Link to={item.to}>{item.label}</Link>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
-        </nav>
-
         <div className="product-page">
           <div className="product-page__media">
             <img

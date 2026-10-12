@@ -276,12 +276,28 @@ export function createProductRecord(
       category,
     })
   );
+  const preliminaryClassification =
+    disposition.status === 'review' ? classifyProduct(normalizedProduct) : null;
+  const confirmedByMark =
+    preliminaryClassification &&
+    isCableCatalogProduct(preliminaryClassification) &&
+    preliminaryClassification.catalogCategorySlug !== 'prochee' &&
+    ['rule', 'keywordPrefix'].includes(
+      preliminaryClassification.catalogClassificationSource
+    );
+  const effectiveDisposition = confirmedByMark
+    ? {
+        status: 'publish',
+        reason: 'classified_cable_mark',
+        evidence: preliminaryClassification.catalogClassificationMatch,
+      }
+    : disposition;
   const normalized = {
     ...normalizedProduct,
     sourceRowIndex: rowIndex,
-    importDisposition: disposition.status,
-    dispositionReason: disposition.reason,
-    dispositionEvidence: disposition.evidence,
+    importDisposition: effectiveDisposition.status,
+    dispositionReason: effectiveDisposition.reason,
+    dispositionEvidence: effectiveDisposition.evidence,
   };
 
   if (!normalized.name) {
@@ -339,7 +355,7 @@ export function createProductRecord(
   return {
     type: 'product',
     value: normalized,
-    ...(disposition.status === 'review' ||
+    ...(effectiveDisposition.status === 'review' ||
     normalized.manufacturerMatch?.ambiguous
       ? {
           review: {
@@ -349,8 +365,8 @@ export function createProductRecord(
             product: normalized.name,
             reason:
               [
-                disposition.status === 'review'
-                  ? `Требуется проверить решение импорта: ${disposition.reason} (${disposition.evidence})`
+                effectiveDisposition.status === 'review'
+                  ? `Требуется проверить решение импорта: ${effectiveDisposition.reason} (${effectiveDisposition.evidence})`
                   : null,
                 normalized.manufacturerMatch?.ambiguous
                   ? 'В названии найдено несколько возможных производителей'

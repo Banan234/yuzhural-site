@@ -1,6 +1,7 @@
 // Файл рендерит информационную страницу доставки с условиями, регионами и SEO-метаданными.
 
 import Container from '../components/ui/Container';
+import ConsentGatedMap from '../components/layout/ConsentGatedMap';
 import { useJsonLd } from '../hooks/useJsonLd';
 import { useSEO } from '../hooks/useSEO';
 import {
@@ -120,11 +121,9 @@ export default function DeliveryPage() {
         <div className="contacts-map-card delivery-route-map">
           <div className="contacts-map-card__title">Схема проезда к складу</div>
           <div className="contacts-map-frame">
-            <iframe
+            <ConsentGatedMap
               title="Схема проезда к складу самовывоза"
               src={SITE_WAREHOUSE_MAP_EMBED_URL}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
           <div className="contacts-map-card__footer">

@@ -1,6 +1,6 @@
 // Файл рендерит страницу каталога с фильтрами, поиском, категориями и списком товаров.
 
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import Container from '../components/ui/Container';
 import ProductListingView from '../components/catalog/ProductListingView';
@@ -9,10 +9,7 @@ import { captureException } from '../lib/errorTracking';
 import { useSEO } from '../hooks/useSEO';
 import { useCatalogFilters } from '../hooks/useCatalogFilters';
 import { usePrerenderData } from '../lib/prerenderData';
-import {
-  CATALOG_CANONICAL_PATH,
-  toCanonicalSitePath,
-} from '../lib/canonicalPaths.js';
+import { toCanonicalSitePath } from '../lib/canonicalPaths.js';
 import { messages } from '../../shared/messages.js';
 import { NOT_FOUND_SEO, NotFoundPageContent } from './NotFoundPage.jsx';
 import catalogCategoriesData from '../../shared/catalogCategories.json';
@@ -42,13 +39,10 @@ for (const section of catalogCategoriesData.sections) {
     routeType: 'section',
   };
   sectionByRouteSlug[section.slug] = section;
-
   for (const cat of section.categories) {
     routeEntryBySlug[cat.slug] = {
       ...cat,
       routeType: 'category',
-      sectionName: section.name,
-      sectionSlug: section.slug,
     };
     sectionByRouteSlug[cat.slug] = section;
 
@@ -58,8 +52,6 @@ for (const section of catalogCategoriesData.sections) {
         routeType: 'subcategory',
         parentName: cat.name,
         parentSlug: cat.slug,
-        sectionName: section.name,
-        sectionSlug: section.slug,
       };
       parentByChildSlug[sub.slug] = routeEntryBySlug[cat.slug];
       sectionByRouteSlug[sub.slug] = section;
@@ -131,9 +123,6 @@ export default function CatalogPage() {
       includeAdvancedFilters: shouldIncludeAdvancedFilters,
     });
   const routeCategory = isCategoryRoute ? routeEntryBySlug[slug] : null;
-  const routeSection = isCategoryRoute
-    ? sectionByRouteSlug[slug] || null
-    : null;
   const parentCategory = isCategoryRoute
     ? parentByChildSlug[slug] || null
     : null;
@@ -234,10 +223,6 @@ export default function CatalogPage() {
     searchQuery,
   ]);
 
-  function setCategory(slug) {
-    updateParam('category', slug);
-  }
-
   const activeCategory = useMemo(() => {
     if (routeCategory) return routeCategory;
     if (!activeCategoryParam) return null;
@@ -251,10 +236,45 @@ export default function CatalogPage() {
     return null;
   }, [activeCategoryParam, catalogSections, routeCategory]);
 
+  const routeSection = activeCategoryParam
+    ? sectionByRouteSlug[activeCategoryParam]
+    : null;
+  const breadcrumbItems = [
+    { label: 'Главная', to: '/' },
+    {
+      label: 'Каталог',
+      ...(isCategoryRoute || activeCategoryParam ? { to: '/catalog/' } : {}),
+    },
+  ];
+  if (routeCategory?.routeType === 'section') {
+    breadcrumbItems.push({ label: routeCategory.name });
+  } else if (routeCategory) {
+    if (routeSection) {
+      breadcrumbItems.push({
+        label: routeSection.name,
+        to: `/catalog/${routeSection.slug}`,
+      });
+    }
+    if (parentCategory) {
+      breadcrumbItems.push({
+        label: parentCategory.name,
+        to: `/catalog/${parentCategory.slug}`,
+      });
+    }
+    breadcrumbItems.push({ label: routeCategory.name });
+  } else if (activeCategory) {
+    if (routeSection) {
+      breadcrumbItems.push({
+        label: routeSection.name,
+        to: `/catalog/${routeSection.slug}`,
+      });
+    }
+    breadcrumbItems.push({ label: activeCategory.name });
+  }
+
   const pageTitle = activeCategory ? activeCategory.name : 'Каталог продукции';
   const visibleCount =
     productsMeta.pagination?.total ?? productsMeta.total ?? products.length;
-  const catalogCount = productsMeta.catalogCount ?? products.length;
   const isPowerCableCategory =
     activeCategoryParam === POWER_CABLE_CATEGORY_SLUG ||
     activeCategory?.slug === POWER_CABLE_CATEGORY_SLUG;
@@ -265,26 +285,6 @@ export default function CatalogPage() {
           showPowerGroups: isPowerCableCategory,
         }
       : undefined;
-  const categoryQuickLinks = useMemo(() => {
-    if (!isCategoryRoute || !routeCategory) return [];
-
-    if (routeCategory.routeType === 'section') {
-      return routeCategory.categories || [];
-    }
-
-    if (parentCategory?.subcategories?.length) {
-      return parentCategory.subcategories;
-    }
-
-    if (routeCategory.subcategories?.length) {
-      return routeCategory.subcategories;
-    }
-
-    return catalogCategoriesData.sections.flatMap(
-      (section) => section.categories
-    );
-  }, [isCategoryRoute, parentCategory, routeCategory]);
-
   useSEO(
     isMissingCategoryRoute
       ? NOT_FOUND_SEO
@@ -324,206 +324,36 @@ export default function CatalogPage() {
     >
       <Container>
         <div className="catalog-page">
-          {isCategoryRoute ? (
-            <>
-              <nav className="breadcrumbs" aria-label="Хлебные крошки">
-                <Link to="/">Главная</Link>
-                <span aria-hidden="true"> / </span>
-                <Link to={CATALOG_CANONICAL_PATH}>Каталог</Link>
-                {routeSection &&
-                routeCategory?.routeType !== 'section' &&
-                routeSection.slug !== parentCategory?.slug ? (
-                  <>
-                    <span aria-hidden="true"> / </span>
-                    <Link to={`/catalog/${routeSection.slug}`}>
-                      {routeSection.name}
-                    </Link>
-                  </>
-                ) : null}
-                {parentCategory && (
-                  <>
-                    <span aria-hidden="true"> / </span>
-                    <Link to={`/catalog/${parentCategory.slug}`}>
-                      {parentCategory.name}
-                    </Link>
-                  </>
-                )}
-                <span aria-hidden="true"> / </span>
-                <span aria-current="page">{activeCategory.name}</span>
-              </nav>
-              <div className="catalog-page__header">
-                <h1 className="page-title catalog-page__title">
-                  {activeCategory.name}
-                </h1>
-              </div>
-            </>
-          ) : (
-            <div className="catalog-page__header">
-              <span className="catalog-page__eyebrow">Каталог продукции</span>
-              <h1 className="page-title catalog-page__title">{pageTitle}</h1>
-              <p className="catalog-page__subtitle">
-                {isLoading ? (
-                  'Загружаем актуальные позиции из прайса...'
-                ) : (
-                  <>
-                    В наличии{' '}
-                    <strong>{visibleCount.toLocaleString('ru-RU')}</strong>{' '}
-                    позиций · Отгрузка со склада в Челябинске
-                  </>
-                )}
-              </p>
-            </div>
-          )}
+          <nav className="catalog-breadcrumbs" aria-label="Хлебные крошки">
+            <ol>
+              {breadcrumbItems.map((item, index) => (
+                <li key={`${item.label}-${index}`}>
+                  {item.to ? (
+                    <Link to={item.to}>{item.label}</Link>
+                  ) : (
+                    <span aria-current="page">{item.label}</span>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <div className="catalog-page__header">
+            <h1 className="page-title catalog-page__title">{pageTitle}</h1>
+            <p className="catalog-page__subtitle">
+              {isLoading ? (
+                'Загружаем актуальные позиции из прайса...'
+              ) : (
+                <>
+                  <span className="catalog-page__availability">В наличии</span>{' '}
+                  <strong>{visibleCount.toLocaleString('ru-RU')}</strong>{' '}
+                  позиций · Отгрузка со склада в Челябинске
+                </>
+              )}
+            </p>
+          </div>
 
           <div className="catalog-layout">
-            {isCategoryRoute ? (
-              <aside className="catalog-sidebar">
-                <div
-                  className="catalog-sidebar__panel"
-                  style={{ padding: 0, overflow: 'hidden' }}
-                >
-                  {catalogCategoriesData.sections.map((section) =>
-                    section.categories.map((cat) => {
-                      const subs = cat.subcategories || [];
-                      const isExpanded =
-                        cat.slug === slug ||
-                        subs.some((sub) => sub.slug === slug);
-
-                      return (
-                        <Fragment key={cat.slug}>
-                          <Link
-                            to={`/catalog/${cat.slug}`}
-                            className={`catalog-sidebar__item${
-                              cat.slug === slug
-                                ? ' catalog-sidebar__item--active'
-                                : ''
-                            }`}
-                            style={{ textDecoration: 'none' }}
-                            aria-current={
-                              cat.slug === slug ? 'page' : undefined
-                            }
-                          >
-                            <span>{cat.name}</span>
-                            <span className="catalog-sidebar__count">›</span>
-                          </Link>
-                          {isExpanded &&
-                            subs.map((sub) => (
-                              <Link
-                                key={sub.slug}
-                                to={`/catalog/${sub.slug}`}
-                                className={`catalog-sidebar__item catalog-sidebar__item--sub${
-                                  sub.slug === slug
-                                    ? ' catalog-sidebar__item--active'
-                                    : ''
-                                }`}
-                                style={{ textDecoration: 'none' }}
-                                aria-current={
-                                  sub.slug === slug ? 'page' : undefined
-                                }
-                              >
-                                <span>{sub.name}</span>
-                                <span className="catalog-sidebar__count">
-                                  ›
-                                </span>
-                              </Link>
-                            ))}
-                        </Fragment>
-                      );
-                    })
-                  )}
-                </div>
-              </aside>
-            ) : (
-              <aside className="catalog-sidebar">
-                <div className="catalog-sidebar__panel catalog-sidebar__panel--categories">
-                  <div className="catalog-sidebar__panel-head">
-                    <span className="catalog-sidebar__panel-title">
-                      Все категории
-                    </span>
-                  </div>
-
-                  <button
-                    type="button"
-                    className={`catalog-sidebar__all${
-                      !activeCategoryParam
-                        ? ' catalog-sidebar__all--active'
-                        : ''
-                    }`}
-                    onClick={() => setCategory('')}
-                  >
-                    <span>Все товары</span>
-                    <span className="catalog-sidebar__count">
-                      {catalogCount}
-                    </span>
-                  </button>
-
-                  {catalogSections.map((section) => (
-                    <div
-                      key={section.slug || section.name}
-                      className="catalog-sidebar__section"
-                    >
-                      <div className="catalog-sidebar__section-title">
-                        {section.name}
-                      </div>
-                      {section.categories.map((cat) => (
-                        <button
-                          key={cat.slug}
-                          type="button"
-                          className={`catalog-sidebar__item${
-                            activeCategoryParam === cat.slug ||
-                            activeCategoryParam === cat.name
-                              ? ' catalog-sidebar__item--active'
-                              : ''
-                          }`}
-                          onClick={() => setCategory(cat.slug)}
-                        >
-                          <span>{cat.name}</span>
-                          <span className="catalog-sidebar__count">
-                            {cat.count}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </aside>
-            )}
-
             <div className="catalog-main">
-              {isCategoryRoute && (
-                <div className="catalog-category-strip">
-                  <div className="catalog-category-strip__current">
-                    <span className="catalog-category-strip__label">
-                      Выбрано
-                    </span>
-                    <span className="catalog-category-strip__name">
-                      {activeCategory.name}
-                    </span>
-                  </div>
-                  {categoryQuickLinks.length > 0 && (
-                    <div
-                      className="catalog-category-strip__links"
-                      aria-label="Быстрый выбор категории"
-                    >
-                      {categoryQuickLinks.slice(0, 6).map((cat) => (
-                        <Link
-                          key={cat.slug}
-                          to={`/catalog/${cat.slug}`}
-                          className={`catalog-category-strip__link${
-                            cat.slug === slug
-                              ? ' catalog-category-strip__link--active'
-                              : ''
-                          }`}
-                          aria-current={cat.slug === slug ? 'page' : undefined}
-                        >
-                          {cat.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-
               {isCategoryRoute && hasSubcategories ? (
                 <div className="subcategories-grid">
                   {activeCategory.subcategories.map((sub) => (

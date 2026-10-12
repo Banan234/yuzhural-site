@@ -9,6 +9,8 @@ import FloatingLeadWidget from './FloatingLeadWidget';
 import HeaderCatalogMenu from './HeaderCatalogMenu';
 import HeaderSearch from './HeaderSearch';
 import SiteFooter from './SiteFooter';
+import CookieConsent from './CookieConsent';
+import { openCookieSettings } from '../../lib/cookieConsent';
 import { useCartStore } from '../../store/useCartStore';
 import { trackEvent } from '../../lib/analytics';
 import { usePageviewTracking } from '../../hooks/usePageviewTracking';
@@ -423,6 +425,7 @@ export default function MainLayout() {
       </main>
 
       <SiteFooter
+        onManageCookies={openCookieSettings}
         onOpenQuote={() =>
           openLeadModal({
             title: 'Получить КП',
@@ -433,6 +436,8 @@ export default function MainLayout() {
           })
         }
       />
+
+      <CookieConsent />
 
       <FloatingLeadWidget
         autoOpen={false}

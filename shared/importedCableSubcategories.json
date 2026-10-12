@@ -1,0 +1,1382 @@
+{
+  "families": [
+    {
+      "markFamily": "02YS(ST)CY",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.tk-kabel.de/en/datasheets/02ys-st-cy/",
+      "reason": "Кабель PROFIBUS / шина передачи данных."
+    },
+    {
+      "markFamily": "07V-K",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.nkt.com/products-solutions/low-voltage-cable/building-wires/h07v-k",
+      "reason": "Одножильный монтажный провод; товарная позиция 07V-K."
+    },
+    {
+      "markFamily": "3109A4PR",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.belden.com/products/cable/electronic-wire-cable/multi-pair-cable/3109a",
+      "reason": "Многопарный кабель передачи данных Belden 3109A."
+    },
+    {
+      "markFamily": "4CORE(TE)SECURITYCABLE",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://btkbc.azureedge.net/pdf/20230208_03B144B3-WH_03B144B3-GY_PIS.pdf",
+      "reason": "Четырёхжильный security cable для охранных систем."
+    },
+    {
+      "markFamily": "6XV1830-5FH1018AWG",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://support.industry.siemens.com/teddatasheet/?caller=SIOS&format=pdf&language=en&mlfbs=6XV1830-5FH10",
+      "reason": "Siemens PROFIBUS Process Cable."
+    },
+    {
+      "markFamily": "9182150",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://catalog.belden.com/techdata/EN/9182_techdata.pdf",
+      "reason": "Belden 9182 — 150-омный twinax/data cable."
+    },
+    {
+      "markFamily": "98422PR24",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://catalog.belden.com/techdata/EN/9842_techdata.pdf",
+      "reason": "Belden 9842 — кабель RS-485, две витые пары."
+    },
+    {
+      "markFamily": "98444PR24SHIELDED",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.belden.com/products/cable/electronic-wire-cable/multi-pair-cable/9844",
+      "reason": "Belden 9844 — многопарный кабель связи/RS-485."
+    },
+    {
+      "markFamily": "9880ЖЕЛТЫЙ",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://catalog.belden.com/index.cfm?event=pd&p=PF_9880&tab=downloads",
+      "reason": "Belden 9880 — коаксиальный кабель Ethernet Thicknet."
+    },
+    {
+      "markFamily": "9913",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.belden.com/products/cable/coax-triax-cable/50-ohm-coax-cable/9913",
+      "reason": "Belden 9913 — 50-омный коаксиальный кабель передачи радиочастотного сигнала."
+    },
+    {
+      "markFamily": "А2XSEY",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.proximaglobal.com/middle-voltage-power-cables/product/2xsey-a2xsey",
+      "reason": "Средневольтный силовой кабель."
+    },
+    {
+      "markFamily": "ALSECURE",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.nexans.fr/en/products/Building/Industrial/Fire-resistant-cables/ALSECURE%C2%AE-4620.html",
+      "reason": "В представленных позициях многожильные силовые сечения; пожаростойкое исполнение не меняет основное назначение."
+    },
+    {
+      "markFamily": "ALSECUREA",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.nexans.fr/en/products/Building/Industrial/Fire-resistant-cables/ALSECURE%C2%AE-4620.html",
+      "reason": "Силовой кабель Nexans с огнестойким исполнением."
+    },
+    {
+      "markFamily": "ALSECUREFRN1X1G1-R",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.nexans.fr/en/products/Building/Industrial/Fire-resistant-cables/ALSECURE%C2%AE-4620.html",
+      "reason": "Силовой кабель Nexans с огнестойким исполнением."
+    },
+    {
+      "markFamily": "A-DQ(ZN)(SR)2Y",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.poltel.com.pl/a-dq-zn-sr-2y-zewnetrzny-kabel-swiatlowodowy%2Cc1753.html",
+      "reason": "Наружный оптический кабель связи."
+    },
+    {
+      "markFamily": "AT-(ZN)HBH",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.tk-kabel.de/en/datasheets/at-zn-bq-bh/",
+      "reason": "Оптический кабель (указаны оптические волокна 62.5/125)."
+    },
+    {
+      "markFamily": "AGLLI6YC6Y",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.tk-kabel.de/en/datasheets/agl-li6yc6y-kca-din-n-x-0-75/",
+      "reason": "Компенсационный кабель для термопар / измерительных цепей."
+    },
+    {
+      "markFamily": "BITFLAMEASFE180/E90",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://bitner-cablefactory.com/produkt/bitflameas-fe-180-e90/",
+      "reason": "Огнестойкий кабель для цепей безопасности и сигнализации."
+    },
+    {
+      "markFamily": "CBLINSTRUMENTATION",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.nestorcables.com/products/nesmak-hf/",
+      "reason": "Маркировка товара указывает на instrumentation; подкатегория — контрольная/измерительная."
+    },
+    {
+      "markFamily": "CE-Y(ST)YBDSI",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://www.acs.at/en/products/telecommunication-cables/telecommunication-cables/j-y-st-y",
+      "reason": "Симметричный парный кабель цепей сигнала/телефонии; BD-SI — конструктивный вариант."
+    },
+    {
+      "markFamily": "ELECTRIC",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.nexans.fr/en/products/Building/Industrial/Fire-resistant-cables/ALSECURE%C2%AE-4620/product~10263608~.html",
+      "reason": "Две позиции имеют силовую конструкцию 2x2.5+2.5; огнестойкость/LS не меняет назначения."
+    },
+    {
+      "markFamily": "ELITRONIC-CYLIYCY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M20139_EN_GB.pdf",
+      "reason": "LIYCY — экранированный кабель передачи измерительных и управляющих сигналов."
+    },
+    {
+      "markFamily": "F-CY-0.2",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M16320_EN_GB.pdf",
+      "reason": "Экранированный контрольный кабель HELUKABEL серии F-CY."
+    },
+    {
+      "markFamily": "F-CY-ОZ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M16320_EN_GB.pdf",
+      "reason": "Экранированный контрольный кабель HELUKABEL серии F-CY; вариант OZ без защитной жилы."
+    },
+    {
+      "markFamily": "F-CY-JZ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M16320_EN_GB.pdf",
+      "reason": "Официальная спецификация HELUKABEL серии F-CY-JZ/OZ."
+    },
+    {
+      "markFamily": "F-CY-OZ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M16320_EN_GB.pdf",
+      "reason": "Экранированный контрольный кабель, вариант OZ."
+    },
+    {
+      "markFamily": "FQAR-PGPURED",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.lapp.com/en/dk/DKK/fqar-pg/p/83118107",
+      "reason": "Кабель LAPP для измерительных/контрольно-измерительных цепей."
+    },
+    {
+      "markFamily": "FQLQPURE",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://se.prysmian.com/sites/se.prysmian.com/files/media/documents/Prysmian_Kabelkatalogen_2024_0.pdf",
+      "reason": "Prysmian FQLQ PURE — силовой кабель 450/750 V."
+    },
+    {
+      "markFamily": "FQLQPUREG",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://se.prysmian.com/sites/se.prysmian.com/files/media/documents/Prysmian_Kabelkatalogen_2024_0.pdf",
+      "reason": "Prysmian FQLQ PURE — силовой кабель 450/750 V."
+    },
+    {
+      "markFamily": "GAALFLEXCONTROL500CY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.helukabel.co.uk/helukabel/uk-in-stock/jz-500.pdf",
+      "reason": "Управляющий кабель GaalFLEX Control, экранированные позиции."
+    },
+    {
+      "markFamily": "H05V-K",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одножильный гибкий провод для монтажа в шкафах управления."
+    },
+    {
+      "markFamily": "H07V-K",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.nkt.com/products-solutions/low-voltage-cable/building-wires/h07v-k",
+      "reason": "Одножильный монтажный провод H07V-K."
+    },
+    {
+      "markFamily": "H05Z1-K",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.prysmian.com/sites/default/files/atoms/files/Draka_Elevator_EMEA_Catalog_2020_web_FINAL_2019_1015.pdf",
+      "reason": "Безгалогенный одножильный провод для внутренней проводки."
+    },
+    {
+      "markFamily": "H07Z1-K",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.prysmian.com/sites/default/files/atoms/files/Draka_Elevator_EMEA_Catalog_2020_web_FINAL_2019_1015.pdf",
+      "reason": "Безгалогенный одножильный провод для внутренней проводки."
+    },
+    {
+      "markFamily": "H05BQ-F",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/harsh-conditions/high-mechanical-and-chemical-resistance/h05bq-f-h07bq-f.html",
+      "reason": "Гибкий соединительный силовой кабель для питания оборудования."
+    },
+    {
+      "markFamily": "H05SS-F",
+      "subcategorySlug": "importnye-gibkie-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/1DB_22290_en.pdf",
+      "reason": "Гибкий термостойкий силиконовый кабель."
+    },
+    {
+      "markFamily": "H126А001.0/4.57PVC18",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.omnicable.com/products/belh126a00/",
+      "reason": "Belden H126A00 — коаксиальный кабель CATV."
+    },
+    {
+      "markFamily": "HABIACABLEE2419",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.habia.com/globalassets/document-downloads/single-wires/single-wires---hfi150---h-b-and-h-bm.pdf",
+      "reason": "Одножильные PTFE монтажные провода Habia E2419."
+    },
+    {
+      "markFamily": "HSLH-JZ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.acs.at/en/products/pvc-control-cables-electronic-cables/control-cables/hslh-jz",
+      "reason": "Безгалогенный контрольный кабель."
+    },
+    {
+      "markFamily": "HTKSHEKWFE180PH90/E30-E90",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://www.technokabel.com.pl/produkt/htkshekw-fe180-ph90-e30-e90-10x2x08/",
+      "reason": "Огнестойкий кабель для систем пожарной сигнализации и безопасности."
+    },
+    {
+      "markFamily": "JE-H(ST)E30",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://www.acs.at/en/products/halogen-free-cables-e30-e90/halogen-free-cables-e30-e90/je-h-st-h-e30",
+      "reason": "Огнестойкий кабель для цепей пожарной сигнализации."
+    },
+    {
+      "markFamily": "JE-H(ST)H",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://www.acs.at/en/products/halogen-free-cables-e30-e90/halogen-free-cables-e30-e90/je-h-st-h-e30",
+      "reason": "Безгалогенный контрольный кабель семейства JE-H; позиция применяется в цепях оповещения/сигнализации."
+    },
+    {
+      "markFamily": "JE-Y(ST)Y",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://datasheet.prysmiangroup.com/pdf/datasheet?id=319874&lang=en",
+      "reason": "Парный кабель сигнализации/пожарных извещателей."
+    },
+    {
+      "markFamily": "JE-Y(ST)Y-FR",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://datasheet.prysmiangroup.com/pdf/datasheet?id=319874&lang=en",
+      "reason": "Огнестойкий вариант кабеля JE-Y(ST)Y для сигнальных цепей."
+    },
+    {
+      "markFamily": "J-Y(ST)YLG",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://www.acs.at/en/products/telecommunication-cables/telecommunication-cables/j-y-st-y",
+      "reason": "Кабель парной сигнализации и передачи телефонных/слаботочных сигналов."
+    },
+    {
+      "markFamily": "JY-(ST)",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://www.acs.at/en/products/telecommunication-cables/telecommunication-cables/j-y-st-y",
+      "reason": "Парный кабель сигнализации/слаботочных цепей."
+    },
+    {
+      "markFamily": "JY(ST)Y",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://coppercore.rs/en/products/cables/signalni-kablovi/j-ysty",
+      "reason": "Симметричный кабель телефонной и пожарной сигнализации."
+    },
+    {
+      "markFamily": "JC2XFE-R",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://dhcable.com/weak-current-kabel-jc2xfe-r-10x2x1-3mm2-cu-xlpe-os-lsoh-instrumentation-cable-2/",
+      "reason": "Кабель instrumentation для измерительных/контрольных цепей."
+    },
+    {
+      "markFamily": "JAMAG",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.prysmian.com/sites/default/files/business_markets/markets/downloads/datasheets/in11e_0.pdf",
+      "reason": "DRAKA JAMAK/JAMAG — кабель контрольно-измерительных цепей."
+    },
+    {
+      "markFamily": "JZ-500",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.helukabel.co.uk/helukabel/uk-in-stock/jz-500.pdf",
+      "reason": "Классический контрольный кабель HELUKABEL JZ-500."
+    },
+    {
+      "markFamily": "JZ-500HMH",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M11201_EN_GB.pdf",
+      "reason": "Безгалогенный контрольный кабель HELUKABEL."
+    },
+    {
+      "markFamily": "JZ-500HMH-C",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M11201_EN_GB.pdf",
+      "reason": "Безгалогенный контрольный кабель; маркировка HMH-C."
+    },
+    {
+      "markFamily": "JZ-600",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://shop.helukabel.com/jp-en/product-concrete/cables-for-industrial-and-machinery-sectors/control-and-connection-cables/ulcsa-approved-control-connection-cables",
+      "reason": "UL/CSA гибкий контрольный кабель HELUKABEL."
+    },
+    {
+      "markFamily": "JZ-600-У-СУ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://shop.helukabel.com/jp-en/product-concrete/cables-for-industrial-and-machinery-sectors/control-and-connection-cables/ulcsa-approved-control-connection-cables",
+      "reason": "Серия JZ — контрольные и соединительные кабели."
+    },
+    {
+      "markFamily": "JZ-602-СУ9J12AWG",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://shop.helukabel.com/jp-en/product-concrete/cables-for-industrial-and-machinery-sectors/control-and-connection-cables/ulcsa-approved-control-connection-cables",
+      "reason": "UL/CSA контрольный кабель JZ-602."
+    },
+    {
+      "markFamily": "JZ-602-СУ9J14AWG",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://shop.helukabel.com/jp-en/product-concrete/cables-for-industrial-and-machinery-sectors/control-and-connection-cables/ulcsa-approved-control-connection-cables",
+      "reason": "UL/CSA контрольный кабель JZ-602."
+    },
+    {
+      "markFamily": "JZ-604TC-ER",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://shop.helukabel.com/de-de/JZ-604-TC-TRAY-CABLE-OZ-604-TC-TRAY-CABLE-M69661",
+      "reason": "В этой позиции JZ-604 TC-ER определён HELUKABEL как PVC power cable для открытой прокладки."
+    },
+    {
+      "markFamily": "KERPENELECTRICCABLE",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.leoni.com/en/products/industry-solutions/industry-solutions/industrial-cables/",
+      "reason": "LEONI Kerpen Electric Cable — промышленная силовая линейка."
+    },
+    {
+      "markFamily": "LIYV",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://shop.helukabel.com/at-en/liyv-m26405?noDirectHit=1",
+      "reason": "Одножильный гибкий провод для внутреннего монтажа."
+    },
+    {
+      "markFamily": "MEDIASTRIP",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.uglichcable.ru/catalog/cables-mediastrip/",
+      "reason": "Nexans MediaStrip — силовой кабель."
+    },
+    {
+      "markFamily": "MULTIFLEX512-PUR",
+      "subcategorySlug": "importnye-gibkie-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M22501_EN_GB.pdf",
+      "reason": "Многожильный гибкий кабель PUR для подвижного применения; серия Multiflex."
+    },
+    {
+      "markFamily": "N2AXS(F)2Y",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.nexans.com.tr/en/products/xlpe-insulated-medium-voltage/copper-conductor/N2XS%28F%292Y-38600.html",
+      "reason": "Средневольтный силовой кабель с XLPE-изоляцией; алюминиевая версия сохраняет назначение."
+    },
+    {
+      "markFamily": "N2XH-J",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.waskoenig.de/en/products/n2xh-j-eca",
+      "reason": "Безгалогенный силовой кабель для стационарной установки."
+    },
+    {
+      "markFamily": "NHXH-JFE180PH90/E90",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.waskoenig.de/download/0100?locale=en",
+      "reason": "Силовой безгалогенный кабель с огнестойкостью."
+    },
+    {
+      "markFamily": "NYМ",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.waskoenig.de/download/0091?locale=en",
+      "reason": "NYM — силовой кабель для стационарной электропроводки зданий."
+    },
+    {
+      "markFamily": "NYM",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.waskoenig.de/download/0091?locale=en",
+      "reason": "NYM — силовой кабель для стационарной электропроводки зданий."
+    },
+    {
+      "markFamily": "NYCY",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/building-installation/cables-for-direct-burial/nycy.html",
+      "reason": "PVC силовой кабель NYCY с концентрическим проводником."
+    },
+    {
+      "markFamily": "NYCY-J",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/building-installation/cables-for-direct-burial/nycy.html",
+      "reason": "Силовой кабель NYCY для стационарной установки."
+    },
+    {
+      "markFamily": "NYRY-J",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.ttcables.com/proizvod/nyry/",
+      "reason": "Бронированный силовой кабель для стационарной прокладки."
+    },
+    {
+      "markFamily": "NYY",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/building-installation/cables-for-direct-burial/nyy-j-nyy-o.html",
+      "reason": "PVC силовой кабель NYY для стационарной прокладки/грунта."
+    },
+    {
+      "markFamily": "OLFLEX-FDCLASSIC810CY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://lappkablo.lappgroup.com/ueruenler/katalog/guec-ve-kontrol-kablolari/enerji-zinciri-uygulamalari/cesitli-uygulamalar/oelflex-classic-fd-810-cy.html",
+      "reason": "Экранированный контрольный кабель для кабельных цепей."
+    },
+    {
+      "markFamily": "OLFLEX440CP",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/harsh-conditions/high-mechanical-and-chemical-resistance/oelflex-440-cp.html",
+      "reason": "Экранированный PUR контрольный кабель."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC100",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/various-applications/pvc-outer-sheath-and-coloured-cores/oelflex-classic-100-300500-v.html",
+      "reason": "ÖLFLEX Classic 100 — контрольный кабель."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC100CY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/various-applications/pvc-outer-sheath-and-coloured-cores/oelflex-classic-100-cy-300500v.html",
+      "reason": "Экранированный контрольный кабель ÖLFLEX Classic 100 CY."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC110",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://imager.lapp.com/e/lapp/MqjxCOMiub6q7unclOZB-w~~/DB1119752EN.pdf",
+      "reason": "LAPP прямо определяет ÖLFLEX CLASSIC 110 как VDE-approved control cable; часть типоразмеров также допускает силовую коммутацию."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC110CY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://imager.lapp.com/e/lapp/DB1119809EN.pdf",
+      "reason": "Экранированный вариант 110 CY — control cable; основная категория остаётся импортной."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC110FD",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://lappkablo.lappgroup.com/ueruenler/katalog/guec-ve-kontrol-kablolari/enerji-zinciri-uygulamalari/cesitli-uygulamalar/oelflex-classic-fd-810-cy.html",
+      "reason": "Гибкий управляющий кабель ÖLFLEX серии FD."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC130",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/various-applications/halogen-free-oelflex/oelflex-classic-130-h.html",
+      "reason": "Безгалогенный контрольный/соединительный кабель ÖLFLEX Classic."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC130H",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/various-applications/halogen-free-oelflex/oelflex-classic-130-h.html",
+      "reason": "Безгалогенный контрольный кабель."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC135CH",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/various-applications/halogen-free-oelflex/oelflex-classic-135-ch-bk-061-kv.html",
+      "reason": "Серия для силовых и управляющих цепей; подкатегория выбрана как контрольная по промышленному назначению серии."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC135CHBK",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/various-applications/halogen-free-oelflex/oelflex-classic-135-ch-bk-061-kv.html",
+      "reason": "Многофункциональный силовой/control cable; отнесён к контрольным по назначению серии."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC135CHBKHFFR",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/various-applications/halogen-free-oelflex/oelflex-classic-135-ch-bk-061-kv.html",
+      "reason": "Многофункциональный силовой/control cable; отнесён к контрольным по назначению серии."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC135CHHFFR",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/various-applications/halogen-free-oelflex/oelflex-classic-135-ch-bk-061-kv.html",
+      "reason": "Многофункциональный силовой/control cable; отнесён к контрольным по назначению серии."
+    },
+    {
+      "markFamily": "OLFLEXHEAT180SIF/CL",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/expanded-ambient-temperatures/silicone-single-cores/oelflex-heat-180-sif.html",
+      "reason": "Одножильный силиконовый термостойкий провод."
+    },
+    {
+      "markFamily": "OLFLEXHEAT350SC",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://produkty.lappgroup.com/online-katalog/kabel-silovoi-kontrolnyi-i-upravlenija/rasshirennyi-temperaturnyi-diapazon-okruzhajushchei-sredy/odnozhilnye-provoda-iz-steklovolokna/oelflex-heat-350-sc.html",
+      "reason": "Одножильный стекловолоконный термостойкий провод."
+    },
+    {
+      "markFamily": "OLFLEXSERVO2YSLCYK-JB",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.lapp.com/en_GB/gb/GBP/oelflex-servo-2yslcy-jb/p/0036442",
+      "reason": "Силовой кабель подключения электродвигателя/серводвигателя."
+    },
+    {
+      "markFamily": "OPVC-JZ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.helukabel.co.uk/helukabel/uk-in-stock/jz-500.pdf",
+      "reason": "JZ — управляющий и соединительный кабель; OPVC вариант с ПВХ изоляцией."
+    },
+    {
+      "markFamily": "OPVC-JZ-CY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.helukabel.co.uk/helukabel/uk-in-stock/jz-500.pdf",
+      "reason": "Экранированный контрольный/соединительный вариант JZ."
+    },
+    {
+      "markFamily": "OZ-500CPR",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M10001_JA_JP.pdf",
+      "reason": "OZ-500 — контрольный кабель без защитной жилы."
+    },
+    {
+      "markFamily": "OZ-500HMH-C",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M10001_JA_JP.pdf",
+      "reason": "Безгалогенный контрольный кабель серии OZ-500."
+    },
+    {
+      "markFamily": "OZ-602-CY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://shop.helukabel.com/jp-en/product-concrete/cables-for-industrial-and-machinery-sectors/control-and-connection-cables/ulcsa-approved-control-connection-cables",
+      "reason": "Экранированный UL/CSA кабель управления без защитной жилы."
+    },
+    {
+      "markFamily": "OZ-602-CYUL-CSA",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://shop.helukabel.com/jp-en/product-concrete/cables-for-industrial-and-machinery-sectors/control-and-connection-cables/ulcsa-approved-control-connection-cables",
+      "reason": "Экранированный UL/CSA кабель управления без защитной жилы."
+    },
+    {
+      "markFamily": "OZ-BL-CY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://shop.helukabel.com/de-de/f-cy-jz-f-cy-oz-f-dy-oz-m16320/16560",
+      "reason": "Экранированный контрольный кабель без защитной жилы."
+    },
+    {
+      "markFamily": "PAAR-CY-OZ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M20139_EN_GB.pdf",
+      "reason": "Многопарный экранованный контрольный/измерительный кабель."
+    },
+    {
+      "markFamily": "PAAR-TRONIC-CE",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M18001_EN_GB.pdf",
+      "reason": "Парный электронный кабель для управления и передачи сигналов."
+    },
+    {
+      "markFamily": "PAAR-TRONIC-CY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M18001_EN_GB.pdf",
+      "reason": "Экранированный парный кабель для управляющих/сигнальных цепей."
+    },
+    {
+      "markFamily": "PAARTRONIC-CY(LIY-CY)ТР",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M20139_EN_GB.pdf",
+      "reason": "Экранированный парный контрольный кабель; ТР — исполнение для прокладки в трубе."
+    },
+    {
+      "markFamily": "PAARTRONIC(LI-2YCY)",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M20139_EN_GB.pdf",
+      "reason": "Парный экранированный контрольный/измерительный кабель."
+    },
+    {
+      "markFamily": "PROFIBUS",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.lapp.com/en_US/us/unitronic-bus-pb/p/2170820",
+      "reason": "Кабель полевой шины PROFIBUS."
+    },
+    {
+      "markFamily": "PROFIBUSO2Y(ST)C11Y",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.tk-kabel.de/en/datasheets/02ys-st-cy/",
+      "reason": "PROFIBUS-кабель передачи данных."
+    },
+    {
+      "markFamily": "RE-(ST)Y-FL",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.untel.com.tr/en/instrumentation-cable/re-2xsty-fl/",
+      "reason": "Инструментальный кабель для контрольно-измерительных цепей."
+    },
+    {
+      "markFamily": "RE-2X(ST)H",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.untel.com.tr/en/instrumentation-cable/re-2xsty-fl/",
+      "reason": "Инструментальный/контрольный кабель серии RE-2X(ST)."
+    },
+    {
+      "markFamily": "RE-2X(ST)Y-FL",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.incore-cables.com/wp-content/uploads/2018/12/Datasheet-RE-2X-St-Y-fl-300-500V.pdf",
+      "reason": "Инструментальный кабель для измерительных и управляющих цепей."
+    },
+    {
+      "markFamily": "RE-2X(ST)YFL",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.incore-cables.com/wp-content/uploads/2018/12/Datasheet-RE-2X-St-Y-fl-300-500V.pdf",
+      "reason": "Инструментальный кабель для измерительных и управляющих цепей."
+    },
+    {
+      "markFamily": "RE-2Y(ST)YVPIMF",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.untel.com.tr/en/instrumentation-cable/re-2xsty-fl/",
+      "reason": "Парный instrumentation cable, индивидуальный экран."
+    },
+    {
+      "markFamily": "RE-Y-(ST)TL",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.untel.com.tr/en/instrumentation-cable/re-2xsty-fl/",
+      "reason": "Кабель управления/измерений семейства RE-Y."
+    },
+    {
+      "markFamily": "RE-Y(ST)Y-FL",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.untel.com.tr/en/instrumentation-cable/re-2xsty-fl/",
+      "reason": "Инструментальный кабель семейства RE-Y(ST)Y."
+    },
+    {
+      "markFamily": "RE-Y(ST)Y-FL-PIMF",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.untel.com.tr/en/instrumentation-cable/re-2xsty-fl/",
+      "reason": "Инструментальный парный кабель с экраном каждой пары."
+    },
+    {
+      "markFamily": "RE-Y(ST)Y-TP",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.untel.com.tr/en/instrumentation-cable/re-2xsty-fl/",
+      "reason": "Скрученная пара для измерительных/контрольных сигналов."
+    },
+    {
+      "markFamily": "RE-Y(ST)YBY-FL",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.untel.com.tr/en/instrumentation-cable/re-2xsty-fl/",
+      "reason": "Бронированный instrumentation/control кабель."
+    },
+    {
+      "markFamily": "RE2X(ST)Y-FL",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.incore-cables.com/wp-content/uploads/2018/12/Datasheet-RE-2X-St-Y-fl-300-500V.pdf",
+      "reason": "Инструментальный кабель серии RE-2X(ST)Y-FL."
+    },
+    {
+      "markFamily": "RE2X(ST)YU-F",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.incore-cables.com/wp-content/uploads/2018/12/Datasheet-RE-2X-St-Y-fl-300-500V.pdf",
+      "reason": "Парный инструментальный кабель семейства RE-2X(ST)Y."
+    },
+    {
+      "markFamily": "RE2X(ST)YU-FL",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.incore-cables.com/wp-content/uploads/2018/12/Datasheet-RE-2X-St-Y-fl-300-500V.pdf",
+      "reason": "Парный инструментальный кабель семейства RE-2X(ST)Y."
+    },
+    {
+      "markFamily": "SIM.NETGP",
+      "subcategorySlug": "importnye-lan-kabeli",
+      "source": "https://support.industry.siemens.com/cs/document/109758197",
+      "reason": "Siemens SIMATIC NET Industrial Ethernet cable."
+    },
+    {
+      "markFamily": "SIM.NETPB6XV1803-OEH10",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.lapp.com/en_US/us/unitronic-bus-pb/p/2170820",
+      "reason": "Siemens SIMATIC NET PROFIBUS-кабель."
+    },
+    {
+      "markFamily": "TOPFLEX611-PUR",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://shop.helu.com/de-de/topflex-611-pur-m22870",
+      "reason": "TOPFLEX 611-PUR — моторный силовой кабель для цепей движения."
+    },
+    {
+      "markFamily": "TRONIC-CY(LIY-CY)",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.helukabel.com/vn-en/tronic-cy-anti-interference-data-cables-alignment-din-vde-0812.html",
+      "reason": "Экранированный сигнальный/контрольный кабель HELUKABEL."
+    },
+    {
+      "markFamily": "TRONIC(LIYY)",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M18001_EN_GB.pdf",
+      "reason": "Неэкранированный кабель передачи данных/управляющих сигналов."
+    },
+    {
+      "markFamily": "TRONICLIYY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M18001_EN_GB.pdf",
+      "reason": "Неэкранированный кабель передачи данных/управляющих сигналов."
+    },
+    {
+      "markFamily": "U/UTPCAT.3BY100PR24AWGNEXANS",
+      "subcategorySlug": "importnye-lan-kabeli",
+      "source": "https://www.nexans.com/en/products/data-network-solutions.html",
+      "reason": "Многопарный U/UTP Category 3 сетевой кабель."
+    },
+    {
+      "markFamily": "UNITRONICBUSCAN",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.lapp.com/en_US/us/unitronic-bus-can/p/2170270",
+      "reason": "Кабель промышленной шины CAN."
+    },
+    {
+      "markFamily": "UNITRONICBUSDNTHICKFDY",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/bus-system-can-devicenet/devicenet-fixed-installation/unitronic-devicenet-thick-thin.html",
+      "reason": "DeviceNet fieldbus, данные и питание шины."
+    },
+    {
+      "markFamily": "UNITRONICBUSPB",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.lapp.com/en_US/us/unitronic-bus-pb/p/2170820",
+      "reason": "Кабель шины PROFIBUS DP."
+    },
+    {
+      "markFamily": "UNITRONICLI1YCY/TP",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/din-colour-code/unitronic-liycy.html",
+      "reason": "Экранированные парные измерительные/управляющие цепи."
+    },
+    {
+      "markFamily": "UNITRONICLI2YCY/TP",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/low-capacitance/unitronic-li2ycy-tp.html",
+      "reason": "RS-485/RS-422 сигнал, управление и измерения."
+    },
+    {
+      "markFamily": "UNITRONICLIHCH",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables.html",
+      "reason": "Безгалогенный кабель передачи сигналов и управления серии UNITRONIC."
+    },
+    {
+      "markFamily": "UNITRONICLIYCY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/din-colour-code/unitronic-liycy.html",
+      "reason": "Экранированный кабель данных/измерений/управления; у товаров 2–30 жил."
+    },
+    {
+      "markFamily": "UNITRONICLIYCY/TP",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/low-capacitance/unitronic-li2ycy-tp.html",
+      "reason": "Витые пары для передачи сигналов и управления."
+    },
+    {
+      "markFamily": "UNITRONICLIYY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/din-colour-code/unitronic-liyy.html",
+      "reason": "Кабель данных и автоматизации/контроля, без общего экрана."
+    },
+    {
+      "markFamily": "UNITRONICLIYY/TP",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/din-colour-code/unitronic-liyy.html",
+      "reason": "Многопарный низкочастотный кабель передачи данных и сигналов."
+    },
+    {
+      "markFamily": "USFIBREI/OCTLSHF3.0",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://datasheet.prysmiangroup.com/pdf/datasheet/en/239034/1000",
+      "reason": "Кабель передачи данных по оптическим волокнам."
+    },
+    {
+      "markFamily": "X05VV-F",
+      "subcategorySlug": "importnye-gibkie-kabeli",
+      "source": "https://t3.lappcdn.com/fileadmin/DAM/Lapp_Russia/Catalogues/LAPP_KABEL_X05VV-F.pdf",
+      "reason": "Гибкий многожильный PVC кабель (эквивалентная конструкция для подвижного подключения)."
+    },
+    {
+      "markFamily": "FIRELINE750",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://helmacab.com/products-and-catalogues/industrial/fireline-750-500-v/",
+      "reason": "Огнестойкий instrumentation/control cable для стационарного монтажа."
+    },
+    {
+      "markFamily": "NESMAK-HF",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.nestorcables.com/products/nesmak-hf/",
+      "reason": "Кабель контрольно-измерительных цепей для автоматизации и технологического управления."
+    },
+    {
+      "markFamily": "NESTORKJAAM-HF",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.nestorcables.com/products/kjaam-hf/",
+      "reason": "KJAAM-HF — instrumentation cable для цифровых и аналоговых сигналов."
+    },
+    {
+      "markFamily": "KJAAM-HF",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.nestorcables.com/products/kjaam-hf/",
+      "reason": "KJAAM-HF — instrumentation cable для цифровых и аналоговых сигналов."
+    },
+    {
+      "markFamily": "KJAAM",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.nestorcables.com/products/kjaam-hf/",
+      "reason": "Серия KJAAM — instrumentation cable для цифровых и аналоговых сигналов."
+    },
+    {
+      "markFamily": "RS485",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.belden.com/products/cable/electronic-wire-cable/multi-pair-cable/9842",
+      "reason": "Указанный в товаре протокол RS-485: кабель связи, две витые пары."
+    },
+    {
+      "markFamily": "VDEF-CY-JZ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://assets-cdn.helukabel.com/suppliers/Helukabel/documents/db/HELUKABEL_M16320_EN_GB.pdf",
+      "reason": "Экранированный гибкий контрольный кабель HELUKABEL."
+    },
+    {
+      "markFamily": "VDEREG-NR732JZ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.helukabel.co.uk/helukabel/uk-in-stock/jz-500.pdf",
+      "reason": "Контрольный кабель HELUKABEL типа JZ."
+    },
+    {
+      "markFamily": "VDEREG7032SY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.helukabel.co.uk/helukabel/uk-in-stock/jz-500.pdf",
+      "reason": "Гибкий соединительный/контрольный кабель промышленного назначения."
+    },
+    {
+      "markFamily": "OLFLEXSERVO",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.lapp.com/en_GB/gb/GBP/oelflex-servo-2yslcy-jb/p/0036442",
+      "reason": "Кабель питания/подключения электродвигателя; серия ÖLFLEX SERVO."
+    },
+    {
+      "markFamily": "JE-LIYCY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/din-colour-code/unitronic-liycy.html",
+      "reason": "Экранированный сигнальный/контрольный кабель конструкции LIYCY."
+    },
+    {
+      "markFamily": "JE-LIYCY-FR",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/din-colour-code/unitronic-liycy.html",
+      "reason": "Огнестойкое исполнение экранированного LIYCY кабеля сигналов/управления."
+    },
+    {
+      "markFamily": "KCA",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.tk-kabel.de/en/products/compensating-thermo-cables/fep",
+      "reason": "Компенсационный кабель для термопар и измерительных цепей."
+    },
+    {
+      "markFamily": "LIYVSPULE",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://shop.helukabel.com/at-en/liyv-m26405?noDirectHit=1",
+      "reason": "Одножильный монтажный провод LiYv на катушке."
+    },
+    {
+      "markFamily": "Х07V-K",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.nkt.com/products-solutions/low-voltage-cable/building-wires/h07v-k",
+      "reason": "Одножильный гибкий монтажный провод H07V-K."
+    },
+    {
+      "markFamily": "NYL1.55000/10000",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://shop.bigdutchman.com/bd10/99-30-3401",
+      "reason": "Одножильный Nexans NYL, номинал 5/10 kV; это высоковольтный провод."
+    },
+    {
+      "markFamily": "SIM.NETGP",
+      "subcategorySlug": "importnye-lan-kabeli",
+      "source": "https://support.industry.siemens.com/cs/document/109758197",
+      "reason": "SIMATIC NET GP промышленный Ethernet; категория LAN."
+    },
+    {
+      "markFamily": "UNITRONIC",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables.html",
+      "reason": "Низкочастотные электронные кабели передачи сигналов и управления."
+    },
+    {
+      "markFamily": "UNITRONIC100",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables.html",
+      "reason": "Низкочастотный электронный кабель управления/передачи сигналов серии UNITRONIC."
+    },
+    {
+      "markFamily": "UNITRONIC300",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables.html",
+      "reason": "Низкочастотный электронный кабель управления/передачи сигналов серии UNITRONIC."
+    },
+    {
+      "markFamily": "UNITRONICFDCP/TPPLUS",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables.html",
+      "reason": "Пара/витая пара для передачи данных; принадлежность к промышленной линейке UNITRONIC."
+    },
+    {
+      "markFamily": "BASECELECRICCABLE",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.elandcables.com/electrical-cable-and-accessories/cables-by-standard/basec-approved-cable",
+      "reason": "Стационарная 3-жильная силовая позиция 3x1.5; подкатегория выбрана по назначению electric cable."
+    },
+    {
+      "markFamily": "CBLPOWER",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://eti.su/price/cable/control/control_5514.html",
+      "reason": "Товарный прайс выделяет эти позиции как CBL POWER; маркировка и сечения 2x1.5/4x2.5 соответствуют силовой категории."
+    },
+    {
+      "markFamily": "DATA700CB",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://eti.su/price/cable/control/control_5514.html",
+      "reason": "Название серии DATA и четырёхпарная конструкция указывают на кабель передачи данных."
+    },
+    {
+      "markFamily": "KLVMAAM",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.prysmian.com/sites/www.prysmian.com/files/media/documents/hfg2e_0.pdf",
+      "reason": "Кабель передачи цифровых и аналоговых сигналов для цифровых АТС/PCM."
+    },
+    {
+      "markFamily": "ERSECABLOJZ600",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.helukabel.co.uk/helukabel/uk-in-stock/jz-500.pdf",
+      "reason": "Серия JZ — контрольный и соединительный кабель."
+    },
+    {
+      "markFamily": "FACABLI7YC7YKCAIEC",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.tk-kabel.de/en/products/compensating-thermo-cables/fep",
+      "reason": "Компенсационный кабель для термопар и измерительных цепей."
+    },
+    {
+      "markFamily": "J-H(ST)H",
+      "subcategorySlug": "importnye-kabeli-signalizacii",
+      "source": "https://www.acs.at/en/products/halogen-free-cables-e30-e90/halogen-free-cables-e30-e90/je-h-st-h-e30",
+      "reason": "Безгалогенный парный кабель пожарной/охранной сигнализации."
+    },
+    {
+      "markFamily": "OLFLEXEBCY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.lapp.com/en_US/us/oelflex-eb-cy/p/0012640",
+      "reason": "ÖLFLEX EB CY — экранированный контрольный и измерительный кабель."
+    },
+    {
+      "markFamily": "OLFLEXSERVO",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.lapp.com/en_GB/gb/GBP/oelflex-servo-2yslcy-jb/p/0036442",
+      "reason": "Кабель питания/подключения двигателя серии ÖLFLEX SERVO."
+    },
+    {
+      "markFamily": "SIF",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.lapp.com/en_US/us/oelflex-heat-180-sif/p/0046001",
+      "reason": "SiF — одножильный силиконовый термостойкий провод."
+    },
+    {
+      "markFamily": "BETACAVIDIGISATN71ALPEEN",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://pdfcoffee.com/betacavi-75ohm-catalogue-pdf-free.html",
+      "reason": "DIGISAT N71 — 75-ohm coaxial cable for satellite/TV signal distribution."
+    },
+    {
+      "markFamily": "NTSS-FO-D-IN/OUT-9-24LSZH",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://datasheet.prysmiangroup.com/pdf/datasheet/en/239034/1000",
+      "reason": "NTSS-FO is an indoor/outdoor fibre-optic cable for data transmission."
+    },
+    {
+      "markFamily": "LIY(ST)CY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/din-colour-code/unitronic-liycy.html",
+      "reason": "Скрученные экранированные пары для передачи контрольных/измерительных сигналов."
+    },
+    {
+      "markFamily": "LIYCYUNITRONIC",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/data-communication-systems/low-frequency-data-transmission-cables/din-colour-code/unitronic-liycy.html",
+      "reason": "Экранованный кабель измерительных и управляющих сигналов."
+    },
+    {
+      "markFamily": "BMK-JYSTY",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.acs.at/en/products/telecommunication-cables/telecommunication-cables/j-y-st-y",
+      "reason": "Парный кабель телефонной/телекоммуникационной связи типа J-Y(St)Y."
+    },
+    {
+      "markFamily": "AJY(ST)YDY",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.acs.at/en/products/telecommunication-cables/telecommunication-cables/j-y-st-y",
+      "reason": "Парный кабель передачи телекоммуникационных сигналов типа J-Y(St)Y."
+    },
+    {
+      "markFamily": "KLMA",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.prysmian.com/sites/www.prysmian.com/files/media/documents/hfg2e_0.pdf",
+      "reason": "Телефонный/цифровой парный кабель для слаботочной связи."
+    },
+    {
+      "markFamily": "SIEMENS 1х2х0.32",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "По строке прайса не установлены серия и протокол; безопасный временный вариант — другие."
+    },
+    {
+      "markFamily": "AVC ELECTRONICS 4c",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Не удалось однозначно установить стандарт/назначение по неполной маркировке 4c."
+    },
+    {
+      "markFamily": "BIT500(ST)H",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://old.bitner.com.pl/produkty/szczegoly/49%2Ckatalog-bit-500supsup-sth",
+      "reason": "BiT 500(St)H — экранированный гибкий контрольный/сигнальный кабель."
+    },
+    {
+      "markFamily": "KABELTECFLEX-H",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.kabeltec.com.sg/wp-content/uploads/2020/11/FLEX-H.pdf",
+      "reason": "Kabeltec FLEX-H: гибкий безгалогенный control/connection cable."
+    },
+    {
+      "markFamily": "KABELTECFLEX-HUY",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.kabeltec.com.sg/wp-content/uploads/2020/11/FLEX-H.pdf",
+      "reason": "Kabeltec FLEX-H: гибкий безгалогенный control/connection cable."
+    },
+    {
+      "markFamily": "FLEXJZ",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.voka.de/cms/upload/3_produktkatalog/05_Steuerleitungen/05_Steuerleitungen_PB_PDF/eng/FLE__X-JZ_OZ_eng.pdf",
+      "reason": "FLEX-JZ — гибкий PVC control cable для управления оборудованием."
+    },
+    {
+      "markFamily": "H09V-K",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.nkt.com/products-solutions/low-voltage-cable/building-wires/h07v-k",
+      "reason": "Одна жила 1x0.5; в прайсе обозначено H09V-K, отнесено к монтажным проводам по конструкции."
+    },
+    {
+      "markFamily": "KABELTEC2XSLCHKJB",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "В прайсе не хватает производителя/полного кода для надёжного различения моторного, силового и контрольного назначения."
+    },
+    {
+      "markFamily": "RE-2X(LS)HSWAH",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.xn----7sbajahheyaepn1ca0aveqcb0fxl.xn--p1acf/document/eaes-n-ru-d-trra02v3550822/",
+      "reason": "RE-2X family is listed with instrumental/control cables; this exact family includes a shielded armoured variant."
+    },
+    {
+      "markFamily": "YY-FL",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://onninen.pl/produkt/TECHNOKABE-YY-fl-0-6-1-kV-4x4-RM-czarny-1992-001-05%2C346526",
+      "reason": "YY-FL is rated 0.6/1 kV; this position is 12 cores x 2.5 mm2 for power distribution."
+    },
+    {
+      "markFamily": "CABLELI6YC6Y-J",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.tk-kabel.de/en/products/control-cables/",
+      "reason": "Manufacturer classifies LI6YC6Y as control cable; listed family has 7x0.75."
+    },
+    {
+      "markFamily": "CARDIFFCABLEYY-JB",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.byson.co.uk/uploads/product_pdf/yy-pvc-flexible-control-cable-jb.pdf",
+      "reason": "YY-JB 5G2.5 appears in the maker flexible control-cable size range."
+    },
+    {
+      "markFamily": "KERPENICON",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.anderiraq.com/cat/ICONproductguide.pdf",
+      "reason": "LEONI KERPEN ICON is an instrumentation cable; the 1x2x1 item is a pair construction."
+    },
+    {
+      "markFamily": "KERPENICONARCTIC",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://www.anderiraq.com/cat/ICONproductguide.pdf",
+      "reason": "ICON instrumentation family; Arctic is the cold-environment version, with paired instrumentation conductors."
+    },
+    {
+      "markFamily": "LISOSIJ1-Y",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.tk-kabel.de/en/products/control-cables/",
+      "reason": "Single-core silicone/PFA conductor; the listed item is 1x1.5."
+    },
+    {
+      "markFamily": "V3105AE349721PR22",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.belden.com/products/cable/fieldbus-cable/website_001002-webcat_001079/3105a",
+      "reason": "Belden 3105A is a 22-AWG single-pair RS-485/data-communication cable."
+    },
+    {
+      "markFamily": "2PR22SHIELDENE108998",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.belden.com/products/cable/electronic-wire-cable/multi-conductor-cable/78182",
+      "reason": "Belden shielded 2-pair 22-AWG cable range is specified for data, communication, and serial transmission."
+    },
+    {
+      "markFamily": "MURRELECTRONIKPUR",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Insufficient series marking: PUR 4x0.34 AWG22 could be a sensor cord or fieldbus lead; retained pending exact article number."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC400СP",
+      "subcategorySlug": "importnye-kontrolnye-kabeli",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/harsh-conditions/high-mechanical-and-chemical-resistance/oelflex-classic-400-cp.html",
+      "reason": "LAPP defines the exact series as a screened, flexible PUR power and control cable."
+    },
+    {
+      "markFamily": "AVCELECTRONICS4C",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Only “4c” is recorded; manufacturer and model are not specific enough to distinguish signal, audio, control, or another cable."
+    },
+    {
+      "markFamily": "BFIAUTOMATIONKW5-CED4",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Exact cable series could not be verified from the source-name fragment."
+    },
+    {
+      "markFamily": "CERVIFLAMRC451-K",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Could not verify exact RC451-K datasheet; 4x16 and 5x1.5 variants may serve different power/control uses."
+    },
+    {
+      "markFamily": "AESPSIGNAMAXBCSE-4CH-CL",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Exact part number does not identify whether this is a cable or an accessory."
+    },
+    {
+      "markFamily": "AGL",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Only maker acronym and 4x0.75 appear; exact series/use remains unclear."
+    },
+    {
+      "markFamily": "INYAYR-Y",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Exact construction and application for this full designation could not be confirmed."
+    },
+    {
+      "markFamily": "OLFLEXCLASSIC",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "The three products omit the ÖLFLEX model number; family alone is too broad."
+    },
+    {
+      "markFamily": "LAPPKABEL",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Remaining generic LAPP listings omit series. Exact one-core product rows are separately assigned as wires."
+    },
+    {
+      "markFamily": "KERPENICONCABLE",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Generic ICON CABLE line lacks a series code; kept pending distinction from ICON instrumentation."
+    },
+    {
+      "markFamily": "05UU-F",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Could not confirm the exact manufacturer series from this shortened mark."
+    },
+    {
+      "markFamily": "УRН",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "The source mark is ambiguous/possibly garbled; product type not inferred from brand and core count."
+    },
+    {
+      "markFamily": "RDHCH",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "No sufficiently specific product-family datasheet found for this exact marking."
+    },
+    {
+      "markFamily": "275МТ",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Belden type marking is incomplete; no exact cable datasheet located."
+    },
+    {
+      "markFamily": "К7ВВМ",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Full Nexans series specification could not be verified; fire-resistance suffix alone does not determine subcategory."
+    },
+    {
+      "markFamily": "HELUKABEL",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Generic manufacturer-only group contains five different items with no exact family designation."
+    },
+    {
+      "markFamily": "500-Y-JS",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "source": "",
+      "reason": "Exact Nexans 500-Y-JS datasheet not confirmed; kept pending full series details."
+    }
+  ],
+  "products": [
+    {
+      "name": "LAPP KABEL 1х0.25 коричн",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х0.25 син",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х0.5 желт",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х0.5 коричн",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х0.75 красн",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х0.75 серый",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х0.75 черн",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х1 коричн",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х1 синий",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х1 черн",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х1.5 син",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х2.5 ж/з",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х2.5 красн",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х2.5 черн",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/control-cabinet-single-cores/various-applications/h05v-k.html",
+      "reason": "Одна жила, цветной монтажный провод."
+    },
+    {
+      "name": "LAPP KABEL 1х2х1",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Нужна точная серия/назначение: по одному обозначению производителя и размеру нельзя надёжно выбрать тип."
+    },
+    {
+      "name": "LAPP KABEL 12х1",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Нет обозначения серии или назначения; многожильность сама по себе не доказывает тип."
+    },
+    {
+      "name": "LAPP KABEL 2х2х1",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Нет обозначения серии/электрических характеристик для уверенного различения связи и управления."
+    },
+    {
+      "name": "LAPP KABEL 3х1",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Нет обозначения серии или назначения; требуется уточнение модели."
+    },
+    {
+      "name": "LAPP KABEL 4х1",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Нет обозначения серии или назначения; требуется уточнение модели."
+    },
+    {
+      "name": "LAPP KABEL 4х2.5",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Нет обозначения серии или назначения; требуется уточнение модели."
+    },
+    {
+      "name": "SIEMENS 2х2 cat 5",
+      "subcategorySlug": "importnye-lan-kabeli",
+      "source": "https://support.industry.siemens.com/cs/document/109758197",
+      "reason": "Позиция явно обозначена Cat 5; относится к структурированным LAN-кабелям."
+    },
+    {
+      "name": "SIEMENS 1х2х0.32",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Без серии и назначения обозначения недостаточно для выбора типа."
+    },
+    {
+      "name": "OLFLEXclassic 3х0.5",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Номер серии/назначение в источнике прайса не указаны; до сверки маркировки не классифицирую по одному бренду."
+    },
+    {
+      "name": "OLFLEXclassic 3х0.75",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Номер серии/назначение в источнике прайса не указаны; до сверки маркировки не классифицирую по одному бренду."
+    },
+    {
+      "name": "OLFLEXclassic 7х0.75",
+      "subcategorySlug": "importnye-drugie-kabeli",
+      "reason": "Номер серии/назначение в источнике прайса не указаны; до сверки маркировки не классифицирую по одному бренду."
+    },
+    {
+      "name": "PRYSMIAN 3х2.5",
+      "subcategorySlug": "importnye-silovye-kabeli",
+      "source": "https://www.nexans.com/en/products/energy/low-voltage-cables.html",
+      "reason": "Силовой кабель, 3 жилы сечением 2.5 мм²."
+    }
+  ]
+}

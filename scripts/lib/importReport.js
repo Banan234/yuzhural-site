@@ -241,8 +241,15 @@ function renderReportTabs(report, alertPercent) {
         diff.categoryChanged,
         [
           { key: 'name', label: 'Наименование' },
-          { key: 'categoryBefore', label: 'Было' },
-          { key: 'categoryAfter', label: 'Стало' },
+          {
+            label: 'Было',
+            render: (row) =>
+              escapeHtml(row.locationBefore || row.categoryBefore),
+          },
+          {
+            label: 'Стало',
+            render: (row) => escapeHtml(row.locationAfter || row.categoryAfter),
+          },
         ],
         'Смен категорий нет.'
       ),
@@ -414,12 +421,15 @@ export function buildReportHtml(
     ['Было ранее', summary.productsPrevious],
     ['Категорий найдено', summary.categoriesDetected],
     ['На проверке', summary.reviewRows],
+    ['Новых на проверке', summary.newReviewRows],
     ['Ошибки проверки', summary.validationErrors],
     ['Предупреждения', summary.validationWarnings],
     ['Строк пропущено', summary.skippedRows],
     ['Изменений цен', summary.priceChanged],
     ['Изменений остатков', summary.stockChanged],
     ['Прочее fallback', summary.fallbackToOther],
+    ['Всего в Прочее', summary.otherProducts],
+    ['Конфликты с заголовком', summary.sourceCategoryConflicts],
   ];
 
   return `<!doctype html>

@@ -23,7 +23,7 @@ import {
 } from '../../lib/siteConfig';
 import '../../styles/layout/footer.css';
 
-export default function SiteFooter({ onOpenQuote }) {
+export default function SiteFooter({ onOpenQuote, onManageCookies }) {
   return (
     <footer className="site-footer">
       <Container>
@@ -134,6 +134,13 @@ export default function SiteFooter({ onOpenQuote }) {
               <Link to={PAYMENT_CANONICAL_PATH}>Оплата</Link>
               <Link to={CONTACTS_CANONICAL_PATH}>Контакты</Link>
               <Link to="/privacy">Политика конфиденциальности</Link>
+              <button
+                type="button"
+                className="site-footer__link-button"
+                onClick={onManageCookies}
+              >
+                Настройки cookie
+              </button>
             </div>
           </div>
 

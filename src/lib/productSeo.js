@@ -214,6 +214,13 @@ export function getProductBreadcrumbs(product) {
     });
   }
 
+  if (product.catalogSubcategory && product.catalogSubcategorySlug) {
+    items.push({
+      label: product.catalogSubcategory,
+      to: getCatalogPath(product.catalogSubcategorySlug),
+    });
+  }
+
   items.push({
     label:
       product.title ||

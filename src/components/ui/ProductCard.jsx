@@ -61,6 +61,49 @@ export default function ProductCard({ product, variant = 'default' }) {
     }
     return product.title;
   })();
+  const catalogSpecs = [
+    product.cores != null && {
+      label: 'Количество жил',
+      value: product.cores.toLocaleString('ru-RU'),
+    },
+    product.crossSection != null && {
+      label: 'Сечение',
+      value: `${Number(product.crossSection).toLocaleString('ru-RU')} мм²`,
+    },
+    product.screenCrossSection != null && {
+      label: 'Сечение экрана',
+      value: `${Number(product.screenCrossSection).toLocaleString('ru-RU')} мм²`,
+    },
+    product.concentricConductorCrossSection != null && {
+      label: 'Сечение концентрического проводника',
+      value: `${Number(product.concentricConductorCrossSection).toLocaleString('ru-RU')} мм²`,
+    },
+    product.doubleInsulationThickness != null && {
+      label: 'Удвоенная толщина изоляции',
+      value: `${Number(product.doubleInsulationThickness).toLocaleString('ru-RU')} мм`,
+    },
+    product.opticalFiberCoreDiameter != null && {
+      label: 'Диаметр сердцевины волокна',
+      value: `${Number(product.opticalFiberCoreDiameter).toLocaleString('ru-RU')} мкм`,
+    },
+    product.opticalFiberCladdingDiameter != null && {
+      label: 'Диаметр оболочки волокна',
+      value: `${Number(product.opticalFiberCladdingDiameter).toLocaleString('ru-RU')} мкм`,
+    },
+    product.conductorStrandCount != null && {
+      label: 'Проволок в жиле',
+      value: Number(product.conductorStrandCount).toLocaleString('ru-RU'),
+    },
+    product.voltage != null && {
+      label: 'Напряжение',
+      value: `${product.voltage} кВ`,
+    },
+    brand && { label: 'Производитель', value: brand },
+    product.conductorConfiguration && {
+      label: 'Конфигурация жил',
+      value: product.conductorConfiguration,
+    },
+  ].filter(Boolean);
 
   function handleOpenQuote() {
     window.dispatchEvent(
@@ -82,6 +125,65 @@ export default function ProductCard({ product, variant = 'default' }) {
     if (!wasAdded) return;
     setAddedToCart(true);
     setTimeout(() => setAddedToCart(false), 1500);
+  }
+
+  if (variant === 'catalog-list') {
+    return (
+      <article className="product-card product-card--catalog-list">
+        <Link to={productUrl} className="product-card__list-image">
+          <img
+            src={productImage}
+            alt={productImageAlt}
+            width="140"
+            height="90"
+            loading="lazy"
+            decoding="async"
+          />
+        </Link>
+
+        <div className="product-card__list-main">
+          <ProductTitle productUrl={productUrl} title={displayTitle} />
+          <div className="product-card__list-meta">
+            <span
+              className={`product-card__list-stock${
+                isInStock ? ' product-card__list-stock--available' : ''
+              }`}
+            >
+              {stockLabel}
+            </span>
+            {product.sku && <span>Арт. {product.sku}</span>}
+          </div>
+          {catalogSpecs.length > 0 && (
+            <dl className="product-card__list-specs">
+              {catalogSpecs.map(({ label, value }) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+        </div>
+
+        <div className="product-card__list-aside">
+          <CardPrice
+            isStockVariant={false}
+            priceValue={priceValue}
+            priceUnitLabel={priceUnitLabel}
+          />
+          <button
+            type="button"
+            className={`product-card__list-cart${
+              addedToCart ? ' product-card__list-cart--added' : ''
+            }`}
+            onClick={handleAddToCart}
+            aria-label={`${addedToCart ? 'Добавлено' : 'Добавить'} ${displayTitle} в корзину`}
+          >
+            {addedToCart ? '✓ В корзине' : 'В корзину'}
+          </button>
+        </div>
+      </article>
+    );
   }
 
   return (

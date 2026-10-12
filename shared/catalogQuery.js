@@ -4,6 +4,7 @@ import {
   applyCatalogFiltersAndSortCore,
   applyProductFiltersCore,
   buildCatalogFacetsCore,
+  buildCatalogFacetsForQueryCore,
   compareProductsByPrice,
   filterProductsBySearchCore,
   getSortablePrice,
@@ -38,6 +39,10 @@ export function filterProductsBySearch(items, search) {
 
 export function buildCatalogFacets(items) {
   return buildCatalogFacetsCore(items);
+}
+
+export function buildCatalogFacetsForQuery(items, query) {
+  return buildCatalogFacetsForQueryCore(items, query);
 }
 
 export function applyProductFilters(items, query) {

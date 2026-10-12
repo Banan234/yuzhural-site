@@ -39,6 +39,7 @@ import {
   getStaticPageJsonLdId,
 } from '../src/lib/staticPageJsonLd.js';
 import { getProductImage } from '../shared/productImages.js';
+import { normalizeCatalogHierarchy } from '../shared/catalogCategoryHierarchy.js';
 import { buildShortDescription, buildSpecs } from '../lib/catalog.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -163,6 +164,12 @@ const OPTIONAL_POSITIVE_NUMBER_FIELDS = [
   'cores',
   'groupCores',
   'crossSection',
+  'screenCrossSection',
+  'concentricConductorCrossSection',
+  'doubleInsulationThickness',
+  'opticalFiberCoreDiameter',
+  'opticalFiberCladdingDiameter',
+  'conductorStrandCount',
   'groundCores',
   'groundSection',
   'voltage',
@@ -709,6 +716,7 @@ function buildCatalogSections(products) {
 
 function buildCatalogListItem(product) {
   const title = getProductDisplayName(product);
+  const hierarchy = normalizeCatalogHierarchy(product);
 
   return {
     id: product.id,
@@ -720,8 +728,10 @@ function buildCatalogListItem(product) {
     category: product.category || product.catalogCategory || '',
     catalogSection: product.catalogSection || '',
     catalogSectionSlug: product.catalogSectionSlug || '',
-    catalogCategory: product.catalogCategory || '',
-    catalogCategorySlug: product.catalogCategorySlug || '',
+    catalogCategory: hierarchy.catalogCategory,
+    catalogCategorySlug: hierarchy.catalogCategorySlug,
+    catalogSubcategory: hierarchy.catalogSubcategory,
+    catalogSubcategorySlug: hierarchy.catalogSubcategorySlug,
     price: Number(product.price) || 0,
     unit: product.unit || 'м',
     stock: Number(product.stock) || 0,
@@ -731,6 +741,14 @@ function buildCatalogListItem(product) {
     cores: product.cores ?? null,
     groupCores: product.groupCores ?? null,
     crossSection: product.crossSection ?? null,
+    screenCrossSection: product.screenCrossSection ?? null,
+    concentricConductorCrossSection:
+      product.concentricConductorCrossSection ?? null,
+    doubleInsulationThickness: product.doubleInsulationThickness ?? null,
+    opticalFiberCoreDiameter: product.opticalFiberCoreDiameter ?? null,
+    opticalFiberCladdingDiameter:
+      product.opticalFiberCladdingDiameter ?? null,
+    conductorStrandCount: product.conductorStrandCount ?? null,
     conductorConfiguration: product.conductorConfiguration || null,
     groundCores: product.groundCores ?? null,
     groundSection: product.groundSection ?? null,
@@ -746,11 +764,14 @@ function buildCatalogListItem(product) {
 function filterCatalogProductsByRoute(products, categorySlug = '') {
   if (!categorySlug) return products;
 
-  return products.filter(
-    (product) =>
-      product.catalogCategorySlug === categorySlug ||
-      product.catalogSectionSlug === categorySlug
-  );
+  return products
+    .map((product) => ({ ...product, ...normalizeCatalogHierarchy(product) }))
+    .filter(
+      (product) =>
+        product.catalogCategorySlug === categorySlug ||
+        product.catalogSubcategorySlug === categorySlug ||
+        product.catalogSectionSlug === categorySlug
+    );
 }
 
 export function buildCatalogPrerenderData(

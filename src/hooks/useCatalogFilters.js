@@ -20,6 +20,7 @@ const BASE_PRODUCT_QUERY_KEYS = [
   'sort',
   'page',
 ];
+export const CATALOG_PAGE_SIZE_OPTIONS = [21, 24, 48, 96];
 const ADVANCED_PRODUCT_QUERY_KEYS = ['appType', 'spe'];
 const RESET_FILTER_KEYS = [
   'search',
@@ -92,7 +93,10 @@ export function buildCatalogProductQueryOptions(
   { limit, includeAdvancedFilters = false } = {}
 ) {
   const options = {};
-  if (limit) {
+  const requestedLimit = Number(searchParams.get('limit'));
+  if (CATALOG_PAGE_SIZE_OPTIONS.includes(requestedLimit)) {
+    options.limit = requestedLimit;
+  } else if (limit) {
     options.limit = limit;
   }
 

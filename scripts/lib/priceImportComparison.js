@@ -91,15 +91,54 @@ export function buildDiff(previous, current) {
       });
     }
 
-    // category may be a generated "Кабель <mark>" label. Publication checks
-    // must compare actual navigation categories when classification is present.
+    // category may be a generated "Кабель <mark>" label. Navigation is defined
+    // by the complete hierarchy, including imported-cable subcategories.
     const categoryBefore = prev.catalogCategory || prev.category || '';
     const categoryAfter = product.catalogCategory || product.category || '';
-    if (categoryBefore !== categoryAfter) {
+    const hierarchyBefore = [
+      prev.catalogSectionSlug || '',
+      prev.catalogCategorySlug || '',
+      prev.catalogSubcategorySlug || '',
+    ];
+    const hierarchyAfter = [
+      product.catalogSectionSlug || '',
+      product.catalogCategorySlug || '',
+      product.catalogSubcategorySlug || '',
+    ];
+    const hasHierarchy = [...hierarchyBefore, ...hierarchyAfter].some(Boolean);
+    if (
+      categoryBefore !== categoryAfter ||
+      (hasHierarchy &&
+        hierarchyBefore.some((value, index) => value !== hierarchyAfter[index]))
+    ) {
       categoryChanged.push({
         name: product.name,
         categoryBefore,
         categoryAfter,
+        ...(hasHierarchy
+          ? {
+              sectionSlugBefore: hierarchyBefore[0],
+              sectionSlugAfter: hierarchyAfter[0],
+              categorySlugBefore: hierarchyBefore[1],
+              categorySlugAfter: hierarchyAfter[1],
+              subcategorySlugBefore: hierarchyBefore[2],
+              subcategorySlugAfter: hierarchyAfter[2],
+              locationBefore: [
+                prev.catalogSection,
+                categoryBefore,
+                prev.catalogSubcategory,
+              ]
+                .filter(Boolean)
+                .join(' / '),
+              locationAfter: [
+                product.catalogSection,
+                categoryAfter,
+                product.catalogSubcategory,
+              ]
+                .filter(Boolean)
+                .join(' / '),
+            }
+          : {}),
       });
     }
   }

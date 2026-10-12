@@ -190,6 +190,80 @@ const FAMILY_CATEGORY_ALIASES = {
   КГ: 'Кабель КГ',
 };
 
+const SCREEN_CROSS_SECTION_MARKS = new Set([
+  'АПВКАПГ',
+  'АПВКВ',
+  'АПВП',
+  'АПВПГ',
+  'АПВПУ',
+  'АПВПУ2Г',
+  'АПВПУ2ГЖ',
+  'АПВПУГ',
+  'АПВЭАСПУ2Г',
+  'АПВЭБВ',
+  'КА9РВПМ',
+  'АПВБ',
+  'АПВБВ',
+  'АПВБП',
+  'АПВВ',
+  'ВБВ',
+  'ПВБВ',
+  'ПВВ',
+  'ПВП',
+  'N2AXS(F)2Y',
+  'А2XSEY',
+]);
+
+function parseSlashValue(value) {
+  const number = Number(String(value).replace(',', '.'));
+  return Number.isFinite(number) && number > 0 ? number : null;
+}
+
+function getSlashSpecificationFields(mark, configuration) {
+  const fields = {};
+  const normalizedMark = String(mark || '')
+    .replace(/\s+/gu, '')
+    .toLocaleUpperCase('ru-RU');
+  const config = String(configuration || '').trim();
+  if (!config.includes('/')) return fields;
+
+  if (normalizedMark === 'АПБ') {
+    const match = config.match(/\/\s*(\d+(?:[.,]\d+)?)$/u);
+    const doubleInsulationThickness = match
+      ? parseSlashValue(match[1])
+      : null;
+    if (doubleInsulationThickness != null) {
+      fields.doubleInsulationThickness = doubleInsulationThickness;
+    }
+    return fields;
+  }
+
+  if (normalizedMark === 'AT-(ZN)HBH') {
+    const match = config.match(
+      /g\s*(\d+(?:[.,]\d+)?)\s*\/\s*(\d+(?:[.,]\d+)?)$/iu
+    );
+    if (match) {
+      fields.opticalFiberCoreDiameter = parseSlashValue(match[1]);
+      fields.opticalFiberCladdingDiameter = parseSlashValue(match[2]);
+    }
+    return fields;
+  }
+
+  const slashNumber = config.match(/\/\s*(\d+(?:[.,]\d+)?)$/u)?.[1];
+  const slashValue = slashNumber ? parseSlashValue(slashNumber) : null;
+  if (slashValue == null) return fields;
+
+  if (normalizedMark === 'NYCY' || normalizedMark === 'NYCY-J') {
+    fields.concentricConductorCrossSection = slashValue;
+  } else if (/\bAWG\b/iu.test(config) || /^(?:S\/FTP|U\/UTP)/iu.test(mark)) {
+    fields.conductorStrandCount = slashValue;
+  } else if (SCREEN_CROSS_SECTION_MARKS.has(normalizedMark)) {
+    fields.screenCrossSection = slashValue;
+  }
+
+  return fields;
+}
+
 export function createEmptyImportResult() {
   return {
     products: [],
@@ -241,6 +315,14 @@ export function normalizeImportedProduct(product) {
     crossSection: parsedName.crossSection,
     groupCores: parsedName.groupCores,
     conductorConfiguration: parsedName.conductorConfiguration,
+    screenCrossSection: parsedName.screenCrossSection ?? null,
+    concentricConductorCrossSection:
+      parsedName.concentricConductorCrossSection ?? null,
+    doubleInsulationThickness: parsedName.doubleInsulationThickness ?? null,
+    opticalFiberCoreDiameter: parsedName.opticalFiberCoreDiameter ?? null,
+    opticalFiberCladdingDiameter:
+      parsedName.opticalFiberCladdingDiameter ?? null,
+    conductorStrandCount: parsedName.conductorStrandCount ?? null,
     parsingWarnings: parsedName.parsingWarnings || [],
     hasGroundCore: parsedName.hasGroundCore,
     groundCores: parsedName.groundCores,
@@ -501,6 +583,7 @@ export function parseProductName(value) {
     crossSection,
     groupCores,
     conductorConfiguration,
+    ...getSlashSpecificationFields(mark, conductorConfiguration),
     parsingWarnings,
     hasGroundCore: Boolean(groundCores && groundSection),
     groundCores,
@@ -694,6 +777,12 @@ function createEmptyNameParts() {
     crossSection: null,
     groupCores: null,
     conductorConfiguration: null,
+    screenCrossSection: null,
+    concentricConductorCrossSection: null,
+    doubleInsulationThickness: null,
+    opticalFiberCoreDiameter: null,
+    opticalFiberCladdingDiameter: null,
+    conductorStrandCount: null,
     parsingWarnings: [],
     hasGroundCore: false,
     groundCores: null,

@@ -16,6 +16,7 @@ import { messages } from '../../shared/messages.js';
 import {
   SITE_MANUFACTURERS,
   SITE_NAME,
+  SITE_EMAIL_HREF,
   SITE_OFFICE_ADDRESS_DISPLAY,
   SITE_QUOTE_RESPONSE_DISPLAY,
   SITE_REQUISITES,
@@ -24,13 +25,6 @@ import {
   buildOrganizationJsonLd,
 } from '../lib/siteConfig';
 import '../styles/sections/home-critical.css';
-
-const heroBenefits = [
-  'Более 6 000 позиций в каталоге',
-  'Сертификаты и паспорта на продукцию',
-  'Счёт и КП в день обращения',
-  'Отгрузка от 1 дня',
-];
 
 const audienceSegments = [
   {
@@ -154,26 +148,18 @@ export default function HomePage() {
     );
   };
 
+  const specificationEmailHref = `${SITE_EMAIL_HREF}?subject=${encodeURIComponent('Расчёт кабеля по спецификации')}&body=${encodeURIComponent('Здравствуйте! Прошу рассчитать кабель по приложенной спецификации.\n')}`;
+
   return (
     <>
       <div className="home-hero-zone">
         <section className="home-hero">
           <picture className="home-hero__bg" aria-hidden="true">
-            <source
-              srcSet="/hero-bg-768.avif 768w, /hero-bg-1024.avif 1024w, /hero-bg-1280.avif 1280w, /hero-bg-1536.avif 1536w"
-              sizes="100vw"
-              type="image/avif"
-            />
-            <source
-              srcSet="/hero-bg-768.webp 768w, /hero-bg-1024.webp 1024w, /hero-bg-1280.webp 1280w, /hero-bg-1536.webp 1536w"
-              sizes="100vw"
-              type="image/webp"
-            />
             <img
-              src="/hero-bg-1280.webp"
+              src="/home-hero-quote.webp"
               alt=""
-              width="1280"
-              height="853"
+              width="1672"
+              height="941"
               fetchpriority="high"
               loading="eager"
               decoding="async"
@@ -181,69 +167,135 @@ export default function HomePage() {
           </picture>
           <Container>
             <div className="home-hero__content">
-              <h1 className="home-hero__title">
-                Кабель оптом со склада в Челябинске
+              <p className="home-hero__eyebrow">Расчёт по вашей спецификации</p>
+              <h1
+                className="home-hero__title"
+                aria-label="Пришлите список — пришлём КП"
+              >
+                Пришлите список&nbsp;— пришлём КП
               </h1>
               <p className="home-hero__subtitle">
-                Отгрузка от{' '}
-                <span className="home-hero__subtitle-accent">1 дня</span> ·
-                Поставки по всей России
-                <br />
-                КП готовим{' '}
-                <span className="home-hero__subtitle-accent">
-                  {SITE_QUOTE_RESPONSE_DISPLAY}
-                </span>
+                Марки, сечения и метраж — текстом, в Excel или PDF. Подберём
+                аналоги, если нужной марки нет, и пришлём цены со сроками.
               </p>
               <div className="home-hero__actions">
+                <a
+                  href={specificationEmailHref}
+                  className="home-hero__btn-primary"
+                >
+                  Отправить спецификацию
+                </a>
                 <button
                   type="button"
-                  className="home-hero__btn-primary"
+                  className="home-hero__btn-secondary"
                   onClick={openQuoteModal}
                 >
+                  <svg
+                    width="19"
+                    height="16"
+                    viewBox="0 0 19 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <rect
+                      x="1"
+                      y="1"
+                      width="17"
+                      height="14"
+                      rx="2"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                    />
+                    <path
+                      d="m2 3 7.5 5.5L17 3"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                   Запросить КП
                 </button>
-                <Link
-                  to={CATALOG_CANONICAL_PATH}
-                  className="home-hero__btn-secondary"
-                >
-                  Смотреть каталог
-                </Link>
               </div>
             </div>
           </Container>
         </section>
 
-        <section className="home-benefits">
+        <nav className="home-benefits" aria-label="Возможности поставки">
           <Container>
-            <ul className="home-benefits__list">
-              {heroBenefits.map((b) => (
-                <li key={b} className="home-benefits__item">
-                  <span className="home-benefits__check" aria-hidden="true">
-                    <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
-                      <path
-                        d="M1 4.5L4 7.5L10 1.5"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                  {b}
-                </li>
-              ))}
-            </ul>
+            <ol className="home-benefits__list">
+              <li className="home-benefits__item">
+                <Link
+                  to={CATALOG_CANONICAL_PATH}
+                  className="home-benefits__link"
+                >
+                  <span>01</span> Ассортимент
+                </Link>
+              </li>
+              <li className="home-benefits__item">
+                <Link to="/about/" className="home-benefits__link">
+                  <span>02</span> ГОСТ и паспорт
+                </Link>
+              </li>
+              <li className="home-benefits__item home-benefits__item--active">
+                <button
+                  type="button"
+                  className="home-benefits__link"
+                  onClick={openQuoteModal}
+                >
+                  <span>03</span> Быстрое КП
+                </button>
+              </li>
+              <li className="home-benefits__item">
+                <Link to="/delivery/" className="home-benefits__link">
+                  <span>04</span> Доставка
+                </Link>
+              </li>
+              <li className="home-benefits__item">
+                <a
+                  href={specificationEmailHref}
+                  className="home-benefits__link"
+                >
+                  <span>05</span> Под объект
+                </a>
+              </li>
+            </ol>
           </Container>
-        </section>
-
-        <div className="home-hero-zone__form">
-          <HeroLeadForm
-            subtitle={`Ответим ${SITE_QUOTE_RESPONSE_DISPLAY}`}
-            source="Форма в герое главной"
-            idPrefix="home-lead"
-          />
-        </div>
+        </nav>
       </div>
+
+      <section className="home-hero-facts" aria-label="Коротко о работе">
+        <Container>
+          <div className="home-hero-facts__grid">
+            <div className="home-hero-facts__item">
+              <span className="home-hero-facts__label">Каталог</span>
+              <strong>Кабель и провод</strong>
+              <span>Подбор по марке и сечению</span>
+            </div>
+            <div className="home-hero-facts__item">
+              <span className="home-hero-facts__label">
+                Коммерческое предложение
+              </span>
+              <strong>В рабочий день</strong>
+              <span>Цены, наличие и сроки</span>
+            </div>
+            <div className="home-hero-facts__item">
+              <span className="home-hero-facts__label">Отгрузка</span>
+              <strong>От 1 дня</strong>
+              <span>Поставки по всей России</span>
+            </div>
+            <a
+              className="home-hero-facts__item home-hero-facts__item--link"
+              href="/price.xls"
+              download
+            >
+              <span className="home-hero-facts__label">Прайс-лист</span>
+              <strong>Скачать XLS</strong>
+              <span>Посмотреть позиции и цены →</span>
+            </a>
+          </div>
+        </Container>
+      </section>
 
       <StockProductsGrid
         products={products}
@@ -252,6 +304,31 @@ export default function HomePage() {
       />
 
       <CategoryShowcase />
+
+      <section
+        className="home-quote-section"
+        aria-label="Запросить расчёт кабеля"
+      >
+        <Container>
+          <div className="home-quote-section__inner">
+            <div className="home-quote-section__copy">
+              <span className="home-quote-section__eyebrow">Нужен расчёт?</span>
+              <h2>Подберём кабель под вашу задачу</h2>
+              <p>
+                Оставьте телефон и марки кабеля — подготовим предложение{' '}
+                {SITE_QUOTE_RESPONSE_DISPLAY}.
+              </p>
+            </div>
+            <div className="home-hero-zone__form">
+              <HeroLeadForm
+                subtitle={`Ответим ${SITE_QUOTE_RESPONSE_DISPLAY}`}
+                source="Форма на главной"
+                idPrefix="home-lead"
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
 
       <section className="section section--soft home-workflow">
         <Container>

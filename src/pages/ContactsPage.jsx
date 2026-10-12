@@ -2,6 +2,7 @@
 
 import Container from '../components/ui/Container';
 import HeroLeadForm from '../components/home/HeroLeadForm';
+import ConsentGatedMap from '../components/layout/ConsentGatedMap';
 import { useSEO } from '../hooks/useSEO';
 import {
   SITE_CITY_DISPLAY,
@@ -188,11 +189,9 @@ export default function ContactsPage() {
               <div className="contacts-map-card">
                 <div className="contacts-map-card__title">Офис</div>
                 <div className="contacts-map-frame">
-                  <iframe
+                  <ConsentGatedMap
                     title={`Карта: ${SITE_OFFICE_ADDRESS_DISPLAY}`}
                     src={SITE_OFFICE_MAP_EMBED_URL}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
                 <div className="contacts-map-card__footer">

@@ -22,7 +22,7 @@ const NON_CABLE_NAME_RE =
 // уходит в review, но не теряется: строка сохраняется, а неопределённость
 // фиксируется в отчёте для последующей проверки классификации.
 const CABLE_NAME_RE =
-  /(?:кабел\w*|провод\w*|шнур\w*|жгут\w*|оптическ\w*|волокон\w*|ввг\w*|аввг\w*|акввг\w*|кввг\w*|кг\w*|мкэш\w*|мгтф\w*|мгшв\w*|пв[1234]?\w*|пугв\w*|пув\w*|пва\w*|пвам\w*|пвкв\w*|пгва\w*|пгро\w*|ппсрвм\w*|псрвм\w*|нв[мэ]?\w*|ркгм\w*|рк\s*\d|ок[а-яa-z]*\w*|дп[а-яa-z-]*\w*|rg[-\s]?\d+|utp\w*|ftp\w*|s\/ftp|f\/utp|sf\/utp|\d+\s*[xх×]\s*\d+(?:[.,]\d+)?)/iu;
+  /(?:кабел\w*|провод\w*|шнур\w*|жгут\w*|оптическ\w*|волокон\w*|ввг\w*|аввг\w*|акввг\w*|кввг\w*|кг\w*|мкэш\w*|мгтф\w*|мгшв\w*|пв[1234]?\w*|пугв\w*|пув\w*|пва\w*|пвам\w*|пвкв\w*|пгва\w*|пгро\w*|^пмтк\w*|ппсрвм\w*|псрвм\w*|нв[мэ]?\w*|ркгм\w*|рк\s*\d|(?<![\p{L}\p{N}])ок[а-яa-z]*\w*|дп[а-яa-z-]*\w*|rg[-\s]?\d+|utp\w*|ftp\w*|s\/ftp|f\/utp|sf\/utp)/iu;
 
 function normalizeSourceCategory(value) {
   return String(value ?? '')
@@ -76,7 +76,11 @@ export function resolveProductDisposition({ name, sourceCategory, unit } = {}) {
     };
   }
 
-  if (sourceCategoryEntry && CABLE_SECTIONS.has(sourceCategoryEntry.section)) {
+  if (
+    sourceCategoryEntry &&
+    !sourceCategoryEntry.generic &&
+    CABLE_SECTIONS.has(sourceCategoryEntry.section)
+  ) {
     return {
       status: 'publish',
       reason: 'source_category_cable',
@@ -93,12 +97,13 @@ export function resolveProductDisposition({ name, sourceCategory, unit } = {}) {
     };
   }
 
-  // Единица измерения решает только нераспознанные строки. Явная категория,
-  // некабельное название и явные признаки кабеля выше по приоритету.
+  // Единица измерения и размерность не подтверждают, что это кабель.
+  // Неопределённую строку сохраняем для review, а последующий классификатор
+  // сможет подтвердить её по конкретной марке.
   if (normalizedUnit === 'м') {
     return {
-      status: 'publish',
-      reason: 'unit_meter_fallback',
+      status: 'review',
+      reason: 'unit_meter_requires_classification',
       evidence: normalizedUnit,
     };
   }

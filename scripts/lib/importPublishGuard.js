@@ -8,6 +8,8 @@ const DEFAULT_PUBLISH_GUARD = Object.freeze({
   maxSkippedPercent: 5,
   maxSuspiciousPercent: 1,
   maxFallbackPercent: 10,
+  maxOtherPercent: 10,
+  maxNewReviewRows: 0,
   maxPriceAlerts: 100,
   maxCategoryChangedPercent: 10,
 });
@@ -61,6 +63,14 @@ export function normalizePublishGuardConfig(config = {}) {
       source.maxFallbackPercent,
       DEFAULT_PUBLISH_GUARD.maxFallbackPercent
     ),
+    maxOtherPercent: parseNonNegativeNumber(
+      source.maxOtherPercent,
+      DEFAULT_PUBLISH_GUARD.maxOtherPercent
+    ),
+    maxNewReviewRows: parseNonNegativeInteger(
+      source.maxNewReviewRows,
+      DEFAULT_PUBLISH_GUARD.maxNewReviewRows
+    ),
     maxPriceAlerts: parseNonNegativeInteger(
       source.maxPriceAlerts,
       DEFAULT_PUBLISH_GUARD.maxPriceAlerts
@@ -100,9 +110,11 @@ export function evaluatePublishGuard({
   suspicious = [],
   skippedRows = [],
   reviewRows = [],
+  newReviewRows = reviewRows,
   errors = [],
   totalRows = 0,
   fallbackToOther = 0,
+  otherProducts = 0,
 } = {}) {
   const normalizedConfig = normalizePublishGuardConfig(config);
   const metrics = {
@@ -112,9 +124,11 @@ export function evaluatePublishGuard({
     removed: Array.isArray(diff.removed) ? diff.removed.length : 0,
     skipped: Array.isArray(skippedRows) ? skippedRows.length : 0,
     review: Array.isArray(reviewRows) ? reviewRows.length : 0,
+    newReview: Array.isArray(newReviewRows) ? newReviewRows.length : 0,
     totalRows: Number(totalRows) || 0,
     suspicious: Array.isArray(suspicious) ? suspicious.length : 0,
     fallbackToOther: Number(fallbackToOther) || 0,
+    otherProducts: Number(otherProducts) || 0,
     priceAlerts: Array.isArray(diff.priceAlerts) ? diff.priceAlerts.length : 0,
     categoryChanged: Array.isArray(diff.categoryChanged)
       ? diff.categoryChanged.length
@@ -132,6 +146,9 @@ export function evaluatePublishGuard({
   );
   metrics.fallbackPercent = rounded(
     percentage(metrics.fallbackToOther, metrics.products)
+  );
+  metrics.otherPercent = rounded(
+    percentage(metrics.otherProducts, metrics.products)
   );
   metrics.categoryChangedPercent = rounded(
     percentage(metrics.categoryChanged, metrics.products)
@@ -211,6 +228,28 @@ export function evaluatePublishGuard({
         actual: metrics.fallbackPercent,
         limit: normalizedConfig.maxFallbackPercent,
         message: `В fallback «Прочее» попало ${metrics.fallbackPercent}% каталога, допустимо не более ${normalizedConfig.maxFallbackPercent}%.`,
+      })
+    );
+  }
+
+  if (metrics.otherPercent > normalizedConfig.maxOtherPercent) {
+    issues.push(
+      createIssue({
+        key: 'maxOtherPercent',
+        actual: metrics.otherPercent,
+        limit: normalizedConfig.maxOtherPercent,
+        message: `В «Прочее» попало ${metrics.otherPercent}% каталога, допустимо не более ${normalizedConfig.maxOtherPercent}%.`,
+      })
+    );
+  }
+
+  if (metrics.newReview > normalizedConfig.maxNewReviewRows) {
+    issues.push(
+      createIssue({
+        key: 'maxNewReviewRows',
+        actual: metrics.newReview,
+        limit: normalizedConfig.maxNewReviewRows,
+        message: `Новых непроверенных строк: ${metrics.newReview}, допустимо не более ${normalizedConfig.maxNewReviewRows}.`,
       })
     );
   }

@@ -218,7 +218,7 @@ test('home hero lead form submits HeroLeadForm payload', async ({ page }) => {
   expect(leadPayload).toMatchObject({
     phone: '+7 900 123-45-67',
     comment: 'ВВГ',
-    source: 'Форма в герое главной',
+    source: 'Форма на главной',
     company_website: '',
   });
   expect(leadPayload.createdAt).toEqual(expect.any(String));

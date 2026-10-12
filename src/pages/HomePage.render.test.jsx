@@ -136,7 +136,7 @@ describe('HomePage SSR render', () => {
 
     expect(
       await screen.findByRole('heading', {
-        name: 'Кабель оптом со склада в Челябинске',
+        name: 'Пришлите список — пришлём КП',
       })
     ).toBeInTheDocument();
 

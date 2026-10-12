@@ -97,6 +97,7 @@ export default function FloatingLeadWidget({
   const autoOpenTrackedRef = useRef(false);
   const sessionRef = useRef(session);
   const messagesEndRef = useRef(null);
+  const commentFieldRef = useRef(null);
   const fieldIds = {
     comment: 'floating-lead-comment',
     consent: 'floating-lead-consent',
@@ -108,6 +109,14 @@ export default function FloatingLeadWidget({
   useEffect(() => {
     sessionRef.current = session;
   }, [session]);
+
+  useEffect(() => {
+    const field = commentFieldRef.current;
+    if (!field) return;
+
+    field.style.height = '60px';
+    field.style.height = `${Math.min(Math.max(field.scrollHeight, 60), 120)}px`;
+  }, [form.comment]);
 
   useEffect(() => {
     if (!autoOpen) return;
@@ -216,6 +225,19 @@ export default function FloatingLeadWidget({
     setConsent(event.target.checked);
     setConsentError('');
     setStatus({ kind: '', text: '' });
+  }
+
+  function handleCommentKeyDown(event) {
+    if (
+      event.key !== 'Enter' ||
+      event.shiftKey ||
+      event.nativeEvent.isComposing
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    event.currentTarget.form?.requestSubmit();
   }
 
   async function handleSubmit(event) {
@@ -444,10 +466,12 @@ export default function FloatingLeadWidget({
               >
                 <span className="visually-hidden">Введите сообщение</span>
                 <textarea
+                  ref={commentFieldRef}
                   id={fieldIds.comment}
                   name="comment"
                   value={form.comment}
                   onChange={handleChange}
+                  onKeyDown={handleCommentKeyDown}
                   placeholder="Напишите сообщение..."
                   rows={1}
                 />

@@ -1,5 +1,39 @@
 [
   {
+    "_comment": "MEDIASTRIP H/BH выпускается Угличкабелем как силовой кабель.",
+    "type": "MEDIASTRIP",
+    "patterns": ["mediastrip"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Силовой кабель",
+    "catalogCategorySlug": "silovoy-kabel",
+    "priority": 175
+  },
+  {
+    "_comment": "Экранированная серия КИПЭ для интерфейса RS-485; короткую марку КИП без паспорта не классифицируем автоматически.",
+    "type": "КИПЭ RS-485",
+    "originalNamePrefixes": ["КИПэ "],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Кабели связи",
+    "catalogCategorySlug": "kabeli-svyazi",
+    "priority": 205
+  },
+  {
+    "_comment": "КПБП без исполнения имеет и другие применения; подтверждены только эти контрольные HF/FRHF позиции прайса.",
+    "type": "КПБП HF/FRHF",
+    "exactNames": [
+      "КПБП 4х1.5 нг(А)-FRHF",
+      "КПБП 5х1.5 нг(А)-HF",
+      "КПБП 19х1 нг(А)-FRHF"
+    ],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Контрольный кабель",
+    "catalogCategorySlug": "kontrolnyy-kabel",
+    "priority": 205
+  },
+  {
     "_comment": "=== ПОЖАРНАЯ И ОХРАННАЯ СИГНАЛИЗАЦИЯ (высший приоритет — бьёт 'Кабели связи') ===",
     "type": "КПС",
     "patterns": ["кпс ", "кпсэ", "кпсвв", "кпсвэв", "кпсэс", "кпсэ ", "кпснг"],
@@ -64,6 +98,7 @@
       "helukabel",
       "tronic",
       "paar-tronic",
+      "paartronic",
       "f-cy",
       "oz-500",
       "oz-bl",
@@ -186,8 +221,8 @@
     "priority": 180
   },
   {
-    "type": "H05V-K/H07V-K одножильные (импортные провода)",
-    "patterns": ["h05v-k", "h07v-k", "x07v-k", "07v-k"],
+    "type": "H05V-K/H07V-K/H05Z1-K/H07Z1-K одножильные (импортные провода)",
+    "patterns": ["h05v-k", "h07v-k", "x07v-k", "07v-k", "h05z1-k", "h07z1-k"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Импортные кабели",
@@ -321,6 +356,9 @@
       "птвв-ха",
       "птвв-хк",
       "птвэв",
+      "птгвэв",
+      "птгв-хк",
+      "терк-",
       "птвп-",
       "птвт-",
       "птво-",
@@ -448,6 +486,24 @@
     "catalogCategorySlug": "provoda",
     "priority": 135
   },
+  {
+    "type": "КИПвЭПБП/КИПэПБП — интерфейсные кабели",
+    "patterns": ["кипвэпбп", "кипэпбп"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Кабели связи",
+    "catalogCategorySlug": "kabeli-svyazi",
+    "priority": 125
+  },
+  {
+    "type": "ОМЗКГЦ — оптический кабель",
+    "patterns": ["омзкгц"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Кабели связи",
+    "catalogCategorySlug": "kabeli-svyazi",
+    "priority": 125
+  },
 
   {
     "_comment": "=== Провода, ошибочно попавшие в силовой кабель ===",
@@ -533,24 +589,35 @@
     "catalogCategorySlug": "silovoy-kabel",
     "priority": 110
   },
+  {
+    "type": "АсВВГ — силовая марка",
+    "patterns": ["асввг"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Силовой кабель",
+    "catalogCategorySlug": "silovoy-kabel",
+    "priority": 115
+  },
 
   {
     "_comment": "=== Контрольные кабели — специфические ===",
     "type": "Сегмент-КУ",
-    "patterns": ["сегмент-ку"],
+    "manufacturerEquals": "Сегмент",
+    "familyPrefixes": ["КУ"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
-    "catalogCategorySlug": "kontrolnyy-kabel",
+    "catalogCategory": "Прочее",
+    "catalogCategorySlug": "prochee",
     "priority": 120
   },
   {
     "type": "Сегмент-КИ185/КИ485",
-    "patterns": ["сегмент-ки185", "сегмент-ки485"],
+    "manufacturerEquals": "Сегмент",
+    "familyPrefixes": ["КИ185", "КИ485"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
-    "catalogCategorySlug": "kontrolnyy-kabel",
+    "catalogCategory": "Кабели связи",
+    "catalogCategorySlug": "kabeli-svyazi",
     "priority": 120
   },
   {
@@ -564,7 +631,8 @@
   },
   {
     "type": "НИКИ-КУ/КВ/КП",
-    "patterns": ["ники-ку", "ники-кв", "ники-кп"],
+    "manufacturerEquals": "НИКИ",
+    "familyPrefixes": ["КУ", "КВ", "КП"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Контрольный кабель",
@@ -703,7 +771,7 @@
   },
   {
     "type": "Оптические (ОКМН/ОПС/ОКЛ)",
-    "patterns": ["окмн", "опс ", "оклж", "оклнг"],
+    "patterns": ["окмн", "окмс", "опс ", "оклж", "оклнг"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели связи",
@@ -1225,6 +1293,7 @@
   {
     "type": "КГПЭф — категория требует подтверждения исполнения",
     "patterns": ["кгпэф"],
+    "originalNamePrefixes": ["КГПЭф"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Прочее",

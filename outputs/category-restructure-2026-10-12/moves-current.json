@@ -1,0 +1,3062 @@
+[
+  {
+    "cell": "F132",
+    "sourceRowIndex": 129,
+    "name": "АсКГ 4х70 хл",
+    "mark": "АсКГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "АС "
+    },
+    "to": {
+      "category": "gibkiy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "АсКГ"
+    }
+  },
+  {
+    "cell": "F133",
+    "sourceRowIndex": 130,
+    "name": "АсКГН 1х35",
+    "mark": "АсКГН",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "АС "
+    },
+    "to": {
+      "category": "gibkiy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "АсКГ"
+    }
+  },
+  {
+    "cell": "F347",
+    "sourceRowIndex": 340,
+    "name": "MEDIAstrip BH 3х4 06/1кв",
+    "mark": "MEDIAstrip BH",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "mediastrip"
+    }
+  },
+  {
+    "cell": "F348",
+    "sourceRowIndex": 341,
+    "name": "MEDIAstrip BH 5х6 06/1кв",
+    "mark": "MEDIAstrip BH",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "mediastrip"
+    }
+  },
+  {
+    "cell": "F349",
+    "sourceRowIndex": 342,
+    "name": "MEDIAstrip H 1х25",
+    "mark": "MEDIAstrip H",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "mediastrip"
+    }
+  },
+  {
+    "cell": "F350",
+    "sourceRowIndex": 343,
+    "name": "MEDIAstrip H 3х4",
+    "mark": "MEDIAstrip H",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "mediastrip"
+    }
+  },
+  {
+    "cell": "F351",
+    "sourceRowIndex": 344,
+    "name": "MEDIAstrip H 4х2.5",
+    "mark": "MEDIAstrip H",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "mediastrip"
+    }
+  },
+  {
+    "cell": "F352",
+    "sourceRowIndex": 345,
+    "name": "MEDIAstrip H 4х6",
+    "mark": "MEDIAstrip H",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "mediastrip"
+    }
+  },
+  {
+    "cell": "F553",
+    "sourceRowIndex": 543,
+    "name": "ВЭкВКВ-ВП нг(А)-FRLS 10х2х1.5л",
+    "mark": "ВЭкВКВ-ВП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квк"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "F554",
+    "sourceRowIndex": 544,
+    "name": "ВЭкВКВ-ВП нг(А)-FRLS 6х2х1.5",
+    "mark": "ВЭкВКВ-ВП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квк"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "F555",
+    "sourceRowIndex": 545,
+    "name": "ВЭкВКВ-ВП нг(А)-FRLS 6х2х1.5 л",
+    "mark": "ВЭкВКВ-ВП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квк"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "A619",
+    "sourceRowIndex": 609,
+    "name": "ВЭкВКВ-ВП нг(А)-FRLS 10х2х1.5",
+    "mark": "ВЭкВКВ-ВП",
+    "manufacturer": "",
+    "sourceCategory": "Кабель высоковольтный малой мощности КИМЭП-М",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квк"
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель высоковольтный малой мощности КИМЭП-М"
+    }
+  },
+  {
+    "cell": "F686",
+    "sourceRowIndex": 675,
+    "name": "КПМВВГм Энг(А)-ХЛ 4х1",
+    "mark": "КПМВВГм",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ввг"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "F687",
+    "sourceRowIndex": 676,
+    "name": "КПМВВГм Энг(А)-ХЛ 4х2.5",
+    "mark": "КПМВВГм",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ввг"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "F688",
+    "sourceRowIndex": 677,
+    "name": "КПМВВГм-В нг(А)-ХЛ 10х4",
+    "mark": "КПМВВГм-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ввг"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "A691",
+    "sourceRowIndex": 679,
+    "name": "КПМВКВГм-В нг(А)-ХЛ 3х1",
+    "mark": "КПМВКВГм-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квг "
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "A693",
+    "sourceRowIndex": 681,
+    "name": "КПМВЭКВГм-В нг(А)-ХЛ 2х0.5",
+    "mark": "КПМВЭКВГм-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квг "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпмвэ"
+    }
+  },
+  {
+    "cell": "A694",
+    "sourceRowIndex": 682,
+    "name": "КПМВЭКВГм-В нг(А)-ХЛ 3х0.5",
+    "mark": "КПМВЭКВГм-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квг "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпмвэ"
+    }
+  },
+  {
+    "cell": "A695",
+    "sourceRowIndex": 683,
+    "name": "КПМВЭфВГм Энг(А)-ХЛ 10х1.5",
+    "mark": "КПМВЭфВГм",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "вэфв"
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпмвэф"
+    }
+  },
+  {
+    "cell": "A696",
+    "sourceRowIndex": 684,
+    "name": "КПМВЭфВГмт Энг(А)-ХЛ 14х1",
+    "mark": "КПМВЭфВГмт",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "вэфв"
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпмвэф"
+    }
+  },
+  {
+    "cell": "A697",
+    "sourceRowIndex": 685,
+    "name": "КПМВЭфИЭФКВГм-В нг(А)-LS 4х2х1",
+    "mark": "КПМВЭфИЭФКВГм-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квг "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпмвэф"
+    }
+  },
+  {
+    "cell": "A698",
+    "sourceRowIndex": 686,
+    "name": "КПМВЭфКВГм-В нг(А)-LS 16х2х1",
+    "mark": "КПМВЭфКВГм-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квг "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпмвэф"
+    }
+  },
+  {
+    "cell": "A699",
+    "sourceRowIndex": 687,
+    "name": "КПМСЭКВГ нг(А)-FRLS 2х2х1",
+    "mark": "КПМСЭКВГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "soedinitelnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сэк"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "A700",
+    "sourceRowIndex": 688,
+    "name": "КПМСЭфКПГм-В нг(А)-FRLS-ХЛ 3х1.5",
+    "mark": "КПМСЭфКПГм-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "keywordSubstring",
+      "match": "МСЭ"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "F907",
+    "sourceRowIndex": 892,
+    "name": "РЭкП-ВП нг(А)-FRHF-ХЛ 7х2х1",
+    "mark": "РЭкП-ВП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-neftepogr",
+      "subcategory": "",
+      "source": "rule",
+      "match": "экп-"
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "рэкп-"
+    }
+  },
+  {
+    "cell": "F908",
+    "sourceRowIndex": 893,
+    "name": "Сегмент-КИ185-Эк нг(А)-HF 2х2х0.6",
+    "mark": "КИ185-Эк",
+    "manufacturer": "Сегмент",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "Сегмент-КИ185/КИ485"
+    }
+  },
+  {
+    "cell": "F909",
+    "sourceRowIndex": 894,
+    "name": "Сегмент-КИ485-ЭВ нг(А)-LS 2х2х0.6",
+    "mark": "КИ485-ЭВ",
+    "manufacturer": "Сегмент",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "Сегмент-КИ185/КИ485"
+    }
+  },
+  {
+    "cell": "F973",
+    "sourceRowIndex": 957,
+    "name": "AVC ELECTRONICS 4c",
+    "mark": "AVC ELECTRONICS 4c",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-drugie-kabeli",
+      "source": "rule",
+      "match": "tronic"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "F1041",
+    "sourceRowIndex": 1024,
+    "name": "H07z1-K 1х2.5 красн",
+    "mark": "H07z1-K",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-provoda",
+      "source": "rule",
+      "match": "h07z1-k"
+    }
+  },
+  {
+    "cell": "F1042",
+    "sourceRowIndex": 1025,
+    "name": "H07z1-K 1х2.5 черн",
+    "mark": "H07z1-K",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-provoda",
+      "source": "rule",
+      "match": "h07z1-k"
+    }
+  },
+  {
+    "cell": "A1077",
+    "sourceRowIndex": 1060,
+    "name": "H05z1-k 1х0.5 оранж",
+    "mark": "H05z1-k",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-provoda",
+      "source": "rule",
+      "match": "h05z1-k"
+    }
+  },
+  {
+    "cell": "A1078",
+    "sourceRowIndex": 1061,
+    "name": "H05z1-k 1х0.75 оранж",
+    "mark": "H05z1-k",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-provoda",
+      "source": "rule",
+      "match": "h05z1-k"
+    }
+  },
+  {
+    "cell": "A1243",
+    "sourceRowIndex": 1223,
+    "name": "ЭКС-ШВППЭ/Э 2х2х0.6",
+    "mark": "ЭКС-ШВППЭ/",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "швп "
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "A1244",
+    "sourceRowIndex": 1224,
+    "name": "ЭКС-ШВППЭ/Э-5 2х2х0.6",
+    "mark": "ЭКС-ШВППЭ/Э-5",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "швп "
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "F1356",
+    "sourceRowIndex": 1335,
+    "name": "КПБП 4х1.5 нг(А)-FRHF",
+    "mark": "КПБП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "пбп "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КПБП HF/FRHF"
+    }
+  },
+  {
+    "cell": "F1357",
+    "sourceRowIndex": 1336,
+    "name": "КПБП 5х1.5 нг(А)-HF",
+    "mark": "КПБП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "пбп "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КПБП HF/FRHF"
+    }
+  },
+  {
+    "cell": "F1358",
+    "sourceRowIndex": 1337,
+    "name": "КПБП 19х1 нг(А)-FRHF",
+    "mark": "КПБП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "пбп "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КПБП HF/FRHF"
+    }
+  },
+  {
+    "cell": "F1588",
+    "sourceRowIndex": 1563,
+    "name": "КППГ 7х1.5 нг(А)-FRHF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1589",
+    "sourceRowIndex": 1564,
+    "name": "КППГ 7х2.5 э нг(А)-FRHF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1590",
+    "sourceRowIndex": 1565,
+    "name": "КППГ 10х1.5 э нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1591",
+    "sourceRowIndex": 1566,
+    "name": "КППГ 10х2.5 э нг(А)-FRHF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1592",
+    "sourceRowIndex": 1567,
+    "name": "КППГ 10х2.5 э нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1593",
+    "sourceRowIndex": 1568,
+    "name": "КППГ 14х1 э нг(А)-FRHF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1594",
+    "sourceRowIndex": 1569,
+    "name": "КППГ 14х1.5 э нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1595",
+    "sourceRowIndex": 1570,
+    "name": "КППГ 19х1 нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1596",
+    "sourceRowIndex": 1571,
+    "name": "КППГ 19х1.5 нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1597",
+    "sourceRowIndex": 1572,
+    "name": "КППГ 19х1.5 э нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1598",
+    "sourceRowIndex": 1573,
+    "name": "КППГ 37х1.5 нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1599",
+    "sourceRowIndex": 1574,
+    "name": "КППГ 52х1 э нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1617",
+    "sourceRowIndex": 1592,
+    "name": "КВПВП-5е 1х2х0.52",
+    "mark": "КВПВП-5е",
+    "manufacturer": "",
+    "sourceCategory": "Кабель КВПЭфВП-5е",
+    "from": {
+      "category": "kabel-vodopogr",
+      "subcategory": "",
+      "source": "rule",
+      "match": "впв "
+    },
+    "to": {
+      "category": "lan-kabeli",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квпвп-5e"
+    }
+  },
+  {
+    "cell": "F1618",
+    "sourceRowIndex": 1593,
+    "name": "КВПВП-5е 2х2х0.52",
+    "mark": "КВПВП-5е",
+    "manufacturer": "",
+    "sourceCategory": "Кабель КВПЭфВП-5е",
+    "from": {
+      "category": "kabel-vodopogr",
+      "subcategory": "",
+      "source": "rule",
+      "match": "впв "
+    },
+    "to": {
+      "category": "lan-kabeli",
+      "subcategory": "",
+      "source": "rule",
+      "match": "квпвп-5e"
+    }
+  },
+  {
+    "cell": "F1630",
+    "sourceRowIndex": 1605,
+    "name": "КГПЭф 1х2х1.2 нг-HF",
+    "mark": "КГП",
+    "manufacturer": "",
+    "sourceCategory": "Кабель КВПЭфВП-5е",
+    "from": {
+      "category": "lan-kabeli",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель КВПЭфВП-5е"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КГПЭф — категория требует подтверждения исполнения"
+    }
+  },
+  {
+    "cell": "A1644",
+    "sourceRowIndex": 1619,
+    "name": "КППГ 4х1 нг(А)-FRHF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "A1645",
+    "sourceRowIndex": 1620,
+    "name": "КППГ 4х1 нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "A1646",
+    "sourceRowIndex": 1621,
+    "name": "КППГ 4х1 э нг-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "A1647",
+    "sourceRowIndex": 1622,
+    "name": "КППГ 4х1,5 нг(А)-FRHF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1647",
+    "sourceRowIndex": 1622,
+    "name": "К9РВСБПМ нг(А)-HF 3х2.5",
+    "mark": "К9РВСБПМ",
+    "manufacturer": "",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сбп "
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ"
+    }
+  },
+  {
+    "cell": "A1648",
+    "sourceRowIndex": 1623,
+    "name": "КППГ 4х1,5 нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1648",
+    "sourceRowIndex": 1623,
+    "name": "К9РВСБПМ нг(А)-HF 3х4",
+    "mark": "К9РВСБПМ",
+    "manufacturer": "",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сбп "
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ"
+    }
+  },
+  {
+    "cell": "A1649",
+    "sourceRowIndex": 1624,
+    "name": "КППГ 5х1 нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1649",
+    "sourceRowIndex": 1624,
+    "name": "К9РВСБПМ нг(А)-HF 4х16",
+    "mark": "К9РВСБПМ",
+    "manufacturer": "",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сбп "
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ"
+    }
+  },
+  {
+    "cell": "A1650",
+    "sourceRowIndex": 1625,
+    "name": "КППГ 5х1 э нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1650",
+    "sourceRowIndex": 1625,
+    "name": "К9РВСБПМ нг(А)-HF 5х2.5",
+    "mark": "К9РВСБПМ",
+    "manufacturer": "",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сбп "
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ"
+    }
+  },
+  {
+    "cell": "A1651",
+    "sourceRowIndex": 1626,
+    "name": "КППГ 5х2.5 нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1651",
+    "sourceRowIndex": 1626,
+    "name": "К9РВСБПМ нг(А)-HF 5х4",
+    "mark": "К9РВСБПМ",
+    "manufacturer": "",
+    "sourceCategory": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сбп "
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ"
+    }
+  },
+  {
+    "cell": "A1652",
+    "sourceRowIndex": 1627,
+    "name": "КППГ 7х1 нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "A1653",
+    "sourceRowIndex": 1628,
+    "name": "КППГ 7х1 э нг(А)-FRHF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "A1654",
+    "sourceRowIndex": 1629,
+    "name": "КППГ 7х1 э нг(А)-HF",
+    "mark": "КППГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ппг "
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КППГ"
+    }
+  },
+  {
+    "cell": "F1672",
+    "sourceRowIndex": 1646,
+    "name": "РВСБПМ нг(А)-HF 5х16 NEXANS",
+    "mark": "РВСБПМ",
+    "manufacturer": "NEXANS",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сбп "
+    },
+    "to": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-drugie-kabeli",
+      "source": "rule",
+      "match": "nexans"
+    }
+  },
+  {
+    "cell": "F1745",
+    "sourceRowIndex": 1718,
+    "name": "КИПВэПБП 2х2х0.78",
+    "mark": "КИПВэПБП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "пбп "
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кипвэпбп"
+    }
+  },
+  {
+    "cell": "F1746",
+    "sourceRowIndex": 1719,
+    "name": "КИПВэПБП 4х2х0.78",
+    "mark": "КИПВэПБП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "пбп "
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кипвэпбп"
+    }
+  },
+  {
+    "cell": "F1747",
+    "sourceRowIndex": 1720,
+    "name": "КИПэ 1х2х0.6 нг(А)-HF",
+    "mark": "КИП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1748",
+    "sourceRowIndex": 1721,
+    "name": "КИПэ 2х2х0.6 нг(А)-HF",
+    "mark": "КИП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1749",
+    "sourceRowIndex": 1722,
+    "name": "КИПэ 4х2х0.6 нг(А)-HF",
+    "mark": "КИП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1750",
+    "sourceRowIndex": 1723,
+    "name": "КИПэБ 2х2х0.6 нг(А)-HF",
+    "mark": "КИПэБ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1751",
+    "sourceRowIndex": 1724,
+    "name": "КИПэВ 10х2х0.6 э",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1752",
+    "sourceRowIndex": 1725,
+    "name": "КИПэВ 1х2х0.6",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1753",
+    "sourceRowIndex": 1726,
+    "name": "КИПэВ 1х2х0.6 нг(А)-LS",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1754",
+    "sourceRowIndex": 1727,
+    "name": "КИПэВ 2х2х0.6",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1755",
+    "sourceRowIndex": 1728,
+    "name": "КИПэВ 2х2х0.6 нг(А)-LS",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1756",
+    "sourceRowIndex": 1729,
+    "name": "КИПэВ 2х2х0.78",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1757",
+    "sourceRowIndex": 1730,
+    "name": "КИПэВ 3х2х0.6",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1758",
+    "sourceRowIndex": 1731,
+    "name": "КИПэВ 3х2х0.6 нг(А)-LS",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1759",
+    "sourceRowIndex": 1732,
+    "name": "КИПэВ 4х2х0.6",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1760",
+    "sourceRowIndex": 1733,
+    "name": "КИПэВ 5х2х0.6",
+    "mark": "КИПэВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1761",
+    "sourceRowIndex": 1734,
+    "name": "КИПэВКВ 2х2х0.6",
+    "mark": "КИПэВКВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1762",
+    "sourceRowIndex": 1735,
+    "name": "КИПэВКВм 3х2х0.6",
+    "mark": "КИПэВКВм",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1763",
+    "sourceRowIndex": 1736,
+    "name": "КИПэВКВм 2х2х0.6",
+    "mark": "КИПэВКВм",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1764",
+    "sourceRowIndex": 1737,
+    "name": "КИПэКГ 4х2х0.5 нг(А)-HF",
+    "mark": "КИПэКГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1765",
+    "sourceRowIndex": 1738,
+    "name": "КИПэП 2х2х0.6",
+    "mark": "КИПэП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1766",
+    "sourceRowIndex": 1739,
+    "name": "КИПэП 4х2х0.6",
+    "mark": "КИПэП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1767",
+    "sourceRowIndex": 1740,
+    "name": "КИПэПБП 1х2х0.6",
+    "mark": "КИПэПБП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "пбп "
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1768",
+    "sourceRowIndex": 1741,
+    "name": "КИПэПБП 4х2х0.6",
+    "mark": "КИПэПБП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "пбп "
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "КИПЭ RS-485"
+    }
+  },
+  {
+    "cell": "F1819",
+    "sourceRowIndex": 1791,
+    "name": "ОМЗКГЦ 10-01-0.22-8",
+    "mark": "ОМЗКГЦ 10-01-0.22-8",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "gibkiy-kabel",
+      "subcategory": "",
+      "source": "keywordSubstring",
+      "match": "КГ"
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "омзкгц"
+    }
+  },
+  {
+    "cell": "F1834",
+    "sourceRowIndex": 1806,
+    "name": "КОПС 1х2х0.5 нг(А)-FRHF",
+    "mark": "КОПС",
+    "manufacturer": "",
+    "sourceCategory": "Кабель пожарный",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "опс "
+    },
+    "to": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель пожарный"
+    }
+  },
+  {
+    "cell": "F1835",
+    "sourceRowIndex": 1807,
+    "name": "КОПС 2х2х0.8 э нг(А)-FRLS-LTx",
+    "mark": "КОПС",
+    "manufacturer": "",
+    "sourceCategory": "Кабель пожарный",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "опс "
+    },
+    "to": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель пожарный"
+    }
+  },
+  {
+    "cell": "F1836",
+    "sourceRowIndex": 1808,
+    "name": "КОПСМВэВ 2х2х0.5 нг(А)-FRLS",
+    "mark": "КОПСМВэВ",
+    "manufacturer": "",
+    "sourceCategory": "Кабель пожарный",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "опс "
+    },
+    "to": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель пожарный"
+    }
+  },
+  {
+    "cell": "F1837",
+    "sourceRowIndex": 1809,
+    "name": "КОПСЭ 1х2х0.67 нг(А)-FRHF",
+    "mark": "КОПС",
+    "manufacturer": "",
+    "sourceCategory": "Кабель пожарный",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "опс "
+    },
+    "to": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель пожарный"
+    }
+  },
+  {
+    "cell": "F1838",
+    "sourceRowIndex": 1810,
+    "name": "КОПСЭ 2х2х1.38 нг(А)-FRHF",
+    "mark": "КОПС",
+    "manufacturer": "",
+    "sourceCategory": "Кабель пожарный",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "опс "
+    },
+    "to": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель пожарный"
+    }
+  },
+  {
+    "cell": "F1839",
+    "sourceRowIndex": 1811,
+    "name": "КОПСЭГ 6х2х1.2 нг(А)-FRHF",
+    "mark": "КОПСЭГ",
+    "manufacturer": "",
+    "sourceCategory": "Кабель пожарный",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "опс "
+    },
+    "to": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель пожарный"
+    }
+  },
+  {
+    "cell": "F1840",
+    "sourceRowIndex": 1812,
+    "name": "КОПСЭГс 2х2х0.78 нг(А)-FRHF",
+    "mark": "КОПСЭГс",
+    "manufacturer": "",
+    "sourceCategory": "Кабель пожарный",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "опс "
+    },
+    "to": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель пожарный"
+    }
+  },
+  {
+    "cell": "F1841",
+    "sourceRowIndex": 1813,
+    "name": "КОПСэк 1х2х0.8 нг(А)-FRHF",
+    "mark": "КОПСэк",
+    "manufacturer": "",
+    "sourceCategory": "Кабель пожарный",
+    "from": {
+      "category": "soedinitelnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сэк"
+    },
+    "to": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель пожарный"
+    }
+  },
+  {
+    "cell": "F1842",
+    "sourceRowIndex": 1814,
+    "name": "КОПСэкг 4х2х1.38 нг(А)-FRHF",
+    "mark": "КОПСэкг",
+    "manufacturer": "",
+    "sourceCategory": "Кабель пожарный",
+    "from": {
+      "category": "soedinitelnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сэк"
+    },
+    "to": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель пожарный"
+    }
+  },
+  {
+    "cell": "F1939",
+    "sourceRowIndex": 1909,
+    "name": "КСВПВ 25х2х0.52",
+    "mark": "КСВПВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabel-vodopogr",
+      "subcategory": "",
+      "source": "rule",
+      "match": "впв "
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КСВ"
+    }
+  },
+  {
+    "cell": "F1940",
+    "sourceRowIndex": 1910,
+    "name": "КСВППэТ 4х2х0.52",
+    "mark": "КСВППэТ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "впп"
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "КСВ"
+    }
+  },
+  {
+    "cell": "F1968",
+    "sourceRowIndex": 1938,
+    "name": "Транскаб-КПСКТЭ-Ол нг(А)-HF 3х1.5",
+    "mark": "КПСКТЭ-Ол",
+    "manufacturer": "ТРАНСКАБ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "kabeli-podvizhnogo-sostava",
+      "subcategory": "",
+      "source": "rule",
+      "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F1969",
+    "sourceRowIndex": 1939,
+    "name": "Транскаб-КПСКТЭ-Ол нг(А)-HF 3х10",
+    "mark": "КПСКТЭ-Ол",
+    "manufacturer": "ТРАНСКАБ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "kabeli-podvizhnogo-sostava",
+      "subcategory": "",
+      "source": "rule",
+      "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F1970",
+    "sourceRowIndex": 1940,
+    "name": "Транскаб-КПСРТ нг(А) 12х1.5",
+    "mark": "КПСРТ",
+    "manufacturer": "ТРАНСКАБ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "kabeli-podvizhnogo-sostava",
+      "subcategory": "",
+      "source": "rule",
+      "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F1971",
+    "sourceRowIndex": 1941,
+    "name": "Транскаб-КПСТВМ нг(А) 2х1.5",
+    "mark": "КПСТВМ",
+    "manufacturer": "ТРАНСКАБ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "kabeli-podvizhnogo-sostava",
+      "subcategory": "",
+      "source": "rule",
+      "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F1972",
+    "sourceRowIndex": 1942,
+    "name": "Транскаб-КПСТВМ нг(А) 3х1.5",
+    "mark": "КПСТВМ",
+    "manufacturer": "ТРАНСКАБ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "kabeli-podvizhnogo-sostava",
+      "subcategory": "",
+      "source": "rule",
+      "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F1973",
+    "sourceRowIndex": 1943,
+    "name": "Транскаб-КПСТВМ нг(А) 4х1.5",
+    "mark": "КПСТВМ",
+    "manufacturer": "ТРАНСКАБ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "kabeli-podvizhnogo-sostava",
+      "subcategory": "",
+      "source": "rule",
+      "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F1974",
+    "sourceRowIndex": 1944,
+    "name": "Транскаб-КПСТВМ нг(А) 4х4",
+    "mark": "КПСТВМ",
+    "manufacturer": "ТРАНСКАБ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "kabeli-podvizhnogo-sostava",
+      "subcategory": "",
+      "source": "rule",
+      "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F1975",
+    "sourceRowIndex": 1945,
+    "name": "Транскаб-КПСТВМ нг(А) 4х6",
+    "mark": "КПСТВМ",
+    "manufacturer": "ТРАНСКАБ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "kabeli-podvizhnogo-sostava",
+      "subcategory": "",
+      "source": "rule",
+      "match": "транскаб"
+    }
+  },
+  {
+    "cell": "A2246",
+    "sourceRowIndex": 2212,
+    "name": "тофлекс РКП нг(А)-FRHF 4х70",
+    "mark": "тофлекс РКП",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-sudovye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ксрк"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "A2255",
+    "sourceRowIndex": 2221,
+    "name": "ВСЭК 5х2х0.35",
+    "mark": "ВСЭК",
+    "manufacturer": "",
+    "sourceCategory": "Кабель связи",
+    "from": {
+      "category": "soedinitelnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сэк"
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель связи"
+    }
+  },
+  {
+    "cell": "A2256",
+    "sourceRowIndex": 2222,
+    "name": "ВСЭК 5х2эх0.5",
+    "mark": "ВСЭК",
+    "manufacturer": "",
+    "sourceCategory": "Кабель связи",
+    "from": {
+      "category": "soedinitelnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сэк"
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель связи"
+    }
+  },
+  {
+    "cell": "F2280",
+    "sourceRowIndex": 2245,
+    "name": "СБПу 2х0.9",
+    "mark": "СБПу",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сбп "
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "СБП"
+    }
+  },
+  {
+    "cell": "F2290",
+    "sourceRowIndex": 2255,
+    "name": "МКСШп 4х0.9",
+    "mark": "МКСШп",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ксш "
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "МКСШп"
+    }
+  },
+  {
+    "cell": "F2291",
+    "sourceRowIndex": 2256,
+    "name": "МКСШп 4х1.2",
+    "mark": "МКСШп",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ксш "
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "МКСШп"
+    }
+  },
+  {
+    "cell": "A2335",
+    "sourceRowIndex": 2300,
+    "name": "СБПБ 3х1",
+    "mark": "СБПБ",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "сбп "
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "sourceCategory",
+      "match": "Кабель Сигнальный блокировочный СБЗПу"
+    }
+  },
+  {
+    "cell": "F2426",
+    "sourceRowIndex": 2389,
+    "name": "НИКИ-КУПсКШЭМ-Внг(А)-FRLS-ХЛ 37х2.5",
+    "mark": "КУПсКШЭМ-В",
+    "manufacturer": "НИКИ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-shakhtnye",
+      "subcategory": "",
+      "source": "keywordSubstring",
+      "match": "КШ"
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "НИКИ-КУ/КВ/КП"
+    }
+  },
+  {
+    "cell": "F2427",
+    "sourceRowIndex": 2390,
+    "name": "НИКИ-КУПсКШЭф-Внг(А)-LS-С 6х(2х1мкл2)",
+    "mark": "КУПсКШЭф-В",
+    "manufacturer": "НИКИ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-shakhtnye",
+      "subcategory": "",
+      "source": "keywordSubstring",
+      "match": "КШ"
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "НИКИ-КУ/КВ/КП"
+    }
+  },
+  {
+    "cell": "F2428",
+    "sourceRowIndex": 2391,
+    "name": "НИКИ-КУПсШЭМ-В нг(А)-FRLS-ХЛ 4х1",
+    "mark": "КУПсШЭМ-В",
+    "manufacturer": "НИКИ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "НИКИ-КУ/КВ/КП"
+    }
+  },
+  {
+    "cell": "F2429",
+    "sourceRowIndex": 2392,
+    "name": "НИКИ-КУПШ нг(А)-HF 4х0.75",
+    "mark": "КУПШ",
+    "manufacturer": "НИКИ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "НИКИ-КУ/КВ/КП"
+    }
+  },
+  {
+    "cell": "F2430",
+    "sourceRowIndex": 2393,
+    "name": "НИКИ-КУПШ энг(А)-HF 2х1.5",
+    "mark": "КУПШ",
+    "manufacturer": "НИКИ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "НИКИ-КУ/КВ/КП"
+    }
+  },
+  {
+    "cell": "F2431",
+    "sourceRowIndex": 2394,
+    "name": "НИКИ-КУПШ энг(А)-HF 3х0.75",
+    "mark": "КУПШ",
+    "manufacturer": "НИКИ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "НИКИ-КУ/КВ/КП"
+    }
+  },
+  {
+    "cell": "F2432",
+    "sourceRowIndex": 2395,
+    "name": "НИКИ-КУПШЭф-В нг(А)-HF 3х1",
+    "mark": "КУПШЭф-В",
+    "manufacturer": "НИКИ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "НИКИ-КУ/КВ/КП"
+    }
+  },
+  {
+    "cell": "F2433",
+    "sourceRowIndex": 2396,
+    "name": "НИКИ-КУПШЭф-В нг(А)-HF 4х1",
+    "mark": "КУПШЭф-В",
+    "manufacturer": "НИКИ",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    },
+    "to": {
+      "category": "kontrolnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "НИКИ-КУ/КВ/КП"
+    }
+  },
+  {
+    "cell": "F2435",
+    "sourceRowIndex": 2398,
+    "name": "Сегмент-КИ485-ЭПКГ 4х2х0.6",
+    "mark": "КИ485-ЭПКГ",
+    "manufacturer": "Сегмент",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "gibkiy-kabel",
+      "subcategory": "",
+      "source": "keywordSubstring",
+      "match": "КГ"
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "Сегмент-КИ185/КИ485"
+    }
+  },
+  {
+    "cell": "F2467",
+    "sourceRowIndex": 2430,
+    "name": "Транскаб-КПСТВМ нг(А) 4х35",
+    "mark": "КПСТВМ",
+    "manufacturer": "ТРАНСКАБ",
+    "sourceCategory": "Провод для монтажа подвижного рельс.состава НПП",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "kabeli-podvizhnogo-sostava",
+      "subcategory": "",
+      "source": "rule",
+      "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F2851",
+    "sourceRowIndex": 2808,
+    "name": "МКПсВЭфДлКВм-В 2х2х1 нг(А)-FRLS",
+    "mark": "МКПсВЭфДлКВм-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2852",
+    "sourceRowIndex": 2809,
+    "name": "МКПсКВ 7х2.5 нг-LS",
+    "mark": "МКПсКВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2853",
+    "sourceRowIndex": 2810,
+    "name": "МКПсКВ 2х2.5 нг(А)-HF-ХЛ",
+    "mark": "МКПсКВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2854",
+    "sourceRowIndex": 2811,
+    "name": "МКПсЭВ 1х2х1 нг-HF",
+    "mark": "МКПсЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2855",
+    "sourceRowIndex": 2812,
+    "name": "МКПсЭВ 2х2х1 нг-HF",
+    "mark": "МКПсЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2856",
+    "sourceRowIndex": 2813,
+    "name": "МКПсЭВ 2х2х1 нг(А)-HF",
+    "mark": "МКПсЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2857",
+    "sourceRowIndex": 2814,
+    "name": "МКПсЭВ 2х2х1 нг(А)-LS э хл",
+    "mark": "МКПсЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2858",
+    "sourceRowIndex": 2815,
+    "name": "МКПсЭВ 5х2х1 нг-HF",
+    "mark": "МКПсЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2859",
+    "sourceRowIndex": 2816,
+    "name": "МКПсЭВ 7х2х1 нг-HF",
+    "mark": "МКПсЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2860",
+    "sourceRowIndex": 2817,
+    "name": "МКПсЭВ 7х2х1 нг(А)-HF",
+    "mark": "МКПсЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2861",
+    "sourceRowIndex": 2818,
+    "name": "МКПсЭВ 10х2х1 нг-HF",
+    "mark": "МКПсЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2862",
+    "sourceRowIndex": 2819,
+    "name": "МКПсЭВ 10х2х1 нг(А)-HF",
+    "mark": "МКПсЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2863",
+    "sourceRowIndex": 2820,
+    "name": "МКПсЭиКВ 10х2х0.75 нг",
+    "mark": "МКПсЭиКВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2864",
+    "sourceRowIndex": 2821,
+    "name": "МКПсЭлКВ-В 3х2х1 нг(А)-FRLS",
+    "mark": "МКПсЭлКВ-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2865",
+    "sourceRowIndex": 2822,
+    "name": "МКПсЭлКВ-В 4х2х1 нг(А)-FRLS",
+    "mark": "МКПсЭлКВ-В",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2866",
+    "sourceRowIndex": 2823,
+    "name": "МКПсЭфВм знг(А)-LS-ХЛ 10х1",
+    "mark": "МКПсЭфВм",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "F2867",
+    "sourceRowIndex": 2824,
+    "name": "МКПсЭфВм-в-энг(А)-LS 37х1.5",
+    "mark": "МКПсЭфВм-в",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "rule",
+      "match": "кпс "
+    },
+    "to": {
+      "category": "montazhnyy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "мкпс"
+    }
+  },
+  {
+    "cell": "A2971",
+    "sourceRowIndex": 2926,
+    "name": "ПТГВ-ХК 2х1.5",
+    "mark": "ПТГВ-ХК",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-termoparny",
+      "subcategory": "",
+      "source": "rule",
+      "match": "птгв-хк"
+    }
+  },
+  {
+    "cell": "A2972",
+    "sourceRowIndex": 2927,
+    "name": "ПТГВ-ХК 2х2.5",
+    "mark": "ПТГВ-ХК",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-termoparny",
+      "subcategory": "",
+      "source": "rule",
+      "match": "птгв-хк"
+    }
+  },
+  {
+    "cell": "A2973",
+    "sourceRowIndex": 2928,
+    "name": "ПТГВэВнг-ха 2х1.5",
+    "mark": "ПТГВэВнг-ха",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "keywordSubstring",
+      "match": "ВНГ"
+    },
+    "to": {
+      "category": "kabeli-termoparny",
+      "subcategory": "",
+      "source": "rule",
+      "match": "птгвэв"
+    }
+  },
+  {
+    "cell": "A2975",
+    "sourceRowIndex": 2930,
+    "name": "ПТПВ-ха 2х1.5",
+    "mark": "ПТПВ-ха",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "keywordSubstring",
+      "match": "ТПВ"
+    },
+    "to": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    }
+  },
+  {
+    "cell": "A2978",
+    "sourceRowIndex": 2933,
+    "name": "ТЕРК-Г 4х2х1 нг(А)-LS ха(кх)эвб",
+    "mark": "ТЕРК-Г",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "keywordSubstring",
+      "match": "РК"
+    },
+    "to": {
+      "category": "kabeli-termoparny",
+      "subcategory": "",
+      "source": "rule",
+      "match": "терк-"
+    }
+  },
+  {
+    "cell": "A3406",
+    "sourceRowIndex": 3355,
+    "name": "ПМТК нг(А) 1х0.5",
+    "mark": "ПМТК",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "fallback",
+      "match": null
+    },
+    "to": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "keywordPrefix",
+      "match": "ПМТК"
+    }
+  }
+]

@@ -174,6 +174,65 @@ export function buildCatalogFacetsCore(items) {
   };
 }
 
+// Facet choices are calculated against every other active filter. This keeps
+// each filter's options useful after a selection (for example, the available
+// sections after choosing aluminum) while still allowing the current choice
+// to be changed or cleared.
+export function buildCatalogFacetsForQueryCore(items, query = {}) {
+  const normalizedQuery = normalizeCatalogFilterQueryCore(query);
+  const baseFacets = buildCatalogFacetsCore(items);
+  const facetFilters = [
+    ['materials', 'selectedMaterials'],
+    ['constructions', 'selectedConstructions'],
+    ['cores', 'selectedCores'],
+    ['sections', 'selectedSections'],
+    ['voltages', 'selectedVoltages'],
+    ['appTypes', 'selectedAppTypes'],
+    ['powerGroups', 'selectedPowerGroups'],
+    ['hasSPE', 'onlySPE'],
+  ];
+
+  for (const [facetName, filterName] of facetFilters) {
+    const candidates = applyProductFiltersCore(items, {
+      ...normalizedQuery,
+      [filterName]: filterName === 'onlySPE' ? false : [],
+    });
+    baseFacets[facetName] = buildCatalogFacetsCore(candidates)[facetName];
+  }
+
+  // Keep an active choice visible when a combination has no matches so the
+  // user can remove it directly instead of having to reset every filter.
+  const selectedFacetValues = [
+    ['materials', normalizedQuery.selectedMaterials],
+    ['constructions', normalizedQuery.selectedConstructions],
+    ['cores', normalizedQuery.selectedCores],
+    ['sections', normalizedQuery.selectedSections],
+    ['voltages', normalizedQuery.selectedVoltages],
+    ['appTypes', normalizedQuery.selectedAppTypes],
+    ['powerGroups', normalizedQuery.selectedPowerGroups],
+  ];
+  for (const [facetName, selectedValues] of selectedFacetValues) {
+    const values = [...new Set([...baseFacets[facetName], ...selectedValues])];
+    if (facetName === 'sections' || facetName === 'voltages') {
+      values.sort((a, b) => a - b);
+    } else if (facetName === 'cores') {
+      values.sort((a, b) =>
+        a.localeCompare(b, 'ru', { numeric: true })
+      );
+    } else if (facetName === 'powerGroups') {
+      values.sort(
+        (a, b) => POWER_CABLE_GROUPS.indexOf(a) - POWER_CABLE_GROUPS.indexOf(b)
+      );
+    } else {
+      values.sort((a, b) => a.localeCompare(b, 'ru'));
+    }
+    baseFacets[facetName] = values;
+  }
+  if (normalizedQuery.onlySPE) baseFacets.hasSPE = true;
+
+  return baseFacets;
+}
+
 export function applyProductFiltersCore(items, query) {
   let result = items;
   const selectedMaterials = query.selectedMaterials || [];

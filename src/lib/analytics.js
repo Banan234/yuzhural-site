@@ -9,11 +9,18 @@
 // Если в будущем добавится Google Analytics или собственный backend,
 // достаточно расширить trackEvent / trackPageview здесь.
 
+import {
+  COOKIE_CONSENT_CHANGE_EVENT,
+  COOKIE_CONSENT_COOKIE,
+  hasAnalyticsConsent,
+} from './cookieConsent';
+
 const COUNTER_ID = import.meta.env.VITE_YANDEX_METRIKA_ID;
 const MAX_PENDING_HITS = 50;
 let isReady = false;
 let initPromise = null;
 const pendingHits = [];
+let consentListenerBound = false;
 
 function isClient() {
   return typeof window !== 'undefined' && typeof document !== 'undefined';
@@ -22,6 +29,42 @@ function isClient() {
 function counterIdNumber() {
   const num = Number(COUNTER_ID);
   return Number.isFinite(num) && num > 0 ? num : null;
+}
+
+function clearYandexCookies() {
+  if (!isClient()) return;
+  try {
+    const names = document.cookie
+      .split(';')
+      .map((part) => part.trim().split('=')[0])
+      .filter((name) => /^_ym(?:_|$)/.test(name));
+    for (const name of names) {
+      document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax`;
+    }
+  } catch {
+    // Consent revocation must not break the page if browser storage is blocked.
+  }
+}
+
+function bindConsentListener() {
+  if (!isClient() || consentListenerBound) return;
+  consentListenerBound = true;
+  const sync = (event) => {
+    const allowed =
+      event.type === 'storage'
+        ? hasAnalyticsConsent()
+        : event.detail?.analytics === true;
+    if (allowed) {
+      initAnalytics();
+    } else {
+      pendingHits.length = 0;
+      clearYandexCookies();
+    }
+  };
+  window.addEventListener(COOKIE_CONSENT_CHANGE_EVENT, sync);
+  window.addEventListener('storage', (event) => {
+    if (event.key === COOKIE_CONSENT_COOKIE) sync(event);
+  });
 }
 
 function deferAfterBootstrap(callback) {
@@ -39,7 +82,7 @@ function deferAfterBootstrap(callback) {
 }
 
 function sendEvent(id, name, params) {
-  if (!window.ym || !name) return;
+  if (!hasAnalyticsConsent() || !window.ym || !name) return;
   if (params) {
     window.ym(id, 'reachGoal', name, params);
   } else {
@@ -48,7 +91,7 @@ function sendEvent(id, name, params) {
 }
 
 function sendPageview(id, url) {
-  if (!window.ym) return;
+  if (!hasAnalyticsConsent() || !window.ym) return;
   const target = url || window.location.pathname + window.location.search;
   window.ym(id, 'hit', target);
 }
@@ -78,6 +121,8 @@ function enqueueHit(hit) {
 
 export function initAnalytics() {
   if (!isClient()) return Promise.resolve(false);
+  bindConsentListener();
+  if (!hasAnalyticsConsent()) return Promise.resolve(false);
   if (isReady) return Promise.resolve(true);
   if (initPromise) return initPromise;
   const id = counterIdNumber();
@@ -87,6 +132,11 @@ export function initAnalytics() {
     deferAfterBootstrap(() => {
       if (isReady) {
         resolve(true);
+        return;
+      }
+      if (!hasAnalyticsConsent()) {
+        initPromise = null;
+        resolve(false);
         return;
       }
 
@@ -119,7 +169,7 @@ export function initAnalytics() {
 
       window.ym(id, 'init', {
         clickmap: false,
-        trackLinks: true,
+        trackLinks: false,
         accurateTrackBounce: false,
         webvisor: false,
       });
@@ -135,6 +185,8 @@ export function initAnalytics() {
 
 export function trackEvent(name, params) {
   if (!isClient()) return;
+  bindConsentListener();
+  if (!hasAnalyticsConsent()) return;
   const id = counterIdNumber();
   if (!id || !name) return;
   if (!isReady || !window.ym) {
@@ -151,6 +203,8 @@ export function trackEvent(name, params) {
 
 export function trackPageview(url) {
   if (!isClient()) return;
+  bindConsentListener();
+  if (!hasAnalyticsConsent()) return;
   const id = counterIdNumber();
   if (!id) return;
   if (!isReady || !window.ym) {
@@ -165,5 +219,5 @@ export function trackPageview(url) {
 }
 
 export function isAnalyticsEnabled() {
-  return Boolean(counterIdNumber());
+  return Boolean(counterIdNumber()) && hasAnalyticsConsent();
 }

@@ -6,7 +6,7 @@ test('home page opens quote modal and traps focus', async ({ page }) => {
   await page.goto('/');
 
   const heroHeading = page.getByRole('heading', {
-    name: 'Кабель оптом со склада в Челябинске',
+    name: 'Пришлите список — пришлём КП',
   });
   await expect(heroHeading).toBeVisible();
 
