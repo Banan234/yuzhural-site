@@ -6,6 +6,11 @@ export function createRouteObjects({
   HomePage,
   CatalogPage,
   ProductPage,
+  CableWeightPage,
+  ServicesPage,
+  CableKnowledgePage,
+  CableDrumPage,
+  CableShippingPage,
   CartPage,
   ContactsPage,
   DeliveryPage,
@@ -26,6 +31,28 @@ export function createRouteObjects({
     { path: 'privacy', element: <PrivacyPage /> },
     { path: 'about', element: <AboutPage /> },
   ];
+
+  if (CableWeightPage) {
+    children.push({ path: 'calculator/weight', element: <CableWeightPage /> });
+  }
+
+  if (ServicesPage)
+    children.push({ path: 'services', element: <ServicesPage /> });
+  if (CableKnowledgePage) {
+    for (const mode of ['marking', 'reference', 'analogs', 'manufacturers']) {
+      children.push({
+        path: `services/${mode}`,
+        element: <CableKnowledgePage key={mode} mode={mode} />,
+      });
+    }
+  }
+  if (CableDrumPage)
+    children.push({ path: 'services/drum', element: <CableDrumPage /> });
+  if (CableShippingPage)
+    children.push({
+      path: 'services/shipping',
+      element: <CableShippingPage />,
+    });
 
   if (InternalRuntimePage) {
     children.push({

@@ -18,6 +18,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { toCanonicalSitePath } from '../../src/lib/canonicalPaths.js';
+import { CABLE_SERVICES, SERVICES_PATH } from '../../src/lib/cableServices.js';
 
 const DEFAULT_SITE_URL =
   process.env.SITE_URL || process.env.VITE_SITE_URL || 'https://yu-uek.ru';
@@ -32,6 +33,14 @@ export const SITEMAP_FILES = {
 export const MAX_SITEMAP_URLS = 50_000;
 
 const STATIC_ROUTES = [
+  { path: SERVICES_PATH, changefreq: 'monthly', priority: '0.6' },
+  ...CABLE_SERVICES.filter((service) => service.key !== 'weight').map(
+    (service) => ({
+      path: service.path,
+      changefreq: 'monthly',
+      priority: '0.5',
+    })
+  ),
   { path: '/', changefreq: 'daily', priority: '1.0' },
   {
     path: toCanonicalSitePath('/catalog'),
@@ -42,6 +51,11 @@ const STATIC_ROUTES = [
     path: toCanonicalSitePath('/delivery'),
     changefreq: 'monthly',
     priority: '0.5',
+  },
+  {
+    path: toCanonicalSitePath('/calculator/weight'),
+    changefreq: 'monthly',
+    priority: '0.6',
   },
   {
     path: toCanonicalSitePath('/payment'),

@@ -71,7 +71,7 @@ async function loadFontData() {
   return cachedFontDataPromise;
 }
 
-async function registerFonts(doc) {
+export async function registerFonts(doc) {
   const { robotoRegularBase64, robotoBoldBase64 } = await loadFontData();
   doc.addFileToVFS('Roboto-Regular.ttf', robotoRegularBase64);
   doc.addFont('Roboto-Regular.ttf', FONT_REGULAR, 'normal');

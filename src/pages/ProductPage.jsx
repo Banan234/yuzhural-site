@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Container from '../components/ui/Container';
 import ProductCard from '../components/ui/ProductCard';
+import ProductServiceLinks from '../components/services/ProductServiceLinks';
 import { fetchProductBySlug, fetchRelatedProducts } from '../lib/productsApi';
 import { useCartStore } from '../store/useCartStore';
 import { useSEO } from '../hooks/useSEO';
@@ -249,6 +250,7 @@ export default function ProductPage() {
             </div>
 
             <p className="page-subtitle">{productDescription}</p>
+            <ProductServiceLinks product={product} quantity={quantity} />
 
             <div className="product-page__status-row">
               <span

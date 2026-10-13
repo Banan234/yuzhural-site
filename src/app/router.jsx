@@ -10,6 +10,11 @@ import HomePage from '../pages/HomePage';
 // чтобы убрать route waterfall для первого визита на /.
 const CatalogPage = lazy(() => import('../pages/CatalogPage'));
 const ProductPage = lazy(() => import('../pages/ProductPage'));
+const CableWeightPage = lazy(() => import('../pages/CableWeightPage'));
+const ServicesPage = lazy(() => import('../pages/ServicesPage'));
+const CableKnowledgePage = lazy(() => import('../pages/CableKnowledgePage'));
+const CableDrumPage = lazy(() => import('../pages/CableDrumPage'));
+const CableShippingPage = lazy(() => import('../pages/CableShippingPage'));
 const CartPage = lazy(() => import('../pages/CartPage'));
 const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 const DeliveryPage = lazy(() => import('../pages/DeliveryPage'));
@@ -24,6 +29,11 @@ export const router = createBrowserRouter(
     HomePage,
     CatalogPage,
     ProductPage,
+    CableWeightPage,
+    ServicesPage,
+    CableKnowledgePage,
+    CableDrumPage,
+    CableShippingPage,
     CartPage,
     ContactsPage,
     DeliveryPage,

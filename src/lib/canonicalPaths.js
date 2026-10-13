@@ -3,6 +3,14 @@
 const TRAILING_SLASH_CANONICAL_PATHS = new Set([
   '/about',
   '/catalog',
+  '/calculator/weight',
+  '/services',
+  '/services/marking',
+  '/services/reference',
+  '/services/analogs',
+  '/services/drum',
+  '/services/shipping',
+  '/services/manufacturers',
   '/contacts',
   '/delivery',
   '/payment',
@@ -45,6 +53,8 @@ export function toCanonicalSitePath(path = '/') {
 
 export const ABOUT_CANONICAL_PATH = toCanonicalSitePath('/about');
 export const CATALOG_CANONICAL_PATH = toCanonicalSitePath('/catalog');
+export const CABLE_WEIGHT_CANONICAL_PATH =
+  toCanonicalSitePath('/calculator/weight');
 export const CONTACTS_CANONICAL_PATH = toCanonicalSitePath('/contacts');
 export const DELIVERY_CANONICAL_PATH = toCanonicalSitePath('/delivery');
 export const PAYMENT_CANONICAL_PATH = toCanonicalSitePath('/payment');

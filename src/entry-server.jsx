@@ -9,6 +9,11 @@ import { PrerenderDataProvider } from './lib/prerenderData';
 import HomePage from './pages/HomePage';
 import CatalogPage from './pages/CatalogPage';
 import ProductPage from './pages/ProductPage';
+import CableWeightPage from './pages/CableWeightPage';
+import ServicesPage from './pages/ServicesPage';
+import CableKnowledgePage from './pages/CableKnowledgePage';
+import CableDrumPage from './pages/CableDrumPage';
+import CableShippingPage from './pages/CableShippingPage';
 import CartPage from './pages/CartPage';
 import ContactsPage from './pages/ContactsPage';
 import DeliveryPage from './pages/DeliveryPage';
@@ -23,6 +28,11 @@ const routes = createRouteObjects({
   HomePage,
   CatalogPage,
   ProductPage,
+  CableWeightPage,
+  ServicesPage,
+  CableKnowledgePage,
+  CableDrumPage,
+  CableShippingPage,
   CartPage,
   ContactsPage,
   DeliveryPage,

@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { mkdtemp, readFile, rm, writeFile } from 'fs/promises';
 import os from 'os';
 import path from 'path';
+import { CABLE_SERVICES, SERVICES_PATH } from '../../src/lib/cableServices.js';
 import {
   SITEMAP_FILES,
   buildRobotsTxt,
@@ -27,6 +28,10 @@ describe('buildSitemapPagesXml', () => {
     );
     expect(xml).toContain(`<loc>${SITE}/</loc>`);
     expect(xml).toContain(`<loc>${SITE}/catalog/</loc>`);
+    expect(xml).toContain(`<loc>${SITE}/calculator/weight/</loc>`);
+    expect(xml).toContain(`<loc>${SITE}${SERVICES_PATH}</loc>`);
+    for (const service of CABLE_SERVICES)
+      expect(xml).toContain(`<loc>${SITE}${service.path}</loc>`);
     expect(xml).toContain(`<loc>${SITE}/contacts/</loc>`);
     expect(xml).toContain(`<loc>${SITE}/privacy</loc>`);
     expect(xml).not.toContain(`<loc>${SITE}/privacy/</loc>`);

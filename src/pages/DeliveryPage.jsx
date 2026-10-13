@@ -1,6 +1,8 @@
 // Файл рендерит информационную страницу доставки с условиями, регионами и SEO-метаданными.
 
 import Container from '../components/ui/Container';
+import { Link } from 'react-router-dom';
+import { serviceUrl } from '../lib/cableServices';
 import ConsentGatedMap from '../components/layout/ConsentGatedMap';
 import { useJsonLd } from '../hooks/useJsonLd';
 import { useSEO } from '../hooks/useSEO';
@@ -117,6 +119,17 @@ export default function DeliveryPage() {
             </p>
           </article>
         </div>
+
+        <aside
+          className="info-note"
+          style={{ marginTop: 24, marginBottom: 24 }}
+        >
+          Рассчитайте массу, объём и количество грузовых мест перед обращением к
+          перевозчику.{' '}
+          <Link to={serviceUrl('shipping')} className="info-note__link">
+            Подготовить данные для доставки →
+          </Link>
+        </aside>
 
         <div className="contacts-map-card delivery-route-map">
           <div className="contacts-map-card__title">Схема проезда к складу</div>

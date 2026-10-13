@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import Container from '../ui/Container';
 import {
   ABOUT_CANONICAL_PATH,
+  CABLE_WEIGHT_CANONICAL_PATH,
   CATALOG_CANONICAL_PATH,
   CONTACTS_CANONICAL_PATH,
   DELIVERY_CANONICAL_PATH,
   PAYMENT_CANONICAL_PATH,
 } from '../../lib/canonicalPaths.js';
+import { SERVICES_PATH } from '../../lib/cableServices';
 import {
   SITE_EMAIL,
   SITE_EMAIL_HREF,
@@ -122,6 +124,8 @@ export default function SiteFooter({ onOpenQuote, onManageCookies }) {
               </button>
               <Link to={PAYMENT_CANONICAL_PATH}>Условия оплаты</Link>
               <Link to={DELIVERY_CANONICAL_PATH}>Доставка</Link>
+              <Link to={CABLE_WEIGHT_CANONICAL_PATH}>Калькулятор веса</Link>
+              <Link to={SERVICES_PATH}>Все сервисы</Link>
               <span className="site-footer__step">Гарантии и документы</span>
             </div>
           </div>

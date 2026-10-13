@@ -33,6 +33,7 @@ import {
   resolveSocialImageUrl,
 } from '../src/lib/siteConfig.js';
 import { toCanonicalSitePath } from '../src/lib/canonicalPaths.js';
+import { CABLE_SERVICES, SERVICES_PATH } from '../src/lib/cableServices.js';
 import { normalizeMetaDescription } from '../src/lib/metaDescription.js';
 import {
   buildStaticPageJsonLd,
@@ -60,6 +61,24 @@ const PRODUCT_PRERENDER_LIMIT_ENV = 'PRODUCT_PRERENDER_LIMIT';
 const PRODUCT_PRERENDER_INCLUDE_ENV = 'PRODUCT_PRERENDER_INCLUDE';
 
 export const STATIC_ROUTES = [
+  {
+    path: SERVICES_PATH,
+    title: `Сервисы для выбора и доставки кабеля — ${SITE_NAME}`,
+    description:
+      'Расчёт веса и диаметра, расшифровка маркировки, справочник кабеля, сравнение возможных замен и подготовка доставки.',
+    h1: 'Сервисы для работы с кабелем',
+    intro:
+      'Подберите параметры, проверьте обозначение и подготовьте данные для заказа.',
+  },
+  ...CABLE_SERVICES.filter((service) => service.key !== 'weight').map(
+    (service) => ({
+      path: service.path,
+      title: `${service.title} — ${SITE_NAME}`,
+      description: service.description,
+      h1: service.title,
+      intro: service.description,
+    })
+  ),
   {
     path: '/',
     title: `Кабель оптом в Челябинске — ${SITE_NAME}`,
@@ -104,6 +123,15 @@ export const STATIC_ROUTES = [
     h1: 'Доставка',
     intro:
       'Самовывоз со склада в Челябинске, отправка ТК по России. Отгрузка от 1 рабочего дня после оплаты.',
+  },
+  {
+    path: '/calculator/weight',
+    title: `Вес и диаметр кабеля — ${SITE_NAME}`,
+    description:
+      'Масса кабеля и барабанов, наружный диаметр и расчёт нескольких позиций по таблицам изготовителей.',
+    h1: 'Вес и диаметр кабеля',
+    intro:
+      'Рассчитайте ориентировочную массу кабеля по табличным данным производителей.',
   },
   {
     path: '/payment',
@@ -199,6 +227,10 @@ const ROUTE_MODULES = [
   {
     test: (routePath) => routePath === '/delivery',
     module: 'src/pages/DeliveryPage.jsx',
+  },
+  {
+    test: (routePath) => routePath === '/calculator/weight',
+    module: 'src/pages/CableWeightPage.jsx',
   },
   {
     test: (routePath) => routePath === '/payment',
@@ -746,8 +778,7 @@ function buildCatalogListItem(product) {
       product.concentricConductorCrossSection ?? null,
     doubleInsulationThickness: product.doubleInsulationThickness ?? null,
     opticalFiberCoreDiameter: product.opticalFiberCoreDiameter ?? null,
-    opticalFiberCladdingDiameter:
-      product.opticalFiberCladdingDiameter ?? null,
+    opticalFiberCladdingDiameter: product.opticalFiberCladdingDiameter ?? null,
     conductorStrandCount: product.conductorStrandCount ?? null,
     conductorConfiguration: product.conductorConfiguration || null,
     groundCores: product.groundCores ?? null,

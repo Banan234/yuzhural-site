@@ -10,6 +10,7 @@ import {
   DELIVERY_CANONICAL_PATH,
   PAYMENT_CANONICAL_PATH,
 } from '../../lib/canonicalPaths.js';
+import { SERVICES_PATH } from '../../lib/cableServices';
 import { SITE_PHONE_DISPLAY, SITE_PHONE_HREF } from '../../lib/siteConfig';
 
 const FEATURED_CATEGORY_SLUGS = [
@@ -26,12 +27,7 @@ const specialSection = CATALOG_SECTIONS.find(
   (section) => section.slug === 'specialnye-kabeli'
 );
 
-export default function MobileNav({
-  id,
-  isOpen,
-  onClose,
-  onOpenQuote,
-}) {
+export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
   useEffect(() => {
     if (!isOpen) return undefined;
 
@@ -108,10 +104,15 @@ export default function MobileNav({
               onClick={onClose}
             >
               <span className="mobile-nav__all-catalog-icon" aria-hidden="true">
-                <span /><span /><span /><span />
+                <span />
+                <span />
+                <span />
+                <span />
               </span>
               Весь каталог
-              <span className="mobile-nav__chevron" aria-hidden="true">›</span>
+              <span className="mobile-nav__chevron" aria-hidden="true">
+                ›
+              </span>
             </Link>
             <div className="mobile-nav__catalog">
               {featuredGroups.map((group) => (
@@ -158,6 +159,9 @@ export default function MobileNav({
               </Link>
               <Link to={PAYMENT_CANONICAL_PATH} onClick={onClose}>
                 Оплата
+              </Link>
+              <Link to={SERVICES_PATH} onClick={onClose}>
+                Сервисы и калькуляторы
               </Link>
               <Link to={`${ABOUT_CANONICAL_PATH}#documents`} onClick={onClose}>
                 Документы

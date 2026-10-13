@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-13",
+  "source": {
+    "publisher": "Кабельные системы",
+    "url": "https://kabel-s.ru/info/calc-kabel-ves/",
+    "dataUrl": "https://kabel-s.ru/js_calc/calculatorV.js"
+  },
+  "drums": [
+    { "material": "wood", "number": "6", "massKg": 25 },
+    { "material": "wood", "number": "8", "massKg": 43 },
+    { "material": "wood", "number": "8а", "massKg": 51 },
+    { "material": "wood", "number": "10", "massKg": 56 },
+    { "material": "wood", "number": "12", "massKg": 132 },
+    { "material": "wood", "number": "14", "massKg": 217 },
+    { "material": "wood", "number": "14а", "massKg": 200 },
+    { "material": "wood", "number": "16", "massKg": 308 },
+    { "material": "wood", "number": "17", "massKg": 367 },
+    { "material": "wood", "number": "17а", "massKg": 390 },
+    { "material": "wood", "number": "18а", "massKg": 494 },
+    { "material": "wood", "number": "18а-1", "massKg": 509 },
+    { "material": "wood", "number": "18", "massKg": 535 },
+    { "material": "wood", "number": "18б", "sourceNumber": "186", "massKg": 590 },
+    { "material": "wood", "number": "20а", "massKg": 725 },
+    { "material": "wood", "number": "20", "massKg": 763 },
+    { "material": "wood", "number": "20б", "sourceNumber": "206", "massKg": 941 },
+    { "material": "wood", "number": "22", "massKg": 965 },
+    { "material": "wood", "number": "22а", "massKg": 1029 },
+    { "material": "wood", "number": "22б", "sourceNumber": "226", "massKg": 1110 },
+    { "material": "wood", "number": "22в", "massKg": 1198 },
+    { "material": "wood", "number": "25", "massKg": 1540 },
+    { "material": "metal", "number": "7", "massKg": 35 },
+    { "material": "metal", "number": "8", "massKg": 42 },
+    { "material": "metal", "number": "10", "massKg": 79 },
+    { "material": "metal", "number": "12", "massKg": 100 },
+    { "material": "metal", "number": "14", "massKg": 130 },
+    { "material": "metal", "number": "18", "massKg": 220 }
+  ]
+}

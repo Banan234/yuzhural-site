@@ -21,6 +21,7 @@ import {
   DELIVERY_CANONICAL_PATH,
   PAYMENT_CANONICAL_PATH,
 } from '../../lib/canonicalPaths.js';
+import { SERVICES_PATH } from '../../lib/cableServices';
 import {
   SITE_EMAIL,
   SITE_EMAIL_HREF,
@@ -74,7 +75,9 @@ function HeaderCartLink({ totalCount, mobile = false }) {
         <circle cx="20" cy="21" r="1" />
         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
       </svg>
-      {mobile ? <span className="site-header__cart-label">Список КП</span> : null}
+      {mobile ? (
+        <span className="site-header__cart-label">Список КП</span>
+      ) : null}
       {totalCount > 0 ? <span className="cart-badge">{totalCount}</span> : null}
     </Link>
   );
@@ -379,6 +382,14 @@ export default function MainLayout() {
                   }
                 >
                   Оплата
+                </NavLink>
+                <NavLink
+                  to={SERVICES_PATH}
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? ' nav-link--active' : ''}`
+                  }
+                >
+                  Сервисы
                 </NavLink>
                 <Link to={DOCUMENTS_PATH} className="nav-link">
                   Документы
