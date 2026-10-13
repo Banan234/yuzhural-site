@@ -3,10 +3,6 @@
 import catalogCategoriesData from '../../../shared/catalogCategories.json';
 import { CATALOG_CANONICAL_PATH } from '../../lib/canonicalPaths.js';
 
-const cableSection = catalogCategoriesData.sections.find(
-  (section) => section.slug === 'kabel-i-provod'
-);
-
 function buildSearchLink(term) {
   return {
     label: term,
@@ -15,22 +11,45 @@ function buildSearchLink(term) {
 }
 
 function buildCategoryMenuItem(category) {
-  const uniqueKeywords = Array.from(new Set(category.keywords || []))
-    .filter(Boolean)
-    .slice(0, 5);
+  const subcategoryLinks = (category.subcategories || []).map(
+    (subcategory) => ({
+      label: subcategory.name,
+      to: `/catalog/${subcategory.slug}`,
+    })
+  );
+  const seenLabels = new Set(
+    [category.name, ...subcategoryLinks.map((link) => link.label)].map(
+      (label) => label.trim().toLocaleLowerCase('ru-RU')
+    )
+  );
+  const keywordLinks = (category.keywords || []).flatMap((keyword) => {
+    const label = keyword.trim();
+    const normalizedLabel = label.toLocaleLowerCase('ru-RU');
+    if (!label || seenLabels.has(normalizedLabel)) return [];
+    seenLabels.add(normalizedLabel);
+    return [buildSearchLink(label)];
+  });
 
   return {
     title: category.name,
     slug: category.slug,
     links: [
       { label: category.name, to: `/catalog/${category.slug}` },
-      ...uniqueKeywords.map(buildSearchLink),
+      ...subcategoryLinks,
+      ...keywordLinks,
     ],
   };
 }
 
-export const CABLE_SECTION_NAME = cableSection?.name || 'Кабель и провод';
+export const CATALOG_SECTIONS = catalogCategoriesData.sections.map(
+  (section) => ({
+    title: section.name,
+    slug: section.slug,
+    to: `/catalog/${section.slug}`,
+    groups: (section.categories || []).map(buildCategoryMenuItem),
+  })
+);
 
-export const CATALOG_MENU = [
-  ...(cableSection?.categories || []).map(buildCategoryMenuItem),
-];
+export const CATALOG_MENU = CATALOG_SECTIONS.flatMap(
+  (section) => section.groups
+);

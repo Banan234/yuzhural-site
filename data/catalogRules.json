@@ -20,6 +20,56 @@
     "priority": 205
   },
   {
+    "_comment": "ВЭкВКВ-ВП не идентифицирован по паспорту. Заголовок прайса про КИМЭП-М не доказывает, что эта марка силовая.",
+    "type": "ВЭкВКВ-ВП — требуется паспорт",
+    "originalNamePrefixes": ["ВЭкВКВ-ВП "],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Прочее",
+    "catalogCategorySlug": "prochee",
+    "priority": 205
+  },
+  {
+    "_comment": "Декларация производителя относит ЭКС-ШВППЭ/Э и вариант -5 к симметричным кабелям для структурированных систем связи.",
+    "type": "ЭКС-ШВППЭ/Э — структурированные системы связи",
+    "originalNamePrefixes": ["ЭКС-ШВППЭ/Э"],
+    "catalogSection": "Специальные кабели",
+    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogCategory": "LAN-кабели",
+    "catalogCategorySlug": "lan-kabeli",
+    "priority": 205
+  },
+  {
+    "_comment": "Подтверждённые по каталогам производителей силовой НРГ, провод ПРГН и микрофонный провод ПМПЭВ.",
+    "type": "НРГ — силовой кабель",
+    "originalNamePrefixes": ["НРГ "],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Силовой кабель",
+    "catalogCategorySlug": "silovoy-kabel",
+    "priority": 205
+  },
+  {
+    "type": "ПРГН/ПМПЭВ — провода",
+    "originalNamePrefixes": ["ПРГН ", "ПМПЭВ "],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Провода",
+    "catalogCategorySlug": "provoda",
+    "priority": 205
+  },
+  {
+    "_comment": "ТРВ — телефонный распределительный провод; ШТЛ — шнур связи.",
+    "type": "ТРВ/ШТЛ — связь",
+    "patterns": ["трв "],
+    "originalNamePrefixes": ["ШТЛ-"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Кабели связи",
+    "catalogCategorySlug": "kabeli-svyazi",
+    "priority": 205
+  },
+  {
     "_comment": "КПБП без исполнения имеет и другие применения; подтверждены только эти контрольные HF/FRHF позиции прайса.",
     "type": "КПБП HF/FRHF",
     "exactNames": [
@@ -44,13 +94,14 @@
     "priority": 200
   },
   {
-    "type": "СБЗПу/СБВБПу",
-    "patterns": ["сбзпу", "сбвбпу", "сбп "],
+    "_comment": "Сигнально-блокировочные марки по каталогам СамараКабель и Казэнергокабель; сопоставление только с началом исходного имени.",
+    "type": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные",
+    "originalNamePrefixes": ["СБП", "СБЗП", "СБВБП", "СБВГ"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели пожарной и охранной сигнализации",
-    "catalogCategorySlug": "kabeli-pozharnoy-signalizacii",
-    "priority": 200
+    "catalogCategory": "Сигнально-блокировочные",
+    "catalogCategorySlug": "signalno-blokirovochnye",
+    "priority": 220
   },
   {
     "type": "J-Y(St)Y / JE-Y / JE-H / J-H(St)H (импортная пожарная)",
@@ -221,13 +272,43 @@
     "priority": 180
   },
   {
-    "type": "H05V-K/H07V-K/H05Z1-K/H07Z1-K одножильные (импортные провода)",
-    "patterns": ["h05v-k", "h07v-k", "x07v-k", "07v-k", "h05z1-k", "h07z1-k"],
+    "type": "H05V-K/H07V-K/H05Z-K/H05Z1-K/H07Z1-K одножильные (импортные провода)",
+    "patterns": [
+      "h05v-k",
+      "h07v-k",
+      "x07v-k",
+      "07v-k",
+      "h05z-k",
+      "h05z1-k",
+      "h07z1-k"
+    ],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Импортные кабели",
     "catalogCategorySlug": "importnye-kabeli",
     "applicationType": "Провода",
+    "priority": 180
+  },
+  {
+    "_comment": "BETAtherm 145 — одножильный безгалогенный провод производителя Studer Cables.",
+    "type": "BETAtherm 145",
+    "patterns": ["beta therm 145halogen"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Импортные кабели",
+    "catalogCategorySlug": "importnye-kabeli",
+    "applicationType": "Провода",
+    "priority": 180
+  },
+  {
+    "_comment": "JAMAK — симметричный инструментальный кабель передачи данных Draka.",
+    "type": "JAMAK",
+    "patterns": ["jamak"],
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
+    "catalogCategory": "Импортные кабели",
+    "catalogCategorySlug": "importnye-kabeli",
+    "applicationType": "Кабели связи",
     "priority": 180
   },
 
@@ -358,6 +439,7 @@
       "птвэв",
       "птгвэв",
       "птгв-хк",
+      "птффг",
       "терк-",
       "птвп-",
       "птвт-",
@@ -1194,9 +1276,18 @@
   {
     "type": "ИнСил монтажные серии",
     "patterns": [
-      "инсил-а", "инсил-б", "инсил-к", "инсил-оэ", "инсил-оэб",
-      "инсил-оэв", "инсил-иэ", "инсил-и ", "инсил-иэоэк", "инсил-иээк",
-      "инсил-оэкв", "инсил-оэк"
+      "инсил-а",
+      "инсил-б",
+      "инсил-к",
+      "инсил-оэ",
+      "инсил-оэб",
+      "инсил-оэв",
+      "инсил-иэ",
+      "инсил-и ",
+      "инсил-иэоэк",
+      "инсил-иээк",
+      "инсил-оэкв",
+      "инсил-оэк"
     ],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
@@ -1263,8 +1354,16 @@
   {
     "type": "Оптические марки DPD/DPL/DPO/DOL/DPT/TOL/TOS/OKD/OKLST/OKSL",
     "patterns": [
-      "дпд", "дпл", "дпо", "дол", "дпт-", "тол-п-", "тос",
-      "окдн-", "оклст-", "оксл-т-"
+      "дпд",
+      "дпл",
+      "дпо",
+      "дол",
+      "дпт-",
+      "тол-п-",
+      "тос",
+      "окдн-",
+      "оклст-",
+      "оксл-т-"
     ],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
@@ -1406,7 +1505,17 @@
   },
   {
     "type": "КПМ*/МЭВ*-монтажные",
-    "patterns": ["кпмвэф", "кпмвэ", "мэвэк", "мэвэ", "укэвк"],
+    "patterns": [
+      "кпмвэф",
+      "кпмвэ",
+      "кпмввгм",
+      "кпмвквгм",
+      "кпмсэквг",
+      "кпмсэфкпгм",
+      "мэвэк",
+      "мэвэ",
+      "укэвк"
+    ],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Монтажный кабель",
@@ -1463,17 +1572,6 @@
     "catalogCategory": "Металлорукав и гофра",
     "catalogCategorySlug": "metallorukav-gofra",
     "priority": 220
-  },
-
-  {
-    "_comment": "=== ЖД сигнально-блокировочные (СБПЗА*) — это связь, не пожарная ===",
-    "type": "СБПЗА/СБПЗу ЖД-сигналка",
-    "patterns": ["сбпза", "сбпзу", "сбзп", "сбпбп"],
-    "catalogSection": "Кабель и провод",
-    "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
-    "priority": 210
   },
 
   {

@@ -26,6 +26,7 @@ const IMAGE_BY_SLUG = {
   'kabeli-podvizhnogo-sostava': PRODUCT_IMAGE_FALLBACKS.flexibleCable,
   'bortovye-provoda': PRODUCT_IMAGE_FALLBACKS.flexibleCable,
   'kabeli-svyazi': PRODUCT_IMAGE_FALLBACKS.communicationCable,
+  'signalno-blokirovochnye': PRODUCT_IMAGE_FALLBACKS.communicationCable,
   'kabeli-pozharnoy-signalizacii': PRODUCT_IMAGE_FALLBACKS.communicationCable,
   'lan-kabeli': PRODUCT_IMAGE_FALLBACKS.communicationCable,
   provoda: PRODUCT_IMAGE_FALLBACKS.wire,

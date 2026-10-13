@@ -1,5 +1,7 @@
 // Файл рендерит страницу о компании с преимуществами, реквизитами и SEO-структурой.
 
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Container from '../components/ui/Container';
 import { useJsonLd } from '../hooks/useJsonLd';
 import { useSEO } from '../hooks/useSEO';
@@ -86,6 +88,16 @@ const ABOUT_ADVANTAGES = [
 ];
 
 export default function AboutPage() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash !== '#documents') return undefined;
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById('documents')?.scrollIntoView({ block: 'start' });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [hash]);
+
   function handleOpenAboutLead() {
     window.dispatchEvent(
       new CustomEvent('open-lead-modal', {
@@ -231,7 +243,11 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="section section--soft">
+      <section
+        id="documents"
+        className="section section--soft"
+        style={{ scrollMarginTop: '140px' }}
+      >
         <Container>
           <div className="content-columns">
             <div>

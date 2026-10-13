@@ -253,7 +253,6 @@
             "ТПВ",
             "КСП",
             "КСВВ",
-            "СБП",
             "ПКСВ",
             "КПКЭВ",
             "КМС",
@@ -282,6 +281,19 @@
           ]
         },
         {
+          "name": "Сигнально-блокировочные",
+          "slug": "signalno-blokirovochnye",
+          "keywords": [
+            "СБП",
+            "СБПБ",
+            "СБПу",
+            "СБПЗА",
+            "СБЗПу",
+            "СБВБПу",
+            "СБВГ"
+          ]
+        },
+        {
           "name": "Кабели пожарной и охранной сигнализации",
           "slug": "kabeli-pozharnoy-signalizacii",
           "keywords": [
@@ -292,10 +304,6 @@
             "КПСЭС",
             "КПсЭС",
             "КПСнг",
-            "СБЗПу",
-            "СБВБПу",
-            "СБЗ",
-            "СБВ",
             "J-Y(St)Y",
             "JY(St)Y",
             "J-Y",
@@ -353,16 +361,52 @@
             "H09V-K"
           ],
           "subcategories": [
-            { "name": "Силовые кабели", "slug": "importnye-silovye-kabeli", "keywords": [] },
-            { "name": "Контрольные кабели", "slug": "importnye-kontrolnye-kabeli", "keywords": [] },
-            { "name": "Кабели связи", "slug": "importnye-kabeli-svyazi", "keywords": [] },
-            { "name": "LAN-кабели", "slug": "importnye-lan-kabeli", "keywords": [] },
-            { "name": "Монтажные кабели", "slug": "importnye-montazhnye-kabeli", "keywords": [] },
+            {
+              "name": "Силовые кабели",
+              "slug": "importnye-silovye-kabeli",
+              "keywords": []
+            },
+            {
+              "name": "Контрольные кабели",
+              "slug": "importnye-kontrolnye-kabeli",
+              "keywords": []
+            },
+            {
+              "name": "Кабели связи",
+              "slug": "importnye-kabeli-svyazi",
+              "keywords": []
+            },
+            {
+              "name": "LAN-кабели",
+              "slug": "importnye-lan-kabeli",
+              "keywords": []
+            },
+            {
+              "name": "Монтажные кабели",
+              "slug": "importnye-montazhnye-kabeli",
+              "keywords": []
+            },
             { "name": "Провода", "slug": "importnye-provoda", "keywords": [] },
-            { "name": "Гибкие кабели", "slug": "importnye-gibkie-kabeli", "keywords": [] },
-            { "name": "Кабели пожарной и охранной сигнализации", "slug": "importnye-kabeli-signalizacii", "keywords": [] },
-            { "name": "Кабели судовые", "slug": "importnye-kabeli-sudovye", "keywords": [] },
-            { "name": "Другие импортные кабели", "slug": "importnye-drugie-kabeli", "keywords": [] }
+            {
+              "name": "Гибкие кабели",
+              "slug": "importnye-gibkie-kabeli",
+              "keywords": []
+            },
+            {
+              "name": "Кабели пожарной и охранной сигнализации",
+              "slug": "importnye-kabeli-signalizacii",
+              "keywords": []
+            },
+            {
+              "name": "Кабели судовые",
+              "slug": "importnye-kabeli-sudovye",
+              "keywords": []
+            },
+            {
+              "name": "Другие импортные кабели",
+              "slug": "importnye-drugie-kabeli",
+              "keywords": []
+            }
           ]
         },
         {

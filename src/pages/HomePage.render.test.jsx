@@ -116,7 +116,7 @@ describe('HomePage SSR render', () => {
       </MemoryRouter>
     );
 
-    expect(html).toContain('Из наличия на складе');
+    expect(html).toContain('Товары из каталога');
     expect(html).toContain('ВВГнг(A)-LS 3х2,5');
     expect(html).not.toContain('Загружаем актуальные позиции');
     expect(html).not.toContain('aria-busy="true"');
@@ -136,7 +136,7 @@ describe('HomePage SSR render', () => {
 
     expect(
       await screen.findByRole('heading', {
-        name: 'Пришлите список — пришлём КП',
+        name: 'Кабель для вашего проекта — с расчётом в рабочий день',
       })
     ).toBeInTheDocument();
 

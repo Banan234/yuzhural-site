@@ -1,25 +1,37 @@
 {
   "sourceSha256": "3ddb6f6ce230a349e4e8415930864393dd5d1955a65db45ec9c1f8effa8dfe35",
   "productsBefore": 5714,
-  "productsAfter": 5713,
-  "excluded": 1169,
-  "review": 149,
-  "moved": 153,
-  "publishGuardCategoryChangedPercent": 2.68,
-  "fallbackOther": 154,
+  "productsAfter": 5712,
+  "excluded": 1170,
+  "review": 132,
+  "moved": 208,
+  "publishGuardCategoryChangedPercent": 3.64,
+  "fallbackOther": 131,
   "removed": [
     {
       "cell": "F3315",
       "name": "Прибор показыв.КП1м-231R"
+    },
+    {
+      "cell": "F3400",
+      "name": "РТЗ-51.01 УХЛ4"
     }
   ],
   "pairs": [
+    [
+      "kabeli-svyazi → signalno-blokirovochnye",
+      30
+    ],
     [
       "silovoy-kabel → kontrolnyy-kabel",
       23
     ],
     [
       "kontrolnyy-kabel → kabeli-svyazi",
+      17
+    ],
+    [
+      "kabeli-pozharnoy-signalizacii → signalno-blokirovochnye",
       17
     ],
     [
@@ -31,28 +43,32 @@
       9
     ],
     [
+      "prochee → kabeli-svyazi",
+      8
+    ],
+    [
+      "prochee → importnye-kabeli",
+      8
+    ],
+    [
+      "prochee → silovoy-kabel",
+      7
+    ],
+    [
+      "kabeli-svyazi → prochee",
+      7
+    ],
+    [
+      "kontrolnyy-kabel → montazhnyy-kabel",
+      7
+    ],
+    [
       "kabeli-svyazi → kabeli-pozharnoy-signalizacii",
       7
     ],
     [
-      "prochee → silovoy-kabel",
-      6
-    ],
-    [
-      "kabeli-svyazi → prochee",
-      6
-    ],
-    [
-      "kontrolnyy-kabel → montazhnyy-kabel",
-      6
-    ],
-    [
       "prochee → kontrolnyy-kabel",
       6
-    ],
-    [
-      "prochee → kabeli-svyazi",
-      5
     ],
     [
       "kabeli-pozharnoy-signalizacii → silovoy-kabel",
@@ -63,11 +79,7 @@
       5
     ],
     [
-      "prochee → importnye-kabeli",
-      4
-    ],
-    [
-      "silovoy-kabel → prochee",
+      "silovoy-kabel → montazhnyy-kabel",
       3
     ],
     [
@@ -75,11 +87,19 @@
       3
     ],
     [
+      "prochee → provoda",
+      3
+    ],
+    [
+      "prochee → kabeli-termoparny",
+      3
+    ],
+    [
       "provoda → gibkiy-kabel",
       2
     ],
     [
-      "provoda → prochee",
+      "provoda → lan-kabeli",
       2
     ],
     [
@@ -99,31 +119,11 @@
       2
     ],
     [
-      "kabeli-pozharnoy-signalizacii → kabeli-svyazi",
-      2
-    ],
-    [
       "kabeli-shakhtnye → kontrolnyy-kabel",
       2
     ],
     [
-      "prochee → kabeli-termoparny",
-      2
-    ],
-    [
-      "kabeli-svyazi → silovoy-kabel",
-      1
-    ],
-    [
-      "kontrolnyy-kabel → prochee",
-      1
-    ],
-    [
-      "soedinitelnyy-kabel → prochee",
-      1
-    ],
-    [
-      "montazhnyy-kabel → prochee",
+      "soedinitelnyy-kabel → montazhnyy-kabel",
       1
     ],
     [
@@ -157,11 +157,7 @@
     [
       "kabeli-svyazi → kabeli-termoparny",
       1
-    ],
-    [
-      "prochee → provoda",
-      1
     ]
   ],
-  "sourceCategoryConflicts": 190
+  "sourceCategoryConflicts": 220
 }

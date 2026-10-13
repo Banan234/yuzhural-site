@@ -15,7 +15,16 @@
     ],
     "category": "К А Б Е Л Ь Н А Я    П Р О Д У К Ц И Я",
     "product": "АПБ 1,8х4,0/1,92",
-    "reason": "Требуется проверить решение импорта: insufficient_cable_evidence (К А Б Е Л Ь Н А Я    П Р О Д У К Ц И Я); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: insufficient_cable_evidence (К А Б Е Л Ь Н А Я    П Р О Д У К Ц И Я); позиция сохранена, требуется проверка",
+    "cell": "A11",
+    "markFamily": "АПБ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "кг",
+    "price": 425700,
+    "stock": 1499.9,
+    "manufacturer": ""
   },
   {
     "rowIndex": 151,
@@ -33,7 +42,16 @@
     ],
     "category": "Без категории",
     "product": "АПСВГ 3х95+1х50",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A155",
+    "markFamily": "АПСВГ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 418,
+    "stock": 97,
+    "manufacturer": ""
   },
   {
     "rowIndex": 205,
@@ -51,7 +69,16 @@
     ],
     "category": "Без категории",
     "product": "ПБШв 4х50",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A210",
+    "markFamily": "ПБШВ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 2480.2,
+    "stock": 26,
+    "manufacturer": ""
   },
   {
     "rowIndex": 281,
@@ -69,7 +96,16 @@
     ],
     "category": "Без категории",
     "product": "ВбШ 2х16 нг(А)-ХЛ",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A287",
+    "markFamily": "ВБШ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 375.8,
+    "stock": 25,
+    "manufacturer": ""
   },
   {
     "rowIndex": 358,
@@ -87,7 +123,16 @@
     ],
     "category": "Без категории",
     "product": "ВВБ 5х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A365",
+    "markFamily": "ВВБ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 136.4,
+    "stock": 104,
+    "manufacturer": ""
   },
   {
     "rowIndex": 360,
@@ -105,7 +150,16 @@
     ],
     "category": "Без категории",
     "product": "ВКШВ 3х4 нг(А)-LS",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A367",
+    "markFamily": "ВКШВ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 167.3,
+    "stock": 54,
+    "manufacturer": ""
   },
   {
     "rowIndex": 372,
@@ -123,7 +177,16 @@
     ],
     "category": "Без категории",
     "product": "ИнСил-Вков-внг(А)-LS-ХЛ 3х16",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A379",
+    "markFamily": "ИНСИЛ-ВКОВ-В",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 606.4,
+    "stock": 121,
+    "manufacturer": ""
   },
   {
     "rowIndex": 373,
@@ -141,7 +204,16 @@
     ],
     "category": "Без категории",
     "product": "ИнСил-Вков-внг(А)-LS-ХЛ 3х4",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A380",
+    "markFamily": "ИНСИЛ-ВКОВ-В",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 153.4,
+    "stock": 342,
+    "manufacturer": ""
   },
   {
     "rowIndex": 374,
@@ -159,7 +231,16 @@
     ],
     "category": "Без категории",
     "product": "ИнСил-Вков-внг(А)-LS-ХЛ 4х2,5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A381",
+    "markFamily": "ИНСИЛ-ВКОВ-В",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 126,
+    "stock": 563,
+    "manufacturer": ""
   },
   {
     "rowIndex": 375,
@@ -177,7 +258,16 @@
     ],
     "category": "Без категории",
     "product": "ИнСил-Вков-внг(А)-LS-ХЛ 5х2,5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A382",
+    "markFamily": "ИНСИЛ-ВКОВ-В",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 157.9,
+    "stock": 593,
+    "manufacturer": ""
   },
   {
     "rowIndex": 339,
@@ -195,7 +285,16 @@
     ],
     "category": "Без категории",
     "product": "FRZXOHR 1х2х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F346",
+    "markFamily": "FRZXOHR",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 25.4,
+    "stock": 51,
+    "manufacturer": ""
   },
   {
     "rowIndex": 543,
@@ -213,7 +312,16 @@
     ],
     "category": "Без категории",
     "product": "ВЭкВКВ-ВП нг(А)-FRLS 10х2х1.5л",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F553",
+    "markFamily": "ВЭКВКВ-ВП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 655.8,
+    "stock": 159,
+    "manufacturer": ""
   },
   {
     "rowIndex": 544,
@@ -231,7 +339,16 @@
     ],
     "category": "Без категории",
     "product": "ВЭкВКВ-ВП нг(А)-FRLS 6х2х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F554",
+    "markFamily": "ВЭКВКВ-ВП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 470.5,
+    "stock": 140,
+    "manufacturer": ""
   },
   {
     "rowIndex": 545,
@@ -249,7 +366,16 @@
     ],
     "category": "Без категории",
     "product": "ВЭкВКВ-ВП нг(А)-FRLS 6х2х1.5 л",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F555",
+    "markFamily": "ВЭКВКВ-ВП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 470.5,
+    "stock": 394,
+    "manufacturer": ""
   },
   {
     "rowIndex": 605,
@@ -267,7 +393,16 @@
     ],
     "category": "Без категории",
     "product": "НУД 3х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A615",
+    "markFamily": "НУД",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 64.3,
+    "stock": 31,
+    "manufacturer": ""
   },
   {
     "rowIndex": 607,
@@ -285,7 +420,16 @@
     ],
     "category": "Без категории",
     "product": "ТБТ 3х2,5 нг(А)-uc",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A617",
+    "markFamily": "ТБТ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 111.5,
+    "stock": 41,
+    "manufacturer": ""
   },
   {
     "rowIndex": 632,
@@ -303,7 +447,16 @@
     ],
     "category": "Без категории",
     "product": "ИнСил-ПКо пнг(А)-FRHF 3х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F643",
+    "markFamily": "ИНСИЛ-ПКОП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 204.6,
+    "stock": 135,
+    "manufacturer": ""
   },
   {
     "rowIndex": 674,
@@ -321,61 +474,16 @@
     ],
     "category": "Без категории",
     "product": "КОУ-В нг(А)-LS g-B-0.6/1.8",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 679,
-    "row": [
-      "КПМВКВГм-В нг(А)хл  3х1",
-      "км",
-      "69,200",
-      "1.074",
-      "",
-      "КУИН нг(А)  4х2х1.5 ВЭК-хл",
-      "км",
-      "219,900",
-      "0.087",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "КПМВКВГм-В нг(А)-ХЛ 3х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 687,
-    "row": [
-      "КПМСЭКВГ нг(А)FRLS  2х2х1",
-      "км",
-      "112,800",
-      "0.039",
-      "",
-      "КУИН нг(А)FR 3х0.5",
-      "км",
-      "73,500",
-      "0.279",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "КПМСЭКВГ нг(А)-FRLS 2х2х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 688,
-    "row": [
-      "КПМСЭфКПГм-В нг(А)FRLS хл  3х1.5",
-      "км",
-      "91,400",
-      "0.305",
-      "",
-      "КУИН нг(А)FR 3х0.75 ТЭК",
-      "км",
-      "119,100",
-      "0.205",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "КПМСЭфКПГм-В нг(А)-FRLS-ХЛ 3х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F685",
+    "markFamily": "КОУ-В",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 37.5,
+    "stock": 190,
+    "manufacturer": ""
   },
   {
     "rowIndex": 957,
@@ -393,43 +501,16 @@
     ],
     "category": "Без категории",
     "product": "AVC ELECTRONICS 4c",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 961,
-    "row": [
-      "Кабель для подвижн.и фиксир.внутриприбор.и межприборн",
-      "",
-      "",
-      "",
-      "",
-      "BETA THERM 145HALOGEN 1х1.5",
-      "км",
-      "29,800",
-      "0.06",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "BETA THERM 145HALOGEN 1х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 962,
-    "row": [
-      "КСТПЭП нг(А)FRHF  2х1",
-      "км",
-      "70,900",
-      "0.398",
-      "",
-      "BETA THERM 145HALOGEN 1х2.5",
-      "км",
-      "49,700",
-      "0.05",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "BETA THERM 145HALOGEN 1х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F973",
+    "markFamily": "AVCELECTRONICS4C",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 38.9,
+    "stock": 200,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1016,
@@ -447,25 +528,16 @@
     ],
     "category": "Без категории",
     "product": "FLEX 2х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 1059,
-    "row": [
-      "H05z-K 1х 0.5 сер",
-      "км",
-      "6,250",
-      "0.1",
-      "",
-      "HELUKABEL TRONIC LIYY 4х0.14",
-      "км",
-      "56,600",
-      "0.074",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "H05z-K 1х0.5 сер",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1032",
+    "markFamily": "FLEX",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 28.7,
+    "stock": 210,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1079,
@@ -483,25 +555,16 @@
     ],
     "category": "Без категории",
     "product": "J-O2YSCH PIMF 2х2х24AWG(SWB)",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 1080,
-    "row": [
-      "H07V-K 1х 6 ж/з",
-      "км",
-      "97,300",
-      "0.05",
-      "",
-      "JAMAK 4x(2+1)x0.5",
-      "км",
-      "139,900",
-      "0.206",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "JAMAK 4х(2+1)х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1096",
+    "markFamily": "J-O2YSCHPIMF",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 187.4,
+    "stock": 5550,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1096,
@@ -519,7 +582,16 @@
     ],
     "category": "Без категории",
     "product": "JY(5t)YLg 2х2х0.8 VDE",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1114",
+    "markFamily": "JY(5T)YLG",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 54.6,
+    "stock": 90,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1105,
@@ -537,7 +609,16 @@
     ],
     "category": "Без категории",
     "product": "KРУИН-МПЭфКнг(А)-HF-ХЛ 8х2х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1123",
+    "markFamily": "KРУИН-МПЭФК",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 238.9,
+    "stock": 496,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1138,
@@ -555,7 +636,16 @@
     ],
     "category": "Без категории",
     "product": "MCMO 19х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1156",
+    "markFamily": "MCMO",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 443.5,
+    "stock": 649,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1139,
@@ -573,7 +663,16 @@
     ],
     "category": "Без категории",
     "product": "MCMO 37х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1157",
+    "markFamily": "MCMO",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 858,
+    "stock": 108,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1140,
@@ -591,7 +690,16 @@
     ],
     "category": "Без категории",
     "product": "Meinhart KVM-OY 25х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1158",
+    "markFamily": "MEINHARTKVM-OY",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 191.9,
+    "stock": 20,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1149,
@@ -609,7 +717,16 @@
     ],
     "category": "Без категории",
     "product": "NOMAK 48х2х0.5+0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1167",
+    "markFamily": "NOMAK",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 980,
+    "stock": 198,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1159,
@@ -627,7 +744,16 @@
     ],
     "category": "Без категории",
     "product": "Palettenlager H16 1х2х0.8",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1178",
+    "markFamily": "PALETTENLAGERH16",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 93.6,
+    "stock": 2000,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1160,
@@ -645,7 +771,16 @@
     ],
     "category": "Без категории",
     "product": "POLYCAB ELECRIC 1100 2х1.5 FRLS",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1179",
+    "markFamily": "POLYCABELECRIC1100",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 54.6,
+    "stock": 1409,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1167,
@@ -663,7 +798,16 @@
     ],
     "category": "Без категории",
     "product": "PYROHALON 3х25-1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1186",
+    "markFamily": "PYROHALON",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 984.6,
+    "stock": 96,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1171,
@@ -681,7 +825,16 @@
     ],
     "category": "Без категории",
     "product": "RE2G(ST)H...Ci 7х0.75",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1190",
+    "markFamily": "RE2G(ST)H...CI",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 200.7,
+    "stock": 855,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1175,
@@ -699,7 +852,16 @@
     ],
     "category": "Без категории",
     "product": "REDAK 4х2х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1194",
+    "markFamily": "REDAK",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 231.2,
+    "stock": 16,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1176,
@@ -717,7 +879,16 @@
     ],
     "category": "Без категории",
     "product": "REDAK 24х2х0.5+0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1195",
+    "markFamily": "REDAK",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 297,
+    "stock": 50,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1177,
@@ -735,7 +906,16 @@
     ],
     "category": "Без категории",
     "product": "RLAFH 2х8(2х10)AWG",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1196",
+    "markFamily": "RLAFH",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 235.3,
+    "stock": 100,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1178,
@@ -753,7 +933,16 @@
     ],
     "category": "Без категории",
     "product": "RT-RH экр 2х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1197",
+    "markFamily": "RT-RHЭКР",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 24.5,
+    "stock": 115,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1183,
@@ -771,7 +960,16 @@
     ],
     "category": "Без категории",
     "product": "S/STP cat.7 4х2хAWG 23 Pirelli 6605",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1202",
+    "markFamily": "S/STPCAT.7",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 45.3,
+    "stock": 95,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1193,
@@ -789,7 +987,16 @@
     ],
     "category": "Без категории",
     "product": "Silflex AWG14-7C(ul)TUPE 7х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1212",
+    "markFamily": "SILFLEXAWG14-7C(UL)TUPE",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 218.1,
+    "stock": 33,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1194,
@@ -807,7 +1014,16 @@
     ],
     "category": "Без категории",
     "product": "Silflex Trey-er 4х16",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1213",
+    "markFamily": "SILFLEXTREY-ER",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 977.1,
+    "stock": 32,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1195,
@@ -825,7 +1041,16 @@
     ],
     "category": "Без категории",
     "product": "SWITZERLAND BETATRANS 1х10",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1214",
+    "markFamily": "SWITZERLANDBETATRANS",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 132,
+    "stock": 500,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1197,
@@ -843,7 +1068,16 @@
     ],
     "category": "Без категории",
     "product": "TE CONNECTIVITY SYSTEM",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1216",
+    "markFamily": "TECONNECTIVITYSYSTEM",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 32.9,
+    "stock": 2021,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1198,
@@ -861,7 +1095,16 @@
     ],
     "category": "Без категории",
     "product": "TELDOR",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1217",
+    "markFamily": "TELDOR",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 186.7,
+    "stock": 350,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1199,
@@ -879,7 +1122,16 @@
     ],
     "category": "Без категории",
     "product": "Teldor 95А979М02В",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1218",
+    "markFamily": "TELDOR95А979М02В",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 50.2,
+    "stock": 100,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1200,
@@ -897,7 +1149,16 @@
     ],
     "category": "Без категории",
     "product": "Topflex-EMV 2XSLCH-j 3х4+3х0.75",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1219",
+    "markFamily": "TOPFLEX-EMV2XSLCH-J",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 225.1,
+    "stock": 196,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1201,
@@ -915,7 +1176,16 @@
     ],
     "category": "Без категории",
     "product": "U-DQ(ZN)BH 1х4 SM7A1 Blue",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1220",
+    "markFamily": "U-DQ(ZN)BH",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 53.4,
+    "stock": 500,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1204,
@@ -933,7 +1203,16 @@
     ],
     "category": "Без категории",
     "product": "VZN PIMF L-Y 1х2х0.86",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1223",
+    "markFamily": "VZNPIMFL-Y",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 42.7,
+    "stock": 1220,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1205,
@@ -951,7 +1230,16 @@
     ],
     "category": "Без категории",
     "product": "WR-SX 2х1.3",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1224",
+    "markFamily": "WR-SX",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 35.3,
+    "stock": 500,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1206,
@@ -969,7 +1257,16 @@
     ],
     "category": "Без категории",
     "product": "YSLY-JS 5х10",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1225",
+    "markFamily": "YSLY-JS",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 763.6,
+    "stock": 44,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1217,
@@ -987,7 +1284,16 @@
     ],
     "category": "Без категории",
     "product": "ЭКС-МВП 25х2х0.51",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1236",
+    "markFamily": "ЭКС-МВП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 32.6,
+    "stock": 77,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1218,
@@ -1005,7 +1311,16 @@
     ],
     "category": "Без категории",
     "product": "ЭКС-МВПБШП 2х2х0.64",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1237",
+    "markFamily": "ЭКС-МВПБШП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 20.6,
+    "stock": 3959,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1219,
@@ -1023,7 +1338,16 @@
     ],
     "category": "Без категории",
     "product": "ЭКС-МВПБШП 4х2х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1238",
+    "markFamily": "ЭКС-МВПБШП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 51.1,
+    "stock": 694,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1220,
@@ -1041,7 +1365,16 @@
     ],
     "category": "Без категории",
     "product": "ЭКС-МВПБШП-5 4х2х0.64",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1239",
+    "markFamily": "ЭКС-МВПБШП-5",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 32.9,
+    "stock": 15,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1221,
@@ -1059,43 +1392,16 @@
     ],
     "category": "Без категории",
     "product": "ЭКС-МВПзБШПб 4х2х0.52",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 1223,
-    "row": [
-      "ЭКС-ШВППЭ/Э  2х2х0.6",
-      "км",
-      "14,600",
-      "0.739",
-      "",
-      "КВБбШв  7х1 нг(А)LS",
-      "км",
-      "110,600",
-      "1.408",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "ЭКС-ШВППЭ/Э 2х2х0.6",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 1224,
-    "row": [
-      "ЭКС-ШВППЭ/Э-5  2х2х0.6",
-      "км",
-      "14,600",
-      "0.655",
-      "",
-      "КВБбШв  7х1 нг(А)LS хл",
-      "км",
-      "117,800",
-      "0.383",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "ЭКС-ШВППЭ/Э-5 2х2х0.6",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1240",
+    "markFamily": "ЭКС-МВПЗБШПБ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 28,
+    "stock": 108,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1618,
@@ -1113,7 +1419,16 @@
     ],
     "category": "Без категории",
     "product": "КПОПЭнг(А)-FRHF 4х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1643",
+    "markFamily": "КПОП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 83,
+    "stock": 155,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1575,
@@ -1131,7 +1446,16 @@
     ],
     "category": "Без категории",
     "product": "МВЭфз нг(А)-LS УФ-ТС 5х2х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1600",
+    "markFamily": "МВ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 152,
+    "stock": 193,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1647,
@@ -1149,7 +1473,16 @@
     ],
     "category": "Без категории",
     "product": "ТТГ 4х1.5 э нг(А)-LS",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1673",
+    "markFamily": "ТТГ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 78,
+    "stock": 26,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1708,
@@ -1167,7 +1500,16 @@
     ],
     "category": "Без категории",
     "product": "Brandmeldekabel H 20х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1735",
+    "markFamily": "BRANDMELDEKABELH",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 227.3,
+    "stock": 206,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1709,
@@ -1185,7 +1527,16 @@
     ],
     "category": "Без категории",
     "product": "Brandmeldekabel H 4х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1736",
+    "markFamily": "BRANDMELDEKABELH",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 66.9,
+    "stock": 617,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1710,
@@ -1203,7 +1554,16 @@
     ],
     "category": "Без категории",
     "product": "BRK2-E-2 corning 2 9.5/125 желт",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1737",
+    "markFamily": "BRK2-E-2CORNING29.5/125ЖЕЛТ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 58.8,
+    "stock": 810,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1711,
@@ -1221,7 +1581,16 @@
     ],
     "category": "Без категории",
     "product": "Commscope 1х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1738",
+    "markFamily": "COMMSCOPE",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 195.7,
+    "stock": 214,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1713,
@@ -1239,7 +1608,16 @@
     ],
     "category": "Без категории",
     "product": "FK-D-IN/OUT-504-8-HFFR-BK",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1740",
+    "markFamily": "FK-D-IN/OUT-504-8-HFFR-BK",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 116,
+    "stock": 48,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1714,
@@ -1257,7 +1635,16 @@
     ],
     "category": "Без категории",
     "product": "LMR 400",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1741",
+    "markFamily": "LMR400",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 121.6,
+    "stock": 38,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1715,
@@ -1275,7 +1662,16 @@
     ],
     "category": "Без категории",
     "product": "MOHAWK/CDT 4PR 24AWG",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1742",
+    "markFamily": "MOHAWK/CDT4PR24AWG",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 24.4,
+    "stock": 341,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1716,
@@ -1293,7 +1689,16 @@
     ],
     "category": "Без категории",
     "product": "NMF-4IS-008S2C-YL 8 X Single MODE",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1743",
+    "markFamily": "NMF-4IS-008S2C-YL8XSINGLEMODE",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 51.1,
+    "stock": 160,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1729,
@@ -1311,7 +1716,16 @@
     ],
     "category": "Без категории",
     "product": "RS-485 1х2х0.6 нг(А)-HF",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1756",
+    "markFamily": "RS-485",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 72.7,
+    "stock": 200,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1730,
@@ -1329,7 +1743,16 @@
     ],
     "category": "Без категории",
     "product": "Sevkabel optic DPL 024E04-06",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1757",
+    "markFamily": "SEVKABELOPTICDPL024E04-06",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 42.7,
+    "stock": 351,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1732,
@@ -1347,7 +1770,16 @@
     ],
     "category": "Без категории",
     "product": "АОЛ-П-12Y(1х8х1х4)2.7",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1759",
+    "markFamily": "АОЛ-П-12Y",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 30.5,
+    "stock": 240,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1733,
@@ -1365,7 +1797,16 @@
     ],
     "category": "Без категории",
     "product": "ДКН 7-0-4/10",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1760",
+    "markFamily": "ДКН7-0-4/10",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 54.7,
+    "stock": 161,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1734,
@@ -1383,7 +1824,16 @@
     ],
     "category": "Без категории",
     "product": "ДН6К нг(А)-HF 2,0-1-1/4",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1761",
+    "markFamily": "ДН6К",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 54.7,
+    "stock": 670,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1758,
@@ -1401,7 +1851,16 @@
     ],
     "category": "Без категории",
     "product": "КИП 8х1,5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1785",
+    "markFamily": "КИП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 149.4,
+    "stock": 90,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1759,
@@ -1419,7 +1878,16 @@
     ],
     "category": "Без категории",
     "product": "КИП нг(D) 1х2х0.6",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1786",
+    "markFamily": "КИП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 51.1,
+    "stock": 1650,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1760,
@@ -1437,7 +1905,16 @@
     ],
     "category": "Без категории",
     "product": "КИП нг(А)-HF 4х2х0,6",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1787",
+    "markFamily": "КИП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 185.9,
+    "stock": 165,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1761,
@@ -1455,7 +1932,16 @@
     ],
     "category": "Без категории",
     "product": "КИП нг(А)-LS 4х2х0.6",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1788",
+    "markFamily": "КИП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 183.6,
+    "stock": 161,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1762,
@@ -1473,7 +1959,16 @@
     ],
     "category": "Без категории",
     "product": "КИП нг(А)-LS 2х2х0.6",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A1789",
+    "markFamily": "КИП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 105.5,
+    "stock": 368,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1756,
@@ -1491,7 +1986,16 @@
     ],
     "category": "Без категории",
     "product": "КЛКПэв 4х2х0.52",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1783",
+    "markFamily": "КЛКПЭВ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 51.6,
+    "stock": 44,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1795,
@@ -1509,7 +2013,16 @@
     ],
     "category": "Без категории",
     "product": "ОФС СВС-1 (оптика)",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1823",
+    "markFamily": "ОФССВС-1(ОПТИКА)",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 18.6,
+    "stock": 161,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1796,
@@ -1527,7 +2040,16 @@
     ],
     "category": "Без категории",
     "product": "ТехноКИП 2х2х0.9 нг(А)-FRLS",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1824",
+    "markFamily": "ТЕХНОКИП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 255.4,
+    "stock": 555,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1802,
@@ -1545,7 +2067,16 @@
     ],
     "category": "Без категории",
     "product": "ЭКБ-СПЛ-П-04Г (62.5/125)",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1830",
+    "markFamily": "ЭКБ-СПЛ-П-04Г(62.5/125)",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 73.5,
+    "stock": 520,
+    "manufacturer": ""
   },
   {
     "rowIndex": 1933,
@@ -1563,7 +2094,16 @@
     ],
     "category": "Без категории",
     "product": "ПСэВКВ 3х2х0,78 нг(А)-LS",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F1963",
+    "markFamily": "ПСЭВКВ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 75.4,
+    "stock": 566,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2107,
@@ -1581,7 +2121,16 @@
     ],
     "category": "Без категории",
     "product": "КРВ Гидротек 4х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2140",
+    "markFamily": "КРВГИДРОТЕК",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 152,
+    "stock": 1451,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2112,
@@ -1599,7 +2148,16 @@
     ],
     "category": "Без категории",
     "product": "КРШУ 10х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2145",
+    "markFamily": "КРШУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 234,
+    "stock": 375,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2113,
@@ -1617,7 +2175,16 @@
     ],
     "category": "Без категории",
     "product": "КРШУ 19х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2146",
+    "markFamily": "КРШУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 278.3,
+    "stock": 529,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2114,
@@ -1635,25 +2202,16 @@
     ],
     "category": "Без категории",
     "product": "КРШУ 7х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 2135,
-    "row": [
-      "КГПэП 4х4 нг(А)HF",
-      "км",
-      "243,200",
-      "0.053",
-      "",
-      "НРГ 1х240",
-      "км",
-      "3,064,400",
-      "0.01",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "НРГ 1х240",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2147",
+    "markFamily": "КРШУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 120.5,
+    "stock": 26,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2155,
@@ -1671,7 +2229,16 @@
     ],
     "category": "Без категории",
     "product": "ПБР 1х0.35",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2188",
+    "markFamily": "ПБР",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 7.1,
+    "stock": 214,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2168,
@@ -1689,7 +2256,16 @@
     ],
     "category": "Без категории",
     "product": "ППсТВМ(В) 1000 4",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2201",
+    "markFamily": "ППСТВМ(В)10004",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 50.4,
+    "stock": 306,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2169,
@@ -1707,25 +2283,16 @@
     ],
     "category": "Без категории",
     "product": "ПР 1х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 2170,
-    "row": [
-      "КНРэк 16х1.5",
-      "км",
-      "303,200",
-      "0.033",
-      "",
-      "ПРГН 1х10",
-      "км",
-      "108,300",
-      "0.036",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "ПРГН 1х10",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2202",
+    "markFamily": "ПР",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 20.4,
+    "stock": 2332,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2176,
@@ -1743,7 +2310,16 @@
     ],
     "category": "Без категории",
     "product": "РВШЭ-1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2210",
+    "markFamily": "РВШЭ-1",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 24.3,
+    "stock": 198,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2212,
@@ -1761,7 +2337,16 @@
     ],
     "category": "Без категории",
     "product": "тофлекс РКП нг(А)-FRHF 4х70",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2246",
+    "markFamily": "ТОФЛЕКСРКП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 3393.2,
+    "stock": 73,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2243,
@@ -1779,7 +2364,16 @@
     ],
     "category": "Без категории",
     "product": "МРМП 2х1.2",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2278",
+    "markFamily": "МРМП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 56.6,
+    "stock": 656,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2244,
@@ -1797,7 +2391,16 @@
     ],
     "category": "Без категории",
     "product": "МРМПБ 2х1.2",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2279",
+    "markFamily": "МРМПБ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 80.1,
+    "stock": 2503,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2245,
@@ -1815,7 +2418,16 @@
     ],
     "category": "Без категории",
     "product": "МРМПэ 2х1.2",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2280",
+    "markFamily": "МРМП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 81.1,
+    "stock": 1634,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2246,
@@ -1833,7 +2445,16 @@
     ],
     "category": "Без категории",
     "product": "МРПэПэ 2х1.2",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2281",
+    "markFamily": "МРПЭП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 88.2,
+    "stock": 10,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2249,
@@ -1851,7 +2472,16 @@
     ],
     "category": "Без категории",
     "product": "СППС 2х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2284",
+    "markFamily": "СППС",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 9.17,
+    "stock": 100,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2253,
@@ -1869,7 +2499,16 @@
     ],
     "category": "Без категории",
     "product": "ТЗАПАШП 7х4х0.9",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2288",
+    "markFamily": "ТЗАПАШП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 532.8,
+    "stock": 213,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2246,
@@ -1887,7 +2526,16 @@
     ],
     "category": "Без категории",
     "product": "СБЭВББШВ нг(А)-LS 19х2х0.9",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2281",
+    "markFamily": "СБЭВББШВ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 532.6,
+    "stock": 115,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2255,
@@ -1905,7 +2553,16 @@
     ],
     "category": "Без категории",
     "product": "МКСШп 4х0.9",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2290",
+    "markFamily": "МКСШП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "keywordPrefix",
+    "unit": "м",
+    "price": 59.9,
+    "stock": 24,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2256,
@@ -1923,7 +2580,16 @@
     ],
     "category": "Без категории",
     "product": "МКСШп 4х1.2",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2291",
+    "markFamily": "МКСШП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "keywordPrefix",
+    "unit": "м",
+    "price": 78.5,
+    "stock": 553,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2263,
@@ -1941,7 +2607,16 @@
     ],
     "category": "Без категории",
     "product": "ТЗАБп 19х4х0,9",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2298",
+    "markFamily": "ТЗАБП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 549.7,
+    "stock": 222,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2329,
@@ -1959,7 +2634,16 @@
     ],
     "category": "Без категории",
     "product": "ТЦПмП 1х2х0.9",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2365",
+    "markFamily": "ТЦПМП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 22.4,
+    "stock": 300,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2330,
@@ -1977,43 +2661,16 @@
     ],
     "category": "Без категории",
     "product": "ТЦПП 2х2х0.52",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 2331,
-    "row": [
-      "ТППэп 100х2х0.4",
-      "км",
-      "362,000",
-      "0.034",
-      "",
-      "ШТЛ-2",
-      "км",
-      "4,110",
-      "0.425",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "ШТЛ-2",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 2332,
-    "row": [
-      "ТППэп 100х2х0.5",
-      "км",
-      "403,500",
-      "0.099",
-      "",
-      "ШТЛ-5",
-      "км",
-      "6,920",
-      "0.108",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "ШТЛ-5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2366",
+    "markFamily": "ТЦПП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 26.1,
+    "stock": 1000,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2333,
@@ -2031,25 +2688,16 @@
     ],
     "category": "Без категории",
     "product": "ШТЛП-4",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 2370,
-    "row": [
-      "ТРВ 2х0.4",
-      "км",
-      "3,890",
-      "3.091",
-      "",
-      "КУГПП 2х0.5 нг(А)HF",
-      "км",
-      "24,300",
-      "0.008",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "ТРВ 2х0.4",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2369",
+    "markFamily": "ШТЛП-4",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 5.99,
+    "stock": 333,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2371,
@@ -2067,7 +2715,16 @@
     ],
     "category": "Без категории",
     "product": "ТРВтр 2х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2407",
+    "markFamily": "ТРВТР",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 4.55,
+    "stock": 80,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2397,
@@ -2085,7 +2742,16 @@
     ],
     "category": "Без категории",
     "product": "РУТЕКзнг(А)LSxh(KH)14х(2х1)э ВВБ-80",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2434",
+    "markFamily": "РУТЕК",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 424.2,
+    "stock": 147,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2399,
@@ -2103,7 +2769,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А) К-LS хл 3х10",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2436",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 370,
+    "stock": 1020,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2400,
@@ -2121,7 +2796,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-F-FRHF-C 5х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2437",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 153.3,
+    "stock": 844,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2401,
@@ -2139,7 +2823,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-FRLS-с 1х2х1эв",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2438",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 69.6,
+    "stock": 75,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2402,
@@ -2157,7 +2850,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-Эиф-эфк-LS 2х2х1з",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2439",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 97.1,
+    "stock": 238,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2403,
@@ -2175,7 +2877,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-Эм-FRLS-с 7х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2440",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 132.6,
+    "stock": 100,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2404,
@@ -2193,7 +2904,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-Эм-LS 2х2х0.75",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2441",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 78,
+    "stock": 97,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2405,
@@ -2211,7 +2931,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-Эф LS хл 4х2х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2442",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 157.4,
+    "stock": 163,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2406,
@@ -2229,7 +2958,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-Эф-LSхл 1х2х1.5з",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2443",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 48,
+    "stock": 2342,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2407,
@@ -2247,7 +2985,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-Эфк-LS 1х2х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2444",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 71,
+    "stock": 17,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2408,
@@ -2265,7 +3012,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-Эфк-LS 6х2х1з",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2445",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 259.9,
+    "stock": 235,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2409,
@@ -2283,7 +3039,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-FRHF-ХЛ 3х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2446",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 119.6,
+    "stock": 330,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2410,
@@ -2301,7 +3066,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)K-LS хл 5х10",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2447",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 621.5,
+    "stock": 696,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2411,
@@ -2319,7 +3093,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)K-LSхл 1х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2448",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 40.1,
+    "stock": 2597,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2412,
@@ -2337,7 +3120,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)-LS-ХЛ 4х0.75",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2449",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 116,
+    "stock": 141,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2413,
@@ -2355,7 +3147,16 @@
     ],
     "category": "Без категории",
     "product": "Сегмент-КУнг(А)Эиф эф-LS хл 2х2х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2450",
+    "markFamily": "КУ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "rule",
+    "unit": "м",
+    "price": 90.4,
+    "stock": 853,
+    "manufacturer": "Сегмент"
   },
   {
     "rowIndex": 2589,
@@ -2373,7 +3174,16 @@
     ],
     "category": "Без категории",
     "product": "ПТФ 1+1х1.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2629",
+    "markFamily": "ПТФ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 54.7,
+    "stock": 70,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2590,
@@ -2391,25 +3201,16 @@
     ],
     "category": "Без категории",
     "product": "ПТФ МТ 1х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 2591,
-    "row": [
-      "ПВС 2х 1.5 (бел)",
-      "км",
-      "33,500",
-      "0.109",
-      "",
-      "ПТФФГхк 2х1.5 зелен",
-      "км",
-      "159,100",
-      "0.1",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "ПТФФГхк 2х1.5 зелен",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2630",
+    "markFamily": "ПТФМТ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 94.8,
+    "stock": 36,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2726,
@@ -2427,7 +3228,16 @@
     ],
     "category": "Без категории",
     "product": "ШВЭВ 5х0.12",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2768",
+    "markFamily": "ШВЭВ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 28,
+    "stock": 200,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2799,
@@ -2445,7 +3255,16 @@
     ],
     "category": "Без категории",
     "product": "КУПд нг(А)-FRLS ВЭКхл 10х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2842",
+    "markFamily": "КУПД",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 393.2,
+    "stock": 56,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2800,
@@ -2463,7 +3282,16 @@
     ],
     "category": "Без категории",
     "product": "КУПд нг(А)-LS 4х2х1",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2843",
+    "markFamily": "КУПД",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 127.8,
+    "stock": 96,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2821,
@@ -2481,7 +3309,16 @@
     ],
     "category": "Без категории",
     "product": "КЭВВ 6х0.75 нг(А)-LS",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2864",
+    "markFamily": "КЭВВ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 112.7,
+    "stock": 15,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2825,
@@ -2499,7 +3336,16 @@
     ],
     "category": "Без категории",
     "product": "МЛТП 1х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2868",
+    "markFamily": "МЛТП",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 8.59,
+    "stock": 10,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2855,
@@ -2517,7 +3363,16 @@
     ],
     "category": "Без категории",
     "product": "А 1х120",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2899",
+    "markFamily": "А",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 165.5,
+    "stock": 184,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2873,
@@ -2535,7 +3390,16 @@
     ],
     "category": "Без категории",
     "product": "ПС 1000 35",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2917",
+    "markFamily": "ПС100035",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 452.4,
+    "stock": 169,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2874,
@@ -2553,25 +3417,16 @@
     ],
     "category": "Без категории",
     "product": "ПСШ 1х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 2900,
-    "row": [
-      "ПМПЭВ  2х0.35",
-      "км",
-      "49,400",
-      "0.051",
-      "",
-      "КМТВэВ  4х1.5 нг(A)LS",
-      "",
-      "98,700",
-      "0.221",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "ПМПЭВ 2х0.35",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "F2918",
+    "markFamily": "ПСШ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 39,
+    "stock": 1300,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2901,
@@ -2589,7 +3444,16 @@
     ],
     "category": "Без категории",
     "product": "ПРТО 1х2.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2945",
+    "markFamily": "ПРТО",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 38.9,
+    "stock": 1170,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2929,
@@ -2607,7 +3471,16 @@
     ],
     "category": "Без категории",
     "product": "ПТНГ-ХА 2х0.7",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2974",
+    "markFamily": "ПТНГ-ХА",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 74.6,
+    "stock": 65,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2931,
@@ -2625,7 +3498,16 @@
     ],
     "category": "Без категории",
     "product": "ПТТВ 7х2х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2976",
+    "markFamily": "ПТТВ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 90.4,
+    "stock": 592,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2934,
@@ -2643,7 +3525,16 @@
     ],
     "category": "Без категории",
     "product": "ТЭСА-ХК 1х0.2",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2979",
+    "markFamily": "ТЭСА-ХК",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 55.5,
+    "stock": 7139,
+    "manufacturer": ""
   },
   {
     "rowIndex": 2935,
@@ -2661,24 +3552,15 @@
     ],
     "category": "Без категории",
     "product": "ФТЭХ 1х0.5",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
-  },
-  {
-    "rowIndex": 3349,
-    "row": [
-      "ПМЛ 1230",
-      "шт",
-      "1,290.00",
-      "2",
-      "",
-      "РТЗ-51.01 УХЛ4",
-      "км",
-      "2,030",
-      "4",
-      ""
-    ],
-    "category": "Без категории",
-    "product": "РТЗ-51.01 УХЛ4",
-    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка"
+    "reason": "Требуется проверить решение импорта: unit_meter_requires_classification (м); позиция сохранена, требуется проверка",
+    "cell": "A2980",
+    "markFamily": "ФТЭХ",
+    "catalogCategorySlug": "prochee",
+    "catalogSubcategorySlug": "",
+    "catalogClassificationSource": "fallback",
+    "unit": "м",
+    "price": 35.8,
+    "stock": 258,
+    "manufacturer": ""
   }
 ]

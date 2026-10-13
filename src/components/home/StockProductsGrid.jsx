@@ -163,7 +163,7 @@ export default function StockProductsGrid({ products, isLoading, loadError }) {
         <div className="home-stock-showcase__head section-head">
           <div>
             <h2 className="section-title section-title--left">
-              Из наличия на складе
+              Товары из каталога
             </h2>
           </div>
 

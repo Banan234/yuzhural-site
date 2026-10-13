@@ -1631,8 +1631,8 @@ describe('GET /api/products', () => {
       ]);
       expect(data.items.map((item) => item.price)).toEqual([260, 90]);
       expect(data.meta.total).toBe(2);
-      expect(data.meta.facets.materials).toEqual(['алюминий', 'медь']);
-      expect(data.meta.facets.voltages).toEqual([660, 1000]);
+      expect(data.meta.facets.materials).toEqual(['алюминий']);
+      expect(data.meta.facets.voltages).toEqual([1000]);
     });
   });
 

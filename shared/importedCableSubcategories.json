@@ -199,6 +199,24 @@
       "reason": "Безгалогенный одножильный провод для внутренней проводки."
     },
     {
+      "markFamily": "H05Z-K",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://www.helukabel.com/publication/DE/CATALOGUES/CW/Auswahltabellen_EN/Kap_K_284-323_en_link.pdf",
+      "reason": "Безгалогенный одножильный провод для внутренней проводки."
+    },
+    {
+      "markFamily": "BETATHERM145HALOGEN",
+      "subcategorySlug": "importnye-provoda",
+      "source": "https://studercables.com/wp-content/uploads/2025/03/Flyer-Cable-solutions-for-inverters-0000912-V01.pdf",
+      "reason": "BETAtherm 145 — одножильный безгалогенный провод."
+    },
+    {
+      "markFamily": "JAMAK",
+      "subcategorySlug": "importnye-kabeli-svyazi",
+      "source": "https://www.draka-cable.com/wp-content/uploads/2020/03/p2_MMS_Special_web2016.pdf",
+      "reason": "JAMAK — симметричный кабель передачи данных для промышленных систем управления."
+    },
+    {
       "markFamily": "H07Z1-K",
       "subcategorySlug": "importnye-provoda",
       "source": "https://www.prysmian.com/sites/default/files/atoms/files/Draka_Elevator_EMEA_Catalog_2020_web_FINAL_2019_1015.pdf",

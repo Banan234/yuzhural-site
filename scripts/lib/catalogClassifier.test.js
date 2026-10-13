@@ -200,6 +200,30 @@ describe('classifyProduct', () => {
     });
   });
 
+  test.each([
+    'СБПу 2х0.9',
+    'СБПБ 3х1',
+    'СБП нг(А)-HF 3х2х1',
+    'СБЗПу 4х0.9',
+    'СБВБПу 10х2х0,9',
+    'СБВГ 3х0.9 нг',
+    'СБПЗАБпШп 3х2х0,9',
+  ])('%s относится к сигнально-блокировочным', (name) => {
+    expect(classifyName(name)).toMatchObject({
+      catalogCategory: 'Сигнально-блокировочные',
+      catalogCategorySlug: 'signalno-blokirovochnye',
+      catalogClassificationSource: 'rule',
+    });
+  });
+
+  test('внутренний СБП в другой марке не переводит её в сигнально-блокировочные', () => {
+    expect(
+      classifyName('К9РВСБПМ нг(А)-HF 5х16', {
+        sourceCategory: 'Кабель медный из СПЭ - ПвВнг, ПВПУ, ППГ, ПВВГ',
+      }).catalogCategorySlug
+    ).toBe('silovoy-kabel');
+  });
+
   test.each(['H05z1-k 1х0.5 оранж', 'H07z1-K 1х2.5 красн'])(
     '%s относится к импортным проводам',
     (name) => {
@@ -210,6 +234,79 @@ describe('classifyProduct', () => {
       });
     }
   );
+
+  test.each([
+    ['H05z-K 1х0.5 сер', 'importnye-provoda'],
+    ['BETA THERM 145HALOGEN 1х1.5', 'importnye-provoda'],
+    ['JAMAK 4х(2+1)х0.5', 'importnye-kabeli-svyazi'],
+  ])('%s получает проверенную импортную подкатегорию', (name, subcategory) => {
+    expect(classifyName(name)).toMatchObject({
+      catalogCategorySlug: 'importnye-kabeli',
+      catalogSubcategorySlug: subcategory,
+      catalogClassificationSource: 'rule',
+    });
+  });
+
+  test.each([
+    'КПМВВГм Энг(А)-ХЛ 4х1',
+    'КПМВКВГм-В нг(А)-ХЛ 3х1',
+    'КПМСЭКВГ нг(А)-FRLS 2х2х1',
+    'КПМСЭфКПГм-В нг(А)-FRLS-ХЛ 3х1.5',
+  ])('%s относится к монтажным кабелям', (name) => {
+    expect(classifyName(name)).toMatchObject({
+      catalogCategorySlug: 'montazhnyy-kabel',
+      catalogClassificationSource: 'rule',
+    });
+  });
+
+  test.each(['ПТФФГхк 2х1.5 зелен'])(
+    '%s относится к термопарным изделиям',
+    (name) => {
+      expect(classifyName(name)).toMatchObject({
+        catalogCategorySlug: 'kabeli-termoparny',
+        catalogClassificationSource: 'rule',
+      });
+    }
+  );
+
+  test('чужой заголовок КИМЭП-М не переводит ВЭкВКВ-ВП в силовые', () => {
+    expect(
+      classifyName('ВЭкВКВ-ВП нг(А)-FRLS 10х2х1.5', {
+        sourceCategory: 'Кабель высоковольтный малой мощности КИМЭП-М',
+      })
+    ).toMatchObject({
+      catalogCategorySlug: 'prochee',
+      catalogClassificationSource: 'rule',
+    });
+  });
+
+  test.each(['ЭКС-ШВППЭ/Э 2х2х0.6', 'ЭКС-ШВППЭ/Э-5 2х2х0.6'])(
+    '%s относится к кабелям для структурированных систем связи',
+    (name) => {
+      expect(classifyName(name)).toMatchObject({
+        catalogCategorySlug: 'lan-kabeli',
+        catalogClassificationSource: 'rule',
+      });
+    }
+  );
+
+  test.each([
+    ['НРГ 1х240', 'silovoy-kabel'],
+    ['ПРГН 1х10', 'provoda'],
+    ['ПМПЭВ 2х0.35', 'provoda'],
+    ['ТРВ 2х0.4', 'kabeli-svyazi'],
+    ['ШТЛ-2', 'kabeli-svyazi'],
+    ['ШТЛ-5', 'kabeli-svyazi'],
+  ])('%s классифицируется по каталогу производителя', (name, category) => {
+    expect(classifyName(name)).toMatchObject({
+      catalogCategorySlug: category,
+      catalogClassificationSource: 'rule',
+    });
+  });
+
+  test('ТРВтр не наследует назначение ТРВ без паспорта модификации', () => {
+    expect(classifyName('ТРВтр 2х0.5').catalogCategorySlug).toBe('prochee');
+  });
 
   test('КИПэ относится к интерфейсным кабелям связи', () => {
     expect(classifyName('КИПэ 2х2х0.6 нг(А)-HF')).toMatchObject({

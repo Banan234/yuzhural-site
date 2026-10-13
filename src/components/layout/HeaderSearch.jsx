@@ -12,6 +12,22 @@ const SEARCH_SUGGESTIONS_DEBOUNCE_MS = 300;
 const HEADER_SEARCH_INPUT_ID = 'header-search';
 const HEADER_SEARCH_LISTBOX_ID = 'header-search-suggestions';
 const HEADER_SEARCH_STATUS_ID = 'site-header-search-status';
+// Реальные позиции из текущего каталога; порядок задаёт цикл подсказок.
+const SEARCH_PLACEHOLDERS = [
+  'ВВГ 3х1.5 нг(А)-LS',
+  'ВВГ 3х2.5 нг(А)-FRLS',
+  'ВВГ 5х2.5 нг(А)-LS',
+  'КГ 4х16',
+  'СИП-4 4х16',
+  'ПВС 3х1.5',
+  'АВБбШв 4х120',
+  'АВВГ 4х16',
+  'ШВВП 2х0.75',
+  'ПУГВ 1х6 белый',
+  'КВВГ 4х1.5',
+  'ВБШВ 4х10 нг(А)-LS',
+  'NYM 2х1.5',
+];
 
 function getHeaderSearchSuggestionId(index) {
   return `${HEADER_SEARCH_LISTBOX_ID}-option-${index}`;
@@ -48,6 +64,10 @@ export default function HeaderSearch() {
   const navigate = useNavigate();
   const location = useLocation();
   const [headerSearch, setHeaderSearch] = useState('');
+  const [searchPlaceholder, setSearchPlaceholder] = useState(
+    SEARCH_PLACEHOLDERS[0]
+  );
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [isSearchCatalogLoading, setIsSearchCatalogLoading] = useState(false);
   const [isSearchSuggestionsOpen, setIsSearchSuggestionsOpen] = useState(false);
@@ -72,6 +92,48 @@ export default function HeaderSearch() {
   const activeSearchSuggestionId = activeSearchSuggestion
     ? getHeaderSearchSuggestionId(activeSearchSuggestionIndex)
     : undefined;
+
+  useEffect(() => {
+    if (
+      headerSearch ||
+      isSearchFocused ||
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    ) {
+      setSearchPlaceholder(SEARCH_PLACEHOLDERS[0]);
+      return;
+    }
+
+    let index = 0;
+    let length = 0;
+    let phase = 'typing';
+    let timer;
+
+    function tick() {
+      const current = SEARCH_PLACEHOLDERS[index];
+
+      if (phase === 'typing') {
+        length += 1;
+        setSearchPlaceholder(current.slice(0, length));
+        if (length === current.length) phase = 'pause';
+        timer = window.setTimeout(tick, phase === 'pause' ? 1800 : 90);
+      } else if (phase === 'pause') {
+        phase = 'deleting';
+        timer = window.setTimeout(tick, 50);
+      } else {
+        length -= 1;
+        setSearchPlaceholder(current.slice(0, length));
+        if (length === 0) {
+          index = (index + 1) % SEARCH_PLACEHOLDERS.length;
+          phase = 'typing';
+        }
+        timer = window.setTimeout(tick, length === 0 ? 350 : 45);
+      }
+    }
+
+    setSearchPlaceholder('');
+    timer = window.setTimeout(tick, 250);
+    return () => window.clearTimeout(timer);
+  }, [headerSearch, isSearchFocused]);
 
   useEffect(() => {
     return () => {
@@ -252,16 +314,18 @@ export default function HeaderSearch() {
           id={HEADER_SEARCH_INPUT_ID}
           type="search"
           className="site-header__search-input"
-          placeholder="Поиск по каталогу..."
+          placeholder={searchPlaceholder}
           value={headerSearch}
           onChange={handleSearchInputChange}
           onFocus={() => {
+            setIsSearchFocused(true);
             setIsSearchSuggestionsOpen(true);
             if (headerSearch.trim()) {
               loadSearchSuggestions(headerSearch);
             }
           }}
           onBlur={() => {
+            setIsSearchFocused(false);
             window.setTimeout(() => {
               setIsSearchSuggestionsOpen(false);
               setActiveSearchSuggestionIndex(-1);

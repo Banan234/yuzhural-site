@@ -1139,8 +1139,12 @@ async function main() {
 
   console.log('');
   console.log(
-    `Защита публикации: ${publishGuard.ok ? 'PASS' : 'BLOCKED'}${
-      isPublishGuardOverride ? ' (ручной override)' : ''
+    `Защита публикации: ${
+      publishGuard.ok
+        ? 'PASS'
+        : isPublishGuardOverride
+          ? 'ОБОЙДЕНА ВРУЧНУЮ'
+          : 'BLOCKED'
     }`
   );
   if (!publishGuard.ok) {

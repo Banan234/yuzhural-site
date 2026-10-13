@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CATALOG_MENU } from './catalogMenuData';
+import { CATALOG_SECTIONS } from './catalogMenuData';
 import {
   ABOUT_CANONICAL_PATH,
   CATALOG_CANONICAL_PATH,
@@ -12,12 +12,24 @@ import {
 } from '../../lib/canonicalPaths.js';
 import { SITE_PHONE_DISPLAY, SITE_PHONE_HREF } from '../../lib/siteConfig';
 
+const FEATURED_CATEGORY_SLUGS = [
+  'silovoy-kabel',
+  'kontrolnyy-kabel',
+  'provoda',
+];
+const featuredGroups = FEATURED_CATEGORY_SLUGS.map((slug) =>
+  CATALOG_SECTIONS.flatMap((section) => section.groups).find(
+    (group) => group.slug === slug
+  )
+).filter(Boolean);
+const specialSection = CATALOG_SECTIONS.find(
+  (section) => section.slug === 'specialnye-kabeli'
+);
+
 export default function MobileNav({
   id,
   isOpen,
-  totalCount,
   onClose,
-  onOpenCall,
   onOpenQuote,
 }) {
   useEffect(() => {
@@ -45,11 +57,6 @@ export default function MobileNav({
   function handleQuoteClick() {
     onClose();
     onOpenQuote();
-  }
-
-  function handleCallClick() {
-    onClose();
-    onOpenCall();
   }
 
   return (
@@ -94,17 +101,27 @@ export default function MobileNav({
         </div>
 
         <div className="mobile-nav__body">
-          <div className="mobile-nav__section">
-            <div className="mobile-nav__section-title">Каталог</div>
+          <nav className="mobile-nav__section" aria-label="Каталог">
+            <Link
+              to={CATALOG_CANONICAL_PATH}
+              className="mobile-nav__all-catalog"
+              onClick={onClose}
+            >
+              <span className="mobile-nav__all-catalog-icon" aria-hidden="true">
+                <span /><span /><span /><span />
+              </span>
+              Весь каталог
+              <span className="mobile-nav__chevron" aria-hidden="true">›</span>
+            </Link>
             <div className="mobile-nav__catalog">
-              {CATALOG_MENU.map((group) => (
-                <details
-                  key={group.slug || group.title}
-                  className="mobile-nav__catalog-group"
-                >
+              {featuredGroups.map((group) => (
+                <details key={group.slug} className="mobile-nav__catalog-group">
                   <summary>{group.title}</summary>
                   <div className="mobile-nav__catalog-links">
-                    {group.links.map((link) => (
+                    <Link to={group.links[0].to} onClick={onClose}>
+                      Смотреть все: {group.title.toLocaleLowerCase('ru-RU')}
+                    </Link>
+                    {group.links.slice(1).map((link) => (
                       <Link key={link.to} to={link.to} onClick={onClose}>
                         {link.label}
                       </Link>
@@ -112,65 +129,56 @@ export default function MobileNav({
                   </div>
                 </details>
               ))}
+              {specialSection ? (
+                <details className="mobile-nav__catalog-group">
+                  <summary>{specialSection.title}</summary>
+                  <div className="mobile-nav__catalog-links">
+                    <Link to={specialSection.to} onClick={onClose}>
+                      Смотреть все специальные кабели
+                    </Link>
+                    {specialSection.groups.map((group) => (
+                      <Link
+                        key={group.slug}
+                        to={group.links[0].to}
+                        onClick={onClose}
+                      >
+                        {group.title}
+                      </Link>
+                    ))}
+                  </div>
+                </details>
+              ) : null}
             </div>
-          </div>
+          </nav>
 
           <nav className="mobile-nav__section" aria-label="Основная навигация">
-            <div className="mobile-nav__section-title">Разделы</div>
             <div className="mobile-nav__links">
-              <Link to={CATALOG_CANONICAL_PATH} onClick={onClose}>
-                Весь каталог
-              </Link>
               <Link to={DELIVERY_CANONICAL_PATH} onClick={onClose}>
                 Доставка
               </Link>
               <Link to={PAYMENT_CANONICAL_PATH} onClick={onClose}>
                 Оплата
               </Link>
-              <Link to={ABOUT_CANONICAL_PATH} onClick={onClose}>
-                О компании
+              <Link to={`${ABOUT_CANONICAL_PATH}#documents`} onClick={onClose}>
+                Документы
               </Link>
               <Link to={CONTACTS_CANONICAL_PATH} onClick={onClose}>
                 Контакты
               </Link>
+              <Link to={ABOUT_CANONICAL_PATH} onClick={onClose}>
+                О компании
+              </Link>
             </div>
           </nav>
-
-          <div className="mobile-nav__quick">
-            <Link
-              to="/cart"
-              className="mobile-nav__quick-link"
-              onClick={onClose}
-            >
-              Корзина
-              {totalCount > 0 ? <span>{totalCount}</span> : null}
-            </Link>
-            <a
-              href="/price.xls"
-              download
-              className="mobile-nav__quick-link"
-              onClick={onClose}
-            >
-              Скачать прайс
-              <span>XLS</span>
-            </a>
-          </div>
         </div>
 
         <div className="mobile-nav__footer">
           <button
             type="button"
             className="mobile-nav__cta"
-            onClick={handleCallClick}
-          >
-            Заказать звонок
-          </button>
-          <button
-            type="button"
-            className="mobile-nav__cta mobile-nav__cta--secondary"
             onClick={handleQuoteClick}
           >
-            Получить КП
+            Запросить КП
           </button>
           <a href={SITE_PHONE_HREF} className="mobile-nav__phone">
             {SITE_PHONE_DISPLAY}

@@ -151,6 +151,19 @@ describe('resolveProductDisposition', () => {
       evidence: 'Металлорукав',
     });
   });
+
+  it('исключает реле РТЗ-51.01 даже при ошибочной единице «м»', () => {
+    expect(
+      resolveProductDisposition({
+        name: 'РТЗ-51.01 УХЛ4',
+        sourceCategory: 'Без категории',
+        unit: 'м',
+      })
+    ).toMatchObject({
+      status: 'exclude',
+      reason: 'explicit_non_cable_name',
+    });
+  });
 });
 
 describe('import summaries', () => {

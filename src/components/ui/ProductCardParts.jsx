@@ -142,12 +142,10 @@ export function CardActions({
         <button
           className="product-card__cta"
           type="button"
-          onClick={onOpenQuote}
+          onClick={onAddToCart}
         >
-          Получить КП
+          {addedToCart ? '✓ В списке КП' : 'В список КП'}
         </button>
-
-        <CartIconButton addedToCart={addedToCart} onClick={onAddToCart} />
       </div>
     );
   }

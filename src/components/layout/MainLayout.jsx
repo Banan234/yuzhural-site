@@ -31,6 +31,7 @@ import {
 } from '../../lib/siteConfig';
 
 const MOBILE_NAV_ID = 'mobile-navigation';
+const DOCUMENTS_PATH = `${ABOUT_CANONICAL_PATH}#documents`;
 
 const LazyQuoteForm = lazy(() => import('../quote/QuoteForm'));
 const LazyMobileNav = lazy(() => import('./MobileNav'));
@@ -50,6 +51,33 @@ function buildStorageWarningMessage(key) {
   }
 
   return 'Браузер не дал сохранить изменения локально. Они видны сейчас, но могут пропасть после перезагрузки страницы.';
+}
+
+function HeaderCartLink({ totalCount, mobile = false }) {
+  return (
+    <Link
+      to="/cart"
+      className={`site-header__cart${mobile ? ' site-header__cart--mobile' : ''}`}
+      aria-label={mobile ? 'Открыть список для КП' : 'Открыть корзину'}
+    >
+      <svg
+        className="site-header__cart-icon site-header__cart-icon--svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="9" cy="21" r="1" />
+        <circle cx="20" cy="21" r="1" />
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+      </svg>
+      {mobile ? <span className="site-header__cart-label">Список КП</span> : null}
+      {totalCount > 0 ? <span className="cart-badge">{totalCount}</span> : null}
+    </Link>
+  );
 }
 
 export default function MainLayout() {
@@ -239,6 +267,10 @@ export default function MainLayout() {
                 </picture>
               </Link>
 
+              <div className="site-header__main-search">
+                <HeaderSearch />
+              </div>
+
               <div className="site-header__main-right">
                 <div className="header-phone-block">
                   <a href={SITE_PHONE_HREF} className="header-phone">
@@ -267,17 +299,58 @@ export default function MainLayout() {
 
                 <button
                   type="button"
+                  className="header-quote-btn"
+                  onClick={() =>
+                    openLeadModal({
+                      title: 'Запросить КП',
+                      subtitle:
+                        'Оставьте телефон и список нужных позиций — подготовим коммерческое предложение.',
+                      submitLabel: 'Запросить КП',
+                      source: 'Кнопка КП в шапке',
+                    })
+                  }
+                >
+                  Запросить КП
+                </button>
+
+                <a
+                  href={SITE_PHONE_HREF}
+                  className="site-header__mobile-phone"
+                  aria-label={`Позвонить: ${SITE_PHONE_DISPLAY}`}
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.35 1.91.68 2.81a2 2 0 0 1-.45 2.11L8.04 8.91a16 16 0 0 0 7.05 7.05l1.27-1.27a2 2 0 0 1 2.11-.45c.9.33 1.85.56 2.81.68A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </a>
+
+                <button
+                  type="button"
                   className="mobile-menu-button"
                   onClick={() => setIsMobileNavOpen(true)}
                   aria-label="Открыть меню"
                   aria-controls={isMobileNavOpen ? MOBILE_NAV_ID : undefined}
                   aria-expanded={isMobileNavOpen}
                 >
-                  <span />
-                  <span />
-                  <span />
+                  <span className="mobile-menu-button__bars" aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                  </span>
+                  <span className="mobile-menu-button__label">Меню</span>
                 </button>
               </div>
+
+              <HeaderCartLink totalCount={totalCount} mobile />
             </div>
           </Container>
         </div>
@@ -292,6 +365,14 @@ export default function MainLayout() {
                 <HeaderCatalogMenu />
 
                 <NavLink
+                  to={DELIVERY_CANONICAL_PATH}
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? ' nav-link--active' : ''}`
+                  }
+                >
+                  Доставка
+                </NavLink>
+                <NavLink
                   to={PAYMENT_CANONICAL_PATH}
                   className={({ isActive }) =>
                     `nav-link${isActive ? ' nav-link--active' : ''}`
@@ -299,13 +380,16 @@ export default function MainLayout() {
                 >
                   Оплата
                 </NavLink>
+                <Link to={DOCUMENTS_PATH} className="nav-link">
+                  Документы
+                </Link>
                 <NavLink
-                  to={DELIVERY_CANONICAL_PATH}
+                  to={CONTACTS_CANONICAL_PATH}
                   className={({ isActive }) =>
                     `nav-link${isActive ? ' nav-link--active' : ''}`
                   }
                 >
-                  Доставка
+                  Контакты
                 </NavLink>
                 <NavLink
                   to={ABOUT_CANONICAL_PATH}
@@ -315,42 +399,10 @@ export default function MainLayout() {
                 >
                   О компании
                 </NavLink>
-                <NavLink
-                  to={CONTACTS_CANONICAL_PATH}
-                  className={({ isActive }) =>
-                    `nav-link${isActive ? ' nav-link--active' : ''}`
-                  }
-                >
-                  Контакты
-                </NavLink>
               </nav>
 
-              <HeaderSearch />
-
               <div className="site-header__actions">
-                <Link
-                  to="/cart"
-                  className="site-header__cart"
-                  aria-label="Открыть корзину"
-                >
-                  <svg
-                    className="site-header__cart-icon site-header__cart-icon--svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <circle cx="9" cy="21" r="1" />
-                    <circle cx="20" cy="21" r="1" />
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                  </svg>
-                  {totalCount > 0 && (
-                    <span className="cart-badge">{totalCount}</span>
-                  )}
-                </Link>
+                <HeaderCartLink totalCount={totalCount} />
               </div>
             </div>
           </Container>
@@ -381,23 +433,13 @@ export default function MainLayout() {
           <LazyMobileNav
             id={MOBILE_NAV_ID}
             isOpen={isMobileNavOpen}
-            totalCount={totalCount}
             onClose={() => setIsMobileNavOpen(false)}
-            onOpenCall={() =>
-              openLeadModal({
-                title: 'Заказать звонок',
-                subtitle:
-                  'Оставьте телефон и комментарий — менеджер перезвонит в рабочее время.',
-                submitLabel: 'Заказать звонок',
-                source: 'Мобильное меню',
-              })
-            }
             onOpenQuote={() =>
               openLeadModal({
-                title: 'Получить КП',
+                title: 'Запросить КП',
                 subtitle:
                   'Оставьте телефон и список нужных позиций — подготовим коммерческое предложение.',
-                submitLabel: 'Получить КП',
+                submitLabel: 'Запросить КП',
                 source: 'Мобильное меню',
               })
             }

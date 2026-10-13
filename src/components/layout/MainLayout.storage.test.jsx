@@ -55,6 +55,26 @@ afterEach(() => {
 });
 
 describe('MainLayout', () => {
+  it('печатает названия товаров в пустой строке и останавливается при вводе', () => {
+    vi.useFakeTimers();
+    renderLayout();
+
+    const searchInput = screen.getByRole('combobox', {
+      name: 'Поиск по каталогу',
+    });
+
+    act(() => vi.advanceTimersByTime(250));
+    expect(searchInput).toHaveAttribute('placeholder', 'В');
+
+    fireEvent.focus(searchInput);
+    expect(searchInput).toHaveAttribute('placeholder', 'ВВГ 3х1.5 нг(А)-LS');
+
+    fireEvent.change(searchInput, { target: { value: 'КГ 4х16' } });
+    act(() => vi.advanceTimersByTime(3000));
+    expect(searchInput).toHaveValue('КГ 4х16');
+    expect(searchInput).toHaveAttribute('placeholder', 'ВВГ 3х1.5 нг(А)-LS');
+  });
+
   it('показывает плавающий виджет не только на главной, но и на внутренних страницах', () => {
     renderLayout('/catalog');
 

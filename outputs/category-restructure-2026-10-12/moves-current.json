@@ -9,8 +9,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "keywordPrefix",
-      "match": "АС "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "gibkiy-kabel",
@@ -29,8 +29,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "keywordPrefix",
-      "match": "АС "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "gibkiy-kabel",
@@ -169,14 +169,14 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "квк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "ВЭкВКВ-ВП — требуется паспорт"
     }
   },
   {
@@ -189,14 +189,14 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "квк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "ВЭкВКВ-ВП — требуется паспорт"
     }
   },
   {
@@ -209,14 +209,14 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "квк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "ВЭкВКВ-ВП — требуется паспорт"
     }
   },
   {
@@ -229,14 +229,14 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "квк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
-      "category": "silovoy-kabel",
+      "category": "prochee",
       "subcategory": "",
-      "source": "sourceCategory",
-      "match": "Кабель высоковольтный малой мощности КИМЭП-М"
+      "source": "rule",
+      "match": "ВЭкВКВ-ВП — требуется паспорт"
     }
   },
   {
@@ -249,14 +249,14 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ввг"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
-      "category": "prochee",
+      "category": "montazhnyy-kabel",
       "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "кпмввгм"
     }
   },
   {
@@ -269,14 +269,14 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ввг"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
-      "category": "prochee",
+      "category": "montazhnyy-kabel",
       "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "кпмввгм"
     }
   },
   {
@@ -289,14 +289,14 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ввг"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
-      "category": "prochee",
+      "category": "montazhnyy-kabel",
       "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "кпмввгм"
     }
   },
   {
@@ -309,14 +309,14 @@
     "from": {
       "category": "kontrolnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "квг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
-      "category": "prochee",
+      "category": "montazhnyy-kabel",
       "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "кпмвквгм"
     }
   },
   {
@@ -329,8 +329,8 @@
     "from": {
       "category": "kontrolnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "квг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -349,8 +349,8 @@
     "from": {
       "category": "kontrolnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "квг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -369,8 +369,8 @@
     "from": {
       "category": "kontrolnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "вэфв"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -389,8 +389,8 @@
     "from": {
       "category": "kontrolnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "вэфв"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -409,8 +409,8 @@
     "from": {
       "category": "kontrolnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "квг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -429,8 +429,8 @@
     "from": {
       "category": "kontrolnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "квг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -449,34 +449,14 @@
     "from": {
       "category": "soedinitelnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "сэк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
-      "category": "prochee",
-      "subcategory": "",
-      "source": "fallback",
-      "match": null
-    }
-  },
-  {
-    "cell": "A700",
-    "sourceRowIndex": 688,
-    "name": "КПМСЭфКПГм-В нг(А)-FRLS-ХЛ 3х1.5",
-    "mark": "КПМСЭфКПГм-В",
-    "manufacturer": "",
-    "sourceCategory": "Без категории",
-    "from": {
       "category": "montazhnyy-kabel",
       "subcategory": "",
-      "source": "keywordSubstring",
-      "match": "МСЭ"
-    },
-    "to": {
-      "category": "prochee",
-      "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "кпмсэквг"
     }
   },
   {
@@ -489,8 +469,8 @@
     "from": {
       "category": "kabeli-neftepogr",
       "subcategory": "",
-      "source": "rule",
-      "match": "экп-"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -509,7 +489,7 @@
     "from": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
+      "source": "previousCatalog",
       "match": null
     },
     "to": {
@@ -529,7 +509,7 @@
     "from": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
+      "source": "previousCatalog",
       "match": null
     },
     "to": {
@@ -549,14 +529,54 @@
     "from": {
       "category": "importnye-kabeli",
       "subcategory": "importnye-drugie-kabeli",
-      "source": "rule",
-      "match": "tronic"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "prochee",
       "subcategory": "",
       "source": "fallback",
       "match": null
+    }
+  },
+  {
+    "cell": "F977",
+    "sourceRowIndex": 961,
+    "name": "BETA THERM 145HALOGEN 1х1.5",
+    "mark": "BETA THERM 145HALOGEN",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-provoda",
+      "source": "rule",
+      "match": "beta therm 145halogen"
+    }
+  },
+  {
+    "cell": "F978",
+    "sourceRowIndex": 962,
+    "name": "BETA THERM 145HALOGEN 1х2.5",
+    "mark": "BETA THERM 145HALOGEN",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-provoda",
+      "source": "rule",
+      "match": "beta therm 145halogen"
     }
   },
   {
@@ -600,6 +620,26 @@
     }
   },
   {
+    "cell": "A1076",
+    "sourceRowIndex": 1059,
+    "name": "H05z-K 1х0.5 сер",
+    "mark": "H05z-K",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-provoda",
+      "source": "rule",
+      "match": "h05z-k"
+    }
+  },
+  {
     "cell": "A1077",
     "sourceRowIndex": 1060,
     "name": "H05z1-k 1х0.5 оранж",
@@ -640,6 +680,26 @@
     }
   },
   {
+    "cell": "F1097",
+    "sourceRowIndex": 1080,
+    "name": "JAMAK 4х(2+1)х0.5",
+    "mark": "JAMAK",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "importnye-kabeli",
+      "subcategory": "importnye-kabeli-svyazi",
+      "source": "rule",
+      "match": "jamak"
+    }
+  },
+  {
     "cell": "A1243",
     "sourceRowIndex": 1223,
     "name": "ЭКС-ШВППЭ/Э 2х2х0.6",
@@ -649,14 +709,14 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "швп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
-      "category": "prochee",
+      "category": "lan-kabeli",
       "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "ЭКС-ШВППЭ/Э — структурированные системы связи"
     }
   },
   {
@@ -669,14 +729,14 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "швп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
-      "category": "prochee",
+      "category": "lan-kabeli",
       "subcategory": "",
-      "source": "fallback",
-      "match": null
+      "source": "rule",
+      "match": "ЭКС-ШВППЭ/Э — структурированные системы связи"
     }
   },
   {
@@ -689,8 +749,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "пбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -709,8 +769,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "пбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -729,8 +789,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "пбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -749,8 +809,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -769,8 +829,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -789,8 +849,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -809,8 +869,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -829,8 +889,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -849,8 +909,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -869,8 +929,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -889,8 +949,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -909,8 +969,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -929,8 +989,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -949,8 +1009,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -969,8 +1029,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -989,8 +1049,8 @@
     "from": {
       "category": "kabel-vodopogr",
       "subcategory": "",
-      "source": "rule",
-      "match": "впв "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "lan-kabeli",
@@ -1009,8 +1069,8 @@
     "from": {
       "category": "kabel-vodopogr",
       "subcategory": "",
-      "source": "rule",
-      "match": "впв "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "lan-kabeli",
@@ -1029,8 +1089,8 @@
     "from": {
       "category": "lan-kabeli",
       "subcategory": "",
-      "source": "sourceCategory",
-      "match": "Кабель КВПЭфВП-5е"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "prochee",
@@ -1049,8 +1109,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1069,8 +1129,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1089,8 +1149,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1109,8 +1169,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1129,8 +1189,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "сбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "silovoy-kabel",
@@ -1149,8 +1209,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1169,8 +1229,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "сбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "silovoy-kabel",
@@ -1189,8 +1249,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1209,8 +1269,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "сбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "silovoy-kabel",
@@ -1229,8 +1289,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1249,8 +1309,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "сбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "silovoy-kabel",
@@ -1269,8 +1329,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1289,8 +1349,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "сбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "silovoy-kabel",
@@ -1309,8 +1369,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1329,8 +1389,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1349,8 +1409,8 @@
     "from": {
       "category": "silovoy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "ппг "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -1369,8 +1429,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "сбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "importnye-kabeli",
@@ -1389,8 +1449,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "пбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -1409,8 +1469,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "пбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -1829,8 +1889,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "пбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -1849,8 +1909,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "пбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -1869,8 +1929,8 @@
     "from": {
       "category": "gibkiy-kabel",
       "subcategory": "",
-      "source": "keywordSubstring",
-      "match": "КГ"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -1889,8 +1949,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "опс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-pozharnoy-signalizacii",
@@ -1909,8 +1969,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "опс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-pozharnoy-signalizacii",
@@ -1929,8 +1989,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "опс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-pozharnoy-signalizacii",
@@ -1949,8 +2009,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "опс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-pozharnoy-signalizacii",
@@ -1969,8 +2029,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "опс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-pozharnoy-signalizacii",
@@ -1989,8 +2049,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "опс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-pozharnoy-signalizacii",
@@ -2009,8 +2069,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "опс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-pozharnoy-signalizacii",
@@ -2029,8 +2089,8 @@
     "from": {
       "category": "soedinitelnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "сэк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-pozharnoy-signalizacii",
@@ -2049,8 +2109,8 @@
     "from": {
       "category": "soedinitelnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "сэк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-pozharnoy-signalizacii",
@@ -2069,8 +2129,8 @@
     "from": {
       "category": "kabel-vodopogr",
       "subcategory": "",
-      "source": "rule",
-      "match": "впв "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -2089,8 +2149,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "rule",
-      "match": "впп"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -2109,8 +2169,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-podvizhnogo-sostava",
@@ -2129,8 +2189,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-podvizhnogo-sostava",
@@ -2149,8 +2209,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-podvizhnogo-sostava",
@@ -2169,8 +2229,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-podvizhnogo-sostava",
@@ -2189,8 +2249,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-podvizhnogo-sostava",
@@ -2209,8 +2269,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-podvizhnogo-sostava",
@@ -2229,8 +2289,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-podvizhnogo-sostava",
@@ -2249,14 +2309,194 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-podvizhnogo-sostava",
       "subcategory": "",
       "source": "rule",
       "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F2027",
+    "sourceRowIndex": 1996,
+    "name": "СБВГ 3х0.9 нг",
+    "mark": "СБВГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "F2028",
+    "sourceRowIndex": 1997,
+    "name": "СБВГ 3х2х0.9 нг(А)",
+    "mark": "СБВГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "F2029",
+    "sourceRowIndex": 1998,
+    "name": "СБВГ 3х2х1 нг",
+    "mark": "СБВГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "F2030",
+    "sourceRowIndex": 1999,
+    "name": "СБВГ 12х0.9 нг",
+    "mark": "СБВГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "F2031",
+    "sourceRowIndex": 2000,
+    "name": "СБВГ 16х0.9 нг",
+    "mark": "СБВГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "F2032",
+    "sourceRowIndex": 2001,
+    "name": "СБВГ 14х2х0.9 нг",
+    "mark": "СБВГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "F2033",
+    "sourceRowIndex": 2002,
+    "name": "СБВГ 24х2х0.9 нг",
+    "mark": "СБВГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "F2168",
+    "sourceRowIndex": 2135,
+    "name": "НРГ 1х240",
+    "mark": "НРГ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "silovoy-kabel",
+      "subcategory": "",
+      "source": "rule",
+      "match": "НРГ — силовой кабель"
+    }
+  },
+  {
+    "cell": "F2203",
+    "sourceRowIndex": 2170,
+    "name": "ПРГН 1х10",
+    "mark": "ПРГН",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ПРГН/ПМПЭВ — провода"
     }
   },
   {
@@ -2269,8 +2509,8 @@
     "from": {
       "category": "kabeli-sudovye",
       "subcategory": "",
-      "source": "rule",
-      "match": "ксрк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "prochee",
@@ -2289,8 +2529,8 @@
     "from": {
       "category": "soedinitelnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "сэк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -2309,14 +2549,54 @@
     "from": {
       "category": "soedinitelnyy-kabel",
       "subcategory": "",
-      "source": "rule",
-      "match": "сэк"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
       "subcategory": "",
       "source": "sourceCategory",
       "match": "Кабель связи"
+    }
+  },
+  {
+    "cell": "F2278",
+    "sourceRowIndex": 2243,
+    "name": "СБПЗАШп 3х2х0,9",
+    "mark": "СБПЗАШп",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "F2279",
+    "sourceRowIndex": 2244,
+    "name": "СБПЗАШп 7х2х0,9",
+    "mark": "СБПЗАШп",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
     }
   },
   {
@@ -2329,14 +2609,14 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "сбп "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
-      "category": "kabeli-svyazi",
+      "category": "signalno-blokirovochnye",
       "subcategory": "",
-      "source": "keywordPrefix",
-      "match": "СБП"
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
     }
   },
   {
@@ -2349,8 +2629,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "ксш "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "prochee",
@@ -2369,14 +2649,554 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "rule",
-      "match": "ксш "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "prochee",
       "subcategory": "",
       "source": "keywordPrefix",
       "match": "МКСШп"
+    }
+  },
+  {
+    "cell": "A2305",
+    "sourceRowIndex": 2270,
+    "name": "СБВБПу 10х2х0,9",
+    "mark": "СБВБПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2306",
+    "sourceRowIndex": 2271,
+    "name": "СБВБПу 12х2х0,9",
+    "mark": "СБВБПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2307",
+    "sourceRowIndex": 2272,
+    "name": "СБВБПу 14х2х0,9",
+    "mark": "СБВБПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2308",
+    "sourceRowIndex": 2273,
+    "name": "СБВБПу 16х2х1",
+    "mark": "СБВБПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2309",
+    "sourceRowIndex": 2274,
+    "name": "СБВБПу 19х2х0,9",
+    "mark": "СБВБПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2310",
+    "sourceRowIndex": 2275,
+    "name": "СБВБПу 24х2х0,9",
+    "mark": "СБВБПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2312",
+    "sourceRowIndex": 2277,
+    "name": "СБЗПу 3х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2313",
+    "sourceRowIndex": 2278,
+    "name": "СБЗПу 4х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2314",
+    "sourceRowIndex": 2279,
+    "name": "СБЗПу 4х1",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2315",
+    "sourceRowIndex": 2280,
+    "name": "СБЗПу 5х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2316",
+    "sourceRowIndex": 2281,
+    "name": "СБЗПу 12х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2317",
+    "sourceRowIndex": 2282,
+    "name": "СБЗПу 10х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2318",
+    "sourceRowIndex": 2283,
+    "name": "СБЗПу 12х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2319",
+    "sourceRowIndex": 2284,
+    "name": "СБЗПу 14х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2320",
+    "sourceRowIndex": 2285,
+    "name": "СБЗПу 14х2х1.0",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2321",
+    "sourceRowIndex": 2286,
+    "name": "СБЗПу 19х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2322",
+    "sourceRowIndex": 2287,
+    "name": "СБЗПу 24х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2323",
+    "sourceRowIndex": 2288,
+    "name": "СБЗПу 24х2х1.0",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2324",
+    "sourceRowIndex": 2289,
+    "name": "СБЗПу 27х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2325",
+    "sourceRowIndex": 2290,
+    "name": "СБЗПу 3х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2326",
+    "sourceRowIndex": 2291,
+    "name": "СБЗПуЗ 24х2х0.9",
+    "mark": "СБЗПуЗ",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2327",
+    "sourceRowIndex": 2292,
+    "name": "СБЗПуЭ 24х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2328",
+    "sourceRowIndex": 2293,
+    "name": "СБЗПуЭ 27х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2329",
+    "sourceRowIndex": 2294,
+    "name": "СБЗПуЭ 33х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2330",
+    "sourceRowIndex": 2295,
+    "name": "СБЗПуЭ 7х2х0.9",
+    "mark": "СБЗПу",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2333",
+    "sourceRowIndex": 2298,
+    "name": "СБП нг(А)-HF 30х2х0,9",
+    "mark": "СБП",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2334",
+    "sourceRowIndex": 2299,
+    "name": "СБП нг(А)-HF 3х2х1",
+    "mark": "СБП",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-pozharnoy-signalizacii",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
     }
   },
   {
@@ -2389,14 +3209,254 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
       "source": "rule",
-      "match": "сбп "
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2336",
+    "sourceRowIndex": 2301,
+    "name": "СБПЗАБпШп 14х2х0,9",
+    "mark": "СБПЗАБпШп",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2337",
+    "sourceRowIndex": 2302,
+    "name": "СБПЗАБпШп 3х2х0,9",
+    "mark": "СБПЗАБпШп",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2338",
+    "sourceRowIndex": 2303,
+    "name": "СБПЗАуБпШп 7х2х0,9",
+    "mark": "СБПЗАуБпШп",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2339",
+    "sourceRowIndex": 2304,
+    "name": "СБПЗАуБпШп 14х2х0,9",
+    "mark": "СБПЗАуБпШп",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2340",
+    "sourceRowIndex": 2305,
+    "name": "СБПЗАуБпШп 19х2х0,9",
+    "mark": "СБПЗАуБпШп",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2341",
+    "sourceRowIndex": 2306,
+    "name": "СБПЗАуБпШп 24х2х0,9",
+    "mark": "СБПЗАуБпШп",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2342",
+    "sourceRowIndex": 2307,
+    "name": "СБПЗАШп 10х2х0,9",
+    "mark": "СБПЗАШп",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2343",
+    "sourceRowIndex": 2308,
+    "name": "СБПЗАШп 12х2х0,9",
+    "mark": "СБПЗАШп",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "A2344",
+    "sourceRowIndex": 2309,
+    "name": "СБПЗАШп 14х2х0,9",
+    "mark": "СБПЗАШп",
+    "manufacturer": "",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "from": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "signalno-blokirovochnye",
+      "subcategory": "",
+      "source": "rule",
+      "match": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+    }
+  },
+  {
+    "cell": "F2367",
+    "sourceRowIndex": 2331,
+    "name": "ШТЛ-2",
+    "mark": "ШТЛ-2",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "sourceCategory",
-      "match": "Кабель Сигнальный блокировочный СБЗПу"
+      "source": "rule",
+      "match": "ТРВ/ШТЛ — связь"
+    }
+  },
+  {
+    "cell": "F2368",
+    "sourceRowIndex": 2332,
+    "name": "ШТЛ-5",
+    "mark": "ШТЛ-5",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ТРВ/ШТЛ — связь"
+    }
+  },
+  {
+    "cell": "A2406",
+    "sourceRowIndex": 2370,
+    "name": "ТРВ 2х0.4",
+    "mark": "ТРВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-svyazi",
+      "subcategory": "",
+      "source": "rule",
+      "match": "трв "
     }
   },
   {
@@ -2409,8 +3469,8 @@
     "from": {
       "category": "kabeli-shakhtnye",
       "subcategory": "",
-      "source": "keywordSubstring",
-      "match": "КШ"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -2429,8 +3489,8 @@
     "from": {
       "category": "kabeli-shakhtnye",
       "subcategory": "",
-      "source": "keywordSubstring",
-      "match": "КШ"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kontrolnyy-kabel",
@@ -2449,7 +3509,7 @@
     "from": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
+      "source": "previousCatalog",
       "match": null
     },
     "to": {
@@ -2469,7 +3529,7 @@
     "from": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
+      "source": "previousCatalog",
       "match": null
     },
     "to": {
@@ -2489,7 +3549,7 @@
     "from": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
+      "source": "previousCatalog",
       "match": null
     },
     "to": {
@@ -2509,7 +3569,7 @@
     "from": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
+      "source": "previousCatalog",
       "match": null
     },
     "to": {
@@ -2529,7 +3589,7 @@
     "from": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
+      "source": "previousCatalog",
       "match": null
     },
     "to": {
@@ -2549,7 +3609,7 @@
     "from": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
+      "source": "previousCatalog",
       "match": null
     },
     "to": {
@@ -2569,8 +3629,8 @@
     "from": {
       "category": "gibkiy-kabel",
       "subcategory": "",
-      "source": "keywordSubstring",
-      "match": "КГ"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-svyazi",
@@ -2589,14 +3649,34 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-podvizhnogo-sostava",
       "subcategory": "",
       "source": "rule",
       "match": "транскаб"
+    }
+  },
+  {
+    "cell": "F2631",
+    "sourceRowIndex": 2591,
+    "name": "ПТФФГхк 2х1.5 зелен",
+    "mark": "ПТФФГхк",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "kabeli-termoparny",
+      "subcategory": "",
+      "source": "rule",
+      "match": "птффг"
     }
   },
   {
@@ -2609,8 +3689,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2629,8 +3709,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2649,8 +3729,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2669,8 +3749,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2689,8 +3769,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2709,8 +3789,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2729,8 +3809,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2749,8 +3829,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2769,8 +3849,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2789,8 +3869,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2809,8 +3889,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2829,8 +3909,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2849,8 +3929,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2869,8 +3949,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2889,8 +3969,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2909,8 +3989,8 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
@@ -2929,14 +4009,34 @@
     "from": {
       "category": "kabeli-pozharnoy-signalizacii",
       "subcategory": "",
-      "source": "rule",
-      "match": "кпс "
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "montazhnyy-kabel",
       "subcategory": "",
       "source": "rule",
       "match": "мкпс"
+    }
+  },
+  {
+    "cell": "A2944",
+    "sourceRowIndex": 2900,
+    "name": "ПМПЭВ 2х0.35",
+    "mark": "ПМПЭВ",
+    "manufacturer": "",
+    "sourceCategory": "Без категории",
+    "from": {
+      "category": "prochee",
+      "subcategory": "",
+      "source": "previousCatalog",
+      "match": null
+    },
+    "to": {
+      "category": "provoda",
+      "subcategory": "",
+      "source": "rule",
+      "match": "ПРГН/ПМПЭВ — провода"
     }
   },
   {
@@ -2989,8 +4089,8 @@
     "from": {
       "category": "provoda",
       "subcategory": "",
-      "source": "keywordSubstring",
-      "match": "ВНГ"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-termoparny",
@@ -3009,8 +4109,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "keywordSubstring",
-      "match": "ТПВ"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "prochee",
@@ -3029,8 +4129,8 @@
     "from": {
       "category": "kabeli-svyazi",
       "subcategory": "",
-      "source": "keywordSubstring",
-      "match": "РК"
+      "source": "previousCatalog",
+      "match": null
     },
     "to": {
       "category": "kabeli-termoparny",
@@ -3049,7 +4149,7 @@
     "from": {
       "category": "prochee",
       "subcategory": "",
-      "source": "fallback",
+      "source": "previousCatalog",
       "match": null
     },
     "to": {

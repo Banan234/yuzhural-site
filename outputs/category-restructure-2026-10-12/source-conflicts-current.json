@@ -1139,6 +1139,23 @@
     "classificationMatch": "вэовкв"
   },
   {
+    "sourceRowIndex": 609,
+    "name": "ВЭкВКВ-ВП нг(А)-FRLS 10х2х1.5",
+    "sourceCategory": "Кабель высоковольтный малой мощности КИМЭП-М",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "silovoy-kabel",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "prochee",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "ВЭкВКВ-ВП — требуется паспорт"
+  },
+  {
     "sourceRowIndex": 947,
     "name": "КПЭТИ нг(В)-FRHF 2х2х0.7",
     "sourceCategory": "Кабель для Атомной промышленности КПЭТИ",
@@ -1931,11 +1948,11 @@
     },
     "chosen": {
       "sectionSlug": "kabel-i-provod",
-      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "categorySlug": "signalno-blokirovochnye",
       "subcategorySlug": ""
     },
     "classificationSource": "rule",
-    "classificationMatch": "сбвбпу"
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
   },
   {
     "sourceRowIndex": 2271,
@@ -1948,11 +1965,11 @@
     },
     "chosen": {
       "sectionSlug": "kabel-i-provod",
-      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "categorySlug": "signalno-blokirovochnye",
       "subcategorySlug": ""
     },
     "classificationSource": "rule",
-    "classificationMatch": "сбвбпу"
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
   },
   {
     "sourceRowIndex": 2272,
@@ -1965,11 +1982,11 @@
     },
     "chosen": {
       "sectionSlug": "kabel-i-provod",
-      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "categorySlug": "signalno-blokirovochnye",
       "subcategorySlug": ""
     },
     "classificationSource": "rule",
-    "classificationMatch": "сбвбпу"
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
   },
   {
     "sourceRowIndex": 2273,
@@ -1982,11 +1999,11 @@
     },
     "chosen": {
       "sectionSlug": "kabel-i-provod",
-      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "categorySlug": "signalno-blokirovochnye",
       "subcategorySlug": ""
     },
     "classificationSource": "rule",
-    "classificationMatch": "сбвбпу"
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
   },
   {
     "sourceRowIndex": 2274,
@@ -1999,11 +2016,11 @@
     },
     "chosen": {
       "sectionSlug": "kabel-i-provod",
-      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "categorySlug": "signalno-blokirovochnye",
       "subcategorySlug": ""
     },
     "classificationSource": "rule",
-    "classificationMatch": "сбвбпу"
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
   },
   {
     "sourceRowIndex": 2275,
@@ -2016,11 +2033,334 @@
     },
     "chosen": {
       "sectionSlug": "kabel-i-provod",
-      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "categorySlug": "signalno-blokirovochnye",
       "subcategorySlug": ""
     },
     "classificationSource": "rule",
-    "classificationMatch": "сбвбпу"
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2277,
+    "name": "СБЗПу 3х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2278,
+    "name": "СБЗПу 4х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2279,
+    "name": "СБЗПу 4х1",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2280,
+    "name": "СБЗПу 5х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2281,
+    "name": "СБЗПу 12х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2282,
+    "name": "СБЗПу 10х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2283,
+    "name": "СБЗПу 12х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2284,
+    "name": "СБЗПу 14х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2285,
+    "name": "СБЗПу 14х2х1.0",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2286,
+    "name": "СБЗПу 19х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2287,
+    "name": "СБЗПу 24х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2288,
+    "name": "СБЗПу 24х2х1.0",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2289,
+    "name": "СБЗПу 27х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2290,
+    "name": "СБЗПу 3х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2291,
+    "name": "СБЗПуЗ 24х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2292,
+    "name": "СБЗПуЭ 24х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2293,
+    "name": "СБЗПуЭ 27х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2294,
+    "name": "СБЗПуЭ 33х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2295,
+    "name": "СБЗПуЭ 7х2х0.9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
   },
   {
     "sourceRowIndex": 2298,
@@ -2033,11 +2373,11 @@
     },
     "chosen": {
       "sectionSlug": "kabel-i-provod",
-      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "categorySlug": "signalno-blokirovochnye",
       "subcategorySlug": ""
     },
     "classificationSource": "rule",
-    "classificationMatch": "сбп "
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
   },
   {
     "sourceRowIndex": 2299,
@@ -2050,11 +2390,181 @@
     },
     "chosen": {
       "sectionSlug": "kabel-i-provod",
-      "categorySlug": "kabeli-pozharnoy-signalizacii",
+      "categorySlug": "signalno-blokirovochnye",
       "subcategorySlug": ""
     },
     "classificationSource": "rule",
-    "classificationMatch": "сбп "
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2300,
+    "name": "СБПБ 3х1",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2301,
+    "name": "СБПЗАБпШп 14х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2302,
+    "name": "СБПЗАБпШп 3х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2303,
+    "name": "СБПЗАуБпШп 7х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2304,
+    "name": "СБПЗАуБпШп 14х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2305,
+    "name": "СБПЗАуБпШп 19х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2306,
+    "name": "СБПЗАуБпШп 24х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2307,
+    "name": "СБПЗАШп 10х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2308,
+    "name": "СБПЗАШп 12х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
+  },
+  {
+    "sourceRowIndex": 2309,
+    "name": "СБПЗАШп 14х2х0,9",
+    "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
+    "sourceCandidate": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "kabeli-svyazi",
+      "subcategorySlug": ""
+    },
+    "chosen": {
+      "sectionSlug": "kabel-i-provod",
+      "categorySlug": "signalno-blokirovochnye",
+      "subcategorySlug": ""
+    },
+    "classificationSource": "rule",
+    "classificationMatch": "СБП/СБЗП/СБВБП/СБВГ — сигнально-блокировочные"
   },
   {
     "sourceRowIndex": 2359,

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CABLE_SECTION_NAME, CATALOG_MENU } from './catalogMenuData';
+import { CATALOG_MENU, CATALOG_SECTIONS } from './catalogMenuData';
 import { CATALOG_CANONICAL_PATH } from '../../lib/canonicalPaths.js';
 
 const CATALOG_DROPDOWN_ID = 'catalog-dropdown';
@@ -17,6 +17,9 @@ export default function HeaderCatalogMenu() {
   const catalogWrapperRef = useRef(null);
   const activeCatalogGroup =
     CATALOG_MENU[activeCatalogIndex] || CATALOG_MENU[0];
+  const activeCatalogSection = CATALOG_SECTIONS.find((section) =>
+    section.groups.includes(activeCatalogGroup)
+  );
 
   function clearCatalogCloseTimeout() {
     if (catalogCloseTimeoutRef.current) {
@@ -130,27 +133,57 @@ export default function HeaderCatalogMenu() {
               onMouseLeave={closeCatalogMenu}
             >
               <div className="catalog-dropdown__sidebar">
-                <div className="catalog-dropdown__sidebar-title">
-                  {CABLE_SECTION_NAME}
+                <div className="catalog-dropdown__sections">
+                  {CATALOG_SECTIONS.map((section) => (
+                    <Link
+                      key={section.slug}
+                      to={section.to}
+                      className={`catalog-dropdown__section ${
+                        activeCatalogSection?.slug === section.slug
+                          ? 'catalog-dropdown__section--active'
+                          : ''
+                      }`}
+                      onMouseEnter={() =>
+                        setActiveCatalogIndex(
+                          CATALOG_MENU.indexOf(section.groups[0])
+                        )
+                      }
+                      onFocus={() =>
+                        setActiveCatalogIndex(
+                          CATALOG_MENU.indexOf(section.groups[0])
+                        )
+                      }
+                      onClick={closeCatalogAfterNavigation}
+                    >
+                      {section.title}
+                    </Link>
+                  ))}
                 </div>
-                {CATALOG_MENU.map((group, index) => (
-                  <Link
-                    key={group.title}
-                    to={group.links[0]?.to || CATALOG_CANONICAL_PATH}
-                    className={`catalog-dropdown__sidebar-item ${
-                      activeCatalogIndex === index
-                        ? 'catalog-dropdown__sidebar-item--active'
-                        : ''
-                    }`}
-                    onMouseEnter={() => setActiveCatalogIndex(index)}
-                    onClick={closeCatalogAfterNavigation}
-                  >
-                    {group.title}
-                  </Link>
-                ))}
+                {activeCatalogSection?.groups.map((group) => {
+                  const index = CATALOG_MENU.indexOf(group);
+                  return (
+                    <Link
+                      key={group.slug}
+                      to={group.links[0]?.to || CATALOG_CANONICAL_PATH}
+                      className={`catalog-dropdown__sidebar-item ${
+                        activeCatalogIndex === index
+                          ? 'catalog-dropdown__sidebar-item--active'
+                          : ''
+                      }`}
+                      onMouseEnter={() => setActiveCatalogIndex(index)}
+                      onFocus={() => setActiveCatalogIndex(index)}
+                      onClick={closeCatalogAfterNavigation}
+                    >
+                      {group.title}
+                    </Link>
+                  );
+                })}
               </div>
 
-              <div className="catalog-dropdown__content">
+              <div
+                key={activeCatalogGroup.slug}
+                className="catalog-dropdown__content"
+              >
                 <div className="catalog-dropdown__group">
                   <div className="catalog-dropdown__group-title">
                     {activeCatalogGroup.title}
@@ -163,7 +196,7 @@ export default function HeaderCatalogMenu() {
                   <div className="catalog-dropdown__links catalog-dropdown__links--wide">
                     {activeCatalogGroup.links.map((link) => (
                       <Link
-                        key={link.label}
+                        key={link.to}
                         to={link.to}
                         className="catalog-dropdown__link"
                         onClick={closeCatalogAfterNavigation}

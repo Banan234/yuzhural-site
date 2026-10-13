@@ -4,7 +4,7 @@
 import '../../test/renderTestSetup.js';
 import { useEffect } from 'react';
 import { MemoryRouter, useLocation } from 'react-router-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import ProductListingView from './ProductListingView.jsx';
@@ -96,12 +96,17 @@ function renderListing({ initialEntry = '/catalog', viewProps = {} } = {}) {
 }
 
 describe('ProductListingView render flow', () => {
-  it('рендерит товары и счетчик результатов', () => {
+  it('рендерит товары и управление выдачей', () => {
     renderListing();
 
     expect(screen.getByText('ВВГнг-LS 3x2.5')).toBeInTheDocument();
     expect(screen.getByText('АВВГ 4x16')).toBeInTheDocument();
-    expect(screen.getByText(/Найдено:/)).toHaveTextContent('2');
+    expect(
+      screen.getByRole('button', { name: 'Плиточное отображение' })
+    ).toHaveAttribute('aria-pressed', 'true');
+    expect(
+      screen.getByRole('combobox', { name: 'Количество товаров на странице' })
+    ).toHaveValue('24');
   });
 
   it('показывает цену по запросу для товара с price=0', () => {
@@ -122,17 +127,12 @@ describe('ProductListingView render flow', () => {
     expect(screen.getByText('Цена по запросу')).toBeInTheDocument();
   });
 
-  it('коммитит поиск в URL по Enter', async () => {
-    const user = userEvent.setup();
-    const { getSearchParam } = renderListing();
+  it('применяет поиск из URL', () => {
+    const { getSearchParam } = renderListing({
+      initialEntry: '/catalog?search=АВВГ',
+    });
 
-    await user.type(
-      screen.getByRole('searchbox', { name: 'Поиск по каталогу' }),
-      'АВВГ'
-    );
-    await user.keyboard('{Enter}');
-
-    await waitFor(() => expect(getSearchParam('search')).toBe('АВВГ'));
+    expect(getSearchParam('search')).toBe('АВВГ');
     expect(screen.getByText('АВВГ 4x16')).toBeInTheDocument();
     expect(screen.queryByText('ВВГнг-LS 3x2.5')).not.toBeInTheDocument();
   });
@@ -141,7 +141,6 @@ describe('ProductListingView render flow', () => {
     const user = userEvent.setup();
     const { getSearchParam } = renderListing();
 
-    await user.click(screen.getByRole('button', { name: 'Все параметры' }));
     await user.click(screen.getByRole('button', { name: 'алюминий' }));
 
     await waitFor(() => expect(getSearchParam('material')).toBe('алюминий'));
@@ -174,7 +173,6 @@ describe('ProductListingView render flow', () => {
       },
     });
 
-    await user.click(screen.getByRole('button', { name: 'Все параметры' }));
     await user.click(
       screen.getByRole('button', { name: 'Сшитый полиэтилен (XLPE)' })
     );
@@ -192,7 +190,7 @@ describe('ProductListingView render flow', () => {
 
     await user.type(screen.getByLabelText('Цена от, ₽'), '100');
     await user.type(screen.getByLabelText('Цена до, ₽'), '200');
-    await user.click(screen.getByRole('button', { name: 'OK' }));
+    fireEvent.blur(screen.getByLabelText('Цена до, ₽'));
 
     await waitFor(() => {
       expect(getSearchParam('priceMin')).toBe('100');
@@ -205,21 +203,13 @@ describe('ProductListingView render flow', () => {
   it('связывает поля каталога с явными labels', () => {
     renderListing();
 
-    expect(screen.getByLabelText('Поиск по каталогу')).toHaveAttribute(
-      'id',
-      'catalog-search'
-    );
-    expect(screen.getByLabelText('Поиск по каталогу')).toHaveAttribute(
-      'type',
-      'search'
-    );
     expect(screen.getByLabelText('Цена от, ₽')).toHaveAttribute(
       'id',
       'price-min'
     );
     expect(screen.getByLabelText('Цена от, ₽')).toHaveAttribute(
       'placeholder',
-      'от'
+      '0'
     );
     expect(screen.getByLabelText('Цена до, ₽')).toHaveAttribute(
       'id',
@@ -227,38 +217,26 @@ describe('ProductListingView render flow', () => {
     );
     expect(screen.getByLabelText('Цена до, ₽')).toHaveAttribute(
       'placeholder',
-      'до'
+      '310'
     );
-    expect(screen.getByLabelText('Сортировка:')).toHaveAttribute(
-      'id',
-      'sort-select'
-    );
-    expect(screen.getByLabelText('Сортировка:')).toHaveClass(
-      'catalog-filter-panel__sort-select'
-    );
+    expect(
+      screen.getByRole('button', { name: 'Популярности' })
+    ).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('button', { name: 'Цене' })).toBeInTheDocument();
     expect(
       screen.getByRole('heading', { level: 2, name: 'Товары каталога' })
     ).toBeInTheDocument();
   });
 
-  it('связывает кнопку фильтров с раскрываемой панелью', async () => {
-    const user = userEvent.setup();
+  it('показывает фильтры в боковой панели', () => {
     renderListing();
 
-    const filterButton = screen.getByRole('button', {
-      name: 'Все параметры',
+    const sidebar = screen.getByRole('complementary', {
+      name: 'Фильтры товаров',
     });
-    expect(filterButton).toHaveAttribute('aria-expanded', 'false');
-    const filterBodyId = filterButton.getAttribute('aria-controls');
-    expect(filterBodyId).toMatch(/catalog-filter-panel-body$/);
-
-    const filterBody = document.getElementById(filterBodyId);
-    expect(filterBody).toBeInTheDocument();
-    expect(filterBody).toHaveAttribute('hidden');
-
-    await user.click(filterButton);
-
-    expect(filterButton).toHaveAttribute('aria-expanded', 'true');
-    expect(filterBody).not.toHaveAttribute('hidden');
+    expect(sidebar).toContainElement(
+      screen.getByRole('button', { name: 'алюминий' })
+    );
+    expect(sidebar).toContainElement(screen.getByLabelText('Цена от, ₽'));
   });
 });

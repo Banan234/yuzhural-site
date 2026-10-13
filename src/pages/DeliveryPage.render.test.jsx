@@ -2,7 +2,7 @@
 // Файл проверяет ключевой контент страницы доставки: самовывоз, ТК и ссылку на склад.
 
 import '../test/renderTestSetup.js';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
@@ -13,6 +13,10 @@ import {
 } from '../lib/siteConfig.js';
 import { STATIC_PAGE_SEO } from '../lib/staticSeo.js';
 import DeliveryPage from './DeliveryPage.jsx';
+import {
+  COOKIE_CONSENT_COOKIE,
+  saveCookieConsent,
+} from '../lib/cookieConsent.js';
 
 function renderDeliveryPage() {
   render(
@@ -27,6 +31,7 @@ function renderDeliveryPage() {
 
 describe('DeliveryPage', () => {
   afterEach(() => {
+    document.cookie = `${COOKIE_CONSENT_COOKIE}=; Max-Age=0; Path=/`;
     vi.restoreAllMocks();
   });
 
@@ -52,6 +57,13 @@ describe('DeliveryPage', () => {
     expect(
       screen.getByRole('link', { name: 'Открыть в Яндекс Картах' })
     ).toHaveAttribute('href', SITE_WAREHOUSE_MAP_URL);
+    expect(
+      screen.queryByTitle('Схема проезда к складу самовывоза')
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Настроить cookie' })
+    ).toBeInTheDocument();
+    act(() => saveCookieConsent({ externalServices: true }));
     expect(
       screen.getByTitle('Схема проезда к складу самовывоза')
     ).toHaveAttribute('src', SITE_WAREHOUSE_MAP_EMBED_URL);
