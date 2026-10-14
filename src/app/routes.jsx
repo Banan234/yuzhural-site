@@ -3,6 +3,11 @@
 import MainLayout from '../components/layout/MainLayout';
 
 export function createRouteObjects({
+  SpecificationPage,
+  OrderGuidePage,
+  QualityPage,
+  CableApplicationPage,
+  CableSectionPage,
   HomePage,
   CatalogPage,
   ProductPage,
@@ -32,6 +37,15 @@ export function createRouteObjects({
     { path: 'about', element: <AboutPage /> },
   ];
 
+  for (const [path, Page] of [
+    ['specification', SpecificationPage],
+    ['how-to-order', OrderGuidePage],
+    ['quality', QualityPage],
+    ['services/application', CableApplicationPage],
+    ['calculator/section', CableSectionPage],
+  ]) {
+    if (Page) children.push({ path, element: <Page /> });
+  }
   if (CableWeightPage) {
     children.push({ path: 'calculator/weight', element: <CableWeightPage /> });
   }

@@ -7,9 +7,16 @@ import {
   absoluteUrl,
   buildOrganizationJsonLd,
 } from './siteConfig.js';
+import { ORDER_FAQ, PURCHASE_PAGES } from '../../shared/purchaseContent.js';
 import { STATIC_PAGE_SEO } from './staticSeo.js';
 
 const STATIC_PAGE_JSON_LD_IDS = {
+  ...Object.fromEntries(
+    Object.entries(PURCHASE_PAGES).map(([key, page]) => [
+      page.path,
+      `purchase-${key}-json-ld`,
+    ])
+  ),
   [STATIC_PAGE_SEO.about.path]: 'about-page-json-ld',
   [STATIC_PAGE_SEO.payment.path]: 'payment-page-json-ld',
   [STATIC_PAGE_SEO.delivery.path]: 'delivery-page-json-ld',
@@ -163,5 +170,28 @@ export function buildStaticPageJsonLd(path) {
   if (path === STATIC_PAGE_SEO.payment.path) return buildPaymentPageJsonLd();
   if (path === STATIC_PAGE_SEO.delivery.path) return buildDeliveryPageJsonLd();
   if (path === STATIC_PAGE_SEO.privacy.path) return buildPrivacyPageJsonLd();
-  return null;
+  const page = Object.values(PURCHASE_PAGES).find((page) => page.path === path);
+  if (!page) return null;
+  const graph = [
+    {
+      '@type': 'WebPage',
+      '@id': `${absoluteUrl(page.path)}#webpage`,
+      url: absoluteUrl(page.path),
+      name: `${page.title} — ${SITE_NAME}`,
+      description: page.description,
+      isPartOf: buildWebsiteReference(),
+      provider: buildOrganizationReference(),
+    },
+  ];
+  if (page.path === PURCHASE_PAGES.order.path)
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${absoluteUrl(page.path)}#faq`,
+      mainEntity: ORDER_FAQ.map(([name, text]) => ({
+        '@type': 'Question',
+        name,
+        acceptedAnswer: { '@type': 'Answer', text },
+      })),
+    });
+  return { '@context': 'https://schema.org', '@graph': graph };
 }

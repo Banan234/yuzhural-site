@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 // Файл рендерит страницу о компании с преимуществами, реквизитами и SEO-структурой.
 
 import { useEffect } from 'react';
@@ -262,6 +263,8 @@ export default function AboutPage() {
               </p>
 
               <div className="info-note">
+                <Link to="/quality/">Качество и документы →</Link>
+                <br />
                 По запросу предоставляем:{' '}
                 {SITE_REQUEST_DOCUMENTS.slice(0, 4).join('; ')}.
               </div>

@@ -1,6 +1,11 @@
 // Файл хранит canonical-стратегию URL сайта, чтобы sitemap, prerender и meta tags не расходились.
 
 const TRAILING_SLASH_CANONICAL_PATHS = new Set([
+  '/specification',
+  '/how-to-order',
+  '/quality',
+  '/services/application',
+  '/calculator/section',
   '/about',
   '/catalog',
   '/calculator/weight',

@@ -1,7 +1,20 @@
 // Файл парсит строки XLS-прайса, извлекает марки, характеристики, единицы измерения и цены.
 import { readFileSync } from 'fs';
 import { findCableSpecification } from './cableSpecification.js';
-const UNIT_ALIASES = ['км', 'м', 'шт', 'штука', 'бухта', 'упак', 'упаковка'];
+const UNIT_ALIASES = [
+  'км',
+  'м',
+  'шт',
+  'штука',
+  'бухта',
+  'упак',
+  'упаковка',
+  'тонна',
+  'тонны',
+  'тонн',
+  'тн',
+  'т',
+];
 
 // Производитель извлекается один раз, непосредственно из исходного
 // названия. Справочник общий для всего импорта; классификатор это поле уже
@@ -229,9 +242,7 @@ function getSlashSpecificationFields(mark, configuration) {
 
   if (normalizedMark === 'АПБ') {
     const match = config.match(/\/\s*(\d+(?:[.,]\d+)?)$/u);
-    const doubleInsulationThickness = match
-      ? parseSlashValue(match[1])
-      : null;
+    const doubleInsulationThickness = match ? parseSlashValue(match[1]) : null;
     if (doubleInsulationThickness != null) {
       fields.doubleInsulationThickness = doubleInsulationThickness;
     }
@@ -392,6 +403,10 @@ function normalizeUnit(unit) {
     return 'упак';
   }
 
+  if (['тонна', 'тонны', 'тонн', 'тн', 'т'].includes(value)) {
+    return 'тн';
+  }
+
   return value;
 }
 
@@ -423,12 +438,12 @@ function inferMissingUnit({ unit, price, stock, parsedName }) {
 }
 
 function normalizeCommercialFields({ unit, price, stock }) {
-  if (unit !== 'км') {
+  if (unit !== 'км' && unit !== 'тн') {
     return { unit, price, stock };
   }
 
   return {
-    unit: 'м',
+    unit: unit === 'км' ? 'м' : 'кг',
     price: roundTo(price / 1000, 3),
     stock: roundTo(stock * 1000, 3),
   };

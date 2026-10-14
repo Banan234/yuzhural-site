@@ -1,6 +1,7 @@
 // Файл рендерит список товаров каталога, состояния загрузки, пустые результаты и управление выдачей.
 
 import { useEffect, useMemo, useState } from 'react';
+import CatalogFacet from './CatalogFacet';
 import ProductCard from '../ui/ProductCard';
 import { formatVoltage } from '../../lib/catalogFilters';
 import {
@@ -110,6 +111,7 @@ export default function ProductListingView({
     normalizePriceInput(priceMax)
   );
   const [localPage, setLocalPage] = useState(1);
+  const [filtersExpanded, setFiltersExpanded] = useState(false);
   const [viewMode, setViewMode] = useState('tiles');
   const isServerPaged = Boolean(pagination);
   const requestedPageSize = Number(searchParams.get('limit'));
@@ -245,10 +247,7 @@ export default function ProductListingView({
     pagination?.totalPages || Math.ceil(filteredProducts.length / pageSize);
   const visibleProducts = isServerPaged
     ? products
-    : filteredProducts.slice(
-        (localPage - 1) * pageSize,
-        localPage * pageSize
-      );
+    : filteredProducts.slice((localPage - 1) * pageSize, localPage * pageSize);
 
   const hasActiveFilters =
     selectedMaterials.length > 0 ||
@@ -278,13 +277,27 @@ export default function ProductListingView({
     <div className="catalog-listing-layout">
       <aside className="catalog-filters-sidebar" aria-label="Фильтры товаров">
         <div className="catalog-filter-panel catalog-filter-panel--sidebar">
-            <div className="catalog-filter-panel__head">
-              <span className="catalog-filter-panel__title">Фильтры</span>
-            </div>
-
-            <div
-              className="catalog-filter-panel__body"
+          <div className="catalog-filter-panel__head">
+            <span className="catalog-filter-panel__title">Фильтры</span>
+            <button
+              type="button"
+              className="catalog-filters-toggle"
+              aria-expanded={filtersExpanded}
+              aria-controls="catalog-filters-body"
+              onClick={() => setFiltersExpanded(!filtersExpanded)}
             >
+              {filtersExpanded
+                ? 'Свернуть'
+                : hasActiveFilters
+                  ? 'Изменить фильтры'
+                  : 'Открыть фильтры'}
+            </button>
+          </div>
+
+          <div
+            className={`catalog-filter-panel__body${filtersExpanded ? ' catalog-filter-panel__body--expanded' : ''}`}
+            id="catalog-filters-body"
+          >
             <form
               className="catalog-price-range"
               onSubmit={(e) => {
@@ -294,220 +307,148 @@ export default function ProductListingView({
             >
               <span className="catalog-price-range__label">Цена, ₽</span>
               <div className="catalog-price-range__inputs">
-              <label className="visually-hidden" htmlFor={PRICE_MIN_ID}>
-                Цена от, ₽
-              </label>
-              <input
-                id={PRICE_MIN_ID}
-                type="number"
-                inputMode="numeric"
-                min="0"
-                max={priceSliderMax}
-                step="1"
-                className="catalog-price-range__input"
-                placeholder={formatPriceValue(0)}
-                value={priceMinInput}
-                onChange={(e) => setPriceMinInput(e.target.value)}
-                onBlur={commitPriceRange}
-              />
-              <label className="visually-hidden" htmlFor={PRICE_MAX_ID}>
-                Цена до, ₽
-              </label>
-              <input
-                id={PRICE_MAX_ID}
-                type="number"
-                inputMode="numeric"
-                min="0"
-                max={priceSliderMax}
-                step="1"
-                className="catalog-price-range__input"
-                placeholder={formatPriceValue(priceSliderMax)}
-                value={priceMaxInput}
-                onChange={(e) => setPriceMaxInput(e.target.value)}
-                onBlur={commitPriceRange}
-              />
-            </div>
-            <div className="catalog-price-range__slider">
-              <div className="catalog-price-range__track" />
-              <div
-                className="catalog-price-range__track-fill"
-                style={{
-                  left: `${priceMinPercent}%`,
-                  width: `${priceMaxPercent - priceMinPercent}%`,
-                }}
-              />
-              <input
-                type="range"
-                aria-label="Минимальная цена"
-                min="0"
-                max={priceSliderMax}
-                step="1"
-                value={priceRangeMin}
-                onChange={(event) =>
-                  setPriceMinInput(
-                    String(Math.min(Number(event.target.value), priceRangeMax))
-                  )
-                }
-                onPointerUp={commitPriceRange}
-                onKeyUp={commitPriceRange}
-                className="catalog-price-range__range catalog-price-range__range--min"
-                style={{ zIndex: priceRangeMin > priceSliderMax * 0.9 ? 4 : 3 }}
-              />
-              <input
-                type="range"
-                aria-label="Максимальная цена"
-                min="0"
-                max={priceSliderMax}
-                step="1"
-                value={priceRangeMax}
-                onChange={(event) =>
-                  setPriceMaxInput(
-                    String(Math.max(Number(event.target.value), priceRangeMin))
-                  )
-                }
-                onPointerUp={commitPriceRange}
-                onKeyUp={commitPriceRange}
-                className="catalog-price-range__range catalog-price-range__range--max"
-              />
-            </div>
-            <div className="catalog-price-range__scale" aria-hidden="true">
-              {priceScaleValues.map((value, index) => (
-                <span
-                  key={index}
-                  className={
-                    index > 0 && index < priceScaleValues.length - 1
-                      ? 'catalog-price-range__tick catalog-price-range__tick--marked'
-                      : 'catalog-price-range__tick'
+                <label className="visually-hidden" htmlFor={PRICE_MIN_ID}>
+                  Цена от, ₽
+                </label>
+                <input
+                  id={PRICE_MIN_ID}
+                  type="number"
+                  inputMode="numeric"
+                  min="0"
+                  max={priceSliderMax}
+                  step="1"
+                  className="catalog-price-range__input"
+                  placeholder={formatPriceValue(0)}
+                  value={priceMinInput}
+                  onChange={(e) => setPriceMinInput(e.target.value)}
+                  onBlur={commitPriceRange}
+                />
+                <label className="visually-hidden" htmlFor={PRICE_MAX_ID}>
+                  Цена до, ₽
+                </label>
+                <input
+                  id={PRICE_MAX_ID}
+                  type="number"
+                  inputMode="numeric"
+                  min="0"
+                  max={priceSliderMax}
+                  step="1"
+                  className="catalog-price-range__input"
+                  placeholder={formatPriceValue(priceSliderMax)}
+                  value={priceMaxInput}
+                  onChange={(e) => setPriceMaxInput(e.target.value)}
+                  onBlur={commitPriceRange}
+                />
+              </div>
+              <div className="catalog-price-range__slider">
+                <div className="catalog-price-range__track" />
+                <div
+                  className="catalog-price-range__track-fill"
+                  style={{
+                    left: `${priceMinPercent}%`,
+                    width: `${priceMaxPercent - priceMinPercent}%`,
+                  }}
+                />
+                <input
+                  type="range"
+                  aria-label="Минимальная цена"
+                  min="0"
+                  max={priceSliderMax}
+                  step="1"
+                  value={priceRangeMin}
+                  onChange={(event) =>
+                    setPriceMinInput(
+                      String(
+                        Math.min(Number(event.target.value), priceRangeMax)
+                      )
+                    )
                   }
-                >
-                  {formatPriceValue(value)}
-                </span>
-              ))}
-            </div>
+                  onPointerUp={commitPriceRange}
+                  onKeyUp={commitPriceRange}
+                  className="catalog-price-range__range catalog-price-range__range--min"
+                  style={{
+                    zIndex: priceRangeMin > priceSliderMax * 0.9 ? 4 : 3,
+                  }}
+                />
+                <input
+                  type="range"
+                  aria-label="Максимальная цена"
+                  min="0"
+                  max={priceSliderMax}
+                  step="1"
+                  value={priceRangeMax}
+                  onChange={(event) =>
+                    setPriceMaxInput(
+                      String(
+                        Math.max(Number(event.target.value), priceRangeMin)
+                      )
+                    )
+                  }
+                  onPointerUp={commitPriceRange}
+                  onKeyUp={commitPriceRange}
+                  className="catalog-price-range__range catalog-price-range__range--max"
+                />
+              </div>
+              <div className="catalog-price-range__scale" aria-hidden="true">
+                {priceScaleValues.map((value, index) => (
+                  <span
+                    key={index}
+                    className={
+                      index > 0 && index < priceScaleValues.length - 1
+                        ? 'catalog-price-range__tick catalog-price-range__tick--marked'
+                        : 'catalog-price-range__tick'
+                    }
+                  >
+                    {formatPriceValue(value)}
+                  </span>
+                ))}
+              </div>
             </form>
 
-            {filterOptions.materials.length > 0 && (
-              <div className="catalog-filter-row">
-                <span className="catalog-filter-row__label">Материал жилы</span>
-                <div className="catalog-filter-row__tags">
-                  {filterOptions.materials.map((mat) => (
-                    <button
-                      key={mat}
-                      type="button"
-                      aria-pressed={selectedMaterials.includes(mat)}
-                      className={`catalog-filter-tag${
-                        selectedMaterials.includes(mat)
-                          ? ' catalog-filter-tag--active'
-                          : ''
-                      }`}
-                      onClick={() => toggleCsvParam('material', mat)}
-                    >
-                      {mat}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {filterOptions.constructions.length > 0 && (
-              <div className="catalog-filter-row">
-                <span className="catalog-filter-row__label">
-                  Исполнение жилы
-                </span>
-                <div className="catalog-filter-row__tags">
-                  {filterOptions.constructions.map((construction) => (
-                    <button
-                      key={construction}
-                      type="button"
-                      aria-pressed={selectedConstructions.includes(
-                        construction
-                      )}
-                      className={`catalog-filter-tag${
-                        selectedConstructions.includes(construction)
-                          ? ' catalog-filter-tag--active'
-                          : ''
-                      }`}
-                      onClick={() =>
-                        toggleCsvParam('construction', construction)
-                      }
-                    >
-                      {construction}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {filterOptions.cores.length > 0 && (
-              <div className="catalog-filter-row">
-                <span className="catalog-filter-row__label">Кол-во жил</span>
-                <div className="catalog-filter-row__tags">
-                  {filterOptions.cores.map((core) => (
-                    <button
-                      key={core}
-                      type="button"
-                      aria-pressed={selectedCores.includes(core)}
-                      className={`catalog-filter-tag${
-                        selectedCores.includes(core)
-                          ? ' catalog-filter-tag--active'
-                          : ''
-                      }`}
-                      onClick={() => toggleCsvParam('cores', core)}
-                    >
-                      {core}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {filterOptions.sections.length > 0 && (
-              <div className="catalog-filter-row">
-                <span className="catalog-filter-row__label">Сечение, мм²</span>
-                <div className="catalog-filter-row__tags">
-                  {filterOptions.sections.map((section) => (
-                    <button
-                      key={section}
-                      type="button"
-                      aria-pressed={selectedSections.includes(section)}
-                      className={`catalog-filter-tag${
-                        selectedSections.includes(section)
-                          ? ' catalog-filter-tag--active'
-                          : ''
-                      }`}
-                      onClick={() => toggleCsvParam('section', section)}
-                    >
-                      {section.toLocaleString('ru-RU')}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {filterOptions.voltages.length > 0 && (
-              <div className="catalog-filter-row">
-                <span className="catalog-filter-row__label">
-                  Напряжение, кВ
-                </span>
-                <div className="catalog-filter-row__tags">
-                  {filterOptions.voltages.map((v) => (
-                    <button
-                      key={v}
-                      type="button"
-                      aria-pressed={selectedVoltages.includes(v)}
-                      className={`catalog-filter-tag${
-                        selectedVoltages.includes(v)
-                          ? ' catalog-filter-tag--active'
-                          : ''
-                      }`}
-                      onClick={() => toggleCsvParam('voltage', v)}
-                    >
-                      {formatVoltage(v)}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+            {[
+              {
+                key: 'materials',
+                param: 'material',
+                label: 'Материал жилы',
+                selected: selectedMaterials,
+              },
+              {
+                key: 'constructions',
+                param: 'construction',
+                label: 'Исполнение жилы',
+                selected: selectedConstructions,
+              },
+              {
+                key: 'cores',
+                param: 'cores',
+                label: 'Кол-во жил',
+                selected: selectedCores,
+              },
+              {
+                key: 'sections',
+                param: 'section',
+                label: 'Сечение, мм²',
+                selected: selectedSections,
+                format: (value) => Number(value).toLocaleString('ru-RU'),
+              },
+              {
+                key: 'voltages',
+                param: 'voltage',
+                label: 'Напряжение, кВ',
+                selected: selectedVoltages,
+                format: formatVoltage,
+              },
+            ].map((facet) => (
+              <CatalogFacet
+                key={facet.key}
+                label={facet.label}
+                values={filterOptions[facet.key]}
+                selected={facet.selected}
+                counts={filterOptions.facetCounts?.[facet.key]}
+                format={facet.format}
+                onToggle={(value) => toggleCsvParam(facet.param, value)}
+              />
+            ))}
 
             {showAppType && filterOptions.appTypes.length > 0 && (
               <div className="catalog-filter-row">
@@ -575,7 +516,7 @@ export default function ProductListingView({
               </div>
             )}
 
-              <div className="catalog-filter-panel__footer">
+            <div className="catalog-filter-panel__footer">
               {hasActiveFilters && (
                 <button
                   type="button"
@@ -585,178 +526,193 @@ export default function ProductListingView({
                   ✕ Сбросить фильтр
                 </button>
               )}
-              </div>
             </div>
           </div>
+        </div>
       </aside>
 
       <div className="catalog-results-main">
-      {!error && (
-        <div className="catalog-filter-summary">
-          <div className="catalog-sort-row" aria-label="Сортировать товары">
-            <strong className="catalog-sort-row__label">Сортировать по:</strong>
-            <button
-              type="button"
-              className={`catalog-sort-row__option${sortBy === 'popular' ? ' catalog-sort-row__option--active' : ''}`}
-              aria-pressed={sortBy === 'popular'}
-              onClick={() => updateParam('sort', 'popular')}
-            >
-              <svg viewBox="0 0 18 18" aria-hidden="true">
-                <path d="M3 14V9m4 5V5m4 9V7m4 7V3" />
-              </svg>
-              <span>Популярности</span>
-            </button>
-            <button
-              type="button"
-              className={`catalog-sort-row__option${sortBy === 'price-asc' ? ' catalog-sort-row__option--active' : ''}`}
-              aria-pressed={sortBy === 'price-asc'}
-              onClick={() => updateParam('sort', 'price-asc')}
-            >
-              <svg viewBox="0 0 18 18" aria-hidden="true">
-                <path d="M3 5h12M5 9h8m-6 4h4" />
-              </svg>
-              <span>Цене</span>
-            </button>
-            <button
-              type="button"
-              className={`catalog-sort-row__option${sortBy === 'title-asc' ? ' catalog-sort-row__option--active' : ''}`}
-              aria-pressed={sortBy === 'title-asc'}
-              onClick={() => updateParam('sort', 'title-asc')}
-            >
-              <svg viewBox="0 0 18 18" aria-hidden="true">
-                <path d="M4 14V4m-2 2 2-2 2 2m3 7h5m-5-4h4m-4-4h3" />
-              </svg>
-              <span>Алфавиту</span>
-            </button>
-            <label className="catalog-page-size">
-              <span>Выводить по:</span>
-              <select
-                className="catalog-page-size__select"
-                aria-label="Количество товаров на странице"
-                value={pageSize}
-                onChange={(event) => updateParam('limit', event.target.value)}
-              >
-                {CATALOG_PAGE_SIZE_OPTIONS.map((size) => (
-                  <option key={size} value={size}>
-                    {size}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <div className="catalog-view-switch" aria-label="Вид списка товаров">
+        <p className="catalog-results-count" role="status">
+          Найдено: {resultCount.toLocaleString('ru-RU')} позиций
+        </p>
+        {!error && (
+          <div className="catalog-filter-summary">
+            <div className="catalog-sort-row" aria-label="Сортировать товары">
+              <strong className="catalog-sort-row__label">
+                Сортировать по:
+              </strong>
               <button
                 type="button"
-                className={`catalog-view-switch__button${
-                  viewMode === 'tiles'
-                    ? ' catalog-view-switch__button--active'
-                    : ''
-                }`}
-                aria-label="Плиточное отображение"
-                aria-pressed={viewMode === 'tiles'}
-                title="Плиточное отображение"
-                onClick={() => setViewMode('tiles')}
+                className={`catalog-sort-row__option${sortBy === 'popular' ? ' catalog-sort-row__option--active' : ''}`}
+                aria-pressed={sortBy === 'popular'}
+                onClick={() => updateParam('sort', 'popular')}
               >
-                <svg viewBox="0 0 20 20" aria-hidden="true">
-                  <rect x="2.5" y="2.5" width="5.5" height="5.5" rx="1" />
-                  <rect x="12" y="2.5" width="5.5" height="5.5" rx="1" />
-                  <rect x="2.5" y="12" width="5.5" height="5.5" rx="1" />
-                  <rect x="12" y="12" width="5.5" height="5.5" rx="1" />
+                <svg viewBox="0 0 18 18" aria-hidden="true">
+                  <path d="M3 14V9m4 5V5m4 9V7m4 7V3" />
                 </svg>
+                <span>Популярности</span>
               </button>
               <button
                 type="button"
-                className={`catalog-view-switch__button${
-                  viewMode === 'list'
-                    ? ' catalog-view-switch__button--active'
-                    : ''
-                }`}
-                aria-label="Прайс-лист"
-                aria-pressed={viewMode === 'list'}
-                title="Прайс-лист"
-                onClick={() => setViewMode('list')}
+                className={`catalog-sort-row__option${sortBy === 'price-asc' ? ' catalog-sort-row__option--active' : ''}`}
+                aria-pressed={sortBy === 'price-asc'}
+                onClick={() => updateParam('sort', 'price-asc')}
               >
-                <svg viewBox="0 0 20 20" aria-hidden="true">
-                  <path d="M7.5 4h10M7.5 10h10M7.5 16h10" />
-                  <circle cx="3.5" cy="4" r=".8" />
-                  <circle cx="3.5" cy="10" r=".8" />
-                  <circle cx="3.5" cy="16" r=".8" />
+                <svg viewBox="0 0 18 18" aria-hidden="true">
+                  <path d="M3 5h12M5 9h8m-6 4h4" />
                 </svg>
+                <span>Цене</span>
               </button>
+              <button
+                type="button"
+                className={`catalog-sort-row__option${sortBy === 'title-asc' ? ' catalog-sort-row__option--active' : ''}`}
+                aria-pressed={sortBy === 'title-asc'}
+                onClick={() => updateParam('sort', 'title-asc')}
+              >
+                <svg viewBox="0 0 18 18" aria-hidden="true">
+                  <path d="M4 14V4m-2 2 2-2 2 2m3 7h5m-5-4h4m-4-4h3" />
+                </svg>
+                <span>Алфавиту</span>
+              </button>
+              <label className="catalog-page-size">
+                <span>Выводить по:</span>
+                <select
+                  className="catalog-page-size__select"
+                  aria-label="Количество товаров на странице"
+                  value={pageSize}
+                  onChange={(event) => updateParam('limit', event.target.value)}
+                >
+                  {CATALOG_PAGE_SIZE_OPTIONS.map((size) => (
+                    <option key={size} value={size}>
+                      {size}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <div
+                className="catalog-view-switch"
+                aria-label="Вид списка товаров"
+              >
+                <button
+                  type="button"
+                  className={`catalog-view-switch__button${
+                    viewMode === 'tiles'
+                      ? ' catalog-view-switch__button--active'
+                      : ''
+                  }`}
+                  aria-label="Плиточное отображение"
+                  aria-pressed={viewMode === 'tiles'}
+                  title="Плиточное отображение"
+                  onClick={() => setViewMode('tiles')}
+                >
+                  <svg viewBox="0 0 20 20" aria-hidden="true">
+                    <rect x="2.5" y="2.5" width="5.5" height="5.5" rx="1" />
+                    <rect x="12" y="2.5" width="5.5" height="5.5" rx="1" />
+                    <rect x="2.5" y="12" width="5.5" height="5.5" rx="1" />
+                    <rect x="12" y="12" width="5.5" height="5.5" rx="1" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  className={`catalog-view-switch__button${
+                    viewMode === 'list'
+                      ? ' catalog-view-switch__button--active'
+                      : ''
+                  }`}
+                  aria-label="Прайс-лист"
+                  aria-pressed={viewMode === 'list'}
+                  title="Прайс-лист"
+                  onClick={() => setViewMode('list')}
+                >
+                  <svg viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M7.5 4h10M7.5 10h10M7.5 16h10" />
+                    <circle cx="3.5" cy="4" r=".8" />
+                    <circle cx="3.5" cy="10" r=".8" />
+                    <circle cx="3.5" cy="16" r=".8" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {error ? (
-        <div className="catalog-empty">{error}</div>
-      ) : isLoading ? (
-        <div className="catalog-empty">Подготавливаем товары из прайса...</div>
-      ) : resultCount > 0 ? (
-        <>
-          <div
-            id="catalog-grid"
-            className="catalog-grid-anchor"
-            aria-hidden="true"
-          />
-          <h2 className="visually-hidden">Товары каталога</h2>
-          <div
-            className={`products-grid products-grid--catalog products-grid--catalog-${viewMode}`}
-          >
-            {visibleProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                variant={viewMode === 'list' ? 'catalog-list' : 'catalog-tile'}
-              />
-            ))}
+        {error ? (
+          <div className="catalog-empty">{error}</div>
+        ) : isLoading ? (
+          <div className="catalog-empty">
+            Подготавливаем товары из прайса...
           </div>
-
-          {totalPages > 1 && (
-            <div className="catalog-pagination">
-              <button
-                type="button"
-                className="catalog-pagination__btn"
-                disabled={page === 1}
-                onClick={() => handlePageChange(page - 1)}
-              >
-                ← Назад
-              </button>
-
-              {getPageNumbers(page, totalPages).map((p, i) =>
-                p === '...' ? (
-                  <span key={`dots-${i}`} className="catalog-pagination__dots">
-                    …
-                  </span>
-                ) : (
-                  <button
-                    key={p}
-                    type="button"
-                    className={`catalog-pagination__page${
-                      p === page ? ' catalog-pagination__page--active' : ''
-                    }`}
-                    onClick={() => handlePageChange(p)}
-                  >
-                    {p}
-                  </button>
-                )
-              )}
-
-              <button
-                type="button"
-                className="catalog-pagination__btn"
-                disabled={page === totalPages}
-                onClick={() => handlePageChange(page + 1)}
-              >
-                Вперёд →
-              </button>
+        ) : resultCount > 0 ? (
+          <>
+            <div
+              id="catalog-grid"
+              className="catalog-grid-anchor"
+              aria-hidden="true"
+            />
+            <h2 className="visually-hidden">Товары каталога</h2>
+            <div
+              className={`products-grid products-grid--catalog products-grid--catalog-${viewMode}`}
+            >
+              {visibleProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  variant={
+                    viewMode === 'list' ? 'catalog-list' : 'catalog-tile'
+                  }
+                />
+              ))}
             </div>
-          )}
-        </>
-      ) : (
-        <div className="catalog-empty">
-          По вашему запросу товары не найдены.
-        </div>
-      )}
+
+            {totalPages > 1 && (
+              <div className="catalog-pagination">
+                <button
+                  type="button"
+                  className="catalog-pagination__btn"
+                  disabled={page === 1}
+                  onClick={() => handlePageChange(page - 1)}
+                >
+                  ← Назад
+                </button>
+
+                {getPageNumbers(page, totalPages).map((p, i) =>
+                  p === '...' ? (
+                    <span
+                      key={`dots-${i}`}
+                      className="catalog-pagination__dots"
+                    >
+                      …
+                    </span>
+                  ) : (
+                    <button
+                      key={p}
+                      type="button"
+                      className={`catalog-pagination__page${
+                        p === page ? ' catalog-pagination__page--active' : ''
+                      }`}
+                      onClick={() => handlePageChange(p)}
+                    >
+                      {p}
+                    </button>
+                  )
+                )}
+
+                <button
+                  type="button"
+                  className="catalog-pagination__btn"
+                  disabled={page === totalPages}
+                  onClick={() => handlePageChange(page + 1)}
+                >
+                  Вперёд →
+                </button>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="catalog-empty">
+            По вашему запросу товары не найдены.
+          </div>
+        )}
       </div>
     </div>
   );

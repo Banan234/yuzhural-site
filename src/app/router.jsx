@@ -8,6 +8,13 @@ import HomePage from '../pages/HomePage';
 // Все страницы — отдельные чанки. На первый paint грузится только тот,
 // который соответствует текущему маршруту. Главная загружается синхронно,
 // чтобы убрать route waterfall для первого визита на /.
+const SpecificationPage = lazy(() => import('../pages/SpecificationPage'));
+const OrderGuidePage = lazy(() => import('../pages/OrderGuidePage'));
+const QualityPage = lazy(() => import('../pages/QualityPage'));
+const CableApplicationPage = lazy(
+  () => import('../pages/CableApplicationPage')
+);
+const CableSectionPage = lazy(() => import('../pages/CableSectionPage'));
 const CatalogPage = lazy(() => import('../pages/CatalogPage'));
 const ProductPage = lazy(() => import('../pages/ProductPage'));
 const CableWeightPage = lazy(() => import('../pages/CableWeightPage'));
@@ -26,6 +33,11 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const router = createBrowserRouter(
   createRouteObjects({
+    SpecificationPage,
+    OrderGuidePage,
+    QualityPage,
+    CableApplicationPage,
+    CableSectionPage,
     HomePage,
     CatalogPage,
     ProductPage,

@@ -130,3 +130,28 @@
 .related-products {
   margin-top: 40px;
 }
+
+.product-page__content {
+  min-width: 0;
+}
+.product-page__content .service-product-links {
+  margin-top: 24px;
+}
+@media (max-width: 900px) {
+  .product-page {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+  .product-page__media {
+    max-width: 560px;
+    width: 100%;
+    margin: auto;
+  }
+  .product-page__image {
+    object-fit: contain;
+    max-height: 320px;
+  }
+  .product-specs-table__label {
+    white-space: normal;
+  }
+}

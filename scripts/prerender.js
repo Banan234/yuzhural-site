@@ -14,6 +14,7 @@
 // Запуск: node scripts/prerender.js
 // Зависит от: dist/index.html (из vite build), data/products.json (из импортёра).
 
+import { PURCHASE_PAGES } from '../shared/purchaseContent.js';
 import fs from 'fs/promises';
 import path from 'path';
 import { pathToFileURL } from 'url';
@@ -61,6 +62,13 @@ const PRODUCT_PRERENDER_LIMIT_ENV = 'PRODUCT_PRERENDER_LIMIT';
 const PRODUCT_PRERENDER_INCLUDE_ENV = 'PRODUCT_PRERENDER_INCLUDE';
 
 export const STATIC_ROUTES = [
+  ...Object.values(PURCHASE_PAGES).map((page) => ({
+    path: page.path,
+    title: `${page.title} — ${SITE_NAME}`,
+    description: page.description,
+    h1: page.title,
+    intro: page.description,
+  })),
   {
     path: SERVICES_PATH,
     title: `Сервисы для выбора и доставки кабеля — ${SITE_NAME}`,
@@ -204,6 +212,16 @@ const OPTIONAL_POSITIVE_NUMBER_FIELDS = [
 ];
 const MAX_VALIDATION_ISSUES_IN_MESSAGE = 20;
 const ROUTE_MODULES = [
+  ...[
+    ['/specification', 'SpecificationPage'],
+    ['/how-to-order', 'OrderGuidePage'],
+    ['/quality', 'QualityPage'],
+    ['/services/application', 'CableApplicationPage'],
+    ['/calculator/section', 'CableSectionPage'],
+  ].map(([route, name]) => ({
+    test: (routePath) => routePath === route,
+    module: `src/pages/${name}.jsx`,
+  })),
   {
     test: (routePath) => routePath === '/catalog',
     module: 'src/pages/CatalogPage.jsx',

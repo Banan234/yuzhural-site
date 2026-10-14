@@ -12,6 +12,10 @@ import { messages } from '../../../shared/messages.js';
 import { MAX_QUOTE_CUSTOMER_COMMENT_LENGTH } from '../../../shared/quoteValidation.js';
 import { validateForm } from './quoteFormValidation';
 
+import SpecificationFiles from './SpecificationFiles';
+import { validateSpecificationFiles } from '../../../shared/specificationFiles';
+import '../../styles/pages/purchase.css';
+
 const LEGACY_FORM_STORAGE_KEY = 'yuzhural-quote-form';
 
 const CHANNEL_OPTIONS = [
@@ -35,12 +39,20 @@ export default function QuoteForm({
   description = 'Заполните форму, и мы подготовим предложение по текущему составу корзины.',
   itemsOverride = null,
   idPrefix = 'quote',
+  specificationOnly = false,
+  defaultComment = '',
 }) {
   const { items: cartItems, clearCart } = useCartStore();
   const items = itemsOverride || cartItems;
   const shouldClearCartOnSuccess = !itemsOverride;
 
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useState(() => ({
+    ...initialForm,
+    comment: defaultComment,
+  }));
+  const [files, setFiles] = useState([]);
+  const [fileError, setFileError] = useState('');
+  const [submittedSummary, setSubmittedSummary] = useState(null);
   const [honeypot, setHoneypot] = useState('');
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -98,9 +110,15 @@ export default function QuoteForm({
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const nextErrors = validateForm(form, items);
+    const nextErrors = validateForm(form, items, {
+      hasSpecification: files.length > 0,
+    });
 
-    if (Object.keys(nextErrors).length > 0) {
+    if (specificationOnly && files.length === 0)
+      nextErrors.cart = 'Прикрепите спецификацию для расчёта.';
+    const attachmentError = validateSpecificationFiles(files);
+    setFileError(attachmentError);
+    if (attachmentError || Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
       setIsSubmitted(false);
       return;
@@ -139,12 +157,19 @@ export default function QuoteForm({
     };
 
     try {
+      const multipart = new FormData();
+      multipart.append('payload', JSON.stringify(orderPayload));
+      files.forEach((file) =>
+        multipart.append('specifications', file, file.name)
+      );
       const response = await fetch('/api/quote', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderPayload),
+        ...(files.length
+          ? { body: multipart }
+          : {
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(orderPayload),
+            }),
       });
 
       const result = await expectOkApiJson(
@@ -158,6 +183,13 @@ export default function QuoteForm({
         channel: cleanedForm.preferredChannel,
         hasEmail: Boolean(cleanedForm.email),
       });
+      setSubmittedSummary({
+        files: files.map((file) => file.name),
+        positions: totalCount,
+        contact: cleanedForm.phone,
+        comment: cleanedForm.comment,
+      });
+      setFiles([]);
       setIsSubmitted(true);
       setServerMessage(result.message || messages.success.quoteSent);
       setErrors({});
@@ -182,22 +214,45 @@ export default function QuoteForm({
         <p className="page-subtitle">{description}</p>
       </div>
 
-      {items.length === 0 && !isSubmitted ? (
-        <div className="form-error">
-          {messages.text.cartEmptyPromptPrefix}{' '}
+      {!specificationOnly &&
+      items.length === 0 &&
+      files.length === 0 &&
+      !isSubmitted ? (
+        <div className="quote-empty-note">
+          Прикрепите спецификацию или добавьте позиции из{' '}
           <a
             href={CATALOG_CANONICAL_PATH}
             style={{ color: 'inherit', fontWeight: 700 }}
           >
             каталога
           </a>
-          {messages.text.cartEmptyPromptSuffix}
         </div>
       ) : null}
 
       {errors.cart ? <div className="form-error">{errors.cart}</div> : null}
 
-      {isSubmitted ? <div className="form-success">{serverMessage}</div> : null}
+      {isSubmitted ? (
+        <div className="form-success" role="status">
+          {serverMessage}
+          {submittedSummary && (
+            <div className="specification-receipt">
+              <strong>Отправлено:</strong>
+              <p>
+                Позиций из каталога: {submittedSummary.positions}. Телефон для
+                связи: {submittedSummary.contact}.
+              </p>
+              {submittedSummary.files.length > 0 && (
+                <ul>
+                  {submittedSummary.files.map((name) => (
+                    <li key={name}>{name}</li>
+                  ))}
+                </ul>
+              )}
+              {submittedSummary.comment && <p>{submittedSummary.comment}</p>}
+            </div>
+          )}
+        </div>
+      ) : null}
 
       {!isSubmitted && serverMessage ? (
         <div className="form-error">{serverMessage}</div>
@@ -207,6 +262,14 @@ export default function QuoteForm({
         <HoneypotField
           value={honeypot}
           onChange={(event) => setHoneypot(event.target.value)}
+        />
+        <SpecificationFiles
+          files={files}
+          onChange={setFiles}
+          error={fileError}
+          onError={setFileError}
+          id={`${idPrefix}-files`}
+          disabled={isSubmitting}
         />
         <div className="quote-form__grid">
           <div className="quote-field">

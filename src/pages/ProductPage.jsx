@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Container from '../components/ui/Container';
 import ProductCard from '../components/ui/ProductCard';
+import ProductSupplyPanel from '../components/purchase/ProductSupplyPanel';
 import ProductServiceLinks from '../components/services/ProductServiceLinks';
 import { fetchProductBySlug, fetchRelatedProducts } from '../lib/productsApi';
 import { useCartStore } from '../store/useCartStore';
@@ -250,7 +251,6 @@ export default function ProductPage() {
             </div>
 
             <p className="page-subtitle">{productDescription}</p>
-            <ProductServiceLinks product={product} quantity={quantity} />
 
             <div className="product-page__status-row">
               <span
@@ -328,8 +328,10 @@ export default function ProductPage() {
                 Перейти в корзину
               </Link>
             </div>
+            <ProductServiceLinks product={product} quantity={quantity} />
           </div>
         </div>
+        <ProductSupplyPanel product={product} quantity={quantity} />
 
         {product.specs && Object.keys(product.specs).length > 0 && (
           <div className="product-details">

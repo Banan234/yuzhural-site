@@ -115,18 +115,13 @@ export default function SiteFooter({ onOpenQuote, onManageCookies }) {
           <div className="site-footer__column">
             <h3 className="site-footer__title">Как мы работаем</h3>
             <div className="site-footer__links">
-              <button
-                type="button"
-                className="site-footer__link-button"
-                onClick={onOpenQuote}
-              >
-                Как оформить заявку
-              </button>
+              <Link to="/how-to-order/">Как оформить заявку</Link>
+              <Link to="/specification/">Заявка по спецификации</Link>
               <Link to={PAYMENT_CANONICAL_PATH}>Условия оплаты</Link>
               <Link to={DELIVERY_CANONICAL_PATH}>Доставка</Link>
               <Link to={CABLE_WEIGHT_CANONICAL_PATH}>Калькулятор веса</Link>
               <Link to={SERVICES_PATH}>Все сервисы</Link>
-              <span className="site-footer__step">Гарантии и документы</span>
+              <Link to="/quality/">Качество и документы</Link>
             </div>
           </div>
 

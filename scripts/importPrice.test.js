@@ -810,6 +810,20 @@ describe('parsePageRow / createProductRecord', () => {
     expect(result?.value.category).toBe('Силовые');
   });
 
+  it('импортирует строку прайса в тоннах как цену и остаток в кг', () => {
+    const result = parsePageRow(
+      ['А 16', 'тн', '583,800.00', '0.006'],
+      [],
+      'Провод неизолированный алюминиевый А, АС'
+    );
+    expect(result?.type).toBe('product');
+    expect(result?.value).toMatchObject({
+      unit: 'кг',
+      price: 583.8,
+      stock: 6,
+    });
+  });
+
   it('skip с причиной при отсутствии цены', () => {
     const result = createProductRecord(
       { name: 'ВВГ 3х2.5', unit: 'м', price: 0, stock: 100 },

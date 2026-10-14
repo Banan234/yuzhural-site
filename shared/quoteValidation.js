@@ -121,9 +121,16 @@ function isValidQuoteItem(item) {
   );
 }
 
-export function isValidQuoteRequest(payload = {}) {
+export function isValidQuoteRequest(
+  payload = {},
+  { allowEmptyItems = false } = {}
+) {
   const { customer, items } = payload;
-  if (!customer || !Array.isArray(items) || items.length === 0) {
+  if (
+    !customer ||
+    !Array.isArray(items) ||
+    (!allowEmptyItems && items.length === 0)
+  ) {
     return false;
   }
 

@@ -329,14 +329,43 @@
   position: absolute;
   z-index: 1;
   inset: 0;
-  background: linear-gradient(90deg, #f4f7fa 0%, rgba(244, 247, 250, .96) 29%, rgba(244, 247, 250, 0) 70%);
+  background: linear-gradient(
+    90deg,
+    #f4f7fa 0%,
+    rgba(244, 247, 250, 0.96) 29%,
+    rgba(244, 247, 250, 0) 70%
+  );
 }
-.home-concept .home-category-showcase__item:nth-child(1) .home-category-showcase__media { background-position: 0 18%; }
-.home-concept .home-category-showcase__item:nth-child(2) .home-category-showcase__media { background-position: 50% 18%; }
-.home-concept .home-category-showcase__item:nth-child(3) .home-category-showcase__media { background-position: 100% 18%; }
-.home-concept .home-category-showcase__item:nth-child(4) .home-category-showcase__media { background-position: 0 82%; }
-.home-concept .home-category-showcase__item:nth-child(5) .home-category-showcase__media { background-position: 50% 82%; }
-.home-concept .home-category-showcase__item:nth-child(6) .home-category-showcase__media { background-position: 100% 82%; }
+.home-concept
+  .home-category-showcase__item:nth-child(1)
+  .home-category-showcase__media {
+  background-position: 0 18%;
+}
+.home-concept
+  .home-category-showcase__item:nth-child(2)
+  .home-category-showcase__media {
+  background-position: 50% 18%;
+}
+.home-concept
+  .home-category-showcase__item:nth-child(3)
+  .home-category-showcase__media {
+  background-position: 100% 18%;
+}
+.home-concept
+  .home-category-showcase__item:nth-child(4)
+  .home-category-showcase__media {
+  background-position: 0 82%;
+}
+.home-concept
+  .home-category-showcase__item:nth-child(5)
+  .home-category-showcase__media {
+  background-position: 50% 82%;
+}
+.home-concept
+  .home-category-showcase__item:nth-child(6)
+  .home-category-showcase__media {
+  background-position: 100% 82%;
+}
 
 .home-concept .home-stock-showcase {
   padding: 24px 0 36px;
@@ -369,12 +398,48 @@
   background-repeat: no-repeat;
   background-size: 300% auto;
 }
-.home-concept .product-card--stock .product-card__image-link:has(img[src*="power-cable.svg"]) { background-image: url('/home-category-cables.jpg'); background-position: 0 18%; }
-.home-concept .product-card--stock .product-card__image-link:has(img[src*="control-cable.svg"]) { background-image: url('/home-category-cables.jpg'); background-position: 50% 18%; }
-.home-concept .product-card--stock .product-card__image-link:has(img[src*="flexible-cable.svg"]) { background-image: url('/home-category-cables.jpg'); background-position: 100% 18%; }
-.home-concept .product-card--stock .product-card__image-link:has(img[src*="wire.svg"]) { background-image: url('/home-category-cables.jpg'); background-position: 0 82%; }
-.home-concept .product-card--stock .product-card__image-link:has(img[src*="communication-cable.svg"]) { background-image: url('/home-category-cables.jpg'); background-position: 50% 82%; }
-.home-concept .product-card--stock .product-card__image-link:has(img[src*="power-cable.svg"], img[src*="control-cable.svg"], img[src*="flexible-cable.svg"], img[src*="wire.svg"], img[src*="communication-cable.svg"]) img { opacity: 0; }
+.home-concept
+  .product-card--stock
+  .product-card__image-link:has(img[src*='power-cable.svg']) {
+  background-image: url('/home-category-cables.jpg');
+  background-position: 0 18%;
+}
+.home-concept
+  .product-card--stock
+  .product-card__image-link:has(img[src*='control-cable.svg']) {
+  background-image: url('/home-category-cables.jpg');
+  background-position: 50% 18%;
+}
+.home-concept
+  .product-card--stock
+  .product-card__image-link:has(img[src*='flexible-cable.svg']) {
+  background-image: url('/home-category-cables.jpg');
+  background-position: 100% 18%;
+}
+.home-concept
+  .product-card--stock
+  .product-card__image-link:has(img[src*='wire.svg']) {
+  background-image: url('/home-category-cables.jpg');
+  background-position: 0 82%;
+}
+.home-concept
+  .product-card--stock
+  .product-card__image-link:has(img[src*='communication-cable.svg']) {
+  background-image: url('/home-category-cables.jpg');
+  background-position: 50% 82%;
+}
+.home-concept
+  .product-card--stock
+  .product-card__image-link:has(
+    img[src*='power-cable.svg'],
+    img[src*='control-cable.svg'],
+    img[src*='flexible-cable.svg'],
+    img[src*='wire.svg'],
+    img[src*='communication-cable.svg']
+  )
+  img {
+  opacity: 0;
+}
 .home-concept .product-card--stock .product-card__image {
   width: 100%;
   height: 136px;
@@ -761,8 +826,16 @@
     width: 100%;
     height: 100%;
   }
-  .home-concept .home-category-showcase__item:nth-child(-n+3) .home-category-showcase__media { background-position-y: 0; }
-  .home-concept .home-category-showcase__item:nth-child(n+4) .home-category-showcase__media { background-position-y: 100%; }
+  .home-concept
+    .home-category-showcase__item:nth-child(-n + 3)
+    .home-category-showcase__media {
+    background-position-y: 0;
+  }
+  .home-concept
+    .home-category-showcase__item:nth-child(n + 4)
+    .home-category-showcase__media {
+    background-position-y: 100%;
+  }
   .home-concept .products-grid--stock-showcase .product-card--stock {
     flex-basis: min(78%, 285px);
   }
@@ -785,4 +858,12 @@
   .home-concept__section-head {
     align-items: start;
   }
+}
+
+.home-task-link {
+  display: inline-block;
+  margin-top: 9px;
+  color: #164e7f;
+  font-size: 14px;
+  font-weight: 600;
 }

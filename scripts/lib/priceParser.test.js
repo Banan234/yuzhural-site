@@ -550,6 +550,15 @@ describe('parseCombinedCell', () => {
       stock: 0.183,
     });
   });
+
+  test('распознаёт тонны в объединённой ячейке', () => {
+    expect(parseCombinedCell('А 1х16 тн 583,800.00 0.006')).toMatchObject({
+      name: 'А 1х16',
+      unit: 'тн',
+      price: 583800,
+      stock: 0.006,
+    });
+  });
 });
 
 describe('normalizeImportedProduct', () => {
@@ -583,6 +592,29 @@ describe('normalizeImportedProduct', () => {
     expect(result.unit).toBe('м');
     expect(result.price).toBe(100);
     expect(result.stock).toBe(1000);
+  });
+
+  test.each(['тн', 'т', 'тонна', 'тонны', 'тонн'])(
+    'пересчитывает цену и остаток из %s в кг',
+    (unit) => {
+      const result = normalizeImportedProduct({
+        name: 'А 1х16',
+        unit,
+        price: 583800,
+        stock: 0.006,
+      });
+      expect(result).toMatchObject({ unit: 'кг', price: 583.8, stock: 6 });
+    }
+  );
+
+  test('оставляет исходные цену и остаток в кг', () => {
+    const result = normalizeImportedProduct({
+      name: 'А 1х16',
+      unit: 'кг',
+      price: 583.8,
+      stock: 6,
+    });
+    expect(result).toMatchObject({ unit: 'кг', price: 583.8, stock: 6 });
   });
 
   test('«штука» сокращается до «шт»', () => {

@@ -15,6 +15,7 @@
 // Зачем сегментация: в Я.Вебмастере и GSC видно охват по каждому сегменту —
 // если просел продуктовый блок, это не маскируется здоровьем статики.
 
+import { PURCHASE_PAGES } from '../../shared/purchaseContent.js';
 import fs from 'fs/promises';
 import path from 'path';
 import { toCanonicalSitePath } from '../../src/lib/canonicalPaths.js';
@@ -33,6 +34,11 @@ export const SITEMAP_FILES = {
 export const MAX_SITEMAP_URLS = 50_000;
 
 const STATIC_ROUTES = [
+  ...Object.values(PURCHASE_PAGES).map((page) => ({
+    path: page.path,
+    changefreq: 'monthly',
+    priority: '0.5',
+  })),
   { path: SERVICES_PATH, changefreq: 'monthly', priority: '0.6' },
   ...CABLE_SERVICES.filter((service) => service.key !== 'weight').map(
     (service) => ({

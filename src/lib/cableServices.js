@@ -2,11 +2,29 @@
 import { MAX_QUOTE_CUSTOMER_COMMENT_LENGTH } from '../../shared/quoteValidation.js';
 export const CABLE_SERVICES = [
   {
+    key: 'application',
+    path: '/services/application/',
+    title: 'Подбор кабеля по задаче',
+    short: 'По задаче',
+    number: '01',
+    description:
+      'Выберите задачу, найдите разделы каталога и передайте параметры проекта для подбора.',
+  },
+  {
+    key: 'section',
+    path: '/calculator/section/',
+    title: 'Расчёт сечения кабеля',
+    short: 'Сечение',
+    number: '02',
+    description:
+      'Предварительный подбор сечения по нагрузке, длине, способу прокладки и падению напряжения.',
+  },
+  {
     key: 'weight',
     path: '/calculator/weight/',
     title: 'Вес и диаметр кабеля',
     short: 'Вес и диаметр',
-    number: '01',
+    number: '03',
     description:
       'Масса кабеля и барабанов, наружный диаметр и расчёт нескольких позиций по таблицам изготовителей.',
   },
@@ -15,7 +33,7 @@ export const CABLE_SERVICES = [
     path: '/services/marking/',
     title: 'Расшифровка маркировки',
     short: 'Маркировка',
-    number: '02',
+    number: '04',
     description:
       'Конструкция, материалы и индексы исполнения. Разбор обозначения марки и размера кабеля.',
   },
@@ -24,7 +42,7 @@ export const CABLE_SERVICES = [
     path: '/services/reference/',
     title: 'Справочник кабеля',
     short: 'Справочник',
-    number: '03',
+    number: '05',
     description:
       'Назначение распространённых марок, технические таблицы и переход к продукции в каталоге.',
   },
@@ -33,7 +51,7 @@ export const CABLE_SERVICES = [
     path: '/services/analogs/',
     title: 'Подбор возможной замены',
     short: 'Замены',
-    number: '04',
+    number: '06',
     description:
       'Сравнение родственных марок, различий конструкции и требований для согласования замены.',
   },
@@ -42,7 +60,7 @@ export const CABLE_SERVICES = [
     path: '/services/drum/',
     title: 'Длина кабеля на барабане',
     short: 'Длина на барабане',
-    number: '05',
+    number: '07',
     description:
       'Оценка длины по геометрии намотки или фактической массе кабеля без тары.',
   },
@@ -51,7 +69,7 @@ export const CABLE_SERVICES = [
     path: '/services/shipping/',
     title: 'Подготовка доставки',
     short: 'Доставка',
-    number: '06',
+    number: '08',
     description:
       'Масса, объём и габариты грузовых мест. Проверка размещения и заявка на расчёт перевозки.',
   },
@@ -60,7 +78,7 @@ export const CABLE_SERVICES = [
     path: '/services/manufacturers/',
     title: 'Производители кабеля',
     short: 'Производители',
-    number: '07',
+    number: '09',
     description:
       'Изготовители и опубликованные ими таблицы для точной марки и конструкции кабеля.',
   },

@@ -7,6 +7,11 @@ import { createRouteObjects } from './app/routes';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { PrerenderDataProvider } from './lib/prerenderData';
 import HomePage from './pages/HomePage';
+import SpecificationPage from './pages/SpecificationPage';
+import OrderGuidePage from './pages/OrderGuidePage';
+import QualityPage from './pages/QualityPage';
+import CableApplicationPage from './pages/CableApplicationPage';
+import CableSectionPage from './pages/CableSectionPage';
 import CatalogPage from './pages/CatalogPage';
 import ProductPage from './pages/ProductPage';
 import CableWeightPage from './pages/CableWeightPage';
@@ -25,6 +30,11 @@ import NotFoundPage from './pages/NotFoundPage';
 import './styles/global.css';
 
 const routes = createRouteObjects({
+  SpecificationPage,
+  OrderGuidePage,
+  QualityPage,
+  CableApplicationPage,
+  CableSectionPage,
   HomePage,
   CatalogPage,
   ProductPage,

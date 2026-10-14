@@ -107,8 +107,6 @@ export default function HomePage() {
     return () => controller.abort();
   }, [hasInitialFeaturedProducts]);
 
-  const specificationEmailHref = `${SITE_EMAIL_HREF}?subject=${encodeURIComponent('Расчёт кабеля по спецификации')}&body=${encodeURIComponent('Здравствуйте! Прошу рассчитать кабель по приложенной спецификации.\n')}`;
-
   function handleSearch(event) {
     event.preventDefault();
     const query = search.trim();
@@ -166,7 +164,7 @@ export default function HomePage() {
                 Перейти в каталог <span aria-hidden="true">→</span>
               </Link>
               <a
-                href={specificationEmailHref}
+                href="/specification/"
                 className="home-concept__button home-concept__button--outline"
               >
                 Отправить спецификацию
@@ -193,7 +191,12 @@ export default function HomePage() {
       >
         <Container>
           <div className="home-concept__search-layout">
-            <h2>Быстрый поиск по каталогу</h2>
+            <div className="home-concept__search-heading">
+              <h2>Быстрый поиск по каталогу</h2>
+              <Link className="home-task-link" to="/services/application/">
+                Подобрать по задаче →
+              </Link>
+            </div>
             <form
               onSubmit={handleSearch}
               role="search"
@@ -251,7 +254,7 @@ export default function HomePage() {
               </div>
               <div className="home-concept__quote-actions">
                 <a
-                  href={specificationEmailHref}
+                  href="/specification/"
                   className="home-concept__button home-concept__button--orange"
                 >
                   Отправить спецификацию <span aria-hidden="true">→</span>

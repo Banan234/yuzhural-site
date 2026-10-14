@@ -154,6 +154,12 @@ export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
 
           <nav className="mobile-nav__section" aria-label="Основная навигация">
             <div className="mobile-nav__links">
+              <Link to="/how-to-order/" onClick={onClose}>
+                Как заказать
+              </Link>
+              <Link to="/specification/" onClick={onClose}>
+                Заявка по спецификации
+              </Link>
               <Link to={DELIVERY_CANONICAL_PATH} onClick={onClose}>
                 Доставка
               </Link>
@@ -163,8 +169,8 @@ export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
               <Link to={SERVICES_PATH} onClick={onClose}>
                 Сервисы и калькуляторы
               </Link>
-              <Link to={`${ABOUT_CANONICAL_PATH}#documents`} onClick={onClose}>
-                Документы
+              <Link to="/quality/" onClick={onClose}>
+                Качество и документы
               </Link>
               <Link to={CONTACTS_CANONICAL_PATH} onClick={onClose}>
                 Контакты

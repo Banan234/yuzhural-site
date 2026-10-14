@@ -131,6 +131,17 @@ export function buildCatalogFacetsCore(items) {
   const voltageSet = new Set();
   const appTypeSet = new Set();
   const powerGroupSet = new Set();
+  const facetCounts = {
+    materials: Object.create(null),
+    constructions: Object.create(null),
+    cores: Object.create(null),
+    sections: Object.create(null),
+    voltages: Object.create(null),
+  };
+  const count = (key, value) => {
+    if (value !== null && value !== undefined && value !== '')
+      facetCounts[key][value] = (facetCounts[key][value] || 0) + 1;
+  };
   let hasSPE = false;
   let minPrice = Infinity;
   let maxPrice = -Infinity;
@@ -139,7 +150,12 @@ export function buildCatalogFacetsCore(items) {
     materialSet.add(getConductorMaterial(product));
     constructionSet.add(getWireConstruction(product));
 
+    count('materials', getConductorMaterial(product));
+    count('constructions', getWireConstruction(product));
+    count('sections', product.crossSection);
+    count('voltages', product.voltage);
     const coreVariant = getCoreVariantLabel(product);
+    count('cores', coreVariant);
     if (coreVariant) coreSet.add(coreVariant);
     if (product.crossSection) sectionSet.add(product.crossSection);
     if (product.voltage != null) voltageSet.add(product.voltage);
@@ -157,6 +173,7 @@ export function buildCatalogFacetsCore(items) {
   }
 
   return {
+    facetCounts,
     materials: [...materialSet].sort((a, b) => a.localeCompare(b, 'ru')),
     constructions: [...constructionSet].sort((a, b) =>
       a.localeCompare(b, 'ru')
@@ -197,7 +214,10 @@ export function buildCatalogFacetsForQueryCore(items, query = {}) {
       ...normalizedQuery,
       [filterName]: filterName === 'onlySPE' ? false : [],
     });
-    baseFacets[facetName] = buildCatalogFacetsCore(candidates)[facetName];
+    const available = buildCatalogFacetsCore(candidates);
+    baseFacets[facetName] = available[facetName];
+    if (available.facetCounts[facetName])
+      baseFacets.facetCounts[facetName] = available.facetCounts[facetName];
   }
 
   // Keep an active choice visible when a combination has no matches so the
@@ -216,9 +236,7 @@ export function buildCatalogFacetsForQueryCore(items, query = {}) {
     if (facetName === 'sections' || facetName === 'voltages') {
       values.sort((a, b) => a - b);
     } else if (facetName === 'cores') {
-      values.sort((a, b) =>
-        a.localeCompare(b, 'ru', { numeric: true })
-      );
+      values.sort((a, b) => a.localeCompare(b, 'ru', { numeric: true }));
     } else if (facetName === 'powerGroups') {
       values.sort(
         (a, b) => POWER_CABLE_GROUPS.indexOf(a) - POWER_CABLE_GROUPS.indexOf(b)

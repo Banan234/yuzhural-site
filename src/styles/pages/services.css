@@ -517,3 +517,39 @@
     font-size: 26px;
   }
 }
+.section-calculator {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 20px;
+  margin: 24px 0;
+  align-items: start;
+}
+.section-result {
+  background: #e8f0fd;
+  border-radius: 12px;
+  padding: 22px;
+  display: grid;
+  gap: 8px;
+  margin: 20px 0;
+}
+.section-result strong {
+  color: #164e7f;
+  font-size: 40px;
+}
+.section-result-details div {
+  padding: 12px 0;
+  border-bottom: 1px solid #dce3ec;
+}
+.section-result-details dt {
+  color: #64748b;
+  font-size: 14px;
+}
+.section-result-details dd {
+  margin: 6px 0 0;
+  font-weight: 700;
+}
+@media (max-width: 980px) {
+  .section-calculator {
+    grid-template-columns: 1fr;
+  }
+}

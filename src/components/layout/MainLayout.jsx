@@ -32,7 +32,7 @@ import {
 } from '../../lib/siteConfig';
 
 const MOBILE_NAV_ID = 'mobile-navigation';
-const DOCUMENTS_PATH = `${ABOUT_CANONICAL_PATH}#documents`;
+const DOCUMENTS_PATH = '/quality/';
 
 const LazyQuoteForm = lazy(() => import('../quote/QuoteForm'));
 const LazyMobileNav = lazy(() => import('./MobileNav'));

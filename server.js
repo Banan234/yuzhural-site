@@ -1,3 +1,7 @@
+import {
+  parseQuoteSubmission,
+  requireQuoteContentType,
+} from './lib/specificationUpload.js';
 // Файл создаёт Express API: каталог, заявки, лиды, безопасность, rate limiting, SMTP и health endpoints.
 
 import express from 'express';
@@ -839,6 +843,11 @@ function createLocalFileMailTransporter(env = process.env) {
           subject: String(mailOptions?.subject || '').trim(),
           text: mailOptions?.text || '',
           html: mailOptions?.html || '',
+          attachments: (mailOptions?.attachments || []).map((file) => ({
+            filename: file.filename,
+            contentType: file.contentType,
+            contentBase64: Buffer.from(file.content).toString('base64'),
+          })),
         },
       };
 
@@ -1903,9 +1912,10 @@ export function createApp({
 
   app.post(
     '/api/quote',
-    requireJsonContentType,
-    botFormRateLimiter,
+    requireQuoteContentType,
     quoteRateLimiter,
+    parseQuoteSubmission,
+    botFormRateLimiter,
     async (req, res) => {
       const formResponseStartedAt = Date.now();
       const formResponseDelayMs = pickFormResponseDelayMs(
@@ -1948,7 +1958,11 @@ export function createApp({
 
         const quoteRequest = { ...req.body, customer, items };
 
-        if (!isValidQuoteRequest(quoteRequest)) {
+        if (
+          !isValidQuoteRequest(quoteRequest, {
+            allowEmptyItems: req.specificationAttachments?.length > 0,
+          })
+        ) {
           return sendFormErrorResponse(
             res,
             formResponseStartedAt,
@@ -1973,6 +1987,7 @@ export function createApp({
         <p><strong>Предпочтительный канал:</strong> ${escapeHtml(QUOTE_CHANNEL_LABELS[customer.preferredChannel] || customer.preferredChannel) || '—'}</p>
         <p><strong>Комментарий:</strong> ${escapeHtml(customer.comment) || '—'}</p>
 
+        <p><strong>Спецификации:</strong> ${(req.specificationAttachments || []).map((file) => escapeHtml(file.filename)).join(', ') || '—'}</p>
         <h3>Состав заявки</h3>
         <table style="border-collapse:collapse;width:100%;">
           <thead>
@@ -1989,8 +2004,8 @@ export function createApp({
           </tbody>
         </table>
 
-        <p><strong>Всего позиций:</strong> ${totalCount}</p>
-        <p><strong>Общая сумма:</strong> ${totalPrice} ₽</p>
+        <p><strong>Всего позиций:</strong> ${items.length ? escapeHtml(totalCount) : 'По файлу спецификации'}</p>
+        <p><strong>Общая сумма:</strong> ${items.length && Number(totalPrice) > 0 ? `${escapeHtml(totalPrice)} ₽` : 'По результатам расчёта'}</p>
       `;
 
         const replyTo = safeReplyTo(customer.email);
@@ -2003,6 +2018,7 @@ export function createApp({
             ...(replyTo ? { replyTo } : {}),
             subject: 'Новая заявка на КП — ЮжУралЭлектроКабель',
             html,
+            attachments: req.specificationAttachments || [],
           },
           { ...mailSendOptions, event: 'quote.send' }
         );

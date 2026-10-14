@@ -14,7 +14,7 @@ export function normalizePhone(phone) {
   return String(phone || '').replace(/[^\d+]/g, '');
 }
 
-export function validateForm(form, items) {
+export function validateForm(form, items, { hasSpecification = false } = {}) {
   const errors = {};
 
   const name = String(form?.name || '').trim();
@@ -56,7 +56,7 @@ export function validateForm(form, items) {
     errors.consent = messages.errors.quoteForm.consentRequired;
   }
 
-  if (!Array.isArray(items) || items.length === 0) {
+  if (!Array.isArray(items) || (!hasSpecification && items.length === 0)) {
     errors.cart = messages.errors.quoteForm.cartEmpty;
   } else if (items.length > MAX_QUOTE_ITEMS) {
     errors.cart = formatMessage(messages.errors.quoteForm.tooManyItems, {
