@@ -2,6 +2,7 @@
 
 import Container from '../components/ui/Container';
 import HeroLeadForm from '../components/home/HeroLeadForm';
+import CallbackButton from '../components/forms/CallbackButton';
 import ConsentGatedMap from '../components/layout/ConsentGatedMap';
 import { useSEO } from '../hooks/useSEO';
 import {
@@ -59,6 +60,10 @@ export default function ContactsPage() {
                 <span>{SITE_WORKING_HOURS_DISPLAY}</span>
                 <span>{SITE_OFFICE_ADDRESS.addressLocality}</span>
               </div>
+              <CallbackButton
+                className="button-primary contacts-page__callback"
+                source="Заказ звонка: страница контактов"
+              />
             </div>
           </div>
         </Container>

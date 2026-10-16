@@ -25,6 +25,42 @@ export function productKey(product) {
     .toLowerCase();
 }
 
+export function findNewReviewRows(previousProducts, reviewRows) {
+  const normalizeName = (value) =>
+    String(value || '')
+      .replace(/\s+/gu, ' ')
+      .trim()
+      .toLowerCase();
+  const previousSourceNames = new Set(
+    previousProducts
+      .map((product) => normalizeName(product.sourceName))
+      .filter(Boolean)
+  );
+  const previousDisplayNames = new Set(
+    previousProducts
+      .map((product) => normalizeName(product.name))
+      .filter(Boolean)
+  );
+  const legacyDisplayNames = new Set(
+    previousProducts
+      .filter((product) => !normalizeName(product.sourceName))
+      .map((product) => normalizeName(product.name))
+      .filter(Boolean)
+  );
+
+  return reviewRows.filter((row) => {
+    const sourceName = normalizeName(row.sourceName);
+    const displayName = normalizeName(row.product);
+    if (sourceName) {
+      return (
+        !previousSourceNames.has(sourceName) &&
+        !legacyDisplayNames.has(displayName)
+      );
+    }
+    return !previousDisplayNames.has(displayName);
+  });
+}
+
 export function buildDiff(previous, current) {
   const identityKey = (product) =>
     product.id != null ? `id:${product.id}` : productKey(product);

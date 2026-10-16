@@ -310,7 +310,11 @@ const FALLBACK = {
  *  6. Fallback → "Прочее"
  */
 export function classifyProduct(product) {
-  const result = classifyProductBase(product);
+  const base = classifyProductBase(product);
+  const result = {
+    ...base,
+    ...normalizeCatalogHierarchy({ ...product, ...base }),
+  };
   if (result.catalogCategorySlug !== 'importnye-kabeli') return result;
 
   const exactProductRule = importedProductSubcategories.get(
@@ -373,6 +377,7 @@ function classifyProductBase(product) {
       .join(' ')
   );
   const normalizedName = normalize(name);
+  const normalizedSourceName = normalize(product.sourceName || name);
   const normalizedManufacturer = normalize(manufacturer);
   const normalizedFamily = normalize(markFamily);
 
@@ -380,6 +385,7 @@ function classifyProductBase(product) {
   for (const rule of rules) {
     if (
       rule.normalizedExactNames.includes(normalizedName) ||
+      rule.normalizedExactNames.includes(normalizedSourceName) ||
       (rule.normalizedManufacturer &&
         rule.normalizedManufacturer === normalizedManufacturer &&
         rule.normalizedFamilyPrefixes.some((prefix) =>

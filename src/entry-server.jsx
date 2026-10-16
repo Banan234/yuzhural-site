@@ -13,6 +13,7 @@ import QualityPage from './pages/QualityPage';
 import CableApplicationPage from './pages/CableApplicationPage';
 import CableSectionPage from './pages/CableSectionPage';
 import CatalogPage from './pages/CatalogPage';
+import MarksPage from './pages/MarksPage';
 import ProductPage from './pages/ProductPage';
 import CableWeightPage from './pages/CableWeightPage';
 import ServicesPage from './pages/ServicesPage';
@@ -37,6 +38,7 @@ const routes = createRouteObjects({
   CableSectionPage,
   HomePage,
   CatalogPage,
+  MarksPage,
   ProductPage,
   CableWeightPage,
   ServicesPage,

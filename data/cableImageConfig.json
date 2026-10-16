@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "templateVersion": "right-edge-solid-v2",
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "apiBaseUrl": "https://codex.sale/v1",
+  "apiKeyEnv": "IMAGE_API_KEY",
+  "size": "1536x1024",
+  "quality": "high",
+  "format": "png",
+  "background": "transparent",
+  "concurrency": 2,
+  "retries": 2,
+  "retryDelayMs": 1500,
+  "timeoutMs": 240000,
+  "catalogFile": "data/catalog-current/products.json",
+  "outputDir": "public/product-images/generated",
+  "publicBasePath": "/product-images/generated",
+  "metadataDir": "data/product-image-metadata",
+  "manifestFile": "shared/generatedProductImages.json",
+  "referenceImage": "assets/cable-images/style-reference-right.png",
+  "colorsFile": "data/cableImageColors.json",
+  "geometry": {
+    "sectionMode": "constant",
+    "defaultThickness": "uniform catalogue scale",
+    "sectionBands": []
+  },
+  "validation": {
+    "minimumTransparentRatio": 0.15,
+    "minimumForegroundRatio": 0.04,
+    "minimumMarginRatio": 0.02
+  },
+  "families": {
+    "ВВГ": {
+      "shape": "round",
+      "material": "copper",
+      "strand": "solid",
+      "jacket": "black PVC",
+      "insulation": "PVC",
+      "colors": "power",
+      "jacketByAttribute": {
+        "черн": "black PVC",
+        "черный": "black PVC",
+        "чёрный": "black PVC",
+        "бел": "white PVC",
+        "белый": "white PVC"
+      }
+    },
+    "ВВГ-П": {
+      "shape": "flat",
+      "material": "copper",
+      "strand": "solid",
+      "jacket": "black PVC",
+      "insulation": "PVC",
+      "colors": "power",
+      "jacketByAttribute": {
+        "черн": "black PVC",
+        "черный": "black PVC",
+        "чёрный": "black PVC",
+        "бел": "white PVC",
+        "белый": "white PVC"
+      }
+    },
+    "АВВГ": {
+      "shape": "round",
+      "material": "aluminium",
+      "strand": "solid",
+      "jacket": "black PVC",
+      "insulation": "PVC",
+      "colors": "power",
+      "jacketByAttribute": {
+        "черн": "black PVC",
+        "черный": "black PVC",
+        "чёрный": "black PVC",
+        "бел": "white PVC",
+        "белый": "white PVC"
+      }
+    },
+    "АВВГ-П": {
+      "shape": "flat",
+      "material": "aluminium",
+      "strand": "solid",
+      "jacket": "black PVC",
+      "insulation": "PVC",
+      "colors": "power",
+      "jacketByAttribute": {
+        "черн": "black PVC",
+        "черный": "black PVC",
+        "чёрный": "black PVC",
+        "бел": "white PVC",
+        "белый": "white PVC"
+      }
+    },
+    "КГ": {
+      "shape": "round",
+      "material": "copper",
+      "strand": "stranded",
+      "jacket": "black rubber",
+      "insulation": "rubber",
+      "colors": "power"
+    },
+    "ПВС": {
+      "shape": "round",
+      "material": "copper",
+      "strand": "stranded",
+      "jacket": "white PVC",
+      "jacketByAttribute": {
+        "черн": "black PVC",
+        "черный": "black PVC",
+        "чёрный": "black PVC",
+        "бел": "white PVC",
+        "белый": "white PVC",
+        "оранж": "orange PVC"
+      },
+      "insulation": "PVC",
+      "colors": "power"
+    },
+    "КВВГ": {
+      "shape": "round",
+      "material": "copper",
+      "strand": "solid",
+      "jacket": "black PVC",
+      "insulation": "PVC",
+      "colors": "control",
+      "jacketByAttribute": {
+        "черн": "black PVC",
+        "черный": "black PVC",
+        "чёрный": "black PVC",
+        "бел": "white PVC",
+        "белый": "white PVC"
+      }
+    }
+  },
+  "groupMetadataDir": "data/product-image-metadata/groups",
+  "visualRules": {
+    "default": {
+      "sectionAffectsVisual": false,
+      "conductorConstruction": "solid"
+    },
+    "families": {
+      "КГ": {
+        "sectionAffectsVisual": false,
+        "conductorConstruction": "stranded",
+        "constructionSource": "Existing КГ flexible rubber cable construction preset"
+      },
+      "ПВС": {
+        "sectionAffectsVisual": false,
+        "conductorConstruction": "stranded",
+        "constructionSource": "Existing ПВС flexible connecting wire construction preset"
+      }
+    },
+    "familyModifiers": {
+      "нг": "нг",
+      "нг(А)": "нг(А)",
+      "нг-LS": "нг-LS",
+      "нг(А)-LS": "нг(А)-LS",
+      "нг(А)-LS-LTx": "нг(А)-LS-LTx",
+      "нг(А)-ХЛ": "нг(А)-ХЛ",
+      "нг(А)-LS-ХЛ": "нг(А)-LS-ХЛ",
+      "нг-ХЛ": "нг-ХЛ",
+      "ХЛ": "ХЛ"
+    },
+    "nonFamilyAttributes": [
+      "п",
+      "мк",
+      "мж",
+      "мс",
+      "ок",
+      "ож",
+      "ос",
+      "ГОСТ",
+      "ТУ",
+      "-",
+      "черн",
+      "черн.",
+      "черный",
+      "чёрный",
+      "(черн)",
+      "(черн.)",
+      "бел",
+      "белый",
+      "(бел)",
+      "оранж"
+    ]
+  },
+  "imageEndpoint": "generations",
+  "normalization": {
+    "enabled": false,
+    "width": 1536,
+    "height": 1024
+  },
+  "preserveApprovedVisuals": true,
+  "composition": {
+    "rightEdgeCrop": true,
+    "tiltDegrees": 8,
+    "leftMarginRatio": 0.06,
+    "verticalMarginRatio": 0.1,
+    "sheathTransitionRatio": 0.56
+  }
+}

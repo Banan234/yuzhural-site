@@ -1,112 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:5173/catalog/kabel-i-provod</loc>
+    <loc>https://yu-uek.ru/catalog/kabel-i-provod</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/silovoy-kabel</loc>
+    <loc>https://yu-uek.ru/catalog/silovoy-kabel</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/soedinitelnyy-kabel</loc>
+    <loc>https://yu-uek.ru/catalog/silovoy-kabel-bronirovannyy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kontrolnyy-kabel</loc>
+    <loc>https://yu-uek.ru/catalog/silovoy-kabel-rezinovaya-izolyaciya</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/montazhnyy-kabel</loc>
+    <loc>https://yu-uek.ru/catalog/silovoy-kabel-polimernye-kompozicii</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/provoda</loc>
+    <loc>https://yu-uek.ru/catalog/silovoy-kabel-bumazhnaya-izolyaciya</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/sip</loc>
+    <loc>https://yu-uek.ru/catalog/silovoy-kabel-spe</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kabeli-svyazi</loc>
+    <loc>https://yu-uek.ru/catalog/silovoy-kabel-pvh</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kabeli-pozharnoy-signalizacii</loc>
+    <loc>https://yu-uek.ru/catalog/provoda</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/importnye-kabeli</loc>
+    <loc>https://yu-uek.ru/catalog/kontrolnyy-kabel</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/gibkiy-kabel</loc>
+    <loc>https://yu-uek.ru/catalog/gibkiy-kabel</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/prochee</loc>
+    <loc>https://yu-uek.ru/catalog/sip</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/specialnye-kabeli</loc>
+    <loc>https://yu-uek.ru/catalog/kabeli-pozharnoy-signalizacii</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kabeli-shakhtnye</loc>
+    <loc>https://yu-uek.ru/catalog/lan-kabeli</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kabeli-podvizhnogo-sostava</loc>
+    <loc>https://yu-uek.ru/catalog/montazhnyy-kabel</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kabeli-neftepogr</loc>
+    <loc>https://yu-uek.ru/catalog/kabeli-svyazi</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/bortovye-provoda</loc>
+    <loc>https://yu-uek.ru/catalog/importnye-kabeli</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kabeli-nagrevatelnye</loc>
+    <loc>https://yu-uek.ru/catalog/importnye-silovye-kabeli</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/lan-kabeli</loc>
+    <loc>https://yu-uek.ru/catalog/importnye-kontrolnye-kabeli</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kabeli-sudovye</loc>
+    <loc>https://yu-uek.ru/catalog/importnye-kabeli-svyazi</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kabeli-termoparny</loc>
+    <loc>https://yu-uek.ru/catalog/importnye-lan-kabeli</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/catalog/kabel-vodopogr</loc>
+    <loc>https://yu-uek.ru/catalog/importnye-montazhnye-kabeli</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/importnye-provoda</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/importnye-gibkie-kabeli</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/importnye-kabeli-signalizacii</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/importnye-kabeli-sudovye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/importnye-drugie-kabeli</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabeli-nagrevatelnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/prochee</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/specialnye-kabeli</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabeli-termoparny</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabel-vodopogr</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabeli-shakhtnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabeli-podvizhnogo-sostava</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/signalno-blokirovochnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabeli-neftepogr</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/bortovye-provoda</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabeli-sudovye</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

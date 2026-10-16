@@ -16,6 +16,7 @@ const CableApplicationPage = lazy(
 );
 const CableSectionPage = lazy(() => import('../pages/CableSectionPage'));
 const CatalogPage = lazy(() => import('../pages/CatalogPage'));
+const MarksPage = lazy(() => import('../pages/MarksPage'));
 const ProductPage = lazy(() => import('../pages/ProductPage'));
 const CableWeightPage = lazy(() => import('../pages/CableWeightPage'));
 const ServicesPage = lazy(() => import('../pages/ServicesPage'));
@@ -40,6 +41,7 @@ export const router = createBrowserRouter(
     CableSectionPage,
     HomePage,
     CatalogPage,
+    MarksPage,
     ProductPage,
     CableWeightPage,
     ServicesPage,

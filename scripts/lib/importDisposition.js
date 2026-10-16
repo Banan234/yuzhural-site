@@ -13,6 +13,7 @@ const sourceCategoryMap = new Map(
 );
 
 const CABLE_SECTIONS = new Set(['Кабель и провод', 'Специальные кабели']);
+const UNVERIFIED_PIECE_LENGTH_RE = /^ПМТК\s*нг\s*\(А\)\s*1\s*[хx×]\s*0[,.]5$/iu;
 
 const NON_CABLE_NAME_RE =
   /^(?:ртз[-\s]?51(?:[.,]\d+)?(?=\s|$)|колодк|колпачок\s|прокладк|шкал[а-яё]*\s|металлорукав(?=\s|$)|зажим(?:\s|$)|клемм(?:а|ник)(?:\s|$)|коробк|щит\s|свет(?:\.|ильник)|изолент|труб(?:а|ка)|угол\s|розет|выключ|выкл\.?|након|гильз|контактор|контакт|катушк|автомат|пускател|предохран|блок\s|муфта\s|таймер|кнопк|шина\s|клипс|ламп|реле\s|сальник|счетч|счётч|звонок\s|знак\s|жилет\s|строп\s|а[еп](?:\s|$)|ва(?:\s|[-\d])|диф\.?\s*авт|узо(?:\s|$)|пмл?\s|патрон(?:\s|$)|перекл|рамка(?:\s|$)|диммер(?:\s|$)|микропереключатель(?:\s|$)|опв(?:\s|$)|разъем(?:\s|$)|соединитель(?:\s|$)|рубильник(?:\s|$)|опв(?:-|\s|$))/iu;
@@ -57,6 +58,15 @@ export function resolveProductDisposition({ name, sourceCategory, unit } = {}) {
   const sourceName = String(name ?? '').trim();
   const source = String(sourceCategory ?? '').trim();
   const normalizedUnit = normalizeDispositionUnit(unit);
+
+  // Прайс указывает цену за штуку, но не раскрывает длину этой штуки.
+  if (normalizedUnit === 'шт' && UNVERIFIED_PIECE_LENGTH_RE.test(sourceName)) {
+    return {
+      status: 'exclude',
+      reason: 'unverified_piece_length',
+      evidence: sourceName,
+    };
+  }
 
   const explicitNonCable = sourceName.match(NON_CABLE_NAME_RE);
   if (explicitNonCable) {

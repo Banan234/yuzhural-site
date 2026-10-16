@@ -2,6 +2,7 @@
 
 @import './core/base.css';
 @import './layout/header.css';
+@import './components/lead-form.css';
 @import './layout/overlays.css';
 @import './responsive.css';
 

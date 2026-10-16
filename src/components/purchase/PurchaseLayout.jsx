@@ -25,7 +25,6 @@ export default function PurchaseLayout({ pageKey, children }) {
           <span>{page.title}</span>
         </nav>
         <header className="purchase-heading">
-          <span className="services-eyebrow">ЮЖУРАЛЭЛЕКТРОКАБЕЛЬ</span>
           <h1>{page.title}</h1>
           <p>{page.description}</p>
         </header>

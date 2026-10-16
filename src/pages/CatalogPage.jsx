@@ -273,6 +273,15 @@ export default function CatalogPage() {
   }
 
   const pageTitle = activeCategory ? activeCategory.name : 'Каталог продукции';
+  const subcategoryCounts = new Map(
+    catalogSections
+      .flatMap((section) => section.categories)
+      .find((category) => category.slug === activeCategoryParam)
+      ?.subcategories?.map((subcategory) => [
+        subcategory.slug,
+        subcategory.count,
+      ]) || []
+  );
   const visibleCount =
     productsMeta.pagination?.total ?? productsMeta.total ?? products.length;
   const isPowerCableCategory =
@@ -354,8 +363,13 @@ export default function CatalogPage() {
 
           <div className="catalog-layout">
             <div className="catalog-main">
-              {isCategoryRoute && hasSubcategories ? (
-                <div className="subcategories-grid">
+              {isCategoryRoute &&
+              hasSubcategories &&
+              !isPowerCableCategory &&
+              activeCategoryParam !== 'provoda' ? (
+                <div
+                  className={`subcategories-grid${isPowerCableCategory ? ' subcategories-grid--power' : ''}`}
+                >
                   {activeCategory.subcategories.map((sub) => (
                     <Link
                       key={sub.slug}
@@ -363,7 +377,24 @@ export default function CatalogPage() {
                       className="subcategory-card"
                       style={{ textDecoration: 'none' }}
                     >
-                      <span className="subcategory-card__name">{sub.name}</span>
+                      <span className="subcategory-card__content">
+                        <span className="subcategory-card__name">
+                          {sub.name}
+                        </span>
+                        {sub.description && (
+                          <span className="subcategory-card__description">
+                            {sub.description}
+                          </span>
+                        )}
+                        {subcategoryCounts.has(sub.slug) && (
+                          <span className="subcategory-card__count">
+                            Позиций:{' '}
+                            {subcategoryCounts
+                              .get(sub.slug)
+                              .toLocaleString('ru-RU')}
+                          </span>
+                        )}
+                      </span>
                       <span className="subcategory-card__arrow">›</span>
                     </Link>
                   ))}

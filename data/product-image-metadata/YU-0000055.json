@@ -1,0 +1,178 @@
+{
+  "sku": "YU-0000055",
+  "product_id": 55,
+  "source_name": "АВВГ  1х 70 нг(А)LS",
+  "product_name": "АВВГнг(А)-LS 1х70",
+  "parameters": {
+    "sku": "YU-0000055",
+    "productId": 55,
+    "sourceName": "АВВГ  1х 70 нг(А)LS",
+    "family": "АВВГ",
+    "primaryCores": 1,
+    "cores": 1,
+    "section": 70,
+    "groundCores": 0,
+    "groundSection": null,
+    "voltage": null,
+    "attributes": [
+      "нг(А)-LS"
+    ],
+    "shape": "round",
+    "material": "aluminium",
+    "strand": "solid",
+    "conductorConstructionSource": "catalogue visual default; not a technical claim for this SKU",
+    "jacket": "black PVC",
+    "insulation": "PVC",
+    "colors": [
+      "brown"
+    ],
+    "colorRule": "power:1",
+    "colorRuleVersion": "catalogue-colors-v1",
+    "colorSource": "configured catalogue illustration convention",
+    "visualFamily": "АВВГнг(А)-LS",
+    "sectionAffectsVisual": false,
+    "sectionMode": "constant",
+    "thicknessLabel": "uniform catalogue scale"
+  },
+  "prompt": "Use case: product-mockup. Create one standardized realistic professional 3D product render for an electrical cable catalogue. Stable composition, realistic materials and soft neutral studio lighting.\n\nCable family: АВВГнг(А)-LS. Shape: round. Matte black PVC outer jacket; PVC insulation. Preserve this configured jacket color and construction.\n\nThe intact cable body enters the frame from the RIGHT side. The stripped end and separated conductors extend toward the LEFT side. Exposed silvery aluminium conductor tips are on the LEFT. Never reverse or mirror this orientation.\n\nThe intact black outer cable jacket extends all the way to and beyond the RIGHT edge of the image. The cable enters the image directly through the RIGHT frame boundary. The right end of the cable is intentionally cropped by the image boundary. No visible end cap or termination of the outer jacket on the right. No empty transparent space between the cable and the right edge. The body must cross the right border, not merely approach it.\n\nFixed catalogue camera and pose: predominantly horizontal, shallow three-quarter perspective, with a consistent gentle 8-degree diagonal inclination. The intact jacket axis rises gently toward the RIGHT and descends slightly toward the LEFT, as in the original catalogue reference. Never perfectly horizontal, never steep, never vertical, no random camera angle.\n\nFixed layout: the stripping transition is near 56% of canvas width; the leftmost silvery aluminium tips begin near 6%; the unbroken jacket continues from the transition through 100% of width and beyond the right border. The cable fills most of the useful canvas width. No oversized empty padding. Keep at least 10% safe space above and below every tip and insulated core.\n\nThe stripped end and all separated cores face LEFT. ALL 1 metal tips and insulated ends on the left must be completely visible, with the same small left margin. Never crop the left tips, top or bottom. Only the intact outer jacket on the RIGHT is intentionally cropped.\n\nExactly 1 insulated conductors are visible. There must be exactly 1 conductors, no more and no fewer. Show all 1 separately with exactly 1 exposed silvery aluminium tips on the LEFT. No extra wire.\n\nConductor colors, one assignment per insulated wire: 1. brown. Never add a conductor for a color stripe. Separate and fan the cores gently so that every specified core and tip can be counted, while keeping all cores connected inside the jacket.\n\nUse solid-core silvery aluminium conductors: one single solid round silvery aluminium conductor inside each insulated core. Each stripped end shows ONE smooth continuous circular metal rod with a solid circular cross-section. Not stranded aluminium; not a bundle of thin strands. Never show a brush, braid, multiple fine wires or a split metal tip. This is the catalogue illustration default, not a claim that every real SKU is solid-core.\n\nThickness treatment: uniform catalogue scale. Nominal section is metadata only. Use the same visual thickness for all sections in this visual group. Do not calculate diameter from cross-sectional area.\n\nFollow the original catalogue reference described above: right-border jacket entry, gentle rising-right diagonal, clearly separated left-pointing cores, smooth solid round metal tips where configured, consistent scale and materials.\n\nGenuinely transparent PNG background with real alpha. No black, white or grey backdrop; no painted checkerboard. No glow, colored halos, bloom, floor, scenery or background shadows. Clean isolated product edges, moderate natural highlights.\n\nNo text, markings, labels, symbols, dimensions, logos, watermark, hands or other objects. Do not mirror the composition.\n\nFinal check: exactly 1 cores and 1 metal tips; intact jacket crosses the RIGHT frame boundary with no end cap and no right gap; all LEFT tips fully visible; gentle fixed diagonal; correct conductor construction; transparent background. Template right-edge-solid-v2.",
+  "prompt_hash": "27e043c5fbb4c6c9913b25652393b689e7c2f9a01bbdcb26ce7a0382679be7d9",
+  "visual_key": "avvgnga-ls__1core",
+  "visualKey": "avvgnga-ls__1core",
+  "visual_descriptor": {
+    "family": "АВВГнг(А)-LS",
+    "cores": 1,
+    "shape": "round",
+    "material": "aluminium",
+    "strand": "solid",
+    "jacket": "black PVC",
+    "insulation": "PVC",
+    "colors": [
+      "brown"
+    ],
+    "sectionAffectsVisual": false,
+    "sectionKey": null
+  },
+  "visual_descriptor_hash": "118c77f2344b5087455ea9450dab18ae374d12b2ef126ae8cff6c86a407ea32d",
+  "sectionAffectsVisual": false,
+  "render_fingerprint": "cd90e434defc16e485f953af0da031df0d8b99372044e6822e0acd3e94ea7c1b",
+  "legacy_render_fingerprint": "c2cbd68088e9ff5bc2947d4422c0aaeda17d1c3e2c584edd25f578de21814ccd",
+  "product_fingerprint": "e0934f5dcbb13aec9287e08f379829a266afc93b463e548888e3ed63f332c4c9",
+  "reference_hash": null,
+  "template_version": "right-edge-solid-v2",
+  "model": "gpt-image-2.5-flare",
+  "provider": "codex-sale",
+  "size": "1536x1024",
+  "quality": "high",
+  "format": "png",
+  "composition": {
+    "rightEdgeCrop": true,
+    "tiltDegrees": 8,
+    "leftMarginRatio": 0.06,
+    "verticalMarginRatio": 0.1,
+    "sheathTransitionRatio": 0.56
+  },
+  "style_reference": "/Users/Shared/yuzhural-site/assets/cable-images/style-reference-right.png",
+  "style_reference_hash": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59",
+  "schemaVersion": 2,
+  "family": "АВВГнг(А)-LS",
+  "cores": 1,
+  "expected_output_filename": "public/product-images/generated/avvgnga-ls__1core.png",
+  "generation_required": false,
+  "existing_image": "/category-placeholders/power-cable.svg",
+  "output_filename": "public/product-images/generated/avvgnga-ls__1core.png",
+  "public_url": "/product-images/generated/avvgnga-ls__1core.png",
+  "legacy_asset": false,
+  "action": "await_review",
+  "reason": "already_generated_needs_review",
+  "image": "avvgnga-ls__1core.png",
+  "sku_count": 2,
+  "skus_without_images": 2,
+  "status": "approved",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.24126268320180383,
+    "has_transparency": true,
+    "transparent_ratio": 0.8275205301683213,
+    "non_opaque_ratio": 0.9993918164035441,
+    "foreground_ratio": 0.17190306176272832,
+    "bounds": {
+      "minX": 116,
+      "minY": 208,
+      "maxX": 1773,
+      "maxY": 575
+    },
+    "warnings": [],
+    "sha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+    "bytes": 579706
+  },
+  "retained_existing_style": false,
+  "visual_review": {
+    "cores": 1,
+    "colors": [
+      "brown"
+    ],
+    "orientation": "right-to-left",
+    "rightEdgeCropped": true,
+    "leftUncropped": true,
+    "topBottomClear": true,
+    "conductorConstruction": "solid",
+    "noText": true,
+    "styleMatches": true,
+    "reviewer": "Codex visual inspection",
+    "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle.",
+    "reviewed_at": "2026-10-15T15:57:07.340Z"
+  },
+  "created_at": "2026-10-15T15:35:06.279Z",
+  "revised_prompt": null,
+  "api_request_id": "1298085c-d6aa-48a8-b59d-1233e7d356cf",
+  "requested_api_model": "gpt-image-2.5-flare",
+  "source_validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.24126268320180383,
+    "has_transparency": true,
+    "transparent_ratio": 0.8275205301683213,
+    "non_opaque_ratio": 0.9993918164035441,
+    "foreground_ratio": 0.17190306176272832,
+    "bounds": {
+      "minX": 116,
+      "minY": 208,
+      "maxX": 1773,
+      "maxY": 575
+    },
+    "warnings": [],
+    "sha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+    "bytes": 579706
+  },
+  "normalization": {
+    "applied": false
+  },
+  "http_status": 200,
+  "api_usage": {
+    "input_tokens": 781,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 781
+    },
+    "output_tokens": 458,
+    "output_tokens_details": {
+      "image_tokens": 458,
+      "text_tokens": 0
+    },
+    "total_tokens": 1239
+  },
+  "attempts": 1,
+  "createdAt": "2026-10-15T15:35:06.279Z",
+  "force_replacement": false,
+  "updated_at": "2026-10-15T15:57:07.340Z",
+  "section": 70,
+  "groundSection": null,
+  "binding_allowed": true
+}

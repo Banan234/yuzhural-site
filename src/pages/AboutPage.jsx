@@ -153,7 +153,6 @@ export default function AboutPage() {
             </div>
 
             <aside className="about-page__summary">
-              <span className="about-page__summary-eyebrow">Как работаем</span>
               <h2 className="about-page__summary-title">
                 Закрываем заявку так, чтобы снабжение не тратило время на
                 догадки

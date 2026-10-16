@@ -28,6 +28,7 @@ import {
   normalizePublishGuardConfig,
 } from './lib/importPublishGuard.js';
 import { createBackup } from './backupData.js';
+import { enrichPriceDesignations } from '../shared/productDesignationBatch.js';
 import { validateNormalizedProducts } from './lib/importDiagnostics.js';
 import { acquirePriceImportLock } from './lib/importLock.js';
 import {
@@ -54,6 +55,7 @@ import {
   buildNextImportHistory,
   buildSuspiciousPriceStats,
   detectSuspicious,
+  findNewReviewRows,
   getHistoricalSnapshots,
   normalizeImportHistory,
   parseImportHistory,
@@ -838,7 +840,10 @@ async function main() {
 
   const slugRedirects = buildSlugRedirects(registry);
 
-  const products = productsWithIdentity.map(stripClassificationDiagnostics);
+  const { products, report: designationDecoding } = enrichPriceDesignations(
+    productsWithIdentity.map(stripClassificationDiagnostics),
+    { generatedAt }
+  );
 
   const diff = buildDiff(previousProducts, products);
   const skipsByReason = summarizeSkips(importResult.skippedRows);
@@ -863,20 +868,9 @@ async function main() {
     productsWithIdentity,
     importConfig
   );
-  const previousProductNames = new Set(
-    previousProducts.map((product) =>
-      String(product.name || '')
-        .trim()
-        .toLowerCase()
-    )
-  );
-  const newReviewRows = importResult.reviewRows.filter(
-    (row) =>
-      !previousProductNames.has(
-        String(row.product || '')
-          .trim()
-          .toLowerCase()
-      )
+  const newReviewRows = findNewReviewRows(
+    previousProducts,
+    importResult.reviewRows
   );
 
   // Исключение некабельных позиций — ожидаемая бизнес-операция, а не
@@ -908,6 +902,7 @@ async function main() {
       ? { sourceUrl: priceSource.metadata.requestedUrl }
       : {}),
     dryRun: isDryRun,
+    designationDecoding,
     schema,
     registryFile: path.relative(projectRoot, registryFile),
     registryEntries: Object.keys(registry.entries).length,
@@ -1070,6 +1065,12 @@ async function main() {
   console.log('');
   console.log('=== Импорт завершён ===');
   console.log(`  Товаров импортировано: ${products.length}`);
+  console.log(
+    `  База расшифровок ${designationDecoding.knowledgeRevision}: ` +
+      `${designationDecoding.counts.familyIdentified} семейств найдено, ` +
+      `${designationDecoding.counts.partial} с уточнениями, ` +
+      `${designationDecoding.counts.unresolved} марок не подтверждено`
+  );
   console.log(`  Исключено некабельных:  ${importResult.excludedNonCable}`);
   console.log(
     `  Производители: ${manufacturerSummary.uniqueCount} уникальных, ` +

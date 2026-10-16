@@ -6,6 +6,7 @@ import Container from '../components/ui/Container';
 import ProductCard from '../components/ui/ProductCard';
 import ProductSupplyPanel from '../components/purchase/ProductSupplyPanel';
 import ProductServiceLinks from '../components/services/ProductServiceLinks';
+import ProductDesignation from '../components/catalog/ProductDesignation';
 import { fetchProductBySlug, fetchRelatedProducts } from '../lib/productsApi';
 import { useCartStore } from '../store/useCartStore';
 import { useSEO } from '../hooks/useSEO';
@@ -332,6 +333,7 @@ export default function ProductPage() {
           </div>
         </div>
         <ProductSupplyPanel product={product} quantity={quantity} />
+        <ProductDesignation product={product} />
 
         {product.specs && Object.keys(product.specs).length > 0 && (
           <div className="product-details">

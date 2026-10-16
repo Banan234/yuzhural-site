@@ -84,7 +84,9 @@ test.describe('mobile header overflow', () => {
             page.getByRole('dialog', { name: 'Мобильное меню' })
           ).toBeVisible();
           await expect(
-            page.getByRole('button', { name: 'Заказать звонок' })
+            page
+              .getByRole('dialog', { name: 'Мобильное меню' })
+              .getByRole('button', { name: 'Заказать звонок' })
           ).toBeVisible();
           await expectNoHorizontalOverflow(page);
           await expectVisibleControlsInsideViewport(

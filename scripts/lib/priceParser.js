@@ -1,6 +1,7 @@
 // Файл парсит строки XLS-прайса, извлекает марки, характеристики, единицы измерения и цены.
 import { readFileSync } from 'fs';
 import { findCableSpecification } from './cableSpecification.js';
+import { formatCableProductTitle } from '../../shared/productTitle.js';
 const UNIT_ALIASES = [
   'км',
   'м',
@@ -298,7 +299,10 @@ export function normalizeImportedProduct(product) {
           markFamily: normalizeMarkFamily(fullName),
         }
       : parseProductName(sourceName);
-  const normalizedName = buildNormalizedProductName(fullName, parsedName);
+  const normalizedName = formatCableProductTitle(
+    buildNormalizedProductName(fullName, parsedName),
+    parsedName
+  );
   const normalizedUnit = normalizeUnit(product.unit);
   const normalizedPrice = normalizeNumber(product.price);
   const normalizedStock = normalizeNumber(product.stock);

@@ -9,6 +9,12 @@ import {
   isValidRussianPhone,
 } from '../../../shared/quoteValidation.js';
 import { formatMessage, messages } from '../../../shared/messages.js';
+import { trackEvent } from '../../lib/analytics';
+import {
+  SITE_PHONE_DISPLAY,
+  SITE_PHONE_HREF,
+  SITE_WORKING_HOURS_DISPLAY,
+} from '../../lib/siteConfig';
 
 const quickCommentOptions = [
   { label: 'ВВГ', value: 'ВВГ' },
@@ -41,7 +47,10 @@ export default function HeroLeadForm({
   defaultComment = '',
   source = 'Главная страница',
   idPrefix = 'lead',
+  mode = 'lead',
+  onDone,
 }) {
+  const isCallback = mode === 'callback';
   const [form, setForm] = useState(() => buildInitialForm(defaultComment));
   const [honeypot, setHoneypot] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,6 +58,11 @@ export default function HeroLeadForm({
   const [serverMessage, setServerMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const commentRef = useRef(null);
+  const phoneRef = useRef(null);
+  const consentRef = useRef(null);
+  const statusRef = useRef(null);
+  const submittingRef = useRef(false);
+  const [submittedPhone, setSubmittedPhone] = useState('');
   const renderedAtRef = useRef(Date.now());
   const previousDefaultCommentRef = useRef(defaultComment);
   const fieldIds = {
@@ -60,6 +74,10 @@ export default function HeroLeadForm({
     phone: `${fieldIds.phone}-error`,
     consent: `${fieldIds.consent}-error`,
   };
+
+  useEffect(() => {
+    if (isSubmitted || serverMessage) statusRef.current?.focus();
+  }, [isSubmitted, serverMessage]);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
@@ -154,16 +172,19 @@ export default function HeroLeadForm({
 
   async function handleSubmit(event) {
     event.preventDefault();
+    if (submittingRef.current) return;
 
     const nextErrors = validate();
 
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
       setIsSubmitted(false);
+      (nextErrors.phone ? phoneRef : consentRef).current?.focus();
       return;
     }
 
     try {
+      submittingRef.current = true;
       setIsSubmitting(true);
       setServerMessage('');
 
@@ -176,8 +197,15 @@ export default function HeroLeadForm({
           phone: form.phone.trim(),
           comment:
             form.comment.trim() ||
-            formatMessage(messages.text.leadDefaultCommentPrefix, { source }),
+            (isCallback
+              ? 'Просьба перезвонить'
+              : formatMessage(messages.text.leadDefaultCommentPrefix, {
+                  source,
+                })),
           source,
+          consent: form.consent,
+          requestType: isCallback ? 'callback' : 'lead',
+          page: window.location.pathname,
           createdAt: new Date().toLocaleString('ru-RU'),
           rendered_at: renderedAtRef.current,
           submit_at: Date.now(),
@@ -191,125 +219,214 @@ export default function HeroLeadForm({
       );
 
       setIsSubmitted(true);
+      setSubmittedPhone(form.phone.trim());
       setServerMessage(result.message || messages.success.leadSent);
       setForm(buildInitialForm(''));
       renderedAtRef.current = Date.now();
       setErrors({});
+      trackEvent(isCallback ? 'callback-submit' : 'lead-submit', { source });
     } catch (error) {
       captureException(error, { source: 'HeroLeadForm.submit' });
       setIsSubmitted(false);
       setServerMessage(error.message || messages.errors.leadForm.submitFailed);
     } finally {
+      submittingRef.current = false;
       setIsSubmitting(false);
     }
   }
 
   return (
-    <div className="hero-lead-card">
+    <div
+      className={`hero-lead-card${isCallback ? ' hero-lead-card--callback' : ''}`}
+    >
       <div className="hero-lead-card__head">
         <h2 className="hero-lead-card__title">{title}</h2>
-        <p className="hero-lead-card__subtitle">{subtitle}</p>
+        {!isSubmitted ? (
+          <p className="hero-lead-card__subtitle">{subtitle}</p>
+        ) : null}
+        {isCallback && !isSubmitted ? (
+          <p className="hero-lead-card__schedule">
+            {SITE_WORKING_HOURS_DISPLAY} · время Челябинска
+          </p>
+        ) : null}
       </div>
 
-      {isSubmitted ? <div className="form-success">{serverMessage}</div> : null}
-
-      {!isSubmitted && serverMessage ? (
-        <div className="form-error">{serverMessage}</div>
-      ) : null}
-
-      <form className="hero-lead-form" onSubmit={handleSubmit} noValidate>
-        <HoneypotField
-          value={honeypot}
-          onChange={(event) => setHoneypot(event.target.value)}
-        />
-        <div className="hero-lead-form__field">
-          <label htmlFor={fieldIds.phone}>Ваш телефон</label>
-          <input
-            id={fieldIds.phone}
-            name="phone"
-            type="text"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="+7 ___ - __ - __"
-            aria-invalid={errors.phone ? 'true' : undefined}
-            aria-describedby={errors.phone ? errorIds.phone : undefined}
-          />
-          {errors.phone ? (
-            <span id={errorIds.phone} className="field-error">
-              {errors.phone}
-            </span>
+      {isSubmitted ? (
+        <div
+          className="hero-lead-form__success"
+          role="status"
+          tabIndex={-1}
+          ref={statusRef}
+        >
+          <span className="hero-lead-form__success-icon" aria-hidden="true">
+            ✓
+          </span>
+          <h3>
+            {isCallback ? 'Заявка на звонок отправлена' : 'Спасибо за заявку'}
+          </h3>
+          <p>
+            {isCallback
+              ? `Менеджер позвонит вам по номеру ${submittedPhone}. Если сейчас нерабочее время, свяжемся в ближайший рабочий день.`
+              : serverMessage}
+          </p>
+          {isCallback ? (
+            <p>{SITE_WORKING_HOURS_DISPLAY} · время Челябинска</p>
+          ) : null}
+          {onDone ? (
+            <button
+              type="button"
+              className="button-primary hero-lead-form__submit"
+              onClick={onDone}
+            >
+              Готово
+            </button>
           ) : null}
         </div>
+      ) : null}
 
-        <div className="hero-lead-form__field">
-          <label htmlFor={fieldIds.comment}>
-            Комментарий{' '}
-            <span className="hero-lead-form__optional">(необязательно)</span>
-          </label>
-          <div
-            className="hero-lead-form__quick-buttons"
-            role="group"
-            aria-label="Быстрые варианты комментария"
-          >
-            {quickCommentOptions.map((option) => {
-              const isActive = parseCommentTokens(form.comment).includes(
-                option.value
-              );
-
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  className={`hero-lead-form__quick-btn${isActive ? ' hero-lead-form__quick-btn--active' : ''}`}
-                  onClick={() => handleQuickComment(option.value)}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
-          <textarea
-            ref={commentRef}
-            id={fieldIds.comment}
-            name="comment"
-            value={form.comment}
-            onChange={handleChange}
-            placeholder="Например: ВВГ 3×2.5, 500 метров"
-            className="hero-lead-form__textarea"
-            rows={3}
-            maxLength={MAX_QUOTE_CUSTOMER_COMMENT_LENGTH}
-          />
-        </div>
-
-        <label className="hero-lead-form__consent">
-          <input
-            id={fieldIds.consent}
-            name="consent"
-            type="checkbox"
-            checked={form.consent}
-            onChange={handleChange}
-            aria-invalid={errors.consent ? 'true' : undefined}
-            aria-describedby={errors.consent ? errorIds.consent : undefined}
-          />
-          <span>
-            Даю согласие на{' '}
-            <a href="/privacy">обработку персональных&nbsp;данных</a>
-          </span>
-        </label>
-        {errors.consent ? (
-          <span id={errorIds.consent} className="field-error">
-            {errors.consent}
-          </span>
-        ) : null}
-
-        <button
-          type="submit"
-          className="button-primary hero-lead-form__submit"
-          disabled={isSubmitting}
+      {!isSubmitted && serverMessage ? (
+        <div
+          className="form-error hero-lead-form__error"
+          role="alert"
+          tabIndex={-1}
+          ref={statusRef}
         >
-          {isSubmitting ? 'Отправка...' : submitLabel}
-        </button>
-      </form>
+          <p>{serverMessage}</p>
+          <a href={SITE_PHONE_HREF}>Позвонить нам: {SITE_PHONE_DISPLAY}</a>
+        </div>
+      ) : null}
+
+      {!isSubmitted ? (
+        <form
+          className="hero-lead-form"
+          onSubmit={handleSubmit}
+          noValidate
+          aria-busy={isSubmitting}
+        >
+          <HoneypotField
+            value={honeypot}
+            onChange={(event) => setHoneypot(event.target.value)}
+          />
+          <div className="hero-lead-form__field">
+            <label htmlFor={fieldIds.phone}>Ваш телефон</label>
+            <input
+              ref={phoneRef}
+              id={fieldIds.phone}
+              name="phone"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              maxLength={32}
+              required
+              disabled={isSubmitting}
+              value={form.phone}
+              onChange={handleChange}
+              placeholder="+7 (999) 123-45-67"
+              aria-invalid={errors.phone ? 'true' : undefined}
+              aria-describedby={errors.phone ? errorIds.phone : undefined}
+            />
+            {errors.phone ? (
+              <span id={errorIds.phone} className="field-error">
+                {errors.phone}
+              </span>
+            ) : null}
+          </div>
+
+          <div className="hero-lead-form__field">
+            <label htmlFor={fieldIds.comment}>
+              {isCallback ? 'О чём хотите узнать?' : 'Комментарий'}{' '}
+              <span className="hero-lead-form__optional">(необязательно)</span>
+            </label>
+            {!isCallback ? (
+              <div
+                className="hero-lead-form__quick-buttons"
+                role="group"
+                aria-label="Быстрые варианты комментария"
+              >
+                {quickCommentOptions.map((option) => {
+                  const isActive = parseCommentTokens(form.comment).includes(
+                    option.value
+                  );
+
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      className={`hero-lead-form__quick-btn${isActive ? ' hero-lead-form__quick-btn--active' : ''}`}
+                      onClick={() => handleQuickComment(option.value)}
+                      aria-pressed={isActive}
+                      disabled={isSubmitting}
+                    >
+                      {option.label}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : null}
+            <textarea
+              ref={commentRef}
+              id={fieldIds.comment}
+              name="comment"
+              value={form.comment}
+              onChange={handleChange}
+              placeholder={
+                isCallback
+                  ? 'Например, наличие кабеля, цена или доставка'
+                  : 'Например: ВВГ 3×2.5, 500 метров'
+              }
+              disabled={isSubmitting}
+              className="hero-lead-form__textarea"
+              rows={3}
+              maxLength={MAX_QUOTE_CUSTOMER_COMMENT_LENGTH}
+            />
+          </div>
+
+          <label className="hero-lead-form__consent">
+            <input
+              ref={consentRef}
+              id={fieldIds.consent}
+              name="consent"
+              type="checkbox"
+              checked={form.consent}
+              required
+              disabled={isSubmitting}
+              onChange={handleChange}
+              aria-invalid={errors.consent ? 'true' : undefined}
+              aria-describedby={errors.consent ? errorIds.consent : undefined}
+            />
+            <span>
+              Даю согласие на{' '}
+              <a
+                href="/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Откроется в новой вкладке"
+              >
+                обработку персональных&nbsp;данных
+              </a>
+            </span>
+          </label>
+          {errors.consent ? (
+            <span id={errorIds.consent} className="field-error">
+              {errors.consent}
+            </span>
+          ) : null}
+
+          <button
+            type="submit"
+            className="button-primary hero-lead-form__submit"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Отправка...' : submitLabel}
+          </button>
+          {isCallback ? (
+            <p className="hero-lead-form__direct">
+              Удобнее позвонить самим?{' '}
+              <a href={SITE_PHONE_HREF}>{SITE_PHONE_DISPLAY}</a>
+            </p>
+          ) : null}
+        </form>
+      ) : null}
     </div>
   );
 }

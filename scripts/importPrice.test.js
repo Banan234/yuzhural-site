@@ -138,7 +138,7 @@ describe('resolveProductDisposition', () => {
       resolveProductDisposition({ name: 'ВВГ 3х2.5', unit: 'шт' })
     ).toMatchObject({ status: 'publish', reason: 'cable_name_evidence' });
     expect(
-      resolveProductDisposition({ name: 'ПМТК нг(А) 1х0.5', unit: 'шт' })
+      resolveProductDisposition({ name: 'ПМТК нг(А) 1х0.75', unit: 'шт' })
     ).toMatchObject({ status: 'publish', reason: 'cable_name_evidence' });
     expect(
       resolveProductDisposition({
@@ -150,6 +150,28 @@ describe('resolveProductDisposition', () => {
       reason: 'explicit_non_cable_name',
       evidence: 'Металлорукав',
     });
+  });
+
+  it('исключает только ПМТК нг(А) 1х0.5 без подтверждённой длины штуки', () => {
+    const product = {
+      name: 'ПМТК нг(А)  1х0.5',
+      unit: 'шт',
+      price: 18900,
+      stock: 2,
+    };
+    expect(createProductRecord(product, 'Без категории')).toEqual({
+      type: 'excluded',
+    });
+    expect(resolveProductDisposition(product)).toMatchObject({
+      status: 'exclude',
+      reason: 'unverified_piece_length',
+    });
+    expect(
+      resolveProductDisposition({ name: product.name, unit: 'м' })
+    ).toMatchObject({ status: 'publish' });
+    expect(
+      resolveProductDisposition({ name: 'ПМТК нг(А) 1х0.75', unit: 'шт' })
+    ).toMatchObject({ status: 'publish' });
   });
 
   it('исключает реле РТЗ-51.01 даже при ошибочной единице «м»', () => {
@@ -868,7 +890,10 @@ describe('parsePageRow / createProductRecord', () => {
       dispositionReason: 'unit_meter_requires_classification',
       dispositionEvidence: 'м',
     });
-    expect(result.review).toMatchObject({ product: 'Неизвестная марка' });
+    expect(result.review).toMatchObject({
+      product: 'Неизвестная марка',
+      sourceName: 'Неизвестная марка',
+    });
   });
 
   it('сохраняет товар с неоднозначным производителем и направляет его на review', () => {

@@ -44,23 +44,6 @@
   max-width: 675px;
   padding: 70px 0 58px;
 }
-.home-concept__eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 18px;
-  color: #ff811f;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.home-concept__eyebrow::before {
-  content: '';
-  width: 22px;
-  height: 2px;
-  background: currentColor;
-}
 .home-concept__hero h1 {
   max-width: 670px;
   margin: 0;
@@ -719,10 +702,6 @@
   .home-concept__hero-content {
     max-width: 100%;
     padding: 42px 0 210px;
-  }
-  .home-concept__eyebrow {
-    margin-bottom: 16px;
-    color: #d75e07;
   }
   .home-concept__hero h1 {
     max-width: 620px;

@@ -27,6 +27,7 @@ export default function Modal({
   children,
   windowClassName = '',
   ariaLabel = 'Диалоговое окно',
+  fallbackFocusRef,
 }) {
   const modalRef = useRef(null);
   const onCloseRef = useRef(onClose);
@@ -97,13 +98,16 @@ export default function Modal({
       const previousActiveElement = previousActiveElementRef.current;
       if (
         previousActiveElement &&
+        previousActiveElement !== document.body &&
         document.contains(previousActiveElement) &&
         typeof previousActiveElement.focus === 'function'
       ) {
         previousActiveElement.focus();
+      } else {
+        fallbackFocusRef?.current?.focus();
       }
     };
-  }, [isOpen]);
+  }, [isOpen, fallbackFocusRef]);
 
   if (!isOpen) {
     return null;

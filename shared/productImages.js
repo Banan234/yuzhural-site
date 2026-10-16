@@ -1,4 +1,5 @@
 // Файл определяет правила выбора изображений товаров и fallback-ассетов для карточек каталога.
+import generatedProductImages from './generatedProductImages.json' with { type: 'json' };
 
 export const PRODUCT_IMAGE_FALLBACKS = {
   powerCable: '/category-placeholders/power-cable.svg',
@@ -72,7 +73,62 @@ function clean(value) {
 }
 
 function isGenericProductImage(src) {
-  return GENERIC_PRODUCT_IMAGES.has(clean(src));
+  return (
+    GENERIC_PRODUCT_IMAGES.has(clean(src)) ||
+    Object.values(PRODUCT_IMAGE_FALLBACKS).includes(clean(src))
+  );
+}
+
+const imageBindingName = (value) =>
+  clean(value)
+    .toUpperCase()
+    .replace(/[XХ×]/gu, 'Х')
+    .replace(/,/gu, '.')
+    .replace(/\s+/gu, '');
+
+export function getGeneratedProductImage(
+  product,
+  manifest = generatedProductImages
+) {
+  const entry = manifest.bySku?.[clean(product?.sku)];
+  if (entry?.status !== 'approved' || entry.kind !== 'generated-illustration')
+    return '';
+  if (
+    entry.productId != null &&
+    product.id != null &&
+    String(entry.productId) !== String(product.id)
+  )
+    return '';
+  if (
+    entry.primaryCores != null &&
+    product.cores != null &&
+    Number(entry.primaryCores) !== Number(product.cores)
+  )
+    return '';
+  if (
+    entry.section != null &&
+    product.crossSection != null &&
+    Number(entry.section) !== Number(product.crossSection)
+  )
+    return '';
+  const names = [
+    product.sourceName,
+    product.name,
+    product.fullName,
+    product.title,
+  ]
+    .filter(Boolean)
+    .map(imageBindingName);
+  if (
+    ![entry.sourceName, entry.productName]
+      .filter(Boolean)
+      .some((name) => names.includes(imageBindingName(name)))
+  )
+    return '';
+  return typeof entry.image === 'string' &&
+    /^\/[A-Za-z0-9/_-]+\.png$/u.test(entry.image)
+    ? entry.image
+    : '';
 }
 
 function lookupBySlug(product) {
@@ -105,11 +161,12 @@ function lookupByName(product) {
   return match?.image || '';
 }
 
-export function getProductImage(product) {
+export function getProductImage(product, manifest = generatedProductImages) {
   const image = clean(product?.image);
   if (!isGenericProductImage(image)) return image;
 
   return (
+    getGeneratedProductImage(product, manifest) ||
     lookupBySlug(product) ||
     lookupByName(product) ||
     PRODUCT_IMAGE_FALLBACKS.nonCable
@@ -125,6 +182,12 @@ export function getProductImageAlt(product) {
       product?.catalogCategory || product?.category || product?.catalogSection
     ) || 'категория товара';
 
-  if (title) return `${title} — ${category}`;
+  if (title) {
+    const image = getGeneratedProductImage(product);
+    const illustrated = image && getProductImage(product) === image;
+    return illustrated
+      ? `${title} — иллюстрация конструкции кабеля`
+      : `${title} — ${category}`;
+  }
   return `Изображение товара: ${category}`;
 }

@@ -17,6 +17,7 @@ import {
   buildNextImportHistory,
 } from './priceImportComparison.js';
 import { buildReportHtml } from './importReport.js';
+import { enrichPriceDesignations } from '../../shared/productDesignationBatch.js';
 
 export async function writeFileAtomic(filePath, data, { mode } = {}) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
@@ -215,6 +216,9 @@ export async function publishImportArtifacts({
   generatedAt,
   source,
 }) {
+  const designationBatch = enrichPriceDesignations(products, { generatedAt });
+  products = designationBatch.products;
+  report.designationDecoding = designationBatch.report;
   const dataStageRoot = await fs.mkdtemp(
     path.join(projectRoot, '.price-import-stage-data-')
   );
@@ -270,6 +274,10 @@ export async function publishImportArtifacts({
     await writeFileAtomic(
       stagedProductsFile,
       JSON.stringify(products, null, 2)
+    );
+    await writeFileAtomic(
+      path.join(stagedCatalogDir, 'designation-coverage.json'),
+      JSON.stringify(designationBatch.report, null, 2)
     );
     await saveProductRegistry(stagedRegistryFile, registry);
     await writeFileAtomic(

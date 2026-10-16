@@ -59,6 +59,29 @@ beforeEach(() => {
 });
 
 describe('ProductPage', () => {
+  it('показывает расшифровку позиции и внешние источники', async () => {
+    renderProductPage();
+    expect(
+      await screen.findByRole('heading', { name: 'Расшифровка обозначения' })
+    ).toBeInTheDocument();
+    expect(screen.getByText('Изоляция жил из ПВХ')).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /Документация семейства ВВГ/ })
+    ).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it('сохраняет блок для неизвестной марки и явно отмечает непроверенное обозначение', async () => {
+    fetchProductBySlug.mockResolvedValue({
+      ...product,
+      mark: 'Неизвестная',
+      sourceName: 'Неизвестная 3х2,5',
+    });
+    renderProductPage();
+    expect(await screen.findByText('Требует уточнения:')).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /Найти полное обозначение в Google/ })
+    ).toHaveAttribute('target', '_blank');
+  });
   it('даёт полю количества accessible label и скрывает пустого производителя', async () => {
     renderProductPage();
 

@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { writeSeoArtifacts } from './lib/siteSeo.js';
 import { assertProductPrerenderCoverage } from './lib/productPrerenderAudit.js';
+import { formatCableProductTitle } from '../shared/productTitle.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -116,6 +117,10 @@ export async function syncRuntimeArtifacts({
   const categoriesData = await loadJson(categoriesPath);
   const products = extractProductsPayload(productsPayload, {
     source: productsPath,
+  }).map((product) => {
+    const sourceTitle = product.fullName || product.name || product.title;
+    const title = formatCableProductTitle(sourceTitle, product);
+    return { ...product, title, fullName: title, name: title };
   });
 
   const seoSummary = await writeSeoArtifacts({

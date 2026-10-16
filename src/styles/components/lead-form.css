@@ -1,0 +1,270 @@
+/* Общая форма заявки: доступна на каждой странице, независимо от CSS главной. */
+.hero-lead-card {
+  align-self: start;
+  width: 100%;
+  max-width: 430px;
+  padding: 22px 22px 20px;
+  border: 0;
+  border-radius: 14px;
+  background: #f7f8fa;
+  box-shadow: none;
+  min-width: 0;
+}
+.hero-lead-card--loading {
+  min-height: 400px;
+}
+.hero-lead-card__head {
+  margin-bottom: 14px;
+  padding-bottom: 0;
+  border: 0;
+}
+.hero-lead-card__title {
+  margin: 0;
+  line-height: 1.1;
+  color: #20232a;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.hero-lead-card__subtitle {
+  margin: 8px 0 0;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 1.4;
+  color: #737a83;
+}
+.hero-lead-form {
+  display: grid;
+  gap: 11px;
+}
+.hero-lead-form__field {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+.hero-lead-form__quick-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.hero-lead-form__quick-btn {
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 6px;
+  background: #eceff2;
+  color: #555d67;
+}
+.hero-lead-form__quick-btn:hover {
+  border-color: #b8cddd;
+  background: #e3e7eb;
+  color: #303740;
+  transform: none;
+}
+.hero-lead-form__quick-btn--active {
+  border-color: #35556d;
+  background: #e7f1ff;
+  color: #1769ce;
+  box-shadow: none;
+}
+.hero-lead-form__field label {
+  letter-spacing: 0.01em;
+  color: #343a42;
+  font-size: 14px;
+  font-weight: 600;
+}
+.hero-lead-form__optional {
+  font-weight: 400;
+  color: #8fa3bb;
+}
+.hero-lead-form__field input,
+.hero-lead-form__textarea {
+  width: 100%;
+  padding: 0 18px;
+  color: #0d2138;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  border: 1px solid #dfe2e6;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: none;
+  min-width: 0;
+  font-size: 16px;
+}
+.hero-lead-form__field input {
+  min-height: 46px;
+}
+.hero-lead-form__textarea {
+  resize: none;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 72px;
+  padding: 11px 14px;
+}
+.hero-lead-form__field input::placeholder,
+.hero-lead-form__textarea::placeholder {
+  color: #a3b4c6;
+}
+.hero-lead-form__field input:focus,
+.hero-lead-form__textarea:focus {
+  outline: none;
+  background: #fff;
+  border-color: #8eb9ef;
+  box-shadow: 0 0 0 3px rgba(40, 123, 224, 0.1);
+}
+.hero-lead-form__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.45;
+  color: #6b727b;
+  font-size: 12px;
+}
+.hero-lead-form__consent input {
+  margin-top: 3px;
+  accent-color: #287be0;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+}
+.hero-lead-form__submit {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.015em;
+  min-height: 48px;
+  border-radius: 8px;
+  background: #287be0;
+  box-shadow: none;
+}
+.hero-lead-form__submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #1769ce;
+  box-shadow: none;
+}
+.hero-lead-form__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.hero-lead-form__phone-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #2a4a6e;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  transition: color 0.15s ease;
+}
+.hero-lead-form__phone-link:hover {
+  color: #35556d;
+}
+.hero-lead-form__phone-link svg {
+  color: #4a6f8a;
+  flex-shrink: 0;
+}
+.hero-lead-form__phone-link strong {
+  font-weight: 800;
+}
+
+/* Общие состояния и сценарий обратного звонка. */
+.hero-lead-form__consent a {
+  text-underline-offset: 3px;
+}
+.hero-lead-form__field input[aria-invalid='true'] {
+  border-color: var(--danger-text);
+}
+.hero-lead-form__field input:disabled,
+.hero-lead-form__textarea:disabled {
+  background: #f7f8fa;
+}
+.hero-lead-card__schedule {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--primary-soft);
+  color: #35556d;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.hero-lead-form__direct {
+  margin: 0;
+  color: #617083;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.hero-lead-form__direct a {
+  display: inline-block;
+  color: var(--primary-dark);
+  font-weight: 650;
+  text-decoration: none;
+}
+.hero-lead-form__error {
+  margin-bottom: 18px;
+  padding: 14px;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  background: #fff7f7;
+  line-height: 1.5;
+}
+.hero-lead-form__error p {
+  margin: 0 0 8px;
+}
+.hero-lead-form__success {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  text-align: center;
+}
+.hero-lead-form__success-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: var(--success-text);
+  background: var(--success-bg);
+  font-size: 28px;
+}
+.hero-lead-form__success h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+}
+.hero-lead-form__success p {
+  margin: 0;
+  color: #617083;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.hero-lead-form__quick-btn:focus-visible,
+.hero-lead-form__consent input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+@media (max-width: 1100px) {
+  .hero-lead-card {
+    padding: 20px 16px;
+  }
+  .hero-lead-card__title {
+    font-size: 22px;
+  }
+}

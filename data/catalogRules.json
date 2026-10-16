@@ -33,8 +33,8 @@
     "_comment": "Декларация производителя относит ЭКС-ШВППЭ/Э и вариант -5 к симметричным кабелям для структурированных систем связи.",
     "type": "ЭКС-ШВППЭ/Э — структурированные системы связи",
     "originalNamePrefixes": ["ЭКС-ШВППЭ/Э"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "LAN-кабели",
     "catalogCategorySlug": "lan-kabeli",
     "priority": 205
@@ -346,8 +346,8 @@
     "_comment": "=== СУДОВЫЕ — все марки в единую категорию ===",
     "type": "Судовой монтажный (КМПВ/КМПЭ/КМПБ)",
     "patterns": ["кмпв", "кмпэ", "кмпб"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели судовые",
     "catalogCategorySlug": "kabeli-sudovye",
     "priority": 140
@@ -355,8 +355,8 @@
   {
     "type": "Судовой (МРШ/МЭРШ/НГРШМ)",
     "patterns": ["мрш", "мэрш", "нгршм"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели судовые",
     "catalogCategorySlug": "kabeli-sudovye",
     "priority": 140
@@ -364,8 +364,8 @@
   {
     "type": "Судовой (КНР/КНРк/КНРЭ/КНРП)",
     "patterns": ["кнрк", "кнрп", "кнрт", "кнрэ", "кнрпт", "кнпр"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели судовые",
     "catalogCategorySlug": "kabeli-sudovye",
     "priority": 140
@@ -373,8 +373,8 @@
   {
     "type": "Судовой сигнальный (СПОВ)",
     "patterns": ["спов"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели судовые",
     "catalogCategorySlug": "kabeli-sudovye",
     "priority": 140
@@ -382,8 +382,8 @@
   {
     "type": "Судовой силовой (КГСНРТ/КСНРТ/КСРТ/КГСРТ)",
     "patterns": ["кгснрт", "ксрт", "кгсрт", "кснрт", "ксрк"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели судовые",
     "catalogCategorySlug": "kabeli-sudovye",
     "priority": 140
@@ -406,8 +406,8 @@
       "окстм",
       "кст-"
     ],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели судовые",
     "catalogCategorySlug": "kabeli-sudovye",
     "priority": 140
@@ -415,8 +415,8 @@
   {
     "type": "Судовой (КРШС/КММц)",
     "patterns": ["кршс", "кммц"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели судовые",
     "catalogCategorySlug": "kabeli-sudovye",
     "priority": 140
@@ -515,8 +515,8 @@
       "fsew",
       "deviflex"
     ],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели нагревательные",
     "catalogCategorySlug": "kabeli-nagrevatelnye",
     "priority": 140
@@ -892,8 +892,8 @@
     "_comment": "=== LAN-кабели ===",
     "type": "КВСМВ",
     "patterns": ["квсмв"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "LAN-кабели",
     "catalogCategorySlug": "lan-kabeli",
     "priority": 98
@@ -901,8 +901,8 @@
   {
     "type": "КВПВП-5е",
     "patterns": ["квпвп-5e", "квпвп-5е"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "LAN-кабели",
     "catalogCategorySlug": "lan-kabeli",
     "priority": 97
@@ -918,8 +918,8 @@
       "квпэфнг",
       "квпэфм"
     ],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "LAN-кабели",
     "catalogCategorySlug": "lan-kabeli",
     "priority": 96
@@ -927,8 +927,8 @@
   {
     "type": "Orient Pearl LAN",
     "patterns": ["orient pearl", "cat 5", "cat5", "cat.5"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "LAN-кабели",
     "catalogCategorySlug": "lan-kabeli",
     "priority": 110
@@ -945,8 +945,8 @@
       "ftp-",
       "utp-"
     ],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "LAN-кабели",
     "catalogCategorySlug": "lan-kabeli",
     "priority": 90
@@ -1336,8 +1336,8 @@
   {
     "type": "КМПВВ — судовая линейка; исправление совпадения ПВВ",
     "patterns": ["кмпвв"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели судовые",
     "catalogCategorySlug": "kabeli-sudovye",
     "priority": 260
@@ -1586,13 +1586,13 @@
   },
 
   {
-    "_comment": "=== СЭК → Соединительный кабель ===",
+    "_comment": "=== СЭК → Прочее (соединительный кабель) ===",
     "type": "Соединительный кабель",
     "patterns": ["сэк"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Соединительный кабель",
-    "catalogCategorySlug": "soedinitelnyy-kabel",
+    "catalogCategory": "Прочее",
+    "catalogCategorySlug": "prochee",
     "priority": 140
   },
 

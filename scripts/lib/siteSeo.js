@@ -54,6 +54,11 @@ const STATIC_ROUTES = [
     priority: '0.9',
   },
   {
+    path: toCanonicalSitePath('/marks'),
+    changefreq: 'daily',
+    priority: '0.7',
+  },
+  {
     path: toCanonicalSitePath('/delivery'),
     changefreq: 'monthly',
     priority: '0.5',
@@ -213,6 +218,14 @@ function collectCategoryRoutes(categoriesData) {
         changefreq: 'weekly',
         priority: '0.7',
       });
+      for (const subcategory of category.subcategories || []) {
+        if (!subcategory.slug) continue;
+        routes.push({
+          path: `/catalog/${subcategory.slug}`,
+          changefreq: 'weekly',
+          priority: '0.7',
+        });
+      }
     }
   }
 

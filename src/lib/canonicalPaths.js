@@ -8,6 +8,7 @@ const TRAILING_SLASH_CANONICAL_PATHS = new Set([
   '/calculator/section',
   '/about',
   '/catalog',
+  '/marks',
   '/calculator/weight',
   '/services',
   '/services/marking',

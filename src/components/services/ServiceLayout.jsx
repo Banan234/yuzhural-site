@@ -34,7 +34,6 @@ export default function ServiceLayout({ serviceKey, children }) {
           )}
         </nav>
         <header className="services-heading">
-          <span className="services-eyebrow">ПОЛЕЗНО ДЛЯ ВАШЕГО ЗАКАЗА</span>
           <h1>{service?.title || 'Сервисы для работы с кабелем'}</h1>
           <p>
             {service?.description ||

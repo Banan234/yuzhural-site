@@ -12,6 +12,7 @@ import {
   decodeCable,
   isCableCatalogProduct,
 } from './catalogClassifier.js';
+import { buildProductDesignation } from '../../shared/productDesignation.js';
 import { resolveProductDisposition } from './importDisposition.js';
 
 const REQUIRED_HEADER_TOKENS = ['наименование', 'ед.изм', 'цена', 'остаток'];
@@ -363,6 +364,7 @@ export function createProductRecord(
             row: sourceRow,
             category,
             product: normalized.name,
+            sourceName: normalized.sourceName,
             reason:
               [
                 effectiveDisposition.status === 'review'
@@ -388,10 +390,14 @@ export function classifyEligibleProducts(products) {
       category: resolveCategory(product, categoryByFamily),
     };
 
-    return {
+    const classified = {
       ...resolved,
       ...classifyProduct(resolved),
       cableDecoded: decodeCable(resolved.mark),
+    };
+    return {
+      ...classified,
+      designationDecoded: buildProductDesignation(classified),
     };
   });
 

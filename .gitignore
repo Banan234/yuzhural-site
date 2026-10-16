@@ -31,3 +31,5 @@ public/redirects.json
 public/redirects.nginx.conf
 public/product/
 deploy/state/
+data/product-image-metadata/.pipeline.lock
+data/product-image-metadata/**/*.tmp

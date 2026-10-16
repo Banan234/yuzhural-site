@@ -1,0 +1,178 @@
+{
+  "sku": "YU-0004026",
+  "product_id": 4026,
+  "source_name": "КГ хл  1х 50",
+  "product_name": "КГ хл 1х50",
+  "parameters": {
+    "sku": "YU-0004026",
+    "productId": 4026,
+    "sourceName": "КГ хл  1х 50",
+    "family": "КГ",
+    "primaryCores": 1,
+    "cores": 1,
+    "section": 50,
+    "groundCores": 0,
+    "groundSection": null,
+    "voltage": null,
+    "attributes": [
+      "ХЛ"
+    ],
+    "shape": "round",
+    "material": "copper",
+    "strand": "stranded",
+    "conductorConstructionSource": "Existing КГ flexible rubber cable construction preset",
+    "jacket": "black rubber",
+    "insulation": "rubber",
+    "colors": [
+      "brown"
+    ],
+    "colorRule": "power:1",
+    "colorRuleVersion": "catalogue-colors-v1",
+    "colorSource": "configured catalogue illustration convention",
+    "visualFamily": "КГ-ХЛ",
+    "sectionAffectsVisual": false,
+    "sectionMode": "constant",
+    "thicknessLabel": "uniform catalogue scale"
+  },
+  "prompt": "Use case: product-mockup. Create one standardized realistic professional 3D product render for an electrical cable catalogue. Stable composition, realistic materials and soft neutral studio lighting.\n\nCable family: КГ-ХЛ. Shape: round. Matte black rubber outer jacket; rubber insulation. Preserve this configured jacket color and construction.\n\nThe intact cable body enters the frame from the RIGHT side. The stripped end and separated conductors extend toward the LEFT side. Exposed copper conductor tips are on the LEFT. Never reverse or mirror this orientation.\n\nThe intact black outer cable jacket extends all the way to and beyond the RIGHT edge of the image. The cable enters the image directly through the RIGHT frame boundary. The right end of the cable is intentionally cropped by the image boundary. No visible end cap or termination of the outer jacket on the right. No empty transparent space between the cable and the right edge. The body must cross the right border, not merely approach it.\n\nFixed catalogue camera and pose: predominantly horizontal, shallow three-quarter perspective, with a consistent gentle 8-degree diagonal inclination. The intact jacket axis rises gently toward the RIGHT and descends slightly toward the LEFT, as in the original catalogue reference. Never perfectly horizontal, never steep, never vertical, no random camera angle.\n\nFixed layout: the stripping transition is near 56% of canvas width; the leftmost copper tips begin near 6%; the unbroken jacket continues from the transition through 100% of width and beyond the right border. The cable fills most of the useful canvas width. No oversized empty padding. Keep at least 10% safe space above and below every tip and insulated core.\n\nThe stripped end and all separated cores face LEFT. ALL 1 metal tips and insulated ends on the left must be completely visible, with the same small left margin. Never crop the left tips, top or bottom. Only the intact outer jacket on the RIGHT is intentionally cropped.\n\nExactly 1 insulated conductors are visible. There must be exactly 1 conductors, no more and no fewer. Show all 1 separately with exactly 1 exposed copper tips on the LEFT. No extra wire.\n\nConductor colors, one assignment per insulated wire: 1. brown. Never add a conductor for a color stripe. Separate and fan the cores gently so that every specified core and tip can be counted, while keeping all cores connected inside the jacket.\n\nVerified construction exception for this family/designation: stranded copper conductors. Show one compact neat bundle of fine copper strands inside each insulated core, not additional insulated wires. Do not replace this known flexible construction with a solid rod.\n\nThickness treatment: uniform catalogue scale. Nominal section is metadata only. Use the same visual thickness for all sections in this visual group. Do not calculate diameter from cross-sectional area.\n\nFollow the original catalogue reference described above: right-border jacket entry, gentle rising-right diagonal, clearly separated left-pointing cores, smooth solid round metal tips where configured, consistent scale and materials.\n\nGenuinely transparent PNG background with real alpha. No black, white or grey backdrop; no painted checkerboard. No glow, colored halos, bloom, floor, scenery or background shadows. Clean isolated product edges, moderate natural highlights.\n\nNo text, markings, labels, symbols, dimensions, logos, watermark, hands or other objects. Do not mirror the composition.\n\nFinal check: exactly 1 cores and 1 metal tips; intact jacket crosses the RIGHT frame boundary with no end cap and no right gap; all LEFT tips fully visible; gentle fixed diagonal; correct conductor construction; transparent background. Template right-edge-solid-v2.",
+  "prompt_hash": "69ffe5fe8723388aee0282983cc6e08d29ce71628283193c52eba1107be2d6c6",
+  "visual_key": "kg-hl__1core",
+  "visualKey": "kg-hl__1core",
+  "visual_descriptor": {
+    "family": "КГ-ХЛ",
+    "cores": 1,
+    "shape": "round",
+    "material": "copper",
+    "strand": "stranded",
+    "jacket": "black rubber",
+    "insulation": "rubber",
+    "colors": [
+      "brown"
+    ],
+    "sectionAffectsVisual": false,
+    "sectionKey": null
+  },
+  "visual_descriptor_hash": "1496629b0170d327ed4a8c52e7bebdd773120173fcae1b210194ba5ebb787f30",
+  "sectionAffectsVisual": false,
+  "render_fingerprint": "d46fb2a75a5a1a81353431abf6733ca0f14557c8b7440347c7b54c869e5d9027",
+  "legacy_render_fingerprint": "33dd7262f3c13e5de01557fb20df9d48a7760464b58f96550a63d07300af50a0",
+  "product_fingerprint": "62b7678f136736cb19ddb36bb9dcccd47974b34d81c4b412d0c26e67b90f3631",
+  "reference_hash": null,
+  "template_version": "right-edge-solid-v2",
+  "model": "gpt-image-2.5-flare",
+  "provider": "codex-sale",
+  "size": "1536x1024",
+  "quality": "high",
+  "format": "png",
+  "composition": {
+    "rightEdgeCrop": true,
+    "tiltDegrees": 8,
+    "leftMarginRatio": 0.06,
+    "verticalMarginRatio": 0.1,
+    "sheathTransitionRatio": 0.56
+  },
+  "style_reference": "/Users/Shared/yuzhural-site/assets/cable-images/style-reference-right.png",
+  "style_reference_hash": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59",
+  "schemaVersion": 2,
+  "family": "КГ-ХЛ",
+  "cores": 1,
+  "expected_output_filename": "public/product-images/generated/kg-hl__1core.png",
+  "generation_required": false,
+  "existing_image": "/category-placeholders/power-cable.svg",
+  "output_filename": "public/product-images/generated/kg-hl__1core.png",
+  "public_url": "/product-images/generated/kg-hl__1core.png",
+  "legacy_asset": false,
+  "action": "await_review",
+  "reason": "already_generated_needs_review",
+  "image": "kg-hl__1core.png",
+  "sku_count": 5,
+  "skus_without_images": 5,
+  "status": "approved",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.25817361894024804,
+    "has_transparency": true,
+    "transparent_ratio": 0.8136962691717645,
+    "non_opaque_ratio": 0.9993498727072369,
+    "foreground_ratio": 0.18571143499553236,
+    "bounds": {
+      "minX": 104,
+      "minY": 228,
+      "maxX": 1773,
+      "maxY": 651
+    },
+    "warnings": [],
+    "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+    "bytes": 652111
+  },
+  "retained_existing_style": false,
+  "visual_review": {
+    "cores": 1,
+    "colors": [
+      "brown"
+    ],
+    "orientation": "right-to-left",
+    "rightEdgeCropped": true,
+    "leftUncropped": true,
+    "topBottomClear": true,
+    "conductorConstruction": "stranded",
+    "noText": true,
+    "styleMatches": true,
+    "reviewer": "Codex visual inspection",
+    "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified.",
+    "reviewed_at": "2026-10-15T15:57:07.710Z"
+  },
+  "created_at": "2026-10-15T15:37:15.670Z",
+  "revised_prompt": null,
+  "api_request_id": "ca525ded-c809-43e9-8f89-d996359c0212",
+  "requested_api_model": "gpt-image-2.5-flare",
+  "source_validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.25817361894024804,
+    "has_transparency": true,
+    "transparent_ratio": 0.8136962691717645,
+    "non_opaque_ratio": 0.9993498727072369,
+    "foreground_ratio": 0.18571143499553236,
+    "bounds": {
+      "minX": 104,
+      "minY": 228,
+      "maxX": 1773,
+      "maxY": 651
+    },
+    "warnings": [],
+    "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+    "bytes": 652111
+  },
+  "normalization": {
+    "applied": false
+  },
+  "http_status": 200,
+  "api_usage": {
+    "input_tokens": 732,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 732
+    },
+    "output_tokens": 1030,
+    "output_tokens_details": {
+      "image_tokens": 1030,
+      "text_tokens": 0
+    },
+    "total_tokens": 1762
+  },
+  "attempts": 1,
+  "createdAt": "2026-10-15T15:37:15.670Z",
+  "force_replacement": false,
+  "updated_at": "2026-10-15T15:57:07.710Z",
+  "section": 50,
+  "groundSection": null,
+  "binding_allowed": true
+}

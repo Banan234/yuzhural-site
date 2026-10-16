@@ -33,6 +33,9 @@ function buildCategoryMenuItem(category) {
   return {
     title: category.name,
     slug: category.slug,
+    to: `/catalog/${category.slug}`,
+    subcategories: subcategoryLinks,
+    marks: keywordLinks,
     links: [
       { label: category.name, to: `/catalog/${category.slug}` },
       ...subcategoryLinks,
@@ -50,6 +53,19 @@ export const CATALOG_SECTIONS = catalogCategoriesData.sections.map(
   })
 );
 
-export const CATALOG_MENU = CATALOG_SECTIONS.flatMap(
-  (section) => section.groups
+const mainSection = CATALOG_SECTIONS.find(
+  (section) => section.slug === 'kabel-i-provod'
 );
+const specialSection = catalogCategoriesData.sections.find(
+  (section) => section.slug === 'specialnye-kabeli'
+);
+
+export const CATALOG_MENU = [
+  ...mainSection.groups.filter((group) => group.slug !== 'prochee'),
+  buildCategoryMenuItem({
+    name: specialSection.name,
+    slug: specialSection.slug,
+    subcategories: specialSection.categories,
+  }),
+  ...mainSection.groups.filter((group) => group.slug === 'prochee'),
+];

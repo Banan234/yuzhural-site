@@ -19,6 +19,7 @@ import { STORAGE_WRITE_FAILED_EVENT } from '../../lib/browserStorage.js';
 
 vi.mock('../../lib/productsApi.js', () => ({
   fetchProductSuggestions: vi.fn(),
+  fetchProducts: vi.fn().mockResolvedValue({ meta: { facets: {} } }),
 }));
 
 function renderLayout(initialEntry = '/') {

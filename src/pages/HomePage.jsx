@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Container from '../components/ui/Container';
+import CallbackButton from '../components/forms/CallbackButton';
 import CategoryShowcase from '../components/home/CategoryShowcase';
 import StockProductsGrid from '../components/home/StockProductsGrid';
 import { fetchFeaturedProducts } from '../lib/productsApi';
@@ -114,20 +115,6 @@ export default function HomePage() {
       navigate(`${CATALOG_CANONICAL_PATH}?search=${encodeURIComponent(query)}`);
   }
 
-  function openQuoteModal() {
-    window.dispatchEvent(
-      new CustomEvent('open-quote-modal', {
-        detail: {
-          title: 'Запросить КП',
-          subtitle:
-            'Оставьте телефон и список позиций — подготовим предложение.',
-          submitLabel: 'Запросить КП',
-          source: 'Главная страница',
-        },
-      })
-    );
-  }
-
   return (
     <div className="home-concept">
       <section className="home-concept__hero" aria-labelledby="home-hero-title">
@@ -149,7 +136,6 @@ export default function HomePage() {
         </picture>
         <Container>
           <div className="home-concept__hero-content">
-            <p className="home-concept__eyebrow">Кабель и провод оптом</p>
             <h1 id="home-hero-title">
               Кабель для вашего проекта — с расчётом в рабочий день
             </h1>
@@ -259,9 +245,7 @@ export default function HomePage() {
                 >
                   Отправить спецификацию <span aria-hidden="true">→</span>
                 </a>
-                <button type="button" onClick={openQuoteModal}>
-                  Попросить связаться со мной
-                </button>
+                <CallbackButton source="Заказ звонка: блок заявки на главной" />
               </div>
             </div>
             <div

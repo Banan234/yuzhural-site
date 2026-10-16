@@ -10,6 +10,7 @@ import {
   migrateStableIdentityKeys,
   specKeyFromStableKey,
 } from './productRegistry.js';
+import { normalizeImportedProduct } from './priceParser.js';
 
 function emptyRegistry() {
   return { version: 1, nextId: 1, entries: {} };
@@ -41,6 +42,26 @@ describe('buildStableKey / buildSpecKey', () => {
 });
 
 describe('assignStableIdentity', () => {
+  it('keeps the existing URL and SKU when import moves the fire suffix into the mark', () => {
+    const registry = emptyRegistry();
+    const product = normalizeImportedProduct({
+      name: 'ВВГ  1х2.5 нг(А)LSLtx',
+      unit: 'м',
+      price: 40.4,
+      stock: 300,
+    });
+    const legacy = {
+      ...product,
+      fullName: 'ВВГ 1х2.5 нг(А)-LS-LTx',
+      name: 'ВВГ 1х2.5 нг(А)-LS-LTx',
+    };
+    const first = assignStableIdentity(registry, legacy, NOW);
+    const second = assignStableIdentity(registry, product, LATER);
+
+    expect(product.fullName).toBe('ВВГнг(А)-LS-LTx 1х2.5');
+    expect(second).toEqual(first);
+  });
+
   it('создаёт новую запись с id, slug и sku', () => {
     const registry = emptyRegistry();
     const result = assignStableIdentity(

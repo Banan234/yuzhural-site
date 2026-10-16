@@ -24,6 +24,19 @@ function classifyName(name, overrides = {}) {
 
 describe('classifyProduct', () => {
   test.each([
+    ['ВВГ 3х2.5', 'pvh'],
+    ['АПвБШв 3х120', 'bronirovannyy'],
+    ['ААБл-10 3х120', 'bumazhnaya-izolyaciya'],
+    ['ППГнг(А)-HF 3х2.5', 'polimernye-kompozicii'],
+    ['АПвПу 1х120', 'spe'],
+    ['КГ-ХЛ 3х2.5', 'rezinovaya-izolyaciya'],
+  ])('сохраняет распределение %s при новом импорте', (name, group) => {
+    expect(classifyName(name)).toMatchObject({
+      catalogCategorySlug: 'silovoy-kabel',
+      catalogSubcategorySlug: `silovoy-kabel-${group}`,
+    });
+  });
+  test.each([
     [
       'КПСЭ 2х2х0.75',
       { sourceCategory: 'Кабель связи' },
@@ -58,7 +71,7 @@ describe('classifyProduct', () => {
       'КМПВ 7х0.35',
       {},
       {
-        catalogSection: 'Специальные кабели',
+        catalogSection: 'Кабель и провод',
         catalogCategory: 'Кабели судовые',
         catalogCategorySlug: 'kabeli-sudovye',
         catalogClassificationSource: 'rule',
@@ -75,11 +88,20 @@ describe('classifyProduct', () => {
       },
     ],
     [
-      'СЭК 2х0.75',
+      'СЭК 5х2',
       {},
       {
-        catalogCategory: 'Соединительный кабель',
-        catalogCategorySlug: 'soedinitelnyy-kabel',
+        catalogCategory: 'Прочее',
+        catalogCategorySlug: 'prochee',
+        catalogClassificationSource: 'rule',
+      },
+    ],
+    [
+      'СЭКнг(А)-LS-ХЛ 5х1',
+      {},
+      {
+        catalogCategory: 'Прочее',
+        catalogCategorySlug: 'prochee',
         catalogClassificationSource: 'rule',
       },
     ],
@@ -110,7 +132,7 @@ describe('classifyProduct', () => {
     expect(
       classifyName('UNKNOWN 2х1', { sourceCategory: 'Кабель греющий' })
     ).toMatchObject({
-      catalogSection: 'Специальные кабели',
+      catalogSection: 'Кабель и провод',
       catalogCategory: 'Кабели нагревательные',
       catalogCategorySlug: 'kabeli-nagrevatelnye',
       catalogClassificationSource: 'sourceCategory',
@@ -146,10 +168,11 @@ describe('classifyProduct', () => {
   );
 
   test.each(['АсКГ 4х70 хл', 'АсКГН 1х35'])(
-    '%s относится к гибким кабелям',
+    '%s относится к резиновым силовым кабелям',
     (name) => {
       expect(classifyName(name)).toMatchObject({
-        catalogCategorySlug: 'gibkiy-kabel',
+        catalogCategorySlug: 'silovoy-kabel',
+        catalogSubcategorySlug: 'silovoy-kabel-rezinovaya-izolyaciya',
         catalogClassificationSource: 'keywordPrefix',
       });
     }

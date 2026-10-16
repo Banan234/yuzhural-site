@@ -66,7 +66,7 @@ test('mobile category page shows products without a separate mark search', async
 
   await expect(page.locator('.catalog-search-bar')).toHaveCount(0);
 
-  const filtersButton = page.getByRole('button', { name: /Все параметры/ });
+  const filtersButton = page.getByRole('button', { name: 'Открыть фильтры' });
   await expect(filtersButton).toBeVisible();
   await expect(filtersButton).toHaveAttribute('aria-expanded', 'false');
 

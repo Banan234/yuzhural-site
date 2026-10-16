@@ -1,0 +1,181 @@
+{
+  "sku": "YU-0000787",
+  "product_id": 787,
+  "source_name": "ВВГ  2х 10 нг(А)",
+  "product_name": "ВВГнг(А) 2х10",
+  "parameters": {
+    "sku": "YU-0000787",
+    "productId": 787,
+    "sourceName": "ВВГ  2х 10 нг(А)",
+    "family": "ВВГ",
+    "primaryCores": 2,
+    "cores": 2,
+    "section": 10,
+    "groundCores": 0,
+    "groundSection": null,
+    "voltage": null,
+    "attributes": [
+      "нг(А)"
+    ],
+    "shape": "round",
+    "material": "copper",
+    "strand": "solid",
+    "conductorConstructionSource": "catalogue visual default; not a technical claim for this SKU",
+    "jacket": "black PVC",
+    "insulation": "PVC",
+    "colors": [
+      "brown",
+      "blue"
+    ],
+    "colorRule": "power:2",
+    "colorRuleVersion": "catalogue-colors-v1",
+    "colorSource": "configured catalogue illustration convention",
+    "visualFamily": "ВВГнг(А)",
+    "sectionAffectsVisual": false,
+    "sectionMode": "constant",
+    "thicknessLabel": "uniform catalogue scale"
+  },
+  "prompt": "Use case: product-mockup. Create one standardized realistic professional 3D product render for an electrical cable catalogue. Stable composition, realistic materials and soft neutral studio lighting.\n\nCable family: ВВГнг(А). Shape: round. Matte black PVC outer jacket; PVC insulation. Preserve this configured jacket color and construction.\n\nThe intact cable body enters the frame from the RIGHT side. The stripped end and separated conductors extend toward the LEFT side. Exposed copper conductor tips are on the LEFT. Never reverse or mirror this orientation.\n\nThe intact black outer cable jacket extends all the way to and beyond the RIGHT edge of the image. The cable enters the image directly through the RIGHT frame boundary. The right end of the cable is intentionally cropped by the image boundary. No visible end cap or termination of the outer jacket on the right. No empty transparent space between the cable and the right edge. The body must cross the right border, not merely approach it.\n\nFixed catalogue camera and pose: predominantly horizontal, shallow three-quarter perspective, with a consistent gentle 8-degree diagonal inclination. The intact jacket axis rises gently toward the RIGHT and descends slightly toward the LEFT, as in the original catalogue reference. Never perfectly horizontal, never steep, never vertical, no random camera angle.\n\nFixed layout: the stripping transition is near 56% of canvas width; the leftmost copper tips begin near 6%; the unbroken jacket continues from the transition through 100% of width and beyond the right border. The cable fills most of the useful canvas width. No oversized empty padding. Keep at least 10% safe space above and below every tip and insulated core.\n\nThe stripped end and all separated cores face LEFT. ALL 2 metal tips and insulated ends on the left must be completely visible, with the same small left margin. Never crop the left tips, top or bottom. Only the intact outer jacket on the RIGHT is intentionally cropped.\n\nExactly 2 insulated conductors are visible. There must be exactly 2 conductors, no more and no fewer. Show all 2 separately with exactly 2 exposed copper tips on the LEFT. No extra wire.\n\nConductor colors, one assignment per insulated wire: 1. brown; 2. blue. Never add a conductor for a color stripe. Separate and fan the cores gently so that every specified core and tip can be counted, while keeping all cores connected inside the jacket.\n\nUse solid-core copper conductors: one single solid round copper conductor inside each insulated core. Each stripped end shows ONE smooth continuous circular metal rod with a solid circular cross-section. not stranded copper; not a bundle of thin copper strands. Never show a brush, braid, multiple fine wires or a split metal tip. This is the catalogue illustration default, not a claim that every real SKU is solid-core.\n\nThickness treatment: uniform catalogue scale. Nominal section is metadata only. Use the same visual thickness for all sections in this visual group. Do not calculate diameter from cross-sectional area.\n\nFollow the original catalogue reference described above: right-border jacket entry, gentle rising-right diagonal, clearly separated left-pointing cores, smooth solid round metal tips where configured, consistent scale and materials.\n\nGenuinely transparent PNG background with real alpha. No black, white or grey backdrop; no painted checkerboard. No glow, colored halos, bloom, floor, scenery or background shadows. Clean isolated product edges, moderate natural highlights.\n\nNo text, markings, labels, symbols, dimensions, logos, watermark, hands or other objects. Do not mirror the composition.\n\nFinal check: exactly 2 cores and 2 metal tips; intact jacket crosses the RIGHT frame boundary with no end cap and no right gap; all LEFT tips fully visible; gentle fixed diagonal; correct conductor construction; transparent background. Template right-edge-solid-v2.",
+  "prompt_hash": "38121c205f17145ad9f2a69195f7ee25572f5ccc5f8449613afb9726703e6e47",
+  "visual_key": "vvgnga__2core",
+  "visualKey": "vvgnga__2core",
+  "visual_descriptor": {
+    "family": "ВВГнг(А)",
+    "cores": 2,
+    "shape": "round",
+    "material": "copper",
+    "strand": "solid",
+    "jacket": "black PVC",
+    "insulation": "PVC",
+    "colors": [
+      "brown",
+      "blue"
+    ],
+    "sectionAffectsVisual": false,
+    "sectionKey": null
+  },
+  "visual_descriptor_hash": "a118677276625d8a33a64e7fd25e1c23fd1088f1024eac734bfb9188cb042789",
+  "sectionAffectsVisual": false,
+  "render_fingerprint": "2a2ef1b366ce8190906504bb03e9c69a1d8eb473a6fa1038bc5c24ceed188675",
+  "legacy_render_fingerprint": "428b5e2c1db02c7d9e5f75c5f638f337187126c31260703ce3e3fdc6a86875c1",
+  "product_fingerprint": "698941c9b39776fd23192a8e4849be05502b3a229fa8b7c4347dc6927afe7c8e",
+  "reference_hash": null,
+  "template_version": "right-edge-solid-v2",
+  "model": "gpt-image-2.5-flare",
+  "provider": "codex-sale",
+  "size": "1536x1024",
+  "quality": "high",
+  "format": "png",
+  "composition": {
+    "rightEdgeCrop": true,
+    "tiltDegrees": 8,
+    "leftMarginRatio": 0.06,
+    "verticalMarginRatio": 0.1,
+    "sheathTransitionRatio": 0.56
+  },
+  "style_reference": "/Users/Shared/yuzhural-site/assets/cable-images/style-reference-right.png",
+  "style_reference_hash": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59",
+  "schemaVersion": 2,
+  "family": "ВВГнг(А)",
+  "cores": 2,
+  "expected_output_filename": "public/product-images/generated/vvgnga__2core.png",
+  "generation_required": false,
+  "existing_image": "/category-placeholders/power-cable.svg",
+  "output_filename": "public/product-images/generated/vvgnga__2core.png",
+  "public_url": "/product-images/generated/vvgnga__2core.png",
+  "legacy_asset": false,
+  "action": "await_review",
+  "reason": "already_generated_needs_review",
+  "image": "vvgnga__2core.png",
+  "sku_count": 5,
+  "skus_without_images": 5,
+  "status": "approved",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.26042841037204056,
+    "has_transparency": true,
+    "transparent_ratio": 0.7810615314024828,
+    "non_opaque_ratio": 0.999143967289001,
+    "foreground_ratio": 0.2181148469245738,
+    "bounds": {
+      "minX": 108,
+      "minY": 223,
+      "maxX": 1773,
+      "maxY": 619
+    },
+    "warnings": [],
+    "sha256": "51121655f57977448386d40c018b2771a2fa3e45c352905ce158c54fc30ac03e",
+    "bytes": 675201
+  },
+  "retained_existing_style": false,
+  "visual_review": {
+    "cores": 2,
+    "colors": [
+      "brown",
+      "blue"
+    ],
+    "orientation": "right-to-left",
+    "rightEdgeCropped": true,
+    "leftUncropped": true,
+    "topBottomClear": true,
+    "conductorConstruction": "solid",
+    "noText": true,
+    "styleMatches": true,
+    "reviewer": "Codex visual inspection",
+    "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified.",
+    "reviewed_at": "2026-10-15T15:57:10.157Z"
+  },
+  "created_at": "2026-10-15T15:50:38.548Z",
+  "revised_prompt": null,
+  "api_request_id": "47deece5-c6d6-463e-9486-f3447e4d1ff6",
+  "requested_api_model": "gpt-image-2.5-flare",
+  "source_validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.26042841037204056,
+    "has_transparency": true,
+    "transparent_ratio": 0.7810615314024828,
+    "non_opaque_ratio": 0.999143967289001,
+    "foreground_ratio": 0.2181148469245738,
+    "bounds": {
+      "minX": 108,
+      "minY": 223,
+      "maxX": 1773,
+      "maxY": 619
+    },
+    "warnings": [],
+    "sha256": "51121655f57977448386d40c018b2771a2fa3e45c352905ce158c54fc30ac03e",
+    "bytes": 675201
+  },
+  "normalization": {
+    "applied": false
+  },
+  "http_status": 200,
+  "api_usage": {
+    "input_tokens": 774,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 774
+    },
+    "output_tokens": 458,
+    "output_tokens_details": {
+      "image_tokens": 458,
+      "text_tokens": 0
+    },
+    "total_tokens": 1232
+  },
+  "attempts": 1,
+  "createdAt": "2026-10-15T15:50:38.548Z",
+  "force_replacement": false,
+  "updated_at": "2026-10-15T15:57:10.157Z",
+  "section": 10,
+  "groundSection": null,
+  "binding_allowed": true
+}

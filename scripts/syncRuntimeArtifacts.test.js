@@ -66,10 +66,11 @@ describe('syncRuntimeArtifacts', () => {
           {
             id: 1,
             slug: 'test-product',
-            title: 'Тестовый товар',
-            fullName: 'Тестовый товар',
-            name: 'Тестовый товар',
-            mark: 'TEST',
+            title: 'ВВГ 3х1.5 энг(А)-LS',
+            fullName: 'ВВГ 3х1.5 энг(А)-LS',
+            name: 'ВВГ 3х1.5 энг(А)-LS',
+            mark: 'ВВГ',
+            attributes: ['Э', 'нг(А)-LS'],
             sku: 'SKU-1',
             price: 100,
             stock: 5,
@@ -160,6 +161,8 @@ describe('syncRuntimeArtifacts', () => {
       '<link rel="canonical" href="https://yu-uek.ru/product/test-product">'
     );
     expect(runtimeProductHtml).toContain('"@type":"Product"');
+    expect(runtimeProductHtml).toContain('ВВГэнг(А)-LS 3х1.5');
+    expect(runtimeProductHtml).not.toContain('ВВГ 3х1.5 энг(А)-LS');
     expect(runtime404).toContain('Sitemap: https://yu-uek.ru/sitemap.xml');
     expect(runtimePrice).toBe('price-binary');
     expect(runtimeRedirects).toContain('/product/old-product');

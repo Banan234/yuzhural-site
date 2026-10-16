@@ -1,12 +1,14 @@
 // Файл задаёт общий каркас страниц: шапку, меню, футер, модалки и отслеживание pageview.
 
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import Container from '../ui/Container';
 import Modal from '../ui/Modal';
 import HeroLeadForm from '../home/HeroLeadForm';
+import CallbackButton from '../forms/CallbackButton';
 import FloatingLeadWidget from './FloatingLeadWidget';
 import HeaderCatalogMenu from './HeaderCatalogMenu';
+import HeaderServicesMenu from './HeaderServicesMenu';
 import HeaderSearch from './HeaderSearch';
 import SiteFooter from './SiteFooter';
 import CookieConsent from './CookieConsent';
@@ -21,7 +23,6 @@ import {
   DELIVERY_CANONICAL_PATH,
   PAYMENT_CANONICAL_PATH,
 } from '../../lib/canonicalPaths.js';
-import { SERVICES_PATH } from '../../lib/cableServices';
 import {
   SITE_EMAIL,
   SITE_EMAIL_HREF,
@@ -96,6 +97,7 @@ export default function MainLayout() {
   const [leadModalOptions, setLeadModalOptions] = useState({});
   const [quoteModalOptions, setQuoteModalOptions] = useState({});
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const mobileMenuButtonRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [storageWarning, setStorageWarning] = useState(null);
 
@@ -116,10 +118,13 @@ export default function MainLayout() {
     function handleOpenLead(event) {
       setLeadModalOptions(event.detail || {});
       setIsLeadModalOpen(true);
-      trackEvent('quote-open', {
-        source: event.detail?.source || event.type || 'unknown',
-        kind: 'lead',
-      });
+      trackEvent(
+        event.detail?.mode === 'callback' ? 'callback-open' : 'quote-open',
+        {
+          source: event.detail?.source || event.type || 'unknown',
+          kind: 'lead',
+        }
+      );
     }
 
     function handleOpenQuote(event) {
@@ -284,21 +289,10 @@ export default function MainLayout() {
                   </a>
                 </div>
 
-                <button
-                  type="button"
+                <CallbackButton
                   className="button-primary header-cta-btn"
-                  onClick={() =>
-                    openLeadModal({
-                      title: 'Заказать звонок',
-                      subtitle:
-                        'Оставьте телефон и комментарий — менеджер перезвонит в рабочее время.',
-                      submitLabel: 'Заказать звонок',
-                      source: 'Кнопка в хедере',
-                    })
-                  }
-                >
-                  Заказать звонок
-                </button>
+                  source="Заказ звонка: шапка сайта"
+                />
 
                 <button
                   type="button"
@@ -339,6 +333,7 @@ export default function MainLayout() {
                 <button
                   type="button"
                   className="mobile-menu-button"
+                  ref={mobileMenuButtonRef}
                   onClick={() => setIsMobileNavOpen(true)}
                   aria-label="Открыть меню"
                   aria-controls={isMobileNavOpen ? MOBILE_NAV_ID : undefined}
@@ -366,6 +361,14 @@ export default function MainLayout() {
                 aria-label="Основная навигация"
               >
                 <HeaderCatalogMenu />
+                <NavLink
+                  to="/marks/"
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? ' nav-link--active' : ''}`
+                  }
+                >
+                  Алфавитный перечень
+                </NavLink>
 
                 <NavLink
                   to={DELIVERY_CANONICAL_PATH}
@@ -383,14 +386,7 @@ export default function MainLayout() {
                 >
                   Оплата
                 </NavLink>
-                <NavLink
-                  to={SERVICES_PATH}
-                  className={({ isActive }) =>
-                    `nav-link${isActive ? ' nav-link--active' : ''}`
-                  }
-                >
-                  Сервисы
-                </NavLink>
+                <HeaderServicesMenu />
                 <Link to={DOCUMENTS_PATH} className="nav-link">
                   Документы
                 </Link>
@@ -499,10 +495,18 @@ export default function MainLayout() {
 
       <Modal
         isOpen={isLeadModalOpen}
+        fallbackFocusRef={mobileMenuButtonRef}
         onClose={() => setIsLeadModalOpen(false)}
         windowClassName="modal-window--lead"
+        ariaLabel={
+          leadModalOptions.mode === 'callback'
+            ? 'Заказать звонок'
+            : 'Диалоговое окно'
+        }
       >
         <HeroLeadForm
+          mode={leadModalOptions.mode}
+          onDone={() => setIsLeadModalOpen(false)}
           title={leadModalOptions.title || 'Получить КП или заказать звонок'}
           subtitle={
             leadModalOptions.subtitle ||

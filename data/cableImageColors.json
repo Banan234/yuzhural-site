@@ -1,0 +1,26 @@
+{
+  "version": "catalogue-colors-v1",
+  "note": "Illustration conventions. Override by SKU when actual N/PE or insulation colors differ; NxS alone does not identify N/PE. The selected three-core reference uses brown, blue, yellow-green.",
+  "profiles": {
+    "power": {
+      "1": ["brown"],
+      "2": ["brown", "blue"],
+      "3": ["brown", "blue", "yellow-green"],
+      "4": ["brown", "black", "grey", "yellow-green"],
+      "5": ["brown", "black", "grey", "blue", "yellow-green"]
+    },
+    "powerNoPE": {
+      "1": ["brown"],
+      "2": ["brown", "blue"],
+      "3": ["brown", "black", "grey"],
+      "4": ["brown", "black", "grey", "blue"]
+    },
+    "control": {
+      "2": ["black", "blue"],
+      "3": ["black", "blue", "yellow-green"],
+      "4": ["black", "brown", "blue", "yellow-green"],
+      "5": ["black", "brown", "grey", "blue", "yellow-green"]
+    }
+  },
+  "skuOverrides": {}
+}

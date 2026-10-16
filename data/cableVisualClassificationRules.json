@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "version": "visual-classification-v1",
+  "mode": "audit-only",
+  "sectionAffectsVisualByDefault": false,
+  "note": "No image API, generation, binding or style changes. Unknown construction is not replaced with the old catalogue rendering default. Existing assets are candidates, never proof of SKU construction.",
+  "aliases": {
+    "NYМ": "NYM",
+    "ВВГП": "ВВГ-П",
+    "АВВГП": "АВВГ-П",
+    "ПУГВ": "ПУГВ",
+    "ПУВ": "ПУВ"
+  },
+  "sources": {
+    "installation": {
+      "title": "Подольсккабель: установочные провода, конструкция и классы жил",
+      "url": "https://podolskkabel.ru/res/content/docs/f2066_download_0_file.pdf",
+      "checkedAt": "2026-10-16"
+    },
+    "armor": {
+      "title": "Камский кабель: ВБШв, конструкция с ленточной бронёй",
+      "url": "https://kamkabel.ru/product/48771/",
+      "checkedAt": "2026-10-16"
+    },
+    "shield": {
+      "title": "УНКОМТЕХ: КВВГЭ, общий экран с контактным проводником",
+      "url": "https://www.uncomtech.ru/marks/download/V702",
+      "checkedAt": "2026-10-16"
+    },
+    "sip4": {
+      "title": "УНКОМТЕХ: СИП-4",
+      "url": "https://www.uncomtech.ru/marks/download/V802",
+      "checkedAt": "2026-10-16"
+    }
+  },
+  "families": {
+    "ВВГ": {
+      "productType": "power-cable",
+      "conductorMaterial": "copper",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false
+    },
+    "ВВГ-П": {
+      "productType": "power-cable",
+      "conductorMaterial": "copper",
+      "geometry": "flat",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false
+    },
+    "АВВГ": {
+      "productType": "power-cable",
+      "conductorMaterial": "aluminium",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false
+    },
+    "АВВГ-П": {
+      "productType": "power-cable",
+      "conductorMaterial": "aluminium",
+      "geometry": "flat",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false
+    },
+    "КВВГ": {
+      "productType": "control-cable",
+      "conductorMaterial": "copper",
+      "geometry": "round",
+      "conductorConstruction": "solid",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false,
+      "conductorShape": "circular"
+    },
+    "КВВГЭ": {
+      "productType": "control-cable",
+      "conductorMaterial": "copper",
+      "geometry": "round",
+      "conductorConstruction": "solid",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": true,
+      "shieldType": "overall-foil-with-drain",
+      "specialElements": ["drain-wire"],
+      "source": "shield",
+      "conductorShape": "circular"
+    },
+    "ВБШВ": {
+      "productType": "power-cable",
+      "conductorMaterial": "copper",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": true,
+      "armorType": "steel-tapes",
+      "shield": false,
+      "filler": "inner-sheath",
+      "source": "armor"
+    },
+    "ВББШВ": {
+      "productType": "power-cable",
+      "conductorMaterial": "copper",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": true,
+      "armorType": "steel-tapes",
+      "shield": false
+    },
+    "АВБШВ": {
+      "productType": "power-cable",
+      "conductorMaterial": "aluminium",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": true,
+      "armorType": "steel-tapes",
+      "shield": false
+    },
+    "АВББШВ": {
+      "productType": "power-cable",
+      "conductorMaterial": "aluminium",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": true,
+      "armorType": "steel-tapes",
+      "shield": false
+    },
+    "КГ": {
+      "productType": "flexible-cable",
+      "conductorMaterial": "copper",
+      "conductorConstruction": "stranded",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "rubber",
+      "insulation": "rubber",
+      "armor": false,
+      "shield": false,
+      "conductorShape": "circular"
+    },
+    "ПВС": {
+      "productType": "flexible-wire",
+      "conductorMaterial": "copper",
+      "conductorConstruction": "stranded",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false,
+      "conductorShape": "circular"
+    },
+    "ШВВП": {
+      "productType": "cord",
+      "conductorMaterial": "copper",
+      "conductorConstruction": "stranded",
+      "geometry": "flat",
+      "hasOuterJacket": true,
+      "outerJacketMaterial": "PVC",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false,
+      "conductorShape": "circular"
+    },
+    "ПУГВ": {
+      "productType": "installation-wire",
+      "conductorMaterial": "copper",
+      "conductorConstruction": "stranded",
+      "geometry": "round",
+      "hasOuterJacket": false,
+      "outerJacket": "none",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false,
+      "filler": "none",
+      "source": "installation",
+      "conductorShape": "circular"
+    },
+    "ПУВ": {
+      "productType": "installation-wire",
+      "conductorMaterial": "copper",
+      "geometry": "round",
+      "hasOuterJacket": false,
+      "outerJacket": "none",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false,
+      "filler": "none",
+      "source": "installation",
+      "constructionBands": [
+        {
+          "maxSection": 10,
+          "value": "solid"
+        },
+        {
+          "maxSection": 95,
+          "value": "stranded"
+        }
+      ],
+      "conductorShape": "circular"
+    },
+    "ПВ1": {
+      "productType": "installation-wire",
+      "conductorMaterial": "copper",
+      "geometry": "round",
+      "hasOuterJacket": false,
+      "outerJacket": "none",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false,
+      "filler": "none",
+      "source": "installation",
+      "constructionBands": [
+        {
+          "maxSection": 10,
+          "value": "solid"
+        },
+        {
+          "maxSection": 95,
+          "value": "stranded"
+        }
+      ],
+      "conductorShape": "circular"
+    },
+    "ПВ3": {
+      "productType": "installation-wire",
+      "conductorMaterial": "copper",
+      "conductorConstruction": "stranded",
+      "geometry": "round",
+      "hasOuterJacket": false,
+      "outerJacket": "none",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false,
+      "filler": "none",
+      "source": "installation",
+      "conductorShape": "circular"
+    },
+    "H07V-K": {
+      "productType": "installation-wire",
+      "conductorMaterial": "copper",
+      "conductorConstruction": "stranded",
+      "geometry": "round",
+      "hasOuterJacket": false,
+      "outerJacket": "none",
+      "insulation": "PVC",
+      "armor": false,
+      "shield": false,
+      "filler": "none",
+      "conductorShape": "circular"
+    },
+    "СИП-4": {
+      "productType": "sip",
+      "conductorMaterial": "aluminium",
+      "conductorConstruction": "stranded",
+      "geometry": "twisted-bundle",
+      "hasOuterJacket": false,
+      "outerJacket": "none",
+      "insulation": "XLPE",
+      "armor": false,
+      "shield": false,
+      "filler": "none",
+      "specialElements": ["twisted-insulated-cores"],
+      "source": "sip4",
+      "conductorShape": "circular"
+    }
+  },
+  "familyOverrides": {},
+  "skuOverrides": {}
+}

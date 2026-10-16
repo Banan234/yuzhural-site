@@ -7,6 +7,7 @@ import {
   publishImportArtifacts,
   writeFileAtomic,
 } from './importPublisher.js';
+import { DESIGNATION_KNOWLEDGE_REVISION } from '../../shared/productDesignationReference.js';
 
 describe('writeFileAtomic', () => {
   let tempDir;
@@ -104,7 +105,7 @@ describe('publishImportArtifacts', () => {
       suspiciousPriceStats: {},
     };
 
-    const result = await publishImportArtifacts({
+    const publishOptions = {
       projectRoot,
       catalogDir,
       publicDir,
@@ -122,7 +123,8 @@ describe('publishImportArtifacts', () => {
       importHistory: { imports: [] },
       generatedAt,
       source: { kind: 'local', requestedUrl: null },
-    });
+    };
+    const result = await publishImportArtifacts(publishOptions);
 
     expect(await fs.readFile(paths.outputFile, 'utf-8')).toBe('[]');
     expect(await fs.readFile(paths.publicPriceFile, 'utf-8')).toBe(
@@ -169,5 +171,62 @@ describe('publishImportArtifacts', () => {
       'Отчёт импорта'
     );
     expect(result.runtimeProductPrerenderCount).toBeNull();
+
+    // A later price introduces previously unseen SKUs. Stale imported metadata
+    // cannot bypass the current database at the publication boundary.
+    const newProducts = [
+      {
+        id: 99,
+        sku: 'NEW-99',
+        slug: 'new-99',
+        mark: 'КСБ',
+        name: 'КСБ 2х2х0,8',
+        sourceName: 'КСБ 2х2х0,8',
+        price: 123.45,
+        stock: 56,
+        unit: 'м',
+        designationDecoded: { knowledgeRevision: 'obsolete', family: 'wrong' },
+      },
+      {
+        id: 100,
+        sku: 'NEW-100',
+        slug: 'new-100',
+        mark: 'КГXYZ',
+        name: 'КГXYZ 3х2,5',
+        sourceName: 'КГXYZ 3х2,5',
+        price: 42,
+        stock: 19,
+        unit: 'м',
+      },
+    ];
+    await publishImportArtifacts({ ...publishOptions, products: newProducts });
+    const saved = JSON.parse(await fs.readFile(paths.outputFile, 'utf8'));
+    expect(saved[0]).toMatchObject({
+      sku: 'NEW-99',
+      price: 123.45,
+      stock: 56,
+      designationDecoded: {
+        family: 'КСБ',
+        knowledgeRevision: DESIGNATION_KNOWLEDGE_REVISION,
+      },
+    });
+    expect(saved[1].designationDecoded.family).toBeNull();
+    expect(saved[1].designationDecoded.status).toBe('unresolved');
+    const coverage = JSON.parse(
+      await fs.readFile(
+        path.join(catalogDir, 'designation-coverage.json'),
+        'utf8'
+      )
+    );
+    expect(coverage.counts).toMatchObject({
+      products: 2,
+      familyIdentified: 1,
+      unresolved: 1,
+    });
+    expect(coverage.pending[0].sku).toBe('NEW-100');
+    expect(
+      JSON.parse(await fs.readFile(paths.reportFile, 'utf8'))
+        .designationDecoding
+    ).toEqual(coverage);
   });
 });

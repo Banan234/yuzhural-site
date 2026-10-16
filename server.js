@@ -18,6 +18,7 @@ import { randomUUID } from 'crypto';
 import { monitorEventLoopDelay } from 'perf_hooks';
 import { pathToFileURL } from 'url';
 import { createCatalogStore } from './lib/catalog.js';
+import { buildMarkIndex } from './shared/markIndex.js';
 import { createFileChatStore } from './lib/chatStore.js';
 import { createVkChatBridge } from './lib/vkChat.js';
 import {
@@ -1326,6 +1327,7 @@ export function createApp({
     next();
   });
   app.use('/api/products', compression());
+  app.use('/api/marks', compression());
   app.use(express.json({ limit: MAX_QUOTE_PAYLOAD_BYTES }));
   app.use((err, req, res, next) => {
     if (err && err.type === 'entity.too.large') {
@@ -1660,6 +1662,17 @@ export function createApp({
       }
     }
   );
+
+  app.get('/api/marks', productApiRateLimiter, async (req, res) => {
+    try {
+      applyCatalogCache(res);
+      const products = await catalogStore.loadCatalogProducts();
+      return res.json({ ok: true, groups: buildMarkIndex(products) });
+    } catch (error) {
+      logger.error('catalog.marks.failed', { err: error });
+      return createErrorResponse(res, messages.errors.api.catalogLoadFailed);
+    }
+  });
 
   app.get('/api/products', productApiRateLimiter, async (req, res) => {
     try {
@@ -2069,11 +2082,32 @@ export function createApp({
           });
         }
 
-        const { name, phone, comment, source, createdAt } = req.body;
+        const {
+          name,
+          phone,
+          comment,
+          source,
+          createdAt,
+          consent,
+          requestType,
+          page,
+        } = req.body;
+        const isCallback = requestType === 'callback';
+        const leadPage = String(page || '').trim();
         const contactName = String(name || '').trim();
         const normalizedPhone = normalizePhoneInput(phone);
         const leadComment = String(comment || '').trim();
         const leadSource = String(source || '').trim();
+
+        if (consent !== true) {
+          return sendFormErrorResponse(
+            res,
+            formResponseStartedAt,
+            formResponseDelayMs,
+            messages.errors.leadForm.consentRequired,
+            400
+          );
+        }
 
         if (!isValidRussianPhone(normalizedPhone)) {
           return sendFormErrorResponse(
@@ -2088,7 +2122,10 @@ export function createApp({
         if (
           !isTrimmedStringWithinLength(contactName, MAX_LEAD_NAME_LENGTH) ||
           !isTrimmedStringWithinLength(leadComment, MAX_LEAD_COMMENT_LENGTH) ||
-          !isTrimmedStringWithinLength(leadSource, MAX_LEAD_SOURCE_LENGTH)
+          !isTrimmedStringWithinLength(leadSource, MAX_LEAD_SOURCE_LENGTH) ||
+          !isTrimmedStringWithinLength(leadPage, 1000) ||
+          (requestType !== undefined &&
+            !['callback', 'lead'].includes(requestType))
         ) {
           return sendFormErrorResponse(
             res,
@@ -2100,9 +2137,11 @@ export function createApp({
         }
 
         const html = `
-        <h2>Новая короткая заявка</h2>
+        <h2>${isCallback ? 'Заказ обратного звонка' : 'Новая короткая заявка'}</h2>
         <p><strong>Дата:</strong> ${escapeHtml(createdAt) || '—'}</p>
         <p><strong>Источник:</strong> ${escapeHtml(leadSource) || '—'}</p>
+        <p><strong>Страница:</strong> ${escapeHtml(leadPage) || '—'}</p>
+        <p><strong>Согласие на обработку данных:</strong> получено</p>
         <p><strong>Контактное лицо:</strong> ${escapeHtml(contactName) || 'Не указано'}</p>
         <p><strong>Телефон:</strong> ${escapeHtml(normalizedPhone)}</p>
         <p><strong>Комментарий:</strong> ${escapeHtml(leadComment) || '—'}</p>
@@ -2113,7 +2152,9 @@ export function createApp({
           {
             from: env.SMTP_FROM,
             to: env.QUOTE_TO_EMAIL,
-            subject: 'Новая короткая заявка — ЮжУралЭлектроКабель',
+            subject: isCallback
+              ? 'Заказ обратного звонка — ЮжУралЭлектроКабель'
+              : 'Новая короткая заявка — ЮжУралЭлектроКабель',
             html,
           },
           { ...mailSendOptions, event: 'lead.send' }

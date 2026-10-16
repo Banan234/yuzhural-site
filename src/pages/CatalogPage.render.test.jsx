@@ -52,6 +52,104 @@ beforeEach(() => {
 });
 
 describe('CatalogPage', () => {
+  it('сразу показывает товары проводов, а подкатегории доступны по отдельным ссылкам', async () => {
+    fetchProducts.mockResolvedValue({
+      items: [
+        {
+          id: 2,
+          slug: 'pugv-1x2-5',
+          title: 'ПуГВ 1х2,5',
+          mark: 'ПуГВ',
+          price: 50,
+          stock: 10,
+        },
+      ],
+      meta: {
+        total: 1,
+        pagination: { page: 1, limit: 24, total: 1, totalPages: 1 },
+        catalogSections: [
+          {
+            slug: 'kabel-i-provod',
+            name: 'Кабель и провод',
+            categories: [
+              {
+                slug: 'provoda',
+                name: 'Провода',
+                subcategories: [{ slug: 'provoda-ustanovochnye', count: 1 }],
+              },
+            ],
+          },
+        ],
+      },
+    });
+    renderCatalogPage('/catalog/provoda');
+    expect(
+      await screen.findByRole('link', { name: 'ПуГВ 1х2,5' })
+    ).toHaveAttribute('href', '/product/pugv-1x2-5');
+    expect(document.querySelectorAll('.subcategory-card')).toHaveLength(0);
+  });
+
+  it('сразу показывает товары силового кабеля вместо подкатегорий', async () => {
+    fetchProducts.mockResolvedValue({
+      items: [
+        {
+          id: 1,
+          slug: 'vvg-3x2-5',
+          title: 'ВВГ 3х2,5',
+          mark: 'ВВГ',
+          price: 100,
+          stock: 10,
+        },
+      ],
+      meta: {
+        total: 1,
+        pagination: { page: 1, limit: 24, total: 1, totalPages: 1 },
+        catalogSections: [
+          {
+            slug: 'kabel-i-provod',
+            name: 'Кабель и провод',
+            categories: [
+              {
+                slug: 'silovoy-kabel',
+                name: 'Силовой кабель',
+                subcategories: [{ slug: 'silovoy-kabel-spe', count: 1 }],
+              },
+            ],
+          },
+        ],
+      },
+    });
+    renderCatalogPage('/catalog/silovoy-kabel');
+    expect(
+      await screen.findByRole('link', { name: 'ВВГ 3х2,5' })
+    ).toHaveAttribute('href', '/product/vvg-3x2-5');
+    expect(fetchProducts).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ category: 'silovoy-kabel' })
+    );
+    expect(document.querySelectorAll('.subcategory-card')).toHaveLength(0);
+    expect(screen.queryByText(/Найдено:/)).not.toBeInTheDocument();
+  });
+
+  it('открывает выдачу подкатегории с родителем в хлебных крошках', async () => {
+    renderCatalogPage('/catalog/silovoy-kabel-bronirovannyy');
+    await waitFor(() =>
+      expect(fetchProducts).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ category: 'silovoy-kabel-bronirovannyy' })
+      )
+    );
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Кабель бронированный силовой',
+      })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Силовой кабель' })
+    ).toHaveAttribute('href', '/catalog/silovoy-kabel');
+    expect(document.querySelectorAll('.subcategory-card')).toHaveLength(0);
+  });
   it('оставляет общий h1 на /catalog, даже если API вернул одну секцию', async () => {
     renderCatalogPage();
 

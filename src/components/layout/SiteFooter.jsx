@@ -2,6 +2,7 @@
 
 import { Link } from 'react-router-dom';
 import Container from '../ui/Container';
+import CallbackButton from '../forms/CallbackButton';
 import {
   ABOUT_CANONICAL_PATH,
   CABLE_WEIGHT_CANONICAL_PATH,
@@ -31,7 +32,6 @@ export default function SiteFooter({ onOpenQuote, onManageCookies }) {
       <Container>
         <div className="site-footer__cta-block">
           <div className="site-footer__cta-copy">
-            <div className="site-footer__eyebrow">Готовы к сотрудничеству?</div>
             <h2 className="site-footer__cta-title">
               Нужно коммерческое предложение?
             </h2>
@@ -148,6 +148,10 @@ export default function SiteFooter({ onOpenQuote, onManageCookies }) {
             <a href={SITE_PHONE_HREF} className="site-footer__phone">
               {SITE_PHONE_DISPLAY}
             </a>
+            <CallbackButton
+              className="site-footer__link-button"
+              source="Заказ звонка: футер"
+            />
             <a href={SITE_EMAIL_HREF} className="site-footer__mail">
               {SITE_EMAIL}
             </a>

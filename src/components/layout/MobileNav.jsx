@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CATALOG_SECTIONS } from './catalogMenuData';
+import { CATALOG_MENU } from './catalogMenuData';
 import {
   ABOUT_CANONICAL_PATH,
   CATALOG_CANONICAL_PATH,
@@ -12,20 +12,7 @@ import {
 } from '../../lib/canonicalPaths.js';
 import { SERVICES_PATH } from '../../lib/cableServices';
 import { SITE_PHONE_DISPLAY, SITE_PHONE_HREF } from '../../lib/siteConfig';
-
-const FEATURED_CATEGORY_SLUGS = [
-  'silovoy-kabel',
-  'kontrolnyy-kabel',
-  'provoda',
-];
-const featuredGroups = FEATURED_CATEGORY_SLUGS.map((slug) =>
-  CATALOG_SECTIONS.flatMap((section) => section.groups).find(
-    (group) => group.slug === slug
-  )
-).filter(Boolean);
-const specialSection = CATALOG_SECTIONS.find(
-  (section) => section.slug === 'specialnye-kabeli'
-);
+import CallbackButton from '../forms/CallbackButton';
 
 export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
   useEffect(() => {
@@ -114,8 +101,18 @@ export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
                 ›
               </span>
             </Link>
+            <Link
+              to="/marks/"
+              className="mobile-nav__all-catalog"
+              onClick={onClose}
+            >
+              Алфавитный перечень марок
+              <span className="mobile-nav__chevron" aria-hidden="true">
+                ›
+              </span>
+            </Link>
             <div className="mobile-nav__catalog">
-              {featuredGroups.map((group) => (
+              {CATALOG_MENU.map((group) => (
                 <details key={group.slug} className="mobile-nav__catalog-group">
                   <summary>{group.title}</summary>
                   <div className="mobile-nav__catalog-links">
@@ -130,25 +127,6 @@ export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
                   </div>
                 </details>
               ))}
-              {specialSection ? (
-                <details className="mobile-nav__catalog-group">
-                  <summary>{specialSection.title}</summary>
-                  <div className="mobile-nav__catalog-links">
-                    <Link to={specialSection.to} onClick={onClose}>
-                      Смотреть все специальные кабели
-                    </Link>
-                    {specialSection.groups.map((group) => (
-                      <Link
-                        key={group.slug}
-                        to={group.links[0].to}
-                        onClick={onClose}
-                      >
-                        {group.title}
-                      </Link>
-                    ))}
-                  </div>
-                </details>
-              ) : null}
             </div>
           </nav>
 
@@ -183,6 +161,11 @@ export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
         </div>
 
         <div className="mobile-nav__footer">
+          <CallbackButton
+            className="mobile-nav__cta mobile-nav__cta--secondary"
+            source="Заказ звонка: мобильное меню"
+            onOpen={onClose}
+          />
           <button
             type="button"
             className="mobile-nav__cta"

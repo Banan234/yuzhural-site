@@ -225,6 +225,7 @@ const validPayload = {
 };
 
 const validLeadPayload = {
+  consent: true,
   phone: '+7 (900) 123-45-67',
   comment: 'ВВГ 3х2.5',
   source: 'Тест',
@@ -1487,6 +1488,27 @@ describe('SMTP delivery', () => {
   });
 });
 
+describe('GET /api/marks', () => {
+  it('returns unique current catalog marks with position counts', async () => {
+    const catalogStore = {
+      loadCatalogProducts: vi.fn(async () => [
+        { mark: 'ВВГ' },
+        { mark: 'ВВГ' },
+        { mark: 'АВВГ' },
+      ]),
+    };
+    const app = createTestApp({ catalogStore, warmCatalogOnStart: false });
+
+    await withTestServer(app, async (localBaseUrl) => {
+      const response = await fetch(`${localBaseUrl}/api/marks`);
+      const data = await response.json();
+      expect(response.status).toBe(200);
+      expect(data.groups.map((group) => group.letter)).toEqual(['А', 'В']);
+      expect(data.groups[1].marks).toEqual([{ mark: 'ВВГ', count: 2 }]);
+    });
+  });
+});
+
 describe('GET /api/products', () => {
   it('warms catalog caches on startup when enabled', async () => {
     const items = productFixtures;
@@ -1687,7 +1709,7 @@ describe('GET /api/products', () => {
       expect(data.meta.filter).toEqual({ category: 'silovoy-kabel' });
       expect(data.meta.facets).toMatchObject({
         materials: ['алюминий'],
-        powerGroups: ['ВВГ / бронированные'],
+        powerGroups: ['ПВХ изоляция'],
         sections: [16],
         voltages: [1000],
         minPrice: 260,
@@ -1731,8 +1753,8 @@ describe('GET /api/products', () => {
       expect(data.ok).toBe(true);
       expect(data.items.map((item) => item.sku)).toEqual(['APVV-1-70']);
       expect(data.meta.facets.powerGroups).toEqual([
-        'ВВГ / бронированные',
         'Сшитый полиэтилен (XLPE)',
+        'ПВХ изоляция',
       ]);
     });
   });
@@ -2359,6 +2381,34 @@ describe('POST /api/quote', () => {
 });
 
 describe('POST /api/lead-request', () => {
+  it('отмечает заказ звонка и страницу обращения в письме менеджеру', async () => {
+    const res = await postJson('/api/lead-request', {
+      ...validLeadPayload,
+      requestType: 'callback',
+      page: '/catalog/montazhnyy-kabel/',
+      comment: '',
+      source: 'Заказ звонка: шапка сайта',
+    });
+    expect(res.status).toBe(200);
+    const mail = sendMailMock.mock.calls[0][0];
+    expect(mail.subject).toBe('Заказ обратного звонка — ЮжУралЭлектроКабель');
+    expect(mail.html).toContain('/catalog/montazhnyy-kabel/');
+    expect(mail.html).toContain('Заказ звонка: шапка сайта');
+    expect(mail.html).toContain('получено');
+  });
+
+  it.each([undefined, false, 'true'])(
+    'отклоняет заявку без явного согласия: %s',
+    async (consent) => {
+      const res = await postJson('/api/lead-request', {
+        ...validLeadPayload,
+        consent,
+      });
+      expect(res.status).toBe(400);
+      expect(sendMailMock).not.toHaveBeenCalled();
+    }
+  );
+
   it('503 с понятным сообщением, если формы отключены через FORMS_ENABLED=false', async () => {
     const mailTransporter = { sendMail: vi.fn() };
     const app = createTestApp({

@@ -43,8 +43,8 @@
   },
   {
     "sourceCategory": "Кабель греющий",
-    "section": "Специальные кабели",
-    "sectionSlug": "specialnye-kabeli",
+    "section": "Кабель и провод",
+    "sectionSlug": "kabel-i-provod",
     "category": "Кабели нагревательные",
     "categorySlug": "kabeli-nagrevatelnye"
   },
@@ -85,15 +85,15 @@
   },
   {
     "sourceCategory": "Провод нагревательный для бетона",
-    "section": "Специальные кабели",
-    "sectionSlug": "specialnye-kabeli",
+    "section": "Кабель и провод",
+    "sectionSlug": "kabel-i-provod",
     "category": "Кабели нагревательные",
     "categorySlug": "kabeli-nagrevatelnye"
   },
   {
     "sourceCategory": "Кабель ПНСВ",
-    "section": "Специальные кабели",
-    "sectionSlug": "specialnye-kabeli",
+    "section": "Кабель и провод",
+    "sectionSlug": "kabel-i-provod",
     "category": "Кабели нагревательные",
     "categorySlug": "kabeli-nagrevatelnye"
   },
@@ -121,8 +121,8 @@
   },
   {
     "sourceCategory": "Кабель КВСМВ",
-    "section": "Специальные кабели",
-    "sectionSlug": "specialnye-kabeli",
+    "section": "Кабель и провод",
+    "sectionSlug": "kabel-i-provod",
     "category": "LAN-кабели",
     "categorySlug": "lan-kabeli"
   },
@@ -206,8 +206,8 @@
   },
   {
     "sourceCategory": "Провод судовой",
-    "section": "Специальные кабели",
-    "sectionSlug": "specialnye-kabeli",
+    "section": "Кабель и провод",
+    "sectionSlug": "kabel-i-provod",
     "category": "Кабели судовые",
     "categorySlug": "kabeli-sudovye"
   },
@@ -648,8 +648,8 @@
   },
   {
     "sourceCategory": "Кабель КВПЭфВП-5е",
-    "section": "Специальные кабели",
-    "sectionSlug": "specialnye-kabeli",
+    "section": "Кабель и провод",
+    "sectionSlug": "kabel-i-provod",
     "category": "LAN-кабели",
     "categorySlug": "lan-kabeli"
   },

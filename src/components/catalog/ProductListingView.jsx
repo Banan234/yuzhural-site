@@ -532,9 +532,6 @@ export default function ProductListingView({
       </aside>
 
       <div className="catalog-results-main">
-        <p className="catalog-results-count" role="status">
-          Найдено: {resultCount.toLocaleString('ru-RU')} позиций
-        </p>
         {!error && (
           <div className="catalog-filter-summary">
             <div className="catalog-sort-row" aria-label="Сортировать товары">

@@ -35,16 +35,6 @@
 .site-footer__cta-copy {
   min-width: 0;
 }
-.site-footer__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 16px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #f5b327;
-}
 .site-footer__cta-title {
   margin: 0 0 18px;
   font-size: 58px;

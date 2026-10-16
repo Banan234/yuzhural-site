@@ -1,82 +1,20 @@
-export const POWER_CABLE_GROUPS = [
-  'Бумажная изоляция',
-  'ВВГ / бронированные',
-  'Сшитый полиэтилен (XLPE)',
-];
+import { getPowerCableSubcategorySlug } from './powerCableClassification.js';
 
-const GROUP_MARKS = {
-  'Бумажная изоляция': [
-    'ААБ2л',
-    'ААБ2лШв',
-    'ААБл',
-    'ААБлГ',
-    'ААБнлГ',
-    'ААСШв',
-    'ААШ',
-    'ААШв',
-    'АСБ',
-    'АСБ2л',
-    'АСБГ',
-    'АСБл',
-    'ЦААШВ',
-    'ЦАСБ',
-    'ЦАСБ2л',
-  ],
-  'ВВГ / бронированные': [
-    'АВБбШ',
-    'АВБбШв',
-    'АВбШв',
-    'АВБШВв',
-    'АВВГ',
-    'АсВВГ',
-    'ВБбШ',
-    'ВБбШВ',
-    'ВБВ',
-    'ВБШВ',
-    'ВВГ',
-    'ВРГ',
-    'ВЭБШВ',
-    'ПВВ',
-    'ПВВГ',
-    'ППГ',
-  ],
-  'Сшитый полиэтилен (XLPE)': [
-    'АПвБбШв',
-    'АПвБбШп',
-    'АПвБВ',
-    'АПвБП',
-    'АПвБШв',
-    'АПвБШп',
-    'АПвВ',
-    'АПвВГ',
-    'АПвзБбШп',
-    'АПвКаПг',
-    'АПвП',
-    'АПвПг',
-    'АПвПу',
-    'АПвПу2Г',
-    'АПвПу2Гж',
-    'АПвПуГ',
-    'АПвЭАСПУ2Г',
-    'АПвЭБВ',
-    'ПвБВ',
-    'ПвБП',
-    'ПвБШВ',
-    'ПвБШП',
-    'ПвзБбШп',
-    'ПвП',
-    'ПвПГ',
-  ],
+const POWER_GROUP_BY_SUBCATEGORY = {
+  'silovoy-kabel-bronirovannyy': 'Бронированный кабель',
+  'silovoy-kabel-rezinovaya-izolyaciya': 'Резиновая изоляция',
+  'silovoy-kabel-polimernye-kompozicii': 'Полимерные композиции',
+  'silovoy-kabel-bumazhnaya-izolyaciya': 'Бумажная изоляция',
+  'silovoy-kabel-spe': 'Сшитый полиэтилен (XLPE)',
+  'silovoy-kabel-pvh': 'ПВХ изоляция',
 };
+
+export const POWER_CABLE_GROUPS = Object.values(POWER_GROUP_BY_SUBCATEGORY);
 
 function normalizeSpaces(value) {
   return String(value || '')
     .replace(/\s+/g, ' ')
     .trim();
-}
-
-function normalizeLookupKey(value) {
-  return normalizePowerCableBaseMark(value).replace(/\s+/g, '').toUpperCase();
 }
 
 export function normalizePowerCableBaseMark(value) {
@@ -88,21 +26,25 @@ export function normalizePowerCableBaseMark(value) {
     .trim();
 }
 
-const POWER_CABLE_GROUP_BY_MARK = new Map(
-  Object.entries(GROUP_MARKS).flatMap(([group, marks]) =>
-    marks.map((mark) => [normalizeLookupKey(mark), group])
-  )
-);
-
 export function getPowerCableGroup(productOrMark) {
-  const mark =
+  const product =
     typeof productOrMark === 'string'
-      ? productOrMark
-      : productOrMark?.mark || productOrMark?.markFamily || '';
+      ? { mark: normalizePowerCableBaseMark(productOrMark) }
+      : productOrMark || {};
+  const slug =
+    product.catalogSubcategorySlug ||
+    getPowerCableSubcategorySlug({
+      ...product,
+      mark: normalizePowerCableBaseMark(product.mark || product.markFamily),
+    });
+  return POWER_GROUP_BY_SUBCATEGORY[slug] || null;
+}
 
-  if (!mark) {
-    return null;
-  }
-
-  return POWER_CABLE_GROUP_BY_MARK.get(normalizeLookupKey(mark)) || null;
+export function matchesPowerCableGroup(product, selectedGroups) {
+  const group = getPowerCableGroup(product);
+  return (
+    selectedGroups.includes(group) ||
+    (selectedGroups.includes('ВВГ / бронированные') &&
+      ['ПВХ изоляция', 'Бронированный кабель'].includes(group))
+  );
 }

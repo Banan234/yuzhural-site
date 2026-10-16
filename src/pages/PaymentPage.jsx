@@ -148,7 +148,6 @@ export default function PaymentPage() {
             </div>
 
             <aside className="payment-summary">
-              <span className="payment-summary__eyebrow">Как работаем</span>
               <h2 className="payment-summary__title">
                 Один сценарий сделки, но без автоматической покупки на сайте
               </h2>

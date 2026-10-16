@@ -1,0 +1,233 @@
+{
+  "sku": "YU-0000993",
+  "product_id": 993,
+  "source_name": "ВВГ 4 х 1.5 п нг",
+  "product_name": "ВВГнг 4х1.5 п",
+  "parameters": {
+    "sku": "YU-0000993",
+    "productId": 993,
+    "sourceName": "ВВГ 4 х 1.5 п нг",
+    "family": "ВВГ-П",
+    "primaryCores": 4,
+    "cores": 4,
+    "section": 1.5,
+    "groundCores": 0,
+    "groundSection": null,
+    "voltage": null,
+    "attributes": [
+      "п",
+      "нг"
+    ],
+    "shape": "flat",
+    "material": "copper",
+    "strand": "solid",
+    "conductorConstructionSource": "catalogue visual default; not a technical claim for this SKU",
+    "jacket": "black PVC",
+    "insulation": "PVC",
+    "colors": [
+      "brown",
+      "black",
+      "grey",
+      "yellow-green"
+    ],
+    "colorRule": "power:4",
+    "colorRuleVersion": "catalogue-colors-v1",
+    "colorSource": "configured catalogue illustration convention",
+    "visualFamily": "ВВГ-Пнг",
+    "sectionAffectsVisual": false,
+    "sectionMode": "constant",
+    "thicknessLabel": "uniform catalogue scale"
+  },
+  "prompt": "Use case: product-mockup. Create one standardized realistic professional 3D product render for an electrical cable catalogue. Stable composition, realistic materials and soft neutral studio lighting.\n\nCable family: ВВГ-Пнг. Shape: flat. Matte black PVC outer jacket; PVC insulation. Preserve this configured jacket color and construction.\n\nThe intact cable body enters the frame from the RIGHT side. The stripped end and separated conductors extend toward the LEFT side. Exposed copper conductor tips are on the LEFT. Never reverse or mirror this orientation.\n\nThe intact black outer cable jacket extends all the way to and beyond the RIGHT edge of the image. The cable enters the image directly through the RIGHT frame boundary. The right end of the cable is intentionally cropped by the image boundary. No visible end cap or termination of the outer jacket on the right. No empty transparent space between the cable and the right edge. The body must cross the right border, not merely approach it.\n\nFixed catalogue camera and pose: predominantly horizontal, shallow three-quarter perspective, with a consistent gentle 8-degree diagonal inclination. The intact jacket axis rises gently toward the RIGHT and descends slightly toward the LEFT, as in the original catalogue reference. Never perfectly horizontal, never steep, never vertical, no random camera angle.\n\nFixed layout: the stripping transition is near 56% of canvas width; the leftmost copper tips begin near 6%; the unbroken jacket continues from the transition through 100% of width and beyond the right border. The cable fills most of the useful canvas width. No oversized empty padding. Keep at least 10% safe space above and below every tip and insulated core.\n\nThe stripped end and all separated cores face LEFT. ALL 4 metal tips and insulated ends on the left must be completely visible, with the same small left margin. Never crop the left tips, top or bottom. Only the intact outer jacket on the RIGHT is intentionally cropped.\n\nExactly 4 insulated conductors are visible. There must be exactly 4 conductors, no more and no fewer. Show all 4 separately with exactly 4 exposed copper tips on the LEFT. No extra wire.\n\nConductor colors, one assignment per insulated wire: 1. brown; 2. black; 3. grey; 4. one yellow-and-green striped PE conductor (one wire, not two). Never add a conductor for a color stripe. Separate and fan the cores gently so that every specified core and tip can be counted, while keeping all cores connected inside the jacket.\n\nUse solid-core copper conductors: one single solid round copper conductor inside each insulated core. Each stripped end shows ONE smooth continuous circular metal rod with a solid circular cross-section. not stranded copper; not a bundle of thin copper strands. Never show a brush, braid, multiple fine wires or a split metal tip. This is the catalogue illustration default, not a claim that every real SKU is solid-core.\n\nThickness treatment: uniform catalogue scale. Nominal section is metadata only. Use the same visual thickness for all sections in this visual group. Do not calculate diameter from cross-sectional area.\n\nFollow the original catalogue reference described above: right-border jacket entry, gentle rising-right diagonal, clearly separated left-pointing cores, smooth solid round metal tips where configured, consistent scale and materials.\n\nGenuinely transparent PNG background with real alpha. No black, white or grey backdrop; no painted checkerboard. No glow, colored halos, bloom, floor, scenery or background shadows. Clean isolated product edges, moderate natural highlights.\n\nNo text, markings, labels, symbols, dimensions, logos, watermark, hands or other objects. Do not mirror the composition.\n\nFinal check: exactly 4 cores and 4 metal tips; intact jacket crosses the RIGHT frame boundary with no end cap and no right gap; all LEFT tips fully visible; gentle fixed diagonal; correct conductor construction; transparent background. Template right-edge-solid-v2.",
+  "prompt_hash": "19a635a22f1d9e26ef6e5e08bf41fb5612de9155c8c6739efe375b477ee61f37",
+  "visual_key": "vvg-png__4core",
+  "visualKey": "vvg-png__4core",
+  "visual_descriptor": {
+    "family": "ВВГ-Пнг",
+    "cores": 4,
+    "shape": "flat",
+    "material": "copper",
+    "strand": "solid",
+    "jacket": "black PVC",
+    "insulation": "PVC",
+    "colors": [
+      "brown",
+      "black",
+      "grey",
+      "yellow-green"
+    ],
+    "sectionAffectsVisual": false,
+    "sectionKey": null
+  },
+  "visual_descriptor_hash": "116b1cde52d0da25768c98a458e4b7228dc17a47d89a0e9dfcf357314ae88a36",
+  "sectionAffectsVisual": false,
+  "render_fingerprint": "462000c4521536c9b0a1b88476038f94ee8aa1611a63996399769fb427eb4bea",
+  "legacy_render_fingerprint": "f96a6ae20f6e87999ad622fb338ed65efcc691f76591cc9ea818de9753972b4e",
+  "product_fingerprint": "514cc7660180c9ad4d53b4d5236345d63e211a61eb940014408679f0564976c4",
+  "reference_hash": null,
+  "template_version": "right-edge-solid-v2",
+  "model": "gpt-image-2.5-flare",
+  "provider": "codex-sale",
+  "size": "1536x1024",
+  "quality": "high",
+  "format": "png",
+  "composition": {
+    "rightEdgeCrop": true,
+    "tiltDegrees": 8,
+    "leftMarginRatio": 0.06,
+    "verticalMarginRatio": 0.1,
+    "sheathTransitionRatio": 0.56
+  },
+  "style_reference": "/Users/Shared/yuzhural-site/assets/cable-images/style-reference-right.png",
+  "style_reference_hash": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59",
+  "schemaVersion": 2,
+  "family": "ВВГ-Пнг",
+  "cores": 4,
+  "products": [
+    {
+      "sku": "YU-0000993",
+      "product_id": 993,
+      "source_name": "ВВГ 4 х 1.5 п нг",
+      "product_name": "ВВГнг 4х1.5 п",
+      "section": 1.5,
+      "groundSection": null,
+      "product_fingerprint": "514cc7660180c9ad4d53b4d5236345d63e211a61eb940014408679f0564976c4",
+      "parameters": {
+        "sku": "YU-0000993",
+        "productId": 993,
+        "sourceName": "ВВГ 4 х 1.5 п нг",
+        "family": "ВВГ-П",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 1.5,
+        "groundCores": 0,
+        "groundSection": null,
+        "voltage": null,
+        "attributes": [
+          "п",
+          "нг"
+        ],
+        "shape": "flat",
+        "material": "copper",
+        "strand": "solid",
+        "conductorConstructionSource": "catalogue visual default; not a technical claim for this SKU",
+        "jacket": "black PVC",
+        "insulation": "PVC",
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "colorRule": "power:4",
+        "colorRuleVersion": "catalogue-colors-v1",
+        "colorSource": "configured catalogue illustration convention",
+        "visualFamily": "ВВГ-Пнг",
+        "sectionAffectsVisual": false,
+        "sectionMode": "constant",
+        "thicknessLabel": "uniform catalogue scale"
+      },
+      "binding_allowed": true,
+      "existing_image": "/category-placeholders/power-cable.svg"
+    }
+  ],
+  "expected_output_filename": "public/product-images/generated/vvg-png__4core.png",
+  "generation_required": false,
+  "existing_image": true,
+  "output_filename": "public/product-images/generated/vvg-png__4core.png",
+  "public_url": "/product-images/generated/vvg-png__4core.png",
+  "legacy_asset": false,
+  "action": "await_review",
+  "reason": "already_generated_needs_review",
+  "image": "vvg-png__4core.png",
+  "sku_count": 1,
+  "skus_without_images": 1,
+  "status": "approved",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.24013528748590757,
+    "has_transparency": true,
+    "transparent_ratio": 0.7448984390589868,
+    "non_opaque_ratio": 0.9990372015165824,
+    "foreground_ratio": 0.2538381659673932,
+    "bounds": {
+      "minX": 83,
+      "minY": 257,
+      "maxX": 1773,
+      "maxY": 658
+    },
+    "warnings": [],
+    "sha256": "2add0f3dbf66328e503f98016cdbbc48016acfad283d3d095cb682db1b48922c",
+    "bytes": 773075
+  },
+  "retained_existing_style": false,
+  "visual_review": {
+    "cores": 4,
+    "colors": [
+      "brown",
+      "black",
+      "grey",
+      "yellow-green"
+    ],
+    "orientation": "right-to-left",
+    "rightEdgeCropped": true,
+    "leftUncropped": true,
+    "topBottomClear": true,
+    "conductorConstruction": "solid",
+    "noText": true,
+    "styleMatches": true,
+    "reviewer": "Codex visual inspection",
+    "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible.",
+    "reviewed_at": "2026-10-15T15:57:09.393Z"
+  },
+  "created_at": "2026-10-15T15:46:19.680Z",
+  "revised_prompt": null,
+  "api_request_id": "18e2fd59-6369-41d4-bd9f-fca0971c3a31",
+  "requested_api_model": "gpt-image-2.5-flare",
+  "source_validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.24013528748590757,
+    "has_transparency": true,
+    "transparent_ratio": 0.7448984390589868,
+    "non_opaque_ratio": 0.9990372015165824,
+    "foreground_ratio": 0.2538381659673932,
+    "bounds": {
+      "minX": 83,
+      "minY": 257,
+      "maxX": 1773,
+      "maxY": 658
+    },
+    "warnings": [],
+    "sha256": "2add0f3dbf66328e503f98016cdbbc48016acfad283d3d095cb682db1b48922c",
+    "bytes": 773075
+  },
+  "normalization": {
+    "applied": false
+  },
+  "http_status": 200,
+  "api_usage": {
+    "input_tokens": 795,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 795
+    },
+    "output_tokens": 458,
+    "output_tokens_details": {
+      "image_tokens": 458,
+      "text_tokens": 0
+    },
+    "total_tokens": 1253
+  },
+  "attempts": 1,
+  "createdAt": "2026-10-15T15:46:19.680Z",
+  "force_replacement": false,
+  "updated_at": "2026-10-15T15:57:09.393Z"
+}

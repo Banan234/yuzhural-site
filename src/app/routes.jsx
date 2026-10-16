@@ -1,5 +1,6 @@
 // Файл собирает общие route objects, layout, SEO-хуки и scroll-поведение для всех страниц.
 
+import { Navigate } from 'react-router-dom';
 import MainLayout from '../components/layout/MainLayout';
 
 export function createRouteObjects({
@@ -10,6 +11,7 @@ export function createRouteObjects({
   CableSectionPage,
   HomePage,
   CatalogPage,
+  MarksPage,
   ProductPage,
   CableWeightPage,
   ServicesPage,
@@ -27,7 +29,12 @@ export function createRouteObjects({
 }) {
   const children = [
     { index: true, element: <HomePage /> },
+    {
+      path: 'catalog/soedinitelnyy-kabel',
+      element: <Navigate to="/catalog/prochee" replace />,
+    },
     { path: 'catalog/:slug?', element: <CatalogPage /> },
+    { path: 'marks', element: <MarksPage /> },
     { path: 'product/:slug', element: <ProductPage /> },
     { path: 'cart', element: <CartPage /> },
     { path: 'contacts', element: <ContactsPage /> },

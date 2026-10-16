@@ -2,23 +2,26 @@
 
 import { expect, test } from '@playwright/test';
 
-test('home page opens quote modal and traps focus', async ({ page }) => {
+test('home page opens callback modal and traps focus', async ({ page }) => {
   await page.goto('/');
 
   const heroHeading = page.getByRole('heading', {
-    name: 'Пришлите список — пришлём КП',
+    name: 'Пришлите список — подготовим КП',
   });
   await expect(heroHeading).toBeVisible();
 
   const opener = page
-    .locator('.home-hero')
-    .getByRole('button', { name: /Получить КП за 15 минут|Запросить КП/ });
+    .locator('.home-concept__quote')
+    .getByRole('button', { name: 'Заказать звонок' });
   await opener.click();
 
-  const dialog = page.getByRole('dialog', { name: 'Диалоговое окно' });
+  const dialog = page.getByRole('dialog', {
+    name: 'Заказать звонок',
+    exact: true,
+  });
   await expect(dialog).toBeVisible();
   await expect(
-    dialog.getByRole('heading', { name: 'Получить КП' })
+    dialog.getByRole('heading', { name: 'Заказать звонок' })
   ).toBeVisible();
 
   const closeButton = dialog.getByRole('button', { name: 'Закрыть' });

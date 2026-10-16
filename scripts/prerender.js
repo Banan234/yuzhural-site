@@ -42,7 +42,13 @@ import {
 } from '../src/lib/staticPageJsonLd.js';
 import { getProductImage } from '../shared/productImages.js';
 import { normalizeCatalogHierarchy } from '../shared/catalogCategoryHierarchy.js';
-import { buildShortDescription, buildSpecs } from '../lib/catalog.js';
+import {
+  buildShortDescription,
+  buildSpecs,
+  loadCatalogProducts,
+} from '../lib/catalog.js';
+import { buildMarkIndex } from '../shared/markIndex.js';
+import { buildProductDesignationHtml } from '../shared/productDesignationHtml.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -104,6 +110,15 @@ export const STATIC_ROUTES = [
     h1: 'Каталог кабельной продукции',
     intro:
       'Силовые и контрольные кабели, провода, кабели СПЭ. Все позиции — со склада в Челябинске, отгрузка от 1 дня.',
+  },
+  {
+    path: '/marks',
+    title: `Алфавитный перечень марок кабеля — ${SITE_NAME}`,
+    description:
+      'Все марки кабеля и провода из текущего каталога ЮжУралЭлектроКабель. Выберите букву и найдите нужную марку.',
+    h1: 'Алфавитный перечень марок',
+    intro:
+      'Выберите букву, чтобы перейти к маркам кабеля и провода из текущего каталога.',
   },
   {
     path: '/about',
@@ -225,6 +240,10 @@ const ROUTE_MODULES = [
   {
     test: (routePath) => routePath === '/catalog',
     module: 'src/pages/CatalogPage.jsx',
+  },
+  {
+    test: (routePath) => routePath === '/marks',
+    module: 'src/pages/MarksPage.jsx',
   },
   {
     test: (routePath) => routePath.startsWith('/catalog/'),
@@ -927,7 +946,7 @@ export function buildCompactProductBodyShell(product) {
 
   return `<div class="prerender-only"><h1>${escapeHtml(
     heading
-  )}</h1><p>${escapeHtml(description)}</p></div>`;
+  )}</h1><p>${escapeHtml(description)}</p>${buildProductDesignationHtml(product)}</div>`;
 }
 
 export function buildStaticBodyShell(route) {
@@ -1283,6 +1302,7 @@ export async function prerenderStatic(
     log = console.log,
     renderApp,
     products = [],
+    markProducts = products,
     manifest = null,
   } = {}
 ) {
@@ -1300,7 +1320,9 @@ export async function prerenderStatic(
                 path: '/catalog',
               }),
             }
-          : {};
+          : route.path === '/marks'
+            ? { marks: buildMarkIndex(markProducts) }
+            : {};
     const headExtras = [
       buildMetaTags({
         title: route.title,
@@ -1501,6 +1523,10 @@ export async function prerender({
     warn,
   });
   const products = await loadProducts({ filePath: productsPath, warn });
+  const markProducts =
+    path.resolve(productsPath) === productsFile
+      ? await loadCatalogProducts()
+      : products;
   const categoriesData = await loadCatalogCategories({ warn });
   validatePrerenderProducts(products, { source: productsPath });
   const routeRenderer = renderApp || (await loadServerRenderer({ outputDir }));
@@ -1509,6 +1535,7 @@ export async function prerender({
     log,
     renderApp: routeRenderer,
     products,
+    markProducts,
     manifest,
   });
   await prerenderCatalogRoutes(template, categoriesData, {

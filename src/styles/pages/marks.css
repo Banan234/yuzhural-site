@@ -1,0 +1,228 @@
+.marks-page {
+  min-height: 60vh;
+  padding: 28px 0 76px;
+  background: #fff;
+}
+
+.marks-page__breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 28px;
+  color: #728095;
+  font-size: 13px;
+}
+
+.marks-page__breadcrumbs a {
+  color: #728095;
+}
+
+.marks-page__heading {
+  margin-bottom: 30px;
+}
+
+.marks-page__heading-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+}
+
+.marks-page__heading h1 {
+  margin: 0;
+  font-size: clamp(30px, 3.1vw, 42px);
+  line-height: 1.15;
+}
+
+.marks-page__heading-line span {
+  color: #7b8795;
+  font-size: 14px;
+}
+
+.marks-page__heading p {
+  margin: 12px 0 0;
+  color: #5b6879;
+  line-height: 1.55;
+}
+
+.marks-page__alphabet {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 20px 24px;
+  border: 1px solid #e7ebf0;
+  background: #fbfcfd;
+}
+
+.marks-page__alphabet-title {
+  margin-bottom: 2px;
+  color: #243449;
+  font-size: 17px;
+}
+
+.marks-page__alphabet-row {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  align-items: start;
+  gap: 14px;
+}
+
+.marks-page__alphabet-row > span {
+  padding-top: 4px;
+  color: #748093;
+  font-size: 13px;
+}
+
+.marks-page__alphabet-row > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 13px;
+}
+
+.marks-page__alphabet a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 26px;
+  color: #35659a;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.marks-page__alphabet a:hover,
+.marks-page__alphabet a:focus-visible {
+  color: #d45e21;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.marks-page__groups {
+  background: #f6f8fb;
+}
+
+.marks-page__group {
+  scroll-margin-top: 180px;
+  padding: 30px 36px 34px;
+  border-bottom: 1px solid #e3e9f0;
+}
+
+.marks-page__group:last-child {
+  border-bottom: 0;
+}
+
+.marks-page__group h2 {
+  margin: 0 0 20px;
+  color: #263a53;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.marks-page__group-heading span {
+  color: #8b98a8;
+  font-size: 13px;
+}
+
+.marks-page__group ul {
+  columns: 6 170px;
+  column-gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.marks-page__group li {
+  break-inside: avoid;
+  margin: 0 0 11px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.marks-page__group li a {
+  overflow-wrap: anywhere;
+  color: #315e91;
+  text-decoration: none;
+}
+
+.marks-page__group li a:hover,
+.marks-page__group li a:focus-visible {
+  color: #d45e21;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .marks-page__group {
+    scroll-margin-top: 85px;
+    padding: 26px 28px 30px;
+  }
+
+  .marks-page__group ul {
+    columns: 3 170px;
+  }
+}
+
+@media (max-width: 600px) {
+  .marks-page {
+    padding: 20px 0 52px;
+  }
+
+  .marks-page__breadcrumbs {
+    margin-bottom: 20px;
+  }
+
+  .marks-page__heading {
+    margin-bottom: 22px;
+  }
+
+  .marks-page__heading-line {
+    display: block;
+  }
+
+  .marks-page__heading-line span {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .marks-page__alphabet {
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 18px;
+  }
+
+  .marks-page__alphabet-row {
+    display: block;
+  }
+
+  .marks-page__alphabet-row > span {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .marks-page__alphabet-row > div {
+    gap: 4px 12px;
+  }
+
+  .marks-page__alphabet a {
+    min-width: 26px;
+    min-height: 32px;
+  }
+
+  .marks-page__group {
+    scroll-margin-top: 132px;
+    padding: 24px 18px 28px;
+  }
+
+  .marks-page__group ul {
+    columns: 2 130px;
+    column-gap: 18px;
+  }
+}
+
+@media (max-width: 340px) {
+  .marks-page__group ul {
+    columns: 1;
+  }
+}

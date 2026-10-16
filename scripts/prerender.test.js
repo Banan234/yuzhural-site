@@ -386,7 +386,9 @@ describe('prerender HTML helpers', () => {
     expect(html).toContain('<p>');
     expect(html).not.toContain('display:none');
     expect(html).not.toContain('<nav');
-    expect(html).not.toContain('<dl');
+    expect(html).not.toContain('<dl class="prerender-only"');
+    expect(html).toContain('Расшифровка обозначения');
+    expect(html).toContain('product-designation__tokens');
   });
 
   it('выбирает build-time product prerender по лимиту и явным SKU/slug', () => {

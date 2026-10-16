@@ -162,6 +162,7 @@ curl -X POST http://127.0.0.1:3001/api/lead-request \
   -H 'content-type: application/json' \
   -d '{
     "phone":"+79001234567",
+    "consent":true,
     "comment":"Проверка Yandex 360 SMTP",
     "source":"manual smoke",
     "createdAt":"2026-06-11 12:00:00",

@@ -19,6 +19,9 @@
     "check:import": "node scripts/importPrice.js --dry-run",
     "check:price-parsing": "node scripts/auditPriceParsing.js",
     "check:env": "node scripts/checkEnv.js",
+    "images:cables": "node scripts/generateCableImages.js",
+    "images:cables:audit": "node scripts/auditCableVisuals.js --dry-run",
+    "images:cables:check": "node scripts/generateCableImages.js --dry-run --missing-only --limit 5",
     "check:product-prerender": "node scripts/checkProductPrerender.js",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -34,7 +37,8 @@
     "load:test": "node scripts/loadTest.js",
     "load:soak": "LOAD_DURATION_SEC=1800 LOAD_CONCURRENCY=50,100,200 node scripts/loadTest.js",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "images:cables:models": "node scripts/testCableImageModels.js"
   },
   "dependencies": {
     "@e965/xlsx": "^0.20.3",
@@ -63,6 +67,7 @@
     "@vitejs/plugin-react": "^4.7.0",
     "concurrently": "^9.2.1",
     "jsdom": "^29.0.2",
+    "pngjs": "^7.0.0",
     "prettier": "^3.6.2",
     "vite": "^7.3.2",
     "vitest": "^4.1.5"

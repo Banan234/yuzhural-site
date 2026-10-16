@@ -66,6 +66,29 @@ describe('buildSitemapPagesXml', () => {
 });
 
 describe('buildSitemapCategoriesXml', () => {
+  it('включает страницы подкатегорий и убирает их дубли', () => {
+    const xml = buildSitemapCategoriesXml({
+      siteUrl: SITE,
+      categoriesData: {
+        sections: [
+          {
+            slug: 'kabel-i-provod',
+            categories: [
+              {
+                slug: 'silovoy-kabel',
+                subcategories: [
+                  { slug: 'silovoy-kabel-spe' },
+                  { slug: 'silovoy-kabel-spe' },
+                  { slug: '' },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    });
+    expect(xml.match(/\/catalog\/silovoy-kabel-spe<\/loc>/g)).toHaveLength(1);
+  });
   it('собирает разделы и категории, дедуплицирует совпадения', () => {
     const xml = buildSitemapCategoriesXml({
       siteUrl: SITE,

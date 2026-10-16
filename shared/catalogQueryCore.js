@@ -5,7 +5,11 @@ import {
   getCoreVariantLabel,
   getWireConstruction,
 } from '../lib/catalogClassifiers.js';
-import { getPowerCableGroup, POWER_CABLE_GROUPS } from './powerCableGroups.js';
+import {
+  getPowerCableGroup,
+  matchesPowerCableGroup,
+  POWER_CABLE_GROUPS,
+} from './powerCableGroups.js';
 
 export function normalizeSearchText(value) {
   return String(value || '')
@@ -293,7 +297,7 @@ export function applyProductFiltersCore(items, query) {
   }
   if (selectedPowerGroups.length > 0) {
     result = result.filter((item) =>
-      selectedPowerGroups.includes(getPowerCableGroup(item))
+      matchesPowerCableGroup(item, selectedPowerGroups)
     );
   }
   if (query.onlySPE) {

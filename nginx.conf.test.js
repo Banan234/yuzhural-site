@@ -163,6 +163,13 @@ describe('nginx reverse proxy canonical redirects', () => {
     expect(config).toContain('return 308 /catalog/$1;');
   });
 
+  it('redirects the removed connecting cable category to Other', () => {
+    expect(config).toContain(
+      'location = /catalog/soedinitelnyy-kabel {'
+    );
+    expect(config).toContain('return 301 /catalog/prochee$is_args$args;');
+  });
+
   it('serves only known SPA routes and returns 404 for unknown ones', () => {
     expect(config).toContain('location = / {');
     expect(config).toContain('try_files /index.html =404;');
