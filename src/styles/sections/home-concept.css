@@ -4,6 +4,9 @@
   background: #fff;
   color: #102947;
 }
+.home-concept > section + section {
+  margin-top: clamp(20px, 2vw, 32px);
+}
 
 .home-concept__hero {
   position: relative;

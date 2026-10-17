@@ -9,7 +9,7 @@
 .products-grid--stock-showcase {
   display: flex;
   gap: 14px;
-  overflow: hidden;
+  overflow: visible;
   padding: 4px 0;
 }
 .products-grid--stock-showcase .product-card--stock {

@@ -296,6 +296,7 @@
 }
 .home-stock-showcase__carousel {
   position: relative;
+  overflow: hidden;
 }
 .home-stock-showcase__arrow {
   position: absolute;
