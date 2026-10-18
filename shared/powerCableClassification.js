@@ -60,7 +60,10 @@ export function getPowerCableSubcategorySlug(product = {}) {
     return 'silovoy-kabel-spe';
   }
 
-  if (/^(?:А?ВВ|АСВВГ|ВКВ|NYM|NYY|NUM|NYC|NYR|PVC|КУСИЛ|КПВП)/u.test(mark)) {
+  if (
+    mark === 'КГВ' ||
+    /^(?:А?ВВ|АСВВГ|ВКВ|NYM|NYY|NUM|NYC|NYR|PVC|КУСИЛ|КПВП)/u.test(mark)
+  ) {
     return 'silovoy-kabel-pvh';
   }
 

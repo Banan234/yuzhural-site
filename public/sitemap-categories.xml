@@ -46,7 +46,82 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://yu-uek.ru/catalog/provoda-ustanovochnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-soedinitelnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-montazhnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-avtomobilnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-vyvodnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-neizolirovannye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-obmotochnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-termostoykie</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-podvizhnogo-sostava</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-svyazi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-progrevochnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/provoda-termoelektrodnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://yu-uek.ru/catalog/kontrolnyy-kabel</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/signalno-blokirovochnye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kontrolnye-kabeli</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabel-upravleniya</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -61,7 +136,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yu-uek.ru/catalog/kabeli-pozharnoy-signalizacii</loc>
+    <loc>https://yu-uek.ru/catalog/kabeli-peredachi-dannykh</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/universalnye-kabeli</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabeli-svyazi</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -71,12 +156,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yu-uek.ru/catalog/montazhnyy-kabel</loc>
+    <loc>https://yu-uek.ru/catalog/koaksialnye-kabeli</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yu-uek.ru/catalog/kabeli-svyazi</loc>
+    <loc>https://yu-uek.ru/catalog/optovolokonnye-kabeli</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/montazhnyy-kabel</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -141,6 +231,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://yu-uek.ru/catalog/greyushchie-rezistivnye-kabeli</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/samoreguliruyushchiesya-kabeli</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yu-uek.ru/catalog/kabeli-sudovye</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://yu-uek.ru/catalog/prochee</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -171,22 +276,12 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yu-uek.ru/catalog/signalno-blokirovochnye</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://yu-uek.ru/catalog/kabeli-neftepogr</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yu-uek.ru/catalog/bortovye-provoda</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yu-uek.ru/catalog/kabeli-sudovye</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

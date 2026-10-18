@@ -1,0 +1,333 @@
+{
+  "visualKey": "vvgng-a-frls__2c__solid__round__2core-brown-blue__p-9590a1cabe1988d6",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_vvgng-a-frls__2c__solid__round__2core-brown-blue__p-9590a1cabe1988d6.png",
+  "visualProfile": {
+    "family": "vvgng-a-frls",
+    "productType": "power-cable",
+    "cores": 2,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [
+      "fire-barrier"
+    ],
+    "coreColors": [
+      "brown",
+      "blue"
+    ],
+    "coreColorScheme": "2core-brown-blue",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: vvgng-a-frls. Product type: power-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is black. It surrounds all 2 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 2 insulated conductors and exactly 2 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 2 insulated conductors: 1: brown; 2: blue. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nSolid-core copper: ONE continuous smooth solid circular metal rod inside each insulated core. Each left tip has a single solid cross-section. No bundles of thin strands or brushes.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nFire-resistant construction: show a restrained thin pale mica fire-barrier tape wrapping around each conductor under its colored insulation at the stepped cutaway. Keep the same exact insulated core count.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 2 insulated cores, solid copper, round, common jacket present, armor absent, screen absent.",
+  "promptHash": "58448c03d44d797f925e284131c568d8608dc3c9cdac99aa0fe3f7a9ea095d3c",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0000870",
+      "productId": 870,
+      "sourceName": "ВВГ  2х1.5 нг(А)FRLS",
+      "productName": "ВВГнг(А)-FRLS 2х1.5",
+      "primaryCores": 2,
+      "cores": 2,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-frls",
+        "cores": 2,
+        "primaryCores": 2,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [
+          "fire-barrier"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "5859e61047a529b1aa7289aa35bc9ca51b175ad5c70848d906c1dca4ada16e07"
+    },
+    {
+      "sku": "YU-0000884",
+      "productId": 884,
+      "sourceName": "ВВГ  2х2.5 нг(А)FRLS",
+      "productName": "ВВГнг(А)-FRLS 2х2.5",
+      "primaryCores": 2,
+      "cores": 2,
+      "section": 2.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-frls",
+        "cores": 2,
+        "primaryCores": 2,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [
+          "fire-barrier"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "dc02b77e17933026a8403146b2ae1ef10081a3e23f3245ece23751a5aa90f26b"
+    },
+    {
+      "sku": "YU-0000793",
+      "productId": 793,
+      "sourceName": "ВВГ  2х 16 нг(А)FRLS",
+      "productName": "ВВГнг(А)-FRLS 2х16",
+      "primaryCores": 2,
+      "cores": 2,
+      "section": 16,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-frls",
+        "cores": 2,
+        "primaryCores": 2,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [
+          "fire-barrier"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "adba32cd2965054c504cfb9ec25040a5505766608cb391f6946d131605689bbb"
+    }
+  ],
+  "skuCount": 3,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T13:17:45.244Z",
+  "validation": {
+    "width": 1536,
+    "height": 1024,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.2080078125,
+    "has_transparency": true,
+    "transparent_ratio": 0.8666718800862631,
+    "non_opaque_ratio": 1,
+    "foreground_ratio": 0.13289896647135416,
+    "bounds": {
+      "minX": 435,
+      "minY": 290,
+      "maxX": 1535,
+      "maxY": 667
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "e186d21b18ea9887d736f5f3cc03ae7c828fedfb6d28d9a11a3441b78b9ac77b",
+    "bytes": 1041278
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "0a87f9d9-9af2-4c69-9042-cb704458fc0d",
+  "generatedAt": "2026-10-16T13:18:09.992Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 515,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 515
+    },
+    "output_tokens": 601,
+    "output_tokens_details": {
+      "image_tokens": 601,
+      "text_tokens": 0
+    },
+    "total_tokens": 1116
+  },
+  "revisedPrompt": null
+}

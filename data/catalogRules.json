@@ -15,8 +15,8 @@
     "originalNamePrefixes": ["КИПэ "],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 205
   },
   {
@@ -35,8 +35,8 @@
     "originalNamePrefixes": ["ЭКС-ШВППЭ/Э"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "LAN-кабели",
-    "catalogCategorySlug": "lan-kabeli",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 205
   },
   {
@@ -65,8 +65,8 @@
     "originalNamePrefixes": ["ШТЛ-"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 205
   },
   {
@@ -79,7 +79,7 @@
     ],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 205
   },
@@ -89,8 +89,10 @@
     "patterns": ["кпс ", "кпсэ", "кпсвв", "кпсвэв", "кпсэс", "кпсэ ", "кпснг"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели пожарной и охранной сигнализации",
-    "catalogCategorySlug": "kabeli-pozharnoy-signalizacii",
+    "catalogCategory": "Кабель управления и контроля",
+    "catalogCategorySlug": "kontrolnyy-kabel",
+    "catalogSubcategory": "Кабель для сигнализации и блокировки",
+    "catalogSubcategorySlug": "signalno-blokirovochnye",
     "priority": 200
   },
   {
@@ -99,8 +101,10 @@
     "originalNamePrefixes": ["СБП", "СБЗП", "СБВБП", "СБВГ"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Сигнально-блокировочные",
-    "catalogCategorySlug": "signalno-blokirovochnye",
+    "catalogCategory": "Кабель управления и контроля",
+    "catalogCategorySlug": "kontrolnyy-kabel",
+    "catalogSubcategory": "Кабель для сигнализации и блокировки",
+    "catalogSubcategorySlug": "signalno-blokirovochnye",
     "priority": 220
   },
   {
@@ -121,7 +125,6 @@
     "applicationType": "Пожарная",
     "priority": 200
   },
-
   {
     "_comment": "=== ИМПОРТНЫЕ КАБЕЛИ — высокий приоритет для перехвата до других правил ===",
     "type": "UNITRONIC",
@@ -311,7 +314,6 @@
     "applicationType": "Кабели связи",
     "priority": 180
   },
-
   {
     "_comment": "=== СПЭ (силовой кабель с изоляцией из сшитого полиэтилена) — type-тег поверх Силового ===",
     "type": "СПЭ",
@@ -341,7 +343,6 @@
     "catalogCategorySlug": "silovoy-kabel",
     "priority": 150
   },
-
   {
     "_comment": "=== СУДОВЫЕ — все марки в единую категорию ===",
     "type": "Судовой монтажный (КМПВ/КМПЭ/КМПБ)",
@@ -421,7 +422,6 @@
     "catalogCategorySlug": "kabeli-sudovye",
     "priority": 140
   },
-
   {
     "_comment": "=== ДУБЛИ: перенаправить 'Кабель и провод :: Кабели *' → 'Специальные кабели :: Кабели *' ===",
     "type": "Термопарные",
@@ -486,8 +486,8 @@
       "бфсэз",
       "птл"
     ],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Бортовые провода",
     "catalogCategorySlug": "bortovye-provoda",
     "priority": 140
@@ -495,8 +495,8 @@
   {
     "type": "Подвижной состав",
     "patterns": ["транскаб", "нпп нг", "нппнг", "нплш"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели для подвижного состава",
     "catalogCategorySlug": "kabeli-podvizhnogo-sostava",
     "priority": 140
@@ -530,15 +530,14 @@
     "catalogCategorySlug": "kabel-vodopogr",
     "priority": 140
   },
-
   {
     "_comment": "=== ИСПРАВЛЕНИЯ: некоторые марки ошибочно попадают не туда ===",
     "type": "ОКГ (оптический городской) — Кабели связи",
     "patterns": ["окг нг", "окг-"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 135
   },
   {
@@ -546,8 +545,8 @@
     "patterns": ["рэкп-", "рэкп "],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 135
   },
   {
@@ -555,8 +554,8 @@
     "patterns": ["рапм"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 135
   },
   {
@@ -573,8 +572,8 @@
     "patterns": ["кипвэпбп", "кипэпбп"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 125
   },
   {
@@ -582,11 +581,10 @@
     "patterns": ["омзкгц"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 125
   },
-
   {
     "_comment": "=== Провода, ошибочно попавшие в силовой кабель ===",
     "type": "ПБВВГ",
@@ -651,14 +649,13 @@
     "catalogCategorySlug": "provoda",
     "priority": 100
   },
-
   {
     "_comment": "=== КВВГ и его модификации (раньше ВВГ-правила) ===",
     "type": "КВВГ",
     "patterns": ["кввг", "кдввг"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 120
   },
@@ -680,7 +677,6 @@
     "catalogCategorySlug": "silovoy-kabel",
     "priority": 115
   },
-
   {
     "_comment": "=== Контрольные кабели — специфические ===",
     "type": "Сегмент-КУ",
@@ -698,8 +694,8 @@
     "familyPrefixes": ["КИ185", "КИ485"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 120
   },
   {
@@ -707,7 +703,7 @@
     "patterns": ["инсил-оэ", "ин-сил-оэ"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 120
   },
@@ -717,7 +713,7 @@
     "familyPrefixes": ["КУ", "КВ", "КП"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 120
   },
@@ -726,7 +722,7 @@
     "patterns": ["круин"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 115
   },
@@ -735,7 +731,7 @@
     "patterns": ["герда"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 110
   },
@@ -744,7 +740,7 @@
     "patterns": ["метролан"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 110
   },
@@ -753,7 +749,7 @@
     "patterns": ["лоутокс"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 110
   },
@@ -762,7 +758,7 @@
     "patterns": ["куптекс"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 110
   },
@@ -771,7 +767,7 @@
     "patterns": ["соббит"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 110
   },
@@ -780,7 +776,7 @@
     "patterns": ["кувв ", "кувв нг", "куэпкп", "квг ", "квг нг", "кумэа"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 115
   },
@@ -789,30 +785,28 @@
     "patterns": ["кво"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 100
   },
-
   {
     "_comment": "=== КИПиА русских производителей — остаются в Контрольном ===",
     "type": "КИПЭВ/КПЭТИ/КУПЭВ",
     "patterns": ["кипэв", "кипвэв", "кипэв ", "кпэти", "купэв", "купе "],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 115
   },
-
   {
     "_comment": "=== Кабели связи — парные/телефонные/оптические ===",
     "type": "ТППэп",
     "patterns": ["тппэп"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 110
   },
   {
@@ -820,8 +814,8 @@
     "patterns": ["квк"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 80
   },
   {
@@ -829,8 +823,8 @@
     "patterns": ["квк-впп"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 120
   },
   {
@@ -838,8 +832,8 @@
     "patterns": ["вэовкв", "псвкв"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 100
   },
   {
@@ -847,8 +841,8 @@
     "patterns": ["зкпм"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 120
   },
   {
@@ -856,8 +850,8 @@
     "patterns": ["окмн", "окмс", "опс ", "оклж", "оклнг"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 115
   },
   {
@@ -865,8 +859,8 @@
     "patterns": ["дпс-", "дпд-", "дпл-", "дпо-", "дпом", "дптс", "экб-дпо"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 115
   },
   {
@@ -874,8 +868,8 @@
     "patterns": ["тзпэп", "тзпаб", "тзпаш", "кпгкп", "прппм", "кпэп"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 110
   },
   {
@@ -883,19 +877,18 @@
     "patterns": ["кпкэв", "кмс ", "ксш ", "кцппэпз", "тцпв"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 110
   },
-
   {
     "_comment": "=== LAN-кабели ===",
     "type": "КВСМВ",
     "patterns": ["квсмв"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "LAN-кабели",
-    "catalogCategorySlug": "lan-kabeli",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 98
   },
   {
@@ -903,8 +896,8 @@
     "patterns": ["квпвп-5e", "квпвп-5е"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "LAN-кабели",
-    "catalogCategorySlug": "lan-kabeli",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 97
   },
   {
@@ -920,8 +913,8 @@
     ],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "LAN-кабели",
-    "catalogCategorySlug": "lan-kabeli",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 96
   },
   {
@@ -929,8 +922,8 @@
     "patterns": ["orient pearl", "cat 5", "cat5", "cat.5"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "LAN-кабели",
-    "catalogCategorySlug": "lan-kabeli",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 110
   },
   {
@@ -947,11 +940,10 @@
     ],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "LAN-кабели",
-    "catalogCategorySlug": "lan-kabeli",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 90
   },
-
   {
     "_comment": "=== МКПс — монтажный, а не 'связь' ===",
     "type": "МКПс",
@@ -967,8 +959,10 @@
     "patterns": ["кпс нг"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели пожарной и охранной сигнализации",
-    "catalogCategorySlug": "kabeli-pozharnoy-signalizacii",
+    "catalogCategory": "Кабель управления и контроля",
+    "catalogCategorySlug": "kontrolnyy-kabel",
+    "catalogSubcategory": "Кабель для сигнализации и блокировки",
+    "catalogSubcategorySlug": "signalno-blokirovochnye",
     "priority": 200
   },
   {
@@ -989,7 +983,6 @@
     "catalogCategorySlug": "montazhnyy-kabel",
     "priority": 115
   },
-
   {
     "_comment": "=== Силовые — специфические ===",
     "type": "ВА-автомат (для перехвата до Проводов)",
@@ -1020,7 +1013,7 @@
     "patterns": ["ники-куп"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 120
   },
@@ -1051,7 +1044,6 @@
     "catalogCategorySlug": "silovoy-kabel",
     "priority": 100
   },
-
   {
     "_comment": "=== Исключения: некабельные товары с маркой ВП ===",
     "type": "ВП (некабельное)",
@@ -1062,7 +1054,6 @@
     "catalogCategorySlug": "prochee",
     "priority": 105
   },
-
   {
     "_comment": "=== НЕКАБЕЛЬНАЯ ПРОДУКЦИЯ (автоматически схлопывается в 'Некабельная продукция') ===",
     "type": "Пускатели (ПМЛ/ПМ12)",
@@ -1259,7 +1250,7 @@
     ],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 90
   },
@@ -1318,8 +1309,8 @@
   {
     "type": "ППсТВМ — провод для подвижного состава",
     "patterns": ["ппствм"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Кабели для подвижного состава",
     "catalogCategorySlug": "kabeli-podvizhnogo-sostava",
     "priority": 260
@@ -1367,8 +1358,8 @@
     ],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 150
   },
   {
@@ -1376,7 +1367,7 @@
     "patterns": ["кув"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 150
   },
@@ -1427,7 +1418,6 @@
     "applicationType": "Контрольный",
     "priority": 130
   },
-
   {
     "_comment": "=== ИМПОРТНЫЕ: огнестойкие и пожарные ===",
     "type": "NHXH/HTKSH/FIRELINE (импорт. огнестойкие)",
@@ -1492,14 +1482,13 @@
     "applicationType": "КИПиА",
     "priority": 185
   },
-
   {
     "_comment": "=== РУССКИЕ КОНТРОЛЬНЫЕ/ПРОВОДА: добить остатки в 'Прочее' ===",
     "type": "ВЭФ/ВКЭФ-контрольные",
     "patterns": ["вэфв", "вэфк", "вкэф"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 90
   },
@@ -1527,7 +1516,7 @@
     "patterns": ["купсэ", "кунрсв", "куэпк", "куэп", "кумп", "кукр"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 90
   },
@@ -1540,7 +1529,6 @@
     "catalogCategorySlug": "provoda",
     "priority": 90
   },
-
   {
     "_comment": "=== ИМПОРТНЫЕ: NYY/NYM/NUM/NYCY/NYRY/MCCMK — немецкие/финские силовые ===",
     "type": "NYY/NYM/NUM/NYCY (импорт. силовые)",
@@ -1562,7 +1550,6 @@
     "applicationType": "Силовой",
     "priority": 195
   },
-
   {
     "_comment": "=== МЕТАЛЛОРУКАВ: перехватчик для 'Мет.рук.в ПВХ', чтобы не попадал в Водопогружной ===",
     "type": "Металлорукав",
@@ -1573,7 +1560,6 @@
     "catalogCategorySlug": "metallorukav-gofra",
     "priority": 220
   },
-
   {
     "_comment": "=== КМВ/КМВэВ — монтажный для видеонаблюдения (sourceCategory может ошибочно слать в Пожарную) ===",
     "type": "КМВ/КМВэВ — монтажный видеонаблюдение",
@@ -1584,7 +1570,6 @@
     "catalogCategorySlug": "montazhnyy-kabel",
     "priority": 160
   },
-
   {
     "_comment": "=== СЭК → Прочее (соединительный кабель) ===",
     "type": "Соединительный кабель",
@@ -1595,29 +1580,26 @@
     "catalogCategorySlug": "prochee",
     "priority": 140
   },
-
   {
     "_comment": "=== КПВЛ → Контрольный кабель ===",
     "type": "Кабель управления",
     "patterns": ["кпвл"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Контрольный кабель",
+    "catalogCategory": "Кабель управления и контроля",
     "catalogCategorySlug": "kontrolnyy-kabel",
     "priority": 140
   },
-
   {
     "_comment": "=== КПЛМ → Бортовые провода ===",
     "type": "Бортовые провода",
     "patterns": ["кплм"],
-    "catalogSection": "Специальные кабели",
-    "catalogSectionSlug": "specialnye-kabeli",
+    "catalogSection": "Кабель и провод",
+    "catalogSectionSlug": "kabel-i-provod",
     "catalogCategory": "Бортовые провода",
     "catalogCategorySlug": "bortovye-provoda",
     "priority": 140
   },
-
   {
     "_comment": "=== ЛИФТОВЫЕ: КПВП/КПГ2У → Силовой ===",
     "type": "Лифтовые силовые",
@@ -1628,7 +1610,6 @@
     "catalogCategorySlug": "silovoy-kabel",
     "priority": 100
   },
-
   {
     "_comment": "=== РЕДКИЕ МОНТАЖНЫЕ: СНКЭО, МПИЭ, КМРПЭ, МП 37-12, КППЭВ, КПИВВ ===",
     "type": "Редкие монтажные",
@@ -1649,7 +1630,6 @@
     "catalogCategorySlug": "montazhnyy-kabel",
     "priority": 100
   },
-
   {
     "_comment": "=== ИМПОРТНЫЕ РАСШИРЕННО: AESP/DRAKA/CARDIFF/BMK/BIT/BETA CAVI/BASEC/BFI/ERSE/LI6YC6Y/AT-(ZN)/DATA-CB ===",
     "type": "Импортные КИПиА — расширенный список",
@@ -1690,7 +1670,6 @@
     "applicationType": "КИПиА",
     "priority": 185
   },
-
   {
     "_comment": "=== ИМПОРТНЫЕ ОПТИКА: NTSS-FO и прочие FO ===",
     "type": "Импортные оптические",
@@ -1702,18 +1681,16 @@
     "applicationType": "Связь",
     "priority": 185
   },
-
   {
     "_comment": "=== Герда ТПСПэПВ — телефонный (связь), попадает в Контрольный по ошибке ===",
     "type": "Герда ТПСПэПВ",
     "patterns": ["тпспэпв", "тпсппв", "тпспэп", "герда тпсп"],
     "catalogSection": "Кабель и провод",
     "catalogSectionSlug": "kabel-i-provod",
-    "catalogCategory": "Кабели связи",
-    "catalogCategorySlug": "kabeli-svyazi",
+    "catalogCategory": "Кабели передачи данных",
+    "catalogCategorySlug": "kabeli-peredachi-dannykh",
     "priority": 170
   },
-
   {
     "_comment": "=== МКВЭФ/МКВЭФВ/МКВЭ — монтажные с фторопластом ===",
     "type": "МКВЭ/МКВЭФ — монтажный",
@@ -1724,7 +1701,6 @@
     "catalogCategorySlug": "montazhnyy-kabel",
     "priority": 170
   },
-
   {
     "_comment": "=== RE-(ST)Y-FL и доп. варианты RE-серии ===",
     "type": "RE-(ST)Y-FL",

@@ -3,6 +3,7 @@ import path from 'node:path';
 import catalogCategories from '../shared/catalogCategories.json' with { type: 'json' };
 import { normalizeCatalogHierarchy } from '../shared/catalogCategoryHierarchy.js';
 import { WIRE_SUBCATEGORY_SOURCES } from '../shared/wireClassification.js';
+import { classifyProduct } from './lib/catalogClassifier.js';
 
 const inputPath = process.argv[2] || 'data/catalog-current/products.json';
 const reportPath = process.argv[3] || '';
@@ -16,8 +17,16 @@ const wireCategory = catalogCategories.sections
 const definedSlugs = new Set(
   wireCategory.subcategories.map((entry) => entry.slug)
 );
+const importRuntimeDifferences = [];
 const rows = wires.map((product) => {
   const placement = normalizeCatalogHierarchy(product);
+  const imported = classifyProduct(product);
+  if (
+    imported.catalogCategorySlug !== placement.catalogCategorySlug ||
+    imported.catalogSubcategorySlug !== placement.catalogSubcategorySlug
+  ) {
+    importRuntimeDifferences.push(product.sku);
+  }
   return {
     sku: product.sku,
     name: product.name,
@@ -56,6 +65,7 @@ const report = {
   unresolved,
   emptySubcategories,
   invalid,
+  importRuntimeDifferences,
   rows,
 };
 
@@ -72,6 +82,7 @@ console.log(
       unresolved,
       emptySubcategories,
       invalid,
+      importRuntimeDifferences,
     },
     null,
     2
@@ -80,6 +91,7 @@ console.log(
 
 if (
   invalid.length ||
+  importRuntimeDifferences.length ||
   emptySubcategories.length ||
   unresolved.some((row) => row.name !== 'ПБПЭ 2х0.35')
 ) {

@@ -1,0 +1,218 @@
+{
+  "visualKey": "sip-4__2c__stranded__twisted-bundle__2core-black-black__p-c3f3b05f5020a56d",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_sip-4__2c__stranded__twisted-bundle__2core-black-black__p-c3f3b05f5020a56d.png",
+  "visualProfile": {
+    "family": "sip-4",
+    "productType": "sip",
+    "cores": 2,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "twisted-bundle",
+    "hasOuterJacket": false,
+    "outerJacket": "none",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [
+      "twisted-insulated-cores"
+    ],
+    "coreColors": [
+      "black",
+      "black"
+    ],
+    "coreColorScheme": "2core-black-black",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: sip-4. Product type: sip. Geometry: twisted-bundle.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nSelf-supporting bundle of exactly 2 individually insulated wires twisted together on the RIGHT. NO common outer sheath or jacket. The twisted wires separate gently toward the LEFT. Do not turn this into a jacketed multicore cable.\n\nExactly 2 insulated conductors and exactly 2 exposed silvery aluminium tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 2 insulated conductors: 1: black; 2: black. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nStranded silvery aluminium: each insulated core contains ONE compact neat bundle of fine silvery aluminium strands. Show the bundle at each left tip, with a tidy circular cross-section. No solid rods and no loose brush of long strands.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 2 insulated cores, stranded silvery aluminium, twisted-bundle, common jacket absent, armor absent, screen absent.",
+  "promptHash": "eb306ea6da10000e0da662761218fe71eaace1133de98f9f066e5960f20cb1f5",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0004816",
+      "productId": 4816,
+      "sourceName": "СИП-4 2х 16",
+      "productName": "СИП-4 2х16",
+      "primaryCores": 2,
+      "cores": 2,
+      "section": 16,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 2,
+        "primaryCores": 2,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "533c411c888c3404c1de93b7120570977da4eda230a57d501c2db8115bd3d80c"
+    },
+    {
+      "sku": "YU-0004817",
+      "productId": 4817,
+      "sourceName": "СИП-4 2х 35",
+      "productName": "СИП-4 2х35",
+      "primaryCores": 2,
+      "cores": 2,
+      "section": 35,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 2,
+        "primaryCores": 2,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "6574ea4407ba1821397f5c329fb00e7f8b18c28cf698baf93bdec28236f99f8c"
+    }
+  ],
+  "skuCount": 2,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T13:35:10.110Z",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": false,
+    "right_edge_foreground_ratio": 0,
+    "has_transparency": true,
+    "transparent_ratio": 0.8837454195577101,
+    "non_opaque_ratio": 0.9994668066484572,
+    "foreground_ratio": 0.11571757402744642,
+    "bounds": {
+      "minX": 476,
+      "minY": 266,
+      "maxX": 1645,
+      "maxY": 624
+    },
+    "warnings": [],
+    "sha256": "0e3d5e34c230a286c4dacfb38fd245101bb1199c7f6233c8418cff3859493bf1",
+    "bytes": 388955
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "128ac9aa-e48e-4b57-a1b2-d7d603c95247",
+  "generatedAt": "2026-10-16T13:35:28.139Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 473,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 473
+    },
+    "output_tokens": 458,
+    "output_tokens_details": {
+      "image_tokens": 458,
+      "text_tokens": 0
+    },
+    "total_tokens": 931
+  },
+  "revisedPrompt": null
+}

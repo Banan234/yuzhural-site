@@ -1,8 +1,11 @@
 import { findCableSpecification } from '../scripts/lib/cableSpecification.js';
+import { selectManufacturerTexts } from './manufacturerTexts.js';
 import {
   PRODUCT_DESIGNATION_FAMILIES,
   DESIGNATION_SOURCES,
   DESIGNATION_KNOWLEDGE_REVISION,
+  DESIGNATION_DOCUMENTS,
+  DESIGNATION_CROSS_CHECKS,
 } from './productDesignationReference.js';
 
 const clean = (value) => String(value || '').trim();
@@ -33,14 +36,37 @@ const COLORS = {
   серый: 'серый',
   желт: 'жёлтый',
   желтый: 'жёлтый',
+  жёлт: 'жёлтый',
+  жёлтый: 'жёлтый',
+  жел: 'жёлтый',
+  зелёный: 'зелёный',
+  сирень: 'сиреневый',
+  сиреневый: 'сиреневый',
+  роз: 'розовый',
+  бело: 'белый',
   оранж: 'оранжевый',
   оранжевый: 'оранжевый',
   фиол: 'фиолетовый',
+  фиолет: 'фиолетовый',
   фиолетовый: 'фиолетовый',
   розов: 'розовый',
   розовый: 'розовый',
+  голуб: 'голубой',
+  гол: 'голубой',
+  чёрн: 'чёрный',
   'ж/з': 'жёлто-зелёный',
 };
+
+function sourceColor(value) {
+  const key = clean(value)
+    .toLowerCase()
+    .replace(/^[().]+|[().]+$/gu, '');
+  if (COLORS[key]) return COLORS[key];
+  const parts = key.split(/[/-]/u);
+  if (parts.length === 2 && parts.every((part) => COLORS[part]))
+    return parts.map((part) => COLORS[part]).join(' / ');
+  return null;
+}
 const families = [...PRODUCT_DESIGNATION_FAMILIES].sort(
   (a, b) => b.mark.length - a.mark.length
 );
@@ -89,6 +115,31 @@ function decodeIndex(value) {
   return null;
 }
 
+// A manufacturer's constructor is an ordered grammar. An attribute is accepted
+// only when every character is consumed; arbitrary letter splitting is unsafe.
+function decodeConstructor(value, grammar) {
+  if (!grammar) return null;
+  let code = normalize(value);
+  const tail = grammar.tails?.find((t) => code.endsWith(t.code));
+  if (tail) code = code.slice(0, -tail.code.length);
+  const walk = (stage, rest, texts) => {
+    if (stage === grammar.stages.length) return rest ? null : texts;
+    const item = grammar.stages[stage];
+    for (const [key, text] of Object.entries(item.values).sort(
+      (a, b) => b[0].length - a[0].length
+    )) {
+      if (!rest.startsWith(key)) continue;
+      const result = walk(stage + 1, rest.slice(key.length), [...texts, text]);
+      if (result) return result;
+    }
+    return item.optional ? walk(stage + 1, rest, texts) : null;
+  };
+  const texts = walk(0, code, []);
+  return texts?.length
+    ? [...texts, ...(tail ? [tail.text] : [])].join('; ')
+    : null;
+}
+
 function resolveFamily(product) {
   let mark = normalize(product.mark);
   // Единственная явная смешанная запись NYМ: последняя буква кириллическая.
@@ -111,9 +162,36 @@ function resolveFamily(product) {
   ].map((value) => normalize(Array.isArray(value) ? value[0] : value));
   for (const family of families) {
     if (
+      (family.caseSensitiveMark || family.caseSensitiveStem) &&
+      ![clean(product.mark), clean(product.sourceName).split(/\s+/u)[0]].some(
+        (value) =>
+          family.caseSensitiveStem
+            ? value.startsWith(family.caseSensitiveStem)
+            : value === family.mark ||
+              value.startsWith(family.mark + '-') ||
+              (value.startsWith(family.mark) &&
+                firePattern.test(normalize(value.slice(family.mark.length))))
+      )
+    )
+      continue;
+    const variant = family.attributeVariant;
+    const variantMatched =
+      variant &&
+      mark === normalize(variant.base) &&
+      (product.attributes || []).some(
+        (a) => normalize(a) === variant.attribute
+      );
+    if (
       family.allowedFirePattern &&
       explicitFireIndexes.some(
         (value) => !new RegExp(family.allowedFirePattern, 'u').test(value)
+      )
+    )
+      continue;
+    if (
+      family.requiredFirePattern &&
+      !explicitFireIndexes.some((value) =>
+        new RegExp(family.requiredFirePattern, 'u').test(value)
       )
     )
       continue;
@@ -123,10 +201,24 @@ function resolveFamily(product) {
       !normalize(product.sourceName).startsWith(normalize(family.brand))
     )
       continue;
+    if (
+      family.sourceNamePattern &&
+      clean(product.mark).split(/\s+/u)[0] ===
+        clean(product.sourceName).split(/\s+/u)[0] &&
+      new RegExp(family.sourceNamePattern, 'u').test(clean(product.sourceName))
+    )
+      return { family, index: '' };
     const keys = [family.mark, ...(family.aliases || [])].map(normalize);
+    if (variantMatched)
+      return { family, index: '', consumedAttribute: variant.attribute };
     for (const key of keys)
       for (const candidate of marks) {
-        if (candidate === key) return { family, index: '' };
+        if (candidate === key) {
+          // A parser may have separated an unknown suffix from the full mark.
+          // Never publish the base construction for that different full type.
+          if (candidate === mark && marks.length > 1) continue;
+          return { family, index: '' };
+        }
         if (candidate.startsWith(key)) {
           const index = candidate.slice(key.length).replace(/^-/u, '');
           if (
@@ -136,6 +228,18 @@ function resolveFamily(product) {
           )
             return { family, index: '', ratedVoltage: Number(index) };
           if (family.indexes?.[index]) return { family, index };
+          for (const modifier of Object.keys(family.indexes || {}).sort(
+            (a, b) => b.length - a.length
+          )) {
+            if (!index.startsWith(modifier)) continue;
+            const tail = index.slice(modifier.length).replace(/^-/, '');
+            if (
+              (firePattern.test(tail) || tail === 'ХЛ') &&
+              (!family.allowedFirePattern ||
+                new RegExp(family.allowedFirePattern, 'u').test(tail))
+            )
+              return { family, index: modifier };
+          }
           const permitted =
             !family.allowedFirePattern ||
             new RegExp(family.allowedFirePattern, 'u').test(index);
@@ -246,6 +350,136 @@ function sourceFor(family) {
 }
 
 function sizeTokens(product, family, designation) {
+  const compound = family?.compoundSectionPattern
+    ? new RegExp(family.compoundSectionPattern, 'u').exec(designation)?.groups
+    : null;
+  if (compound) {
+    const areas = [compound.section1, compound.section2].map((value) =>
+      Number(value.replace(',', '.'))
+    );
+    const amounts = [Number(compound.count1), Number(compound.count2)];
+    if (
+      (designation.match(/\+/gu) || []).length !== 1 ||
+      amounts.some((amount) => !family.compoundCounts.includes(amount)) ||
+      (family.compoundEqualCounts && amounts[0] !== amounts[1]) ||
+      (family.compoundPairs &&
+        !family.compoundPairs.some(
+          (pair) => pair[0] === areas[0] && pair[1] === areas[1]
+        )) ||
+      areas.some((area) => !family.nominalSizes.includes(area))
+    )
+      return {
+        rows: [],
+        warnings: [
+          'Комбинированная размерная запись не соответствует подтверждённому заводскому ряду.',
+        ],
+      };
+    return {
+      rows: areas.map((area, i) => ({
+        code: `${amounts[i]}×${i ? compound.section2 : compound.section1}`,
+        text: `Группа ${i + 1}: ${amounts[i]} жил; номинальное сечение каждой жилы ${number(area)} мм²`,
+      })),
+      warnings: [],
+    };
+  }
+  const grouped = family?.groupedSizePattern
+    ? new RegExp(family.groupedSizePattern, 'u').exec(designation)?.groups
+    : null;
+  if (grouped) {
+    const area = Number(grouped.section.replace(',', '.'));
+    if (
+      !(Number(grouped.groups) > 0) ||
+      (family.groupLimits?.[grouped.cores] &&
+        Number(grouped.groups) > family.groupLimits[grouped.cores]) ||
+      (family.groupNominalMaximum?.[grouped.cores] &&
+        area > family.groupNominalMaximum[grouped.cores]) ||
+      (family.nominalSizes && !family.nominalSizes.includes(area))
+    )
+      return {
+        rows: [],
+        warnings: [
+          'Сечение группированной конструкции отсутствует в подтверждённом заводском ряду.',
+        ],
+      };
+    return {
+      rows: [
+        {
+          code: `${grouped.groups}×(${grouped.cores}×${grouped.section}${grouped.material || ''})`,
+          text: `${grouped.groups} групп по ${grouped.cores} жилы; сечение каждой жилы ${number(area)} мм²${grouped.material === 'м' ? '; «м» — нелужёные медные жилы' : ''}`,
+        },
+      ],
+      warnings: [],
+    };
+  }
+  const profile = family?.sourceNamePattern
+    ? new RegExp(family.sourceNamePattern, 'u').exec(designation)?.groups
+    : null;
+  if (profile && family.sourceProfile === 'aluminium-steel-sections') {
+    return {
+      rows: [
+        {
+          code: `${profile.aluminium}/${profile.steel}`,
+          text: `Номинальное сечение алюминиевой части ${number(Number(profile.aluminium.replace(',', '.')))} мм²; стального сердечника ${number(Number(profile.steel.replace(',', '.')))} мм²`,
+        },
+      ],
+      warnings: [],
+    };
+  }
+  if (profile && family.sourceProfile === 'single-conductor-section') {
+    const section = Number(profile.section.replace(',', '.'));
+    if (
+      (profile.cores && Number(profile.cores) !== 1) ||
+      (family.nominalSizes && !family.nominalSizes.includes(section))
+    )
+      return {
+        rows: [],
+        warnings: [
+          'Размер или число жил не соответствует подтверждённому заводскому исполнению этой марки.',
+        ],
+      };
+    return {
+      rows: [
+        {
+          code: profile.section,
+          text: `Одна жила; номинальное сечение ${number(section)} мм²`,
+        },
+      ],
+      warnings: [],
+    };
+  }
+  if (profile && family.sourceProfile === 'sip-phase-neutral-auxiliary') {
+    const value = (name) => Number(profile[name]?.replace(',', '.'));
+    if (
+      ![1, 3].includes(value('phases')) ||
+      !family.phaseSizes.includes(value('phaseSection')) ||
+      !family.neutralSizes.includes(value('neutralSection')) ||
+      (profile.auxCount &&
+        (![1, 2, 3].includes(value('auxCount')) ||
+          !family.auxiliarySizes.includes(value('auxSection'))))
+    )
+      return {
+        rows: [],
+        warnings: [
+          'Конфигурация СИП отсутствует в подтверждённом заводском ряду.',
+        ],
+      };
+    const rows = [
+      {
+        code: `${profile.phases}×${profile.phaseSection}`,
+        text: `Фазные жилы: ${profile.phases} × ${number(value('phaseSection'))} мм²`,
+      },
+      {
+        code: `+1×${profile.neutralSection}`,
+        text: `Изолированная нулевая несущая жила: 1 × ${number(value('neutralSection'))} мм²`,
+      },
+    ];
+    if (profile.auxCount)
+      rows.push({
+        code: `+${profile.auxCount}×${profile.auxSection}`,
+        text: `Дополнительные жилы: ${profile.auxCount} × ${number(value('auxSection'))} мм²`,
+      });
+    return { rows, warnings: [] };
+  }
   const spec = findCableSpecification(designation);
   const rows = [];
   const warnings = [];
@@ -274,7 +508,60 @@ function sizeTokens(product, family, designation) {
   }
   const cores = spec?.cores ?? product.cores;
   const section = spec?.crossSection ?? product.crossSection;
+  if (
+    family.nominalSizes &&
+    section > 0 &&
+    !family.nominalSizes.includes(Number(section))
+  ) {
+    warnings.push(
+      'Размер в исходной позиции отсутствует в подтверждённом ряду этого семейства; единицы и исполнение требуют проверки.'
+    );
+    return {
+      rows: [
+        {
+          code: spec
+            ? designation.slice(spec.index, spec.index + spec.length)
+            : String(section),
+          text: 'Размерная запись требует сверки с документацией полного исполнения',
+        },
+      ],
+      warnings,
+    };
+  }
   const group = spec?.groupCores ?? product.groupCores;
+  if (
+    family.groupSizes &&
+    group > 0 &&
+    !family.groupSizes.includes(Number(group))
+  )
+    return {
+      rows: [],
+      warnings: [
+        'Группировка жил не соответствует подтверждённой заводской конструкции этой марки.',
+      ],
+    };
+  if (
+    group > 0 &&
+    ((family.groupLimits?.[group] && cores > family.groupLimits[group]) ||
+      (family.groupNominalMaximum?.[group] &&
+        section > family.groupNominalMaximum[group]))
+  )
+    return {
+      rows: [],
+      warnings: [
+        'Группированная конструкция отсутствует в подтверждённом заводском ряду.',
+      ],
+    };
+  if (
+    family.minimumConductorCount &&
+    cores > 0 &&
+    cores * (group || 1) < family.minimumConductorCount
+  ) {
+    warnings.push(
+      'Число жил в исходной записи меньше подтверждённого для этого семейства; запись жил или пар требует уточнения.'
+    );
+    return { rows, warnings };
+  }
   const configuration = product.conductorConfiguration;
   const simpleConfiguration =
     !configuration ||
@@ -326,6 +613,11 @@ function sizeTokens(product, family, designation) {
         designation.slice(spec.index, spec.index + spec.length),
       text: 'Конфигурация жил и групп в исходном обозначении; дополнительные элементы требуют сверки с паспортом',
     });
+    warnings.push(
+      'Сложная конфигурация жил разобрана не полностью; единицы и дополнительные элементы требуют сверки с документацией.'
+    );
+  } else {
+    warnings.push('В позиции не распознана размерная запись жил.');
   }
   if (product.screenCrossSection > 0)
     rows.push({
@@ -353,7 +645,34 @@ export function buildProductDesignation(product = {}) {
       product.name ||
       product.mark
   );
-  const { family, index, partial, ratedVoltage } = resolveFamily(product);
+  const {
+    family: resolvedFamily,
+    index,
+    partial,
+    ratedVoltage,
+    consumedAttribute,
+  } = resolveFamily(product);
+  const executionCodes = [
+    ...(product.attributes || []),
+    index || '',
+    ...designation.matchAll(
+      /нг\s*(?:\([АБВГДСA-D]\))?(?:-?(?:FR)?-?(?:LS|HF))?(?:-?LTx)?(?:-?ХЛ)?/giu
+    ),
+  ].map((v) => normalize(Array.isArray(v) ? v[0] : v));
+  const execution = resolvedFamily?.executions?.find((e) =>
+    executionCodes.some(
+      (code) =>
+        (e.firePattern && new RegExp(e.firePattern, 'u').test(code)) ||
+        e.attributesAny?.includes(code)
+    )
+  );
+  const family = execution
+    ? {
+        ...resolvedFamily,
+        ...execution.overrides,
+        indexes: { ...resolvedFamily.indexes, ...execution.overrides.indexes },
+      }
+    : resolvedFamily;
   const source = sourceFor(family);
   const tokens = (family?.tokens || []).map(([code, text]) => ({ code, text }));
   const sources = new Map(source ? [[source.url, source]] : []);
@@ -369,18 +688,53 @@ export function buildProductDesignation(product = {}) {
   if (!family) unknown.push(clean(product.mark) || designation);
   if (partial) unknown.push(partial);
   const indexes = [
-    ...new Set([...(product.attributes || []), ...(index ? [index] : [])]),
+    ...new Set([
+      ...(product.attributes || []),
+      ...(index ? [index] : []),
+      ...(family?.sourceProfile === 'single-conductor-section'
+        ? (
+            new RegExp(family.sourceNamePattern, 'u').exec(designation)?.groups
+              ?.tail || ''
+          )
+            .trim()
+            .split(/\s+/u)
+            .filter(Boolean)
+        : []),
+    ]),
   ];
   for (const attribute of indexes) {
-    const specific = family?.indexes?.[normalize(attribute).replace(/^-/u, '')];
+    if (consumedAttribute === normalize(attribute)) continue;
+    const caseAttribute = family?.caseAttributes?.find(
+      (item) =>
+        normalize(attribute) === item.code &&
+        new RegExp(item.sourcePattern, 'u').test(designation)
+    );
+    if (caseAttribute) {
+      tokens.push({ code: clean(attribute), text: caseAttribute.text });
+      addSource(sourceFor(caseAttribute));
+      continue;
+    }
+    const voltage = clean(attribute)
+      .replace(/\s*кВ$/iu, '')
+      .replace(',', '.');
+    if (
+      /^\d+(?:\.\d+)?$/u.test(voltage) &&
+      family?.voltageAttributes?.includes(Number(voltage))
+    ) {
+      tokens.push({
+        code: clean(attribute),
+        text: `Номинальное напряжение ${number(Number(voltage))} ${family.voltageAttributeUnit === 'V' ? 'В' : 'кВ'}`,
+      });
+      continue;
+    }
+    const specific =
+      family?.indexes?.[normalize(attribute).replace(/^-/u, '')] ||
+      decodeConstructor(attribute, family?.attributeGrammar);
     if (specific) {
       tokens.push({ code: clean(attribute), text: specific });
       continue;
     }
-    const colorKey = clean(attribute)
-      .toLowerCase()
-      .replace(/^[()]|[().]$/gu, '');
-    const color = COLORS[colorKey];
+    const color = sourceColor(attribute);
     if (color) {
       tokens.push({
         code: clean(attribute),
@@ -399,7 +753,14 @@ export function buildProductDesignation(product = {}) {
   for (const match of designation.matchAll(
     /нг\s*(?:\([АБВГДСA-D]\))?(?:-?(?:FR)?-?(?:LS|HF))?(?:-?LTx)?(?:-?ХЛ)?/giu
   )) {
-    if (tokens.some((token) => indexKey(token.code) === indexKey(match[0])))
+    if (
+      tokens.some(
+        (token) =>
+          indexKey(token.code) === indexKey(match[0]) ||
+          (firePattern.test(normalize(token.code)) &&
+            indexKey(token.code).replace(/ХЛ$/u, '') === indexKey(match[0]))
+      )
+    )
       continue;
     const decoded = decodeIndex(match[0]);
     if (decoded) {
@@ -407,7 +768,23 @@ export function buildProductDesignation(product = {}) {
       addSource(decoded.source);
     }
   }
-  const size = sizeTokens(product, family, designation);
+  const nominalSize =
+    findCableSpecification(designation)?.crossSection ?? product.crossSection;
+  const sizeFamily = family?.dimensionBySize
+    ? {
+        ...family,
+        dimension: family.dimensionBySize[String(nominalSize)] || 'variant',
+      }
+    : family;
+  const size = sizeTokens(product, sizeFamily, designation);
+  if (family?.applicationOnly)
+    size.warnings.push(
+      'По заводскому источнику подтверждено назначение семейства; полная конструкция и размерная запись ещё требуют проверки.'
+    );
+  if (family?.dimensionBySize && sizeFamily.dimension === 'variant')
+    size.warnings.push(
+      'Размер не входит в подтверждённый ряд диаметров или сечений этого семейства.'
+    );
   if (ratedVoltage && !product.voltage)
     size.rows.push({
       code: `${ratedVoltage} кВ`,
@@ -417,6 +794,20 @@ export function buildProductDesignation(product = {}) {
   let description =
     family?.description ||
     'Для этой марки пока не найдена подтверждённая расшифровка. Ниже приведены распознанные элементы исходного обозначения.';
+  if (
+    family?.hfSheathUnverified &&
+    /HF/iu.test(tokens.map((token) => token.code).join(' '))
+  ) {
+    description = `Кабель семейства ${family.mark} с изоляцией из сшитого полиэтилена. Материал оболочки исполнения HF требует отдельного подтверждения.`;
+    for (const token of tokens) {
+      if (/оболоч/iu.test(token.text) && /полиэтилен|ПЭ/iu.test(token.text))
+        token.text =
+          'Оболочка; материал исполнения HF уточняется по его документации';
+    }
+    size.warnings.push(
+      'Описание полиэтиленовой оболочки базового исполнения не подтверждает материал оболочки исполнения HF.'
+    );
+  }
   if (
     family &&
     /HF/iu.test(tokens.map((token) => token.code).join(' ')) &&
@@ -444,16 +835,46 @@ export function buildProductDesignation(product = {}) {
     }
   }
   tokens.push(...size.rows);
+  const status = !family
+    ? 'unresolved'
+    : unknown.length || size.warnings.length
+      ? 'partial'
+      : 'reviewed';
+  const officialDocument = DESIGNATION_DOCUMENTS.find(
+    (d) =>
+      d.id === family?.evidence?.documentId &&
+      d.status === 'collected' &&
+      d.publisherType === 'manufacturer'
+  );
+  const officialComplete =
+    status === 'reviewed' &&
+    family?.evidence?.kind === 'manufacturer-documentation' &&
+    Boolean(officialDocument) &&
+    ['section', 'diameter'].includes(sizeFamily?.dimension);
+  const crossCheck = DESIGNATION_CROSS_CHECKS.find(
+    (check) => check.id === family?.crossCheckId
+  );
   return {
     designation,
     knowledgeRevision: DESIGNATION_KNOWLEDGE_REVISION,
     familyRecordId: family?.id || null,
+    manufacturerTexts: selectManufacturerTexts(
+      family?.id,
+      executionCodes,
+      DESIGNATION_DOCUMENTS
+    ),
     evidence: family?.evidence || null,
-    status: !family
-      ? 'unresolved'
-      : unknown.length || size.warnings.length
-        ? 'partial'
-        : 'reviewed',
+    crossCheck: crossCheck
+      ? {
+          id: crossCheck.id,
+          status: crossCheck.status,
+          scope: crossCheck.scope,
+          checkedAt: crossCheck.checkedAt,
+          coversFullDesignation: false,
+        }
+      : null,
+    status,
+    officialComplete,
     family: family?.mark || null,
     description,
     tokens,

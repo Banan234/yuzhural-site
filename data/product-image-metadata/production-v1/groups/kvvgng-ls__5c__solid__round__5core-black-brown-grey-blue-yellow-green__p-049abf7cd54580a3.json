@@ -1,0 +1,200 @@
+{
+  "visualKey": "kvvgng-ls__5c__solid__round__5core-black-brown-grey-blue-yellow-green__p-049abf7cd54580a3",
+  "action": "REUSE",
+  "image": "/product-images/generated/kvvgng-ls__5core.png",
+  "visualProfile": {
+    "family": "kvvgng-ls",
+    "productType": "control-cable",
+    "cores": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "black",
+      "brown",
+      "grey",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "5core-black-brown-grey-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: kvvgng-ls. Product type: control-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is black. It surrounds all 5 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 5 insulated conductors and exactly 5 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 5 insulated conductors: 1: black; 2: brown; 3: grey; 4: blue; 5: yellow-and-green striped insulation on ONE wire. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nSolid-core copper: ONE continuous smooth solid circular metal rod inside each insulated core. Each left tip has a single solid cross-section. No bundles of thin strands or brushes.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 5 insulated cores, solid copper, round, common jacket present, armor absent, screen absent.",
+  "promptHash": "25c429f503b9c6401ff5f09ea48c58816e40449a5b91cc37a04d19106b9fc588",
+  "expectedSha256": "9f08536bcde977b57ae01a5cdd43251e0fbee309370301a0a07977c70478c785",
+  "members": [
+    {
+      "sku": "YU-0007465",
+      "productId": 7465,
+      "sourceName": "КВВГ  5х 1 нг LS",
+      "productName": "КВВГнг-LS 5х1",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 1,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kvvgng-ls",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "control-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kvvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "brown",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kvvg"
+        }
+      ],
+      "productHash": "68a96161dd6b1302ac96440c2eee6279930540aab7f52fabfa1b495f72010f3b"
+    },
+    {
+      "sku": "YU-0007467",
+      "productId": 7467,
+      "sourceName": "КВВГ  5х 1.5 нг LS",
+      "productName": "КВВГнг-LS 5х1.5",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kvvgng-ls",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "control-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kvvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "brown",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kvvg"
+        }
+      ],
+      "productHash": "788d7b1da2bea970243d89de8a1b5f7d20751829ef76150752546b8cd0c48a2d"
+    }
+  ],
+  "skuCount": 2,
+  "status": "queued",
+  "attempts": 0,
+  "bound": false,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.2570462232243517,
+    "has_transparency": true,
+    "transparent_ratio": 0.7363546352232994,
+    "non_opaque_ratio": 0.9990785097023396,
+    "foreground_ratio": 0.2621188684353349,
+    "bounds": {
+      "minX": 147,
+      "minY": 193,
+      "maxX": 1773,
+      "maxY": 728
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "9f08536bcde977b57ae01a5cdd43251e0fbee309370301a0a07977c70478c785",
+    "bytes": 886592
+  },
+  "recovered": true,
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "recoveredAt": "2026-10-16T13:33:03.972Z"
+}

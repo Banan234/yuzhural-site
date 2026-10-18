@@ -52,6 +52,103 @@ beforeEach(() => {
 });
 
 describe('CatalogPage', () => {
+  it.each([
+    ['kabeli-peredachi-dannykh', 'Кабели передачи данных'],
+    ['lan-kabeli', 'LAN-кабели — витая пара'],
+    ['kabeli-svyazi', 'Кабели связи'],
+  ])('открывает товары и правильного родителя для %s', async (slug, title) => {
+    renderCatalogPage(`/catalog/${slug}`);
+    await waitFor(() =>
+      expect(fetchProducts).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ category: slug })
+      )
+    );
+    expect(
+      screen.getByRole('heading', { level: 1, name: title })
+    ).toBeInTheDocument();
+    expect(document.querySelectorAll('.subcategory-card')).toHaveLength(0);
+    if (slug !== 'kabeli-peredachi-dannykh')
+      expect(
+        screen.getByRole('link', { name: 'Кабели передачи данных' })
+      ).toHaveAttribute('href', '/catalog/kabeli-peredachi-dannykh');
+  });
+  it('открывает все нагревательные товары сразу и сохраняет родителя подкатегории', async () => {
+    renderCatalogPage('/catalog/kabeli-nagrevatelnye');
+    await waitFor(() =>
+      expect(fetchProducts).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ category: 'kabeli-nagrevatelnye' })
+      )
+    );
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Кабели нагревательные' })
+    ).toBeInTheDocument();
+    expect(document.querySelectorAll('.subcategory-card')).toHaveLength(0);
+  });
+
+  it('показывает родителя саморегулирующихся кабелей', async () => {
+    renderCatalogPage('/catalog/samoreguliruyushchiesya-kabeli');
+    await waitFor(() =>
+      expect(fetchProducts).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ category: 'samoreguliruyushchiesya-kabeli' })
+      )
+    );
+    expect(
+      screen.getByRole('link', { name: 'Кабели нагревательные' })
+    ).toHaveAttribute('href', '/catalog/kabeli-nagrevatelnye');
+  });
+  it('открывает товары общего раздела управления и контроля сразу', async () => {
+    fetchProducts.mockResolvedValue({
+      items: [
+        {
+          id: 3,
+          slug: 'kvvg-7x1',
+          title: 'КВВГ 7х1',
+          mark: 'КВВГ',
+          price: 100,
+          stock: 10,
+        },
+      ],
+      meta: {
+        total: 1,
+        pagination: { page: 1, limit: 24, total: 1, totalPages: 1 },
+        catalogSections: [],
+      },
+    });
+    renderCatalogPage('/catalog/kontrolnyy-kabel');
+    expect(
+      await screen.findByRole('link', { name: 'КВВГ 7х1' })
+    ).toHaveAttribute('href', '/product/kvvg-7x1');
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Кабель управления и контроля',
+      })
+    ).toBeInTheDocument();
+    expect(document.querySelectorAll('.subcategory-card')).toHaveLength(0);
+  });
+
+  it('показывает общий раздел родителем объединённой сигнализации', async () => {
+    renderCatalogPage('/catalog/signalno-blokirovochnye');
+    await waitFor(() =>
+      expect(fetchProducts).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ category: 'signalno-blokirovochnye' })
+      )
+    );
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Кабель для сигнализации и блокировки',
+      })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Кабель управления и контроля' })
+    ).toHaveAttribute('href', '/catalog/kontrolnyy-kabel');
+  });
+
   it('сразу показывает товары проводов, а подкатегории доступны по отдельным ссылкам', async () => {
     fetchProducts.mockResolvedValue({
       items: [

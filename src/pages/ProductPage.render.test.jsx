@@ -66,7 +66,16 @@ describe('ProductPage', () => {
     ).toBeInTheDocument();
     expect(screen.getByText('Изоляция жил из ПВХ')).toBeInTheDocument();
     expect(
-      screen.getByRole('link', { name: /Документация семейства ВВГ/ })
+      screen.getByText('Описание и применение по данным изготовителей')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('Камский кабель · Область применения')
+    ).toBeInTheDocument();
+    expect(screen.getByText('Подольсккабель · Применение')).toBeInTheDocument();
+    expect(
+      screen.getAllByRole('link', {
+        name: /ХКА.*каталог кабельной продукции/,
+      })[0]
     ).toHaveAttribute('rel', 'noopener noreferrer');
   });
 

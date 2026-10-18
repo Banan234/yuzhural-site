@@ -1,7 +1,13 @@
 // Файл собирает общие route objects, layout, SEO-хуки и scroll-поведение для всех страниц.
 
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import MainLayout from '../components/layout/MainLayout';
+import { CONTROL_CATEGORY_ALIASES } from '../../shared/controlCableClassification.js';
+
+function CatalogCategoryRedirect({ to }) {
+  const { search, hash } = useLocation();
+  return <Navigate to={`${to}${search}${hash}`} replace />;
+}
 
 export function createRouteObjects({
   SpecificationPage,
@@ -33,6 +39,10 @@ export function createRouteObjects({
       path: 'catalog/soedinitelnyy-kabel',
       element: <Navigate to="/catalog/prochee" replace />,
     },
+    ...Object.entries(CONTROL_CATEGORY_ALIASES).map(([alias, target]) => ({
+      path: `catalog/${alias}`,
+      element: <CatalogCategoryRedirect to={`/catalog/${target}`} />,
+    })),
     { path: 'catalog/:slug?', element: <CatalogPage /> },
     { path: 'marks', element: <MarksPage /> },
     { path: 'product/:slug', element: <ProductPage /> },

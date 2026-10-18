@@ -7,6 +7,11 @@ import {
   normalizeCableFamily,
   visualHash,
 } from './cableVisualClassification.js';
+import {
+  classifyPracticalCableVisualProduct,
+  comparePracticalVisualAsset,
+  isVisualAutoApproved,
+} from './familyVisualRules.js';
 
 export function classifyExistingCableAsset(record, context) {
   const d = record.visual_descriptor || {};
@@ -52,11 +57,20 @@ export function classifyExistingCableAsset(record, context) {
     status: record.status,
     sha256: record.validation?.sha256,
     ...makeVisualIdentity(profile),
-    profileCompleteness: profile.filler === null ? 'partial' : 'complete',
-    notes: [
-      'Миграция описания существующего изображения. Палитра изображения не подтверждает состав конкретного SKU.',
-      'Заполнитель не описан в прежних metadata; соответствие требует проверки.',
-    ],
+    profileCompleteness: context.familyVisualRules
+      ? 'user-approved-typage'
+      : profile.filler === null
+        ? 'partial'
+        : 'complete',
+    notes: context.familyVisualRules
+      ? [
+          'Стиль и типаж утверждены пользователем. Сопоставление по критическим видимым признакам.',
+          'Неполные старые metadata по заполнителю/точному материалу не запрещают REUSE.',
+        ]
+      : [
+          'Миграция описания существующего изображения. Палитра изображения не подтверждает состав конкретного SKU.',
+          'Заполнитель не описан в прежних metadata; соответствие требует проверки.',
+        ],
     products: (record.products || []).map((p) => p.sku),
   };
 }
@@ -67,7 +81,13 @@ export function planCableVisualAudit({
   assets,
   currentImages = {},
 }) {
-  const rows = products.map((p) => classifyCableVisualProduct(p, context));
+  const practical = !!context.familyVisualRules;
+  const compare = practical ? comparePracticalVisualAsset : compareVisualAsset;
+  const rows = products.map((p) =>
+    practical
+      ? classifyPracticalCableVisualProduct(p, context)
+      : classifyCableVisualProduct(p, context)
+  );
   for (const row of rows) {
     row.currentImage = currentImages[row.sku] || null;
     const candidates = assets.filter(
@@ -78,13 +98,11 @@ export function planCableVisualAudit({
     row.candidateImages = candidates.map((a) => ({
       image: a.image,
       legacyVisualKey: a.legacyVisualKey,
-      ...compareVisualAsset(row, a),
+      ...compare(row, a),
     }));
     const compatible = row.candidateImages.filter((c) => c.compatible);
     const current = assets.find((a) => a.image === row.currentImage);
-    row.currentImageAssessment = current
-      ? compareVisualAsset(row, current)
-      : null;
+    row.currentImageAssessment = current ? compare(row, current) : null;
     row.imageStatus =
       row.visualClassification === 'needs_review'
         ? 'NEEDS_REVIEW'
@@ -96,8 +114,17 @@ export function planCableVisualAudit({
       row.currentImage &&
       !row.currentImage.includes('placeholder') &&
       (!current || !row.currentImageAssessment?.compatible)
-    )
+    ) {
       row.imageStatus = 'NEEDS_REVIEW';
+      if (practical && isVisualAutoApproved(row)) {
+        row.visualClassification = 'needs_review';
+        row.classificationConfidence = 'low';
+        row.issues.push({
+          code: 'current_image_conflict',
+          message: `Текущее изображение требует проверки: ${row.currentImageAssessment?.mismatches.join(', ') || 'нет подтверждённого описания критической конструкции'}`,
+        });
+      }
+    }
   }
   const groupMap = new Map();
   for (const row of rows) {
@@ -114,13 +141,11 @@ export function planCableVisualAudit({
         imageStatus: row.imageStatus,
         proposedImage: row.proposedImage,
         products: [],
-        reason:
-          row.visualClassification === 'recognized'
-            ? 'Одинаковый visualProfile: семейство и определённые видимые конструктивные признаки совпадают. Сечение остаётся metadata, кроме явно заданных визуальных правил.'
-            : 'Предварительная группа с одинаковыми известными признаками и неизвестными полями. Это НЕ разрешение использовать одну иллюстрацию: сначала требуется уточнить конструкцию каждого SKU.',
+        reason: isVisualAutoApproved(row)
+          ? 'Одинаковый visualProfile: семейство и определённые видимые конструктивные признаки совпадают. Сечение остаётся metadata, кроме явно заданных визуальных правил.'
+          : 'Предварительная группа с одинаковыми известными признаками и неизвестными полями. Это НЕ разрешение использовать одну иллюстрацию: сначала требуется уточнить конструкцию каждого SKU.',
         readyForApproval:
-          row.visualClassification === 'recognized' &&
-          row.imageStatus !== 'NEEDS_REVIEW',
+          isVisualAutoApproved(row) && row.imageStatus !== 'NEEDS_REVIEW',
       };
       groupMap.set(row.visualKey, group);
     }
@@ -148,6 +173,41 @@ export function planCableVisualAudit({
       b.products.length - a.products.length ||
       a.visualKey.localeCompare(b.visualKey)
   );
+  if (practical) {
+    const bySku = new Map(rows.map((r) => [r.sku, r]));
+    for (const group of groups) {
+      const eligible = group.products
+        .map((p) => bySku.get(p.sku))
+        .filter(isVisualAutoApproved);
+      group.autoApprovedSkus = eligible.map((r) => r.sku);
+      group.reviewSkus = group.products
+        .filter((p) => !group.autoApprovedSkus.includes(p.sku))
+        .map((p) => p.sku);
+      if (eligible.length) {
+        group.visualClassification = 'AUTO_APPROVED';
+        group.classificationConfidence = 'medium';
+        group.readyForApproval = true;
+        group.imageStatus = eligible.some((r) => r.imageStatus === 'REUSE')
+          ? 'REUSE'
+          : 'MISSING';
+        group.proposedImage =
+          eligible.find((r) => r.proposedImage)?.proposedImage || null;
+        group.reason =
+          'Совпадают критические видимые признаки и каталоговые familyVisualRules. Автоматически обрабатываются только autoApprovedSkus; reviewSkus остаются на проверке.';
+      }
+    }
+  }
+  if (practical)
+    for (const asset of assets) {
+      asset.matchedVisualKeys = groups
+        .filter(
+          (g) => g.imageStatus === 'REUSE' && g.proposedImage === asset.image
+        )
+        .map((g) => g.visualKey);
+      asset.matchedSkuCount = rows.filter(
+        (r) => r.imageStatus === 'REUSE' && r.proposedImage === asset.image
+      ).length;
+    }
   const countBy = (items, fn) =>
     Object.fromEntries(
       [
@@ -164,8 +224,7 @@ export function planCableVisualAudit({
   const families = [...new Set(rows.map((r) => r.familyId))];
   const summary = {
     totalProducts: rows.length,
-    recognized: rows.filter((r) => r.visualClassification === 'recognized')
-      .length,
+    recognized: rows.filter(isVisualAutoApproved).length,
     needsReview: rows.filter((r) => r.visualClassification === 'needs_review')
       .length,
     familyRecognized: rows.filter((r) => r.familyRecognized).length,
@@ -198,24 +257,57 @@ export function planCableVisualAudit({
     bindingsChanged: 0,
     imagesGenerated: 0,
   };
+  if (practical) {
+    summary.autoApproved = rows.filter(isVisualAutoApproved).length;
+    summary.reuse = {
+      visualKeys: groups.filter(
+        (g) => g.imageStatus === 'REUSE' && g.readyForApproval
+      ).length,
+      products: rows.filter(
+        (r) => r.imageStatus === 'REUSE' && isVisualAutoApproved(r)
+      ).length,
+      existingImagesUsed: new Set(
+        rows
+          .filter((r) => r.imageStatus === 'REUSE')
+          .map((r) => r.proposedImage)
+      ).size,
+    };
+    summary.missing = {
+      visualKeys: groups.filter(
+        (g) => g.imageStatus === 'MISSING' && g.readyForApproval
+      ).length,
+      products: rows.filter(
+        (r) => r.imageStatus === 'MISSING' && isVisualAutoApproved(r)
+      ).length,
+    };
+    summary.previousNeedsReview = 5404;
+    summary.needsReviewReduction = 5404 - summary.needsReview;
+    summary.automaticFamilies = [
+      ...new Set(rows.filter(isVisualAutoApproved).map((r) => r.baseFamily)),
+    ].sort();
+  }
   return {
     schemaVersion: 1,
     mode: 'classification-dry-run',
-    rulesVersion: context.rules.version,
+    rulesVersion: context.familyVisualRules?.version || context.rules.version,
+    classificationMode: practical ? 'practical' : 'strict',
     generationAllowed: false,
     bindingAllowed: false,
     summary,
     policies: {
-      unknownPE:
-        'Never inferred from conductor count or parser hasGroundCore=false',
-      unknownConstruction:
-        'Previous solid render default is not a construction fact',
+      unknownPE: practical
+        ? 'Actual PE/N is not inferred. The illustration may use the centralized approved family palette.'
+        : 'Never inferred from conductor count or parser hasGroundCore=false',
+      unknownConstruction: practical
+        ? 'Family visual defaults allowed; known construction and conflicts take precedence.'
+        : 'Previous solid render default is not a construction fact',
       normalization:
         'Missing fire category A is not invented; equivalent whitespace/spelling is normalized',
       section:
         'Only explicit family rules may introduce a visual section key or change conductor construction',
-      existingImages:
-        'Retained unchanged; partial image metadata requires review',
+      existingImages: practical
+        ? '119 existing images approved by user for style/typage; compare critical visible features only.'
+        : 'Retained unchanged; partial image metadata requires review',
     },
     rows,
     groups,
@@ -260,6 +352,9 @@ export function auditCsv(rows) {
     'sku',
     'familyId',
     'cores',
+    'primaryCores',
+    'auxiliaryCores',
+    'auxiliarySection',
     'section',
     'sectionUnit',
     'construction',

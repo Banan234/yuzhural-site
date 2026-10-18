@@ -1,0 +1,770 @@
+{
+  "visualKey": "avvg__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-44e7dbca3237d981",
+  "action": "REUSE",
+  "image": "/product-images/generated/avvg__5core.png",
+  "visualProfile": {
+    "family": "avvg",
+    "productType": "power-cable",
+    "cores": 5,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "black",
+      "grey",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: avvg. Product type: power-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is black. It surrounds all 5 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 5 insulated conductors and exactly 5 exposed silvery aluminium tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 5 insulated conductors: 1: brown; 2: black; 3: grey; 4: blue; 5: yellow-and-green striped insulation on ONE wire. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nSolid-core silvery aluminium: ONE continuous smooth solid circular metal rod inside each insulated core. Each left tip has a single solid cross-section. No bundles of thin strands or brushes.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 5 insulated cores, solid silvery aluminium, round, common jacket present, armor absent, screen absent.",
+  "promptHash": "f8dc739eeb1b1d12b6bc3b52b316babc2b698d9df47bb51ffead000980fc3d79",
+  "expectedSha256": "6d0235e8c90ab3f43257d395ea3b2cf9edee6a00a659c105910d5c2e8322d7da",
+  "members": [
+    {
+      "sku": "YU-0000198",
+      "productId": 198,
+      "sourceName": "АВВГ 5х2.5",
+      "productName": "АВВГ 5х2.5",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 2.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "avvg",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "avvg"
+        }
+      ],
+      "productHash": "b8fdf464e25bf387c19aac591b77d6f5790209264787c438e9215240bd0705bb"
+    },
+    {
+      "sku": "YU-0000200",
+      "productId": 200,
+      "sourceName": "АВВГ 5х4",
+      "productName": "АВВГ 5х4",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 4,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "avvg",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "avvg"
+        }
+      ],
+      "productHash": "58702a57d279252f3768861068b568c0dcc3c04b99001dc5c2d3eee89aa997e0"
+    },
+    {
+      "sku": "YU-0000204",
+      "productId": 204,
+      "sourceName": "АВВГ 5х6",
+      "productName": "АВВГ 5х6",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 6,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "avvg",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "avvg"
+        }
+      ],
+      "productHash": "aad2ad97b9cd189ec0ace01c4eacd08d7b2cd982eefea19cd89b19c7b54e29a7"
+    },
+    {
+      "sku": "YU-0000205",
+      "productId": 205,
+      "sourceName": "АВВГ 5х 16",
+      "productName": "АВВГ 5х16",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 16,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "avvg",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "avvg"
+        }
+      ],
+      "productHash": "3df4f32ce5f0730fe8d8e94ed63c430eb5392758cceba112d2ec932315139abe"
+    },
+    {
+      "sku": "YU-0000207",
+      "productId": 207,
+      "sourceName": "АВВГ 5х 25",
+      "productName": "АВВГ 5х25",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 25,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "avvg",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "avvg"
+        }
+      ],
+      "productHash": "dab103f3f957cfeb25061162d3df97c98fbda0a233c524e9e7cf5c7e139be770"
+    },
+    {
+      "sku": "YU-0000209",
+      "productId": 209,
+      "sourceName": "АВВГ 5х 35",
+      "productName": "АВВГ 5х35",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 35,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "avvg",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "avvg"
+        }
+      ],
+      "productHash": "929396d191dbb84c27738170adbbde205f152b8159c6ee3d8399abb128e7e823"
+    },
+    {
+      "sku": "YU-0000213",
+      "productId": 213,
+      "sourceName": "АВВГ 5х 50",
+      "productName": "АВВГ 5х50",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 50,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "avvg",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "avvg"
+        }
+      ],
+      "productHash": "602f3736c8f36134a2558d62c3e501b134a99ce049405bfa4b62ad1232c11dd1"
+    },
+    {
+      "sku": "YU-0000217",
+      "productId": 217,
+      "sourceName": "АВВГ 5х 95",
+      "productName": "АВВГ 5х95",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 95,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "avvg",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "avvg"
+        }
+      ],
+      "productHash": "5bccb308c0822db0eea48526a97c3c6b5548e9ba0b90820c3c4824444431fbd7"
+    },
+    {
+      "sku": "YU-0000221",
+      "productId": 221,
+      "sourceName": "АВВГ 5х120",
+      "productName": "АВВГ 5х120",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 120,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "avvg",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "avvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "avvg"
+        }
+      ],
+      "productHash": "f533a5b741ed4e7eeb49d3e13cd50c526029c2dd230f11fbc686c35cb085e4af"
+    }
+  ],
+  "skuCount": 9,
+  "status": "queued",
+  "attempts": 0,
+  "bound": false,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.23337091319052988,
+    "has_transparency": true,
+    "transparent_ratio": 0.7429607673916995,
+    "non_opaque_ratio": 0.9989196320648119,
+    "foreground_ratio": 0.2555629416003935,
+    "bounds": {
+      "minX": 90,
+      "minY": 192,
+      "maxX": 1773,
+      "maxY": 730
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "6d0235e8c90ab3f43257d395ea3b2cf9edee6a00a659c105910d5c2e8322d7da",
+    "bytes": 784381
+  },
+  "recovered": true,
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "recoveredAt": "2026-10-16T12:40:28.257Z"
+}

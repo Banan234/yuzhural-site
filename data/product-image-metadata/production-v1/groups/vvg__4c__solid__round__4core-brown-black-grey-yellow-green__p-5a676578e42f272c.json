@@ -1,0 +1,683 @@
+{
+  "visualKey": "vvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-5a676578e42f272c",
+  "action": "REUSE",
+  "image": "/product-images/generated/vvg__4core.png",
+  "visualProfile": {
+    "family": "vvg",
+    "productType": "power-cable",
+    "cores": 4,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "black",
+      "grey",
+      "yellow-green"
+    ],
+    "coreColorScheme": "4core-brown-black-grey-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: vvg. Product type: power-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is black. It surrounds all 4 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 4 insulated conductors and exactly 4 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 4 insulated conductors: 1: brown; 2: black; 3: grey; 4: yellow-and-green striped insulation on ONE wire. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nSolid-core copper: ONE continuous smooth solid circular metal rod inside each insulated core. Each left tip has a single solid cross-section. No bundles of thin strands or brushes.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 4 insulated cores, solid copper, round, common jacket present, armor absent, screen absent.",
+  "promptHash": "fbe3d65d6c6e2d11cc91707515731b2c4c7a02a163f3366433658a9dc5188f6a",
+  "expectedSha256": "4efdb1826eb4af5202980d9452772f15ad26fb15add342e1bf985ea5e904ec7c",
+  "members": [
+    {
+      "sku": "YU-0000976",
+      "productId": 976,
+      "sourceName": "ВВГ 3х 10+1х6",
+      "productName": "ВВГ 3х10+1х6",
+      "primaryCores": 3,
+      "cores": 4,
+      "section": 10,
+      "auxiliaryCores": 1,
+      "auxiliarySection": 6,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvg",
+        "cores": 4,
+        "primaryCores": 3,
+        "auxiliaryCores": 1,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": 6
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "341b6d3f892baa3da0e26f3c2c73b2e06d2eab46b1a8b6e6b112139f5cee9de4"
+    },
+    {
+      "sku": "YU-0000977",
+      "productId": 977,
+      "sourceName": "ВВГ 3х 35+1х16",
+      "productName": "ВВГ 3х35+1х16",
+      "primaryCores": 3,
+      "cores": 4,
+      "section": 35,
+      "auxiliaryCores": 1,
+      "auxiliarySection": 16,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvg",
+        "cores": 4,
+        "primaryCores": 3,
+        "auxiliaryCores": 1,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": 16
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "7ca3cf7d32e0e5d38a2af2c4b050c43bd95f17d826af54670f62ef7d21c1a977"
+    },
+    {
+      "sku": "YU-0000984",
+      "productId": 984,
+      "sourceName": "ВВГ 4 х 1.5",
+      "productName": "ВВГ 4х1.5",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvg",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "9a3f77db9f46054b01750641af436815f7a76de4780b6824ecd7d44e0cd9a29a"
+    },
+    {
+      "sku": "YU-0000995",
+      "productId": 995,
+      "sourceName": "ВВГ 4 х 2.5",
+      "productName": "ВВГ 4х2.5",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 2.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvg",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "b30832dcda1dbc0f62fd6e6a17f047d071e48056539a6943f1a06a806de96e61"
+    },
+    {
+      "sku": "YU-0001022",
+      "productId": 1022,
+      "sourceName": "ВВГ 4х 10",
+      "productName": "ВВГ 4х10",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 10,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvg",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "91401fc9fa3a9ffa7a34d079b457b81d58a211946e0f9991cc8500469db18c67"
+    },
+    {
+      "sku": "YU-0001028",
+      "productId": 1028,
+      "sourceName": "ВВГ 4х 16",
+      "productName": "ВВГ 4х16",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 16,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvg",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "34d608c1f5a79e6d5802cbee5e1020a51c9e70547fbac3b0db78b2d53a856c9b"
+    },
+    {
+      "sku": "YU-0001038",
+      "productId": 1038,
+      "sourceName": "ВВГ 4х 25",
+      "productName": "ВВГ 4х25",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 25,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvg",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "b4cd5cf52a4edb62322309de9450104f8584a8702311a35893b990257fbdae8c"
+    },
+    {
+      "sku": "YU-0001112",
+      "productId": 1112,
+      "sourceName": "ВВГ 4х 35",
+      "productName": "ВВГ 4х35",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 35,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvg",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "92b14c7e939bb9d344ed6e96583e56c2da24c17a930a236cccf78294baf76f62"
+    }
+  ],
+  "skuCount": 8,
+  "status": "queued",
+  "attempts": 0,
+  "bound": false,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.26042841037204056,
+    "has_transparency": true,
+    "transparent_ratio": 0.7287971437613836,
+    "non_opaque_ratio": 0.9990022484363263,
+    "foreground_ratio": 0.26989688205813905,
+    "bounds": {
+      "minX": 112,
+      "minY": 190,
+      "maxX": 1773,
+      "maxY": 689
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "4efdb1826eb4af5202980d9452772f15ad26fb15add342e1bf985ea5e904ec7c",
+    "bytes": 848473
+  },
+  "recovered": true,
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "recoveredAt": "2026-10-16T12:45:21.126Z"
+}

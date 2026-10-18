@@ -125,7 +125,7 @@
 .cable-weight-page__drum-heading button {
   padding: 6px 8px;
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: 4px;
   background: transparent;
   color: var(--primary-dark);
   font: inherit;

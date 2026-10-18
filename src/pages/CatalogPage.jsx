@@ -13,6 +13,12 @@ import { toCanonicalSitePath } from '../lib/canonicalPaths.js';
 import { messages } from '../../shared/messages.js';
 import { NOT_FOUND_SEO, NotFoundPageContent } from './NotFoundPage.jsx';
 import catalogCategoriesData from '../../shared/catalogCategories.json';
+import { HEATING_CABLE_CATEGORY_SLUG } from '../../shared/heatingCableClassification.js';
+import { DATA_CABLE_CATEGORY_SLUG } from '../../shared/dataCableClassification.js';
+import {
+  CONTROL_CABLE_CATEGORY_SLUG,
+  CONTROL_CATEGORY_ALIASES,
+} from '../../shared/controlCableClassification.js';
 import '../styles/sections/catalog.css';
 
 const CATALOG_PAGE_SIZE = 24;
@@ -132,7 +138,9 @@ export default function CatalogPage() {
     routeCategory.routeType === 'category' &&
     Array.isArray(routeCategory.subcategories) &&
     routeCategory.subcategories.length > 0;
-  const activeCategoryParam = isCategoryRoute ? slug : filters.category;
+  const selectedCategory = isCategoryRoute ? slug : filters.category;
+  const activeCategoryParam =
+    CONTROL_CATEGORY_ALIASES[selectedCategory] || selectedCategory;
   const hasMatchingPrerenderData = doesCatalogPrerenderDataMatchQuery({
     activeCategoryParam,
     prerenderData: catalogPrerenderData,
@@ -366,7 +374,10 @@ export default function CatalogPage() {
               {isCategoryRoute &&
               hasSubcategories &&
               !isPowerCableCategory &&
-              activeCategoryParam !== 'provoda' ? (
+              activeCategoryParam !== 'provoda' &&
+              activeCategoryParam !== HEATING_CABLE_CATEGORY_SLUG &&
+              activeCategoryParam !== DATA_CABLE_CATEGORY_SLUG &&
+              activeCategoryParam !== CONTROL_CABLE_CATEGORY_SLUG ? (
                 <div
                   className={`subcategories-grid${isPowerCableCategory ? ' subcategories-grid--power' : ''}`}
                 >

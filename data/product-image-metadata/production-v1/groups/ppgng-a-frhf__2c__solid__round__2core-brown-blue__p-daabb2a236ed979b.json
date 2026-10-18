@@ -1,0 +1,441 @@
+{
+  "visualKey": "ppgng-a-frhf__2c__solid__round__2core-brown-blue__p-daabb2a236ed979b",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_ppgng-a-frhf__2c__solid__round__2core-brown-blue__p-daabb2a236ed979b.png",
+  "visualProfile": {
+    "family": "ppgng-a-frhf",
+    "productType": "power-cable",
+    "cores": 2,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [
+      "fire-barrier"
+    ],
+    "coreColors": [
+      "brown",
+      "blue"
+    ],
+    "coreColorScheme": "2core-brown-blue",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: ppgng-a-frhf. Product type: power-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is black. It surrounds all 2 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 2 insulated conductors and exactly 2 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 2 insulated conductors: 1: brown; 2: blue. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nSolid-core copper: ONE continuous smooth solid circular metal rod inside each insulated core. Each left tip has a single solid cross-section. No bundles of thin strands or brushes.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nFire-resistant construction: show a restrained thin pale mica fire-barrier tape wrapping around each conductor under its colored insulation at the stepped cutaway. Keep the same exact insulated core count.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 2 insulated cores, solid copper, round, common jacket present, armor absent, screen absent.",
+  "promptHash": "f264589acadff5f42ab0c7895a7a2673da7b2ad7aa656616fc026d344e1930a1",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0003164",
+      "productId": 3164,
+      "sourceName": "ППГ 2х1.5 нг(А)FRHF",
+      "productName": "ППГнг(А)-FRHF 2х1.5",
+      "primaryCores": 2,
+      "cores": 2,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "ppgng-a-frhf",
+        "cores": 2,
+        "primaryCores": 2,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": null,
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": "halogen-free-compound",
+        "armor": false,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [
+          "fire-barrier"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "conductorMaterial",
+          "value": "copper",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "halogen-free-compound",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "ppg"
+        }
+      ],
+      "productHash": "531f97d7708044caf576d29f3df70f80ea115bb3a234512d086f72b85914ea24"
+    },
+    {
+      "sku": "YU-0007025",
+      "productId": 7025,
+      "sourceName": "ППГ 2х2.5 нг(А)FRHF",
+      "productName": "ППГнг(А)-FRHF 2х2.5",
+      "primaryCores": 2,
+      "cores": 2,
+      "section": 2.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "ppgng-a-frhf",
+        "cores": 2,
+        "primaryCores": 2,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": null,
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": "halogen-free-compound",
+        "armor": false,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [
+          "fire-barrier"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "conductorMaterial",
+          "value": "copper",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "halogen-free-compound",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "ppg"
+        }
+      ],
+      "productHash": "0a830996070a2abb29d14012f41b8371aeecabf993044ed4a951e9b80a0397b2"
+    },
+    {
+      "sku": "YU-0003169",
+      "productId": 3169,
+      "sourceName": "ППГ 2х 50 нг(А)FRHF",
+      "productName": "ППГнг(А)-FRHF 2х50",
+      "primaryCores": 2,
+      "cores": 2,
+      "section": 50,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "ppgng-a-frhf",
+        "cores": 2,
+        "primaryCores": 2,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": null,
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": "halogen-free-compound",
+        "armor": false,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [
+          "fire-barrier"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "conductorMaterial",
+          "value": "copper",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "halogen-free-compound",
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "ppg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "ppg"
+        }
+      ],
+      "productHash": "7da0f6aeeaa3eb5ebc594a82c4bb6e0f10d1deaa4cb5729a2ecf66f6e621dc72"
+    }
+  ],
+  "skuCount": 3,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T13:14:02.527Z",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.2547914317925592,
+    "has_transparency": true,
+    "transparent_ratio": 0.8390639438005311,
+    "non_opaque_ratio": 0.9993994425301455,
+    "foreground_ratio": 0.16036028364106872,
+    "bounds": {
+      "minX": 482,
+      "minY": 208,
+      "maxX": 1773,
+      "maxY": 597
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "794bb4d31ae4f45930d877e65b6583c87964ee324a038f2afa54882b5a6cec00",
+    "bytes": 527839
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "746ce67a-b137-456c-a2e0-a43dfdfbe67d",
+  "generatedAt": "2026-10-16T13:14:26.815Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 515,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 515
+    },
+    "output_tokens": 458,
+    "output_tokens_details": {
+      "image_tokens": 458,
+      "text_tokens": 0
+    },
+    "total_tokens": 973
+  },
+  "revisedPrompt": null
+}

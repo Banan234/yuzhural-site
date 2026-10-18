@@ -22,13 +22,17 @@ function buildCategoryMenuItem(category) {
       (label) => label.trim().toLocaleLowerCase('ru-RU')
     )
   );
-  const keywordLinks = (category.keywords || []).flatMap((keyword) => {
-    const label = keyword.trim();
-    const normalizedLabel = label.toLocaleLowerCase('ru-RU');
-    if (!label || seenLabels.has(normalizedLabel)) return [];
-    seenLabels.add(normalizedLabel);
-    return [buildSearchLink(label)];
-  });
+  // Поисковые ключи классификатора могут включать общее название и синонимы.
+  // Явный список марок позволяет показывать реальные серии отдельно от них.
+  const keywordLinks = (category.marks || category.keywords || []).flatMap(
+    (keyword) => {
+      const label = keyword.trim();
+      const normalizedLabel = label.toLocaleLowerCase('ru-RU');
+      if (!label || seenLabels.has(normalizedLabel)) return [];
+      seenLabels.add(normalizedLabel);
+      return [buildSearchLink(label)];
+    }
+  );
 
   return {
     title: category.name,

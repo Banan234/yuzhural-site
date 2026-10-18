@@ -1,0 +1,157 @@
+{
+  "visualKey": "pugvng-ls__1c__stranded__round__1core-brown__p-1cb05a941cdf5f43",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_pugvng-ls__1c__stranded__round__1core-brown__p-1cb05a941cdf5f43.png",
+  "visualProfile": {
+    "family": "pugvng-ls",
+    "productType": "installation-wire",
+    "cores": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": false,
+    "outerJacket": "none",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown"
+    ],
+    "coreColorScheme": "1core-brown",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: pugvng-ls. Product type: installation-wire. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nA single insulated installation wire: exactly ONE layer of colored insulation around its conductor. NO common outer jacket, NO additional black sheath, NO nested multicore cable. Insulated body on the RIGHT, one stripped metal tip on the LEFT.\n\nExactly 1 insulated conductors and exactly 1 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 1 insulated conductors: 1: brown. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nStranded copper: each insulated core contains ONE compact neat bundle of fine copper strands. Show the bundle at each left tip, with a tidy circular cross-section. No solid rods and no loose brush of long strands.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 1 insulated cores, stranded copper, round, common jacket absent, armor absent, screen absent.",
+  "promptHash": "79568af24d7dcf647de1055db6598c7401d22468e9445ad73b5332b7f63a4104",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0005127",
+      "productId": 5127,
+      "sourceName": "ПУГВ 1 нгLS коричн.",
+      "productName": "ПУГВнг-LS 1х1 коричн.",
+      "primaryCores": 1,
+      "cores": 1,
+      "section": 1,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "pugvng-ls",
+        "cores": 1,
+        "primaryCores": 1,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "installation-wire",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "КОРИЧН."
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "brown"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "pugv"
+        }
+      ],
+      "productHash": "efbb948bb1650780ea8d2e1b740b58f79056fec318a3eb663acadd68bb2e7db3"
+    }
+  ],
+  "skuCount": 1,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T15:24:17.980Z",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": false,
+    "right_edge_foreground_ratio": 0,
+    "has_transparency": true,
+    "transparent_ratio": 0.9206793861984903,
+    "non_opaque_ratio": 0.9996288618387353,
+    "foreground_ratio": 0.07886940131093116,
+    "bounds": {
+      "minX": 576,
+      "minY": 291,
+      "maxX": 1757,
+      "maxY": 531
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "64481e8a348f8e312cfc3650599ac53bd5fd7c294d1a6f716655da8721df4872",
+    "bytes": 273383
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "aa0b0ed8-4f48-461a-9ca6-dfb2f82d8418",
+  "generatedAt": "2026-10-16T15:24:42.356Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 461,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 461
+    },
+    "output_tokens": 1030,
+    "output_tokens_details": {
+      "image_tokens": 1030,
+      "text_tokens": 0
+    },
+    "total_tokens": 1491
+  },
+  "revisedPrompt": null
+}

@@ -54,13 +54,11 @@
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.15s ease;
+    color 0.2s ease;
   min-height: 30px;
   padding: 0 10px;
   border: 0;
-  border-radius: 6px;
+  border-radius: 4px;
   background: #eceff2;
   color: #555d67;
 }
@@ -146,12 +144,11 @@
   color: #fff;
   letter-spacing: 0.015em;
   min-height: 48px;
-  border-radius: 8px;
+  border-radius: 4px;
   background: #287be0;
   box-shadow: none;
 }
 .hero-lead-form__submit:hover:not(:disabled) {
-  transform: translateY(-1px);
   background: #1769ce;
   box-shadow: none;
 }

@@ -1,0 +1,262 @@
+{
+  "visualKey": "kvvgng__4c__solid__round__4core-black-brown-blue-yellow-green__p-4aca11b40951a31a",
+  "action": "REUSE",
+  "image": "/product-images/generated/kvvgng__4core.png",
+  "visualProfile": {
+    "family": "kvvgng",
+    "productType": "control-cable",
+    "cores": 4,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "black",
+      "brown",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "4core-black-brown-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: kvvgng. Product type: control-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is black. It surrounds all 4 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 4 insulated conductors and exactly 4 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 4 insulated conductors: 1: black; 2: brown; 3: blue; 4: yellow-and-green striped insulation on ONE wire. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nSolid-core copper: ONE continuous smooth solid circular metal rod inside each insulated core. Each left tip has a single solid cross-section. No bundles of thin strands or brushes.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 4 insulated cores, solid copper, round, common jacket present, armor absent, screen absent.",
+  "promptHash": "af53bf48b7e9c58776aae5cabd0e5c0e564a62d7d3f7c7dfca16628f9a919901",
+  "expectedSha256": "54f106f084814c20ebf0d4c97c77aea20aa86a484b8294ae1e0c983e70c6f9bd",
+  "members": [
+    {
+      "sku": "YU-0002709",
+      "productId": 2709,
+      "sourceName": "КВВГ  4х 1 нг",
+      "productName": "КВВГнг 4х1",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 1,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kvvgng",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "control-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kvvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kvvg"
+        }
+      ],
+      "productHash": "eff7a342c07616093d654d00d341a7809c183c02d1105d7f8fc9373f2a67304a"
+    },
+    {
+      "sku": "YU-0002727",
+      "productId": 2727,
+      "sourceName": "КВВГ  4х 1.5 нг",
+      "productName": "КВВГнг 4х1.5",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kvvgng",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "control-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kvvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kvvg"
+        }
+      ],
+      "productHash": "fe4da077787b2554f7631f4f0f9c047d5f4d9a07e8951edfe9afb39869cf3589"
+    },
+    {
+      "sku": "YU-0002742",
+      "productId": 2742,
+      "sourceName": "КВВГ  4х 2.5 нг",
+      "productName": "КВВГнг 4х2.5",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 2.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kvvgng",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "control-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kvvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kvvg"
+        }
+      ],
+      "productHash": "3ccefffe1bd0df2ec67c8b5d8ffbbc8b2487f75b0971057bd03549278b4825ce"
+    }
+  ],
+  "skuCount": 3,
+  "status": "queued",
+  "attempts": 0,
+  "bound": false,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.2491544532130778,
+    "has_transparency": true,
+    "transparent_ratio": 0.7460537972390879,
+    "non_opaque_ratio": 0.9990874068500412,
+    "foreground_ratio": 0.25266501349188897,
+    "bounds": {
+      "minX": 105,
+      "minY": 222,
+      "maxX": 1773,
+      "maxY": 681
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "54f106f084814c20ebf0d4c97c77aea20aa86a484b8294ae1e0c983e70c6f9bd",
+    "bytes": 825293
+  },
+  "recovered": true,
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "recoveredAt": "2026-10-16T13:11:03.468Z"
+}

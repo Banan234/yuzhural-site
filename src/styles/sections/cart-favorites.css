@@ -125,7 +125,7 @@
 }
 .cart-item__actions button {
   padding: 8px 12px;
-  border-radius: 10px;
+  border-radius: 4px;
   border: 1px solid #d1d5db;
   background: #fff;
   cursor: pointer;

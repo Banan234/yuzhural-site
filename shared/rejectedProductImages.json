@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "byVisualKey": {
+    "kvvgeng-a-ls__10c__solid__round__10core-control-black__p-5ecb7c5420d30ede": {
+      "reason": "Visual QA: exactly 9 insulated conductors visible; approved profile requires exactly 10. Bare drain is not an insulated core. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvgeng-a-ls__14c__solid__round__14core-control-black__p-c0f2377690a8c5f3": {
+      "reason": "Visual QA: exactly 13 insulated conductors visible; approved profile requires exactly 14. Bare drain is not an insulated core. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 13
+    },
+    "kvvgeng-a-ls__7c__solid__round__7core-control-black__p-42c369b1522c96fe": {
+      "reason": "Visual QA: exactly 6 insulated conductors visible; approved profile requires exactly 7. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvbbshvng-a-ls__7c__solid__round__7core-control-black__p-32a1af996b09e343": {
+      "reason": "Visual QA: exactly 6 insulated conductors visible; approved profile requires exactly 7. Confirmed visually using original PNG with region overlay. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvbshvng-a-ls__10c__solid__round__10core-control-black__p-a94daaed5ece9f21": {
+      "reason": "Visual QA: exactly 9 insulated conductors visible; approved profile requires exactly 10. Confirmed visually using original PNG with region overlay. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvg__10c__solid__round__10core-control-black__p-957db80e2137081d": {
+      "reason": "Visual QA: exactly 9 insulated conductors visible; approved profile requires exactly 10. Confirmed visually using original PNG with region overlay. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvge__10c__solid__round__10core-control-black__p-332fb62e2c7308ca": {
+      "reason": "Visual QA: exactly 9 insulated conductors visible; approved profile requires exactly 10. Confirmed visually using original PNG with region overlay. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvgeng-a-frls__10c__solid__round__10core-control-black__p-361596ff9cf5c1cc": {
+      "reason": "Visual QA: 8 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 8
+    },
+    "kvvgeng-a-frls__19c__solid__round__19core-control-black__p-ae14e16460e5ba87": {
+      "reason": "Visual QA: 17 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 17
+    },
+    "kvvgeng-a-hl__7c__solid__round__7core-control-black__p-09d348ce7fad83b7": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgeng-a-ls__19c__solid__round__19core-control-black__p-652aaa0f7fda96ec": {
+      "reason": "Visual QA: 15 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 15
+    },
+    "kvvgeng-a-ls-hl__7c__solid__round__7core-control-black__p-bab6a388ab156301": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgeng-ls__14c__solid__round__14core-control-black__p-9ea13443648b6bc4": {
+      "reason": "Visual QA: 13 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 13
+    },
+    "kvvgng__19c__solid__round__19core-control-black__p-b114fbace562b700": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvvgng-a__10c__solid__round__10core-control-black__p-e17be7bdc2f57165": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvgng-a-ls__19c__solid__round__19core-control-black__p-ef1deb4f3557cfed": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvvgng-ls__10c__solid__round__10core-control-black__p-e5a6c003cf5848b9": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvgng-ls__7c__solid__round__7core-control-black__p-7337f5ace08ecccd": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvbbshv__10c__solid__round__10core-control-black__p-7a5a594cb998da5e": {
+      "reason": "Visual QA: 8 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 8
+    },
+    "kvbbshv__19c__solid__round__19core-control-black__p-223b5de89cbacb9b": {
+      "reason": "Visual QA: 17 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 17
+    },
+    "kvbbshvng__14c__solid__round__14core-control-black__p-87f0c8e15f9e52c2": {
+      "reason": "Visual QA: 11 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 11
+    },
+    "kvbbshvng-a__14c__solid__round__14core-control-black__p-3341fdb6a3b34bab": {
+      "reason": "Visual QA: 11 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 11
+    },
+    "kvbbshvng-a-hl__14c__solid__round__14core-control-black__p-ddd893f3c2a31da1": {
+      "reason": "Visual QA: 12 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 12
+    },
+    "kvbbshvng-a-ls__10c__solid__round__10core-control-black__p-c565eddd36473ea3": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvbbshvng-a-ls__19c__solid__round__19core-control-black__p-ae78915a4561d5d8": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvkbshvng-a-ls__19c__solid__round__19core-control-black__p-fd190f47c9b39c6f": {
+      "reason": "Visual QA: 15 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 15
+    },
+    "kvvg__19c__solid__round__19core-control-black__p-d95f7d49f31a5f86": {
+      "reason": "Visual QA: 14 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 14
+    },
+    "kvvgeng__10c__solid__round__10core-control-black__p-ab231bdcf15f6a4b": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG with overlay. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvgeng-a__10c__solid__round__10core-control-black__p-b5962b5a063e87b8": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvgeng-a__19c__solid__round__19core-control-black__p-97d84b98bc58c23f": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvvgeng-a-ls__27c__solid__round__27core-control-black__p-4a130a92dd952e4d": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping/merged tips. Image held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgeng-a-ls-hl__10c__solid__round__10core-control-black__p-5b74420a81d371c8": {
+      "reason": "Visual QA: 8 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 8
+    },
+    "kvvgng__7c__solid__round__7core-control-black__p-dc6fdc789598ea89": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgng-a__14c__solid__round__14core-control-black__p-ae183675ca07bde2": {
+      "reason": "Visual QA: 13 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 13
+    },
+    "kvvgng-a-frls__10c__solid__round__10core-control-black__p-4d98c8900ecd8ea6": {
+      "reason": "Visual QA: 8 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 8
+    },
+    "kvvgng-a-frls__7c__solid__round__7core-control-black__p-915111e72a830cc1": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgng-a-hl__10c__solid__round__10core-control-black__p-80edbc7ba0773a8c": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvgng-a-hl__14c__solid__round__14core-control-black__p-1215bce10388601c": {
+      "reason": "Visual QA: 12 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 12
+    },
+    "kvbbshv__27c__solid__round__27core-control-black__p-046664360b191ea4": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping/merged tips. Image held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvbbshvng-a__10c__solid__round__10core-control-black__p-b41615f36dc50988": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG; mica highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvbbshvng-a__7c__solid__round__7core-control-black__p-af8f789ca8d007d3": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvbbshvng-a-hl__10c__solid__round__10core-control-black__p-298e24ba3b2e5c5a": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvbbshvng-a-hl__19c__solid__round__19core-control-black__p-a5f6984fc92bfe0b": {
+      "reason": "Visual QA: 27 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 27
+    },
+    "kvbbshvng-a-hl__7c__solid__round__7core-control-black__p-1e8ea4e80189f831": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvbbshvng-a-ls__27c__solid__round__27core-control-black__p-594f7405cf2d2af6": {
+      "reason": "Visual QA: exactly 27 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvbbshvng-a-ls-hl__19c__solid__round__19core-control-black__p-f76d865378723639": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvbbshvng-a-ls-hl__7c__solid__round__7core-control-black__p-307909ca15377428": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvkbshvng__7c__solid__round__7core-control-black__p-7d6af165ea11c7e9": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvkbshvng-a__14c__solid__round__14core-control-black__p-de6b4221c2d99f13": {
+      "reason": "Visual QA: 12 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 12
+    },
+    "kvkbshvng-a__7c__solid__round__7core-control-black__p-3af077ad1837d721": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvkbshvng-a-ls__10c__solid__round__10core-control-black__p-e2afd6baacf59b22": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvkbshvng-a-ls__14c__solid__round__14core-control-black__p-e37e9666134935a1": {
+      "reason": "Visual QA: 12 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 12
+    },
+    "kvkbshvng-a-ls__27c__solid__round__27core-control-black__p-d939ccbcf545299e": {
+      "reason": "Visual QA: exactly 27 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvkbshvng-a-ls__7c__solid__round__7core-control-black__p-603aba665a75173f": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvg__27c__solid__round__27core-control-black__p-8bbd8466c681e0fe": {
+      "reason": "Visual QA: exactly 27 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvg__37c__solid__round__37core-control-black__p-76c9a22c6c17a0b5": {
+      "reason": "Visual QA: exactly 37 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 37,
+      "observedCores": null
+    },
+    "kvvge__27c__solid__round__27core-control-black__p-0f69a88f5c45fd9d": {
+      "reason": "Visual QA: exactly 27 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgeng__19c__solid__round__19core-control-black__p-f1c7e13a6dfc7467": {
+      "reason": "Visual QA: 17 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 17
+    },
+    "kvvgeng-a__7c__solid__round__7core-control-black__p-8d40e536c9131687": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgeng-a-frls__27c__solid__round__27core-control-black__p-e2a5286764adbdb4": {
+      "reason": "Visual QA: exactly 27 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgeng-a-frls__37c__solid__round__37core-control-black__p-98b96f81b54b61a3": {
+      "reason": "Visual QA: exactly 37 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 37,
+      "observedCores": null
+    },
+    "kvvgeng-a-hl__14c__solid__round__14core-control-black__p-3218124fb8f0e233": {
+      "reason": "Visual QA: 13 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 13
+    },
+    "kvvgeng-a-ls__37c__solid__round__37core-control-black__p-0b75b18fcc7410fb": {
+      "reason": "Visual QA: exactly 37 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 37,
+      "observedCores": null
+    },
+    "kvvgeng-hl__7c__solid__round__7core-control-black__p-8a89bb43f583bc0c": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgeng-ls__10c__solid__round__10core-control-black__p-eb5bc70b3c8d8b40": {
+      "reason": "Visual QA: 8 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 8
+    },
+    "kvvgeng-ls__27c__solid__round__27core-control-black__p-b542a773934d3fb8": {
+      "reason": "Visual QA: exactly 27 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgeng-ls__37c__solid__round__37core-control-black__p-aa13ca4ca0e55bba": {
+      "reason": "Visual QA: exactly 37 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 37,
+      "observedCores": null
+    },
+    "kvvgng__27c__solid__round__27core-control-black__p-420aff031344eb34": {
+      "reason": "Visual QA: exactly 27 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgng-a-frls__14c__solid__round__14core-control-black__p-95e93253bdca874b": {
+      "reason": "Visual QA: 13 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 13
+    },
+    "kvvgng-a-frls__19c__solid__round__19core-control-black__p-74ab0155838a6570": {
+      "reason": "Visual QA: 15 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 15
+    },
+    "kvvgng-a-frls__27c__solid__round__27core-control-black__p-16aa4f0004404247": {
+      "reason": "Visual QA: exactly 27 insulated tips cannot be verified; crowded overlapping tips or extra visible ends. Held for review, no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgng-a-hl__19c__solid__round__19core-control-black__p-44c93b722af57c67": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on source PNG with overlay; bare drain excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvvgng-a-hl__7c__solid__round__7core-control-black__p-1a316bf245f6dd30": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgng-a-ls__27c__solid__round__27core-control-black__p-ed9b895c44de011e": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgng-a-ls-hl__7c__solid__round__7core-control-black__p-cee4eb5e7e408abe": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgng-ls__14c__solid__round__14core-control-black__p-fa7abf4f63b92788": {
+      "reason": "Visual QA: 12 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 12
+    },
+    "kvvgng-ls__19c__solid__round__19core-control-black__p-c0a99d9e98a7ee1b": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvvgng-ls__27c__solid__round__27core-control-black__p-e12f2ea9ff700fd3": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvbbshvng__10c__solid__round__10core-control-black__p-eeba4744ace3ea2f": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvbbshvng__19c__solid__round__19core-control-black__p-0660a797327c876d": {
+      "reason": "Visual QA: all 19 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": null
+    },
+    "kvbbshvng-a__19c__solid__round__19core-control-black__p-e5d216fde2f663f9": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvbbshvng-a__37c__solid__round__37core-control-black__p-10e4ef4faab0b874": {
+      "reason": "Visual QA: all 37 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 37,
+      "observedCores": null
+    },
+    "kvbbshvng-a-frls-hl__10c__solid__round__10core-control-black__p-4b4223342728509f": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvbbshvng-a-frls-hl__27c__solid__round__27core-control-black__p-1a15d597b818da84": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvbbshvng-a-hl__27c__solid__round__27core-control-black__p-d6f697c9a69e154a": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvbbshvng-a-ls-hl__10c__solid__round__10core-control-black__p-36e7eabb946812c9": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvbbshvng-a-ls-hl__14c__solid__round__14core-control-black__p-c29e8a216cac2e44": {
+      "reason": "Visual QA: 12 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 12
+    },
+    "kvbbshvng-hl__14c__solid__round__14core-control-black__p-d8c8f8faae71a7c2": {
+      "reason": "Visual QA: 13 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 13
+    },
+    "kvbbshvng-ls__14c__solid__round__14core-control-black__p-7ed208f39339a3d0": {
+      "reason": "Visual QA: all 14 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": null
+    },
+    "kvbbshvng-ls__27c__solid__round__27core-control-black__p-d9c194ccc8433818": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvbshv__10c__solid__round__10core-control-black__p-fda607d3ea7ccda1": {
+      "reason": "Visual QA: 8 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 8
+    },
+    "kvbshv__14c__solid__round__14core-control-black__p-3f4fded953eb66ea": {
+      "reason": "Visual QA: 13 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 13
+    },
+    "kvbshvng__7c__solid__round__7core-control-black__p-878c62ff26434dcf": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvbshvng-a-hl__19c__solid__round__19core-control-black__p-0ea35c343871c44f": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvbshvng-a-ls__19c__solid__round__19core-control-black__p-6f583d369a831e36": {
+      "reason": "Visual QA: all 19 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": null
+    },
+    "kvkbshv__10c__solid__round__10core-control-black__p-4657a6d0dd6710cb": {
+      "reason": "Visual QA: 8 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 8
+    },
+    "kvkbshv__7c__solid__round__7core-control-black__p-95f4fe30800ba897": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvkbshvng__10c__solid__round__10core-control-black__p-b02d30bbceee13e8": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvkbshvng__19c__solid__round__19core-control-black__p-8012d284af0db746": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvkbshvng-a-frls__19c__solid__round__19core-control-black__p-042881ced37aa409": {
+      "reason": "Visual QA: all 19 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": null
+    },
+    "kvkbshvng-a-hl__7c__solid__round__7core-control-black__p-5c728286e8dc0205": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvkbshvng-a-ls-hl__7c__solid__round__7core-control-black__p-28ad07be3234f1b9": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvkbshvng-hl__7c__solid__round__7core-control-black__p-a899e3d74e25c33f": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgeng__8c__solid__round__8core-control-black__p-4c009cc58d646d8e": {
+      "reason": "Visual QA: 7 insulated conductor tips visible; approved profile requires exactly 8. Confirmed visually on original PNG; bare drain and highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 8,
+      "observedCores": 7
+    },
+    "kvvgeng-a__14c__solid__round__14core-control-black__p-e92e7deb8e365daa": {
+      "reason": "Visual QA: 13 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on original PNG; bare drain and highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 13
+    },
+    "kvvgeng-a-hl__19c__solid__round__19core-control-black__p-6c2bf4a1057da7a7": {
+      "reason": "Visual QA: all 19 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": null
+    },
+    "kvvgeng-a-hl__27c__solid__round__27core-control-black__p-8be387314fbc5656": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgeng-a-ls__52c__solid__round__52core-control-black__p-9e1103d051b6c7c0": {
+      "reason": "Visual QA: all 52 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 52,
+      "observedCores": null
+    },
+    "kvvgeng-a-ls-hl__19c__solid__round__19core-control-black__p-2fa3ff0dee3ecf22": {
+      "reason": "Visual QA: 16 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on original PNG; bare drain and highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 16
+    },
+    "kvvgeng-a-ls-hl__27c__solid__round__27core-control-black__p-732d5ace0a0114ff": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgeng-frls__37c__solid__round__37core-control-black__p-18bac8e5a49981a8": {
+      "reason": "Visual QA: all 37 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 37,
+      "observedCores": null
+    },
+    "kvvgeng-hl__27c__solid__round__27core-control-black__p-d41f5b063bb5d6f9": {
+      "reason": "Visual QA: 19 insulated conductor tips visible; approved profile requires exactly 27. Confirmed visually on original PNG; bare drain and highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": 19
+    },
+    "kvvgeng-ls__19c__solid__round__19core-control-black__p-e93c31034adde2c3": {
+      "reason": "Visual QA: all 19 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": null
+    },
+    "kvvgng__10c__solid__round__10core-control-black__p-8011ed74898267d3": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on original PNG; bare drain and highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvgng__14c__solid__round__14core-control-black__p-75eee7a28e52d358": {
+      "reason": "Visual QA: 12 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on original PNG; bare drain and highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 12
+    },
+    "kvvgng__37c__solid__round__37core-control-black__p-a0f892c8431abe45": {
+      "reason": "Visual QA: all 37 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 37,
+      "observedCores": null
+    },
+    "kvvgng-a__19c__solid__round__19core-control-black__p-0299a1319f4a092b": {
+      "reason": "Visual QA: 17 insulated conductor tips visible; approved profile requires exactly 19. Confirmed visually on original PNG; bare drain and highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 19,
+      "observedCores": 17
+    },
+    "kvvgng-a__27c__solid__round__27core-control-black__p-2a84a7fb2bf1cbea": {
+      "reason": "Visual QA: 19 insulated conductor tips visible; approved profile requires exactly 27. Confirmed visually on original PNG; bare drain and highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": 19
+    },
+    "kvvgng-a-hl__27c__solid__round__27core-control-black__p-a6ad6a11448dee6a": {
+      "reason": "Visual QA: 18 insulated conductor tips visible; approved profile requires exactly 27. Confirmed visually on original PNG; bare drain and highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": 18
+    },
+    "kvvgng-a-ls__37c__solid__round__37core-control-black__p-2349c0599e8f6474": {
+      "reason": "Visual QA: all 37 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 37,
+      "observedCores": null
+    },
+    "kvvgng-a-ls-ltx__7c__solid__round__7core-control-black__p-e15fb5ecb907de9f": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "kvvgng-frls__27c__solid__round__27core-control-black__p-60231b7fd174e864": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgng-hl__10c__solid__round__10core-control-black__p-97fe52dcdc4d3b9e": {
+      "reason": "Visual QA: 9 insulated conductor tips visible; approved profile requires exactly 10. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 10,
+      "observedCores": 9
+    },
+    "kvvgng-hl__14c__solid__round__14core-control-black__p-64181082db9eb7d8": {
+      "reason": "Visual QA: 13 insulated conductor tips visible; approved profile requires exactly 14. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 14,
+      "observedCores": 13
+    },
+    "kvvgng-hl__27c__solid__round__27core-control-black__p-01cb08f8e2b69f79": {
+      "reason": "Visual QA: all 27 insulated core tips cannot be independently verified due overlapping, merged or extra ends. Held for review; no regeneration requested.",
+      "expectedCores": 27,
+      "observedCores": null
+    },
+    "kvvgng-hl__7c__solid__round__7core-control-black__p-eada10cd45d85bc0": {
+      "reason": "Visual QA: 6 insulated conductor tips visible; approved profile requires exactly 7. Confirmed visually on original PNG; highlight fragments excluded. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "nym__12c__solid__round__12core-power-palette-6447e623__p-a8205303b736f7a9": {
+      "reason": "Visual QA: 11 insulated conductor tips visible, including one yellow-green core; profile requires exactly 12. Confirmed visually on original PNG. No regeneration requested.",
+      "expectedCores": 12,
+      "observedCores": 11
+    },
+    "nym__7c__solid__round__7core-power-palette-bdb1c430__p-6abf13254dd64d52": {
+      "reason": "Visual QA: 6 insulated conductor tips visible, including one yellow-green core; profile requires exactly 7. Confirmed visually on original PNG. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    },
+    "nyy__12c__solid__round__12core-power-palette-6447e623__p-d5537736ced05852": {
+      "reason": "Visual QA: 11 insulated conductor tips visible, including one yellow-green core; profile requires exactly 12. Confirmed visually on original PNG. No regeneration requested.",
+      "expectedCores": 12,
+      "observedCores": 11
+    },
+    "nyy__7c__solid__round__7core-power-palette-bdb1c430__p-589bfa136d37ba35": {
+      "reason": "Visual QA: 6 insulated conductor tips visible, including one yellow-green core; profile requires exactly 7. Confirmed visually on original PNG. No regeneration requested.",
+      "expectedCores": 7,
+      "observedCores": 6
+    }
+  }
+}

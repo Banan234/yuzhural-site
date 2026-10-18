@@ -223,6 +223,13 @@ export function normalizeCableFamily(product, { knowledge, rules }) {
   )
     base += '-П';
   base = aliases[base] || base;
+  if (
+    ['КВВГ', 'ППГ'].includes(base) &&
+    [...(parsed.attributes || []), ...(product.attributes || [])].some((a) =>
+      /^Э$/iu.test(a)
+    )
+  )
+    base += 'Э';
   const rawBase =
     base ||
     aliases[compact(parsed.mark || product.markFamily || product.mark)] ||

@@ -7,6 +7,21 @@ import {
   getWireCatalogPlacement,
   WIRE_CATEGORY_SLUG,
 } from './wireClassification.js';
+import {
+  CONTROL_CABLE_CATEGORY_SLUG,
+  CONTROL_CABLE_SOURCE_CATEGORIES,
+  CONTROL_CATEGORY_ALIASES,
+  getControlCablePlacement,
+} from './controlCableClassification.js';
+import {
+  HEATING_CABLE_CATEGORY_SLUG,
+  getHeatingCablePlacement,
+} from './heatingCableClassification.js';
+import {
+  DATA_CABLE_CATEGORY_SLUG,
+  DATA_CABLE_SOURCE_CATEGORIES,
+  getDataCablePlacement,
+} from './dataCableClassification.js';
 
 const categoryBySlug = new Map(
   catalogCategories.sections.flatMap((section) =>
@@ -39,6 +54,81 @@ function normalizeCatalogCategory(product = {}) {
   const categorySlug = product.catalogCategorySlug || '';
   const subcategory = product.catalogSubcategory || '';
   const subcategorySlug = product.catalogSubcategorySlug || '';
+
+  const dataPlacement = getDataCablePlacement(product);
+  if (dataPlacement || DATA_CABLE_SOURCE_CATEGORIES.has(categorySlug)) {
+    if (
+      dataPlacement &&
+      dataPlacement.categorySlug !== DATA_CABLE_CATEGORY_SLUG
+    ) {
+      const destination = categoryBySlug.get(dataPlacement.categorySlug);
+      return normalizeCatalogCategory({
+        ...product,
+        catalogCategory: destination.name,
+        catalogCategorySlug: destination.slug,
+        catalogSubcategory: '',
+        catalogSubcategorySlug: dataPlacement.subcategorySlug,
+      });
+    }
+    const dataCategory = categoryBySlug.get(DATA_CABLE_CATEGORY_SLUG);
+    const resolved = dataCategory.subcategories.find(
+      (entry) => entry.slug === dataPlacement?.subcategorySlug
+    );
+    return {
+      catalogCategory: dataCategory.name,
+      catalogCategorySlug: dataCategory.slug,
+      catalogSubcategory: resolved?.name || '',
+      catalogSubcategorySlug: resolved?.slug || '',
+    };
+  }
+
+  if (categorySlug === HEATING_CABLE_CATEGORY_SLUG) {
+    const placement = getHeatingCablePlacement(product);
+    if (placement && placement.categorySlug !== HEATING_CABLE_CATEGORY_SLUG) {
+      const destination = categoryBySlug.get(placement.categorySlug);
+      return normalizeCatalogCategory({
+        ...product,
+        catalogCategory: destination.name,
+        catalogCategorySlug: destination.slug,
+        catalogSubcategory: '',
+        catalogSubcategorySlug: placement.subcategorySlug,
+      });
+    }
+    const heatingCategory = categoryBySlug.get(HEATING_CABLE_CATEGORY_SLUG);
+    const resolved = heatingCategory.subcategories.find(
+      (entry) => entry.slug === placement?.subcategorySlug
+    );
+    return {
+      catalogCategory: heatingCategory.name,
+      catalogCategorySlug: heatingCategory.slug,
+      catalogSubcategory: resolved?.name || '',
+      catalogSubcategorySlug: resolved?.slug || '',
+    };
+  }
+
+  if (CONTROL_CABLE_SOURCE_CATEGORIES.has(categorySlug)) {
+    const placement = getControlCablePlacement(product);
+    if (placement && placement.categorySlug !== CONTROL_CABLE_CATEGORY_SLUG) {
+      const destination = categoryBySlug.get(placement.categorySlug);
+      return normalizeCatalogCategory({
+        ...product,
+        catalogCategory: destination.name,
+        catalogCategorySlug: destination.slug,
+        catalogSubcategory: '',
+        catalogSubcategorySlug: placement.subcategorySlug,
+      });
+    }
+    const controlCategory = categoryBySlug.get(CONTROL_CABLE_CATEGORY_SLUG);
+    const resolved = controlCategory.subcategories.find(
+      (entry) => entry.slug === placement?.subcategorySlug
+    );
+    return {
+      catalogCategory: controlCategory.name,
+      catalogCategorySlug: controlCategory.slug,
+      catalogSubcategory: resolved?.name || '',
+      catalogSubcategorySlug: resolved?.slug || '',
+    };
+  }
 
   if (categorySlug === WIRE_CATEGORY_SLUG) {
     const placement = getWireCatalogPlacement(product);
@@ -124,6 +214,10 @@ export function getCatalogCategorySlugs(product = {}) {
       normalized.catalogCategorySlug,
       normalized.catalogSubcategorySlug,
       normalized.catalogSectionSlug || product.catalogSectionSlug,
+      // Старый API-фильтр остаётся совместимым после объединения рубрик.
+      ...Object.entries(CONTROL_CATEGORY_ALIASES)
+        .filter(([, target]) => target === normalized.catalogSubcategorySlug)
+        .map(([alias]) => alias),
     ].filter(Boolean)
   );
 }

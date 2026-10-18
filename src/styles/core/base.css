@@ -95,8 +95,8 @@ select {
 .button-secondary {
   min-height: 42px;
   padding: 0 16px;
-  border-radius: 8px;
-  font-weight: 700;
+  border-radius: 4px;
+  font-weight: 600;
   font-size: 15px;
   cursor: pointer;
   text-decoration: none;
@@ -109,19 +109,12 @@ select {
   border: 0;
   background: var(--primary);
   color: #fff;
-  box-shadow: 0 4px 12px rgba(40, 123, 224, 0.16);
-  transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.15s ease;
+  box-shadow: none;
+  transition: background 0.2s ease;
 }
 .button-primary:hover:not(:disabled) {
   background: var(--primary-dark);
-  box-shadow: 0 6px 16px rgba(40, 123, 224, 0.2);
-  transform: translateY(-1px);
-}
-.button-primary:active:not(:disabled) {
-  transform: translateY(0);
+  box-shadow: none;
 }
 .button-primary:disabled {
   opacity: 0.7;
@@ -134,13 +127,12 @@ select {
   transition:
     background 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color 0.2s ease;
 }
 .button-secondary:hover:not(:disabled) {
   background: #f8f9fb;
   border-color: #b9c0ca;
-  box-shadow: 0 3px 10px rgba(21, 35, 54, 0.06);
+  box-shadow: none;
 }
 .button-secondary--added {
   border-color: #86efac;

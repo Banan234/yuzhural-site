@@ -10,7 +10,7 @@ const categoryCards = [
     examples: 'ВВГ · АВВГ · ВБбШв',
   },
   {
-    title: 'Контрольный кабель',
+    title: 'Кабель управления и контроля',
     to: '/catalog/kontrolnyy-kabel',
     examples: 'КВВГ · АКВВГ · КВБбШв',
   },
@@ -22,11 +22,11 @@ const categoryCards = [
   {
     title: 'Провода',
     to: '/catalog/provoda',
-    examples: 'СИП · ПВС · ПуГВ',
+    examples: 'ПВС · ПуГВ',
   },
   {
-    title: 'Кабели связи',
-    to: '/catalog/kabeli-svyazi',
+    title: 'Кабели передачи данных',
+    to: '/catalog/kabeli-peredachi-dannykh',
     examples: 'UTP · FTP · КВК',
   },
   {
@@ -61,7 +61,10 @@ export default function CategoryShowcase() {
                     {item.examples}
                   </p>
                 </div>
-                <div className="home-category-showcase__media" aria-hidden="true" />
+                <div
+                  className="home-category-showcase__media"
+                  aria-hidden="true"
+                />
               </Link>
             </li>
           ))}

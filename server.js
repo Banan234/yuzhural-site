@@ -19,6 +19,10 @@ import { monitorEventLoopDelay } from 'perf_hooks';
 import { pathToFileURL } from 'url';
 import { createCatalogStore } from './lib/catalog.js';
 import { buildMarkIndex } from './shared/markIndex.js';
+import {
+  DEFAULT_FEATURED_PRODUCTS_LIMIT,
+  getFeaturedProducts,
+} from './shared/featuredProducts.js';
 import { createFileChatStore } from './lib/chatStore.js';
 import { createVkChatBridge } from './lib/vkChat.js';
 import {
@@ -46,7 +50,6 @@ dotenv.config();
 const PORT = process.env.PORT || 3001;
 const CATALOG_CACHE_TTL_SECONDS = 60;
 const CATALOG_CACHE_TTL_MS = CATALOG_CACHE_TTL_SECONDS * 1000;
-const DEFAULT_FEATURED_PRODUCTS_LIMIT = 10;
 const MAX_FEATURED_PRODUCTS_LIMIT = 50;
 const HSTS_MAX_AGE_SECONDS = 365 * 24 * 60 * 60;
 // Anti-bot time trap: 2s is low enough for browser autofill/manual submit,
@@ -297,15 +300,6 @@ async function flushPendingManagerNotifications({
   return deliveredCount;
 }
 
-function getFeaturedProducts(items, limit) {
-  return [...items]
-    .sort((a, b) => {
-      const promotedDiff = (b.promoted ? 1 : 0) - (a.promoted ? 1 : 0);
-      if (promotedDiff !== 0) return promotedDiff;
-      return (b.stock || 0) - (a.stock || 0);
-    })
-    .slice(0, limit);
-}
 
 async function warmCatalogCaches({
   catalogStore,

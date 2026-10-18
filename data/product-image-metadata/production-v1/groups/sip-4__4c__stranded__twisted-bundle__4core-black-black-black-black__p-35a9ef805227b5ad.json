@@ -1,0 +1,590 @@
+{
+  "visualKey": "sip-4__4c__stranded__twisted-bundle__4core-black-black-black-black__p-35a9ef805227b5ad",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_sip-4__4c__stranded__twisted-bundle__4core-black-black-black-black__p-35a9ef805227b5ad.png",
+  "visualProfile": {
+    "family": "sip-4",
+    "productType": "sip",
+    "cores": 4,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "twisted-bundle",
+    "hasOuterJacket": false,
+    "outerJacket": "none",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [
+      "twisted-insulated-cores"
+    ],
+    "coreColors": [
+      "black",
+      "black",
+      "black",
+      "black"
+    ],
+    "coreColorScheme": "4core-black-black-black-black",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: sip-4. Product type: sip. Geometry: twisted-bundle.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nSelf-supporting bundle of exactly 4 individually insulated wires twisted together on the RIGHT. NO common outer sheath or jacket. The twisted wires separate gently toward the LEFT. Do not turn this into a jacketed multicore cable.\n\nExactly 4 insulated conductors and exactly 4 exposed silvery aluminium tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 4 insulated conductors: 1: black; 2: black; 3: black; 4: black. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nStranded silvery aluminium: each insulated core contains ONE compact neat bundle of fine silvery aluminium strands. Show the bundle at each left tip, with a tidy circular cross-section. No solid rods and no loose brush of long strands.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 4 insulated cores, stranded silvery aluminium, twisted-bundle, common jacket absent, armor absent, screen absent.",
+  "promptHash": "a2990f0018e4d9740850dbc7e6f2a5940a8f8a16bbab47c3cad78a799509d363",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0004818",
+      "productId": 4818,
+      "sourceName": "СИП-4 4х 16",
+      "productName": "СИП-4 4х16",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 16,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "1f30e0e3579bfee6bc612101bd8dc91458b4b86394755b75966fe6dffdd84e81"
+    },
+    {
+      "sku": "YU-0004819",
+      "productId": 4819,
+      "sourceName": "СИП-4 4х 25",
+      "productName": "СИП-4 4х25",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 25,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "3e622144ddb43c7291ae40743bdcfa16fe3a692041e082215398a9763d9d8340"
+    },
+    {
+      "sku": "YU-0004820",
+      "productId": 4820,
+      "sourceName": "СИП-4 4х 35",
+      "productName": "СИП-4 4х35",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 35,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "1f14864b8038cca7002efa916bd6406dc63f1b3220983e73f748815fc35199dc"
+    },
+    {
+      "sku": "YU-0004821",
+      "productId": 4821,
+      "sourceName": "СИП-4 4х 50",
+      "productName": "СИП-4 4х50",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 50,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "aa616d4e3a9fe05975830383bc4caa33813bb135987777d5c294b194fec2bb1c"
+    },
+    {
+      "sku": "YU-0004823",
+      "productId": 4823,
+      "sourceName": "СИП-4 4х 70",
+      "productName": "СИП-4 4х70",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 70,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "29d53ec7483a0fc9047e794ed410c03062d6a76ef98c9268b3929f52f8da4b78"
+    },
+    {
+      "sku": "YU-0004824",
+      "productId": 4824,
+      "sourceName": "СИП-4 4х 95",
+      "productName": "СИП-4 4х95",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 95,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "5a421dcf5d096a9ddaaf24971743157a77f282108952f5ad7f46afc891da68dc"
+    },
+    {
+      "sku": "YU-0004825",
+      "productId": 4825,
+      "sourceName": "СИП-4 4х120",
+      "productName": "СИП-4 4х120",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 120,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "a78221847feabd99683b5ccd65feffcbf1ed748e9a22552f8b581b4c6e7a805d"
+    },
+    {
+      "sku": "YU-0004827",
+      "productId": 4827,
+      "sourceName": "СИП-4 4х240",
+      "productName": "СИП-4 4х240",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 240,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "sip-4",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "sip",
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "XLPE",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [
+          "twisted-insulated-cores"
+        ],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "coreColors",
+          "value": [
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "sip-4"
+        }
+      ],
+      "productHash": "1e7997c3b02e978ff29c8c79fe6a98cffca3e36e58e16812f02535a44ae61063"
+    }
+  ],
+  "skuCount": 8,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T12:44:53.989Z",
+  "validation": {
+    "width": 1536,
+    "height": 1024,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": false,
+    "right_edge_foreground_ratio": 0,
+    "has_transparency": true,
+    "transparent_ratio": 0.8688577016194662,
+    "non_opaque_ratio": 1,
+    "foreground_ratio": 0.129974365234375,
+    "bounds": {
+      "minX": 245,
+      "minY": 320,
+      "maxX": 1459,
+      "maxY": 719
+    },
+    "warnings": [],
+    "sha256": "9ac30c53240f1a40079d7a1d7b2035c267dab94ee5a4abee8a31b0a2a8ae1447",
+    "bytes": 1157887
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "9a86c717-1784-4aca-9a3a-0959718746aa",
+  "generatedAt": "2026-10-16T12:45:21.074Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 483,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 483
+    },
+    "output_tokens": 601,
+    "output_tokens_details": {
+      "image_tokens": 601,
+      "text_tokens": 0
+    },
+    "total_tokens": 1084
+  },
+  "revisedPrompt": null
+}

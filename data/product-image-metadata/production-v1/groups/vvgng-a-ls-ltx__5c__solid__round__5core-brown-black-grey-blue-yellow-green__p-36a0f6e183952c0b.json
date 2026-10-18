@@ -1,0 +1,708 @@
+{
+  "visualKey": "vvgng-a-ls-ltx__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-36a0f6e183952c0b",
+  "action": "REUSE",
+  "image": "/product-images/generated/vvgnga-ls-ltx__5core.png",
+  "visualProfile": {
+    "family": "vvgng-a-ls-ltx",
+    "productType": "power-cable",
+    "cores": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "black",
+      "grey",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: vvgng-a-ls-ltx. Product type: power-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is black. It surrounds all 5 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 5 insulated conductors and exactly 5 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 5 insulated conductors: 1: brown; 2: black; 3: grey; 4: blue; 5: yellow-and-green striped insulation on ONE wire. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nSolid-core copper: ONE continuous smooth solid circular metal rod inside each insulated core. Each left tip has a single solid cross-section. No bundles of thin strands or brushes.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 5 insulated cores, solid copper, round, common jacket present, armor absent, screen absent.",
+  "promptHash": "965d51e87f7c5232b0aa91149b498272c63b14adabaa4c5f1231d8756d0f257c",
+  "expectedSha256": "83f18637a8cbe7eb8147c201a4659f3d972682aa4bda84160b299ad0e806ea5e",
+  "members": [
+    {
+      "sku": "YU-0007386",
+      "productId": 7386,
+      "sourceName": "ВВГ 5х1.5 нг(А)LS LTx",
+      "productName": "ВВГнг(А)-LS-LTx 5х1.5",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-ls-ltx",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "НГ(А)-LS-LTX"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "7b390276be87324d7d5cfdda85d57ac19c2bb764560a0abea2cc5421c6570adf"
+    },
+    {
+      "sku": "YU-0007390",
+      "productId": 7390,
+      "sourceName": "ВВГ 5х2.5 нг(А)LS LTx",
+      "productName": "ВВГнг(А)-LS-LTx 5х2.5",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 2.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-ls-ltx",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "НГ(А)-LS-LTX"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "ab04123189fe45a81b5d2292b2c01363fb20d56c29e59a0d1b3d7d4abb1c05e0"
+    },
+    {
+      "sku": "YU-0007394",
+      "productId": 7394,
+      "sourceName": "ВВГ 5х4 нг(А)LS LTx",
+      "productName": "ВВГнг(А)-LS-LTx 5х4",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 4,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-ls-ltx",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "НГ(А)-LS-LTX"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "29f74498dddb77a614c9aec19769fe09ab272af27a5f16ed929dd33563404c16"
+    },
+    {
+      "sku": "YU-0007398",
+      "productId": 7398,
+      "sourceName": "ВВГ 5х6 нг(А)LS LTx",
+      "productName": "ВВГнг(А)-LS-LTx 5х6",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 6,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-ls-ltx",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "НГ(А)-LS-LTX"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "76519a288edd440f0ceeb7fad7fa555332e6abfe865d1b40315cff5afd659c89"
+    },
+    {
+      "sku": "YU-0007400",
+      "productId": 7400,
+      "sourceName": "ВВГ 5х 10 нг(А)LS LTx",
+      "productName": "ВВГнг(А)-LS-LTx 5х10",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 10,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-ls-ltx",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "НГ(А)-LS-LTX"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "5924a37374f71a3a79e38221911339a569d7285e4e91884169a7d0880b457024"
+    },
+    {
+      "sku": "YU-0007402",
+      "productId": 7402,
+      "sourceName": "ВВГ 5х 16 нг(А)LS LTx",
+      "productName": "ВВГнг(А)-LS-LTx 5х16",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 16,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-ls-ltx",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "НГ(А)-LS-LTX"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "9608e5cee1984dcd423e993c8c68f5efe111bfe9f5cc74c599c20b6ca7dbc605"
+    },
+    {
+      "sku": "YU-0007404",
+      "productId": 7404,
+      "sourceName": "ВВГ 5х 25 нг(А)LS LTX",
+      "productName": "ВВГнг(А)-LS-LTx 5х25",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 25,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-ls-ltx",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "НГ(А)-LS-LTX"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "acc0991a58deeadbf4ad8c1e28c8f4e255116b108ae5ff70151cbffaa103378d"
+    },
+    {
+      "sku": "YU-0007248",
+      "productId": 7248,
+      "sourceName": "ВВГ 5х 70 нг(А)LS-Ltx",
+      "productName": "ВВГнг(А)-LS-LTx 5х70",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 70,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vvgng-a-ls-ltx",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "НГ(А)-LS-LTX"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vvg"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vvg"
+        }
+      ],
+      "productHash": "7421366fab97f0b29b5a02146d8faf3ede3b45e45acb168aece7bde3956c7e65"
+    }
+  ],
+  "skuCount": 8,
+  "status": "queued",
+  "attempts": 0,
+  "bound": false,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.2717023675310034,
+    "has_transparency": true,
+    "transparent_ratio": 0.6995662004984945,
+    "non_opaque_ratio": 0.9986832221401708,
+    "foreground_ratio": 0.29915832982743346,
+    "bounds": {
+      "minX": 109,
+      "minY": 156,
+      "maxX": 1773,
+      "maxY": 763
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "83f18637a8cbe7eb8147c201a4659f3d972682aa4bda84160b299ad0e806ea5e",
+    "bytes": 925639
+  },
+  "recovered": true,
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "recoveredAt": "2026-10-16T12:45:21.228Z"
+}

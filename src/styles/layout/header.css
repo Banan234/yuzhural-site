@@ -84,17 +84,15 @@
   min-height: 28px;
   padding: 0 12px;
   border: 1px solid #9bc4f2;
-  border-radius: 10px;
+  border-radius: 4px;
   background: #fff;
   color: #1769ce;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 600;
   box-shadow: none;
   transition:
     background-color 0.15s ease,
-    border-color 0.15s ease,
-    box-shadow 0.15s ease,
-    transform 0.15s ease;
+    border-color 0.15s ease;
 }
 .topbar-download svg {
   flex-shrink: 0;
@@ -103,8 +101,6 @@
 .topbar-download:hover {
   border-color: #287be0;
   background: #f4f8fe;
-  box-shadow: 0 3px 10px rgba(40, 123, 224, 0.1);
-  transform: translateY(-1px);
 }
 
 /* Main row */
@@ -203,7 +199,7 @@
   min-height: 44px;
   padding: 0 16px;
   font-size: 14px;
-  border-radius: 8px;
+  border-radius: 4px;
   white-space: nowrap;
   border: 1px solid #287be0 !important;
   background: #fff !important;
@@ -213,18 +209,17 @@
 .header-cta-btn:hover:not(:disabled) {
   background: #287be0 !important;
   color: #fff !important;
-  box-shadow: 0 5px 14px rgba(40, 123, 224, 0.18) !important;
-  transform: translateY(-1px);
+  box-shadow: none !important;
 }
 .header-quote-btn {
   min-height: 46px;
   padding: 0 20px;
   border: 0;
-  border-radius: 7px;
+  border-radius: 4px;
   background: #f46b08;
   color: #fff;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
   white-space: nowrap;
   cursor: pointer;
 }
@@ -237,7 +232,7 @@
   height: 40px;
   padding: 0;
   border: 0;
-  border-radius: 6px;
+  border-radius: 4px;
   background: transparent;
   color: #20232a;
   cursor: pointer;
@@ -403,7 +398,7 @@
   height: 32px;
   padding: 0;
   border: 0;
-  border-radius: 6px;
+  border-radius: 4px;
   transform: translateY(-50%);
   background: transparent;
   color: #353a42;
@@ -708,11 +703,11 @@
 .mobile-nav__cta {
   min-height: 52px;
   border: 0;
-  border-radius: 14px;
+  border-radius: 4px;
   background: #287be0;
   color: #fff;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 700;
   cursor: pointer;
 }
 .mobile-nav__cta--secondary {
@@ -739,27 +734,24 @@
   min-height: 46px;
   padding: 0 22px;
   border: 1px solid #287be0;
-  border-radius: 8px;
+  border-radius: 4px;
   background: #287be0;
   color: #fff;
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 16px;
   box-shadow: none;
   transition:
-    transform 0.15s ease,
     background 0.2s ease,
     border-color 0.2s ease,
-    box-shadow 0.2s ease,
     color 0.2s ease;
   cursor: pointer;
 }
 .catalog-button:hover {
   background: #1769ce;
   border-color: #1769ce;
-  transform: translateY(-1px);
 }
 .catalog-button--active {
   background: #1769ce;
@@ -1046,7 +1038,7 @@
 }
 .mobile-nav__cta {
   min-height: 54px;
-  border-radius: 8px;
+  border-radius: 4px;
   background: #f46b08;
 }
 .mobile-nav__cta:hover {

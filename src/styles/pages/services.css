@@ -45,7 +45,7 @@
   padding: 10px 14px;
   background: #fff;
   border: 1px solid #dce3ec;
-  border-radius: 8px;
+  border-radius: 4px;
   color: #475569;
   text-decoration: none;
 }
@@ -315,7 +315,7 @@
 .service-chips a {
   padding: 7px 11px;
   border: 1px solid #d9e3ef;
-  border-radius: 7px;
+  border-radius: 4px;
   background: white;
   color: #285d91;
   font: inherit;
@@ -371,7 +371,7 @@
 .service-mode-switch button {
   padding: 11px 16px;
   border: 1px solid #cddce9;
-  border-radius: 8px;
+  border-radius: 4px;
   background: #fff;
   color: #335c80;
   font: inherit;
@@ -441,7 +441,7 @@
   background: #eff5fc;
   border: 1px solid #d5e3f2;
   color: #235d98;
-  border-radius: 8px;
+  border-radius: 4px;
   text-decoration: none;
 }
 @media (max-width: 1000px) {

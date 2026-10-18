@@ -206,14 +206,16 @@ export default function StockProductsGrid({ products, isLoading, loadError }) {
               </svg>
             </button>
 
-            <div
-              ref={trackRef}
-              className="products-grid products-grid--stock-showcase"
-              style={animationStyles}
-            >
-              {renderedProducts.map(({ key, product }) => (
-                <ProductCard key={key} product={product} variant="stock" />
-              ))}
+            <div className="home-stock-showcase__viewport">
+              <div
+                ref={trackRef}
+                className="products-grid products-grid--stock-showcase"
+                style={animationStyles}
+              >
+                {renderedProducts.map(({ key, product }) => (
+                  <ProductCard key={key} product={product} variant="stock" />
+                ))}
+              </div>
             </div>
 
             <button

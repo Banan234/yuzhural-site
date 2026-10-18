@@ -85,6 +85,7 @@ if (
         applied: report.applied,
         knowledgeRevision: report.knowledgeRevision,
         ...report.counts,
+        officialCoverage: report.officialCoverage,
         backup: report.backup,
       },
       null,

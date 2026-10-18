@@ -1,0 +1,545 @@
+{
+  "visualKey": "h05v-k__1c__stranded__round__1core-yellow-green__p-31c804f9999a35f8",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_h05v-k__1c__stranded__round__1core-yellow-green__p-31c804f9999a35f8.png",
+  "visualProfile": {
+    "family": "h05v-k",
+    "productType": "installation-wire",
+    "cores": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": false,
+    "outerJacket": "none",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "yellow-green"
+    ],
+    "coreColorScheme": "1core-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: h05v-k. Product type: installation-wire. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nA single insulated installation wire: exactly ONE layer of colored insulation around its conductor. NO common outer jacket, NO additional black sheath, NO nested multicore cable. Insulated body on the RIGHT, one stripped metal tip on the LEFT.\n\nExactly 1 insulated conductors and exactly 1 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 1 insulated conductors: 1: yellow-and-green striped insulation on ONE wire. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nStranded copper: each insulated core contains ONE compact neat bundle of fine copper strands. Show the bundle at each left tip, with a tidy circular cross-section. No solid rods and no loose brush of long strands.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 1 insulated cores, stranded copper, round, common jacket absent, armor absent, screen absent.",
+  "promptHash": "0526ba1044cd47d561d1592c2c41fd3512035e02a52a58cd79330ecbf6a40fd2",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0006811",
+      "productId": 6811,
+      "sourceName": "H05V-K 1х 0.5 ж/з",
+      "productName": "H05V-K 1х0.5 ж/з",
+      "primaryCores": 1,
+      "cores": 1,
+      "section": 0.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "h05v-k",
+        "cores": 1,
+        "primaryCores": 1,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": "stranded",
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [
+          "yellow-green"
+        ],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "installation-wire",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "outerJacket",
+          "value": "none",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "filler",
+          "value": "none",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "h05v-k"
+        }
+      ],
+      "productHash": "e16fa95a303842b946e599547b89f11ef4f704b86741855a965577f140c208a8"
+    },
+    {
+      "sku": "YU-0002080",
+      "productId": 2080,
+      "sourceName": "H05V-K 1х 0.75 ж/з",
+      "productName": "H05V-K 1х0.75 ж/з",
+      "primaryCores": 1,
+      "cores": 1,
+      "section": 0.75,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "h05v-k",
+        "cores": 1,
+        "primaryCores": 1,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": "stranded",
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [
+          "yellow-green"
+        ],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "installation-wire",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "outerJacket",
+          "value": "none",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "filler",
+          "value": "none",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "h05v-k"
+        }
+      ],
+      "productHash": "ac13b2a91efb886b53b5e06698f5e9cc1b724023bf9ace923d74385b55178b46"
+    },
+    {
+      "sku": "YU-0002082",
+      "productId": 2082,
+      "sourceName": "H05V-K 1х 1 ж/з",
+      "productName": "H05V-K 1х1 ж/з",
+      "primaryCores": 1,
+      "cores": 1,
+      "section": 1,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "h05v-k",
+        "cores": 1,
+        "primaryCores": 1,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": "stranded",
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [
+          "yellow-green"
+        ],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "installation-wire",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "outerJacket",
+          "value": "none",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "filler",
+          "value": "none",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "h05v-k"
+        }
+      ],
+      "productHash": "23fc0161e782904f36b8a240f41c21d8c4ddc2d654422a08ed02dde5a9964746"
+    },
+    {
+      "sku": "YU-0002087",
+      "productId": 2087,
+      "sourceName": "H05V-K 1х 6 ж/з",
+      "productName": "H05V-K 1х6 ж/з",
+      "primaryCores": 1,
+      "cores": 1,
+      "section": 6,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "h05v-k",
+        "cores": 1,
+        "primaryCores": 1,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": "stranded",
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [
+          "yellow-green"
+        ],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "installation-wire",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "outerJacket",
+          "value": "none",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "filler",
+          "value": "none",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "h05v-k"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "h05v-k"
+        }
+      ],
+      "productHash": "fa46c4da277891057fbff500026214078901476ae4d4713c912054bd097d8c59"
+    }
+  ],
+  "skuCount": 4,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T12:54:46.129Z",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": false,
+    "right_edge_foreground_ratio": 0,
+    "has_transparency": true,
+    "transparent_ratio": 0.9253332299569506,
+    "non_opaque_ratio": 0.9996606373662409,
+    "foreground_ratio": 0.07423208082677381,
+    "bounds": {
+      "minX": 550,
+      "minY": 293,
+      "maxX": 1724,
+      "maxY": 539
+    },
+    "warnings": [],
+    "sha256": "8d4613a73e13f38b396406a57260b325076e9882d4fc7b5b0e5b2a98b79247bd",
+    "bytes": 266559
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "d985bc98-30a5-401f-8a1a-152ee0849796",
+  "generatedAt": "2026-10-16T12:55:05.266Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 467,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 467
+    },
+    "output_tokens": 458,
+    "output_tokens_details": {
+      "image_tokens": 458,
+      "text_tokens": 0
+    },
+    "total_tokens": 925
+  },
+  "revisedPrompt": null
+}

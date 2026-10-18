@@ -28,7 +28,7 @@ describe('HeaderCatalogMenu', () => {
     const sidebar = menu.querySelector('.catalog-dropdown__sidebar');
     const content = () => menu.querySelector('.catalog-dropdown__content');
 
-    expect(CATALOG_MENU).toHaveLength(15);
+    expect(CATALOG_MENU).toHaveLength(14);
     expect(
       [...sidebar.querySelectorAll('a')].map((link) =>
         link.textContent.replace('›', '').trim()
@@ -36,17 +36,16 @@ describe('HeaderCatalogMenu', () => {
     ).toEqual([
       'Силовой кабель',
       'Провода',
-      'Контрольный кабель',
+      'Кабель управления и контроля',
       'Гибкий кабель',
       'СИП',
-      'Кабели пожарной и охранной сигнализации',
-      'LAN-кабели',
+      'Кабели передачи данных',
       'Монтажный кабель',
-      'Кабели связи',
       'Импортные кабели',
       'Кабели нагревательные',
-      'Сигнально-блокировочные',
       'Кабели судовые',
+      'Кабели для подвижного состава',
+      'Бортовые провода',
       'Специальные кабели',
       'Прочее',
     ]);
@@ -60,10 +59,56 @@ describe('HeaderCatalogMenu', () => {
       within(content()).getByRole('link', { name: 'ВЭБШВ' })
     ).toBeInTheDocument();
 
+    await user.hover(
+      within(sidebar).getByRole('link', {
+        name: 'Кабель управления и контроля',
+      })
+    );
+    for (const slug of [
+      'signalno-blokirovochnye',
+      'kontrolnye-kabeli',
+      'kabel-upravleniya',
+    ]) {
+      expect(
+        content().querySelector(`a[href="/catalog/${slug}"]`)
+      ).toBeInTheDocument();
+    }
+    expect(
+      sidebar.querySelector('a[href="/catalog/signalno-blokirovochnye"]')
+    ).toBeNull();
+    expect(
+      sidebar.querySelector('a[href="/catalog/kabeli-pozharnoy-signalizacii"]')
+    ).toBeNull();
+
     await user.hover(within(sidebar).getByRole('link', { name: 'СИП' }));
     expect(
       within(content()).getAllByRole('link', { name: 'СИП' })
     ).toHaveLength(1);
+    const sipMarks = content().querySelector('.catalog-dropdown__marks');
+    expect(
+      [...sipMarks.querySelectorAll('a')].map((link) => link.textContent)
+    ).toEqual(['СИП-2', 'СИП-3', 'СИП-4']);
+    for (const mark of ['СИП-2', 'СИП-3', 'СИП-4']) {
+      expect(
+        within(sipMarks).getByRole('link', { name: mark })
+      ).toHaveAttribute('href', `/catalog/?search=${encodeURIComponent(mark)}`);
+    }
+
+    await user.hover(
+      within(sidebar).getByRole('link', { name: 'Кабели передачи данных' })
+    );
+    for (const slug of [
+      'universalnye-kabeli',
+      'kabeli-svyazi',
+      'lan-kabeli',
+      'koaksialnye-kabeli',
+      'optovolokonnye-kabeli',
+    ]) {
+      expect(
+        content().querySelector(`a[href="/catalog/${slug}"]`)
+      ).toBeInTheDocument();
+      expect(sidebar.querySelector(`a[href="/catalog/${slug}"]`)).toBeNull();
+    }
 
     await user.hover(
       within(sidebar).getByRole('link', { name: 'Импортные кабели' })
@@ -71,6 +116,18 @@ describe('HeaderCatalogMenu', () => {
     expect(
       within(content()).getByRole('link', { name: 'Другие импортные кабели' })
     ).toHaveAttribute('href', '/catalog/importnye-drugie-kabeli');
+
+    await user.hover(
+      within(sidebar).getByRole('link', { name: 'Кабели нагревательные' })
+    );
+    expect(
+      within(content()).getByRole('link', {
+        name: 'Греющие резистивные кабели',
+      })
+    ).toHaveAttribute('href', '/catalog/greyushchie-rezistivnye-kabeli');
+    expect(
+      within(content()).getByRole('link', { name: 'Саморегулирующиеся кабели' })
+    ).toHaveAttribute('href', '/catalog/samoreguliruyushchiesya-kabeli');
 
     expect(
       within(sidebar).queryByRole('link', { name: 'Кабели шахтные' })
@@ -86,8 +143,13 @@ describe('HeaderCatalogMenu', () => {
         within(content()).getByRole('link', { name: category.name })
       ).toHaveAttribute('href', `/catalog/${category.slug}`);
     }
-    expect(specialCategories).toHaveLength(6);
-    for (const name of ['Сигнально-блокировочные', 'Кабели судовые']) {
+    expect(specialCategories).toHaveLength(4);
+    for (const name of [
+      'Сигнально-блокировочные',
+      'Кабели судовые',
+      'Кабели для подвижного состава',
+      'Бортовые провода',
+    ]) {
       expect(
         within(content()).queryByRole('link', { name })
       ).not.toBeInTheDocument();

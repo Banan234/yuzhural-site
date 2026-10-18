@@ -164,10 +164,29 @@ describe('nginx reverse proxy canonical redirects', () => {
   });
 
   it('redirects the removed connecting cable category to Other', () => {
-    expect(config).toContain(
-      'location = /catalog/soedinitelnyy-kabel {'
-    );
+    expect(config).toContain('location = /catalog/soedinitelnyy-kabel {');
     expect(config).toContain('return 301 /catalog/prochee$is_args$args;');
+  });
+
+  it('redirects the merged fire category while preserving query filters', () => {
+    for (const suffix of ['', '/']) {
+      expect(
+        getLocationBlock(`= /catalog/kabeli-pozharnoy-signalizacii${suffix}`)
+      ).toContain('return 301 /catalog/signalno-blokirovochnye$is_args$args;');
+    }
+  });
+
+  it('redirects both material categories to the unified control category', () => {
+    for (const slug of [
+      'kontrolnyy-kabel-alyuminievyy',
+      'kontrolnyy-kabel-mednyy',
+    ]) {
+      for (const suffix of ['', '/']) {
+        expect(getLocationBlock(`= /catalog/${slug}${suffix}`)).toContain(
+          'return 301 /catalog/kontrolnye-kabeli$is_args$args;'
+        );
+      }
+    }
   });
 
   it('serves only known SPA routes and returns 404 for unknown ones', () => {

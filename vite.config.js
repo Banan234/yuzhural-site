@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
+import { CONTROL_CATEGORY_ALIASES } from './shared/controlCableClassification.js';
 
 // Dev-зеркало для public/redirects.nginx.conf: читает redirects.json и
 // 301-редиректит /product/<oldSlug> → /product/<newSlug> в vite-сервере.
@@ -28,6 +29,18 @@ function productRedirects() {
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const url = req.url || '';
+        const categoryMatch = /^\/catalog\/([^/?#]+)\/?(\?.*)?$/.exec(url);
+        const categoryTarget =
+          categoryMatch && CONTROL_CATEGORY_ALIASES[categoryMatch[1]];
+        if (categoryTarget) {
+          res.statusCode = 301;
+          res.setHeader(
+            'Location',
+            `/catalog/${categoryTarget}${categoryMatch[2] || ''}`
+          );
+          res.end();
+          return;
+        }
         const match = /^\/product\/([^/?#]+)/.exec(url);
         if (!match) return next();
         const target = load()[match[1]];

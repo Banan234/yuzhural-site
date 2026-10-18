@@ -1,5 +1,6 @@
 // Файл определяет правила выбора изображений товаров и fallback-ассетов для карточек каталога.
 import generatedProductImages from './generatedProductImages.json' with { type: 'json' };
+import rejectedProductImages from './rejectedProductImages.json' with { type: 'json' };
 
 export const PRODUCT_IMAGE_FALLBACKS = {
   powerCable: '/category-placeholders/power-cable.svg',
@@ -13,6 +14,7 @@ export const PRODUCT_IMAGE_FALLBACKS = {
 const GENERIC_PRODUCT_IMAGES = new Set(['', '/product-placeholder.svg']);
 
 const IMAGE_BY_SLUG = {
+  'kabeli-peredachi-dannykh': PRODUCT_IMAGE_FALLBACKS.communicationCable,
   'silovoy-kabel': PRODUCT_IMAGE_FALLBACKS.powerCable,
   'importnye-kabeli': PRODUCT_IMAGE_FALLBACKS.powerCable,
   'kabeli-shakhtnye': PRODUCT_IMAGE_FALLBACKS.powerCable,
@@ -91,6 +93,7 @@ export function getGeneratedProductImage(
   manifest = generatedProductImages
 ) {
   const entry = manifest.bySku?.[clean(product?.sku)];
+  if (rejectedProductImages.byVisualKey?.[entry?.visualKey]) return '';
   if (entry?.status !== 'approved' || entry.kind !== 'generated-illustration')
     return '';
   if (
@@ -132,7 +135,11 @@ export function getGeneratedProductImage(
 }
 
 function lookupBySlug(product) {
-  for (const key of ['catalogCategorySlug', 'catalogSectionSlug']) {
+  for (const key of [
+    'catalogSubcategorySlug',
+    'catalogCategorySlug',
+    'catalogSectionSlug',
+  ]) {
     const image = IMAGE_BY_SLUG[clean(product?.[key])];
     if (image) return image;
   }

@@ -97,68 +97,67 @@
     "category": "Кабели нагревательные",
     "categorySlug": "kabeli-nagrevatelnye"
   },
-
   {
     "sourceCategory": "Кабель АКВВГ, АКВВГнг",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Контрольный кабель",
+    "category": "Кабель управления и контроля",
     "categorySlug": "kontrolnyy-kabel"
   },
   {
     "sourceCategory": "Кабель КВВГ, КВВГнг, КВВГнгls",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Контрольный кабель",
+    "category": "Кабель управления и контроля",
     "categorySlug": "kontrolnyy-kabel"
   },
   {
     "sourceCategory": "Кабель КВБбШ, КВБбШнг, КВБбШнгLS",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Контрольный кабель",
+    "category": "Кабель управления и контроля",
     "categorySlug": "kontrolnyy-kabel"
   },
   {
     "sourceCategory": "Кабель КВСМВ",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "LAN-кабели",
-    "categorySlug": "lan-kabeli"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "Кабель управления-КУПР,КУГВВ,НИКИ-КУВШЭ",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Контрольный кабель",
+    "category": "Кабель управления и контроля",
     "categorySlug": "kontrolnyy-kabel"
   },
   {
     "sourceCategory": "Кабель для автоматизации КСКВЭВ",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Контрольный кабель",
+    "category": "Кабель управления и контроля",
     "categorySlug": "kontrolnyy-kabel"
   },
   {
     "sourceCategory": "Кабель для промышл.автоматиз.и систем управл.КВМЭ",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Контрольный кабель",
+    "category": "Кабель управления и контроля",
     "categorySlug": "kontrolnyy-kabel"
   },
   {
     "sourceCategory": "Кабель универсальный для КИПиА:СКАБ",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Контрольный кабель",
+    "category": "Кабель управления и контроля",
     "categorySlug": "kontrolnyy-kabel"
   },
   {
     "sourceCategory": "Кабель огнестойкий КСРЭВ",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Контрольный кабель",
+    "category": "Кабель управления и контроля",
     "categorySlug": "kontrolnyy-kabel"
   },
   {
@@ -168,7 +167,6 @@
     "category": "Монтажный кабель",
     "categorySlug": "montazhnyy-kabel"
   },
-
   {
     "sourceCategory": "Провод монтажный",
     "section": "Кабель и провод",
@@ -185,8 +183,8 @@
   },
   {
     "sourceCategory": "Провод для монтажа подвижного рельс.состава НПП",
-    "section": "Специальные кабели",
-    "sectionSlug": "specialnye-kabeli",
+    "section": "Кабель и провод",
+    "sectionSlug": "kabel-i-provod",
     "category": "Кабели для подвижного состава",
     "categorySlug": "kabeli-podvizhnogo-sostava"
   },
@@ -199,8 +197,8 @@
   },
   {
     "sourceCategory": "Кабель бортовой БПВЛ, ПТЛ, БИН, БИФМ-Н, БПДОЭ",
-    "section": "Специальные кабели",
-    "sectionSlug": "specialnye-kabeli",
+    "section": "Кабель и провод",
+    "sectionSlug": "kabel-i-provod",
     "category": "Бортовые провода",
     "categorySlug": "bortovye-provoda"
   },
@@ -211,7 +209,6 @@
     "category": "Кабели судовые",
     "categorySlug": "kabeli-sudovye"
   },
-
   {
     "sourceCategory": "Провод Термоэлектродный",
     "section": "Специальные кабели",
@@ -261,7 +258,6 @@
     "category": "Провода",
     "categorySlug": "provoda"
   },
-
   {
     "sourceCategory": "СИП-АРМАТУРА",
     "section": "Кабельная арматура",
@@ -269,13 +265,12 @@
     "category": "СИП-арматура",
     "categorySlug": "sip-armatura"
   },
-
   {
     "sourceCategory": "Кабель оптический коаксиальный",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "Кабель импортный",
@@ -288,66 +283,69 @@
     "sourceCategory": "Кабель микрофонный",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "Кабель связи",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "Кабель пожарный",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели пожарной и охранной сигнализации",
-    "categorySlug": "kabeli-pozharnoy-signalizacii"
+    "category": "Кабель управления и контроля",
+    "categorySlug": "kontrolnyy-kabel",
+    "subcategory": "Кабель для сигнализации и блокировки",
+    "subcategorySlug": "signalno-blokirovochnye"
   },
   {
     "sourceCategory": "Кабель для пожарной и охран.сигнализации,противопож",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели пожарной и охранной сигнализации",
-    "categorySlug": "kabeli-pozharnoy-signalizacii"
+    "category": "Кабель управления и контроля",
+    "categorySlug": "kontrolnyy-kabel",
+    "subcategory": "Кабель для сигнализации и блокировки",
+    "subcategorySlug": "signalno-blokirovochnye"
   },
   {
     "sourceCategory": "Кабель Радиочастотный РК",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "Кабель и провода Авиакосмические КТФЭ",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "Кабель для подвижн.и фиксир.внутриприбор.и межприборн",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "Кабель трибоэлектрический малогаборитный",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "Кабель для Атомной промышленности КПЭТИ",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
-
   {
     "sourceCategory": "Кабель с резиновой изоляцией - КГ,КНР,РПШ,РКГМ,НРШМ",
     "section": "Кабель и провод",
@@ -355,7 +353,6 @@
     "category": "Гибкий кабель",
     "categorySlug": "gibkiy-kabel"
   },
-
   {
     "sourceCategory": "Наконечники,соединители,гильзы",
     "section": "Кабельная арматура",
@@ -433,7 +430,6 @@
     "category": "Наконечники и гильзы",
     "categorySlug": "nakonechniki-gilzy"
   },
-
   {
     "sourceCategory": "Автоматы",
     "section": "Электрооборудование",
@@ -581,7 +577,6 @@
     "category": "Щитовое оборудование",
     "categorySlug": "shchitovoe-oborudovanie"
   },
-
   {
     "sourceCategory": "Изолента",
     "section": "Прочие товары",
@@ -624,12 +619,11 @@
     "category": "Расходные материалы",
     "categorySlug": "raskhod-materialy"
   },
-
   {
     "sourceCategory": "Кабель Герда, Соббит, Квип, МКЭШВ, КВЭВЭ, КВВЭ",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Контрольный кабель",
+    "category": "Кабель управления и контроля",
     "categorySlug": "kontrolnyy-kabel"
   },
   {
@@ -643,15 +637,15 @@
     "sourceCategory": "Кабель Сигнальный блокировочный СБЗПу",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "Кабели связи",
-    "categorySlug": "kabeli-svyazi"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "Кабель КВПЭфВП-5е",
     "section": "Кабель и провод",
     "sectionSlug": "kabel-i-provod",
-    "category": "LAN-кабели",
-    "categorySlug": "lan-kabeli"
+    "category": "Кабели передачи данных",
+    "categorySlug": "kabeli-peredachi-dannykh"
   },
   {
     "sourceCategory": "К А Б Е Л Ь Н А Я   П Р О Д У К Ц И Я",

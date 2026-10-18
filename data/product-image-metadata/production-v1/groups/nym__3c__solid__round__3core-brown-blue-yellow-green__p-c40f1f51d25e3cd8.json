@@ -1,0 +1,935 @@
+{
+  "visualKey": "nym__3c__solid__round__3core-brown-blue-yellow-green__p-c40f1f51d25e3cd8",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_nym__3c__solid__round__3core-brown-blue-yellow-green__p-c40f1f51d25e3cd8.png",
+  "visualProfile": {
+    "family": "nym",
+    "productType": "power-cable",
+    "cores": 3,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "grey",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "3core-brown-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: nym. Product type: power-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is grey. It surrounds all 3 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 3 insulated conductors and exactly 3 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 3 insulated conductors: 1: brown; 2: blue; 3: yellow-and-green striped insulation on ONE wire. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nSolid-core copper: ONE continuous smooth solid circular metal rod inside each insulated core. Each left tip has a single solid cross-section. No bundles of thin strands or brushes.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 3 insulated cores, solid copper, round, common jacket present, armor absent, screen absent.",
+  "promptHash": "792e271be98a5cdcf5ff2948d2949d7a3e062bc151cd257cbf2eb88a7a4df3d0",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0001180",
+      "productId": 1180,
+      "sourceName": "NYМ 3х1.5",
+      "productName": "NYМ 3х1.5",
+      "primaryCores": 3,
+      "cores": 3,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "nym",
+        "cores": 3,
+        "primaryCores": 3,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacket",
+          "value": "grey",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "nym"
+        }
+      ],
+      "productHash": "3bfa7389443a414228a6dfa65629b76c75bce0d2256d1f66768e7a4c25a5a884"
+    },
+    {
+      "sku": "YU-0000081",
+      "productId": 81,
+      "sourceName": "NYМ 3х1.5-J",
+      "productName": "NYМ 3х1.5-J",
+      "primaryCores": 3,
+      "cores": 3,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "nym",
+        "cores": 3,
+        "primaryCores": 3,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "J"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacket",
+          "value": "grey",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "nym"
+        }
+      ],
+      "productHash": "2aab1ebd29c7180ea7273982c146cf23eb02667645f26a2aa78deb6af573695d"
+    },
+    {
+      "sku": "YU-0000083",
+      "productId": 83,
+      "sourceName": "NYМ 3х2.5",
+      "productName": "NYМ 3х2.5",
+      "primaryCores": 3,
+      "cores": 3,
+      "section": 2.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "nym",
+        "cores": 3,
+        "primaryCores": 3,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacket",
+          "value": "grey",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "nym"
+        }
+      ],
+      "productHash": "4e3ea8632b5096f13ae430f5a3e2420f00239088a0f185a13f5536e0719a273f"
+    },
+    {
+      "sku": "YU-0000084",
+      "productId": 84,
+      "sourceName": "NYМ 3х2.5-J",
+      "productName": "NYМ 3х2.5-J",
+      "primaryCores": 3,
+      "cores": 3,
+      "section": 2.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "nym",
+        "cores": 3,
+        "primaryCores": 3,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "J"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacket",
+          "value": "grey",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "nym"
+        }
+      ],
+      "productHash": "7d8ca9b075a854019eb9e3e0edd186173673859e221ef9e9c41ff87819f72fb3"
+    },
+    {
+      "sku": "YU-0000085",
+      "productId": 85,
+      "sourceName": "NYМ 3х4",
+      "productName": "NYМ 3х4",
+      "primaryCores": 3,
+      "cores": 3,
+      "section": 4,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "nym",
+        "cores": 3,
+        "primaryCores": 3,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacket",
+          "value": "grey",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "nym"
+        }
+      ],
+      "productHash": "2ecd58eaae24620741ef4d6433d3d5715733921a28eeb5b9d3f649ddd28828cf"
+    },
+    {
+      "sku": "YU-0000086",
+      "productId": 86,
+      "sourceName": "NYМ 3х4-J",
+      "productName": "NYМ 3х4-J",
+      "primaryCores": 3,
+      "cores": 3,
+      "section": 4,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "nym",
+        "cores": 3,
+        "primaryCores": 3,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "J"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacket",
+          "value": "grey",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "nym"
+        }
+      ],
+      "productHash": "fad5399e4fd4cc3627daf2b142f08e653d01827f35a5942da45c929d852edf66"
+    },
+    {
+      "sku": "YU-0000087",
+      "productId": 87,
+      "sourceName": "NYМ 3х6-J",
+      "productName": "NYМ 3х6-J",
+      "primaryCores": 3,
+      "cores": 3,
+      "section": 6,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "nym",
+        "cores": 3,
+        "primaryCores": 3,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [
+          "J"
+        ],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "power-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "outerJacket",
+          "value": "grey",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "nym"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "nym"
+        }
+      ],
+      "productHash": "1bff3069541cd1e476756ff8534121ee73f87d0fcf1079464a70ef2c54a2fd03"
+    }
+  ],
+  "skuCount": 7,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T12:46:24.657Z",
+  "validation": {
+    "width": 1536,
+    "height": 1024,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.1865234375,
+    "has_transparency": true,
+    "transparent_ratio": 0.8551610310872396,
+    "non_opaque_ratio": 1,
+    "foreground_ratio": 0.1442743937174479,
+    "bounds": {
+      "minX": 282,
+      "minY": 293,
+      "maxX": 1535,
+      "maxY": 687
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "3fc244cb5ac3cd98ad540a8daf518573ba7447bda25eb2ae1759cae31f34a964",
+    "bytes": 1044905
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "f8e9876d-6b6a-4630-9a70-f7b730a40a08",
+  "generatedAt": "2026-10-16T12:46:51.926Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 487,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 487
+    },
+    "output_tokens": 1372,
+    "output_tokens_details": {
+      "image_tokens": 1372,
+      "text_tokens": 0
+    },
+    "total_tokens": 1859
+  },
+  "revisedPrompt": null
+}

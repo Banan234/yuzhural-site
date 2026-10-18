@@ -1,0 +1,935 @@
+{
+  "visualKey": "kgvvng-a-ls__4c__stranded__round__4core-brown-black-grey-yellow-green__p-5f2d8b4accf05e10",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_kgvvng-a-ls__4c__stranded__round__4core-brown-black-grey-yellow-green__p-5f2d8b4accf05e10.png",
+  "visualProfile": {
+    "family": "kgvvng-a-ls",
+    "productType": "flexible-cable",
+    "cores": 4,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "black",
+      "grey",
+      "yellow-green"
+    ],
+    "coreColorScheme": "4core-brown-black-grey-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: kgvvng-a-ls. Product type: flexible-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is black. It surrounds all 4 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 4 insulated conductors and exactly 4 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 4 insulated conductors: 1: brown; 2: black; 3: grey; 4: yellow-and-green striped insulation on ONE wire. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nStranded copper: each insulated core contains ONE compact neat bundle of fine copper strands. Show the bundle at each left tip, with a tidy circular cross-section. No solid rods and no loose brush of long strands.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 4 insulated cores, stranded copper, round, common jacket present, armor absent, screen absent.",
+  "promptHash": "8dcd6a78baa4a5bd8da0dfc76cb2bbee73dfa5612fe9b72cf8b0116756be239c",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0003036",
+      "productId": 3036,
+      "sourceName": "КГВВ  4х0.75 нг(А)LS",
+      "productName": "КГВВнг(А)-LS 4х0.75",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 0.75,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kgvvng-a-ls",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "flexible-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "stranded",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kgvv"
+        }
+      ],
+      "productHash": "c1f858abf217f20449a83ec1d6e5c5d574383fd468c7d405dd71784aaa2541a7"
+    },
+    {
+      "sku": "YU-0003039",
+      "productId": 3039,
+      "sourceName": "КГВВ  4х1.5 нг(А)LS",
+      "productName": "КГВВнг(А)-LS 4х1.5",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kgvvng-a-ls",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "flexible-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "stranded",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kgvv"
+        }
+      ],
+      "productHash": "0cb333b84682f11f6bdb60e0ab207fd9c1f3ad2602c0c5f840a17858b4906c0f"
+    },
+    {
+      "sku": "YU-0007149",
+      "productId": 7149,
+      "sourceName": "КГВВ  4х4 нг(А)LS",
+      "productName": "КГВВнг(А)-LS 4х4",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 4,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kgvvng-a-ls",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "flexible-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "stranded",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kgvv"
+        }
+      ],
+      "productHash": "17a54c5ea293bb2b055e34b8fa05a3a83021816ccb44dc371ee17d7e2abdd024"
+    },
+    {
+      "sku": "YU-0007094",
+      "productId": 7094,
+      "sourceName": "КГВВ  4х6 нг(А)LS",
+      "productName": "КГВВнг(А)-LS 4х6",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 6,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kgvvng-a-ls",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "flexible-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "stranded",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kgvv"
+        }
+      ],
+      "productHash": "4ebfff390cbfa7b3e57db8e580bcdd111b96659755a7c75a2d0bbb17d9130c08"
+    },
+    {
+      "sku": "YU-0003041",
+      "productId": 3041,
+      "sourceName": "КГВВ  4х 10 нг(А)LS",
+      "productName": "КГВВнг(А)-LS 4х10",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 10,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kgvvng-a-ls",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "flexible-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "stranded",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kgvv"
+        }
+      ],
+      "productHash": "28e0326322fa0fa329d4d0dabfd8937982796410ced403f50f51462099123440"
+    },
+    {
+      "sku": "YU-0003042",
+      "productId": 3042,
+      "sourceName": "КГВВ  4х 16 нг(А)LS",
+      "productName": "КГВВнг(А)-LS 4х16",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 16,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kgvvng-a-ls",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "flexible-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "stranded",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kgvv"
+        }
+      ],
+      "productHash": "d18ed5730b859fc4135f46a6af68d42e9f069d8366cfb43f634451a9e49ff078"
+    },
+    {
+      "sku": "YU-0003043",
+      "productId": 3043,
+      "sourceName": "КГВВ  4х 25 нг(А)LS",
+      "productName": "КГВВнг(А)-LS 4х25",
+      "primaryCores": 4,
+      "cores": 4,
+      "section": 25,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "kgvvng-a-ls",
+        "cores": 4,
+        "primaryCores": 4,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": null,
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": null,
+        "hasOuterJacket": null,
+        "outerJacket": null,
+        "outerJacketMaterial": null,
+        "insulation": null,
+        "armor": null,
+        "armorType": null,
+        "shield": null,
+        "shieldType": null,
+        "filler": null,
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "productType",
+          "value": "flexible-cable",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "stranded",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "geometry",
+          "value": "round",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "hasOuterJacket",
+          "value": true,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacketMaterial",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "insulation",
+          "value": "PVC",
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "armor",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "shield",
+          "value": false,
+          "basis": "documented-family-structure",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "kgvv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "kgvv"
+        }
+      ],
+      "productHash": "8cf14d940c68a2ccc766652cb396321d5fb7e76e353286a42e8889c8203f0423"
+    }
+  ],
+  "skuCount": 7,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T12:45:21.491Z",
+  "validation": {
+    "width": 1536,
+    "height": 1024,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.2041015625,
+    "has_transparency": true,
+    "transparent_ratio": 0.8481178283691406,
+    "non_opaque_ratio": 1,
+    "foreground_ratio": 0.1509577433268229,
+    "bounds": {
+      "minX": 415,
+      "minY": 340,
+      "maxX": 1535,
+      "maxY": 741
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "72d323ba060db373d212ce4208bffa919608d1bea071f0438940508fb9f06aea",
+    "bytes": 1122047
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "3f9bd147-f85b-4e0b-9529-9797c2cbb93f",
+  "generatedAt": "2026-10-16T12:45:42.212Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 505,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 505
+    },
+    "output_tokens": 601,
+    "output_tokens_details": {
+      "image_tokens": 601,
+      "text_tokens": 0
+    },
+    "total_tokens": 1106
+  },
+  "revisedPrompt": null
+}

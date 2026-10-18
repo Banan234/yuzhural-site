@@ -54,6 +54,28 @@
 .product-designation__sources p {
   margin-bottom: 0;
 }
+.product-designation__manufacturer-texts {
+  margin: 24px 0;
+}
+.product-designation__manufacturer-texts h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+.product-designation__manufacturer-texts details {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.product-designation__manufacturer-texts summary {
+  cursor: pointer;
+  color: #145da0;
+  font-weight: 600;
+}
+.product-designation__manufacturer-texts a {
+  color: #145da0;
+  font-size: 13px;
+}
 @media (max-width: 600px) {
   .product-designation {
     padding: 18px;

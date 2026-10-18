@@ -18,8 +18,8 @@ export const CABLE_APPLICATIONS = [
       'Линии ОПС и систем безопасности с требованиями вашего проекта.',
     categories: [
       {
-        slug: 'kabeli-pozharnoy-signalizacii',
-        title: 'Кабели пожарной и охранной сигнализации',
+        slug: 'signalno-blokirovochnye',
+        title: 'Кабель для сигнализации и блокировки',
       },
     ],
     questions:
@@ -42,7 +42,7 @@ export const CABLE_APPLICATIONS = [
     title: 'Управление и промышленная автоматика',
     description: 'Контрольные, монтажные и интерфейсные линии.',
     categories: [
-      { slug: 'kontrolnyy-kabel', title: 'Контрольный кабель' },
+      { slug: 'kontrolnyy-kabel', title: 'Кабель управления и контроля' },
       { slug: 'montazhnyy-kabel', title: 'Монтажный кабель' },
     ],
     questions:
@@ -54,8 +54,7 @@ export const CABLE_APPLICATIONS = [
     description:
       'Кабели связи и передачи данных. Категория, экран и условия монтажа важны для выбора.',
     categories: [
-      { slug: 'kabeli-svyazi', title: 'Кабели связи' },
-      { slug: 'lan-kabeli', title: 'LAN-кабели' },
+      { slug: 'kabeli-peredachi-dannykh', title: 'Кабели передачи данных' },
     ],
     questions:
       'Интерфейс и категория; экран; длина линии; наружная/внутренняя прокладка; питание PoE, если требуется.',

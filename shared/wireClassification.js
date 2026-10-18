@@ -5,7 +5,8 @@ export const WIRE_CATEGORY_SLUG = 'provoda';
 export const WIRE_SUBCATEGORY_SOURCES = {
   'provoda-ustanovochnye': 'https://kabel-s.ru/catalog/provoda-ustanovochnye/',
   'provoda-soedinitelnye': 'https://kabel-s.ru/catalog/provoda-soedinitel-nye/',
-  'provoda-montazhnye': 'https://podolskkabel.ru/res/content/docs/f2024_download_0_file.pdf',
+  'provoda-montazhnye':
+    'https://podolskkabel.ru/res/content/docs/f2024_download_0_file.pdf',
   'provoda-avtomobilnye': 'https://kabel-s.ru/catalog/provoda-avtomobil-nye/',
   'provoda-vyvodnye': 'https://kabel-s.ru/catalog/provoda-vyvodnye/',
   'provoda-neizolirovannye':
@@ -22,6 +23,7 @@ export const WIRE_SUBCATEGORY_SOURCES = {
 
 const MARKS_BY_SUBCATEGORY = {
   'provoda-ustanovochnye': [
+    'БУН',
     'АПВ',
     'АППВ',
     'АПР',
@@ -50,6 +52,7 @@ const MARKS_BY_SUBCATEGORY = {
     'ПГВВП',
     'ПУГП',
     'ПУБП',
+    'КУИН-ПУГВВ',
   ],
   'provoda-soedinitelnye': [
     'ПВС',

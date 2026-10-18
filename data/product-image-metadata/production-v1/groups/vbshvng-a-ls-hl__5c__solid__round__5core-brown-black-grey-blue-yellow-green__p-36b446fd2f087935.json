@@ -1,0 +1,571 @@
+{
+  "visualKey": "vbshvng-a-ls-hl__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-36b446fd2f087935",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_vbshvng-a-ls-hl__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-36b446fd2f087935.png",
+  "visualProfile": {
+    "family": "vbshvng-a-ls-hl",
+    "productType": "power-cable",
+    "cores": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": true,
+    "armorType": "steel-tapes",
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "black",
+      "grey",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: vbshvng-a-ls-hl. Product type: power-cable. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nThe common outer jacket is black. It surrounds all 5 insulated cores on the RIGHT and opens into a short stepped cutaway toward the LEFT. The intact jacket may continue out of the right frame, while the stripped LEFT tips remain fully visible. No right-facing cut end. Keep the established moderate body thickness and compact fan of cores.\n\nExactly 5 insulated conductors and exactly 5 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 5 insulated conductors: 1: brown; 2: black; 3: grey; 4: blue; 5: yellow-and-green striped insulation on ONE wire. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nSolid-core copper: ONE continuous smooth solid circular metal rod inside each insulated core. Each left tip has a single solid cross-section. No bundles of thin strands or brushes.\n\nVisible armor: two overlapping helically wrapped STEEL TAPES. Reveal this distinct metallic protective layer in a restrained stepped cutaway UNDER the outer jacket and OUTSIDE the insulated core assembly. Steel armor is not a copper braid or an extra insulated core.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 5 insulated cores, solid copper, round, common jacket present, armor steel-tapes, screen absent.",
+  "promptHash": "2c9e83e6d90b9f1d3305a17c5b0572b8718411fdec65dfb6a9dbfbb9ac34b37e",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0007314",
+      "productId": 7314,
+      "sourceName": "ВБШВ 5х1.5 нг(А)LS хл",
+      "productName": "ВБШВнг(А)-LS-ХЛ 5х1.5",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 1.5,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vbshvng-a-ls-hl",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": true,
+        "armorType": "steel-tapes",
+        "shield": false,
+        "shieldType": null,
+        "filler": "inner-sheath",
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vbshv"
+        }
+      ],
+      "productHash": "ce5c85812b50619035cf1dd087c0d3659e665b9165abf5952d4cf4579610a4b7"
+    },
+    {
+      "sku": "YU-0007316",
+      "productId": 7316,
+      "sourceName": "ВБШВ 5х4 нг(А)LS хл",
+      "productName": "ВБШВнг(А)-LS-ХЛ 5х4",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 4,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vbshvng-a-ls-hl",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": true,
+        "armorType": "steel-tapes",
+        "shield": false,
+        "shieldType": null,
+        "filler": "inner-sheath",
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vbshv"
+        }
+      ],
+      "productHash": "f8d087bf9afd54e9a756fdeb2fd91419f495850f2993ff07e369685b7785c6f1"
+    },
+    {
+      "sku": "YU-0007317",
+      "productId": 7317,
+      "sourceName": "ВБШВ 5х6 нг(А)LS хл",
+      "productName": "ВБШВнг(А)-LS-ХЛ 5х6",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 6,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vbshvng-a-ls-hl",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": true,
+        "armorType": "steel-tapes",
+        "shield": false,
+        "shieldType": null,
+        "filler": "inner-sheath",
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vbshv"
+        }
+      ],
+      "productHash": "238473f2da8b1a44cf96dd47988ff4705f7d639bd94901ecc38bd6c213dd47ba"
+    },
+    {
+      "sku": "YU-0007318",
+      "productId": 7318,
+      "sourceName": "ВБШВ 5х 10 нг(А)LS хл",
+      "productName": "ВБШВнг(А)-LS-ХЛ 5х10",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 10,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vbshvng-a-ls-hl",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": true,
+        "armorType": "steel-tapes",
+        "shield": false,
+        "shieldType": null,
+        "filler": "inner-sheath",
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vbshv"
+        }
+      ],
+      "productHash": "3dce0df526d7975b5cc91570084b4d833bb20f0f89f9f1757c8bfd4d2c1fceb7"
+    },
+    {
+      "sku": "YU-0007319",
+      "productId": 7319,
+      "sourceName": "ВБШВ 5х 16 нг(А)LS хл",
+      "productName": "ВБШВнг(А)-LS-ХЛ 5х16",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 16,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vbshvng-a-ls-hl",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": true,
+        "armorType": "steel-tapes",
+        "shield": false,
+        "shieldType": null,
+        "filler": "inner-sheath",
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vbshv"
+        }
+      ],
+      "productHash": "681db523a8c9a86ee0023370c04985487e561451d0fc4c5a2284b8435a096f5e"
+    },
+    {
+      "sku": "YU-0007328",
+      "productId": 7328,
+      "sourceName": "ВБШВ 5х150 нг(А)LS хл",
+      "productName": "ВБШВнг(А)-LS-ХЛ 5х150",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 150,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": null,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "vbshvng-a-ls-hl",
+        "cores": 5,
+        "primaryCores": 5,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": null,
+        "conductorShape": null,
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacket": null,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": true,
+        "armorType": "steel-tapes",
+        "shield": false,
+        "shieldType": null,
+        "filler": "inner-sheath",
+        "specialElements": [],
+        "hasPE": null,
+        "hasN": null,
+        "coreColors": null,
+        "coreColorScheme": null,
+        "declaredColors": [],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [
+        {
+          "field": "conductorShape",
+          "value": "circular",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "conductorConstruction",
+          "value": "solid",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "outerJacket",
+          "value": "black",
+          "basis": "catalogue-illustration-default",
+          "ruleId": "vbshv"
+        },
+        {
+          "field": "coreColors",
+          "value": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "basis": "family-catalogue-palette",
+          "ruleId": "vbshv"
+        }
+      ],
+      "productHash": "7f54553f3984bc6099ddf79cd9d692448d5e2d9a7bb029995eab116e7dd1f872"
+    }
+  ],
+  "skuCount": 6,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T12:49:24.528Z",
+  "validation": {
+    "width": 1536,
+    "height": 1024,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.2529296875,
+    "has_transparency": true,
+    "transparent_ratio": 0.8142922719319662,
+    "non_opaque_ratio": 1,
+    "foreground_ratio": 0.18492444356282553,
+    "bounds": {
+      "minX": 353,
+      "minY": 261,
+      "maxX": 1535,
+      "maxY": 779
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "bac51c1d4c20fe778ea5d10d2b706c8a0bf80b79459605e71ed6fa8967627858",
+    "bytes": 1281921
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "95274a5b-d842-4d02-ac5c-99055cd0acfc",
+  "generatedAt": "2026-10-16T12:49:48.242Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 552,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 552
+    },
+    "output_tokens": 601,
+    "output_tokens_details": {
+      "image_tokens": 601,
+      "text_tokens": 0
+    },
+    "total_tokens": 1153
+  },
+  "revisedPrompt": null
+}

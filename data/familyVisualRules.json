@@ -1,0 +1,584 @@
+{
+  "schemaVersion": 1,
+  "version": "practical-family-visual-v2",
+  "mode": "audit-only",
+  "approval": {
+    "existingImages": 119,
+    "scope": "All existing approved generated images accepted by user for style and typage; no regeneration or rebinding in this audit"
+  },
+  "criticalFields": [
+    "family",
+    "productType",
+    "cores",
+    "conductorMaterial",
+    "conductorConstruction",
+    "conductorShape",
+    "geometry",
+    "hasOuterJacket",
+    "armor",
+    "shield"
+  ],
+  "nonBlockingFields": [
+    "filler",
+    "outerJacketMaterial",
+    "insulation",
+    "hasN",
+    "physicalDiameter",
+    "exactCrossSectionGeometry"
+  ],
+  "visibilityPolicy": {
+    "filler": "not-a-separate-illustration-layer-unless-explicit",
+    "exactMaterials": "metadata unless they alter visible construction",
+    "conductorDefault": "solid only for an explicitly allowed known family; known stranded construction wins"
+  },
+  "singleWireDefaultColor": "white",
+  "numberedControlPalette": {
+    "minimumCores": 6,
+    "maximumCores": 61,
+    "color": "black",
+    "note": "Generic control-cable illustration palette. Number printing is omitted; exact manufacturer colors are not asserted."
+  },
+  "nonVisualAttributePatterns": [
+    "^ГОСТ(?:[- ].*)?$",
+    "^ТУ(?:[- ].*)?$",
+    "^нг(?:\\([АAБВГД]\\))?(?:-?(?:LS|FRLS|HF|FRHF))?(?:-?LTx)?(?:-ХЛ)?$"
+  ],
+  "familyVisualRules": {
+    "vvg": {
+      "baseFamily": "ВВГ",
+      "structureRule": "ВВГ",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "conductorConstruction": "solid",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU",
+      "approvedStyleFrom": "ВВГ"
+    },
+    "vvg-p": {
+      "baseFamily": "ВВГ-П",
+      "structureRule": "ВВГ-П",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "conductorConstruction": "solid",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU",
+      "approvedStyleFrom": "ВВГ-П"
+    },
+    "avvg": {
+      "baseFamily": "АВВГ",
+      "structureRule": "АВВГ",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "conductorConstruction": "solid",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU",
+      "approvedStyleFrom": "АВВГ"
+    },
+    "avvg-p": {
+      "baseFamily": "АВВГ-П",
+      "structureRule": "АВВГ-П",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "conductorConstruction": "solid",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU",
+      "approvedStyleFrom": "АВВГ-П"
+    },
+    "kvvg": {
+      "baseFamily": "КВВГ",
+      "structureRule": "КВВГ",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "outerJacket": "black"
+      },
+      "colorProfile": "control",
+      "minCores": 1,
+      "maxCores": 61,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU",
+      "approvedStyleFrom": "КВВГ"
+    },
+    "kvvge": {
+      "baseFamily": "КВВГЭ",
+      "structureRule": "КВВГЭ",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "outerJacket": "black"
+      },
+      "colorProfile": "control",
+      "minCores": 1,
+      "maxCores": 61,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "vbshv": {
+      "baseFamily": "ВБШВ",
+      "structureRule": "ВБШВ",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "conductorConstruction": "solid",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "vbbshv": {
+      "baseFamily": "ВББШВ",
+      "structureRule": "ВББШВ",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "conductorConstruction": "solid",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "avbshv": {
+      "baseFamily": "АВБШВ",
+      "structureRule": "АВБШВ",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "conductorConstruction": "solid",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "avbbshv": {
+      "baseFamily": "АВББШВ",
+      "structureRule": "АВББШВ",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "conductorConstruction": "solid",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "kg": {
+      "baseFamily": "КГ",
+      "structureRule": "КГ",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU",
+      "approvedStyleFrom": "КГ"
+    },
+    "pvs": {
+      "baseFamily": "ПВС",
+      "structureRule": "ПВС",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "outerJacket": "white"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU",
+      "approvedStyleFrom": "ПВС"
+    },
+    "shvvp": {
+      "baseFamily": "ШВВП",
+      "structureRule": "ШВВП",
+      "visualDefaults": {
+        "conductorShape": "circular",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "pugv": {
+      "baseFamily": "ПУГВ",
+      "structureRule": "ПУГВ",
+      "visualDefaults": {
+        "conductorShape": "circular"
+      },
+      "colorProfile": "single-wire",
+      "minCores": 1,
+      "maxCores": 1,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "puv": {
+      "baseFamily": "ПУВ",
+      "structureRule": "ПУВ",
+      "visualDefaults": {
+        "conductorShape": "circular"
+      },
+      "colorProfile": "single-wire",
+      "minCores": 1,
+      "maxCores": 1,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "pv1": {
+      "baseFamily": "ПВ1",
+      "structureRule": "ПВ1",
+      "visualDefaults": {
+        "conductorShape": "circular"
+      },
+      "colorProfile": "single-wire",
+      "minCores": 1,
+      "maxCores": 1,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "pv3": {
+      "baseFamily": "ПВ3",
+      "structureRule": "ПВ3",
+      "visualDefaults": {
+        "conductorShape": "circular"
+      },
+      "colorProfile": "single-wire",
+      "minCores": 1,
+      "maxCores": 1,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "h07v-k": {
+      "baseFamily": "H07V-K",
+      "structureRule": "H07V-K",
+      "visualDefaults": {
+        "conductorShape": "circular"
+      },
+      "colorProfile": "single-wire",
+      "minCores": 1,
+      "maxCores": 1,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "sip-4": {
+      "baseFamily": "СИП-4",
+      "structureRule": "СИП-4",
+      "visualDefaults": {
+        "conductorShape": "circular"
+      },
+      "colorProfile": "sip-black",
+      "minCores": 2,
+      "maxCores": 4,
+      "illustrationPolicy": "family catalogue standard; defaults describe the illustration, not a measured manufacturer SKU"
+    },
+    "vvgng-a-ls": {
+      "extends": "vvg",
+      "note": "Explicit normalized family rule; reuses the approved ВВГнг(А)-LS typage."
+    },
+    "kgvv": {
+      "baseFamily": "КГВВ",
+      "structure": {
+        "productType": "flexible-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "shield": false
+      },
+      "visualDefaults": {
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "knowledgeMark": "КГВВ",
+      "source": {
+        "title": "Камский кабель: гибкие КГВВнг с ПВХ изоляцией",
+        "url": "https://kamkabel.ru/media-center/news/kamskiy-kabel-rasshiril-nomenklaturnyy-ryad-kabelyami-kgvvng-i-kgv/"
+      }
+    },
+    "h05v-k": {
+      "baseFamily": "H05V-K",
+      "structureRule": "H07V-K",
+      "colorProfile": "single-wire",
+      "minCores": 1,
+      "maxCores": 1,
+      "knowledgeMark": "H05V-K",
+      "note": "Separate family, shared single-core flexible PVC illustration geometry; voltage does not change appearance."
+    },
+    "kvbshv": {
+      "baseFamily": "КВБШВ",
+      "structure": {
+        "productType": "control-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": true,
+        "armorType": "steel-tapes",
+        "shield": false
+      },
+      "visualDefaults": {
+        "outerJacket": "black"
+      },
+      "colorProfile": "control",
+      "minCores": 2,
+      "maxCores": 61,
+      "knowledgeMark": "КВБШВ",
+      "note": "Construction and armour type from the exact family record in designationKnowledgeBase; no arbitrary Б/Э substring inference."
+    },
+    "kvbbshv": {
+      "baseFamily": "КВББШВ",
+      "structure": {
+        "productType": "control-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": true,
+        "armorType": "steel-tapes",
+        "shield": false
+      },
+      "visualDefaults": {
+        "outerJacket": "black"
+      },
+      "colorProfile": "control",
+      "minCores": 2,
+      "maxCores": 61,
+      "knowledgeMark": "КВББШВ",
+      "note": "Construction and armour type from the exact family record in designationKnowledgeBase; no arbitrary Б/Э substring inference."
+    },
+    "kvkbshv": {
+      "baseFamily": "КВКБШВ",
+      "structure": {
+        "productType": "control-cable",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": true,
+        "armorType": "steel-wires",
+        "shield": false
+      },
+      "visualDefaults": {
+        "outerJacket": "black"
+      },
+      "colorProfile": "control",
+      "minCores": 2,
+      "maxCores": 61,
+      "knowledgeMark": "КВКБШВ",
+      "note": "Construction and armour type from the exact family record in designationKnowledgeBase; no arbitrary Б/Э substring inference."
+    },
+    "nym": {
+      "baseFamily": "NYM",
+      "structure": {
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "shield": false
+      },
+      "visualDefaults": {
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "outerJacket": "grey"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 61,
+      "protectiveConductorSuffixes": {
+        "J": true,
+        "O": false
+      },
+      "source": {
+        "title": "LAPP NYM-J / NYM-O",
+        "url": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/building-installation/vde-standard-cables/nym-j.html"
+      },
+      "constructionTransitions": [
+        {
+          "minSection": 16,
+          "value": "stranded"
+        }
+      ],
+      "numberedFrom": 6,
+      "numberedNote": "From six cores the documented black/numbered identification is represented by a generic black catalogue palette, without printed labels; exact core count and J/O are preserved."
+    },
+    "nyy": {
+      "baseFamily": "NYY",
+      "structure": {
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "shield": false
+      },
+      "visualDefaults": {
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 61,
+      "protectiveConductorSuffixes": {
+        "J": true,
+        "O": false
+      },
+      "source": {
+        "title": "LAPP NYY-J / NYY-O",
+        "url": "https://products.lappgroup.com/online-catalogue/power-and-control-cables/building-installation/cables-for-direct-burial/nyy-j-nyy-o.html"
+      },
+      "numberedFrom": 6,
+      "numberedNote": "From six cores the documented black/numbered identification is represented by a generic black catalogue palette, without printed labels; exact core count and J/O are preserved.",
+      "conductorCodes": {
+        "RE": {
+          "conductorConstruction": "solid",
+          "conductorShape": "circular"
+        },
+        "RM": {
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular"
+        },
+        "SE": {
+          "conductorConstruction": "solid",
+          "conductorShape": "sector"
+        },
+        "SM": {
+          "conductorConstruction": "stranded",
+          "conductorShape": "sector"
+        }
+      }
+    },
+    "akvvg": {
+      "baseFamily": "АКВВГ",
+      "structure": {
+        "productType": "control-cable",
+        "conductorMaterial": "aluminium",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "PVC",
+        "insulation": "PVC",
+        "armor": false,
+        "shield": false
+      },
+      "visualDefaults": {
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "outerJacket": "black"
+      },
+      "colorProfile": "control",
+      "minCores": 2,
+      "maxCores": 37,
+      "source": {
+        "title": "Камский кабель: АКВВГ",
+        "url": "https://kamkabel.ru/upload/iblock/74f/a0p18s26gbqw4x4rtvicbewcmq05pw51.pdf"
+      }
+    },
+    "ppg": {
+      "baseFamily": "ППГ",
+      "structure": {
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "halogen-free-compound",
+        "insulation": "halogen-free-compound",
+        "armor": false,
+        "shield": false
+      },
+      "visualDefaults": {
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "source": {
+        "title": "Подольсккабель: ППГ, ППГЭ и ПБП",
+        "url": "https://podolskkabel.ru/res/content/docs/f1468_download_0_file.pdf"
+      }
+    },
+    "ppge": {
+      "baseFamily": "ППГЭ",
+      "structure": {
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "halogen-free-compound",
+        "insulation": "halogen-free-compound",
+        "armor": false,
+        "shield": true,
+        "shieldType": "overall-copper-tape"
+      },
+      "visualDefaults": {
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "source": {
+        "title": "Подольсккабель: ППГ, ППГЭ и ПБП",
+        "url": "https://podolskkabel.ru/res/content/docs/f1468_download_0_file.pdf"
+      }
+    },
+    "pbp": {
+      "baseFamily": "ПБП",
+      "structure": {
+        "productType": "power-cable",
+        "conductorMaterial": "copper",
+        "geometry": "round",
+        "hasOuterJacket": true,
+        "outerJacketMaterial": "halogen-free-compound",
+        "insulation": "halogen-free-compound",
+        "armor": true,
+        "shield": false,
+        "armorType": "steel-tapes"
+      },
+      "visualDefaults": {
+        "conductorConstruction": "solid",
+        "conductorShape": "circular",
+        "outerJacket": "black"
+      },
+      "colorProfile": "power",
+      "minCores": 1,
+      "maxCores": 5,
+      "source": {
+        "title": "Подольсккабель: ППГ, ППГЭ и ПБП",
+        "url": "https://podolskkabel.ru/res/content/docs/f1468_download_0_file.pdf"
+      }
+    }
+  }
+}

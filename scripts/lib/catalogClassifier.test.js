@@ -41,8 +41,9 @@ describe('classifyProduct', () => {
       'КПСЭ 2х2х0.75',
       { sourceCategory: 'Кабель связи' },
       {
-        catalogCategory: 'Кабели пожарной и охранной сигнализации',
-        catalogCategorySlug: 'kabeli-pozharnoy-signalizacii',
+        catalogCategory: 'Кабель управления и контроля',
+        catalogCategorySlug: 'kontrolnyy-kabel',
+        catalogSubcategorySlug: 'signalno-blokirovochnye',
         catalogType: 'КПС',
         catalogClassificationSource: 'rule',
       },
@@ -109,7 +110,7 @@ describe('classifyProduct', () => {
       'КПЛМ 4х0.75',
       {},
       {
-        catalogSection: 'Специальные кабели',
+        catalogSection: 'Кабель и провод',
         catalogCategory: 'Бортовые провода',
         catalogCategorySlug: 'bortovye-provoda',
         catalogClassificationSource: 'rule',
@@ -119,8 +120,9 @@ describe('classifyProduct', () => {
       'КПВЛ 12х0.75',
       {},
       {
-        catalogCategory: 'Контрольный кабель',
+        catalogCategory: 'Кабель управления и контроля',
         catalogCategorySlug: 'kontrolnyy-kabel',
+        catalogSubcategorySlug: 'kabel-upravleniya',
         catalogClassificationSource: 'rule',
       },
     ],
@@ -233,8 +235,9 @@ describe('classifyProduct', () => {
     'СБПЗАБпШп 3х2х0,9',
   ])('%s относится к сигнально-блокировочным', (name) => {
     expect(classifyName(name)).toMatchObject({
-      catalogCategory: 'Сигнально-блокировочные',
-      catalogCategorySlug: 'signalno-blokirovochnye',
+      catalogCategory: 'Кабель управления и контроля',
+      catalogCategorySlug: 'kontrolnyy-kabel',
+      catalogSubcategorySlug: 'signalno-blokirovochnye',
       catalogClassificationSource: 'rule',
     });
   });
@@ -307,7 +310,7 @@ describe('classifyProduct', () => {
     '%s относится к кабелям для структурированных систем связи',
     (name) => {
       expect(classifyName(name)).toMatchObject({
-        catalogCategorySlug: 'lan-kabeli',
+        catalogCategorySlug: 'kabeli-peredachi-dannykh',
         catalogClassificationSource: 'rule',
       });
     }
@@ -317,9 +320,9 @@ describe('classifyProduct', () => {
     ['НРГ 1х240', 'silovoy-kabel'],
     ['ПРГН 1х10', 'provoda'],
     ['ПМПЭВ 2х0.35', 'provoda'],
-    ['ТРВ 2х0.4', 'kabeli-svyazi'],
-    ['ШТЛ-2', 'kabeli-svyazi'],
-    ['ШТЛ-5', 'kabeli-svyazi'],
+    ['ТРВ 2х0.4', 'kabeli-peredachi-dannykh'],
+    ['ШТЛ-2', 'kabeli-peredachi-dannykh'],
+    ['ШТЛ-5', 'kabeli-peredachi-dannykh'],
   ])('%s классифицируется по каталогу производителя', (name, category) => {
     expect(classifyName(name)).toMatchObject({
       catalogCategorySlug: category,
@@ -333,7 +336,7 @@ describe('classifyProduct', () => {
 
   test('КИПэ относится к интерфейсным кабелям связи', () => {
     expect(classifyName('КИПэ 2х2х0.6 нг(А)-HF')).toMatchObject({
-      catalogCategorySlug: 'kabeli-svyazi',
+      catalogCategorySlug: 'kabeli-peredachi-dannykh',
       catalogClassificationSource: 'rule',
     });
     expect(classifyName('КИП 8х1,5').catalogCategorySlug).toBe('prochee');
@@ -410,8 +413,8 @@ describe('classifyProduct', () => {
         sourceCategory: 'Без категории',
       })
     ).toMatchObject({
-      catalogCategory: 'Кабели связи',
-      catalogCategorySlug: 'kabeli-svyazi',
+      catalogCategory: 'Кабели передачи данных',
+      catalogCategorySlug: 'kabeli-peredachi-dannykh',
       catalogClassificationSource: 'keywordSubstring',
       catalogClassificationMatch: 'RG',
     });
@@ -435,10 +438,10 @@ describe('classifyProduct', () => {
 
   test.each([
     ['МКПсКВ 7х2.5 нг LS', 'montazhnyy-kabel'],
-    ['КВПВП-5е 1х2х0.52', 'lan-kabeli'],
-    ['КИПВэПБП 2х2х0.78', 'kabeli-svyazi'],
-    ['ОМЗКГЦ 10-01-0.22-8', 'kabeli-svyazi'],
-    ['Сегмент-КИ485-ЭПКГ 4х2х0.6', 'kabeli-svyazi'],
+    ['КВПВП-5е 1х2х0.52', 'kabeli-peredachi-dannykh'],
+    ['КИПВэПБП 2х2х0.78', 'kabeli-peredachi-dannykh'],
+    ['ОМЗКГЦ 10-01-0.22-8', 'kabeli-peredachi-dannykh'],
+    ['Сегмент-КИ485-ЭПКГ 4х2х0.6', 'kabeli-peredachi-dannykh'],
     ['Сегмент-КУнг(А)-LS 3х10', 'prochee'],
     ['КГПЭф 1х2х1.2 нг HF', 'prochee'],
     ['АсВВГ 3х16 нг(А)-LS', 'silovoy-kabel'],

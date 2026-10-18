@@ -51,6 +51,7 @@ export async function main(args = process.argv.slice(2)) {
     strict: true,
     options: {
       'dry-run': { type: 'boolean' },
+      strict: { type: 'boolean' },
       out: { type: 'string' },
       catalog: { type: 'string' },
       help: { type: 'boolean' },
@@ -58,7 +59,7 @@ export async function main(args = process.argv.slice(2)) {
   });
   if (values.help) {
     console.log(
-      'Read-only cable visual classification. No image provider or .env access.\nnode scripts/auditCableVisuals.js --dry-run --out outputs/cable-visual-audit-2026-10-16\n--catalog PATH: optional JSON array or {items: []}'
+      'Read-only cable visual classification. No image provider or .env access.\nnode scripts/auditCableVisuals.js --dry-run --out outputs/cable-visual-practical-2026-10-16\n--strict: previous evidence-only classification\n--catalog PATH: optional JSON array or {items: []}'
     );
     return;
   }
@@ -68,7 +69,10 @@ export async function main(args = process.argv.slice(2)) {
     );
   const out = path.resolve(
     root,
-    values.out || 'outputs/cable-visual-audit-2026-10-16'
+    values.out ||
+      (values.strict
+        ? 'outputs/cable-visual-audit-2026-10-16'
+        : 'outputs/cable-visual-practical-2026-10-16')
   );
   if (!out.startsWith(path.join(root, 'outputs') + path.sep))
     throw new Error('--out must be a directory inside outputs/');
@@ -94,7 +98,10 @@ export async function main(args = process.argv.slice(2)) {
     new Set(products.map((p) => p.sku)).size !== products.length
   )
     throw new Error('Duplicate/missing SKU in audit input');
-  const context = { rules, knowledge, colorRules };
+  const familyVisualRules = values.strict
+    ? null
+    : await read('data/familyVisualRules.json');
+  const context = { rules, knowledge, colorRules, familyVisualRules };
   const assets = await readCableVisualAssets(root, context);
   // Resolve the same storefront overrides, without making any request to the running site.
   const visible = await createCatalogStore({
@@ -110,11 +117,71 @@ export async function main(args = process.argv.slice(2)) {
   report.catalogFile = path.relative(root, catalogFile);
   report.auditFingerprint = visualAuditFingerprint({
     products,
-    rules,
+    rules: familyVisualRules ? { ...rules, familyVisualRules } : rules,
     knowledge,
     assets,
   });
   report.sources = { ...knowledge.sources, ...rules.sources };
+  if (familyVisualRules) {
+    report.familyVisualRules = familyVisualRules;
+    const seen = new Set();
+    const approved = report.groups.filter(
+      (g) => g.visualClassification === 'AUTO_APPROVED'
+    );
+    report.autoApprovedExamples = [];
+    const rowBySku = new Map(report.rows.map((r) => [r.sku, r]));
+    for (const g of approved) {
+      const row = rowBySku.get(g.autoApprovedSkus[0]);
+      if (!seen.has(row.baseFamily)) {
+        seen.add(row.baseFamily);
+        report.autoApprovedExamples.push({
+          visualKey: g.visualKey,
+          familyId: row.familyId,
+          baseFamily: row.baseFamily,
+          name: row.originalName,
+          cores: row.cores,
+          construction: row.construction,
+          geometry: row.geometry,
+          skuCount: g.autoApprovedSkus.length,
+          imageStatus: g.imageStatus,
+          rule: row.appliedFamilyVisualRule,
+        });
+      }
+      if (report.autoApprovedExamples.length === 20) break;
+    }
+    const families = new Set();
+    report.needsReviewExamples = [];
+    for (const r of report.needsReview) {
+      if (!families.has(r.baseFamily)) {
+        families.add(r.baseFamily);
+        report.needsReviewExamples.push({
+          sku: r.sku,
+          name: r.originalName,
+          familyId: r.familyId,
+          reasons: r.issues.map((i) => i.message),
+          primaryReason: (
+            [
+              'family_conflict',
+              'parsing_warning',
+              'special_structure',
+              'special_configuration',
+              'unknown_family',
+              'auxiliary_role_unknown',
+              'unverified_family_suffix',
+              'unverified_modifier',
+              'unknown_geometry',
+              'shield_detail_unknown',
+              'armor_detail_unknown',
+              'unsupported_core_range',
+            ]
+              .map((code) => r.issues.find((i) => i.code === code))
+              .find(Boolean) || r.issues[0]
+          )?.message,
+        });
+      }
+      if (report.needsReviewExamples.length === 20) break;
+    }
+  }
   const after = await snapshot();
   report.integrity = {
     protectedFiles: Object.keys(before).length,
@@ -150,6 +217,34 @@ export async function main(args = process.argv.slice(2)) {
       '\n'
     )}\n\n## Файлы\n\n- report.html — поиск, фильтры, таблица всех товаров, состав каждой группы и существующие изображения.\n- products.csv — полная таблица.\n- audit.json — полный отчёт, доказательства, причины, контрольные суммы.\n- needs-review.json — все SKU с вопросами классификации или сопоставления.\n- groups.json — все группы и входящие товары.\n- existing-images.json — соответствие прежних изображений новым профилям-кандидатам.\n`;
   await fs.writeFile(path.join(out, 'summary.md'), summary);
+  if (familyVisualRules) {
+    await fs.writeFile(
+      path.join(out, 'examples.json'),
+      JSON.stringify(
+        {
+          autoApproved: report.autoApprovedExamples,
+          needsReview: report.needsReviewExamples,
+        },
+        null,
+        2
+      ) + '\n'
+    );
+    const cell = (v) =>
+      String(v ?? '—')
+        .replace(/\|/gu, '/')
+        .replace(/\n/gu, ' ');
+    const practicalSummary = `# Практический dry-run каталожных иллюстраций\n\n| Показатель | Значение |\n|---|---:|\n| Всего товаров | ${s.totalProducts} |\n| AUTO_APPROVED | ${s.autoApproved} |\n| REUSE | ${s.reuse.visualKeys} visualKey / ${s.reuse.products} товаров / ${s.reuse.existingImagesUsed} PNG |\n| MISSING, готово | ${s.missing.visualKeys} visualKey / ${s.missing.products} товаров |\n| NEEDS_REVIEW | ${s.needsReview} |\n| Уникальных visualKey | ${s.uniqueVisualKeys} |\n| NEEDS_REVIEW раньше | 5404 |\n| Уменьшение | ${s.needsReviewReduction} |\n\nАвтоматические семейства: ${s.automaticFamilies.join(', ')}.\n\n## Почему стало меньше блокировок\n\nУ известных семейств появились централизованные правила типовой конструкции и явные каталоговые defaults. Палитра и стандарт однопроволочной иллюстрации — визуальные соглашения, а не фактические характеристики конкретной партии. Неизвестные заполнитель, точные материалы и диаметр не блокируют рисунок. Явные противоречия, число жил, геометрия, отсутствие оболочки, броня/экран и специальные конструкции продолжают блокировать. Старые утверждённые картинки сопоставляются без требования новых некритических metadata.\n\n## Добавленные familyVisualRules\n\n${Object.entries(
+      familyVisualRules.familyVisualRules
+    )
+      .map(
+        ([k, r]) =>
+          `- ${k}: ${r.extends ? `extends ${r.extends}` : `${r.baseFamily}; ${r.colorProfile}; ${r.minCores}–${r.maxCores} жил; ${JSON.stringify(r.visualDefaults || {})}`}`
+      )
+      .join(
+        '\n'
+      )}\n\n## 20 примеров AUTO_APPROVED из разных семейств\n\n| Пример товара | familyId | Жилы | Конструкция / геометрия | Статус | SKU в группе | visualKey |\n|---|---|---:|---|---|---:|---|\n${report.autoApprovedExamples.map((e) => `| ${cell(e.name)} | ${e.familyId} | ${e.cores} | ${e.construction} / ${e.geometry} | ${e.imageStatus} | ${e.skuCount} | ${e.visualKey} |`).join('\n')}\n\n## 20 оставшихся NEEDS_REVIEW\n\n| SKU | Название | Причины |\n|---|---|---|\n${report.needsReviewExamples.map((e) => `| ${e.sku} | ${cell(e.name)} | ${cell(e.primaryReason || e.reasons.join('; '))} |`).join('\n')}\n\n## Без изменений\n\n- Image API requests: 0.\n- Generated: 0.\n- Bindings changed: 0.\n- ${report.integrity.protectedFiles} защищённых файлов: SHA-256 unchanged.\n- Текущий стиль, prompt builder, масштаб, PNG и manifest сохранены.\n- Статусы REUSE/MISSING — только предложения dry-run; ничего не назначено.\n`;
+    await fs.writeFile(path.join(out, 'summary.md'), practicalSummary);
+  }
   console.log(
     JSON.stringify(
       {

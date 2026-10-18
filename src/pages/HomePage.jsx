@@ -5,6 +5,12 @@ import Container from '../components/ui/Container';
 import CallbackButton from '../components/forms/CallbackButton';
 import CategoryShowcase from '../components/home/CategoryShowcase';
 import StockProductsGrid from '../components/home/StockProductsGrid';
+import {
+  HomeCompanyIntro,
+  HomeDelivery,
+  HomeFaq,
+  HomePurchaseSteps,
+} from '../components/home/HomeDetailsSections';
 import { fetchFeaturedProducts } from '../lib/productsApi';
 import { captureException } from '../lib/errorTracking';
 import { useSEO } from '../hooks/useSEO';
@@ -12,6 +18,7 @@ import { useJsonLd } from '../hooks/useJsonLd';
 import { usePrerenderData } from '../lib/prerenderData';
 import { CATALOG_CANONICAL_PATH } from '../lib/canonicalPaths.js';
 import { messages } from '../../shared/messages.js';
+import { DEFAULT_FEATURED_PRODUCTS_LIMIT } from '../../shared/featuredProducts.js';
 import {
   SITE_MANUFACTURERS,
   SITE_NAME,
@@ -94,7 +101,12 @@ export default function HomePage() {
       try {
         setIsLoading(true);
         setLoadError('');
-        setProducts(await fetchFeaturedProducts(10, controller.signal));
+        setProducts(
+          await fetchFeaturedProducts(
+            DEFAULT_FEATURED_PRODUCTS_LIMIT,
+            controller.signal
+          )
+        );
       } catch (error) {
         if (error.name !== 'AbortError') {
           captureException(error, { source: 'HomePage.loadFeatured' });
@@ -137,24 +149,24 @@ export default function HomePage() {
         <Container>
           <div className="home-concept__hero-content">
             <h1 id="home-hero-title">
-              Кабель для вашего проекта — с расчётом в рабочий день
+              Кабель под ваш проект
             </h1>
             <p className="home-concept__hero-lead">
-              Подберём марки и аналоги, уточним наличие, цену и срок поставки.
+              Подберём марки и аналоги, проверим наличие и подготовим КП в рабочий день.
             </p>
             <div className="home-concept__hero-actions">
-              <Link
-                to={CATALOG_CANONICAL_PATH}
-                className="home-concept__button home-concept__button--orange"
-              >
-                Перейти в каталог <span aria-hidden="true">→</span>
-              </Link>
               <a
                 href="/specification/"
-                className="home-concept__button home-concept__button--outline"
+                className="home-concept__button home-concept__button--orange"
               >
-                Отправить спецификацию
+                Отправить спецификацию <span aria-hidden="true">→</span>
               </a>
+              <Link
+                to={CATALOG_CANONICAL_PATH}
+                className="home-concept__button home-concept__button--text"
+              >
+                Перейти в каталог
+              </Link>
             </div>
             <ul className="home-concept__hero-facts">
               {quickFacts.map((fact) => (
@@ -217,6 +229,7 @@ export default function HomePage() {
         isLoading={isLoading}
         loadError={loadError}
       />
+      <HomeCompanyIntro />
 
       <section
         className="home-concept__quote"
@@ -272,6 +285,8 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <HomePurchaseSteps />
+
       <section className="home-concept__trust" aria-label="Условия работы">
         <Container>
           <div className="home-concept__trust-grid">
@@ -321,6 +336,8 @@ export default function HomePage() {
           </ul>
         </Container>
       </section>
+      <HomeDelivery />
+      <HomeFaq />
     </div>
   );
 }

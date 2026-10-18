@@ -1,0 +1,9 @@
+{
+  "byVisualKey": {
+    "kvvgeng__7c__solid__round__7core-control-black__p-a016555bf5d13416": "Exactly 7 insulated cores. Eighth copper region is the bare drain, not another insulated conductor.",
+    "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1": "Exactly 7 insulated cores. Copper highlights split several tips into separate pixel regions; screened count 10 is a false positive.",
+    "kvvgeng-a-frls__14c__solid__round__14core-control-black__p-8f1b130d275e3c5a": "Exactly 14 insulated cores and visible copper tips. Additional screened regions are mica/metal highlights, not additional cores.",
+    "kvkbshvng-a-frls__10c__solid__round__10core-control-black__p-1b4496b3d54d2a76": "Exactly 10 insulated cores and solid copper tips. Additional screened regions are mica/metal highlights, not additional cores.",
+    "kvvgng-frls__7c__solid__round__7core-control-black__p-dc12843c045a66f9": "Exactly 7 insulated cores and solid copper tips. Additional screened regions are mica/metal highlights, not additional cores."
+  }
+}

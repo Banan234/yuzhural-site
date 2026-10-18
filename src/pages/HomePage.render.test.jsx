@@ -64,8 +64,8 @@ function expectCanonicalHomepageHrefs(hrefs) {
   expect(hrefs).toContain('/about/');
   expect(hrefs).toContain('/contacts/');
   expect(hrefs).toContain('/catalog/?category=Силовой%20кабель');
-  expect(hrefs).toContain('/catalog/?category=Контрольный%20кабель');
-  expect(hrefs).toContain('/catalog/?category=Кабели%20связи');
+  expect(hrefs).toContain('/catalog/kontrolnye-kabeli');
+  expect(hrefs).toContain('/catalog/kabeli-svyazi');
   expect(hrefs).toContain('/catalog/?category=Гибкий%20кабель');
 
   expect(hrefs).not.toContain('/catalog');

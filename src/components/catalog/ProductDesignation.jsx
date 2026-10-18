@@ -37,6 +37,31 @@ export default function ProductDesignation({ product }) {
           {warning}
         </p>
       ))}
+      {decoded.manufacturerTexts.length > 0 && (
+        <div className="product-designation__manufacturer-texts">
+          <h3>Описание и применение по данным изготовителей</h3>
+          <p className="product-designation__sources">
+            Краткое изложение технического назначения семейства. Полные тексты и
+            условия применения — в оригиналах. Указан изготовитель документации;
+            завод конкретной партии уточняется по паспорту.
+          </p>
+          {decoded.manufacturerTexts.map((text) => (
+            <details key={text.id}>
+              <summary>
+                {text.manufacturer} · {text.originalHeading}
+              </summary>
+              <p>{text.text}</p>
+              <a href={text.url} target="_blank" rel="noopener noreferrer">
+                {text.sourceTitle}
+                {text.pages.length > 0
+                  ? `, стр. PDF: ${text.pages.join(', ')}`
+                  : ''}{' '}
+                ↗
+              </a>
+            </details>
+          ))}
+        </div>
+      )}
       <div className="product-designation__sources">
         {decoded.sources.length > 0 && (
           <>

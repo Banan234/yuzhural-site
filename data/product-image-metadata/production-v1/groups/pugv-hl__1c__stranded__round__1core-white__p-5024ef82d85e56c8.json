@@ -1,0 +1,150 @@
+{
+  "visualKey": "pugv-hl__1c__stranded__round__1core-white__p-5024ef82d85e56c8",
+  "action": "MISSING",
+  "image": "/product-images/generated/pr1_pugv-hl__1c__stranded__round__1core-white__p-5024ef82d85e56c8.png",
+  "visualProfile": {
+    "family": "pugv-hl",
+    "productType": "installation-wire",
+    "cores": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": false,
+    "outerJacket": "none",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "white"
+    ],
+    "coreColorScheme": "1core-white",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null
+  },
+  "prompt": "Use case: product-mockup. One standardized realistic professional 3D product render for an electrical cable catalogue. Realistic materials, matte polymers, moderate natural metal highlights, soft neutral studio lighting. Keep the established compact catalogue scale and shallow three-quarter camera.\n\nExact visual family: pugv-hl. Product type: installation-wire. Geometry: round.\n\nOrientation: the intact product body is on the RIGHT, the stripped ends and exposed metal tips point LEFT. A natural gentle 8-degree diagonal rises toward the RIGHT. Maintain generous transparent breathing room above and below. The object is positioned slightly to the right of center. Keep a normal free left margin and every stripped tip fully visible. Do not enlarge or thicken the object to reach the right border. Preserve a relaxed catalogue composition and gentle separation of cores.\n\nA single insulated installation wire: exactly ONE layer of colored insulation around its conductor. NO common outer jacket, NO additional black sheath, NO nested multicore cable. Insulated body on the RIGHT, one stripped metal tip on the LEFT.\n\nExactly 1 insulated conductors and exactly 1 exposed copper tips. No extra insulated wires. Each metal strand inside a stranded conductor is part of that same core, not another insulated conductor.\n\nAssign precisely these colors to the 1 insulated conductors: 1: white. A yellow-green stripe never means two separate wires. Blue remains blue. Do not add a PE or neutral core beyond this exact list.\n\nStranded copper: each insulated core contains ONE compact neat bundle of fine copper strands. Show the bundle at each left tip, with a tidy circular cross-section. No solid rods and no loose brush of long strands.\n\nNo armor layer.\n\nNo metallic shield and no drain wire.\n\nNominal cross-section is product metadata only. Use uniform qualitative catalogue thickness within this visual group; do not calculate physical diameters. Preserve the family-specific visible layers above.\n\nGenuinely transparent PNG with real alpha. No opaque backdrop, painted checkerboard, floor, background shadow, halo or scenery. No text, markings, numbers, labels, logos, dimensions, watermark or other objects. Do not mirror the composition.\n\nFinal construction check: 1 insulated cores, stranded copper, round, common jacket absent, armor absent, screen absent.",
+  "promptHash": "4117d9427b1c888ed7fc7c194598c868dd755794dcfa30a51a93c88c705a1e9b",
+  "expectedSha256": null,
+  "members": [
+    {
+      "sku": "YU-0005053",
+      "productId": 5053,
+      "sourceName": "ПУГВ 6 хл белый",
+      "productName": "ПУГВ 1х6 хл белый",
+      "primaryCores": 1,
+      "cores": 1,
+      "section": 6,
+      "auxiliaryCores": 0,
+      "auxiliarySection": null,
+      "sectionUnit": "mm2",
+      "hasPE": false,
+      "hasN": null,
+      "technicalProfile": {
+        "family": "pugv-hl",
+        "cores": 1,
+        "primaryCores": 1,
+        "auxiliaryCores": 0,
+        "pairedGroupSize": null,
+        "productType": "installation-wire",
+        "conductorMaterial": "copper",
+        "conductorConstruction": "stranded",
+        "conductorShape": "circular",
+        "geometry": "round",
+        "hasOuterJacket": false,
+        "outerJacket": "none",
+        "outerJacketMaterial": null,
+        "insulation": "PVC",
+        "armor": false,
+        "armorType": null,
+        "shield": false,
+        "shieldType": null,
+        "filler": "none",
+        "specialElements": [],
+        "hasPE": false,
+        "hasN": null,
+        "coreColors": [
+          "white"
+        ],
+        "coreColorScheme": "1core-no-pe-white",
+        "declaredColors": [
+          "white"
+        ],
+        "unresolvedModifiers": [],
+        "unresolvedFamilySuffix": null,
+        "sectionKey": null,
+        "auxiliarySectionKey": null
+      },
+      "illustrationDefaults": [],
+      "productHash": "50654483b22a564d435052b2d489b1c2979f85ea224d16fb048852d933899b4e"
+    }
+  ],
+  "skuCount": 1,
+  "status": "generated",
+  "attempts": 1,
+  "bound": false,
+  "startedAt": "2026-10-16T15:23:41.694Z",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "requested_size": "1536x1024",
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.12063134160090191,
+    "has_transparency": true,
+    "transparent_ratio": 0.9140236842071815,
+    "non_opaque_ratio": 0.999557684657123,
+    "foreground_ratio": 0.08550095390133572,
+    "bounds": {
+      "minX": 484,
+      "minY": 299,
+      "maxX": 1773,
+      "maxY": 549
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "2d2ce030087f18ffa1424216bde63df60fcca8a4c197d25d90dcd800a6c0a433",
+    "bytes": 266341
+  },
+  "httpStatus": 200,
+  "provider": "codex-sale",
+  "model": "gpt-image-2.5-flare",
+  "requestId": "b19238bf-ce74-4823-b390-e0a1183a4995",
+  "generatedAt": "2026-10-16T15:23:59.661Z",
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "visualReview": "pending-final-sample-check",
+  "apiUsage": {
+    "input_tokens": 460,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 460
+    },
+    "output_tokens": 458,
+    "output_tokens_details": {
+      "image_tokens": 458,
+      "text_tokens": 0
+    },
+    "total_tokens": 918
+  },
+  "revisedPrompt": null
+}

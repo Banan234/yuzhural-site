@@ -48,6 +48,7 @@ import {
   loadCatalogProducts,
 } from '../lib/catalog.js';
 import { buildMarkIndex } from '../shared/markIndex.js';
+import { getFeaturedProducts } from '../shared/featuredProducts.js';
 import { buildProductDesignationHtml } from '../shared/productDesignationHtml.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -188,7 +189,6 @@ export const NOT_FOUND_ROUTE = Object.freeze({
 const PRODUCT_SLUG_RE = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 const URL_OR_ROOT_PATH_RE = /^(https?:\/\/[^\s"<>]+|\/(?!\/)[^\s"<>]*)$/i;
 const PRODUCT_NAME_FIELDS = ['title', 'fullName', 'name'];
-const HOME_FEATURED_PRODUCTS_LIMIT = 10;
 const OPTIONAL_STRING_FIELDS = [
   'title',
   'fullName',
@@ -871,15 +871,6 @@ export function buildCatalogPrerenderData(
   };
 }
 
-function getFeaturedProducts(products, limit = HOME_FEATURED_PRODUCTS_LIMIT) {
-  return [...products]
-    .sort((a, b) => {
-      const promotedDiff = (b.promoted ? 1 : 0) - (a.promoted ? 1 : 0);
-      if (promotedDiff !== 0) return promotedDiff;
-      return (Number(b.stock) || 0) - (Number(a.stock) || 0);
-    })
-    .slice(0, limit);
-}
 
 export function buildHomePrerenderData(products) {
   return {

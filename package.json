@@ -21,6 +21,7 @@
     "check:env": "node scripts/checkEnv.js",
     "images:cables": "node scripts/generateCableImages.js",
     "images:cables:audit": "node scripts/auditCableVisuals.js --dry-run",
+    "images:cables:production": "node scripts/runCableVisualProduction.js",
     "images:cables:check": "node scripts/generateCableImages.js --dry-run --missing-only --limit 5",
     "check:product-prerender": "node scripts/checkProductPrerender.js",
     "format": "prettier --write .",

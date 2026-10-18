@@ -97,12 +97,10 @@ export default function SiteFooter({ onOpenQuote, onManageCookies }) {
               <Link to={`${CATALOG_CANONICAL_PATH}?category=Силовой%20кабель`}>
                 Силовой кабель
               </Link>
-              <Link
-                to={`${CATALOG_CANONICAL_PATH}?category=Контрольный%20кабель`}
-              >
+              <Link to="/catalog/kontrolnye-kabeli">
                 Контрольный кабель
               </Link>
-              <Link to={`${CATALOG_CANONICAL_PATH}?category=Кабели%20связи`}>
+              <Link to="/catalog/kabeli-svyazi">
                 Кабели связи
               </Link>
               <Link to={`${CATALOG_CANONICAL_PATH}?category=Гибкий%20кабель`}>

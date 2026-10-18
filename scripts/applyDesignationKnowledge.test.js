@@ -98,12 +98,12 @@ describe('documentation database application', () => {
     );
     expect(first.report.counts.familyIdentified).toBe(1);
   });
-  it('keeps mixed units and manufacturer-only titles pending', () => {
+  it('keeps undocumented nominal sizes and manufacturer-only titles pending', () => {
     const result = enrichPriceDesignations([
       {
         mark: 'КПЭТИ',
-        sourceName: 'КПЭТИ 2х2х0,7',
-        crossSection: 0.7,
+        sourceName: 'КПЭТИ 2х2х0,52',
+        crossSection: 0.52,
         cores: 2,
         groupCores: 2,
       },
