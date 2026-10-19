@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "totalProducts": 5708,
+    "recognized": 304,
+    "needsReview": 5404,
+    "familyRecognized": 4111,
+    "uniqueFamilyIds": 1664,
+    "verifiedFamilyIds": 544,
+    "uniqueVisualProfiles": 3601,
+    "uniqueVisualKeys": 3601,
+    "readyVisualProfiles": 72,
+    "existingApprovedImages": 119,
+    "currentProductsWithImages": 570,
+    "imageStatus": {
+      "REUSE": 0,
+      "MISSING": 304,
+      "NEEDS_REVIEW": 5404
+    },
+    "confidence": {
+      "high": 0,
+      "medium": 304,
+      "low": 5404
+    },
+    "reviewReasons": {
+      "unknown_coreColors": 5401,
+      "unknown_outerJacket": 5334,
+      "unknown_filler": 5204,
+      "unknown_conductorShape": 4793,
+      "unknown_conductorConstruction": 4687,
+      "unknown_hasOuterJacket": 4026,
+      "unknown_geometry": 4017,
+      "unknown_productType": 3696,
+      "unknown_insulation": 3573,
+      "unknown_armor": 3329,
+      "unknown_conductorMaterial": 3192,
+      "unknown_shield": 2837,
+      "unknown_family": 1597,
+      "special_configuration": 1558,
+      "shield_detail_unknown": 1397,
+      "unverified_modifier": 796,
+      "armor_detail_unknown": 596,
+      "unverified_family_suffix": 424,
+      "missing_section": 316,
+      "missing_cores": 303,
+      "auxiliary_role_unknown": 113,
+      "special_structure": 98,
+      "family_conflict": 9,
+      "parsing_warning": 3
+    },
+    "apiRequests": 0,
+    "bindingsChanged": 0,
+    "imagesGenerated": 0
+  },
+  "integrity": {
+    "unchanged": true,
+    "protectedFiles": 815
+  },
+  "report": "/Users/Shared/yuzhural-site/outputs/cable-visual-audit-2026-10-16/report.html"
+}

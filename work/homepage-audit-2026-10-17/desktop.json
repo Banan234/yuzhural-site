@@ -1,0 +1,418 @@
+{
+  "width": 1440,
+  "scrollWidth": 1440,
+  "height": 3105,
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Кабель для вашего проекта — с расчётом в рабочий день",
+      "y": 285
+    },
+    {
+      "tag": "H2",
+      "text": "Быстрый поиск по каталогу",
+      "y": 827
+    },
+    {
+      "tag": "H2",
+      "text": "Категории каталога",
+      "y": 958
+    },
+    {
+      "tag": "H3",
+      "text": "Силовой кабель →",
+      "y": 1033
+    },
+    {
+      "tag": "H3",
+      "text": "Кабель управления и контроля →",
+      "y": 1033
+    },
+    {
+      "tag": "H3",
+      "text": "Монтажный кабель →",
+      "y": 1033
+    },
+    {
+      "tag": "H3",
+      "text": "Провода →",
+      "y": 1211
+    },
+    {
+      "tag": "H3",
+      "text": "Кабели передачи данных →",
+      "y": 1211
+    },
+    {
+      "tag": "H3",
+      "text": "Импортный кабель →",
+      "y": 1211
+    },
+    {
+      "tag": "H2",
+      "text": "Товары из каталога",
+      "y": 1400
+    },
+    {
+      "tag": "H3",
+      "text": "НППнг(А)-HF 1х1 бел",
+      "y": 1622
+    },
+    {
+      "tag": "H3",
+      "text": "ПМСВ 2х1.2 оц",
+      "y": 1622
+    },
+    {
+      "tag": "H3",
+      "text": "БПВЛМЭ 1х0.35",
+      "y": 1622
+    },
+    {
+      "tag": "H3",
+      "text": "ПМСП 4х1.2 оц",
+      "y": 1622
+    },
+    {
+      "tag": "H3",
+      "text": "БИФМ-Н 1х0.2",
+      "y": 1622
+    },
+    {
+      "tag": "H3",
+      "text": "ППСКО нг(А)-HF-FR 1х0.75",
+      "y": 1622
+    },
+    {
+      "tag": "H3",
+      "text": "ПУГВнг(А)-LS 1х1 черн",
+      "y": 1622
+    },
+    {
+      "tag": "H3",
+      "text": "НВ 1х0.5 красн",
+      "y": 1622
+    },
+    {
+      "tag": "H3",
+      "text": "КПСнг(А)-FRLS 2х2х0.5",
+      "y": 1622
+    },
+    {
+      "tag": "H3",
+      "text": "КПСнг(А)-FRLS 1х2х0.5",
+      "y": 1622
+    },
+    {
+      "tag": "H2",
+      "text": "Пришлите список — подготовим КП",
+      "y": 1889
+    },
+    {
+      "tag": "H2",
+      "text": "Производители в прайсе",
+      "y": 2283
+    },
+    {
+      "tag": "H2",
+      "text": "Нужно коммерческое предложение?",
+      "y": 2514
+    },
+    {
+      "tag": "H3",
+      "text": "Каталог",
+      "y": 2784
+    },
+    {
+      "tag": "H3",
+      "text": "Как мы работаем",
+      "y": 2784
+    },
+    {
+      "tag": "H3",
+      "text": "Компания",
+      "y": 2784
+    },
+    {
+      "tag": "H3",
+      "text": "Контакты",
+      "y": 2784
+    }
+  ],
+  "sections": [
+    {
+      "class": "home-concept__hero",
+      "y": 185,
+      "height": 620,
+      "text": "Кабель для вашего проекта — с расчётом в рабочий день\n\nПодберём марки и аналоги, уточним наличие, цену и срок поставки.\n\nПерейти в каталог\n→\nОтправить спецификацию\nДоставка\nпо всей России\nДокументы\nк поставке\nНаличие\nпроверим перед КП"
+    },
+    {
+      "class": "home-concept__search-band",
+      "y": 805,
+      "height": 119,
+      "text": "Быстрый поиск по каталогу\nПодобрать по задаче →\nМарка или сечение кабеля\nНайти\n\nПоиск по марке, сечению и названию товара"
+    },
+    {
+      "class": "section home-category-showcase",
+      "y": 924,
+      "height": 452,
+      "text": "Категории каталога\nВесь каталог →\nСиловой кабель →\n\nВВГ · АВВГ · ВБбШв\n\nКабель управления и контроля →\n\nКВВГ · АКВВГ · КВБбШв\n\nМонтажный кабель →\n\nМКШ · МКЭШ · КУИН\n\nПровода →\n\nСИП · ПВС · ПуГВ\n\nКабели передачи данных →\n\nUTP · FTP · КВК\n\nИмпортный кабель →\n\nBELDEN · Prysmian · SIEMENS"
+    },
+    {
+      "class": "section home-stock-showcase",
+      "y": 1376,
+      "height": 468,
+      "text": "Товары из каталога\nСмотреть весь каталог→\nНППнг(А)-HF 1х1 бел\n\nВ наличии: 46 460 м\n\n52,9 ₽\n/ м\nВ список КП\nПМСВ 2х1.2 оц\n\nВ наличии: 42 000 м\n\n4,25 ₽\n/ м\nВ список КП\nБПВЛМЭ 1х0.35\n\nВ наличии: 39 966 м\n\n14,6 ₽\n/ м\nВ список КП\nПМСП 4х1.2 оц\n\nВ наличии: 35 900 м\n\n7,3 ₽\n/ м\nВ список КП\nБИФМ-Н 1х0.2\n\nВ наличии: 35 118 м\n\n54,8 ₽\n/ м\nВ список КП\nППСКО нг(А)-HF-FR 1х0.75\n\nВ наличии: 31 793 м\n\n44,9 ₽\n/ м\nВ список КП\nПУГВнг(А)-LS 1х1 черн\n\nВ наличии: 28 627 м\n\n13,4 ₽\n/ м\nВ список КП\nНВ 1х0.5 красн\n\nВ наличии: 23 847 м\n\n6,18 ₽\n/ м\nВ список КП\nКПСнг(А)-FRLS 2х2х0.5\n\nВ наличии: 21 814 м\n\n31,6 ₽\n/ м\nВ список КП\nКПСнг(А)-FRLS 1х2х0.5\n\nВ наличии: 20 702 м\n\n18,3 ₽\n/ м\nВ список КП"
+    },
+    {
+      "class": "home-concept__quote",
+      "y": 1845,
+      "height": 322,
+      "text": "Пришлите список — подготовим КП\n\nМарки, сечения и метраж — текстом, в Excel или PDF. Подберём аналоги, уточним наличие, цену и срок поставки.\n\nExcel\nPDF\nТекст\nОтправить спецификацию\n→\nЗаказать звонок\nСпецификация\nМарка\nСечение\nМетраж\nВВГнг(А)-LS\n4×25\n500 м\nКВВГ\n7×1,5\n300 м\nПВС\n3×1,5\n200 м"
+    },
+    {
+      "class": "home-concept__trust",
+      "y": 2167,
+      "height": 116,
+      "text": "Документы к поставке\nРеквизиты и условия работы\n→\nПодбор по наличию\nПроверим остатки и сроки\n→\nДоставка по России\nУсловия и способы отгрузки\n→"
+    },
+    {
+      "class": "home-concept__manufacturers",
+      "y": 2283,
+      "height": 154,
+      "text": "Производители в прайсе\nСкачать прайс-лист →\nККЗ\nКРУИНВЭЛК\nПИРОКОР\nГЕРДА\nСОББИТ\nМЕТРОЛАН\nТРАНСКАБ"
+    }
+  ],
+  "images": [
+    {
+      "src": "/logo.png",
+      "ok": true,
+      "width": 300,
+      "height": 80,
+      "alt": "ЮжУралЭлектроКабель"
+    },
+    {
+      "src": "/home-warehouse-concept.jpg",
+      "ok": true,
+      "width": 1440,
+      "height": 620,
+      "alt": ""
+    },
+    {
+      "src": "/category-placeholders/flexible-cable.svg",
+      "ok": true,
+      "width": 297,
+      "height": 136,
+      "alt": "Транскаб-НППнг(А)-HF 1х1 бел — Кабели для подвижного состава"
+    },
+    {
+      "src": "/category-placeholders/wire.svg",
+      "ok": true,
+      "width": 297,
+      "height": 136,
+      "alt": "ПМСВ 2х1.2 оц — Провода"
+    },
+    {
+      "src": "/category-placeholders/flexible-cable.svg",
+      "ok": true,
+      "width": 297,
+      "height": 136,
+      "alt": "БПВЛМЭ 1х0.35 — Бортовые провода"
+    },
+    {
+      "src": "/category-placeholders/wire.svg",
+      "ok": true,
+      "width": 297,
+      "height": 136,
+      "alt": "ПМСП 4х1.2 оц — Провода"
+    },
+    {
+      "src": "/category-placeholders/flexible-cable.svg",
+      "ok": true,
+      "width": 297,
+      "height": 136,
+      "alt": "БИФМ-Н 1х0.2 — Бортовые провода"
+    },
+    {
+      "src": "/category-placeholders/flexible-cable.svg",
+      "ok": true,
+      "width": 297,
+      "height": 136,
+      "alt": "Транскаб-ППСКО нг(А)-HF-FR 1х0.75 — Кабели для подвижного состава"
+    },
+    {
+      "src": "/product-images/generated/pr1_pugvng-a-ls__1c__stranded__round__1core-black__p-69b0114eec29d457.png",
+      "ok": true,
+      "width": 297,
+      "height": 136,
+      "alt": "ПУГВнг(А)-LS 1х1 черн — иллюстрация конструкции кабеля"
+    },
+    {
+      "src": "/category-placeholders/wire.svg",
+      "ok": true,
+      "width": 297,
+      "height": 136,
+      "alt": "НВ 1х0.5 красн — Провода"
+    },
+    {
+      "src": "/category-placeholders/communication-cable.svg",
+      "ok": true,
+      "width": 297,
+      "height": 136,
+      "alt": "КПСнг(А)-FRLS 2х2х0.5 — Кабель управления и контроля"
+    },
+    {
+      "src": "/category-placeholders/communication-cable.svg",
+      "ok": false,
+      "width": 297,
+      "height": 136,
+      "alt": "КПСнг(А)-FRLS 1х2х0.5 — Кабель управления и контроля"
+    }
+  ],
+  "links": [
+    {
+      "text": "Перейти в каталог\n→",
+      "url": "/catalog/"
+    },
+    {
+      "text": "Отправить спецификацию",
+      "url": "/specification/"
+    },
+    {
+      "text": "Подобрать по задаче →",
+      "url": "/services/application/"
+    },
+    {
+      "text": "Весь каталог →",
+      "url": "/catalog/"
+    },
+    {
+      "text": "Силовой кабель →\n\nВВГ · АВВГ · ВБбШв",
+      "url": "/catalog/silovoy-kabel"
+    },
+    {
+      "text": "Кабель управления и контроля →\n\nКВВГ · АКВВГ · КВБбШв",
+      "url": "/catalog/kontrolnyy-kabel"
+    },
+    {
+      "text": "Монтажный кабель →\n\nМКШ · МКЭШ · КУИН",
+      "url": "/catalog/montazhnyy-kabel"
+    },
+    {
+      "text": "Провода →\n\nСИП · ПВС · ПуГВ",
+      "url": "/catalog/provoda"
+    },
+    {
+      "text": "Кабели передачи данных →\n\nUTP · FTP · КВК",
+      "url": "/catalog/kabeli-peredachi-dannykh"
+    },
+    {
+      "text": "Импортный кабель →\n\nBELDEN · Prysmian · SIEMENS",
+      "url": "/catalog/importnye-kabeli"
+    },
+    {
+      "text": "Смотреть весь каталог→",
+      "url": "/catalog/"
+    },
+    {
+      "text": "",
+      "url": "/product/transkab-nppng-a-hf-1h1-bel-3l9"
+    },
+    {
+      "text": "НППнг(А)-HF 1х1 бел",
+      "url": "/product/transkab-nppng-a-hf-1h1-bel-3l9"
+    },
+    {
+      "text": "",
+      "url": "/product/pmsv-2h1-2-ots-47r"
+    },
+    {
+      "text": "ПМСВ 2х1.2 оц",
+      "url": "/product/pmsv-2h1-2-ots-47r"
+    },
+    {
+      "text": "",
+      "url": "/product/bpvlme-1h0-35-au"
+    },
+    {
+      "text": "БПВЛМЭ 1х0.35",
+      "url": "/product/bpvlme-1h0-35-au"
+    },
+    {
+      "text": "",
+      "url": "/product/pmsp-4h1-2-ots-47t"
+    },
+    {
+      "text": "ПМСП 4х1.2 оц",
+      "url": "/product/pmsp-4h1-2-ots-47t"
+    },
+    {
+      "text": "",
+      "url": "/product/bifm-n-1h0-2-8i"
+    },
+    {
+      "text": "БИФМ-Н 1х0.2",
+      "url": "/product/bifm-n-1h0-2-8i"
+    },
+    {
+      "text": "",
+      "url": "/product/transkab-ppsko-ng-a-hffr-1h0-75-5gh"
+    },
+    {
+      "text": "ППСКО нг(А)-HF-FR 1х0.75",
+      "url": "/product/transkab-ppsko-ng-a-hffr-1h0-75-5gh"
+    },
+    {
+      "text": "",
+      "url": "/product/pugv-1h1-chern-ng-a-ls-3yi"
+    },
+    {
+      "text": "ПУГВнг(А)-LS 1х1 черн",
+      "url": "/product/pugv-1h1-chern-ng-a-ls-3yi"
+    },
+    {
+      "text": "",
+      "url": "/product/nv-1h0-5-krasn-443"
+    },
+    {
+      "text": "НВ 1х0.5 красн",
+      "url": "/product/nv-1h0-5-krasn-443"
+    },
+    {
+      "text": "",
+      "url": "/product/kps-2h2h0-5-ng-a-frls-2re"
+    },
+    {
+      "text": "КПСнг(А)-FRLS 2х2х0.5",
+      "url": "/product/kps-2h2h0-5-ng-a-frls-2re"
+    },
+    {
+      "text": "",
+      "url": "/product/kps-1h2h0-5-ng-a-frls-2r2"
+    },
+    {
+      "text": "КПСнг(А)-FRLS 1х2х0.5",
+      "url": "/product/kps-1h2h0-5-ng-a-frls-2r2"
+    },
+    {
+      "text": "Отправить спецификацию\n→",
+      "url": "/specification/"
+    },
+    {
+      "text": "Документы к поставке\nРеквизиты и условия работы\n→",
+      "url": "/about/"
+    },
+    {
+      "text": "Подбор по наличию\nПроверим остатки и сроки\n→",
+      "url": "/catalog/"
+    },
+    {
+      "text": "Доставка по России\nУсловия и способы отгрузки\n→",
+      "url": "/delivery/"
+    },
+    {
+      "text": "Скачать прайс-лист →",
+      "url": "/price.xls"
+    }
+  ]
+}

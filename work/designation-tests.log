@@ -1,0 +1,5 @@
+
+> yuzhural-site@0.0.1 test
+> vitest run --reporter=json --outputFile=work/designation-full-tests.json
+
+JSON report written to /Users/Shared/yuzhural-site/work/designation-full-tests.json

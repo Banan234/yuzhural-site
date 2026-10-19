@@ -29,7 +29,7 @@
 }
 .quote-field label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 .quote-field input,
 .quote-field textarea {
@@ -65,7 +65,7 @@
 }
 
 .quote-field__optional {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   color: var(--muted);
   font-size: 13px;
   margin-left: 4px;
@@ -82,7 +82,7 @@
   color: var(--muted);
   line-height: 1.45;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .quote-form__consent input {
@@ -107,7 +107,7 @@
   border: 1px solid #d7e3ef;
   background: #fff;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   color: #35556d;
   cursor: pointer;
   transition:
@@ -255,7 +255,7 @@
   margin: 0;
   font-size: 15px;
   line-height: 18px;
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   position: relative;
   z-index: 1;
 }
@@ -377,7 +377,7 @@
 .floating-lead-widget__capture-label {
   color: #607384;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 
 .floating-lead-widget__field {
@@ -484,7 +484,7 @@
 .floating-lead-widget__phone-link {
   color: var(--primary-dark);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -502,7 +502,7 @@
   background: linear-gradient(135deg, #080a14 0%, #44486d 100%);
   color: #f0f1f1;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   text-align: left;
   cursor: pointer;
   box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);

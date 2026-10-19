@@ -1510,6 +1510,39 @@ describe('GET /api/marks', () => {
 });
 
 describe('GET /api/products', () => {
+  it('restricts a mark directory link to that exact mark', async () => {
+    const related = {
+      ...productFixtures[0],
+      id: 105,
+      sku: 'VVG-RELATED',
+      slug: 'vvg-related',
+      title: 'ВВГнг-LS-FOO 3х2.5',
+      fullName: 'Кабель ВВГнг-LS-FOO 3х2.5',
+      mark: 'ВВГнг-LS-FOO',
+      price: 250,
+    };
+    const { app } = createProductCatalogApp([...productFixtures, related]);
+
+    await withTestServer(app, async (localBaseUrl) => {
+      const broad = await fetch(
+        `${localBaseUrl}/api/products?${new URLSearchParams({ search: 'ВВГнг-LS', page: '1', limit: '24' })}`
+      ).then((res) => res.json());
+      const exact = await fetch(
+        `${localBaseUrl}/api/products?${new URLSearchParams({ search: 'ВВГнг-LS', mark: 'ввгнг-ls', page: '1', limit: '24' })}`
+      ).then((res) => res.json());
+      const relatedOnly = await fetch(
+        `${localBaseUrl}/api/products?${new URLSearchParams({ mark: related.mark })}`
+      ).then((res) => res.json());
+
+      expect(broad.meta.pagination.total).toBe(2);
+      expect(exact.items.map((item) => item.sku)).toEqual(['VVG-3-2-5']);
+      expect(exact.meta.pagination.total).toBe(1);
+      expect(relatedOnly.items.map((item) => item.sku)).toEqual([
+        'VVG-RELATED',
+      ]);
+    });
+  });
+
   it('warms catalog caches on startup when enabled', async () => {
     const items = productFixtures;
     const catalogStore = {
@@ -2381,6 +2414,37 @@ describe('POST /api/quote', () => {
 });
 
 describe('POST /api/lead-request', () => {
+  it('принимает email без телефона и задаёт адрес для ответа менеджера', async () => {
+    const res = await postJson('/api/lead-request', {
+      ...validLeadPayload,
+      phone: undefined,
+      email: 'buyer@example.com',
+      contactChannel: 'email',
+    });
+    expect(res.status).toBe(200);
+    const mail = sendMailMock.mock.calls[0][0];
+    expect(mail.replyTo).toBe('buyer@example.com');
+    expect(mail.html).toContain('buyer@example.com');
+    expect(mail.html).not.toContain('<strong>Телефон:</strong>');
+  });
+
+  it.each([
+    { contactChannel: 'email', email: 'invalid' },
+    { contactChannel: 'fax' },
+    {
+      contactChannel: 'email',
+      email: 'buyer@example.com',
+      requestType: 'callback',
+    },
+  ])('отклоняет некорректный канал или контакт: %j', async (contact) => {
+    const res = await postJson('/api/lead-request', {
+      ...validLeadPayload,
+      ...contact,
+    });
+    expect(res.status).toBe(400);
+    expect(sendMailMock).not.toHaveBeenCalled();
+  });
+
   it('отмечает заказ звонка и страницу обращения в письме менеджеру', async () => {
     const res = await postJson('/api/lead-request', {
       ...validLeadPayload,

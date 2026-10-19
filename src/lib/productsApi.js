@@ -13,6 +13,7 @@ export function fetchProducts(signal, options = {}) {
   for (const key of [
     'category',
     'search',
+    'mark',
     'priceMin',
     'priceMax',
     'material',

@@ -1,0 +1,27 @@
+[
+  {
+    "width": 1440,
+    "scrollWidth": 1440,
+    "faq": "mouse and keyboard OK"
+  },
+  {
+    "width": 1024,
+    "scrollWidth": 1024,
+    "faq": "mouse and keyboard OK"
+  },
+  {
+    "width": 768,
+    "scrollWidth": 768,
+    "faq": "mouse and keyboard OK"
+  },
+  {
+    "width": 390,
+    "scrollWidth": 390,
+    "faq": "mouse and keyboard OK"
+  },
+  {
+    "width": 320,
+    "scrollWidth": 320,
+    "faq": "mouse and keyboard OK"
+  }
+]

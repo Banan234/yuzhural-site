@@ -98,6 +98,9 @@ export function serviceUrl(key, params = {}) {
 export function catalogSearchUrl(search) {
   return `/catalog/?${new URLSearchParams({ search })}`;
 }
+export function catalogMarkUrl(mark) {
+  return `/catalog/?${new URLSearchParams({ search: mark, mark })}`;
+}
 export function requestServiceHelp(title, comment) {
   const text = String(comment);
   const truncated = text.length > MAX_QUOTE_CUSTOMER_COMMENT_LENGTH;

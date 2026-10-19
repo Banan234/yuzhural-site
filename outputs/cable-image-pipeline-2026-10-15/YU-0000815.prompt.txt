@@ -1,0 +1,25 @@
+Use case: product-mockup. Create one new standardized, realistic 3D product render for an electrical cable catalogue.
+
+Cable family: ВВГ. Shape: round. Smooth matte black PVC outer jacket; PVC insulation.
+
+The intact cable body enters the frame from the RIGHT side. The stripped end and separated conductors extend toward the LEFT side. Exposed copper conductor tips are on the LEFT. Never reverse or mirror this orientation.
+
+This direction describes orientation, not cropping: the entire short cable segment, including its intact rear end on the right, must fit inside the canvas. Leave at least 8% fully transparent margin at every edge. The intact body extends toward the right margin without touching it.
+
+Fixed composition: predominantly horizontal, shallow three-quarter perspective, only a slight diagonal. The stripping transition is near 57% of canvas width; the separated tips extend toward 18%; the intact rear ends near 88%. Keep the same catalogue scale, camera, position and lighting across images.
+
+Exactly 3 insulated conductors are visible. There must be exactly 3 conductors, no more and no fewer. Show all 3 separately, with exactly 3 exposed copper tips on the LEFT.
+
+Conductor colors, one color assignment per wire: 1. brown; 2. blue; 3. one yellow-and-green striped PE conductor (one wire, not two). Never add another conductor for a color stripe.
+
+Conductors: solid copper rods. Short, neat stripped tips; insulated cores fan naturally and remain connected inside the outer sheath.
+
+Thickness treatment: uniform catalogue scale. Nominal section is stored in metadata only. Use the same visual thickness for every section within this visual template. Do not calculate conductor diameter from cross-sectional area.
+
+Use the supplied reference only for materials and rendering style. Reframe the whole object to meet the transparent margins; do not copy its crop. Moderate natural highlights, soft neutral studio lighting, sharp clean edges, no bloom or colored glow.
+
+A genuinely transparent background with real alpha, not black, white, grey or a checkerboard painted into the image. PNG output. No scenery, floor or background shadows.
+
+No text, no labels, no symbols, no dimensions, no logos, no watermark, no hands, no other objects. Do not mirror the image. Three-dimensional product illustration, not a claimed photograph of a particular manufacturer.
+
+Final check: exactly 3 insulated conductors; intact body on RIGHT; exposed copper tips on LEFT; nothing cropped; transparent background. Template right-to-left-v1.

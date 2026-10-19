@@ -1,0 +1,52 @@
+{
+  "retrievedAt": "2026-10-18",
+  "assets": {
+    "gerda.svg": {
+      "brand": "ГЕРДА",
+      "source": "https://www.gerda.ru/images/logo_gerda_white.svg",
+      "page": "https://www.gerda.ru/",
+      "presentation": "Original white SVG displayed in black via CSS for a white background."
+    },
+    "sobbit.svg": {
+      "brand": "СОББИТ",
+      "source": "https://sobbit.ru/local/templates/main/img/logo/logo.svg",
+      "page": "https://sobbit.ru/"
+    },
+    "metrolan.png": {
+      "brand": "МЕТРОЛАН",
+      "source": "https://metromatika.ru/wp-content/uploads/2025/08/Метролан_Инструментальный.pdf",
+      "page": 1,
+      "extraction": "Original mark on cover; PDF viewport [315,547,523,663], scale 3."
+    },
+    "pirokor.png": {
+      "brand": "ПИРОКОР",
+      "source": "https://metromatika.ru/wp-content/uploads/2025/11/Каталог_-Силовой-кабель-Пирокор.pdf",
+      "page": 1,
+      "extraction": "Original mark on cover; PDF viewport [64,764,302,806], scale 3."
+    },
+    "transkab-owner.png": {
+      "brand": "ТРАНСКАБ",
+      "owner": "АО НИЦ «Кабельные Технологии»",
+      "source": "https://cabletech.ru/images/logo.png",
+      "page": "https://cabletech.ru/",
+      "presentation": "Owner logo with visible ТРАНСКАБ caption; not a separate ТРАНСКАБ wordmark."
+    },
+    "kkz.svg": {
+      "source": "https://kcab.ru/logo2.svg"
+    },
+    "pzsk.svg": {
+      "source": "https://npo-pzsk.ru/static/appPage/img/header%20logo.svg",
+      "page": "https://npo-pzsk.ru/catalog/4030/"
+    },
+    "belden.svg": {
+      "brand": "BELDEN",
+      "source": "https://logotyp.us/file/belden.svg",
+      "page": "https://logotyp.us/get/belden/"
+    },
+    "helukabel.svg": {
+      "brand": "HELUKABEL / HELU",
+      "source": "https://www.helu.com/technische-medien/customized/layout/logo/helu-logo.svg",
+      "page": "https://www.helukabel.com/"
+    }
+  }
+}

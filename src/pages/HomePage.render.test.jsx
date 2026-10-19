@@ -134,11 +134,10 @@ describe('HomePage SSR render', () => {
   it('рендерит на главной canonical internal href в DOM после полной отрисовки layout', async () => {
     renderHomeRoute();
 
-    expect(
-      await screen.findByRole('heading', {
-        name: 'Кабель для вашего проекта — с расчётом в рабочий день',
-      })
-    ).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { level: 1 })).toHaveAttribute(
+      'id',
+      'home-hero-title'
+    );
 
     expectCanonicalHomepageHrefs(getRenderedInternalHrefs());
   });

@@ -99,9 +99,9 @@
 .home-hero__title {
   margin: 0;
   font-size: clamp(35px, 4.3vw, 62px);
-  font-weight: 950;
+  font-weight: var(--font-weight-medium);
   line-height: 0.98;
-  letter-spacing: -0.03em;
+  letter-spacing: normal;
   color: #fff;
   text-wrap: balance;
   max-width: 780px;
@@ -116,7 +116,7 @@
 }
 .home-hero__subtitle-accent {
   color: rgba(255, 255, 255, 0.92);
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
 }
 .home-hero__actions {
   display: flex;
@@ -137,7 +137,7 @@
   background: #287be0;
   color: #fff;
   font-size: 20px;
-  font-weight: 900;
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
   cursor: pointer;
   transition:
@@ -174,7 +174,7 @@
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
   font-size: 18px;
-  font-weight: 850;
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
   backdrop-filter: blur(4px);
   transition:
@@ -215,7 +215,7 @@
   align-items: center;
   gap: 12px;
   font-size: 15px;
-  font-weight: 550;
+  font-weight: var(--font-weight-medium);
   color: #51657f;
   line-height: 1.4;
 }
@@ -302,7 +302,7 @@
   margin: 0 0 30px;
   color: #ff8b39;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -318,9 +318,9 @@
   max-width: 760px;
   color: #fff;
   font-size: clamp(48px, 4.5vw, 70px);
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   line-height: 1.08;
-  letter-spacing: -0.025em;
+  letter-spacing: normal;
   text-wrap: normal;
 }
 
@@ -344,7 +344,7 @@
   background: #f46b08;
   box-shadow: none;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
 }
 
@@ -362,7 +362,7 @@
   background: rgba(4, 30, 57, 0.28);
   color: #fff;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   backdrop-filter: none;
   cursor: pointer;
 }
@@ -414,7 +414,7 @@
   color: rgba(255, 255, 255, 0.72);
   font: inherit;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   text-align: left;
   text-decoration: none;
   cursor: pointer;
@@ -464,7 +464,7 @@
 .home-hero-facts__label {
   color: #667589;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -539,7 +539,7 @@
 .home-quote-section__eyebrow {
   color: #d95e0b;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -810,7 +810,7 @@
     color: #09234a;
     font-size: clamp(38px, 8.7vw, 52px);
     line-height: 1.04;
-    font-weight: 850;
+    font-weight: var(--font-weight-medium);
     text-shadow: none;
   }
 
@@ -839,7 +839,7 @@
     background: #f46b08;
     color: #fff;
     font-size: 18px;
-    font-weight: 800;
+    font-weight: var(--font-weight-medium);
     cursor: pointer;
   }
 

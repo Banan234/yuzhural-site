@@ -1,0 +1,14 @@
+[
+  {
+    "file": "data/products.json",
+    "products": 5708,
+    "pugv": 149,
+    "changed": 115
+  },
+  {
+    "file": "data/catalog-current/products.json",
+    "products": 5708,
+    "pugv": 149,
+    "changed": 115
+  }
+]

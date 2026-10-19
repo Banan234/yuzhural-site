@@ -1,0 +1,79 @@
+{
+  "summary": {
+    "updatedAt": "2026-10-16T12:40:25.242Z",
+    "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+    "reuseExisting": {
+      "visualKeys": 9,
+      "products": 138
+    },
+    "generated": {
+      "visualKeys": 12,
+      "products": 144
+    },
+    "failed": [],
+    "skippedCache": 9,
+    "apiRequests": 14,
+    "productsWithIllustrations": 282,
+    "needsReviewUntouched": 3831,
+    "pending": 544
+  },
+  "verification": {
+    "checkedAt": "2026-10-16T12:40:25.243Z",
+    "catalogUnchanged": true,
+    "protectedExistingFilesUnchanged": 814,
+    "existingApprovedPngUnchanged": 119,
+    "needsReviewUntouched": 3831,
+    "eligibleSkus": 1877,
+    "verifiedBoundSkus": 282,
+    "verifiedImages": 21,
+    "pending": 544,
+    "perSkuSectionsPreserved": true,
+    "allAssignedImagesResolve": true,
+    "samples": [
+      {
+        "type": "одножильный провод",
+        "visualKey": "pugv__1c__stranded__round__1core-white__p-158003053538284a"
+      },
+      {
+        "type": "2 жилы",
+        "pending": true
+      },
+      {
+        "type": "3 жилы",
+        "visualKey": "pvs__3c__stranded__round__3core-brown-blue-yellow-green__p-f426943bb179b11b"
+      },
+      {
+        "type": "4 жилы",
+        "visualKey": "vbshvng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-b5afecbd49f1a632"
+      },
+      {
+        "type": "5 жил",
+        "visualKey": "vbshvng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-61555309cba118d1"
+      },
+      {
+        "type": "многожильный контрольный",
+        "pending": true
+      },
+      {
+        "type": "плоский",
+        "pending": true
+      },
+      {
+        "type": "stranded",
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22"
+      },
+      {
+        "type": "бронированный",
+        "visualKey": "vbshvng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-b5afecbd49f1a632"
+      },
+      {
+        "type": "экранированный",
+        "pending": true
+      },
+      {
+        "type": "СИП",
+        "pending": true
+      }
+    ]
+  }
+}

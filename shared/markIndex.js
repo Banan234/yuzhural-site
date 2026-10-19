@@ -25,6 +25,13 @@ export function getMarkLetterId(letter) {
       : `letter-${letter.codePointAt(0).toString(16)}`;
 }
 
+export function normalizeMarkKey(value) {
+  return String(value || '')
+    .trim()
+    .replace(/\s+/gu, ' ')
+    .toLocaleLowerCase('ru-RU');
+}
+
 export function buildMarkIndex(products) {
   const marks = new Map();
   for (const product of products || []) {
@@ -32,7 +39,7 @@ export function buildMarkIndex(products) {
       .trim()
       .replace(/\s+/gu, ' ');
     if (!mark) continue;
-    const key = mark.toLocaleLowerCase('ru-RU');
+    const key = normalizeMarkKey(mark);
     const entry = marks.get(key);
     if (entry) entry.count += 1;
     else marks.set(key, { mark, count: 1 });

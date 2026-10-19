@@ -2,6 +2,7 @@
 
 import { Link } from 'react-router-dom';
 import Container from '../components/ui/Container';
+import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { useSEO } from '../hooks/useSEO';
 import { CATALOG_CANONICAL_PATH } from '../lib/canonicalPaths.js';
 import { messages } from '../../shared/messages.js';
@@ -19,6 +20,7 @@ export function NotFoundPageContent() {
   return (
     <section className="section">
       <Container>
+        <Breadcrumbs current="Страница не найдена" />
         <div className="content-page">
           <h1 className="page-title">Страница не найдена</h1>
           <p className="page-subtitle">

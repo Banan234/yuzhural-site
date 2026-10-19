@@ -11,6 +11,19 @@ import {
 } from './priceParser.js';
 
 describe('extractManufacturer', () => {
+  test('сохраняет марку КРУИН и отделяет изготовителя НПО ПЗСК', () => {
+    expect(parseProductName('КРУИН ВЭлКнг 14х2х1,5 (А)LS')).toMatchObject({
+      manufacturer: 'НПО ПЗСК',
+      mark: 'КРУИН ВЭлК',
+      cores: 14,
+      groupCores: 2,
+      crossSection: 1.5,
+      attributes: ['нг(А)-LS'],
+    });
+    expect(extractManufacturer('КРУИНВЭЛКнг 2х2х1,5').manufacturer).toBeNull();
+    expect(extractManufacturer('ВЭлКнг 2х2х1,5').manufacturer).toBeNull();
+  });
+
   test.each([
     ['Контактор 3RT1036-1В 50А SIEMENS', 'SIEMENS'],
     ['HELUKABEL H07RN-F 3G1.5', 'HELUKABEL'],
@@ -351,7 +364,7 @@ describe('parseProductName', () => {
     ['ИнСил-А знг(А)LS 6х1,5', 'ИнСил-А', ['З', 'нг(А)-LS']],
     ['КУМП-Б з нг(А)LS-хл 7х1', 'КУМП-Б', ['З', 'нг(А)-LS-ХЛ']],
     ['МКЭКШВвз нг(А)LS 4х2х1.5', 'МКЭКШВв', ['З', 'нг(А)-LS']],
-    ['КРУИН МРЭфнзнг 2х2х1 (А)FRLS', 'МРЭфн', ['З', 'нг(А)-FRLS']],
+    ['КРУИН МРЭфнзнг 2х2х1 (А)FRLS', 'КРУИН МРЭфн', ['З', 'нг(А)-FRLS']],
     [
       'РУТЕКзнг(А)LSxh(KH)14х(2х1)э ВВБ-80',
       'РУТЕК',

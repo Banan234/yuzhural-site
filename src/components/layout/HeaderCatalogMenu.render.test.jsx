@@ -15,6 +15,25 @@ vi.mock('../../lib/productsApi.js', () => ({
 }));
 
 describe('HeaderCatalogMenu', () => {
+  it('закрывается по повторному нажатию и снова открывается', async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter>
+        <HeaderCatalogMenu />
+      </MemoryRouter>
+    );
+    const button = screen.getByRole('button', { name: 'Каталог' });
+    await user.click(button);
+    expect(button).toHaveAttribute('aria-expanded', 'true');
+    await user.click(button);
+    expect(button).toHaveAttribute('aria-expanded', 'false');
+    expect(document.getElementById('catalog-dropdown')).toBeNull();
+    await user.click(button);
+    expect(button).toHaveAttribute('aria-expanded', 'true');
+    await user.keyboard('{Escape}');
+    expect(button).toHaveAttribute('aria-expanded', 'false');
+  });
+
   it('показывает все разделы, категории, импортные подкатегории и марки', async () => {
     const user = userEvent.setup();
     render(

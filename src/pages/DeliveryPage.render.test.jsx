@@ -35,17 +35,19 @@ describe('DeliveryPage', () => {
     vi.restoreAllMocks();
   });
 
-  it('показывает самовывоз и доставку транспортной компанией', () => {
+  it('по умолчанию показывает самовывоз, адрес и карту с учётом согласия', () => {
     renderDeliveryPage();
 
     expect(
       screen.getByRole('heading', { name: 'Самовывоз со склада' })
     ).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: 'Самовывоз' })).toHaveAttribute(
+      'aria-selected',
+      'true'
+    );
     expect(
-      screen.getByRole('heading', {
-        name: 'Отправка транспортной компанией',
-      })
-    ).toBeInTheDocument();
+      screen.queryByRole('heading', { name: 'Отправка транспортной компанией' })
+    ).toBeNull();
     expect(
       screen.getByRole('link', {
         name: 'Посмотреть адрес и входы на склад',
@@ -67,15 +69,57 @@ describe('DeliveryPage', () => {
     expect(
       screen.getByTitle('Схема проезда к складу самовывоза')
     ).toHaveAttribute('src', SITE_WAREHOUSE_MAP_EMBED_URL);
-    expect(
-      screen.getByText(
-        /Услуги перевозчика оплачивает покупатель по тарифам выбранной ТК/
-      )
-    ).toBeInTheDocument();
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
       `${SITE_URL}${STATIC_PAGE_SEO.delivery.path}`
     );
+  });
+
+  it('переключает условия, список данных и карту при выборе доставки', () => {
+    renderDeliveryPage();
+    fireEvent.click(screen.getByRole('tab', { name: 'Доставка' }));
+    expect(screen.getByRole('tab', { name: 'Доставка' })).toHaveAttribute(
+      'aria-selected',
+      'true'
+    );
+    expect(screen.getByRole('tabpanel', { name: 'Доставка' })).toBeVisible();
+    expect(
+      screen.getByRole('heading', { name: 'Отправка транспортной компанией' })
+    ).toBeVisible();
+    expect(
+      screen.getByText(/Услуги перевозчика оплачивает покупатель/)
+    ).toBeVisible();
+    expect(
+      screen.getByText('Город назначения и данные получателя.')
+    ).toBeVisible();
+    expect(
+      screen.queryByRole('heading', { name: 'Схема проезда к складу' })
+    ).toBeNull();
+    expect(
+      screen.queryByRole('button', { name: 'Настроить cookie' })
+    ).toBeNull();
+    fireEvent.click(screen.getByRole('tab', { name: 'Самовывоз' }));
+    expect(
+      screen.getByRole('heading', { name: 'Схема проезда к складу' })
+    ).toBeVisible();
+    expect(screen.getByText('Желаемую дату самовывоза.')).toBeVisible();
+  });
+
+  it('поддерживает выбор вкладок с клавиатуры', () => {
+    renderDeliveryPage();
+    const pickup = screen.getByRole('tab', { name: 'Самовывоз' });
+    const shipping = screen.getByRole('tab', { name: 'Доставка' });
+    pickup.focus();
+    fireEvent.keyDown(pickup, { key: 'ArrowRight' });
+    expect(shipping).toHaveFocus();
+    expect(shipping).toHaveAttribute('aria-selected', 'true');
+    fireEvent.keyDown(shipping, { key: 'Home' });
+    expect(pickup).toHaveFocus();
+    fireEvent.keyDown(pickup, { key: 'End' });
+    expect(shipping).toHaveFocus();
+    fireEvent.keyDown(shipping, { key: 'ArrowLeft' });
+    expect(pickup).toHaveFocus();
+    expect(pickup).toHaveAttribute('aria-selected', 'true');
   });
 
   it('открывает форму вопроса менеджеру по кнопке', () => {

@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-14",
+  "tests": {
+    "passed": 924,
+    "total": 924,
+    "suites": 230,
+    "success": true
+  },
+  "build": "build:prod passed",
+  "prerender": {
+    "sitemap": 5709,
+    "html": 5709
+  },
+  "localApi": {
+    "ok": true,
+    "items": 1,
+    "total": 5709,
+    "hasFacetCounts": true
+  },
+  "browser": {
+    "mobileWidth": 390,
+    "horizontalOverflow": false,
+    "productWidth": 700,
+    "productColumns": 1,
+    "uploadByteIdentical": true,
+    "uploadDelivery": "local_file",
+    "pdfDownloaded": true,
+    "documentRequestPrefilled": true,
+    "applicationToSpecificationPrefilled": true
+  },
+  "productionSmtpTested": false
+}

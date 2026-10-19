@@ -1,0 +1,807 @@
+[
+  {
+    "sku": "YU-0005102",
+    "slug": "pugv-1h0-5-bel-3xq",
+    "sourceName": "ПУГВ 0.5 бел",
+    "before": "ПУГВ 1х0.5 бел",
+    "after": "ПУГВ 1х0.5 белый"
+  },
+  {
+    "sku": "YU-0006902",
+    "slug": "pugv-1h0-5-zhelt-5bq",
+    "sourceName": "ПУГВ 0.5 жёлт",
+    "before": "ПУГВ 1х0.5 жёлт",
+    "after": "ПУГВ 1х0.5 жёлтый"
+  },
+  {
+    "sku": "YU-0006903",
+    "slug": "pugv-1h0-5-oranzh-5br",
+    "sourceName": "ПУГВ 0.5 оранж",
+    "before": "ПУГВ 1х0.5 оранж",
+    "after": "ПУГВ 1х0.5 оранжевый"
+  },
+  {
+    "sku": "YU-0005107",
+    "slug": "pugv-1h0-5-chern-3xv",
+    "sourceName": "ПУГВ 0.5 черн",
+    "before": "ПУГВ 1х0.5 черн",
+    "after": "ПУГВ 1х0.5 чёрный"
+  },
+  {
+    "sku": "YU-0005108",
+    "slug": "pugv-1h0-75-bel-3xw",
+    "sourceName": "ПУГВ 0.75 бел",
+    "before": "ПУГВ 1х0.75 бел",
+    "after": "ПУГВ 1х0.75 белый"
+  },
+  {
+    "sku": "YU-0007183",
+    "slug": "pugv-1h0-75-bel-ng-a-ls-5jj",
+    "sourceName": "ПУГВ 0.75 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х0.75 бел",
+    "after": "ПУГВнг(А)-LS 1х0.75 белый"
+  },
+  {
+    "sku": "YU-0005111",
+    "slug": "pugv-1h0-75-zh-z-3xz",
+    "sourceName": "ПУГВ 0.75 ж/з",
+    "before": "ПУГВ 1х0.75 ж/з",
+    "after": "ПУГВ 1х0.75 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005112",
+    "slug": "pugv-1h0-75-zh-z-ng-a-ls-3y0",
+    "sourceName": "ПУГВ 0.75 ж/з нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х0.75 ж/з",
+    "after": "ПУГВнг(А)-LS 1х0.75 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005118",
+    "slug": "pugv-1h0-75-chern-ng-a-ls-3y6",
+    "sourceName": "ПУГВ 0.75 черн нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х0.75 черн",
+    "after": "ПУГВнг(А)-LS 1х0.75 чёрный"
+  },
+  {
+    "sku": "YU-0005119",
+    "slug": "pugv-1h0-75-chernyy-3y7",
+    "sourceName": "ПУГВ 0.75 черный",
+    "before": "ПУГВ 1х0.75 черный",
+    "after": "ПУГВ 1х0.75 чёрный"
+  },
+  {
+    "sku": "YU-0005120",
+    "slug": "pugv-1h1-bel-3y8",
+    "sourceName": "ПУГВ 1 бел",
+    "before": "ПУГВ 1х1 бел",
+    "after": "ПУГВ 1х1 белый"
+  },
+  {
+    "sku": "YU-0005121",
+    "slug": "pugv-1h1-bel-ng-a-ls-3y9",
+    "sourceName": "ПУГВ 1 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х1 бел",
+    "after": "ПУГВнг(А)-LS 1х1 белый"
+  },
+  {
+    "sku": "YU-0005122",
+    "slug": "pugv-1h1-zh-z-3ya",
+    "sourceName": "ПУГВ 1 ж/з",
+    "before": "ПУГВ 1х1 ж/з",
+    "after": "ПУГВ 1х1 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005123",
+    "slug": "pugv-1h1-zh-z-ng-a-ls-3yb",
+    "sourceName": "ПУГВ 1 ж/з нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х1 ж/з",
+    "after": "ПУГВнг(А)-LS 1х1 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005124",
+    "slug": "pugv-1h1-krasn-3yc",
+    "sourceName": "ПУГВ 1 красн",
+    "before": "ПУГВ 1х1 красн",
+    "after": "ПУГВ 1х1 красный"
+  },
+  {
+    "sku": "YU-0006904",
+    "slug": "pugv-1h1-krasn-ng-a-5bs",
+    "sourceName": "ПУГВ 1 красн нг(А)",
+    "before": "ПУГВнг(А) 1х1 красн",
+    "after": "ПУГВнг(А) 1х1 красный"
+  },
+  {
+    "sku": "YU-0005125",
+    "slug": "pugv-1h1-krasn-ng-a-ls-3yd",
+    "sourceName": "ПУГВ 1 красн нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х1 красн",
+    "after": "ПУГВнг(А)-LS 1х1 красный"
+  },
+  {
+    "sku": "YU-0005127",
+    "slug": "pugv-1h1-ng-ls-korichn-3yf",
+    "sourceName": "ПУГВ 1 нгLS коричн.",
+    "before": "ПУГВнг-LS 1х1 коричн.",
+    "after": "ПУГВнг-LS 1х1 коричневый"
+  },
+  {
+    "sku": "YU-0005129",
+    "slug": "pugv-1h1-chern-3yh",
+    "sourceName": "ПУГВ 1 черн",
+    "before": "ПУГВ 1х1 черн",
+    "after": "ПУГВ 1х1 чёрный"
+  },
+  {
+    "sku": "YU-0005130",
+    "slug": "pugv-1h1-chern-ng-a-ls-3yi",
+    "sourceName": "ПУГВ 1 черн нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х1 черн",
+    "after": "ПУГВнг(А)-LS 1х1 чёрный"
+  },
+  {
+    "sku": "YU-0005131",
+    "slug": "pugv-1h1-5-bel-3yj",
+    "sourceName": "ПУГВ 1.5 бел",
+    "before": "ПУГВ 1х1.5 бел",
+    "after": "ПУГВ 1х1.5 белый"
+  },
+  {
+    "sku": "YU-0005132",
+    "slug": "pugv-1h1-5-bel-ng-a-ls-3yk",
+    "sourceName": "ПУГВ 1.5 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х1.5 бел",
+    "after": "ПУГВнг(А)-LS 1х1.5 белый"
+  },
+  {
+    "sku": "YU-0005134",
+    "slug": "pugv-1h1-5-zh-z-3ym",
+    "sourceName": "ПУГВ 1.5 ж/з",
+    "before": "ПУГВ 1х1.5 ж/з",
+    "after": "ПУГВ 1х1.5 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005135",
+    "slug": "pugv-1h1-5-zh-z-ng-a-ls-3yn",
+    "sourceName": "ПУГВ 1.5 ж/з нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х1.5 ж/з",
+    "after": "ПУГВнг(А)-LS 1х1.5 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005136",
+    "slug": "pugv-1h1-5-zheltyy-3yo",
+    "sourceName": "ПУГВ 1.5 желтый",
+    "before": "ПУГВ 1х1.5 желтый",
+    "after": "ПУГВ 1х1.5 жёлтый"
+  },
+  {
+    "sku": "YU-0005137",
+    "slug": "pugv-1h1-5-zelenyy-3yp",
+    "sourceName": "ПУГВ 1.5 зеленый",
+    "before": "ПУГВ 1х1.5 зеленый",
+    "after": "ПУГВ 1х1.5 зелёный"
+  },
+  {
+    "sku": "YU-0005139",
+    "slug": "pugv-1h1-5-krasn-3yr",
+    "sourceName": "ПУГВ 1.5 красн.",
+    "before": "ПУГВ 1х1.5 красн.",
+    "after": "ПУГВ 1х1.5 красный"
+  },
+  {
+    "sku": "YU-0006905",
+    "slug": "pugv-1h1-5-oranzh-5bt",
+    "sourceName": "ПУГВ 1.5 оранж",
+    "before": "ПУГВ 1х1.5 оранж",
+    "after": "ПУГВ 1х1.5 оранжевый"
+  },
+  {
+    "sku": "YU-0006906",
+    "slug": "pugv-1h1-5-fiol-5bu",
+    "sourceName": "ПУГВ 1.5 фиол",
+    "before": "ПУГВ 1х1.5 фиол",
+    "after": "ПУГВ 1х1.5 фиолетовый"
+  },
+  {
+    "sku": "YU-0005142",
+    "slug": "pugv-1h1-5-chern-ng-a-ls-3yu",
+    "sourceName": "ПУГВ 1.5 черн нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х1.5 черн",
+    "after": "ПУГВнг(А)-LS 1х1.5 чёрный"
+  },
+  {
+    "sku": "YU-0005009",
+    "slug": "pugv-1h1-5-chern-3v5",
+    "sourceName": "ПУГВ 1.5 черн.",
+    "before": "ПУГВ 1х1.5 черн.",
+    "after": "ПУГВ 1х1.5 чёрный"
+  },
+  {
+    "sku": "YU-0005010",
+    "slug": "pugv-1h2-5-bel-ng-a-ls-3v6",
+    "sourceName": "ПУГВ 2.5 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х2.5 бел",
+    "after": "ПУГВнг(А)-LS 1х2.5 белый"
+  },
+  {
+    "sku": "YU-0005012",
+    "slug": "pugv-1h2-5-golub-ng-a-ls-3v8",
+    "sourceName": "ПУГВ 2.5 голуб нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х2.5 голуб",
+    "after": "ПУГВнг(А)-LS 1х2.5 голубой"
+  },
+  {
+    "sku": "YU-0005014",
+    "slug": "pugv-1h2-5-zh-z-3va",
+    "sourceName": "ПУГВ 2.5 ж/з",
+    "before": "ПУГВ 1х2.5 ж/з",
+    "after": "ПУГВ 1х2.5 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005015",
+    "slug": "pugv-1h2-5-zh-z-ng-a-ls-3vb",
+    "sourceName": "ПУГВ 2.5 ж/з нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х2.5 ж/з",
+    "after": "ПУГВнг(А)-LS 1х2.5 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005016",
+    "slug": "pugv-1h2-5-zh-z-hl-3vc",
+    "sourceName": "ПУГВ 2.5 ж/з хл",
+    "before": "ПУГВ 1х2.5 ж/з хл",
+    "after": "ПУГВхл 1х2.5 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005017",
+    "slug": "pugv-1h2-5-zheltyy-ng-a-ls-3vd",
+    "sourceName": "ПУГВ 2.5 желтый нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х2.5 желтый",
+    "after": "ПУГВнг(А)-LS 1х2.5 жёлтый"
+  },
+  {
+    "sku": "YU-0005018",
+    "slug": "pugv-1h2-5-korichn-3ve",
+    "sourceName": "ПУГВ 2.5 коричн.",
+    "before": "ПУГВ 1х2.5 коричн.",
+    "after": "ПУГВ 1х2.5 коричневый"
+  },
+  {
+    "sku": "YU-0005019",
+    "slug": "pugv-1h2-5-krasn-3vf",
+    "sourceName": "ПУГВ 2.5 красн.",
+    "before": "ПУГВ 1х2.5 красн.",
+    "after": "ПУГВ 1х2.5 красный"
+  },
+  {
+    "sku": "YU-0006907",
+    "slug": "pugv-1h2-5-oranzh-5bv",
+    "sourceName": "ПУГВ 2.5 оранж",
+    "before": "ПУГВ 1х2.5 оранж",
+    "after": "ПУГВ 1х2.5 оранжевый"
+  },
+  {
+    "sku": "YU-0006908",
+    "slug": "pugv-1h2-5-fiol-5bw",
+    "sourceName": "ПУГВ 2.5 фиол",
+    "before": "ПУГВ 1х2.5 фиол",
+    "after": "ПУГВ 1х2.5 фиолетовый"
+  },
+  {
+    "sku": "YU-0005026",
+    "slug": "pugv-1h2-5-chern-ng-a-ls-3vm",
+    "sourceName": "ПУГВ 2.5 черн нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х2.5 черн",
+    "after": "ПУГВнг(А)-LS 1х2.5 чёрный"
+  },
+  {
+    "sku": "YU-0005027",
+    "slug": "pugv-1h2-5-chern-3vn",
+    "sourceName": "ПУГВ 2.5 черн.",
+    "before": "ПУГВ 1х2.5 черн.",
+    "after": "ПУГВ 1х2.5 чёрный"
+  },
+  {
+    "sku": "YU-0005029",
+    "slug": "pugv-1h4-bel-3vp",
+    "sourceName": "ПУГВ 4 бел",
+    "before": "ПУГВ 1х4 бел",
+    "after": "ПУГВ 1х4 белый"
+  },
+  {
+    "sku": "YU-0005030",
+    "slug": "pugv-1h4-bel-ng-a-ls-3vq",
+    "sourceName": "ПУГВ 4 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х4 бел",
+    "after": "ПУГВнг(А)-LS 1х4 белый"
+  },
+  {
+    "sku": "YU-0005032",
+    "slug": "pugv-1h4-gol-3vs",
+    "sourceName": "ПУГВ 4 гол",
+    "before": "ПУГВ 1х4 гол",
+    "after": "ПУГВ 1х4 голубой"
+  },
+  {
+    "sku": "YU-0005033",
+    "slug": "pugv-1h4-gol-ng-a-ls-3vt",
+    "sourceName": "ПУГВ 4 гол нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х4 гол",
+    "after": "ПУГВнг(А)-LS 1х4 голубой"
+  },
+  {
+    "sku": "YU-0005034",
+    "slug": "pugv-1h4-zh-z-3vu",
+    "sourceName": "ПУГВ 4 ж/з",
+    "before": "ПУГВ 1х4 ж/з",
+    "after": "ПУГВ 1х4 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005035",
+    "slug": "pugv-1h4-zh-z-ng-a-ls-3vv",
+    "sourceName": "ПУГВ 4 ж/з нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х4 ж/з",
+    "after": "ПУГВнг(А)-LS 1х4 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005036",
+    "slug": "pugv-1h4-korich-3vw",
+    "sourceName": "ПУГВ 4 корич",
+    "before": "ПУГВ 1х4 корич",
+    "after": "ПУГВ 1х4 коричневый"
+  },
+  {
+    "sku": "YU-0006909",
+    "slug": "pugv-1h4-korichn-5bx",
+    "sourceName": "ПУГВ 4 коричн",
+    "before": "ПУГВ 1х4 коричн",
+    "after": "ПУГВ 1х4 коричневый"
+  },
+  {
+    "sku": "YU-0005037",
+    "slug": "pugv-1h4-krasn-ng-a-ls-3vx",
+    "sourceName": "ПУГВ 4 красн нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х4 красн",
+    "after": "ПУГВнг(А)-LS 1х4 красный"
+  },
+  {
+    "sku": "YU-0005038",
+    "slug": "pugv-1h4-krasn-3vy",
+    "sourceName": "ПУГВ 4 красн.",
+    "before": "ПУГВ 1х4 красн.",
+    "after": "ПУГВ 1х4 красный"
+  },
+  {
+    "sku": "YU-0005041",
+    "slug": "pugv-1h4-hl-zh-z-3w1",
+    "sourceName": "ПУГВ 4 хл  ж/з",
+    "before": "ПУГВ 1х4 хл ж/з",
+    "after": "ПУГВхл 1х4 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005042",
+    "slug": "pugv-1h4-chern-3w2",
+    "sourceName": "ПУГВ 4 черн.",
+    "before": "ПУГВ 1х4 черн.",
+    "after": "ПУГВ 1х4 чёрный"
+  },
+  {
+    "sku": "YU-0005043",
+    "slug": "pugv-1h4-chern-ng-a-ls-3w3",
+    "sourceName": "ПУГВ 4 черн. нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х4 черн.",
+    "after": "ПУГВнг(А)-LS 1х4 чёрный"
+  },
+  {
+    "sku": "YU-0005044",
+    "slug": "pugv-1h6-bel-ng-a-ls-3w4",
+    "sourceName": "ПУГВ 6 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х6 бел",
+    "after": "ПУГВнг(А)-LS 1х6 белый"
+  },
+  {
+    "sku": "YU-0005047",
+    "slug": "pugv-1h6-zh-z-3w7",
+    "sourceName": "ПУГВ 6 ж/з",
+    "before": "ПУГВ 1х6 ж/з",
+    "after": "ПУГВ 1х6 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005048",
+    "slug": "pugv-1h6-zh-z-ng-a-ls-3w8",
+    "sourceName": "ПУГВ 6 ж/з нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х6 ж/з",
+    "after": "ПУГВнг(А)-LS 1х6 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0006912",
+    "slug": "pugv-1h6-zh-z-hl-5c0",
+    "sourceName": "ПУГВ 6 ж/з хл",
+    "before": "ПУГВ 1х6 ж/з хл",
+    "after": "ПУГВхл 1х6 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005049",
+    "slug": "pugv-1h6-kor-3w9",
+    "sourceName": "ПУГВ 6 кор.",
+    "before": "ПУГВ 1х6 кор.",
+    "after": "ПУГВ 1х6 коричневый"
+  },
+  {
+    "sku": "YU-0006913",
+    "slug": "pugv-1h6-korichn-5c1",
+    "sourceName": "ПУГВ 6 коричн.",
+    "before": "ПУГВ 1х6 коричн.",
+    "after": "ПУГВ 1х6 коричневый"
+  },
+  {
+    "sku": "YU-0005050",
+    "slug": "pugv-1h6-krasn-3wa",
+    "sourceName": "ПУГВ 6 красн.",
+    "before": "ПУГВ 1х6 красн.",
+    "after": "ПУГВ 1х6 красный"
+  },
+  {
+    "sku": "YU-0006914",
+    "slug": "pugv-1h6-oranzh-5c2",
+    "sourceName": "ПУГВ 6 оранж",
+    "before": "ПУГВ 1х6 оранж",
+    "after": "ПУГВ 1х6 оранжевый"
+  },
+  {
+    "sku": "YU-0005051",
+    "slug": "pugv-1h6-ser-ng-a-ls-3wb",
+    "sourceName": "ПУГВ 6 сер нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х6 сер",
+    "after": "ПУГВнг(А)-LS 1х6 серый"
+  },
+  {
+    "sku": "YU-0006915",
+    "slug": "pugv-1h6-fiol-5c3",
+    "sourceName": "ПУГВ 6 фиол",
+    "before": "ПУГВ 1х6 фиол",
+    "after": "ПУГВ 1х6 фиолетовый"
+  },
+  {
+    "sku": "YU-0005053",
+    "slug": "pugv-1h6-hl-belyy-3wd",
+    "sourceName": "ПУГВ 6 хл белый",
+    "before": "ПУГВ 1х6 хл белый",
+    "after": "ПУГВхл 1х6 белый"
+  },
+  {
+    "sku": "YU-0005054",
+    "slug": "pugv-1h6-chern-ng-a-ls-3we",
+    "sourceName": "ПУГВ 6 черн нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х6 черн",
+    "after": "ПУГВнг(А)-LS 1х6 чёрный"
+  },
+  {
+    "sku": "YU-0005055",
+    "slug": "pugv-1h6-chern-3wf",
+    "sourceName": "ПУГВ 6 черн.",
+    "before": "ПУГВ 1х6 черн.",
+    "after": "ПУГВ 1х6 чёрный"
+  },
+  {
+    "sku": "YU-0005056",
+    "slug": "pugv-1h10-bel-3wg",
+    "sourceName": "ПУГВ  10 бел",
+    "before": "ПУГВ 1х10 бел",
+    "after": "ПУГВ 1х10 белый"
+  },
+  {
+    "sku": "YU-0005057",
+    "slug": "pugv-1h10-bel-ng-a-ls-3wh",
+    "sourceName": "ПУГВ  10 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х10 бел",
+    "after": "ПУГВнг(А)-LS 1х10 белый"
+  },
+  {
+    "sku": "YU-0005058",
+    "slug": "pugv-1h10-golub-ng-a-ls-3wi",
+    "sourceName": "ПУГВ  10 голуб нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х10 голуб",
+    "after": "ПУГВнг(А)-LS 1х10 голубой"
+  },
+  {
+    "sku": "YU-0005059",
+    "slug": "pugv-1h10-zh-z-3wj",
+    "sourceName": "ПУГВ  10 ж/з",
+    "before": "ПУГВ 1х10 ж/з",
+    "after": "ПУГВ 1х10 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005060",
+    "slug": "pugv-1h10-kor-ng-a-ls-3wk",
+    "sourceName": "ПУГВ  10 кор нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х10 кор",
+    "after": "ПУГВнг(А)-LS 1х10 коричневый"
+  },
+  {
+    "sku": "YU-0005062",
+    "slug": "pugv-1h10-krasn-3wm",
+    "sourceName": "ПУГВ  10 красн",
+    "before": "ПУГВ 1х10 красн",
+    "after": "ПУГВ 1х10 красный"
+  },
+  {
+    "sku": "YU-0005063",
+    "slug": "pugv-1h10-sin-3wn",
+    "sourceName": "ПУГВ  10 син",
+    "before": "ПУГВ 1х10 син",
+    "after": "ПУГВ 1х10 синий"
+  },
+  {
+    "sku": "YU-0007246",
+    "slug": "pugv-1h10-sin-ng-a-ls-5la",
+    "sourceName": "ПУГВ  10 син нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х10 син",
+    "after": "ПУГВнг(А)-LS 1х10 синий"
+  },
+  {
+    "sku": "YU-0005064",
+    "slug": "pugv-1h10-hl-zh-z-3wo",
+    "sourceName": "ПУГВ  10 хл ж/з",
+    "before": "ПУГВ 1х10 хл ж/з",
+    "after": "ПУГВхл 1х10 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005065",
+    "slug": "pugv-1h10-chern-3wp",
+    "sourceName": "ПУГВ  10 черн",
+    "before": "ПУГВ 1х10 черн",
+    "after": "ПУГВ 1х10 чёрный"
+  },
+  {
+    "sku": "YU-0005066",
+    "slug": "pugv-1h10-chern-ng-a-ls-3wq",
+    "sourceName": "ПУГВ  10 черн нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х10 черн",
+    "after": "ПУГВнг(А)-LS 1х10 чёрный"
+  },
+  {
+    "sku": "YU-0005067",
+    "slug": "pugv-1h16-bel-3wr",
+    "sourceName": "ПУГВ  16 бел",
+    "before": "ПУГВ 1х16 бел",
+    "after": "ПУГВ 1х16 белый"
+  },
+  {
+    "sku": "YU-0005068",
+    "slug": "pugv-1h16-bel-ng-a-ls-3ws",
+    "sourceName": "ПУГВ  16 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х16 бел",
+    "after": "ПУГВнг(А)-LS 1х16 белый"
+  },
+  {
+    "sku": "YU-0005069",
+    "slug": "pugv-1h16-zh-z-3wt",
+    "sourceName": "ПУГВ  16 ж/з",
+    "before": "ПУГВ 1х16 ж/з",
+    "after": "ПУГВ 1х16 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005070",
+    "slug": "pugv-1h16-zh-z-hl-3wu",
+    "sourceName": "ПУГВ  16 ж/з  ХЛ",
+    "before": "ПУГВ 1х16 ж/з ХЛ",
+    "after": "ПУГВхл 1х16 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005071",
+    "slug": "pugv-1h16-zh-z-ng-a-ls-3wv",
+    "sourceName": "ПУГВ  16 ж/з нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х16 ж/з",
+    "after": "ПУГВнг(А)-LS 1х16 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005072",
+    "slug": "pugv-1h16-krasn-3ww",
+    "sourceName": "ПУГВ  16 красн",
+    "before": "ПУГВ 1х16 красн",
+    "after": "ПУГВ 1х16 красный"
+  },
+  {
+    "sku": "YU-0005073",
+    "slug": "pugv-1h16-sin-ng-a-ls-3wx",
+    "sourceName": "ПУГВ  16 син нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х16 син",
+    "after": "ПУГВнг(А)-LS 1х16 синий"
+  },
+  {
+    "sku": "YU-0005075",
+    "slug": "pugv-1h16-chern-ng-a-ls-3wz",
+    "sourceName": "ПУГВ  16 черн нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х16 черн",
+    "after": "ПУГВнг(А)-LS 1х16 чёрный"
+  },
+  {
+    "sku": "YU-0005143",
+    "slug": "pugv-1h16-chernyy-3yv",
+    "sourceName": "ПУГВ  16 черный",
+    "before": "ПУГВ 1х16 черный",
+    "after": "ПУГВ 1х16 чёрный"
+  },
+  {
+    "sku": "YU-0005144",
+    "slug": "pugv-1h25-bel-3yw",
+    "sourceName": "ПУГВ  25 бел",
+    "before": "ПУГВ 1х25 бел",
+    "after": "ПУГВ 1х25 белый"
+  },
+  {
+    "sku": "YU-0005145",
+    "slug": "pugv-1h25-bel-ng-a-ls-3yx",
+    "sourceName": "ПУГВ  25 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х25 бел",
+    "after": "ПУГВнг(А)-LS 1х25 белый"
+  },
+  {
+    "sku": "YU-0005146",
+    "slug": "pugv-1h25-zh-z-3yy",
+    "sourceName": "ПУГВ  25 ж/з",
+    "before": "ПУГВ 1х25 ж/з",
+    "after": "ПУГВ 1х25 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005147",
+    "slug": "pugv-1h25-zh-z-ng-a-ls-3yz",
+    "sourceName": "ПУГВ  25 ж/з нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х25 ж/з",
+    "after": "ПУГВнг(А)-LS 1х25 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005148",
+    "slug": "pugv-1h25-zh-z-hl-3z0",
+    "sourceName": "ПУГВ  25 ж/з хл",
+    "before": "ПУГВ 1х25 ж/з хл",
+    "after": "ПУГВхл 1х25 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005150",
+    "slug": "pugv-1h35-bel-3z2",
+    "sourceName": "ПУГВ  35 бел",
+    "before": "ПУГВ 1х35 бел",
+    "after": "ПУГВ 1х35 белый"
+  },
+  {
+    "sku": "YU-0005151",
+    "slug": "pugv-1h35-bel-ng-a-ls-3z3",
+    "sourceName": "ПУГВ  35 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х35 бел",
+    "after": "ПУГВнг(А)-LS 1х35 белый"
+  },
+  {
+    "sku": "YU-0005152",
+    "slug": "pugv-1h35-zh-z-3z4",
+    "sourceName": "ПУГВ  35 ж/з",
+    "before": "ПУГВ 1х35 ж/з",
+    "after": "ПУГВ 1х35 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005153",
+    "slug": "pugv-1h35-chern-import-3z5",
+    "sourceName": "ПУГВ  35 черн(импорт)",
+    "before": "ПУГВ 1х35 черн(импорт)",
+    "after": "ПУГВ 1х35 чёрный(импорт)"
+  },
+  {
+    "sku": "YU-0005154",
+    "slug": "pugv-1h50-bel-3z6",
+    "sourceName": "ПУГВ  50 бел",
+    "before": "ПУГВ 1х50 бел",
+    "after": "ПУГВ 1х50 белый"
+  },
+  {
+    "sku": "YU-0005155",
+    "slug": "pugv-1h50-bel-ng-a-ls-3z7",
+    "sourceName": "ПУГВ  50 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х50 бел",
+    "after": "ПУГВнг(А)-LS 1х50 белый"
+  },
+  {
+    "sku": "YU-0007580",
+    "slug": "pugv-1h50-zh-z-ng-a-ls-5uk",
+    "sourceName": "ПУГВ  50 ж/з нг (А)LS",
+    "before": "ПУГВнг(А)-LS 1х50 ж/з",
+    "after": "ПУГВнг(А)-LS 1х50 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005157",
+    "slug": "pugv-1h50-zh-z-hl-3z9",
+    "sourceName": "ПУГВ  50 ж/з хл",
+    "before": "ПУГВ 1х50 ж/з хл",
+    "after": "ПУГВхл 1х50 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005160",
+    "slug": "pugv-1h70-bel-3zc",
+    "sourceName": "ПУГВ  70 бел",
+    "before": "ПУГВ 1х70 бел",
+    "after": "ПУГВ 1х70 белый"
+  },
+  {
+    "sku": "YU-0005161",
+    "slug": "pugv-1h70-zh-z-3zd",
+    "sourceName": "ПУГВ  70 ж/з",
+    "before": "ПУГВ 1х70 ж/з",
+    "after": "ПУГВ 1х70 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005163",
+    "slug": "pugv-1h70-chern-3zf",
+    "sourceName": "ПУГВ  70 черн",
+    "before": "ПУГВ 1х70 черн",
+    "after": "ПУГВ 1х70 чёрный"
+  },
+  {
+    "sku": "YU-0007033",
+    "slug": "pugv-1h70-chernyy-ng-a-ls-5fd",
+    "sourceName": "ПУГВ  70 черный нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х70 черный",
+    "after": "ПУГВнг(А)-LS 1х70 чёрный"
+  },
+  {
+    "sku": "YU-0005164",
+    "slug": "pugv-1h95-bel-3zg",
+    "sourceName": "ПУГВ  95 бел",
+    "before": "ПУГВ 1х95 бел",
+    "after": "ПУГВ 1х95 белый"
+  },
+  {
+    "sku": "YU-0005165",
+    "slug": "pugv-1h95-bel-ng-a-ls-3zh",
+    "sourceName": "ПУГВ  95 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х95 бел",
+    "after": "ПУГВнг(А)-LS 1х95 белый"
+  },
+  {
+    "sku": "YU-0006917",
+    "slug": "pugv-1h95-zh-z-5c5",
+    "sourceName": "ПУГВ  95 ж/з",
+    "before": "ПУГВ 1х95 ж/з",
+    "after": "ПУГВ 1х95 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0005167",
+    "slug": "pugv-1h95-sin-3zj",
+    "sourceName": "ПУГВ  95 син",
+    "before": "ПУГВ 1х95 син",
+    "after": "ПУГВ 1х95 синий"
+  },
+  {
+    "sku": "YU-0005168",
+    "slug": "pugv-1h120-bel-ng-a-ls-3zk",
+    "sourceName": "ПУГВ 120 бел нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х120 бел",
+    "after": "ПУГВнг(А)-LS 1х120 белый"
+  },
+  {
+    "sku": "YU-0006918",
+    "slug": "pugv-1h150-bel-5c6",
+    "sourceName": "ПУГВ 150 бел",
+    "before": "ПУГВ 1х150 бел",
+    "after": "ПУГВ 1х150 белый"
+  },
+  {
+    "sku": "YU-0005171",
+    "slug": "pugv-1h150-zh-z-ng-a-ls-3zn",
+    "sourceName": "ПУГВ 150 ж/з нг(А)LS",
+    "before": "ПУГВнг(А)-LS 1х150 ж/з",
+    "after": "ПУГВнг(А)-LS 1х150 жёлто-зелёный"
+  },
+  {
+    "sku": "YU-0006919",
+    "slug": "pugv-1h185-bel-5c7",
+    "sourceName": "ПУГВ 185 бел",
+    "before": "ПУГВ 1х185 бел",
+    "after": "ПУГВ 1х185 белый"
+  },
+  {
+    "sku": "YU-0006920",
+    "slug": "pugv-1h240-bel-5c8",
+    "sourceName": "ПУГВ 240 бел",
+    "before": "ПУГВ 1х240 бел",
+    "after": "ПУГВ 1х240 белый"
+  }
+]

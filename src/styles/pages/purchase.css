@@ -72,7 +72,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 .purchase-fields input,
 .purchase-fields select,
@@ -91,7 +91,7 @@
 }
 .purchase-faq summary {
   cursor: pointer;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   line-height: 1.5;
 }
 .order-steps {
@@ -108,7 +108,7 @@
   border-radius: 16px;
 }
 .order-steps__number {
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   font-size: 32px;
   color: #de792f;
 }
@@ -128,7 +128,7 @@
   min-width: 0;
 }
 .specification-files > label {
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 .specification-files p {
   margin: 8px 0 14px;
@@ -210,7 +210,7 @@
 }
 .product-supply dd {
   margin: 0;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   line-height: 1.5;
 }
 .product-supply__date {

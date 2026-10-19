@@ -1,0 +1,68 @@
+
+> yuzhural-site@0.0.1 build
+> vite build --configLoader native
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 731 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                     2.83 kB │ gzip:   0.99 kB
+dist/.vite/manifest.json                           14.22 kB │ gzip:   1.88 kB
+dist/assets/Breadcrumbs-CXiyoj-s.css                0.72 kB │ gzip:   0.38 kB
+dist/assets/InternalRuntimePage-C2I8QlSw.css        3.30 kB │ gzip:   0.94 kB
+dist/assets/MarksPage-DdR9cyQD.css                  3.46 kB │ gzip:   0.96 kB
+dist/assets/CartPage-DEdT4N2f.css                   4.17 kB │ gzip:   1.18 kB
+dist/assets/ProductPage-CAijXSj2.css                4.22 kB │ gzip:   1.13 kB
+dist/assets/purchase-B0VRIjjy.css                   4.74 kB │ gzip:   1.31 kB
+dist/assets/services-CBgYlzeR.css                   8.44 kB │ gzip:   2.27 kB
+dist/assets/content-CPoAjlKL.css                   19.62 kB │ gzip:   3.40 kB
+dist/assets/CatalogPage-CB9r26Po.css               40.90 kB │ gzip:   7.10 kB
+dist/assets/index-Bi7Tzjnx.css                     78.99 kB │ gzip:  15.00 kB
+dist/assets/russianCount-2d1byf0K.js                0.11 kB │ gzip:   0.12 kB
+dist/assets/PurchaseLayout-BWqchUAI.js              0.59 kB │ gzip:   0.35 kB
+dist/assets/Breadcrumbs-BUH3YIlb.js                 0.60 kB │ gzip:   0.39 kB
+dist/assets/ConsentGatedMap-b4xB_iF-.js             0.75 kB │ gzip:   0.50 kB
+dist/assets/ServicesPage-C_v9Wz-e.js                1.08 kB │ gzip:   0.63 kB
+dist/assets/NotFoundPage-Cz_wcDsf.js                1.13 kB │ gzip:   0.60 kB
+dist/assets/ServiceLayout-SXQhWcAX.js               1.38 kB │ gzip:   0.74 kB
+dist/assets/calculationPdf-Bhy4XJlk.js              1.60 kB │ gzip:   0.91 kB
+dist/assets/SpecificationPage-CwoP83DS.js           1.65 kB │ gzip:   0.87 kB
+dist/assets/ReportActions-Co8XS5Bb.js               1.78 kB │ gzip:   0.88 kB
+dist/assets/cableLogistics-DvDHRCeg.js              2.05 kB │ gzip:   0.96 kB
+dist/assets/OrderGuidePage-AtnwCJDL.js              2.16 kB │ gzip:   1.01 kB
+dist/assets/MarksPage-CvICY7xi.js                   2.61 kB │ gzip:   1.26 kB
+dist/assets/MobileNav-C4_UcQ-H.js                   3.47 kB │ gzip:   1.28 kB
+dist/assets/quotePdf-CLDrW9av.js                    4.87 kB │ gzip:   2.36 kB
+dist/assets/QualityPage-CcziaLLC.js                 4.88 kB │ gzip:   1.87 kB
+dist/assets/staticPageJsonLd-BivDkljV.js            5.51 kB │ gzip:   1.88 kB
+dist/assets/CableApplicationPage-D1uo7TdI.js        5.98 kB │ gzip:   2.28 kB
+dist/assets/ContactsPage-CGFrC-GE.js                6.53 kB │ gzip:   1.89 kB
+dist/assets/cableSpecification-BR331i5y.js          7.19 kB │ gzip:   2.60 kB
+dist/assets/InternalRuntimePage-DHwYoQlQ.js         8.02 kB │ gzip:   2.79 kB
+dist/assets/DeliveryPage-C_OXV7_V.js                8.63 kB │ gzip:   2.76 kB
+dist/assets/CartPage-UDR84xbU.js                    9.55 kB │ gzip:   3.56 kB
+dist/assets/CableDrumPage-Bxt8wc7k.js               9.74 kB │ gzip:   3.39 kB
+dist/assets/QuoteForm-DN31Zfb0.js                  10.32 kB │ gzip:   4.07 kB
+dist/assets/CableShippingPage-B-mfTH4D.js          11.11 kB │ gzip:   3.98 kB
+dist/assets/AboutPage-BTDyi2GA.js                  12.39 kB │ gzip:   3.93 kB
+dist/assets/PaymentPage-9EnkTXF8.js                13.58 kB │ gzip:   3.57 kB
+dist/assets/CableSectionPage-DagSTiNP.js           16.04 kB │ gzip:   5.92 kB
+dist/assets/CableWeightPage-QDHOus1G.js            17.29 kB │ gzip:   5.52 kB
+dist/assets/CableKnowledgePage-QA1REU-G.js         26.17 kB │ gzip:   7.35 kB
+dist/assets/PrivacyPage-BVjqDote.js                26.17 kB │ gzip:   6.26 kB
+dist/assets/purify.es-BPuvlvQ_.js                  29.05 kB │ gzip:  11.07 kB
+dist/assets/CatalogPage-UYNaSdth.js                30.94 kB │ gzip:  10.16 kB
+dist/assets/jspdf.plugin.autotable-KFqWVtFs.js     31.02 kB │ gzip:   9.92 kB
+dist/assets/index.es-SLgpCPAM.js                  158.83 kB │ gzip:  52.93 kB
+dist/assets/html2canvas.esm-DXEQVQnt.js           201.04 kB │ gzip:  47.07 kB
+dist/assets/jspdf.es.min-voAQ_jL2.js              386.01 kB │ gzip: 124.94 kB
+dist/assets/cableMass-BE8-yKjl.js                 672.97 kB │ gzip:  44.74 kB
+dist/assets/ProductPage-BjYzFE1B.js             1,187.71 kB │ gzip: 135.74 kB
+dist/assets/index-B4jZtSRS.js                   1,516.58 kB │ gzip: 197.60 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.18s

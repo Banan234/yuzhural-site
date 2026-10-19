@@ -48,7 +48,7 @@
   border: 1px solid #287ddd;
   border-radius: 4px;
   font: inherit;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
   line-height: 1.2;
   cursor: pointer;
 }
@@ -179,7 +179,7 @@
   background: white;
   color: #287ddd;
   font: inherit;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
 

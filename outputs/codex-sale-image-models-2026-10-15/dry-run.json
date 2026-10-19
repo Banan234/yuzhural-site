@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "provider": "codex-sale",
+  "apiBaseUrl": "https://codex.sale/v1",
+  "prompt": "Create a realistic professional product render of an electrical power cable, with realistic materials and soft studio lighting.\n\nThe cable has EXACTLY THREE insulated conductors. Exactly 3 insulated conductors. Exactly three. No fourth conductor. No additional wires.\n\nThe intact cable body enters the frame from the RIGHT side. The black outer jacket extends toward the RIGHT edge of the image. The stripped end and the three separated insulated conductors extend toward the LEFT side. Exposed copper tips are on the LEFT ends of the conductors. Never reverse or mirror this orientation. Do not place the intact body on the left. Do not direct the conductors toward the right.\n\nShow precisely these three insulated conductors, one of each:\n1. One yellow-and-green striped conductor (one wire, not two).\n2. One blue conductor.\n3. One brown conductor.\n\nThe black outer jacket ends near the center-right of the composition. Three distinct insulated conductors emerge naturally from it toward the left, each with one neat exposed copper tip on its left end. Exactly three conductors and exactly three copper tips.\n\nPredominantly horizontal, slightly diagonal shallow three-quarter view. Consistent catalogue scale and centered composition. The entire short cable segment, including its intact rear end on the right and all three tips on the left, fits inside the image. Nothing cropped. Leave transparent margins around the entire object, including at the right edge.\n\nGenuinely transparent background with real alpha. No floor, no scenery, no background shadows. No text, no logos, no markings, no labels, no watermark, no dimensions, no hands, no additional objects.",
+  "promptHash": "35207c1e18aa86c1edcbc9d587ea7cd714bb9d77ce9cf8fe04c7fb273d979c43",
+  "size": "1536x1024",
+  "quality": "high",
+  "format": "png",
+  "background": "transparent",
+  "endpoint": "/images/generations",
+  "retries": 0,
+  "maximumGenerationRequests": 4,
+  "createdAt": "2026-10-15T14:55:28.655Z",
+  "results": [
+    {
+      "model": "gpt-image-2.5-sunburst",
+      "filename": "test-sunburst.png",
+      "status": "pending"
+    },
+    {
+      "model": "gpt-image-2.5-flare",
+      "filename": "test-flare.png",
+      "status": "pending"
+    },
+    {
+      "model": "gpt-image-2",
+      "filename": "test-image-2.png",
+      "status": "pending"
+    },
+    {
+      "model": "gpt-image-1.5",
+      "filename": "test-image-1.5.png",
+      "status": "pending"
+    }
+  ]
+}

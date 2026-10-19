@@ -44,9 +44,6 @@ export default function CategoryShowcase() {
           <h2 className="section-title section-title--left">
             <span id="popular-categories-title">Категории каталога</span>
           </h2>
-          <Link to="/catalog/" className="home-category-showcase__all">
-            Весь каталог <span aria-hidden="true">→</span>
-          </Link>
         </div>
 
         <ul className="home-category-showcase__grid">
@@ -55,7 +52,7 @@ export default function CategoryShowcase() {
               <Link to={item.to} className="home-category-showcase__card">
                 <div className="home-category-showcase__body">
                   <h3 className="home-category-showcase__title">
-                    {item.title} <span aria-hidden="true">→</span>
+                    {item.title}
                   </h3>
                   <p className="home-category-showcase__examples">
                     {item.examples}

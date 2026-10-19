@@ -1,6 +1,7 @@
 // Файл рендерит политику конфиденциальности и обработки персональных данных в формате документа.
 
 import Container from '../components/ui/Container';
+import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { useJsonLd } from '../hooks/useJsonLd';
 import { useSEO } from '../hooks/useSEO';
 import {
@@ -91,6 +92,7 @@ export default function PrivacyPage() {
   return (
     <section className="section">
       <Container>
+        <Breadcrumbs current="Политика конфиденциальности" />
         <article className="privacy-doc">
           <header className="privacy-doc__header">
             <h1 className="page-title privacy-doc__title">

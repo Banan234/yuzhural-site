@@ -1,5 +1,6 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Container from '../ui/Container';
+import Breadcrumbs from '../ui/Breadcrumbs';
 import { useSEO } from '../../hooks/useSEO';
 import {
   CABLE_SERVICES,
@@ -20,19 +21,17 @@ export default function ServiceLayout({ serviceKey, children }) {
   return (
     <section className="services-page">
       <Container>
-        <nav className="services-breadcrumbs" aria-label="Хлебные крошки">
-          <Link to="/">Главная</Link>
-          <span aria-hidden="true">/</span>
-          {service ? (
-            <>
-              <Link to={SERVICES_PATH}>Сервисы</Link>
-              <span aria-hidden="true">/</span>
-              <span>{service.short}</span>
-            </>
-          ) : (
-            <span>Сервисы</span>
-          )}
-        </nav>
+        <Breadcrumbs
+          items={[
+            { label: 'Главная', to: '/' },
+            ...(service
+              ? [
+                  { label: 'Сервисы', to: SERVICES_PATH },
+                  { label: service.short },
+                ]
+              : [{ label: 'Сервисы' }]),
+          ]}
+        />
         <header className="services-heading">
           <h1>{service?.title || 'Сервисы для работы с кабелем'}</h1>
           <p>

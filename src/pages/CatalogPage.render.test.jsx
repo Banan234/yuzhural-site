@@ -355,6 +355,25 @@ describe('CatalogPage', () => {
         productQueryOptions: { limit: 24, search: 'ввг' },
       })
     ).toBe(false);
+    expect(
+      doesCatalogPrerenderDataMatchQuery({
+        activeCategoryParam: '',
+        prerenderData,
+        productQueryOptions: { limit: 24, mark: 'ВВГ' },
+      })
+    ).toBe(false);
+  });
+
+  it('передаёт точную марку из перечня в API и показывает её в выдаче', async () => {
+    renderCatalogPage('/catalog?search=ЗКП&mark=ЗКП');
+
+    await waitFor(() =>
+      expect(fetchProducts).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ search: 'ЗКП', mark: 'ЗКП' })
+      )
+    );
+    expect(screen.getByText(/Марка «ЗКП»/)).toBeInTheDocument();
   });
 
   it('передает расширенные фильтры для категории силового кабеля из общего каталога', async () => {

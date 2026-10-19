@@ -1,0 +1,12 @@
+{
+  "generationRequests": 4,
+  "retries": 0,
+  "allHttp200": true,
+  "samePrompt": true,
+  "promptHash": "35207c1e18aa86c1edcbc9d587ea7cd714bb9d77ce9cf8fe04c7fb273d979c43",
+  "rawImagesUnchanged": true,
+  "catalogImagesMetadataAndBindingsUnchanged": true,
+  "secretOnlyInIgnoredLocalEnv": true,
+  "testFiles": 78,
+  "tests": 1068
+}

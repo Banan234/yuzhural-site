@@ -1,7 +1,13 @@
 [
   "ККЗ",
-  "КРУИНВЭЛК",
-  "КРУИН",
+  {
+    "canonical": "НПО ПЗСК",
+    "aliases": [
+      "КРУИН",
+      "КРУИНв"
+    ],
+    "preserveDesignation": true
+  },
   "ПИРОКОР",
   "КИВИ",
   "НИКИ",
@@ -16,7 +22,10 @@
   "HELUKABEL",
   {
     "canonical": "LAPP KABEL",
-    "aliases": ["LAPPKABEL", "LAPP GROUP"]
+    "aliases": [
+      "LAPPKABEL",
+      "LAPP GROUP"
+    ]
   },
   "DRAKA",
   "NEXANS",
@@ -30,6 +39,8 @@
   "SIEMENS",
   {
     "canonical": "VIKAB",
-    "aliases": ["ВИКАБ"]
+    "aliases": [
+      "ВИКАБ"
+    ]
   }
 ]

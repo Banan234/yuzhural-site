@@ -1,0 +1,310 @@
+[
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001334",
+    "slug": "kruin-velkng-14h2h1-5-a-ls-112",
+    "sourceName": "КРУИН ВЭлКнг 14х2х1,5 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001335",
+    "slug": "kruin-velkng-2h2h1-5-a-ls-113",
+    "sourceName": "КРУИН ВЭлКнг 2х2х1,5 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001336",
+    "slug": "kruin-velkng-4h2h1-5-a-ls-114",
+    "sourceName": "КРУИН ВЭлКнг 4х2х1,5 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001337",
+    "slug": "kruin-velkng-8h2h1-a-ls-115",
+    "sourceName": "КРУИН ВЭлКнг 8х2х1 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001338",
+    "slug": "kruin-velkng-8h2h1-5-a-ls-116",
+    "sourceName": "КРУИН ВЭлКнг 8х2х1,5 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001340",
+    "slug": "kruin-mrefkng-2h2h1-a-frls-118",
+    "sourceName": "КРУИН МРЭфКнг 2х2х1 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "МРЭфК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН МРЭфК"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001341",
+    "slug": "kruin-mrefnzng-2h2h1-a-frls-119",
+    "sourceName": "КРУИН МРЭфнзнг 2х2х1 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "МРЭфн"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН МРЭфн"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001342",
+    "slug": "kruin-mrefnzng-4h2h1-5-a-frls-11a",
+    "sourceName": "КРУИН МРЭфнзнг 4х2х1,5 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "МРЭфн"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН МРЭфн"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001343",
+    "slug": "kruin-refk-ng-2h2h1-a-frls-hl-11b",
+    "sourceName": "КРУИН РЭФК нг 2х2х1 (А)FRLS-хл",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "РЭФК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН РЭФК"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001344",
+    "slug": "kruin-refk-ng-6h2h1-5-a-frls-11c",
+    "sourceName": "КРУИН РЭФК нг 6х2х1,5 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "РЭФК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН РЭФК"
+    }
+  },
+  {
+    "path": "data/catalog-current/products.json",
+    "sku": "YU-0001345",
+    "slug": "kruin-reflk-ng-6h2h1-5-a-frls-11d",
+    "sourceName": "КРУИН РЭФлК нг 6х2х1,5 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "РЭФлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН РЭФлК"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001334",
+    "slug": "kruin-velkng-14h2h1-5-a-ls-112",
+    "sourceName": "КРУИН ВЭлКнг 14х2х1,5 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001335",
+    "slug": "kruin-velkng-2h2h1-5-a-ls-113",
+    "sourceName": "КРУИН ВЭлКнг 2х2х1,5 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001336",
+    "slug": "kruin-velkng-4h2h1-5-a-ls-114",
+    "sourceName": "КРУИН ВЭлКнг 4х2х1,5 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001337",
+    "slug": "kruin-velkng-8h2h1-a-ls-115",
+    "sourceName": "КРУИН ВЭлКнг 8х2х1 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001338",
+    "slug": "kruin-velkng-8h2h1-5-a-ls-116",
+    "sourceName": "КРУИН ВЭлКнг 8х2х1,5 (А)LS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "ВЭлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН ВЭлК"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001340",
+    "slug": "kruin-mrefkng-2h2h1-a-frls-118",
+    "sourceName": "КРУИН МРЭфКнг 2х2х1 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "МРЭфК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН МРЭфК"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001341",
+    "slug": "kruin-mrefnzng-2h2h1-a-frls-119",
+    "sourceName": "КРУИН МРЭфнзнг 2х2х1 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "МРЭфн"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН МРЭфн"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001342",
+    "slug": "kruin-mrefnzng-4h2h1-5-a-frls-11a",
+    "sourceName": "КРУИН МРЭфнзнг 4х2х1,5 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "МРЭфн"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН МРЭфн"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001343",
+    "slug": "kruin-refk-ng-2h2h1-a-frls-hl-11b",
+    "sourceName": "КРУИН РЭФК нг 2х2х1 (А)FRLS-хл",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "РЭФК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН РЭФК"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001344",
+    "slug": "kruin-refk-ng-6h2h1-5-a-frls-11c",
+    "sourceName": "КРУИН РЭФК нг 6х2х1,5 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "РЭФК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН РЭФК"
+    }
+  },
+  {
+    "path": "data/products.json",
+    "sku": "YU-0001345",
+    "slug": "kruin-reflk-ng-6h2h1-5-a-frls-11d",
+    "sourceName": "КРУИН РЭФлК нг 6х2х1,5 (А)FRLS",
+    "before": {
+      "manufacturer": "КРУИН",
+      "mark": "РЭФлК"
+    },
+    "after": {
+      "manufacturer": "НПО ПЗСК",
+      "mark": "КРУИН РЭФлК"
+    }
+  }
+]

@@ -1,0 +1,11 @@
+
+> yuzhural-site@0.0.1 import:price
+> node scripts/importPrice.js data/price.xls --dry-run
+
+[dotenv@17.3.1] injecting env (62) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+Чтение прайса: data/price.xls
+Источник проверен: local, 878592 байт, SHA-256 cdeed9d29819fa9c41f4ad05e8c29c26070545eb08f0b05e426e1c4b6e0b1b21
+Режим: --dry-run (файлы не записываются)
+Ошибка импорта прайса: Публикация прайса остановлена защитным контролем:
+- Категория изменилась у 74.4% каталога, допустимо не более 1%.
+Проверь импорт и повтори запуск. Для осознанного ручного обхода используй --override-publish-guard.

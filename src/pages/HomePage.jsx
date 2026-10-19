@@ -2,15 +2,11 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Container from '../components/ui/Container';
-import CallbackButton from '../components/forms/CallbackButton';
+import ContactRequestForm from '../components/home/ContactRequestForm';
+import HomeWhyUsVariants from '../components/home/HomeWhyUsVariants';
 import CategoryShowcase from '../components/home/CategoryShowcase';
 import StockProductsGrid from '../components/home/StockProductsGrid';
-import {
-  HomeCompanyIntro,
-  HomeDelivery,
-  HomeFaq,
-  HomePurchaseSteps,
-} from '../components/home/HomeDetailsSections';
+import { HomeFaq } from '../components/home/HomeDetailsSections';
 import { fetchFeaturedProducts } from '../lib/productsApi';
 import { captureException } from '../lib/errorTracking';
 import { useSEO } from '../hooks/useSEO';
@@ -21,6 +17,7 @@ import { messages } from '../../shared/messages.js';
 import { DEFAULT_FEATURED_PRODUCTS_LIMIT } from '../../shared/featuredProducts.js';
 import {
   SITE_MANUFACTURERS,
+  SITE_MANUFACTURER_LOGOS,
   SITE_NAME,
   SITE_EMAIL_HREF,
   SITE_QUOTE_RESPONSE_DISPLAY,
@@ -46,9 +43,9 @@ const WEBSITE_JSON_LD = {
 };
 
 const quickFacts = [
-  { icon: 'truck', title: 'Доставка', detail: 'по всей России' },
-  { icon: 'shield', title: 'Документы', detail: 'к поставке' },
-  { icon: 'box', title: 'Наличие', detail: 'проверим перед КП' },
+  { icon: 'truck', title: 'Доставка', detail: 'по России' },
+  { icon: 'shield', title: 'Работа с НДС', detail: 'документы к поставке' },
+  { icon: 'box', title: 'Самовывоз', detail: 'в Челябинске' },
 ];
 
 function FactIcon({ name }) {
@@ -149,10 +146,13 @@ export default function HomePage() {
         <Container>
           <div className="home-concept__hero-content">
             <h1 id="home-hero-title">
-              Кабель под ваш проект
+              Кабель и провод
+              <br />
+              для вашего проекта
             </h1>
             <p className="home-concept__hero-lead">
-              Подберём марки и аналоги, проверим наличие и подготовим КП в рабочий день.
+              Пришлите спецификацию или список позиций — подберём кабель,
+              уточним наличие и рассчитаем стоимость поставки.
             </p>
             <div className="home-concept__hero-actions">
               <a
@@ -229,8 +229,6 @@ export default function HomePage() {
         isLoading={isLoading}
         loadError={loadError}
       />
-      <HomeCompanyIntro />
-
       <section
         className="home-concept__quote"
         aria-labelledby="home-quote-title"
@@ -238,85 +236,29 @@ export default function HomePage() {
         <Container>
           <div className="home-concept__quote-panel">
             <div className="home-concept__quote-copy">
-              <h2 id="home-quote-title">Пришлите список — подготовим КП</h2>
-              <p>
-                Марки, сечения и метраж — текстом, в Excel или PDF. Подберём
-                аналоги, уточним наличие, цену и срок поставки.
+              <h2 id="home-quote-title">Не тратьте время на поиски</h2>
+              <p>Закажите консультацию у менеджера</p>
+              <p className="home-concept__quote-description">
+                Оставьте заявку — наш менеджер свяжется с вами в течение 15
+                минут в рабочее время.
               </p>
-              <div
-                className="home-concept__formats"
-                aria-label="Форматы спецификации"
-              >
-                <span>Excel</span>
-                <span>PDF</span>
-                <span>Текст</span>
-              </div>
-              <div className="home-concept__quote-actions">
-                <a
-                  href="/specification/"
-                  className="home-concept__button home-concept__button--orange"
-                >
-                  Отправить спецификацию <span aria-hidden="true">→</span>
-                </a>
-                <CallbackButton source="Заказ звонка: блок заявки на главной" />
-              </div>
+              <ContactRequestForm />
             </div>
-            <div
-              className="home-concept__quote-illustration"
-              aria-hidden="true"
-            >
-              <div className="home-concept__paper">
-                <strong>Спецификация</strong>
-                <span>
-                  Марка <i>Сечение</i> <i>Метраж</i>
-                </span>
-                <span>
-                  ВВГнг(А)-LS <i>4×25</i> <i>500 м</i>
-                </span>
-                <span>
-                  КВВГ <i>7×1,5</i> <i>300 м</i>
-                </span>
-                <span>
-                  ПВС <i>3×1,5</i> <i>200 м</i>
-                </span>
-              </div>
+            <div className="home-concept__quote-visual" aria-hidden="true">
+              <img
+                src="/product-images/generated/vvg-png__3core.png"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="1774"
+                height="887"
+              />
             </div>
           </div>
         </Container>
       </section>
 
-      <HomePurchaseSteps />
-
-      <section className="home-concept__trust" aria-label="Условия работы">
-        <Container>
-          <div className="home-concept__trust-grid">
-            <Link to="/about/">
-              <FactIcon name="shield" />
-              <span>
-                <strong>Документы к поставке</strong>
-                <small>Реквизиты и условия работы</small>
-              </span>
-              <b aria-hidden="true">→</b>
-            </Link>
-            <Link to={CATALOG_CANONICAL_PATH}>
-              <FactIcon name="box" />
-              <span>
-                <strong>Подбор по наличию</strong>
-                <small>Проверим остатки и сроки</small>
-              </span>
-              <b aria-hidden="true">→</b>
-            </Link>
-            <Link to="/delivery/">
-              <FactIcon name="truck" />
-              <span>
-                <strong>Доставка по России</strong>
-                <small>Условия и способы отгрузки</small>
-              </span>
-              <b aria-hidden="true">→</b>
-            </Link>
-          </div>
-        </Container>
-      </section>
+      <HomeWhyUsVariants />
 
       <section
         className="home-concept__manufacturers"
@@ -324,19 +266,39 @@ export default function HomePage() {
       >
         <Container>
           <div className="home-concept__section-head">
-            <h2 id="home-manufacturers-title">Производители в прайсе</h2>
-            <a href="/price.xls" download>
-              Скачать прайс-лист <span aria-hidden="true">→</span>
-            </a>
+            <h2 id="home-manufacturers-title">Производители</h2>
           </div>
           <ul>
-            {SITE_MANUFACTURERS.slice(0, 7).map((name) => (
-              <li key={name}>{name}</li>
-            ))}
+            {SITE_MANUFACTURERS.slice(0, 7).map((name) => {
+              const logo = SITE_MANUFACTURER_LOGOS[name];
+              return (
+                <li key={name}>
+                  {logo ? (
+                    <>
+                      <img
+                        className={`home-concept__manufacturer-logo${logo.monochrome ? ' home-concept__manufacturer-logo--monochrome' : ''}`}
+                        src={logo.src}
+                        alt={logo.alt}
+                        width="180"
+                        height="54"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      {logo.caption && (
+                        <span className="home-concept__manufacturer-caption">
+                          {logo.caption}
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    name
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </Container>
       </section>
-      <HomeDelivery />
       <HomeFaq />
     </div>
   );

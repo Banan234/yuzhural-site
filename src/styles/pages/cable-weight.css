@@ -56,7 +56,7 @@
   gap: 8px;
   color: #334155;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 
 .cable-weight-page__fields select,
@@ -96,7 +96,7 @@
   background: var(--primary);
   color: #fff;
   font: inherit;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
 
@@ -129,7 +129,7 @@
   background: transparent;
   color: var(--primary-dark);
   font: inherit;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
 
@@ -167,7 +167,7 @@
 .cable-weight-page__drum-reference a {
   color: var(--primary-dark);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   white-space: nowrap;
 }
 
@@ -185,8 +185,8 @@
 .cable-weight-page__mass {
   color: #0b4f87;
   font-size: clamp(38px, 4vw, 52px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: normal;
   line-height: 1.1;
 }
 
@@ -199,7 +199,7 @@
   margin-bottom: 6px;
   color: #38536c;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 
 .cable-weight-page__drum-result {
@@ -261,7 +261,7 @@
 
 .cable-weight-page__source a {
   color: var(--primary);
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   white-space: nowrap;
 }
 

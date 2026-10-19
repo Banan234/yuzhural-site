@@ -1,0 +1,2397 @@
+{
+  "reviews": [
+    {
+      "visualKey": "avvg__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvg__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvg__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvg__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvg__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvg-p__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvg-p__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvg-png-ls__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgng__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgng__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgng__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgng__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgng-ls__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgng-ls__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgnga__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgnga__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgnga-hl__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgnga-hl__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgnga-ls__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 1: counted all tips/insulated cores, checked palette, solid silver aluminium, intentional right crop, left ends visible and shallow rising-right angle."
+      }
+    },
+    {
+      "visualKey": "avvgnga-ls__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Individual PNG inspected: two solid aluminium cores, brown/blue, right jacket crosses frame, left tips visible."
+      }
+    },
+    {
+      "visualKey": "avvgnga-ls__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "avvgnga-ls__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "avvgnga-ls__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg-hl__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg-hl__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg-hl__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg-hl__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kg-hl__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kvvg__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "black",
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kvvg__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "black",
+          "brown",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kvvgng__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "black",
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kvvgng__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "black",
+          "brown",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kvvgng-ls__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "black",
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kvvgng-ls__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "black",
+          "brown",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kvvgnga__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "black",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 2: core/tip counts and color palette checked; solid aluminium/control copper and configured stranded KG exceptions; right crop and complete left tips verified."
+      }
+    },
+    {
+      "visualKey": "kvvgnga__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "black",
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "kvvgnga__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "black",
+          "brown",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "kvvgnga-hl__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "black",
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "kvvgnga-hl__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "black",
+          "brown",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "kvvgnga-ls__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "black",
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "kvvgnga-ls__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "black",
+          "brown",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "kvvgnga-ls-hl__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "black",
+          "brown",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "kvvgnga-ls-ltx__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "black",
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "kvvgnga-ls-ltx__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "black",
+          "brown",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvs__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvs__2core__jacket-black-pvc",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvs__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvs__3core__jacket-black-pvc",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvs__3core__jacket-orange-pvc",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvs__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvs__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvsnga-ls__2core__jacket-black-pvc",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvsnga-ls__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvsnga-ls__3core__jacket-black-pvc",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvsnga-ls__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 3 inspected: counts, palette and jacket colors correct; PVS stranded exception preserved. kvvgnga-ls-hl__5core also inspected individually at full resolution, all five solid copper tips visible."
+      }
+    },
+    {
+      "visualKey": "pvsnga-ls__4core__jacket-black-pvc",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "pvsnga-ls__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "stranded",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-hl__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-hl__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-p__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-p__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-p__3core__jacket-white-pvc",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-p__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-png__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-png__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-png__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-png-hl__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-png-ls__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-png-ls__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-pnga__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 4: all core/tip counts and palettes verified; PVS stranded exceptions, solid VVG, flattened jacket profiles and white VVG variant checked; right crop and full left tips visible."
+      }
+    },
+    {
+      "visualKey": "vvg-pnga__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvg-pnga-ls__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvg-pnga-ls__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvg-pnga-ls-ltx__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvg-pnga-ls-ltx__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng-hl__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng-ls__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng-ls__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng-ls__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng-ls__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgng-ls__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgnga__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgnga__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgnga__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgnga__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 5: every 1–5 core count, configured palette, solid copper tips, flat/round profiles, right-boundary entry and complete left tips visually verified."
+      }
+    },
+    {
+      "visualKey": "vvgnga__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-hl__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-hl__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-hl__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-hl__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-hl__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls-hl__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls-hl__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls-hl__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls-ltx__1core",
+      "review": {
+        "cores": 1,
+        "colors": [
+          "brown"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls-ltx__2core",
+      "review": {
+        "cores": 2,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls-ltx__3core",
+      "review": {
+        "cores": 3,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls-ltx__4core",
+      "review": {
+        "cores": 4,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    },
+    {
+      "visualKey": "vvgnga-ls-ltx__5core",
+      "review": {
+        "cores": 5,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "orientation": "right-to-left",
+        "rightEdgeCropped": true,
+        "leftUncropped": true,
+        "topBottomClear": true,
+        "conductorConstruction": "solid",
+        "noText": true,
+        "styleMatches": true,
+        "reviewer": "Codex visual inspection",
+        "notes": "Contact sheet page 6: all remaining new VVG counts/colors, single solid copper tips, right edge crop, full left tips and consistent shallow diagonal verified. Prior approved vvgnga-ls__3core retained without alteration and excluded from this new-style review."
+      }
+    }
+  ]
+}

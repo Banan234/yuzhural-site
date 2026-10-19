@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Container from '../components/ui/Container';
+import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { useSEO } from '../hooks/useSEO';
 import '../styles/pages/content.css';
 import '../styles/pages/internal-runtime.css';
@@ -262,6 +263,7 @@ export default function InternalRuntimePage() {
     <>
       <section className="section">
         <Container>
+          <Breadcrumbs current="Internal Runtime" />
           <div className="internal-runtime__hero">
             <div>
               <h1 className="page-title">Internal Runtime</h1>

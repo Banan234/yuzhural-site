@@ -23,13 +23,13 @@
   line-height: 1.1;
   color: #20232a;
   font-size: 23px;
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: normal;
 }
 .hero-lead-card__subtitle {
   margin: 8px 0 0;
   font-size: 15px;
-  font-weight: 550;
+  font-weight: var(--font-weight-medium);
   line-height: 1.4;
   color: #737a83;
 }
@@ -49,7 +49,7 @@
 }
 .hero-lead-form__quick-btn {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition:
     border-color 0.2s ease,
@@ -78,10 +78,10 @@
   letter-spacing: 0.01em;
   color: #343a42;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 .hero-lead-form__optional {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   color: #8fa3bb;
 }
 .hero-lead-form__field input,
@@ -140,7 +140,7 @@
 .hero-lead-form__submit {
   width: 100%;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: #fff;
   letter-spacing: 0.015em;
   min-height: 48px;
@@ -164,7 +164,7 @@
   color: #2a4a6e;
   text-decoration: none;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   text-align: center;
   transition: color 0.15s ease;
 }
@@ -176,7 +176,7 @@
   flex-shrink: 0;
 }
 .hero-lead-form__phone-link strong {
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
 }
 
 /* Общие состояния и сценарий обратного звонка. */
@@ -209,7 +209,7 @@
 .hero-lead-form__direct a {
   display: inline-block;
   color: var(--primary-dark);
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
 }
 .hero-lead-form__error {

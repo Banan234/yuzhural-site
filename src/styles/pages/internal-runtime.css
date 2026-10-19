@@ -31,14 +31,14 @@
 
 .internal-runtime__hero-label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: var(--muted);
 }
 
 .internal-runtime__hero-value {
   font-size: 20px;
   line-height: 1.4;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   color: var(--text);
   overflow-wrap: anywhere;
 }
@@ -64,7 +64,7 @@
 
 .internal-runtime__field span {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: #42566e;
 }
 
@@ -93,7 +93,7 @@
   background: #ffb400;
   color: #0a1628;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
 
@@ -116,7 +116,7 @@
   background: #fff2f2;
   color: #8f2d2d;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 
 .internal-runtime__grid,
@@ -141,7 +141,7 @@
 .internal-runtime__card-title {
   margin: 0;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
 }
 
 .internal-runtime__metrics {
@@ -173,7 +173,7 @@
   padding: 0 12px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }

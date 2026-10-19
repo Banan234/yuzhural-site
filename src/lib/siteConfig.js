@@ -227,17 +227,48 @@ export const SITE_REQUEST_DOCUMENTS = [
 
 export const SITE_MANUFACTURERS = [
   'ККЗ',
-  'КРУИНВЭЛК',
+  'НПО ПЗСК',
   'ПИРОКОР',
   'ГЕРДА',
   'СОББИТ',
   'МЕТРОЛАН',
-  'ТРАНСКАБ',
+  'HELUKABEL',
   'BELDEN',
+  'ТРАНСКАБ',
   'HOLDCAB',
   'Prysmian',
   'SIEMENS',
 ];
+
+export const SITE_MANUFACTURER_LOGOS = {
+  HELUKABEL: { src: '/manufacturers/helukabel.svg', alt: 'HELUKABEL — HELU' },
+  BELDEN: { src: '/manufacturers/belden.svg', alt: 'BELDEN' },
+  ККЗ: { src: '/manufacturers/kkz.svg', alt: 'Калужский кабельный завод' },
+  'НПО ПЗСК': { src: '/manufacturers/pzsk.svg', alt: 'НПО ПЗСК' },
+  ПИРОКОР: {
+    src: '/manufacturers/pirokor.png',
+    alt: 'ПИРОКОР',
+  },
+  ГЕРДА: {
+    src: '/manufacturers/gerda.svg',
+    alt: 'ГЕРДА',
+    monochrome: true,
+  },
+  СОББИТ: {
+    src: '/manufacturers/sobbit.svg',
+    alt: 'СОББИТ',
+  },
+  МЕТРОЛАН: {
+    src: '/manufacturers/metrolan.png',
+    alt: 'МЕТРОЛАН',
+  },
+  ТРАНСКАБ: {
+    src: '/manufacturers/transkab-owner.png',
+    alt: 'Кабельные технологии — правообладатель марки ТРАНСКАБ',
+    caption: 'ТРАНСКАБ',
+    monochrome: true,
+  },
+};
 
 export function absoluteUrl(path = '/') {
   if (!path) return SITE_URL;

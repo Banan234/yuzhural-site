@@ -1,0 +1,10 @@
+{
+  "cores": 3,
+  "colors": ["brown", "blue", "yellow-green"],
+  "orientation": "right-to-left",
+  "uncropped": true,
+  "noText": true,
+  "styleMatches": true,
+  "reviewer": "Codex visual inspection",
+  "notes": "Three separate insulated conductors and three solid copper tips, black intact body on right, cutaway on left. Framing and real alpha also checked by PNG decoder. Catalogue illustration color convention; no claim of a photographed manufacturer SKU."
+}

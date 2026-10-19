@@ -1,0 +1,30 @@
+{
+  "dryRunOnly": true,
+  "networkCalls": 0,
+  "newImages": 0,
+  "newBindings": 0,
+  "existingAssetsAndCatalogUnchanged": true,
+  "testFilesPassed": 77,
+  "testsPassed": 1059,
+  "pipelineTestsPassed": 47,
+  "summary": {
+    "total_skus": 5708,
+    "skus_without_images": 5707,
+    "parsed_skus": 570,
+    "unsupported_skus": 5138,
+    "unique_visual_groups": 119,
+    "selected_visual_groups": 119,
+    "selected_skus": 570,
+    "existing_group_images": 1,
+    "new_images_required": 118,
+    "api_requests_planned": 118,
+    "maximum_api_attempts": 354,
+    "api_requests_executed": 0,
+    "blocked_groups": 0,
+    "pending_review_groups": 0,
+    "selected": 119,
+    "generate": 118,
+    "reuse": 1,
+    "skipped": 5138
+  }
+}

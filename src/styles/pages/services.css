@@ -41,7 +41,7 @@
 .services-nav a {
   flex-shrink: 0;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   padding: 10px 14px;
   background: #fff;
   border: 1px solid #dce3ec;
@@ -79,7 +79,7 @@
 .service-card__number {
   color: #356b9f;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
 }
 .service-card h2 {
@@ -100,7 +100,7 @@
   margin-top: auto;
   color: #235d98;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 .service-panel {
   background: #fff;
@@ -148,7 +148,7 @@
   display: grid;
   gap: 7px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: #334155;
 }
 .service-fields input,
@@ -180,7 +180,7 @@
   grid-column: 1/-1;
 }
 .service-fields small {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   color: #64748b;
   line-height: 1.45;
 }
@@ -227,18 +227,18 @@
 }
 .service-result-number {
   font-size: clamp(29px, 3vw, 42px);
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   line-height: 1.2;
   color: #205785;
   overflow-wrap: anywhere;
 }
 .service-result-number small {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 .service-result-label {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: #526174;
   margin-bottom: 8px;
 }
@@ -266,7 +266,7 @@
   text-align: left;
   font-size: 12px;
   color: #526174;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   background: #f4f7fa;
   white-space: nowrap;
 }
@@ -286,7 +286,7 @@
   text-align: left;
   padding-bottom: 12px;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 .service-table button {
   border: 0;
@@ -336,7 +336,7 @@
   border-bottom: 1px solid #e1e8ef;
 }
 .service-decode-list dt {
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   color: #255d91;
   overflow-wrap: anywhere;
 }
@@ -540,7 +540,7 @@
 }
 .section-result-details dd {
   margin: 6px 0 0;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 @media (max-width: 980px) {
   .section-calculator {

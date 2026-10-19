@@ -1,0 +1,128 @@
+
+> yuzhural-site@0.0.1 test
+> vitest run
+
+
+ RUN  v4.1.11 /Users/Shared/yuzhural-site
+
+ ❯ scripts/lib/catalogClassifier.test.js (82 tests | 9 failed) 117ms
+     × фиксирует rule-классификацию для КПСЭ 2х2х0.75 10ms
+     × фиксирует rule-классификацию для КПВЛ 12х0.75 1ms
+     × СБПу 2х0.9 относится к сигнально-блокировочным 0ms
+     × СБПБ 3х1 относится к сигнально-блокировочным 0ms
+     × СБП нг(А)-HF 3х2х1 относится к сигнально-блокировочным 0ms
+     × СБЗПу 4х0.9 относится к сигнально-блокировочным 0ms
+     × СБВБПу 10х2х0,9 относится к сигнально-блокировочным 0ms
+     × СБВГ 3х0.9 нг относится к сигнально-блокировочным 0ms
+     × СБПЗАБпШп 3х2х0,9 относится к сигнально-блокировочным 0ms
+ ❯ src/components/layout/HeaderCatalogMenu.render.test.jsx (2 tests | 1 failed) 308ms
+     × показывает все разделы, категории, импортные подкатегории и марки 167ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/lib/catalogClassifier.test.js > classifyProduct > фиксирует rule-классификацию для КПСЭ 2х2х0.75
+AssertionError: expected { …(11) } to match object { …(4) }
+(7 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "catalogCategory": "Кабели пожарной и охранной сигнализации",
+-   "catalogCategorySlug": "kabeli-pozharnoy-signalizacii",
++   "catalogCategory": "Кабель управления и контроля",
++   "catalogCategorySlug": "kontrolnyy-kabel",
+    "catalogClassificationSource": "rule",
+    "catalogType": "КПС",
+  }
+
+ ❯ scripts/lib/catalogClassifier.test.js:128:43
+    126|     ],
+    127|   ])('фиксирует rule-классификацию для %s', (name, overrides, expected…
+    128|     expect(classifyName(name, overrides)).toMatchObject(expected);
+       |                                           ^
+    129|   });
+    130|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  scripts/lib/catalogClassifier.test.js > classifyProduct > фиксирует rule-классификацию для КПВЛ 12х0.75
+AssertionError: expected { …(11) } to match object { …(3) }
+(8 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "catalogCategory": "Контрольный кабель",
++   "catalogCategory": "Кабель управления и контроля",
+    "catalogCategorySlug": "kontrolnyy-kabel",
+    "catalogClassificationSource": "rule",
+  }
+
+ ❯ scripts/lib/catalogClassifier.test.js:128:43
+    126|     ],
+    127|   ])('фиксирует rule-классификацию для %s', (name, overrides, expected…
+    128|     expect(classifyName(name, overrides)).toMatchObject(expected);
+       |                                           ^
+    129|   });
+    130|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  scripts/lib/catalogClassifier.test.js > classifyProduct > СБПу 2х0.9 относится к сигнально-блокировочным
+ FAIL  scripts/lib/catalogClassifier.test.js > classifyProduct > СБПБ 3х1 относится к сигнально-блокировочным
+ FAIL  scripts/lib/catalogClassifier.test.js > classifyProduct > СБП нг(А)-HF 3х2х1 относится к сигнально-блокировочным
+ FAIL  scripts/lib/catalogClassifier.test.js > classifyProduct > СБЗПу 4х0.9 относится к сигнально-блокировочным
+ FAIL  scripts/lib/catalogClassifier.test.js > classifyProduct > СБВБПу 10х2х0,9 относится к сигнально-блокировочным
+ FAIL  scripts/lib/catalogClassifier.test.js > classifyProduct > СБВГ 3х0.9 нг относится к сигнально-блокировочным
+ FAIL  scripts/lib/catalogClassifier.test.js > classifyProduct > СБПЗАБпШп 3х2х0,9 относится к сигнально-блокировочным
+AssertionError: expected { …(11) } to match object { …(3) }
+(8 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "catalogCategory": "Сигнально-блокировочные",
+-   "catalogCategorySlug": "signalno-blokirovochnye",
++   "catalogCategory": "Кабель управления и контроля",
++   "catalogCategorySlug": "kontrolnyy-kabel",
+    "catalogClassificationSource": "rule",
+  }
+
+ ❯ scripts/lib/catalogClassifier.test.js:235:32
+    233|     'СБПЗАБпШп 3х2х0,9',
+    234|   ])('%s относится к сигнально-блокировочным', (name) => {
+    235|     expect(classifyName(name)).toMatchObject({
+       |                                ^
+    236|       catalogCategory: 'Сигнально-блокировочные',
+    237|       catalogCategorySlug: 'signalno-blokirovochnye',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  src/components/layout/HeaderCatalogMenu.render.test.jsx > HeaderCatalogMenu > показывает все разделы, категории, импортные подкатегории и марки
+AssertionError: expected [ …(13) ] to have a length of 15 but got 13
+
+- Expected
++ Received
+
+- 15
++ 13
+
+ ❯ src/components/layout/HeaderCatalogMenu.render.test.jsx:31:26
+     29|     const content = () => menu.querySelector('.catalog-dropdown__conte…
+     30|
+     31|     expect(CATALOG_MENU).toHaveLength(15);
+       |                          ^
+     32|     expect(
+     33|       [...sidebar.querySelectorAll('a')].map((link) =>
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+
+ Test Files  2 failed | 79 passed (81)
+      Tests  10 failed | 1134 passed (1144)
+   Start at  11:50:43
+   Duration  5.48s (transform 2.82s, setup 0ms, import 9.07s, tests 16.22s, environment 10.31s)
+

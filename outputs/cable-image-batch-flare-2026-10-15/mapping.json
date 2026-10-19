@@ -1,0 +1,7351 @@
+[
+  {
+    "visualKey": "avvg-p__2core",
+    "image": "public/product-images/generated/avvg-p__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "АВВГ-П",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000112",
+        "name": "АВВГ 2х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000114",
+        "name": "АВВГ 2х4 п",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000116",
+        "name": "АВВГ 2х6 п",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000118",
+        "name": "АВВГ 2х10 п",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000120",
+        "name": "АВВГ 2х16 п",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25817361894024804,
+      "has_transparency": true,
+      "transparent_ratio": 0.7801476672314237,
+      "non_opaque_ratio": 0.9990931264449922,
+      "foreground_ratio": 0.219035066201134,
+      "bounds": {
+        "minX": 113,
+        "minY": 278,
+        "maxX": 1773,
+        "maxY": 619
+      },
+      "warnings": [],
+      "sha256": "4189c6782996d1679633cae98cc5ebc0a4cc125347bfdaa0821d4742214bffc0",
+      "bytes": 653855
+    }
+  },
+  {
+    "visualKey": "avvg-p__3core",
+    "image": "public/product-images/generated/avvg-p__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "АВВГ-П",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000127",
+        "name": "АВВГ 3х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000131",
+        "name": "АВВГ 3х4 п",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000134",
+        "name": "АВВГ 3х6 п",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000138",
+        "name": "АВВГ 3х10 п",
+        "section": 10,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.237880496054115,
+      "has_transparency": true,
+      "transparent_ratio": 0.7699140408429921,
+      "non_opaque_ratio": 0.9992621722513215,
+      "foreground_ratio": 0.22895538588836115,
+      "bounds": {
+        "minX": 109,
+        "minY": 261,
+        "maxX": 1773,
+        "maxY": 653
+      },
+      "warnings": [],
+      "sha256": "40c19fc598f2ec4def6498c1dd1ced0aea7b501432abf64f295eda2984dfe896",
+      "bytes": 731323
+    }
+  },
+  {
+    "visualKey": "avvg-png-ls__2core",
+    "image": "public/product-images/generated/avvg-png-ls__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "АВВГ-Пнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007292",
+        "name": "АВВГнг-LS 2х25 п",
+        "section": 25,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2874859075535513,
+      "has_transparency": true,
+      "transparent_ratio": 0.7614217133618635,
+      "non_opaque_ratio": 0.9991865464958584,
+      "foreground_ratio": 0.23766251593542703,
+      "bounds": {
+        "minX": 111,
+        "minY": 213,
+        "maxX": 1773,
+        "maxY": 610
+      },
+      "warnings": [],
+      "sha256": "811b475251dc9f3739ee5917069fdee040e60ef1b0b5e962d1f5cf9cd1f4cb4b",
+      "bytes": 694022
+    }
+  },
+  {
+    "visualKey": "avvg__1core",
+    "image": "public/product-images/generated/avvg__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "АВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000049",
+        "name": "АВВГ 1х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000050",
+        "name": "АВВГ 1х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000051",
+        "name": "АВВГ 1х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000052",
+        "name": "АВВГ 1х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000053",
+        "name": "АВВГ 1х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000054",
+        "name": "АВВГ 1х70",
+        "section": 70,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.1984216459977452,
+      "has_transparency": true,
+      "transparent_ratio": 0.8544915979150169,
+      "non_opaque_ratio": 0.999460451542956,
+      "foreground_ratio": 0.14485954581332006,
+      "bounds": {
+        "minX": 128,
+        "minY": 291,
+        "maxX": 1773,
+        "maxY": 567
+      },
+      "warnings": [],
+      "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+      "bytes": 464380
+    }
+  },
+  {
+    "visualKey": "avvg__2core",
+    "image": "public/product-images/generated/avvg__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "АВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000057",
+        "name": "АВВГ 2х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000113",
+        "name": "АВВГ 2х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000115",
+        "name": "АВВГ 2х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000119",
+        "name": "АВВГ 2х16",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24577226606538896,
+      "has_transparency": true,
+      "transparent_ratio": 0.7903895552570068,
+      "non_opaque_ratio": 0.9991229954408473,
+      "foreground_ratio": 0.20878936511225024,
+      "bounds": {
+        "minX": 118,
+        "minY": 262,
+        "maxX": 1773,
+        "maxY": 649
+      },
+      "warnings": [],
+      "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+      "bytes": 631189
+    }
+  },
+  {
+    "visualKey": "avvg__3core",
+    "image": "public/product-images/generated/avvg__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "АВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000124",
+        "name": "АВВГ 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000128",
+        "name": "АВВГ 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000132",
+        "name": "АВВГ 3х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000135",
+        "name": "АВВГ 3х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000140",
+        "name": "АВВГ 3х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007077",
+        "name": "АВВГ 3х16",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.3055242390078918,
+      "has_transparency": true,
+      "transparent_ratio": 0.7201179761785226,
+      "non_opaque_ratio": 0.9988427352882485,
+      "foreground_ratio": 0.2788753751101022,
+      "bounds": {
+        "minX": 73,
+        "minY": 208,
+        "maxX": 1773,
+        "maxY": 689
+      },
+      "warnings": [],
+      "sha256": "3ec92f11dd1c7e71f0c394383aa760954113d3d4f4b38a00201630c9dd62736e",
+      "bytes": 876186
+    }
+  },
+  {
+    "visualKey": "avvg__4core",
+    "image": "public/product-images/generated/avvg__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "АВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000147",
+        "name": "АВВГ 3х4+1х2.5",
+        "section": 4,
+        "groundSection": 2.5
+      },
+      {
+        "sku": "YU-0000148",
+        "name": "АВВГ 3х6+1х4",
+        "section": 6,
+        "groundSection": 4
+      },
+      {
+        "sku": "YU-0000149",
+        "name": "АВВГ 3х10+1х6",
+        "section": 10,
+        "groundSection": 6
+      },
+      {
+        "sku": "YU-0000150",
+        "name": "АВВГ 3х16+1х10",
+        "section": 16,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0000151",
+        "name": "АВВГ 3х25+1х16",
+        "section": 25,
+        "groundSection": 16
+      },
+      {
+        "sku": "YU-0000152",
+        "name": "АВВГ 3х35+1х16",
+        "section": 35,
+        "groundSection": 16
+      },
+      {
+        "sku": "YU-0000153",
+        "name": "АВВГ 3х50+1х25",
+        "section": 50,
+        "groundSection": 25
+      },
+      {
+        "sku": "YU-0000155",
+        "name": "АВВГ 3х50+1х35",
+        "section": 50,
+        "groundSection": 35
+      },
+      {
+        "sku": "YU-0000156",
+        "name": "АВВГ 3х70+1х25",
+        "section": 70,
+        "groundSection": 25
+      },
+      {
+        "sku": "YU-0000157",
+        "name": "АВВГ 3х70+1х35",
+        "section": 70,
+        "groundSection": 35
+      },
+      {
+        "sku": "YU-0000159",
+        "name": "АВВГ 3х120+1х35",
+        "section": 120,
+        "groundSection": 35
+      },
+      {
+        "sku": "YU-0000160",
+        "name": "АВВГ 3х120+1х70",
+        "section": 120,
+        "groundSection": 70
+      },
+      {
+        "sku": "YU-0000161",
+        "name": "АВВГ 3х150+1х70",
+        "section": 150,
+        "groundSection": 70
+      },
+      {
+        "sku": "YU-0000163",
+        "name": "АВВГ 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000166",
+        "name": "АВВГ 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000169",
+        "name": "АВВГ 4х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000170",
+        "name": "АВВГ 4х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000172",
+        "name": "АВВГ 4х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000173",
+        "name": "АВВГ 4х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000175",
+        "name": "АВВГ 4х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000177",
+        "name": "АВВГ 4х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000180",
+        "name": "АВВГ 4х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000185",
+        "name": "АВВГ 4х95",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000186",
+        "name": "АВВГ 4х120",
+        "section": 120,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000189",
+        "name": "АВВГ 4х150",
+        "section": 150,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000193",
+        "name": "АВВГ 4х185",
+        "section": 185,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000196",
+        "name": "АВВГ 4х240",
+        "section": 240,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007808",
+        "name": "АВВГ 3х6+1х4",
+        "section": 6,
+        "groundSection": 4
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2874859075535513,
+      "has_transparency": true,
+      "transparent_ratio": 0.7172009827535147,
+      "non_opaque_ratio": 0.9985789984099526,
+      "foreground_ratio": 0.28159472475402564,
+      "bounds": {
+        "minX": 95,
+        "minY": 186,
+        "maxX": 1773,
+        "maxY": 669
+      },
+      "warnings": [],
+      "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+      "bytes": 829089
+    }
+  },
+  {
+    "visualKey": "avvg__5core",
+    "image": "public/product-images/generated/avvg__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "АВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000198",
+        "name": "АВВГ 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000200",
+        "name": "АВВГ 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000204",
+        "name": "АВВГ 5х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000205",
+        "name": "АВВГ 5х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000207",
+        "name": "АВВГ 5х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000209",
+        "name": "АВВГ 5х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000213",
+        "name": "АВВГ 5х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000217",
+        "name": "АВВГ 5х95",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000221",
+        "name": "АВВГ 5х120",
+        "section": 120,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23337091319052988,
+      "has_transparency": true,
+      "transparent_ratio": 0.7429607673916995,
+      "non_opaque_ratio": 0.9989196320648119,
+      "foreground_ratio": 0.2555629416003935,
+      "bounds": {
+        "minX": 90,
+        "minY": 192,
+        "maxX": 1773,
+        "maxY": 730
+      },
+      "warnings": [],
+      "sha256": "6d0235e8c90ab3f43257d395ea3b2cf9edee6a00a659c105910d5c2e8322d7da",
+      "bytes": 784381
+    }
+  },
+  {
+    "visualKey": "avvgng-ls__4core",
+    "image": "public/product-images/generated/avvgng-ls__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "АВВГнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007293",
+        "name": "АВВГнг-LS 3х150+1х70",
+        "section": 150,
+        "groundSection": 70
+      },
+      {
+        "sku": "YU-0007294",
+        "name": "АВВГнг-LS 4х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007295",
+        "name": "АВВГнг-LS 4х185",
+        "section": 185,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23111612175873733,
+      "has_transparency": true,
+      "transparent_ratio": 0.7526097240740294,
+      "non_opaque_ratio": 0.9988344736510971,
+      "foreground_ratio": 0.24613768463170257,
+      "bounds": {
+        "minX": 80,
+        "minY": 224,
+        "maxX": 1773,
+        "maxY": 684
+      },
+      "warnings": [],
+      "sha256": "41bcc1f1aa0a824d355a7c7864156b6d9bcc1de93e9e697382e97f84d3a11de1",
+      "bytes": 735170
+    }
+  },
+  {
+    "visualKey": "avvgng-ls__5core",
+    "image": "public/product-images/generated/avvgng-ls__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "АВВГнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007296",
+        "name": "АВВГнг-LS 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007297",
+        "name": "АВВГнг-LS 5х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007298",
+        "name": "АВВГнг-LS 5х95",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007299",
+        "name": "АВВГнг-LS 5х120",
+        "section": 120,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2897406989853439,
+      "has_transparency": true,
+      "transparent_ratio": 0.6785269882265316,
+      "non_opaque_ratio": 0.998753128300683,
+      "foreground_ratio": 0.3200761595843253,
+      "bounds": {
+        "minX": 123,
+        "minY": 142,
+        "maxX": 1773,
+        "maxY": 777
+      },
+      "warnings": [],
+      "sha256": "1489020663d715c2406727b4758692f69cd59375447edb0dd9fcaae2ddf44257",
+      "bytes": 961359
+    }
+  },
+  {
+    "visualKey": "avvgng__2core",
+    "image": "public/product-images/generated/avvgng__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "АВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000122",
+        "name": "АВВГнг 2х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000123",
+        "name": "АВВГнг 2х120",
+        "section": 120,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.26268320180383314,
+      "has_transparency": true,
+      "transparent_ratio": 0.7814796973444557,
+      "non_opaque_ratio": 0.9992195930444642,
+      "foreground_ratio": 0.2177869234807167,
+      "bounds": {
+        "minX": 111,
+        "minY": 260,
+        "maxX": 1773,
+        "maxY": 643
+      },
+      "warnings": [],
+      "sha256": "7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6",
+      "bytes": 679226
+    }
+  },
+  {
+    "visualKey": "avvgng__3core",
+    "image": "public/product-images/generated/avvgng__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "АВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000126",
+        "name": "АВВГнг 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000129",
+        "name": "АВВГнг 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000133",
+        "name": "АВВГнг 3х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000136",
+        "name": "АВВГнг 3х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000141",
+        "name": "АВВГнг 3х50",
+        "section": 50,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.22209695603156707,
+      "has_transparency": true,
+      "transparent_ratio": 0.7644098839684837,
+      "non_opaque_ratio": 0.999103930124344,
+      "foreground_ratio": 0.23470866289851278,
+      "bounds": {
+        "minX": 86,
+        "minY": 238,
+        "maxX": 1773,
+        "maxY": 674
+      },
+      "warnings": [],
+      "sha256": "15d2f9e757c46b09581c35a8aab3a148c7615470d24ff9de6ecf308ad64f9357",
+      "bytes": 731166
+    }
+  },
+  {
+    "visualKey": "avvgng__4core",
+    "image": "public/product-images/generated/avvgng__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "АВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000154",
+        "name": "АВВГнг 3х50+1х25",
+        "section": 50,
+        "groundSection": 25
+      },
+      {
+        "sku": "YU-0000164",
+        "name": "АВВГнг 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000167",
+        "name": "АВВГнг 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000181",
+        "name": "АВВГнг 4х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000187",
+        "name": "АВВГнг 4х120",
+        "section": 120,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000190",
+        "name": "АВВГнг 4х150",
+        "section": 150,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001114",
+        "name": "АВВГнг 4х50",
+        "section": 50,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.30665163472378804,
+      "has_transparency": true,
+      "transparent_ratio": 0.700442569547097,
+      "non_opaque_ratio": 0.9991052011454442,
+      "foreground_ratio": 0.298253998314626,
+      "bounds": {
+        "minX": 87,
+        "minY": 171,
+        "maxX": 1773,
+        "maxY": 703
+      },
+      "warnings": [],
+      "sha256": "e828cd3229a0ca311f52eaccbfef39a0e09fbd4fcb1109e7b54c64129016ed78",
+      "bytes": 892160
+    }
+  },
+  {
+    "visualKey": "avvgng__5core",
+    "image": "public/product-images/generated/avvgng__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "АВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000199",
+        "name": "АВВГнг 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000201",
+        "name": "АВВГнг 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000214",
+        "name": "АВВГнг 5х50",
+        "section": 50,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2491544532130778,
+      "has_transparency": true,
+      "transparent_ratio": 0.7253069198201759,
+      "non_opaque_ratio": 0.9986450915071641,
+      "foreground_ratio": 0.27342777867455376,
+      "bounds": {
+        "minX": 100,
+        "minY": 184,
+        "maxX": 1773,
+        "maxY": 733
+      },
+      "warnings": [],
+      "sha256": "a8d3437947e4c3914526516d4d3984b7c83424152718d056aff38be47f428b97",
+      "bytes": 888937
+    }
+  },
+  {
+    "visualKey": "avvgnga-hl__4core",
+    "image": "public/product-images/generated/avvgnga-hl__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "АВВГнг(А)-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000168",
+        "name": "АВВГнг(А)-ХЛ 4х4",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2897406989853439,
+      "has_transparency": true,
+      "transparent_ratio": 0.7124155883111816,
+      "non_opaque_ratio": 0.9990963039977426,
+      "foreground_ratio": 0.2863343624367508,
+      "bounds": {
+        "minX": 109,
+        "minY": 173,
+        "maxX": 1773,
+        "maxY": 703
+      },
+      "warnings": [],
+      "sha256": "4f1efc8cd7e91bbf1ebe92c55c7f4bb82e4e0bf2dc5c308bfe006378820320ae",
+      "bytes": 847381
+    }
+  },
+  {
+    "visualKey": "avvgnga-hl__5core",
+    "image": "public/product-images/generated/avvgnga-hl__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "АВВГнг(А)-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000208",
+        "name": "АВВГнг(А)-ХЛ 5х25",
+        "section": 25,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24013528748590757,
+      "has_transparency": true,
+      "transparent_ratio": 0.7109342132188736,
+      "non_opaque_ratio": 0.998805240165792,
+      "foreground_ratio": 0.28775091545294745,
+      "bounds": {
+        "minX": 110,
+        "minY": 146,
+        "maxX": 1773,
+        "maxY": 736
+      },
+      "warnings": [],
+      "sha256": "c835c8281c7e356b5225632506d54a3fdd1132655cf9dcbac530ca11c6ff356e",
+      "bytes": 886754
+    }
+  },
+  {
+    "visualKey": "avvgnga-ls__1core",
+    "image": "public/product-images/generated/avvgnga-ls__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "АВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000055",
+        "name": "АВВГнг(А)-LS 1х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000056",
+        "name": "АВВГнг(А)-LS 1х95",
+        "section": 95,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24126268320180383,
+      "has_transparency": true,
+      "transparent_ratio": 0.8275205301683213,
+      "non_opaque_ratio": 0.9993918164035441,
+      "foreground_ratio": 0.17190306176272832,
+      "bounds": {
+        "minX": 116,
+        "minY": 208,
+        "maxX": 1773,
+        "maxY": 575
+      },
+      "warnings": [],
+      "sha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+      "bytes": 579706
+    }
+  },
+  {
+    "visualKey": "avvgnga-ls__2core",
+    "image": "public/product-images/generated/avvgnga-ls__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "АВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007005",
+        "name": "АВВГнг(А)-LS 2х4",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25366403607666294,
+      "has_transparency": true,
+      "transparent_ratio": 0.7842193833259826,
+      "non_opaque_ratio": 0.9994375731631521,
+      "foreground_ratio": 0.2148673880135084,
+      "bounds": {
+        "minX": 126,
+        "minY": 290,
+        "maxX": 1773,
+        "maxY": 655
+      },
+      "warnings": [],
+      "sha256": "fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+      "bytes": 654491
+    }
+  },
+  {
+    "visualKey": "avvgnga-ls__3core",
+    "image": "public/product-images/generated/avvgnga-ls__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "АВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000130",
+        "name": "АВВГнг(А)-LS 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000137",
+        "name": "АВВГнг(А)-LS 3х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000139",
+        "name": "АВВГнг(А)-LS 3х2,5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000142",
+        "name": "АВВГнг(А)-LS 3х50 6кВ",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000143",
+        "name": "АВВГнг(А)-LS 3х95 - 1 кВ",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000144",
+        "name": "АВВГнг(А)-LS 3х95 - 6 кВ",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000145",
+        "name": "АВВГнг(А)-LS 3х150",
+        "section": 150,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25817361894024804,
+      "has_transparency": true,
+      "transparent_ratio": 0.7539106141701059,
+      "non_opaque_ratio": 0.9991160048247961,
+      "foreground_ratio": 0.24508146609741868,
+      "bounds": {
+        "minX": 120,
+        "minY": 259,
+        "maxX": 1773,
+        "maxY": 668
+      },
+      "warnings": [],
+      "sha256": "45c02c6c7d8d4cda4cee62d2f37be33568d5299f6de97818ba2a227ea625b070",
+      "bytes": 819049
+    }
+  },
+  {
+    "visualKey": "avvgnga-ls__4core",
+    "image": "public/product-images/generated/avvgnga-ls__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "АВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000146",
+        "name": "АВВГнг(А)-LS 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000171",
+        "name": "АВВГнг(А)-LS 4х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000174",
+        "name": "АВВГнг(А)-LS 4х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000176",
+        "name": "АВВГнг(А)-LS 4х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000179",
+        "name": "АВВГнг(А)-LS 4х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000184",
+        "name": "АВВГнг(А)-LS 4х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000188",
+        "name": "АВВГнг(А)-LS 4х120",
+        "section": 120,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000192",
+        "name": "АВВГнг(А)-LS 4х150",
+        "section": 150,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000195",
+        "name": "АВВГнг(А)-LS 4х185",
+        "section": 185,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000197",
+        "name": "АВВГнг(А)-LS 4х240",
+        "section": 240,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2750845546786922,
+      "has_transparency": true,
+      "transparent_ratio": 0.7326438891212033,
+      "non_opaque_ratio": 0.9990028839468764,
+      "foreground_ratio": 0.26608191222582483,
+      "bounds": {
+        "minX": 127,
+        "minY": 216,
+        "maxX": 1773,
+        "maxY": 682
+      },
+      "warnings": [],
+      "sha256": "5449d831d43d5ebfce6dc4f36e1d9c5e2570a5c571c1f3de71a2c057b12ff306",
+      "bytes": 800583
+    }
+  },
+  {
+    "visualKey": "avvgnga-ls__5core",
+    "image": "public/product-images/generated/avvgnga-ls__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "АВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000203",
+        "name": "АВВГнг(А)-LS 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000216",
+        "name": "АВВГнг(А)-LS 5х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000220",
+        "name": "АВВГнг(А)-LS 5х95",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000224",
+        "name": "АВВГнг(А)-LS 5х120",
+        "section": 120,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000226",
+        "name": "АВВГнг(А)-LS 5х240",
+        "section": 240,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007137",
+        "name": "АВВГнг(А)-LS 5х25",
+        "section": 25,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2818489289740699,
+      "has_transparency": true,
+      "transparent_ratio": 0.698029535988327,
+      "non_opaque_ratio": 0.9988745108157541,
+      "foreground_ratio": 0.3008030311311198,
+      "bounds": {
+        "minX": 117,
+        "minY": 176,
+        "maxX": 1773,
+        "maxY": 716
+      },
+      "warnings": [],
+      "sha256": "09bb20e8b0d9d436a64aa165cde6e9d506d80cd8b4526e3ca8621d9dd450fe8e",
+      "bytes": 858011
+    }
+  },
+  {
+    "visualKey": "avvgnga__4core",
+    "image": "public/product-images/generated/avvgnga__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "АВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000165",
+        "name": "АВВГнг(А) 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000183",
+        "name": "АВВГнг(А) 4х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000191",
+        "name": "АВВГнг(А) 4х150",
+        "section": 150,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007145",
+        "name": "АВВГнг(А) 3х95+1х50",
+        "section": 95,
+        "groundSection": 50
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2750845546786922,
+      "has_transparency": true,
+      "transparent_ratio": 0.7094776230380201,
+      "non_opaque_ratio": 0.9989666598455201,
+      "foreground_ratio": 0.28932062651172075,
+      "bounds": {
+        "minX": 109,
+        "minY": 188,
+        "maxX": 1773,
+        "maxY": 702
+      },
+      "warnings": [],
+      "sha256": "ca62411e9380b9b49730fcc4c85bae134db970ae1016500f4250d5723f9b2584",
+      "bytes": 872750
+    }
+  },
+  {
+    "visualKey": "avvgnga__5core",
+    "image": "public/product-images/generated/avvgnga__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "АВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000206",
+        "name": "АВВГнг(А) 5х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000212",
+        "name": "АВВГнг(А) 5х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000215",
+        "name": "АВВГнг(А) 5х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000219",
+        "name": "АВВГнг(А) 5х95 1кВ",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000223",
+        "name": "АВВГнг(А) 5х120",
+        "section": 120,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000225",
+        "name": "АВВГнг(А) 5х150",
+        "section": 150,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2852311161217587,
+      "has_transparency": true,
+      "transparent_ratio": 0.6842122656078213,
+      "non_opaque_ratio": 0.9988846789845558,
+      "foreground_ratio": 0.31444617162089505,
+      "bounds": {
+        "minX": 124,
+        "minY": 170,
+        "maxX": 1773,
+        "maxY": 758
+      },
+      "warnings": [],
+      "sha256": "38c9763551dd04926a9fda0af2af8992395358e89987fe44ffe2594a22121b23",
+      "bytes": 934081
+    }
+  },
+  {
+    "visualKey": "kg-hl__1core",
+    "image": "public/product-images/generated/kg-hl__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "КГ-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004021",
+        "name": "КГ хл 1х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004023",
+        "name": "КГ хл 1х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004024",
+        "name": "КГ хл 1х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004026",
+        "name": "КГ хл 1х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004028",
+        "name": "КГ хл 1х95",
+        "section": 95,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25817361894024804,
+      "has_transparency": true,
+      "transparent_ratio": 0.8136962691717645,
+      "non_opaque_ratio": 0.9993498727072369,
+      "foreground_ratio": 0.18571143499553236,
+      "bounds": {
+        "minX": 104,
+        "minY": 228,
+        "maxX": 1773,
+        "maxY": 651
+      },
+      "warnings": [],
+      "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+      "bytes": 652111
+    }
+  },
+  {
+    "visualKey": "kg-hl__2core",
+    "image": "public/product-images/generated/kg-hl__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "КГ-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004030",
+        "name": "КГ хл 2х1.5",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.3032694475760992,
+      "has_transparency": true,
+      "transparent_ratio": 0.7456820235672732,
+      "non_opaque_ratio": 0.999299031863228,
+      "foreground_ratio": 0.25341173838826897,
+      "bounds": {
+        "minX": 122,
+        "minY": 244,
+        "maxX": 1773,
+        "maxY": 670
+      },
+      "warnings": [],
+      "sha256": "4fcafc51e6eb8416182154e600766189d788027e25175330965fe5a28bf76569",
+      "bytes": 912531
+    }
+  },
+  {
+    "visualKey": "kg-hl__3core",
+    "image": "public/product-images/generated/kg-hl__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "КГ-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004035",
+        "name": "КГ хл 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004037",
+        "name": "КГ хл 3х4",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2705749718151071,
+      "has_transparency": true,
+      "transparent_ratio": 0.7463493096448894,
+      "non_opaque_ratio": 0.9993003028843281,
+      "foreground_ratio": 0.2526262473483322,
+      "bounds": {
+        "minX": 110,
+        "minY": 232,
+        "maxX": 1773,
+        "maxY": 669
+      },
+      "warnings": [],
+      "sha256": "8abfed6b9def73a221c06cee69aeb56c83cc4ee9e6c440463a62e86d67a795f1",
+      "bytes": 806435
+    }
+  },
+  {
+    "visualKey": "kg-hl__4core",
+    "image": "public/product-images/generated/kg-hl__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "КГ-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004040",
+        "name": "КГ хл 3х4+1х2.5",
+        "section": 4,
+        "groundSection": 2.5
+      },
+      {
+        "sku": "YU-0004044",
+        "name": "КГ хл 3х10+1х10",
+        "section": 10,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0004046",
+        "name": "КГ хл 3х16+1х10",
+        "section": 16,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0004047",
+        "name": "КГ хл 3х16+1х6",
+        "section": 16,
+        "groundSection": 6
+      },
+      {
+        "sku": "YU-0004049",
+        "name": "КГ хл 3х25+1х10",
+        "section": 25,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0004051",
+        "name": "КГ хл 3х25+1х16",
+        "section": 25,
+        "groundSection": 16
+      },
+      {
+        "sku": "YU-0004052",
+        "name": "КГ хл 3х35+1х10",
+        "section": 35,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0004054",
+        "name": "КГ хл 3х50+1х10",
+        "section": 50,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0004055",
+        "name": "КГ хл 3х50+1х16",
+        "section": 50,
+        "groundSection": 16
+      },
+      {
+        "sku": "YU-0004056",
+        "name": "КГ хл 3х70+1х25",
+        "section": 70,
+        "groundSection": 25
+      },
+      {
+        "sku": "YU-0004057",
+        "name": "КГ хл 3х70+1х50",
+        "section": 70,
+        "groundSection": 50
+      },
+      {
+        "sku": "YU-0004058",
+        "name": "КГ хл 3х95+1х35",
+        "section": 95,
+        "groundSection": 35
+      },
+      {
+        "sku": "YU-0004061",
+        "name": "КГ хл 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004063",
+        "name": "КГ хл 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004065",
+        "name": "КГ хл 4х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004068",
+        "name": "КГ хл 4х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004071",
+        "name": "КГ хл 4х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004073",
+        "name": "КГ хл 4х50",
+        "section": 50,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2818489289740699,
+      "has_transparency": true,
+      "transparent_ratio": 0.7188927118379093,
+      "non_opaque_ratio": 0.9990372015165824,
+      "foreground_ratio": 0.27978161315455996,
+      "bounds": {
+        "minX": 110,
+        "minY": 189,
+        "maxX": 1773,
+        "maxY": 702
+      },
+      "warnings": [],
+      "sha256": "b44ceeaf6d8df0fbccd65f9ec2c0bf37769a3c2e10d27953f336b29d37ae484c",
+      "bytes": 951501
+    }
+  },
+  {
+    "visualKey": "kg-hl__5core",
+    "image": "public/product-images/generated/kg-hl__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КГ-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0003954",
+        "name": "КГ хл 5х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003956",
+        "name": "КГ хл 5х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004076",
+        "name": "КГ хл 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004078",
+        "name": "КГ хл 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004080",
+        "name": "КГ хл 5х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004082",
+        "name": "КГ хл 5х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004084",
+        "name": "КГ хл 5х150",
+        "section": 150,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004085",
+        "name": "КГ хл 5х16",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2547914317925592,
+      "has_transparency": true,
+      "transparent_ratio": 0.7154253662765055,
+      "non_opaque_ratio": 0.9990778741917895,
+      "foreground_ratio": 0.2831612582600484,
+      "bounds": {
+        "minX": 121,
+        "minY": 165,
+        "maxX": 1773,
+        "maxY": 739
+      },
+      "warnings": [],
+      "sha256": "7ba35ea6a83a26b6111584e9f0839a49daedf9d1d404ec8f9d996cc8dd88a7d0",
+      "bytes": 944954
+    }
+  },
+  {
+    "visualKey": "kg__1core",
+    "image": "public/product-images/generated/kg__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "КГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0003891",
+        "name": "КГ 1х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003892",
+        "name": "КГ 1х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003895",
+        "name": "КГ 1х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003896",
+        "name": "КГ 1х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003898",
+        "name": "КГ 1х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003899",
+        "name": "КГ 1х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003900",
+        "name": "КГ 1х95",
+        "section": 95,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21871476888387825,
+      "has_transparency": true,
+      "transparent_ratio": 0.8390512335895288,
+      "non_opaque_ratio": 0.9992373873398672,
+      "foreground_ratio": 0.16031516239201088,
+      "bounds": {
+        "minX": 124,
+        "minY": 282,
+        "maxX": 1773,
+        "maxY": 570
+      },
+      "warnings": [],
+      "sha256": "954b0e76be7c30e9e708460bca0978272effb8beea4973af9a1166a77a899e13",
+      "bytes": 592427
+    }
+  },
+  {
+    "visualKey": "kg__2core",
+    "image": "public/product-images/generated/kg__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "КГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0003901",
+        "name": "КГ 2х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003904",
+        "name": "КГ 2х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0006870",
+        "name": "КГ 2х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2717023675310034,
+      "has_transparency": true,
+      "transparent_ratio": 0.7727236329850312,
+      "non_opaque_ratio": 0.9992373873398672,
+      "foreground_ratio": 0.2263860167342638,
+      "bounds": {
+        "minX": 106,
+        "minY": 276,
+        "maxX": 1773,
+        "maxY": 653
+      },
+      "warnings": [],
+      "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+      "bytes": 743607
+    }
+  },
+  {
+    "visualKey": "kg__3core",
+    "image": "public/product-images/generated/kg__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "КГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0003905",
+        "name": "КГ 3х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003906",
+        "name": "КГ 3х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003907",
+        "name": "КГ 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003909",
+        "name": "КГ 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003911",
+        "name": "КГ 3х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003912",
+        "name": "КГ 3х120",
+        "section": 120,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003913",
+        "name": "КГ 2х0.75+1х0,75",
+        "section": 0.75,
+        "groundSection": 0.75
+      },
+      {
+        "sku": "YU-0003914",
+        "name": "КГ 2х1+1х1",
+        "section": 1,
+        "groundSection": 1
+      },
+      {
+        "sku": "YU-0003915",
+        "name": "КГ 2х1.5+1х1.5",
+        "section": 1.5,
+        "groundSection": 1.5
+      },
+      {
+        "sku": "YU-0003916",
+        "name": "КГ 2х2.5+1х1.5",
+        "section": 2.5,
+        "groundSection": 1.5
+      },
+      {
+        "sku": "YU-0003917",
+        "name": "КГ 2х4+1х2.5",
+        "section": 4,
+        "groundSection": 2.5
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2829763246899662,
+      "has_transparency": true,
+      "transparent_ratio": 0.7234423318661513,
+      "non_opaque_ratio": 0.999270433888473,
+      "foreground_ratio": 0.2755319541059701,
+      "bounds": {
+        "minX": 91,
+        "minY": 197,
+        "maxX": 1773,
+        "maxY": 668
+      },
+      "warnings": [],
+      "sha256": "1d559e565d8a559c9dc49c166008c17b6e069e787fe21dd7ec046d6d81b210de",
+      "bytes": 882656
+    }
+  },
+  {
+    "visualKey": "kg__4core",
+    "image": "public/product-images/generated/kg__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "КГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0003918",
+        "name": "КГ 3х2.5+1х1.5",
+        "section": 2.5,
+        "groundSection": 1.5
+      },
+      {
+        "sku": "YU-0003919",
+        "name": "КГ 3х4+1х2.5",
+        "section": 4,
+        "groundSection": 2.5
+      },
+      {
+        "sku": "YU-0003920",
+        "name": "КГ 3х6+1х4",
+        "section": 6,
+        "groundSection": 4
+      },
+      {
+        "sku": "YU-0003922",
+        "name": "КГ 3х10+1х6",
+        "section": 10,
+        "groundSection": 6
+      },
+      {
+        "sku": "YU-0003923",
+        "name": "КГ 3х16+1х6",
+        "section": 16,
+        "groundSection": 6
+      },
+      {
+        "sku": "YU-0003925",
+        "name": "КГ 3х16+1х10",
+        "section": 16,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0003926",
+        "name": "КГ 3х25+1х10",
+        "section": 25,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0003927",
+        "name": "КГ 3х35+1х10",
+        "section": 35,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0003928",
+        "name": "КГ 3х35+1х16",
+        "section": 35,
+        "groundSection": 16
+      },
+      {
+        "sku": "YU-0003929",
+        "name": "КГ 3х50+1х10",
+        "section": 50,
+        "groundSection": 10
+      },
+      {
+        "sku": "YU-0003930",
+        "name": "КГ 3х50+1х16",
+        "section": 50,
+        "groundSection": 16
+      },
+      {
+        "sku": "YU-0003931",
+        "name": "КГ 3х70+1х25",
+        "section": 70,
+        "groundSection": 25
+      },
+      {
+        "sku": "YU-0003932",
+        "name": "КГ 4х0,75",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003933",
+        "name": "КГ 4х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003934",
+        "name": "КГ 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003936",
+        "name": "КГ 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003938",
+        "name": "КГ 4х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003940",
+        "name": "КГ 4х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003942",
+        "name": "КГ 4х16",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.29086809470124014,
+      "has_transparency": true,
+      "transparent_ratio": 0.7043859125105336,
+      "non_opaque_ratio": 0.9988065111868922,
+      "foreground_ratio": 0.2943290851571427,
+      "bounds": {
+        "minX": 93,
+        "minY": 168,
+        "maxX": 1773,
+        "maxY": 700
+      },
+      "warnings": [],
+      "sha256": "01e7259be61e48263042bd2b95974ff11c76213c0c34462d537b573e6c815f8d",
+      "bytes": 953643
+    }
+  },
+  {
+    "visualKey": "kg__5core",
+    "image": "public/product-images/generated/kg__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0003944",
+        "name": "КГ 5х0,75",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003945",
+        "name": "КГ 5х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003947",
+        "name": "КГ 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003948",
+        "name": "КГ 5х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003949",
+        "name": "КГ 5х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003951",
+        "name": "КГ 5х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0003952",
+        "name": "КГ 5х50",
+        "section": 50,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2570462232243517,
+      "has_transparency": true,
+      "transparent_ratio": 0.7106946257414819,
+      "non_opaque_ratio": 0.9986889417351218,
+      "foreground_ratio": 0.2881601842472187,
+      "bounds": {
+        "minX": 89,
+        "minY": 160,
+        "maxX": 1773,
+        "maxY": 750
+      },
+      "warnings": [],
+      "sha256": "1487f2b591e093b3bd9d7f43cee3712d92c9c9718be3653fed427ade0bfebc5a",
+      "bytes": 916863
+    }
+  },
+  {
+    "visualKey": "kvvg__4core",
+    "image": "public/product-images/generated/kvvg__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "КВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002707",
+        "name": "КВВГ 4х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002725",
+        "name": "КВВГ 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002741",
+        "name": "КВВГ 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25366403607666294,
+      "has_transparency": true,
+      "transparent_ratio": 0.7499609161011682,
+      "non_opaque_ratio": 0.9989469590184666,
+      "foreground_ratio": 0.2487852215834635,
+      "bounds": {
+        "minX": 112,
+        "minY": 218,
+        "maxX": 1773,
+        "maxY": 655
+      },
+      "warnings": [],
+      "sha256": "fcf3c416b3cbaa4fd19202677fb1ab4f87d98f0326e7b4f4e8cc6d5d67c380ef",
+      "bytes": 757591
+    }
+  },
+  {
+    "visualKey": "kvvg__5core",
+    "image": "public/product-images/generated/kvvg__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002656",
+        "name": "КВВГ 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002676",
+        "name": "КВВГ 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.26832018038331457,
+      "has_transparency": true,
+      "transparent_ratio": 0.7178142504343714,
+      "non_opaque_ratio": 0.9983508501224628,
+      "foreground_ratio": 0.2809973448369216,
+      "bounds": {
+        "minX": 114,
+        "minY": 154,
+        "maxX": 1773,
+        "maxY": 716
+      },
+      "warnings": [],
+      "sha256": "13e51e27a59b11ecb7a5e8ed6ff9c8a11ab7b5d0e7f9bce968981837d2d8a157",
+      "bytes": 881135
+    }
+  },
+  {
+    "visualKey": "kvvgng-ls__4core",
+    "image": "public/product-images/generated/kvvgng-ls__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "КВВГнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007442",
+        "name": "КВВГнг-LS 4х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007458",
+        "name": "КВВГнг-LS 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007460",
+        "name": "КВВГнг-LS 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007463",
+        "name": "КВВГнг-LS 4х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.26944757609921083,
+      "has_transparency": true,
+      "transparent_ratio": 0.729592167459572,
+      "non_opaque_ratio": 0.9987442311529814,
+      "foreground_ratio": 0.26904466241044067,
+      "bounds": {
+        "minX": 96,
+        "minY": 203,
+        "maxX": 1773,
+        "maxY": 676
+      },
+      "warnings": [],
+      "sha256": "cf531e980544c66834e61b8100a5454cc66b106494134eeed9979bc47af52617",
+      "bytes": 810173
+    }
+  },
+  {
+    "visualKey": "kvvgng-ls__5core",
+    "image": "public/product-images/generated/kvvgng-ls__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КВВГнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007465",
+        "name": "КВВГнг-LS 5х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007467",
+        "name": "КВВГнг-LS 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2570462232243517,
+      "has_transparency": true,
+      "transparent_ratio": 0.7363546352232994,
+      "non_opaque_ratio": 0.9990785097023396,
+      "foreground_ratio": 0.2621188684353349,
+      "bounds": {
+        "minX": 147,
+        "minY": 193,
+        "maxX": 1773,
+        "maxY": 728
+      },
+      "warnings": [],
+      "sha256": "9f08536bcde977b57ae01a5cdd43251e0fbee309370301a0a07977c70478c785",
+      "bytes": 886592
+    }
+  },
+  {
+    "visualKey": "kvvgng__4core",
+    "image": "public/product-images/generated/kvvgng__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "КВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002709",
+        "name": "КВВГнг 4х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002727",
+        "name": "КВВГнг 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002742",
+        "name": "КВВГнг 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2491544532130778,
+      "has_transparency": true,
+      "transparent_ratio": 0.7460537972390879,
+      "non_opaque_ratio": 0.9990874068500412,
+      "foreground_ratio": 0.25266501349188897,
+      "bounds": {
+        "minX": 105,
+        "minY": 222,
+        "maxX": 1773,
+        "maxY": 681
+      },
+      "warnings": [],
+      "sha256": "54f106f084814c20ebf0d4c97c77aea20aa86a484b8294ae1e0c983e70c6f9bd",
+      "bytes": 825293
+    }
+  },
+  {
+    "visualKey": "kvvgng__5core",
+    "image": "public/product-images/generated/kvvgng__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002641",
+        "name": "КВВГнг 5х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002657",
+        "name": "КВВГнг 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002677",
+        "name": "КВВГнг 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002688",
+        "name": "КВВГнг 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002694",
+        "name": "КВВГнг 5х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2852311161217587,
+      "has_transparency": true,
+      "transparent_ratio": 0.699235735012437,
+      "non_opaque_ratio": 0.9985586620723491,
+      "foreground_ratio": 0.2994538422332349,
+      "bounds": {
+        "minX": 94,
+        "minY": 169,
+        "maxX": 1773,
+        "maxY": 730
+      },
+      "warnings": [],
+      "sha256": "dd99877dcb7c86d7855e346ef18f1eabb77d08bc57ffc82a70a9aab5b322e830",
+      "bytes": 972060
+    }
+  },
+  {
+    "visualKey": "kvvgnga-hl__4core",
+    "image": "public/product-images/generated/kvvgnga-hl__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "КВВГнг(А)-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002715",
+        "name": "КВВГнг(А)-ХЛ 4х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002732",
+        "name": "КВВГнг(А)-ХЛ 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002763",
+        "name": "КВВГнг(А)-ХЛ 4х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007441",
+        "name": "КВВГнг(А)-ХЛ 4х0.75",
+        "section": 0.75,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2638105975197294,
+      "has_transparency": true,
+      "transparent_ratio": 0.7402795483807827,
+      "non_opaque_ratio": 0.99896602433497,
+      "foreground_ratio": 0.25832614147227456,
+      "bounds": {
+        "minX": 106,
+        "minY": 205,
+        "maxX": 1773,
+        "maxY": 663
+      },
+      "warnings": [],
+      "sha256": "77042739e2fb8cc698401b8f293f76c7d335d633cf72042cc40b8cf7ad3eb192",
+      "bytes": 831358
+    }
+  },
+  {
+    "visualKey": "kvvgnga-hl__5core",
+    "image": "public/product-images/generated/kvvgnga-hl__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КВВГнг(А)-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002647",
+        "name": "КВВГнг(А)-ХЛ 5х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002665",
+        "name": "КВВГнг(А)-ХЛ 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002680",
+        "name": "КВВГнг(А)-ХЛ 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23675310033821872,
+      "has_transparency": true,
+      "transparent_ratio": 0.7350467545111716,
+      "non_opaque_ratio": 0.998517989397142,
+      "foreground_ratio": 0.2636847664308075,
+      "bounds": {
+        "minX": 96,
+        "minY": 169,
+        "maxX": 1773,
+        "maxY": 685
+      },
+      "warnings": [],
+      "sha256": "33579a3bfaa7e1918127211df54d8448d0f42d770c130aaa68da3734d20bc2d0",
+      "bytes": 814961
+    }
+  },
+  {
+    "visualKey": "kvvgnga-ls-hl__5core",
+    "image": "public/product-images/generated/kvvgnga-ls-hl__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КВВГнг(А)-LS-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007464",
+        "name": "КВВГнг(А)-LS-ХЛ 5х0.75",
+        "section": 0.75,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23900789177001128,
+      "has_transparency": true,
+      "transparent_ratio": 0.7315247550424585,
+      "non_opaque_ratio": 0.9988026981235916,
+      "foreground_ratio": 0.2671718128192646,
+      "bounds": {
+        "minX": 106,
+        "minY": 183,
+        "maxX": 1773,
+        "maxY": 760
+      },
+      "warnings": [],
+      "sha256": "6031bc8c5101a0679ff4ad0fda5c88ed6ede722dd3a98ffb756ce92f39e3b2c9",
+      "bytes": 862601
+    }
+  },
+  {
+    "visualKey": "kvvgnga-ls-ltx__4core",
+    "image": "public/product-images/generated/kvvgnga-ls-ltx__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "КВВГнг(А)-LS-LTx",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002714",
+        "name": "КВВГнг(А)-LS-LTx 4х1",
+        "section": 1,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2852311161217587,
+      "has_transparency": true,
+      "transparent_ratio": 0.7185139475500433,
+      "non_opaque_ratio": 0.9987238948153778,
+      "foreground_ratio": 0.28028620853134784,
+      "bounds": {
+        "minX": 99,
+        "minY": 165,
+        "maxX": 1773,
+        "maxY": 694
+      },
+      "warnings": [],
+      "sha256": "0c1dfc49ddaee59a78bac9b2a6cf3f9eba2b0a13d1baa6a3148ccc6529688039",
+      "bytes": 855890
+    }
+  },
+  {
+    "visualKey": "kvvgnga-ls-ltx__5core",
+    "image": "public/product-images/generated/kvvgnga-ls-ltx__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КВВГнг(А)-LS-LTx",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007443",
+        "name": "КВВГнг(А)-LS-LTx 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.27846674182638104,
+      "has_transparency": true,
+      "transparent_ratio": 0.7035934308545456,
+      "non_opaque_ratio": 0.9988243054822953,
+      "foreground_ratio": 0.29500272634026,
+      "bounds": {
+        "minX": 123,
+        "minY": 185,
+        "maxX": 1773,
+        "maxY": 716
+      },
+      "warnings": [],
+      "sha256": "ca3cc601af85252585d1648190319e177b78c8bed9ffe0be29911c986da61267",
+      "bytes": 913233
+    }
+  },
+  {
+    "visualKey": "kvvgnga-ls__4core",
+    "image": "public/product-images/generated/kvvgnga-ls__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "КВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002704",
+        "name": "КВВГнг(А)-LS 4х0.75",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002713",
+        "name": "КВВГнг(А)-LS 4х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002731",
+        "name": "КВВГнг(А)-LS 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002746",
+        "name": "КВВГнг(А)-LS 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002762",
+        "name": "КВВГнг(А)-LS 4х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007090",
+        "name": "КВВГнг(А)-LS 4х4",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24689966178128522,
+      "has_transparency": true,
+      "transparent_ratio": 0.7469981659165523,
+      "non_opaque_ratio": 0.9990569023436358,
+      "foreground_ratio": 0.2517543268735804,
+      "bounds": {
+        "minX": 129,
+        "minY": 191,
+        "maxX": 1773,
+        "maxY": 685
+      },
+      "warnings": [],
+      "sha256": "2f70786544d74e07c8dce34c5a70da5ebb5ae12325eeba1746189b2ddac2b218",
+      "bytes": 812048
+    }
+  },
+  {
+    "visualKey": "kvvgnga-ls__5core",
+    "image": "public/product-images/generated/kvvgnga-ls__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002637",
+        "name": "КВВГнг(А)-LS 5х0.75",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002646",
+        "name": "КВВГнг(А)-LS 5х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002662",
+        "name": "КВВГнг(А)-LS 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002679",
+        "name": "КВВГнг(А)-LS 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002689",
+        "name": "КВВГнг(А)-LS 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002695",
+        "name": "КВВГнг(А)-LS 5х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2829763246899662,
+      "has_transparency": true,
+      "transparent_ratio": 0.678615959703547,
+      "non_opaque_ratio": 0.9983661023756656,
+      "foreground_ratio": 0.32013399104438534,
+      "bounds": {
+        "minX": 93,
+        "minY": 141,
+        "maxX": 1773,
+        "maxY": 738
+      },
+      "warnings": [],
+      "sha256": "addaea801d69a15c0bce7f6376fe23dfc050159ae680b7af443d0d7bdf75e565",
+      "bytes": 1030984
+    }
+  },
+  {
+    "visualKey": "kvvgnga__3core",
+    "image": "public/product-images/generated/kvvgnga__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "КВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002701",
+        "name": "КВВГнг(А) 3х1",
+        "section": 1,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23900789177001128,
+      "has_transparency": true,
+      "transparent_ratio": 0.768736439793637,
+      "non_opaque_ratio": 0.9991655746477047,
+      "foreground_ratio": 0.23027534130094093,
+      "bounds": {
+        "minX": 91,
+        "minY": 217,
+        "maxX": 1773,
+        "maxY": 680
+      },
+      "warnings": [],
+      "sha256": "283ede46219503d249c6ed2a7e76958f4af53631ac5e672b7ee6bbadf690463e",
+      "bytes": 753335
+    }
+  },
+  {
+    "visualKey": "kvvgnga__4core",
+    "image": "public/product-images/generated/kvvgnga__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "КВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002635",
+        "name": "КВВГнг(А) 4х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002711",
+        "name": "КВВГнг(А) 4х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002729",
+        "name": "КВВГнг(А) 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002744",
+        "name": "КВВГнг(А) 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23111612175873733,
+      "has_transparency": true,
+      "transparent_ratio": 0.7491843222089329,
+      "non_opaque_ratio": 0.9992068828334619,
+      "foreground_ratio": 0.24944424602392826,
+      "bounds": {
+        "minX": 120,
+        "minY": 207,
+        "maxX": 1773,
+        "maxY": 704
+      },
+      "warnings": [],
+      "sha256": "08b208b4283eca699ef1b4c47517e65fde5a076dc377a48122d7f9d72195c115",
+      "bytes": 792103
+    }
+  },
+  {
+    "visualKey": "kvvgnga__5core",
+    "image": "public/product-images/generated/kvvgnga__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "КВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002636",
+        "name": "КВВГнг(А) 5х0.75",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002644",
+        "name": "КВВГнг(А) 5х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002660",
+        "name": "КВВГнг(А) 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002678",
+        "name": "КВВГнг(А) 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2818489289740699,
+      "has_transparency": true,
+      "transparent_ratio": 0.6994549861522251,
+      "non_opaque_ratio": 0.9985046436755897,
+      "foreground_ratio": 0.2992511143677496,
+      "bounds": {
+        "minX": 110,
+        "minY": 150,
+        "maxX": 1773,
+        "maxY": 723
+      },
+      "warnings": [],
+      "sha256": "d8bebc14791b58fc8c26db6c48096c3bf0ba3fc3f35890175e93225f4c9afe57",
+      "bytes": 878204
+    }
+  },
+  {
+    "visualKey": "pvs__2core",
+    "image": "public/product-images/generated/pvs__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ПВС",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004899",
+        "name": "ПВС 2х0.5 (бел)",
+        "section": 0.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004900",
+        "name": "ПВС 2х0.75 (бел)",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004903",
+        "name": "ПВС 2х1 (бел)",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004907",
+        "name": "ПВС 2х1.5 (бел)",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004911",
+        "name": "ПВС 2х2.5 бел",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004913",
+        "name": "ПВС 2х4 бел",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004914",
+        "name": "ПВС 2х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2277339346110485,
+      "has_transparency": true,
+      "transparent_ratio": 0.7888910213798459,
+      "non_opaque_ratio": 0.9991954436435599,
+      "foreground_ratio": 0.21024277774035327,
+      "bounds": {
+        "minX": 117,
+        "minY": 246,
+        "maxX": 1773,
+        "maxY": 638
+      },
+      "warnings": [],
+      "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+      "bytes": 632026
+    }
+  },
+  {
+    "visualKey": "pvs__2core__jacket-black-pvc",
+    "image": "public/product-images/generated/pvs__2core__jacket-black-pvc.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ПВС",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004901",
+        "name": "ПВС 2х0.75 черный",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004904",
+        "name": "ПВС 2х1 (черн.)",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004908",
+        "name": "ПВС 2х1.5 (черн)",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25817361894024804,
+      "has_transparency": true,
+      "transparent_ratio": 0.7823236553550026,
+      "non_opaque_ratio": 0.9994038911039962,
+      "foreground_ratio": 0.21675548985788712,
+      "bounds": {
+        "minX": 119,
+        "minY": 254,
+        "maxX": 1773,
+        "maxY": 644
+      },
+      "warnings": [],
+      "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+      "bytes": 724610
+    }
+  },
+  {
+    "visualKey": "pvs__3core",
+    "image": "public/product-images/generated/pvs__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ПВС",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004902",
+        "name": "ПВС 2х0.75+1х0.75",
+        "section": 0.75,
+        "groundSection": 0.75
+      },
+      {
+        "sku": "YU-0004906",
+        "name": "ПВС 2х1+1х1",
+        "section": 1,
+        "groundSection": 1
+      },
+      {
+        "sku": "YU-0004909",
+        "name": "ПВС 2х1.5+1х1.5",
+        "section": 1.5,
+        "groundSection": 1.5
+      },
+      {
+        "sku": "YU-0004912",
+        "name": "ПВС 2х2.5+1х2.5",
+        "section": 2.5,
+        "groundSection": 2.5
+      },
+      {
+        "sku": "YU-0004915",
+        "name": "ПВС 3х0.5 (бел)",
+        "section": 0.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004916",
+        "name": "ПВС 3х0.75 (бел)",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004921",
+        "name": "ПВС 3х1.0",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004922",
+        "name": "ПВС 3х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004925",
+        "name": "ПВС 3х2.5 бел",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004926",
+        "name": "ПВС 3х4(бел)",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004927",
+        "name": "ПВС 3х6 бел",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007824",
+        "name": "ПВС 3х6 бел",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.20744081172491544,
+      "has_transparency": true,
+      "transparent_ratio": 0.7865453519393876,
+      "non_opaque_ratio": 0.9991998922174107,
+      "foreground_ratio": 0.2123278878552663,
+      "bounds": {
+        "minX": 104,
+        "minY": 246,
+        "maxX": 1773,
+        "maxY": 712
+      },
+      "warnings": [],
+      "sha256": "c8951b277b1e21cf05a1df018f5799d60d3b7352f802d976f51146eed36a81a6",
+      "bytes": 642642
+    }
+  },
+  {
+    "visualKey": "pvs__3core__jacket-black-pvc",
+    "image": "public/product-images/generated/pvs__3core__jacket-black-pvc.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ПВС",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004919",
+        "name": "ПВС 3х1 черн.",
+        "section": 1,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21195039458850057,
+      "has_transparency": true,
+      "transparent_ratio": 0.7880375307110473,
+      "non_opaque_ratio": 0.9991592195422037,
+      "foreground_ratio": 0.2108064755983014,
+      "bounds": {
+        "minX": 89,
+        "minY": 254,
+        "maxX": 1773,
+        "maxY": 672
+      },
+      "warnings": [],
+      "sha256": "80636331cedae8002321513c4d1fdd72e028193ffb1d93a3a161f57d0b5f6010",
+      "bytes": 717729
+    }
+  },
+  {
+    "visualKey": "pvs__3core__jacket-orange-pvc",
+    "image": "public/product-images/generated/pvs__3core__jacket-orange-pvc.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ПВС",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0006900",
+        "name": "ПВС 3х1 оранж",
+        "section": 1,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25140924464487036,
+      "has_transparency": true,
+      "transparent_ratio": 0.751304385404102,
+      "non_opaque_ratio": 0.9992443779559185,
+      "foreground_ratio": 0.24765083525151602,
+      "bounds": {
+        "minX": 78,
+        "minY": 160,
+        "maxX": 1773,
+        "maxY": 699
+      },
+      "warnings": [],
+      "sha256": "4d4525577bbd8f10ccf4f1ee965dc3e39f501929a8e1a40b30d0d852fd7b3e1b",
+      "bytes": 809960
+    }
+  },
+  {
+    "visualKey": "pvs__4core",
+    "image": "public/product-images/generated/pvs__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ПВС",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0002002",
+        "name": "ПВС 4х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004924",
+        "name": "ПВС 3х1.5+1х1.5",
+        "section": 1.5,
+        "groundSection": 1.5
+      },
+      {
+        "sku": "YU-0004928",
+        "name": "ПВС 3х4+1х4",
+        "section": 4,
+        "groundSection": 4
+      },
+      {
+        "sku": "YU-0004929",
+        "name": "ПВС 4х0.75",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004932",
+        "name": "ПВС 4х1 (бел)",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004934",
+        "name": "ПВС 4х1.5 (бел)",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004937",
+        "name": "ПВС 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004939",
+        "name": "ПВС 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004940",
+        "name": "ПВС 4х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21082299887260428,
+      "has_transparency": true,
+      "transparent_ratio": 0.7615716938516897,
+      "non_opaque_ratio": 0.9990549958119854,
+      "foreground_ratio": 0.23710263114077956,
+      "bounds": {
+        "minX": 114,
+        "minY": 206,
+        "maxX": 1773,
+        "maxY": 693
+      },
+      "warnings": [],
+      "sha256": "269b609315453077ee0e496b5121ca96771e9678e8e97ca903ae8984cf32a562",
+      "bytes": 772028
+    }
+  },
+  {
+    "visualKey": "pvs__5core",
+    "image": "public/product-images/generated/pvs__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ПВС",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004936",
+        "name": "ПВС 4х1.5+1х1.5 (бел)",
+        "section": 1.5,
+        "groundSection": 1.5
+      },
+      {
+        "sku": "YU-0004941",
+        "name": "ПВС 4х6+1х6",
+        "section": 6,
+        "groundSection": 6
+      },
+      {
+        "sku": "YU-0004942",
+        "name": "ПВС 5х0.75",
+        "section": 0.75,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004943",
+        "name": "ПВС 5х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004944",
+        "name": "ПВС 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004945",
+        "name": "ПВС 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004946",
+        "name": "ПВС 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004947",
+        "name": "ПВС 5х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004948",
+        "name": "ПВС 5х10",
+        "section": 10,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24013528748590757,
+      "has_transparency": true,
+      "transparent_ratio": 0.7096059961691424,
+      "non_opaque_ratio": 0.9988541744781505,
+      "foreground_ratio": 0.28886877851059206,
+      "bounds": {
+        "minX": 92,
+        "minY": 131,
+        "maxX": 1773,
+        "maxY": 746
+      },
+      "warnings": [],
+      "sha256": "908b5278a8a293d864d41a82c5bb8a5fefeb66f621655e923ff76f16381f2e26",
+      "bytes": 869442
+    }
+  },
+  {
+    "visualKey": "pvsnga-ls__2core__jacket-black-pvc",
+    "image": "public/product-images/generated/pvsnga-ls__2core__jacket-black-pvc.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ПВСнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004905",
+        "name": "ПВСнг(А)-LS 2х1 (черн.)",
+        "section": 1,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23562570462232243,
+      "has_transparency": true,
+      "transparent_ratio": 0.789138234983839,
+      "non_opaque_ratio": 0.9993702090448403,
+      "foreground_ratio": 0.20991231225429574,
+      "bounds": {
+        "minX": 124,
+        "minY": 254,
+        "maxX": 1773,
+        "maxY": 671
+      },
+      "warnings": [],
+      "sha256": "a2c44c1c20c84e895045268c215b14d87eeb63b5b39538662b8ef8cde3aa7767",
+      "bytes": 719487
+    }
+  },
+  {
+    "visualKey": "pvsnga-ls__3core",
+    "image": "public/product-images/generated/pvsnga-ls__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ПВСнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004910",
+        "name": "ПВСнг(А)-LS 2х1.5+1х1.5 (бел)",
+        "section": 1.5,
+        "groundSection": 1.5
+      },
+      {
+        "sku": "YU-0004917",
+        "name": "ПВСнг(А)-LS 3х1 бел",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0004923",
+        "name": "ПВСнг(А)-LS 3х1.5",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23675310033821872,
+      "has_transparency": true,
+      "transparent_ratio": 0.7358710116946652,
+      "non_opaque_ratio": 0.9993212747324818,
+      "foreground_ratio": 0.26297680767798426,
+      "bounds": {
+        "minX": 85,
+        "minY": 199,
+        "maxX": 1773,
+        "maxY": 680
+      },
+      "warnings": [],
+      "sha256": "5778845ce003bb0e8c48c665fa3307c3b06ec0a760a239330c07258c901ac802",
+      "bytes": 780617
+    }
+  },
+  {
+    "visualKey": "pvsnga-ls__3core__jacket-black-pvc",
+    "image": "public/product-images/generated/pvsnga-ls__3core__jacket-black-pvc.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ПВСнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004918",
+        "name": "ПВСнг(А)-LS 3х1 черн.",
+        "section": 1,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2593010146561443,
+      "has_transparency": true,
+      "transparent_ratio": 0.7498891034090057,
+      "non_opaque_ratio": 0.9991814624114574,
+      "foreground_ratio": 0.24903052865580622,
+      "bounds": {
+        "minX": 80,
+        "minY": 195,
+        "maxX": 1773,
+        "maxY": 701
+      },
+      "warnings": [],
+      "sha256": "3f12b64435ee9761c02bc344cd6c07b9b9f7a64a86e5e8b5b376db3237414b51",
+      "bytes": 867187
+    }
+  },
+  {
+    "visualKey": "pvsnga-ls__4core",
+    "image": "public/product-images/generated/pvsnga-ls__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ПВСнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004920",
+        "name": "ПВСнг(А)-LS 3х1+1х1 бел",
+        "section": 1,
+        "groundSection": 1
+      },
+      {
+        "sku": "YU-0004933",
+        "name": "ПВСнг(А)-LS 4х1",
+        "section": 1,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24689966178128522,
+      "has_transparency": true,
+      "transparent_ratio": 0.7368757538743901,
+      "non_opaque_ratio": 0.998937426360215,
+      "foreground_ratio": 0.26185004747263807,
+      "bounds": {
+        "minX": 90,
+        "minY": 182,
+        "maxX": 1773,
+        "maxY": 712
+      },
+      "warnings": [],
+      "sha256": "b3c2f2fe75313aef1b97f7f051680bbefa2a1339e07b63d140afbecdd1b5675e",
+      "bytes": 741774
+    }
+  },
+  {
+    "visualKey": "pvsnga-ls__4core__jacket-black-pvc",
+    "image": "public/product-images/generated/pvsnga-ls__4core__jacket-black-pvc.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ПВСнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004935",
+        "name": "ПВСнг(А)-LS 4х1.5 черн",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2502818489289741,
+      "has_transparency": true,
+      "transparent_ratio": 0.739488337745895,
+      "non_opaque_ratio": 0.9991814624114574,
+      "foreground_ratio": 0.2590315581828974,
+      "bounds": {
+        "minX": 98,
+        "minY": 190,
+        "maxX": 1773,
+        "maxY": 711
+      },
+      "warnings": [],
+      "sha256": "8cf3e6801db681615d8fecd09b71b21dcf66b7fc5d74b012ef27b9cd7f0050e4",
+      "bytes": 821256
+    }
+  },
+  {
+    "visualKey": "pvsnga-ls__5core",
+    "image": "public/product-images/generated/pvsnga-ls__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ПВСнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0004931",
+        "name": "ПВСнг(А)-LS 4х0.75+1х0.75",
+        "section": 0.75,
+        "groundSection": 0.75
+      },
+      {
+        "sku": "YU-0004949",
+        "name": "ПВСнг(А)-LS 5х25",
+        "section": 25,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23337091319052988,
+      "has_transparency": true,
+      "transparent_ratio": 0.70287212638017,
+      "non_opaque_ratio": 0.9990340239638318,
+      "foreground_ratio": 0.2955619756243573,
+      "bounds": {
+        "minX": 113,
+        "minY": 128,
+        "maxX": 1773,
+        "maxY": 757
+      },
+      "warnings": [],
+      "sha256": "be0f20a1d1739f544073968102a4b3aa6593c10000bef6cde2dd26669dbb81de",
+      "bytes": 893700
+    }
+  },
+  {
+    "visualKey": "vvg-hl__2core",
+    "image": "public/product-images/generated/vvg-hl__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГ-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000790",
+        "name": "ВВГ 2х10 хл",
+        "section": 10,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24013528748590757,
+      "has_transparency": true,
+      "transparent_ratio": 0.8054753046955333,
+      "non_opaque_ratio": 0.999374022108141,
+      "foreground_ratio": 0.19368899893107125,
+      "bounds": {
+        "minX": 107,
+        "minY": 283,
+        "maxX": 1773,
+        "maxY": 634
+      },
+      "warnings": [],
+      "sha256": "403241ca5a7acd1d7c56ba1cf07e563fcd96f7c4d316ed95596303a05462221b",
+      "bytes": 619117
+    }
+  },
+  {
+    "visualKey": "vvg-hl__4core",
+    "image": "public/product-images/generated/vvg-hl__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГ-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000994",
+        "name": "ВВГ 4х1.5 хл",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21984216459977451,
+      "has_transparency": true,
+      "transparent_ratio": 0.7680062381715599,
+      "non_opaque_ratio": 0.9990708835757383,
+      "foreground_ratio": 0.2306731709053102,
+      "bounds": {
+        "minX": 91,
+        "minY": 243,
+        "maxX": 1773,
+        "maxY": 684
+      },
+      "warnings": [],
+      "sha256": "09e40f9be29d9f57e7def3d98e2a63a4ec9f39b8ccf373e273c8c600512df38e",
+      "bytes": 721273
+    }
+  },
+  {
+    "visualKey": "vvg-p__2core",
+    "image": "public/product-images/generated/vvg-p__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГ-П",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000783",
+        "name": "ВВГ 2х6 п",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000903",
+        "name": "ВВГ 2х4 п",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2570462232243517,
+      "has_transparency": true,
+      "transparent_ratio": 0.7907301889118661,
+      "non_opaque_ratio": 0.9993377980067847,
+      "foreground_ratio": 0.20843030165143772,
+      "bounds": {
+        "minX": 110,
+        "minY": 256,
+        "maxX": 1773,
+        "maxY": 651
+      },
+      "warnings": [],
+      "sha256": "08c33f70a66e98ce5f96b2c1aaf0dc7250db054d22a9e28117fa89b421dc061b",
+      "bytes": 592340
+    }
+  },
+  {
+    "visualKey": "vvg-p__3core",
+    "image": "public/product-images/generated/vvg-p__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГ-П",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000818",
+        "name": "ВВГ 3х1.5 п",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000908",
+        "name": "ВВГ 3х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000930",
+        "name": "ВВГ 3х4 п",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23111612175873733,
+      "has_transparency": true,
+      "transparent_ratio": 0.7770584504473359,
+      "non_opaque_ratio": 0.9992240416183149,
+      "foreground_ratio": 0.22194125594678998,
+      "bounds": {
+        "minX": 107,
+        "minY": 245,
+        "maxX": 1773,
+        "maxY": 642
+      },
+      "warnings": [],
+      "sha256": "d609a9e033d17c2cbebf160727032b21cba61117d1c80f868a356abb887d34b9",
+      "bytes": 684347
+    }
+  },
+  {
+    "visualKey": "vvg-p__3core__jacket-white-pvc",
+    "image": "public/product-images/generated/vvg-p__3core__jacket-white-pvc.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГ-П",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000819",
+        "name": "ВВГ 3х1.5 п белый",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2322435174746336,
+      "has_transparency": true,
+      "transparent_ratio": 0.7830354271711265,
+      "non_opaque_ratio": 0.999184004453658,
+      "foreground_ratio": 0.21583527058132693,
+      "bounds": {
+        "minX": 112,
+        "minY": 275,
+        "maxX": 1773,
+        "maxY": 654
+      },
+      "warnings": [],
+      "sha256": "68b53378457b2fc6d355b072b94ce845c448b6d7e2b6ee6b9457539e9acd6382",
+      "bytes": 624142
+    }
+  },
+  {
+    "visualKey": "vvg-p__4core",
+    "image": "public/product-images/generated/vvg-p__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГ-П",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000992",
+        "name": "ВВГ 4х1.5 п",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2762119503945885,
+      "has_transparency": true,
+      "transparent_ratio": 0.7178047177761198,
+      "non_opaque_ratio": 0.9990308464110813,
+      "foreground_ratio": 0.28082766352004207,
+      "bounds": {
+        "minX": 106,
+        "minY": 199,
+        "maxX": 1773,
+        "maxY": 689
+      },
+      "warnings": [],
+      "sha256": "210d94b8882cde3af369b98521a57540a90627c76a00eae4eee7b3ca82c4caba",
+      "bytes": 847334
+    }
+  },
+  {
+    "visualKey": "vvg-png-hl__2core",
+    "image": "public/product-images/generated/vvg-png-hl__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГ-Пнг-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007361",
+        "name": "ВВГнг-ХЛ 2х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.26042841037204056,
+      "has_transparency": true,
+      "transparent_ratio": 0.782865745854247,
+      "non_opaque_ratio": 0.9990206782422795,
+      "foreground_ratio": 0.21632080064161144,
+      "bounds": {
+        "minX": 106,
+        "minY": 221,
+        "maxX": 1773,
+        "maxY": 613
+      },
+      "warnings": [],
+      "sha256": "a08150b59373bbba8cb626fb966102ca605daf2ab8d79d148a8d2291a89b0fd1",
+      "bytes": 725517
+    }
+  },
+  {
+    "visualKey": "vvg-png-ls__2core",
+    "image": "public/product-images/generated/vvg-png-ls__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГ-Пнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007336",
+        "name": "ВВГнг-LS 2х1.5 п",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007365",
+        "name": "ВВГнг-LS 2х4 п",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.26719278466741825,
+      "has_transparency": true,
+      "transparent_ratio": 0.786771593695227,
+      "non_opaque_ratio": 0.9992157799811635,
+      "foreground_ratio": 0.21237936420982526,
+      "bounds": {
+        "minX": 107,
+        "minY": 202,
+        "maxX": 1773,
+        "maxY": 624
+      },
+      "warnings": [],
+      "sha256": "c0432f252d5f162f728b31aa5cd5c9bfdd3cdc6bbd97bbce227cde68998e2bae",
+      "bytes": 662935
+    }
+  },
+  {
+    "visualKey": "vvg-png-ls__3core",
+    "image": "public/product-images/generated/vvg-png-ls__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГ-Пнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007356",
+        "name": "ВВГнг-LS 3х6 п",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007371",
+        "name": "ВВГнг-LS 3х16 п",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.26268320180383314,
+      "has_transparency": true,
+      "transparent_ratio": 0.7636777758147563,
+      "non_opaque_ratio": 0.9991369766729498,
+      "foreground_ratio": 0.2353543416174252,
+      "bounds": {
+        "minX": 95,
+        "minY": 256,
+        "maxX": 1773,
+        "maxY": 638
+      },
+      "warnings": [],
+      "sha256": "64b930c0016f68a9b2392797b320cc5067550867a0ba9c61b4f055b36a16b856",
+      "bytes": 766848
+    }
+  },
+  {
+    "visualKey": "vvg-png__2core",
+    "image": "public/product-images/generated/vvg-png__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГ-Пнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000795",
+        "name": "ВВГнг 2х16 п",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000874",
+        "name": "ВВГнг 2х1.5 п",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000890",
+        "name": "ВВГнг 2х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000904",
+        "name": "ВВГнг 2х4 п",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2153325817361894,
+      "has_transparency": true,
+      "transparent_ratio": 0.8172557637629342,
+      "non_opaque_ratio": 0.9990651639807873,
+      "foreground_ratio": 0.18199751134068576,
+      "bounds": {
+        "minX": 106,
+        "minY": 275,
+        "maxX": 1773,
+        "maxY": 647
+      },
+      "warnings": [],
+      "sha256": "be06cc4e6b06ed360beb0a4d2e6b43e636290b40c5d5903a97a3fe4e4a47bdc5",
+      "bytes": 547187
+    }
+  },
+  {
+    "visualKey": "vvg-png__3core",
+    "image": "public/product-images/generated/vvg-png__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГ-Пнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000909",
+        "name": "ВВГнг 3х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000945",
+        "name": "ВВГнг 3х6 п",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.237880496054115,
+      "has_transparency": true,
+      "transparent_ratio": 0.7539684456301659,
+      "non_opaque_ratio": 0.999098210529393,
+      "foreground_ratio": 0.24486348597873073,
+      "bounds": {
+        "minX": 122,
+        "minY": 246,
+        "maxX": 1773,
+        "maxY": 706
+      },
+      "warnings": [],
+      "sha256": "66ec7068a557f3c5e6c877942c86d604a62e58ffb6814c45d95b0634292f3ec1",
+      "bytes": 767606
+    }
+  },
+  {
+    "visualKey": "vvg-png__4core",
+    "image": "public/product-images/generated/vvg-png__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГ-Пнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000993",
+        "name": "ВВГнг 4х1.5 п",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24013528748590757,
+      "has_transparency": true,
+      "transparent_ratio": 0.7448984390589868,
+      "non_opaque_ratio": 0.9990372015165824,
+      "foreground_ratio": 0.2538381659673932,
+      "bounds": {
+        "minX": 83,
+        "minY": 257,
+        "maxX": 1773,
+        "maxY": 658
+      },
+      "warnings": [],
+      "sha256": "2add0f3dbf66328e503f98016cdbbc48016acfad283d3d095cb682db1b48922c",
+      "bytes": 773075
+    }
+  },
+  {
+    "visualKey": "vvg-pnga-ls-ltx__2core",
+    "image": "public/product-images/generated/vvg-pnga-ls-ltx__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГ-Пнг(А)-LS-LTx",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007362",
+        "name": "ВВГнг(А)-LS-LTx 2х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25591882750845546,
+      "has_transparency": true,
+      "transparent_ratio": 0.7806223936123564,
+      "non_opaque_ratio": 0.9990956684871926,
+      "foreground_ratio": 0.21860990964310997,
+      "bounds": {
+        "minX": 106,
+        "minY": 246,
+        "maxX": 1773,
+        "maxY": 645
+      },
+      "warnings": [],
+      "sha256": "ea246b87f19efa0ab2d67b8f7234d78ceeb04303b896f4bef04e01b620aaf5dd",
+      "bytes": 701099
+    }
+  },
+  {
+    "visualKey": "vvg-pnga-ls-ltx__3core",
+    "image": "public/product-images/generated/vvg-pnga-ls-ltx__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГ-Пнг(А)-LS-LTx",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007348",
+        "name": "ВВГнг(А)-LS-LTx 3х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24464487034949267,
+      "has_transparency": true,
+      "transparent_ratio": 0.7702222634597957,
+      "non_opaque_ratio": 0.9992513685719696,
+      "foreground_ratio": 0.22869164901006522,
+      "bounds": {
+        "minX": 96,
+        "minY": 227,
+        "maxX": 1773,
+        "maxY": 651
+      },
+      "warnings": [],
+      "sha256": "f157a661e4ef5508f4329d9c33ace675e72b763dc34716823f20ebe54abee8c6",
+      "bytes": 658496
+    }
+  },
+  {
+    "visualKey": "vvg-pnga-ls__2core",
+    "image": "public/product-images/generated/vvg-pnga-ls__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГ-Пнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000774",
+        "name": "ВВГнг(А)-LS 2х4 п",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000784",
+        "name": "ВВГнг(А)-LS 2х6 п",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000789",
+        "name": "ВВГнг(А)-LS 2х10 п",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000796",
+        "name": "ВВГнг(А)-LS 2х16 п",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000877",
+        "name": "ВВГнг(А)-LS 2х1.5 п",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000894",
+        "name": "ВВГнг(А)-LS 2х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000896",
+        "name": "ВВГнг(А)-LS 2х2.5 п ГОСТ",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24126268320180383,
+      "has_transparency": true,
+      "transparent_ratio": 0.7959121419374683,
+      "non_opaque_ratio": 0.9993085645214796,
+      "foreground_ratio": 0.20322737677768188,
+      "bounds": {
+        "minX": 126,
+        "minY": 238,
+        "maxX": 1773,
+        "maxY": 618
+      },
+      "warnings": [],
+      "sha256": "39bd30a30b3ad8af60dc65fdbc6610020cd1eb5355b13a97dd071b01faa8fd9c",
+      "bytes": 641694
+    }
+  },
+  {
+    "visualKey": "vvg-pnga-ls__3core",
+    "image": "public/product-images/generated/vvg-pnga-ls__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГ-Пнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000825",
+        "name": "ВВГнг(А)-LS 3х1.5 п ГОСТ",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000826",
+        "name": "ВВГнг(А)-LS 3х1.5 п ТУ",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000913",
+        "name": "ВВГнг(А)-LS 3х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000915",
+        "name": "ВВГнг(А)-LS 3х2.5 п ГОСТ",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000948",
+        "name": "ВВГнг(А)-LS 3х6 п",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000957",
+        "name": "ВВГнг(А)-LS 3х10 п",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000966",
+        "name": "ВВГнг(А)-LS 3х16 п",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24013528748590757,
+      "has_transparency": true,
+      "transparent_ratio": 0.7796125673482306,
+      "non_opaque_ratio": 0.9991681166899051,
+      "foreground_ratio": 0.21912848625200027,
+      "bounds": {
+        "minX": 106,
+        "minY": 271,
+        "maxX": 1773,
+        "maxY": 699
+      },
+      "warnings": [],
+      "sha256": "d21ddd0bc87cd2dfab32c67d60cd70198fe11b7fd2cdac8104f266f9863b9e4f",
+      "bytes": 679138
+    }
+  },
+  {
+    "visualKey": "vvg-pnga__2core",
+    "image": "public/product-images/generated/vvg-pnga__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГ-Пнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000773",
+        "name": "ВВГнг(А) 2х4 п",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000876",
+        "name": "ВВГнг(А) 2х1.5 п",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000892",
+        "name": "ВВГнг(А) 2х2.5 п",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2773393461104848,
+      "has_transparency": true,
+      "transparent_ratio": 0.7792039340645094,
+      "non_opaque_ratio": 0.9991357056518495,
+      "foreground_ratio": 0.2199133417813869,
+      "bounds": {
+        "minX": 95,
+        "minY": 196,
+        "maxX": 1773,
+        "maxY": 609
+      },
+      "warnings": [],
+      "sha256": "72a102c9c56f8d8cb92e0f54930842e4506c23c7a9c40bf7f78aa995d104a26d",
+      "bytes": 685924
+    }
+  },
+  {
+    "visualKey": "vvg-pnga__3core",
+    "image": "public/product-images/generated/vvg-pnga__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГ-Пнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000822",
+        "name": "ВВГнг(А) 3х1.5 п",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000931",
+        "name": "ВВГнг(А) 3х4 п",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000947",
+        "name": "ВВГнг(А) 3х6 п",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000956",
+        "name": "ВВГнг(А) 3х10 п",
+        "section": 10,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2818489289740699,
+      "has_transparency": true,
+      "transparent_ratio": 0.7496952726912219,
+      "non_opaque_ratio": 0.9992195930444642,
+      "foreground_ratio": 0.24902925763470599,
+      "bounds": {
+        "minX": 102,
+        "minY": 269,
+        "maxX": 1773,
+        "maxY": 684
+      },
+      "warnings": [],
+      "sha256": "e7d34830d29fcd7a95b1eda45b750a3532d50e10753957d34d65f3f971efd1d0",
+      "bytes": 785905
+    }
+  },
+  {
+    "visualKey": "vvg__1core",
+    "image": "public/product-images/generated/vvg__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "ВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000763",
+        "name": "ВВГ 1х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000769",
+        "name": "ВВГ 1х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000840",
+        "name": "ВВГ 1х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000845",
+        "name": "ВВГ 1х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000853",
+        "name": "ВВГ 1х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000856",
+        "name": "ВВГ 1х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000861",
+        "name": "ВВГ 1х70",
+        "section": 70,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21307779030439683,
+      "has_transparency": true,
+      "transparent_ratio": 0.8544814297462152,
+      "non_opaque_ratio": 0.9993136486058805,
+      "foreground_ratio": 0.14492563891053156,
+      "bounds": {
+        "minX": 108,
+        "minY": 251,
+        "maxX": 1773,
+        "maxY": 555
+      },
+      "warnings": [],
+      "sha256": "81f54c1636d9ef15aac9e615ae66a249e8617cb700d3bfa682ad5c3d805f72cb",
+      "bytes": 446183
+    }
+  },
+  {
+    "visualKey": "vvg__2core",
+    "image": "public/product-images/generated/vvg__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000776",
+        "name": "ВВГ 2х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000786",
+        "name": "ВВГ 2х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000805",
+        "name": "ВВГ 2х150",
+        "section": 150,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000866",
+        "name": "ВВГ 2х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0002700",
+        "name": "ВВГ 2х4",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2153325817361894,
+      "has_transparency": true,
+      "transparent_ratio": 0.819833394554183,
+      "non_opaque_ratio": 0.999149686883952,
+      "foreground_ratio": 0.17936967521597827,
+      "bounds": {
+        "minX": 119,
+        "minY": 256,
+        "maxX": 1773,
+        "maxY": 599
+      },
+      "warnings": [],
+      "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+      "bytes": 592388
+    }
+  },
+  {
+    "visualKey": "vvg__3core",
+    "image": "public/product-images/generated/vvg__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000807",
+        "name": "ВВГ 3х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000829",
+        "name": "ВВГ 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000919",
+        "name": "ВВГ 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000933",
+        "name": "ВВГ 3х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000950",
+        "name": "ВВГ 3х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000958",
+        "name": "ВВГ 3х16",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.22322435174746336,
+      "has_transparency": true,
+      "transparent_ratio": 0.7777060356978986,
+      "non_opaque_ratio": 0.9992570881669206,
+      "foreground_ratio": 0.22141505321129837,
+      "bounds": {
+        "minX": 100,
+        "minY": 226,
+        "maxX": 1773,
+        "maxY": 644
+      },
+      "warnings": [],
+      "sha256": "c9a325b51d701d12d11166673c4cb2e1e516e40fc85221d87c59b8c889e4a5c5",
+      "bytes": 659164
+    }
+  },
+  {
+    "visualKey": "vvg__4core",
+    "image": "public/product-images/generated/vvg__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000976",
+        "name": "ВВГ 3х10+1х6",
+        "section": 10,
+        "groundSection": 6
+      },
+      {
+        "sku": "YU-0000977",
+        "name": "ВВГ 3х35+1х16",
+        "section": 35,
+        "groundSection": 16
+      },
+      {
+        "sku": "YU-0000984",
+        "name": "ВВГ 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000995",
+        "name": "ВВГ 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001022",
+        "name": "ВВГ 4х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001028",
+        "name": "ВВГ 4х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001038",
+        "name": "ВВГ 4х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001112",
+        "name": "ВВГ 4х35",
+        "section": 35,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.26042841037204056,
+      "has_transparency": true,
+      "transparent_ratio": 0.7287971437613836,
+      "non_opaque_ratio": 0.9990022484363263,
+      "foreground_ratio": 0.26989688205813905,
+      "bounds": {
+        "minX": 112,
+        "minY": 190,
+        "maxX": 1773,
+        "maxY": 689
+      },
+      "warnings": [],
+      "sha256": "4efdb1826eb4af5202980d9452772f15ad26fb15add342e1bf985ea5e904ec7c",
+      "bytes": 848473
+    }
+  },
+  {
+    "visualKey": "vvg__5core",
+    "image": "public/product-images/generated/vvg__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ВВГ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0001047",
+        "name": "ВВГ 5х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001057",
+        "name": "ВВГ 5х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001128",
+        "name": "ВВГ 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001151",
+        "name": "ВВГ 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001160",
+        "name": "ВВГ 5х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001168",
+        "name": "ВВГ 5х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0006946",
+        "name": "ВВГ 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2874859075535513,
+      "has_transparency": true,
+      "transparent_ratio": 0.685910349797717,
+      "non_opaque_ratio": 0.9986126804691084,
+      "foreground_ratio": 0.3128040123594092,
+      "bounds": {
+        "minX": 87,
+        "minY": 164,
+        "maxX": 1773,
+        "maxY": 752
+      },
+      "warnings": [],
+      "sha256": "d3f3c2d760a34871db4724b8385bd3b103f33f41fdd40e3c59be606122bfe1be",
+      "bytes": 979276
+    }
+  },
+  {
+    "visualKey": "vvgng-hl__4core",
+    "image": "public/product-images/generated/vvgng-hl__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГнг-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0001125",
+        "name": "ВВГнг-ХЛ 4х185",
+        "section": 185,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.29086809470124014,
+      "has_transparency": true,
+      "transparent_ratio": 0.7056988773070622,
+      "non_opaque_ratio": 0.9990378370271324,
+      "foreground_ratio": 0.2929989615757611,
+      "bounds": {
+        "minX": 108,
+        "minY": 189,
+        "maxX": 1773,
+        "maxY": 682
+      },
+      "warnings": [],
+      "sha256": "17637866a419ff2718dbb8467b20f6050b4c6813fbf083efc1151b9ae6219898",
+      "bytes": 872734
+    }
+  },
+  {
+    "visualKey": "vvgng-ls__1core",
+    "image": "public/product-images/generated/vvgng-ls__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "ВВГнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007329",
+        "name": "ВВГнг-LS 1х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007330",
+        "name": "ВВГнг-LS 1х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007331",
+        "name": "ВВГнг-LS 1х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007332",
+        "name": "ВВГнг-LS 1х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007333",
+        "name": "ВВГнг-LS 1х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007334",
+        "name": "ВВГнг-LS 1х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007335",
+        "name": "ВВГнг-LS 1х95",
+        "section": 95,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.1939120631341601,
+      "has_transparency": true,
+      "transparent_ratio": 0.8617993337307392,
+      "non_opaque_ratio": 0.9992882281838761,
+      "foreground_ratio": 0.13767192149156868,
+      "bounds": {
+        "minX": 113,
+        "minY": 264,
+        "maxX": 1773,
+        "maxY": 564
+      },
+      "warnings": [],
+      "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+      "bytes": 429143
+    }
+  },
+  {
+    "visualKey": "vvgng-ls__2core",
+    "image": "public/product-images/generated/vvgng-ls__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007338",
+        "name": "ВВГнг-LS 2х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007364",
+        "name": "ВВГнг-LS 2х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007366",
+        "name": "ВВГнг-LS 2х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2480270574971815,
+      "has_transparency": true,
+      "transparent_ratio": 0.7882682210407375,
+      "non_opaque_ratio": 0.9992513685719696,
+      "foreground_ratio": 0.21090370871246833,
+      "bounds": {
+        "minX": 77,
+        "minY": 248,
+        "maxX": 1773,
+        "maxY": 663
+      },
+      "warnings": [],
+      "sha256": "44b7e82950be4e503c799b57acd8a80ef5e93cbe4405a57301b90bba5a45987b",
+      "bytes": 661408
+    }
+  },
+  {
+    "visualKey": "vvgng-ls__3core",
+    "image": "public/product-images/generated/vvgng-ls__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007349",
+        "name": "ВВГнг-LS 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007351",
+        "name": "ВВГнг-LS 3х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007357",
+        "name": "ВВГнг-LS 3х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007358",
+        "name": "ВВГнг-LS 3х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007372",
+        "name": "ВВГнг-LS 3х35",
+        "section": 35,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24689966178128522,
+      "has_transparency": true,
+      "transparent_ratio": 0.7681339757921322,
+      "non_opaque_ratio": 0.9990016129257762,
+      "foreground_ratio": 0.23091593593545245,
+      "bounds": {
+        "minX": 102,
+        "minY": 213,
+        "maxX": 1773,
+        "maxY": 655
+      },
+      "warnings": [],
+      "sha256": "7be7da0bbf3328aa478aac361ae6c8fb22802aa789ddf81fd45ea7043951f5fe",
+      "bytes": 735839
+    }
+  },
+  {
+    "visualKey": "vvgng-ls__4core",
+    "image": "public/product-images/generated/vvgng-ls__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007373",
+        "name": "ВВГнг-LS 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007377",
+        "name": "ВВГнг-LS 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007380",
+        "name": "ВВГнг-LS 4х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007382",
+        "name": "ВВГнг-LS 4х16",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25366403607666294,
+      "has_transparency": true,
+      "transparent_ratio": 0.7513787401384651,
+      "non_opaque_ratio": 0.9992869571627758,
+      "foreground_ratio": 0.24736676203561656,
+      "bounds": {
+        "minX": 112,
+        "minY": 219,
+        "maxX": 1773,
+        "maxY": 666
+      },
+      "warnings": [],
+      "sha256": "3629074a743e945ea384dad248a0c52cf18c00630bc2794f4804a67895b7efe6",
+      "bytes": 780744
+    }
+  },
+  {
+    "visualKey": "vvgng-ls__5core",
+    "image": "public/product-images/generated/vvgng-ls__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ВВГнг-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007384",
+        "name": "ВВГнг-LS 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007387",
+        "name": "ВВГнг-LS 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007392",
+        "name": "ВВГнг-LS 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007396",
+        "name": "ВВГнг-LS 5х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007399",
+        "name": "ВВГнг-LS 5х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007401",
+        "name": "ВВГнг-LS 5х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007403",
+        "name": "ВВГнг-LS 5х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007405",
+        "name": "ВВГнг-LS 5х35",
+        "section": 35,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.27846674182638104,
+      "has_transparency": true,
+      "transparent_ratio": 0.6969091308884818,
+      "non_opaque_ratio": 0.9986126804691084,
+      "foreground_ratio": 0.3017226148971299,
+      "bounds": {
+        "minX": 97,
+        "minY": 170,
+        "maxX": 1773,
+        "maxY": 714
+      },
+      "warnings": [],
+      "sha256": "eac419a12449954f9d6efd7aa43ab697c43c1db265e2a97b9326f03cd9dda887",
+      "bytes": 896698
+    }
+  },
+  {
+    "visualKey": "vvgng__1core",
+    "image": "public/product-images/generated/vvgng__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "ВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000755",
+        "name": "ВВГнг 1х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000760",
+        "name": "ВВГнг 1х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000764",
+        "name": "ВВГнг 1х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000770",
+        "name": "ВВГнг 1х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000850",
+        "name": "ВВГнг 1х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000857",
+        "name": "ВВГнг 1х50",
+        "section": 50,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2266065388951522,
+      "has_transparency": true,
+      "transparent_ratio": 0.8414521924478469,
+      "non_opaque_ratio": 0.999448376842504,
+      "foreground_ratio": 0.15794280150844783,
+      "bounds": {
+        "minX": 124,
+        "minY": 257,
+        "maxX": 1773,
+        "maxY": 587
+      },
+      "warnings": [],
+      "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+      "bytes": 459392
+    }
+  },
+  {
+    "visualKey": "vvgng__2core",
+    "image": "public/product-images/generated/vvgng__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000798",
+        "name": "ВВГнг 2х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000880",
+        "name": "ВВГнг 2х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21871476888387825,
+      "has_transparency": true,
+      "transparent_ratio": 0.8040879851646417,
+      "non_opaque_ratio": 0.9990918554238919,
+      "foreground_ratio": 0.19509919684176677,
+      "bounds": {
+        "minX": 99,
+        "minY": 253,
+        "maxX": 1773,
+        "maxY": 617
+      },
+      "warnings": [],
+      "sha256": "8ab8fa9efd6f6e41d9499fa190ad46c95a8dc138025c5b46000307d12e41a550",
+      "bytes": 623788
+    }
+  },
+  {
+    "visualKey": "vvgng__3core",
+    "image": "public/product-images/generated/vvgng__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000810",
+        "name": "ВВГнг 3х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000831",
+        "name": "ВВГнг 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000921",
+        "name": "ВВГнг 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000934",
+        "name": "ВВГнг 3х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000959",
+        "name": "ВВГнг 3х16",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2277339346110485,
+      "has_transparency": true,
+      "transparent_ratio": 0.7797091649518474,
+      "non_opaque_ratio": 0.9991147338036959,
+      "foreground_ratio": 0.21934011126518713,
+      "bounds": {
+        "minX": 104,
+        "minY": 241,
+        "maxX": 1773,
+        "maxY": 667
+      },
+      "warnings": [],
+      "sha256": "c18ac163b7a361e227d746309e562c10d395b8345824fa2d00b9c9eb067b1354",
+      "bytes": 672838
+    }
+  },
+  {
+    "visualKey": "vvgng__4core",
+    "image": "public/product-images/generated/vvgng__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000985",
+        "name": "ВВГнг 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000996",
+        "name": "ВВГнг 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001009",
+        "name": "ВВГнг 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001016",
+        "name": "ВВГнг 4х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001023",
+        "name": "ВВГнг 4х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001029",
+        "name": "ВВГнг 4х16",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23337091319052988,
+      "has_transparency": true,
+      "transparent_ratio": 0.7616060114213956,
+      "non_opaque_ratio": 0.9992323032554663,
+      "foreground_ratio": 0.23711978992563257,
+      "bounds": {
+        "minX": 133,
+        "minY": 205,
+        "maxX": 1773,
+        "maxY": 648
+      },
+      "warnings": [],
+      "sha256": "ed63f71f7ac78cab583367eadc82293486ba11bfc2c084c6f5fe9a4bddfa32c6",
+      "bytes": 741573
+    }
+  },
+  {
+    "visualKey": "vvgng__5core",
+    "image": "public/product-images/generated/vvgng__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ВВГнг",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0001048",
+        "name": "ВВГнг 5х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001058",
+        "name": "ВВГнг 5х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001062",
+        "name": "ВВГнг 5х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001075",
+        "name": "ВВГнг 5х95",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001131",
+        "name": "ВВГнг 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001140",
+        "name": "ВВГнг 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001161",
+        "name": "ВВГнг 5х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2570462232243517,
+      "has_transparency": true,
+      "transparent_ratio": 0.7258954025895784,
+      "non_opaque_ratio": 0.999058173364736,
+      "foreground_ratio": 0.2726689790777217,
+      "bounds": {
+        "minX": 130,
+        "minY": 225,
+        "maxX": 1773,
+        "maxY": 718
+      },
+      "warnings": [],
+      "sha256": "6531b116f92b86592075f6c9f32b488caddc7a25dda0fd16724ce3094eb9610f",
+      "bytes": 914157
+    }
+  },
+  {
+    "visualKey": "vvgnga-hl__1core",
+    "image": "public/product-images/generated/vvgnga-hl__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "ВВГнг(А)-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000759",
+        "name": "ВВГнг(А)-ХЛ 1х1.5",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21420518602029312,
+      "has_transparency": true,
+      "transparent_ratio": 0.8504491153057632,
+      "non_opaque_ratio": 0.9993670314920898,
+      "foreground_ratio": 0.14908314892935537,
+      "bounds": {
+        "minX": 97,
+        "minY": 253,
+        "maxX": 1773,
+        "maxY": 521
+      },
+      "warnings": [],
+      "sha256": "7b4b54b1f13507cf3b1a384bcbc9e0c19b93e52129b59c6ca2249c17a3f63b45",
+      "bytes": 472850
+    }
+  },
+  {
+    "visualKey": "vvgnga-hl__2core",
+    "image": "public/product-images/generated/vvgnga-hl__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГнг(А)-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007195",
+        "name": "ВВГнг(А)-ХЛ 2х1.5",
+        "section": 1.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24689966178128522,
+      "has_transparency": true,
+      "transparent_ratio": 0.7912907092170637,
+      "non_opaque_ratio": 0.9993123775847803,
+      "foreground_ratio": 0.20790854748979687,
+      "bounds": {
+        "minX": 92,
+        "minY": 225,
+        "maxX": 1773,
+        "maxY": 612
+      },
+      "warnings": [],
+      "sha256": "548ebbe43625b5292ce784274e304c7d3e6256555040a9a61720fefe4d53ecee",
+      "bytes": 658797
+    }
+  },
+  {
+    "visualKey": "vvgnga-hl__3core",
+    "image": "public/product-images/generated/vvgnga-hl__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГнг(А)-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000817",
+        "name": "ВВГнг(А)-ХЛ 3х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000943",
+        "name": "ВВГнг(А)-ХЛ 3х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000955",
+        "name": "ВВГнг(А)-ХЛ 3х10",
+        "section": 10,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24013528748590757,
+      "has_transparency": true,
+      "transparent_ratio": 0.7615901236576429,
+      "non_opaque_ratio": 0.9992024342596112,
+      "foreground_ratio": 0.2374877505341466,
+      "bounds": {
+        "minX": 84,
+        "minY": 245,
+        "maxX": 1773,
+        "maxY": 673
+      },
+      "warnings": [],
+      "sha256": "814efc1fa696981425a8970f414a229e98a667ee69955df5c2f18c3a2f78c9f8",
+      "bytes": 770742
+    }
+  },
+  {
+    "visualKey": "vvgnga-hl__4core",
+    "image": "public/product-images/generated/vvgnga-hl__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГнг(А)-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000991",
+        "name": "ВВГнг(А)-ХЛ 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001006",
+        "name": "ВВГнг(А)-ХЛ 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001013",
+        "name": "ВВГнг(А)-ХЛ 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001019",
+        "name": "ВВГнг(А)-ХЛ 4х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001111",
+        "name": "ВВГнг(А)-ХЛ 4х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001124",
+        "name": "ВВГнг(А)-ХЛ 4х185",
+        "section": 185,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007381",
+        "name": "ВВГнг(А)-ХЛ 4х10",
+        "section": 10,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23111612175873733,
+      "has_transparency": true,
+      "transparent_ratio": 0.7641658479172413,
+      "non_opaque_ratio": 0.9990098745629277,
+      "foreground_ratio": 0.2343813749652058,
+      "bounds": {
+        "minX": 123,
+        "minY": 253,
+        "maxX": 1773,
+        "maxY": 645
+      },
+      "warnings": [],
+      "sha256": "98b2f7ded4a6753a30094b57738d433b1b06bcf99eca26d5256f81cfa446c693",
+      "bytes": 705165
+    }
+  },
+  {
+    "visualKey": "vvgnga-hl__5core",
+    "image": "public/product-images/generated/vvgnga-hl__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ВВГнг(А)-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0001046",
+        "name": "ВВГнг(А)-ХЛ 5х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001056",
+        "name": "ВВГнг(А)-ХЛ 5х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001066",
+        "name": "ВВГнг(А)-ХЛ 5х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001070",
+        "name": "ВВГнг(А)-ХЛ 5х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001138",
+        "name": "ВВГнг(А)-ХЛ 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001149",
+        "name": "ВВГнг(А)-ХЛ 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001157",
+        "name": "ВВГнг(А)-ХЛ 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001167",
+        "name": "ВВГнг(А)-ХЛ 5х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24351747463359638,
+      "has_transparency": true,
+      "transparent_ratio": 0.7155048050952694,
+      "non_opaque_ratio": 0.9981112626450712,
+      "foreground_ratio": 0.28332903304527757,
+      "bounds": {
+        "minX": 103,
+        "minY": 158,
+        "maxX": 1773,
+        "maxY": 729
+      },
+      "warnings": [],
+      "sha256": "c28922a29ba75862f13c7349088a088689adcce0d1fbfcd9bf3dd2c791df8f17",
+      "bytes": 886262
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls-hl__2core",
+    "image": "public/product-images/generated/vvgnga-ls-hl__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГнг(А)-LS-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007360",
+        "name": "ВВГнг(А)-LS-ХЛ 2х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007367",
+        "name": "ВВГнг(А)-LS-ХЛ 2х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24689966178128522,
+      "has_transparency": true,
+      "transparent_ratio": 0.8042843579246259,
+      "non_opaque_ratio": 0.9992583591880209,
+      "foreground_ratio": 0.19490155306068235,
+      "bounds": {
+        "minX": 114,
+        "minY": 254,
+        "maxX": 1773,
+        "maxY": 611
+      },
+      "warnings": [],
+      "sha256": "8240c608a4d30c3563020572c2d58adde338c57e5394810d0ea653c2a831e76e",
+      "bytes": 601059
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls-hl__3core",
+    "image": "public/product-images/generated/vvgnga-ls-hl__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГнг(А)-LS-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007346",
+        "name": "ВВГнг(А)-LS-ХЛ 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007350",
+        "name": "ВВГнг(А)-LS-ХЛ 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007355",
+        "name": "ВВГнг(А)-LS-ХЛ 3х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2874859075535513,
+      "has_transparency": true,
+      "transparent_ratio": 0.7331681853250446,
+      "non_opaque_ratio": 0.9991801913903573,
+      "foreground_ratio": 0.26575398878196776,
+      "bounds": {
+        "minX": 81,
+        "minY": 171,
+        "maxX": 1773,
+        "maxY": 669
+      },
+      "warnings": [],
+      "sha256": "4349872756b7733d9abd7274c7dcf5407be2d80e6a88f4625e8b13ee8d7b70f2",
+      "bytes": 867483
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls-hl__5core",
+    "image": "public/product-images/generated/vvgnga-ls-hl__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ВВГнг(А)-LS-ХЛ",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007391",
+        "name": "ВВГнг(А)-LS-ХЛ 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2593010146561443,
+      "has_transparency": true,
+      "transparent_ratio": 0.7064259013763887,
+      "non_opaque_ratio": 0.9987296144103288,
+      "foreground_ratio": 0.29216644275511616,
+      "bounds": {
+        "minX": 99,
+        "minY": 170,
+        "maxX": 1773,
+        "maxY": 715
+      },
+      "warnings": [],
+      "sha256": "77fb45942943507cb5204d357b723d2af648f3e8ff4e00718aa18129081a9f82",
+      "bytes": 935234
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls-ltx__1core",
+    "image": "public/product-images/generated/vvgnga-ls-ltx__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "ВВГнг(А)-LS-LTx",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000762",
+        "name": "ВВГнг(А)-LS-LTx 1х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2277339346110485,
+      "has_transparency": true,
+      "transparent_ratio": 0.8498237729244543,
+      "non_opaque_ratio": 0.9993899098718938,
+      "foreground_ratio": 0.14955787531028802,
+      "bounds": {
+        "minX": 140,
+        "minY": 288,
+        "maxX": 1773,
+        "maxY": 595
+      },
+      "warnings": [],
+      "sha256": "0f09c155de9814e0f25aa28ed88e026926e4aadf817df26f9829a5ce411005ab",
+      "bytes": 471389
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls-ltx__2core",
+    "image": "public/product-images/generated/vvgnga-ls-ltx__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГнг(А)-LS-LTx",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007359",
+        "name": "ВВГнг(А)-LS-LTx 2х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25366403607666294,
+      "has_transparency": true,
+      "transparent_ratio": 0.7891280668150372,
+      "non_opaque_ratio": 0.9989850896514733,
+      "foreground_ratio": 0.21009851684547814,
+      "bounds": {
+        "minX": 126,
+        "minY": 258,
+        "maxX": 1773,
+        "maxY": 615
+      },
+      "warnings": [],
+      "sha256": "cf7745fbfd5d9d06744b84893979148d95a456bf89574c1c6899ea30da5c1205",
+      "bytes": 617498
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls-ltx__3core",
+    "image": "public/product-images/generated/vvgnga-ls-ltx__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГнг(А)-LS-LTx",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000816",
+        "name": "ВВГнг(А)-LS-LTx 3х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000928",
+        "name": "ВВГнг(А)-LS-LTx 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007345",
+        "name": "ВВГнг(А)-LS-LTx 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007354",
+        "name": "ВВГнг(А)-LS-LTx 3х6",
+        "section": 6,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.27846674182638104,
+      "has_transparency": true,
+      "transparent_ratio": 0.7268626496468468,
+      "non_opaque_ratio": 0.9992087893651123,
+      "foreground_ratio": 0.2720436366964128,
+      "bounds": {
+        "minX": 84,
+        "minY": 186,
+        "maxX": 1773,
+        "maxY": 671
+      },
+      "warnings": [],
+      "sha256": "1bf656e74f9b9ec73cb6e21f66d693d76b5bccf3103e9ccab1bd84e89717740e",
+      "bytes": 776805
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls-ltx__4core",
+    "image": "public/product-images/generated/vvgnga-ls-ltx__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГнг(А)-LS-LTx",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0001005",
+        "name": "ВВГнг(А)-LS-LTx 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.25366403607666294,
+      "has_transparency": true,
+      "transparent_ratio": 0.7392938715175611,
+      "non_opaque_ratio": 0.9990391080482327,
+      "foreground_ratio": 0.25951009762713073,
+      "bounds": {
+        "minX": 116,
+        "minY": 188,
+        "maxX": 1773,
+        "maxY": 693
+      },
+      "warnings": [],
+      "sha256": "87ba10093d015ed6f4a614b80ee0f37ee85bab848050de2b539252ece805d290",
+      "bytes": 795119
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls-ltx__5core",
+    "image": "public/product-images/generated/vvgnga-ls-ltx__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ВВГнг(А)-LS-LTx",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0007248",
+        "name": "ВВГнг(А)-LS-LTx 5х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007386",
+        "name": "ВВГнг(А)-LS-LTx 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007390",
+        "name": "ВВГнг(А)-LS-LTx 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007394",
+        "name": "ВВГнг(А)-LS-LTx 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007398",
+        "name": "ВВГнг(А)-LS-LTx 5х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007400",
+        "name": "ВВГнг(А)-LS-LTx 5х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007402",
+        "name": "ВВГнг(А)-LS-LTx 5х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007404",
+        "name": "ВВГнг(А)-LS-LTx 5х25",
+        "section": 25,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2717023675310034,
+      "has_transparency": true,
+      "transparent_ratio": 0.6995662004984945,
+      "non_opaque_ratio": 0.9986832221401708,
+      "foreground_ratio": 0.29915832982743346,
+      "bounds": {
+        "minX": 109,
+        "minY": 156,
+        "maxX": 1773,
+        "maxY": 763
+      },
+      "warnings": [],
+      "sha256": "83f18637a8cbe7eb8147c201a4659f3d972682aa4bda84160b299ad0e806ea5e",
+      "bytes": 925639
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls__1core",
+    "image": "public/product-images/generated/vvgnga-ls__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "ВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000758",
+        "name": "ВВГнг(А)-LS 1х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000761",
+        "name": "ВВГнг(А)-LS 1х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000768",
+        "name": "ВВГнг(А)-LS 1х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000839",
+        "name": "ВВГнг(А)-LS 1х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000844",
+        "name": "ВВГнг(А)-LS 1х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000848",
+        "name": "ВВГнг(А)-LS 1х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000852",
+        "name": "ВВГнг(А)-LS 1х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000855",
+        "name": "ВВГнг(А)-LS 1х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000860",
+        "name": "ВВГнг(А)-LS 1х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000864",
+        "name": "ВВГнг(А)-LS 1х150",
+        "section": 150,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21082299887260428,
+      "has_transparency": true,
+      "transparent_ratio": 0.8519152381448685,
+      "non_opaque_ratio": 0.9992030697701613,
+      "foreground_ratio": 0.14754648441918786,
+      "bounds": {
+        "minX": 134,
+        "minY": 252,
+        "maxX": 1773,
+        "maxY": 596
+      },
+      "warnings": [],
+      "sha256": "755c206860b27d0b433a542a674791c887487a35a7f55066054ab737c38b4dce",
+      "bytes": 468103
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls__2core",
+    "image": "public/product-images/generated/vvgnga-ls__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000780",
+        "name": "ВВГнг(А)-LS 2х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000788",
+        "name": "ВВГнг(А)-LS 2х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000794",
+        "name": "ВВГнг(А)-LS 2х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000801",
+        "name": "ВВГнг(А)-LS 2х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000802",
+        "name": "ВВГнг(А)-LS 2х95",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000872",
+        "name": "ВВГнг(А)-LS 2х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000887",
+        "name": "ВВГнг(А)-LS 2х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000902",
+        "name": "ВВГнг(А)-LS 2х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0006784",
+        "name": "ВВГнг(А)-LS 2х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0006785",
+        "name": "ВВГнг(А)-LS 2х70",
+        "section": 70,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.2491544532130778,
+      "has_transparency": true,
+      "transparent_ratio": 0.8065772799894251,
+      "non_opaque_ratio": 0.9992106958967626,
+      "foreground_ratio": 0.19270777064170042,
+      "bounds": {
+        "minX": 145,
+        "minY": 253,
+        "maxX": 1773,
+        "maxY": 628
+      },
+      "warnings": [],
+      "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+      "bytes": 619003
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls__3core",
+    "image": "public/product-images/generated/YU-0000815-dd57341d425b.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГнг(А)-LS",
+    "model": "tool-managed",
+    "template": "right-to-left-v1",
+    "retainedExistingStyle": true,
+    "products": [
+      {
+        "sku": "YU-0000815",
+        "name": "ВВГнг(А)-LS 3х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000838",
+        "name": "ВВГнг(А)-LS 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000926",
+        "name": "ВВГнг(А)-LS 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000940",
+        "name": "ВВГнг(А)-LS 3х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000954",
+        "name": "ВВГнг(А)-LS 3х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000964",
+        "name": "ВВГнг(А)-LS 3х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000968",
+        "name": "ВВГнг(А)-LS 3х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000969",
+        "name": "ВВГнг(А)-LS 3х25 -1кВ",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000971",
+        "name": "ВВГнг(А)-LS 3х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000973",
+        "name": "ВВГнг(А)-LS 3х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000974",
+        "name": "ВВГнг(А)-LS 3х95 -1кВ",
+        "section": 95,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007809",
+        "name": "ВВГнг(А)-LS 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1536,
+      "height": 1024,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": false,
+      "right_edge_foreground_ratio": 0,
+      "has_transparency": true,
+      "transparent_ratio": 0.7821852366129557,
+      "non_opaque_ratio": 1,
+      "foreground_ratio": 0.2171605428059896,
+      "bounds": {
+        "minX": 127,
+        "minY": 298,
+        "maxX": 1445,
+        "maxY": 723
+      },
+      "warnings": [
+        "Intact jacket does not reach the right edge; visual review required"
+      ],
+      "sha256": "3d4bbfa5b129894578fa7baf1823bf57d715cc9495bf7b4d4218d2bb5b0d1f6d",
+      "bytes": 1286927
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls__4core",
+    "image": "public/product-images/generated/vvgnga-ls__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000980",
+        "name": "ВВГнг(А)-LS 4х1",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000990",
+        "name": "ВВГнг(А)-LS 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001004",
+        "name": "ВВГнг(А)-LS 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001012",
+        "name": "ВВГнг(А)-LS 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001018",
+        "name": "ВВГнг(А)-LS 4х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001027",
+        "name": "ВВГнг(А)-LS 4х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001033",
+        "name": "ВВГнг(А)-LS 4х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001110",
+        "name": "ВВГнг(А)-LS 4х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001113",
+        "name": "ВВГнг(А)-LS 4х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001117",
+        "name": "ВВГнг(А)-LS 4х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001118",
+        "name": "ВВГнг(А)-LS 4х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001122",
+        "name": "ВВГнг(А)-LS 4х120",
+        "section": 120,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001123",
+        "name": "ВВГнг(А)-LS 4х150",
+        "section": 150,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007810",
+        "name": "ВВГнг(А)-LS 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.24126268320180383,
+      "has_transparency": true,
+      "transparent_ratio": 0.7409144234203432,
+      "non_opaque_ratio": 0.999040379069333,
+      "foreground_ratio": 0.25778214444137987,
+      "bounds": {
+        "minX": 107,
+        "minY": 197,
+        "maxX": 1773,
+        "maxY": 680
+      },
+      "warnings": [],
+      "sha256": "5233ca92c67e1f2d0a897014497203ecf160460b42c4ecd45a26dbddd1eb733a",
+      "bytes": 783337
+    }
+  },
+  {
+    "visualKey": "vvgnga-ls__5core",
+    "image": "public/product-images/generated/vvgnga-ls__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ВВГнг(А)-LS",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0001044",
+        "name": "ВВГнг(А)-LS 5х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001053",
+        "name": "ВВГнг(А)-LS 5х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001061",
+        "name": "ВВГнг(А)-LS 5х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001065",
+        "name": "ВВГнг(А)-LS 5х35",
+        "section": 35,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001069",
+        "name": "ВВГнг(А)-LS 5х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001073",
+        "name": "ВВГнг(А)-LS 5х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001078",
+        "name": "ВВГнг(А)-LS 5х150",
+        "section": 150,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001126",
+        "name": "ВВГнг(А)-LS 5х1.0",
+        "section": 1,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001136",
+        "name": "ВВГнг(А)-LS 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001146",
+        "name": "ВВГнг(А)-LS 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001156",
+        "name": "ВВГнг(А)-LS 5х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001165",
+        "name": "ВВГнг(А)-LS 5х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0006790",
+        "name": "ВВГнг(А)-LS 5х120",
+        "section": 120,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007813",
+        "name": "ВВГнг(А)-LS 5х50",
+        "section": 50,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.29537767756482525,
+      "has_transparency": true,
+      "transparent_ratio": 0.6876313123674166,
+      "non_opaque_ratio": 0.9988389222249479,
+      "foreground_ratio": 0.3108993872407276,
+      "bounds": {
+        "minX": 101,
+        "minY": 146,
+        "maxX": 1773,
+        "maxY": 718
+      },
+      "warnings": [],
+      "sha256": "a1aa15ba2ac108c7b15e573125f8ded9d087862d5f941bd6fd0c3782acef45d6",
+      "bytes": 979394
+    }
+  },
+  {
+    "visualKey": "vvgnga__1core",
+    "image": "public/product-images/generated/vvgnga__1core.png",
+    "status": "approved",
+    "cores": 1,
+    "family": "ВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000766",
+        "name": "ВВГнг(А) 1х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000772",
+        "name": "ВВГнг(А) 1х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000843",
+        "name": "ВВГнг(А) 1х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000846",
+        "name": "ВВГнг(А) 1х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000851",
+        "name": "ВВГнг(А) 1х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000859",
+        "name": "ВВГнг(А) 1х50",
+        "section": 50,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0007780",
+        "name": "ВВГнг(А) 1х70",
+        "section": 70,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21307779030439683,
+      "has_transparency": true,
+      "transparent_ratio": 0.8537245366810334,
+      "non_opaque_ratio": 0.9994267694838002,
+      "foreground_ratio": 0.14578929774813193,
+      "bounds": {
+        "minX": 124,
+        "minY": 246,
+        "maxX": 1773,
+        "maxY": 528
+      },
+      "warnings": [],
+      "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+      "bytes": 452131
+    }
+  },
+  {
+    "visualKey": "vvgnga__2core",
+    "image": "public/product-images/generated/vvgnga__2core.png",
+    "status": "approved",
+    "cores": 2,
+    "family": "ВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000779",
+        "name": "ВВГнг(А) 2х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000787",
+        "name": "ВВГнг(А) 2х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000799",
+        "name": "ВВГнг(А) 2х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000883",
+        "name": "ВВГнг(А) 2х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000901",
+        "name": "ВВГнг(А) 2х4",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.26042841037204056,
+      "has_transparency": true,
+      "transparent_ratio": 0.7810615314024828,
+      "non_opaque_ratio": 0.999143967289001,
+      "foreground_ratio": 0.2181148469245738,
+      "bounds": {
+        "minX": 108,
+        "minY": 223,
+        "maxX": 1773,
+        "maxY": 619
+      },
+      "warnings": [],
+      "sha256": "51121655f57977448386d40c018b2771a2fa3e45c352905ce158c54fc30ac03e",
+      "bytes": 675201
+    }
+  },
+  {
+    "visualKey": "vvgnga__3core",
+    "image": "public/product-images/generated/vvgnga__3core.png",
+    "status": "approved",
+    "cores": 3,
+    "family": "ВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000811",
+        "name": "ВВГнг(А) 3х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000833",
+        "name": "ВВГнг(А) 3х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000923",
+        "name": "ВВГнг(А) 3х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000936",
+        "name": "ВВГнг(А) 3х6",
+        "section": 6,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000952",
+        "name": "ВВГнг(А) 3х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0000961",
+        "name": "ВВГнг(А) 3х16",
+        "section": 16,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.23675310033821872,
+      "has_transparency": true,
+      "transparent_ratio": 0.7731513315852556,
+      "non_opaque_ratio": 0.9992087893651123,
+      "foreground_ratio": 0.22574923516305295,
+      "bounds": {
+        "minX": 96,
+        "minY": 218,
+        "maxX": 1773,
+        "maxY": 682
+      },
+      "warnings": [],
+      "sha256": "f8b80de839c2c9c4c341f017bb5d1ecf37e9f41299f63ad3c4e527fadbbe3866",
+      "bytes": 667014
+    }
+  },
+  {
+    "visualKey": "vvgnga__4core",
+    "image": "public/product-images/generated/vvgnga__4core.png",
+    "status": "approved",
+    "cores": 4,
+    "family": "ВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0000988",
+        "name": "ВВГнг(А) 4х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001000",
+        "name": "ВВГнг(А) 4х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001010",
+        "name": "ВВГнг(А) 4х4",
+        "section": 4,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001031",
+        "name": "ВВГнг(А) 4х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001108",
+        "name": "ВВГнг(А) 4х25",
+        "section": 25,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001115",
+        "name": "ВВГнг(А) 4х50",
+        "section": 50,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.21645997745208567,
+      "has_transparency": true,
+      "transparent_ratio": 0.7854109656074401,
+      "non_opaque_ratio": 0.9992742469517737,
+      "foreground_ratio": 0.21338664843175062,
+      "bounds": {
+        "minX": 123,
+        "minY": 253,
+        "maxX": 1773,
+        "maxY": 673
+      },
+      "warnings": [],
+      "sha256": "6a293e54522ba7260020c351b21977321e18bf72a8589564084013c8d888bc31",
+      "bytes": 671611
+    }
+  },
+  {
+    "visualKey": "vvgnga__5core",
+    "image": "public/product-images/generated/vvgnga__5core.png",
+    "status": "approved",
+    "cores": 5,
+    "family": "ВВГнг(А)",
+    "model": "gpt-image-2.5-flare",
+    "template": "right-edge-solid-v2",
+    "retainedExistingStyle": false,
+    "products": [
+      {
+        "sku": "YU-0001041",
+        "name": "ВВГнг(А) 5х10",
+        "section": 10,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001050",
+        "name": "ВВГнг(А) 5х16",
+        "section": 16,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001072",
+        "name": "ВВГнг(А) 5х70",
+        "section": 70,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001133",
+        "name": "ВВГнг(А) 5х1.5",
+        "section": 1.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001142",
+        "name": "ВВГнг(А) 5х2.5",
+        "section": 2.5,
+        "groundSection": null
+      },
+      {
+        "sku": "YU-0001153",
+        "name": "ВВГнг(А) 5х4",
+        "section": 4,
+        "groundSection": null
+      }
+    ],
+    "validation": {
+      "width": 1774,
+      "height": 887,
+      "requested_size": "1536x1024",
+      "has_alpha_channel": true,
+      "touches_right_edge": true,
+      "right_edge_foreground_ratio": 0.26719278466741825,
+      "has_transparency": true,
+      "transparent_ratio": 0.7197328567851555,
+      "non_opaque_ratio": 0.9987378760474802,
+      "foreground_ratio": 0.2789344775912625,
+      "bounds": {
+        "minX": 119,
+        "minY": 208,
+        "maxX": 1773,
+        "maxY": 696
+      },
+      "warnings": [],
+      "sha256": "ff697df64794f13c9836b68050a4629549f6fc56b1dca01394c136f6d20a565b",
+      "bytes": 859044
+    }
+  }
+]

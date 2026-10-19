@@ -1,0 +1,8 @@
+{
+  "model": "gpt-image-2.5-flare",
+  "endpoint": "/v1/images/edits",
+  "reference": "/Users/Shared/yuzhural-site/public/product-images/generated/YU-0000815-dd57341d425b.png",
+  "maximumRequests": 1,
+  "retries": 0,
+  "claimedAt": "2026-10-15T18:54:26.232Z"
+}

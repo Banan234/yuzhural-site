@@ -1,6 +1,7 @@
 // Файл рендерит страницу контактов с адресом, реквизитами, картой, формой и structured data.
 
 import Container from '../components/ui/Container';
+import Breadcrumbs from '../components/ui/Breadcrumbs';
 import HeroLeadForm from '../components/home/HeroLeadForm';
 import CallbackButton from '../components/forms/CallbackButton';
 import ConsentGatedMap from '../components/layout/ConsentGatedMap';
@@ -38,6 +39,7 @@ export default function ContactsPage() {
     <>
       <section className="section">
         <Container>
+          <Breadcrumbs current="Контакты" />
           <div className="contacts-page__hero">
             <div>
               <h1 className="page-title">Контакты</h1>

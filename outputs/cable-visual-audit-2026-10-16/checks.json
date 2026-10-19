@@ -1,0 +1,24 @@
+{
+  "fullSuite": {
+    "files": 79,
+    "tests": 1109,
+    "status": "PASS"
+  },
+  "classificationTests": 27,
+  "browser": {
+    "pageErrors": [],
+    "skuFilter": "PASS",
+    "statusFilter": "PASS",
+    "groupView": "PASS",
+    "recognizedText": "304 записей · страница 1 / 4"
+  },
+  "catalogImagesAndBindings": {
+    "files": 815,
+    "unchanged": true
+  },
+  "apiRequests": 0,
+  "imagesGenerated": 0,
+  "bindingsChanged": 0,
+  "allProductsCovered": true,
+  "uniqueSkuCount": 5708
+}

@@ -8,7 +8,7 @@ import { buildMarkIndex } from '../../shared/markIndex';
 import MarksPage from './MarksPage';
 
 describe('MarksPage', () => {
-  it('links alphabet anchors to mark sections and catalog results', () => {
+  it('renders mark groups and links each mark to its exact catalog results', () => {
     vi.stubGlobal(
       'fetch',
       vi.fn(() => new Promise(() => {}))
@@ -24,14 +24,19 @@ describe('MarksPage', () => {
     );
 
     expect(
-      screen.getByRole('link', { name: 'Русские буквы: В' })
-    ).toHaveAttribute('href', '#letter-412');
+      screen.queryByRole('navigation', { name: 'Выбор буквы' })
+    ).toBeNull();
+    expect(screen.getByText('1 марка')).toBeInTheDocument();
     expect(
       screen.getByRole('heading', { name: 'В' }).parentElement
     ).toHaveAttribute('id', 'letter-412');
     expect(screen.getByRole('link', { name: 'ВВГ' })).toHaveAttribute(
       'href',
-      '/catalog/?search=%D0%92%D0%92%D0%93'
+      '/catalog/?search=%D0%92%D0%92%D0%93&mark=%D0%92%D0%92%D0%93'
+    );
+    expect(screen.getByRole('link', { name: 'ВВГ' })).toHaveAttribute(
+      'title',
+      'В каталоге: 2 позиции'
     );
   });
 });

@@ -8,7 +8,7 @@
   overflow-wrap: anywhere;
 }
 .product-designation__name {
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: #145da0;
   margin: 16px 0 8px;
 }
@@ -26,7 +26,7 @@
   background: var(--bg-soft);
 }
 .product-designation__tokens dt {
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: #145da0;
 }
 .product-designation__tokens dd {
@@ -70,7 +70,7 @@
 .product-designation__manufacturer-texts summary {
   cursor: pointer;
   color: #145da0;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 .product-designation__manufacturer-texts a {
   color: #145da0;

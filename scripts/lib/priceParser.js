@@ -40,16 +40,22 @@ const MANUFACTURERS = MANUFACTURER_SOURCE.map((entry) => {
         .filter(Boolean)
     ),
   ];
-  return { canonical, aliases };
-}).filter((entry) => entry.canonical);
-const MANUFACTURER_PREFIXES = MANUFACTURERS.flatMap(({ canonical, aliases }) =>
-  aliases.map((alias) => ({
+  return {
     canonical,
-    alias,
-    normalized: normalizeManufacturer(alias),
-    compact: compactManufacturer(alias),
-    pattern: buildManufacturerPattern(alias),
-  }))
+    aliases,
+    preserveDesignation: entry.preserveDesignation === true,
+  };
+}).filter((entry) => entry.canonical);
+const MANUFACTURER_PREFIXES = MANUFACTURERS.flatMap(
+  ({ canonical, aliases, preserveDesignation }) =>
+    aliases.map((alias) => ({
+      canonical,
+      preserveDesignation,
+      alias,
+      normalized: normalizeManufacturer(alias),
+      compact: compactManufacturer(alias),
+      pattern: buildManufacturerPattern(alias),
+    }))
 ).sort((a, b) => b.compact.length - a.compact.length);
 
 function normalizeManufacturer(value) {
@@ -175,7 +181,7 @@ export function extractManufacturer(value) {
 
   const selected = resolvedTies[0];
   const nameWithoutManufacturer =
-    selected.position === 'prefix'
+    selected.position === 'prefix' && !selected.preserveDesignation
       ? source
           .slice(selected.end)
           .replace(/^[-\\s]+/u, '')

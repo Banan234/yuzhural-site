@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Container from '../components/ui/Container';
+import Breadcrumbs from '../components/ui/Breadcrumbs';
 import ProductCard from '../components/ui/ProductCard';
 import ProductSupplyPanel from '../components/purchase/ProductSupplyPanel';
 import ProductServiceLinks from '../components/services/ProductServiceLinks';
@@ -18,6 +19,7 @@ import { usePrerenderData } from '../lib/prerenderData';
 import { CATALOG_CANONICAL_PATH } from '../lib/canonicalPaths.js';
 import {
   buildProductBreadcrumbJsonLd,
+  getProductBreadcrumbs,
   buildProductJsonLd,
   buildProductMetaDescription,
   buildProductMetaTitle,
@@ -165,6 +167,13 @@ export default function ProductPage() {
     return (
       <section className="section">
         <Container>
+          <Breadcrumbs
+            items={[
+              { label: 'Главная', to: '/' },
+              { label: 'Каталог', to: CATALOG_CANONICAL_PATH },
+              { label: 'Товар' },
+            ]}
+          />
           <h1 className="page-title">Загружаем товар</h1>
           <p className="page-subtitle">
             Проверяем актуальные данные из прайса.
@@ -182,6 +191,13 @@ export default function ProductPage() {
     return (
       <section className="section">
         <Container>
+          <Breadcrumbs
+            items={[
+              { label: 'Главная', to: '/' },
+              { label: 'Каталог', to: CATALOG_CANONICAL_PATH },
+              { label: 'Товар' },
+            ]}
+          />
           <h1 className="page-title">
             {messages.errors.productApi.productNotFound}
           </h1>
@@ -227,6 +243,7 @@ export default function ProductPage() {
   return (
     <section className="section">
       <Container>
+        <Breadcrumbs items={getProductBreadcrumbs(product)} />
         <div className="product-page">
           <div className="product-page__media">
             <img

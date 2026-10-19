@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { buildMarkIndex } from './markIndex.js';
+import { buildMarkIndex, normalizeMarkKey } from './markIndex.js';
 
 describe('buildMarkIndex', () => {
+  it('normalizes mark keys consistently for the index and exact catalog links', () => {
+    expect(normalizeMarkKey('  ЗКП   м  ')).toBe('зкп м');
+  });
   it('groups current catalog marks by first letter and counts positions', () => {
     const groups = buildMarkIndex([
       { mark: 'ВВГ' },

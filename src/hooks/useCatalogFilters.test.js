@@ -88,12 +88,13 @@ describe('catalog filter URL parsing', () => {
 
   it('builds API query options with optional advanced filters', () => {
     const params = new URLSearchParams(
-      'search=ВВГ&material=медь&powerGroup=ВВГ / бронированные&appType=силовой&spe=1&page=2&category=ignored'
+      'search=ВВГ&mark=ВВГ&material=медь&powerGroup=ВВГ / бронированные&appType=силовой&spe=1&page=2&category=ignored'
     );
 
     expect(buildCatalogProductQueryOptions(params, { limit: 24 })).toEqual({
       limit: 24,
       search: 'ВВГ',
+      mark: 'ВВГ',
       material: 'медь',
       powerGroup: 'ВВГ / бронированные',
       page: '2',
@@ -106,6 +107,7 @@ describe('catalog filter URL parsing', () => {
     ).toEqual({
       limit: 24,
       search: 'ВВГ',
+      mark: 'ВВГ',
       material: 'медь',
       powerGroup: 'ВВГ / бронированные',
       appType: 'силовой',

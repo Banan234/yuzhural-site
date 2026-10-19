@@ -18,7 +18,7 @@
   border: 1px solid #cad8e5;
   color: #35556d;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -49,7 +49,7 @@
   margin: 0 0 12px;
   font-size: 24px;
   line-height: 1.15;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   color: #0a1628;
 }
 .home-audience__text {
@@ -83,7 +83,7 @@
   border: 1px solid #cad8e5;
   color: #35556d;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -111,7 +111,7 @@
   color: #0a1628;
   font-size: 18px;
   line-height: 1.35;
-  font-weight: 850;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
   list-style: none;
 }
@@ -134,7 +134,7 @@
   color: #24486c;
   font-size: 20px;
   line-height: 1;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
 }
 .home-objections__item[open] .home-objections__question::after {
   content: '−';
@@ -246,7 +246,7 @@
   margin: 0;
   font-size: 24px;
   line-height: 1.15;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   color: #102238;
 }
 .home-category-showcase__examples {
@@ -262,7 +262,7 @@
   margin-top: auto;
   font-size: 15px;
   line-height: 1;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   color: #24486c;
   transition:
     color 0.2s ease,
@@ -372,7 +372,7 @@
   border: 1px solid #cad8e5;
   color: #35556d;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -424,7 +424,7 @@
   background: linear-gradient(135deg, #102742 0%, #285784 100%);
   color: #ffffff;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
 }
 .home-documents__link-copy {
@@ -439,13 +439,13 @@
   color: #0a1628;
   font-size: 18px;
   line-height: 1.25;
-  font-weight: 850;
+  font-weight: var(--font-weight-medium);
 }
 .home-documents__link-meta {
   color: #62758a;
   font-size: 14px;
   line-height: 1.35;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 .home-documents__download {
   display: inline-flex;
@@ -514,7 +514,7 @@
   border: 1px solid #cad8e5;
   color: #35556d;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
 }
 .home-proof__lead {
@@ -556,7 +556,7 @@
   color: #0a1628;
   font-size: 23px;
   line-height: 1.15;
-  font-weight: 850;
+  font-weight: var(--font-weight-medium);
 }
 .home-proof__details {
   margin: 0;
@@ -579,7 +579,7 @@
   color: #64788e;
   font-size: 13px;
   line-height: 1.35;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
 }
 .home-proof__details dd {
@@ -587,7 +587,7 @@
   color: #102238;
   font-size: 17px;
   line-height: 1.45;
-  font-weight: 750;
+  font-weight: var(--font-weight-medium);
   overflow-wrap: anywhere;
 }
 .home-proof__text {
@@ -621,7 +621,7 @@
   border: 1px solid #cad8e5;
   color: #35556d;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -663,7 +663,7 @@
   background: #ffffff;
   color: #24486c;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: var(--font-weight-medium);
   line-height: 1;
   box-shadow: 0 10px 20px rgba(17, 53, 95, 0.08);
 }
@@ -694,7 +694,7 @@
   color: #0a1628;
   font-size: 20px;
   line-height: 1.2;
-  font-weight: 850;
+  font-weight: var(--font-weight-medium);
 }
 .home-quality-docs__text {
   margin: 0;
@@ -727,7 +727,7 @@
   border: 1px solid #cad8e5;
   color: #35556d;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 14px;
@@ -797,7 +797,7 @@
   background: linear-gradient(135deg, #0b1a2f 0%, #183a61 100%);
   color: #f8fbff;
   font-size: 15px;
-  font-weight: 900;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.12em;
   margin-bottom: 22px;
   box-shadow: 0 12px 28px rgba(11, 26, 47, 0.2);
@@ -806,7 +806,7 @@
   margin: 0 0 12px;
   font-size: 22px;
   line-height: 1.18;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   color: #0a1628;
 }
 .home-workflow__text {
@@ -844,7 +844,7 @@
   background: #edf4fa;
   color: #34546d;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -852,7 +852,7 @@
   margin: 0;
   font-size: 21px;
   line-height: 1.35;
-  font-weight: 750;
+  font-weight: var(--font-weight-medium);
   color: #0a1628;
   text-wrap: balance;
 }
@@ -867,7 +867,7 @@
   background: #287be0;
   color: #fff;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.015em;
   cursor: pointer;
   transition:
@@ -1179,7 +1179,7 @@
   margin: 0 0 10px;
   font-size: 23px;
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   color: #0a1628;
 }
 .home-adv-card__text {
@@ -1306,7 +1306,7 @@
   background: transparent;
   color: #287be0;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.045em;
 }
 
@@ -1330,9 +1330,9 @@
 .home-quality-docs .section-title {
   color: #20232a;
   font-size: clamp(28px, 3vw, 38px);
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   line-height: 1.14;
-  letter-spacing: -0.03em;
+  letter-spacing: normal;
 }
 
 .home-category-showcase {
@@ -1381,7 +1381,7 @@
 .home-category-showcase__title {
   color: #252a31;
   font-size: 19px;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-category-showcase__examples {
@@ -1391,7 +1391,7 @@
 .home-category-showcase__cta,
 .home-category-showcase__bridge {
   color: #287be0;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-category-showcase__card:hover .home-category-showcase__cta,
@@ -1420,7 +1420,7 @@
 
 .products-grid--stock-showcase .product-card__title {
   color: #252a31;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .products-grid--stock-showcase .product-card__subtitle {
@@ -1430,7 +1430,7 @@
 .products-grid--stock-showcase .product-card__price {
   color: #20232a;
   font-size: 21px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 
 .products-grid--stock-showcase .product-card__cta {
@@ -1439,7 +1439,7 @@
   background: #287be0;
   color: #fff;
   box-shadow: none;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .products-grid--stock-showcase .product-card__cta:hover {
@@ -1565,7 +1565,7 @@
 .home-proof__title {
   color: #252a31;
   font-size: 20px;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-proof__details div {
@@ -1614,7 +1614,7 @@
 .home-quality-docs__title {
   color: #252a31;
   font-size: 18px;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-quality-docs__text,
@@ -1670,7 +1670,7 @@
 .home-workflow__card--featured .home-workflow__title {
   color: #252a31;
   font-size: 19px;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-workflow__text {
@@ -1699,7 +1699,7 @@
 .home-workflow__summary-text {
   color: #252a31;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-workflow__cta {
@@ -1709,7 +1709,7 @@
   background: #287be0;
   box-shadow: none;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-workflow__cta:hover {
@@ -1735,7 +1735,7 @@
 .home-audience__title {
   color: #252a31;
   font-size: 19px;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-objections__list {
@@ -1754,7 +1754,7 @@
   padding-left: 0;
   color: #252a31;
   font-size: 17px;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-objections__question::after {
@@ -1796,7 +1796,7 @@
 .home-adv-card__title {
   color: #252a31;
   font-size: 19px;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .home-adv-card__text {

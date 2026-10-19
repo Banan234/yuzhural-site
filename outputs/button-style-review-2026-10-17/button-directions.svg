@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="650" viewBox="0 0 1040 650" role="img" aria-labelledby="title desc">
+  <title id="title">Три варианта кнопок для главной ЮжУралЭлектроКабель</title>
+  <desc id="desc">Сравнение прямых, умеренно скруглённых и мягких кнопок на первом экране и в карточке товара.</desc>
+  <rect width="1040" height="650" fill="#f5f7f9"/>
+  <text x="32" y="44" fill="#152e46" font-family="Arial, sans-serif" font-size="25" font-weight="700">Кнопки: три направления</text>
+  <text x="32" y="68" fill="#587087" font-family="Arial, sans-serif" font-size="15">Одинаковые цвета и подписи — меняется только характер формы</text>
+
+  <text x="32" y="111" fill="#152e46" font-family="Arial, sans-serif" font-size="19" font-weight="700">A · Строгий</text>
+  <text x="170" y="111" fill="#587087" font-family="Arial, sans-serif" font-size="14">0 px · совсем прямые углы</text>
+  <rect x="32" y="126" width="626" height="116" rx="0" fill="#0d2d50"/>
+  <text x="52" y="155" fill="#dfe9f3" font-family="Arial, sans-serif" font-size="14">Кабель под ваш проект</text>
+  <rect x="52" y="174" width="260" height="46" rx="0" fill="#ef690a"/>
+  <text x="72" y="203" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="600">Отправить спецификацию →</text>
+  <text x="335" y="203" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="600">Перейти в каталог →</text>
+  <rect x="680" y="126" width="328" height="116" rx="0" fill="#ffffff" stroke="#d9e2eb"/>
+  <text x="700" y="155" fill="#152e46" font-family="Arial, sans-serif" font-size="14" font-weight="700">ВВГнг(А)-LS 4×25</text>
+  <text x="700" y="178" fill="#5c7185" font-family="Arial, sans-serif" font-size="13">В наличии · цена по запросу</text>
+  <rect x="700" y="190" width="288" height="36" rx="0" fill="#ffffff" stroke="#2b6ca7"/>
+  <text x="800" y="214" fill="#1c5f9a" font-family="Arial, sans-serif" font-size="14" font-weight="600">В список КП</text>
+
+  <text x="32" y="294" fill="#152e46" font-family="Arial, sans-serif" font-size="19" font-weight="700">B · Сдержанный</text>
+  <text x="222" y="294" fill="#587087" font-family="Arial, sans-serif" font-size="14">4 px · мой выбор</text>
+  <rect x="32" y="309" width="626" height="116" rx="4" fill="#0d2d50"/>
+  <text x="52" y="338" fill="#dfe9f3" font-family="Arial, sans-serif" font-size="14">Кабель под ваш проект</text>
+  <rect x="52" y="357" width="260" height="46" rx="4" fill="#ef690a"/>
+  <text x="72" y="386" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="600">Отправить спецификацию →</text>
+  <text x="335" y="386" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="600">Перейти в каталог →</text>
+  <rect x="680" y="309" width="328" height="116" rx="4" fill="#ffffff" stroke="#d9e2eb"/>
+  <text x="700" y="338" fill="#152e46" font-family="Arial, sans-serif" font-size="14" font-weight="700">ВВГнг(А)-LS 4×25</text>
+  <text x="700" y="361" fill="#5c7185" font-family="Arial, sans-serif" font-size="13">В наличии · цена по запросу</text>
+  <rect x="700" y="373" width="288" height="36" rx="4" fill="#ffffff" stroke="#2b6ca7"/>
+  <text x="800" y="397" fill="#1c5f9a" font-family="Arial, sans-serif" font-size="14" font-weight="600">В список КП</text>
+
+  <text x="32" y="477" fill="#152e46" font-family="Arial, sans-serif" font-size="19" font-weight="700">C · Мягкий</text>
+  <text x="172" y="477" fill="#587087" font-family="Arial, sans-serif" font-size="14">8 px · ближе к нынешнему сайту</text>
+  <rect x="32" y="492" width="626" height="116" rx="8" fill="#0d2d50"/>
+  <text x="52" y="521" fill="#dfe9f3" font-family="Arial, sans-serif" font-size="14">Кабель под ваш проект</text>
+  <rect x="52" y="540" width="260" height="46" rx="8" fill="#ef690a"/>
+  <text x="72" y="569" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="600">Отправить спецификацию →</text>
+  <text x="335" y="569" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="600">Перейти в каталог →</text>
+  <rect x="680" y="492" width="328" height="116" rx="8" fill="#ffffff" stroke="#d9e2eb"/>
+  <text x="700" y="521" fill="#152e46" font-family="Arial, sans-serif" font-size="14" font-weight="700">ВВГнг(А)-LS 4×25</text>
+  <text x="700" y="544" fill="#5c7185" font-family="Arial, sans-serif" font-size="13">В наличии · цена по запросу</text>
+  <rect x="700" y="556" width="288" height="36" rx="8" fill="#ffffff" stroke="#2b6ca7"/>
+  <text x="800" y="580" fill="#1c5f9a" font-family="Arial, sans-serif" font-size="14" font-weight="600">В список КП</text>
+</svg>

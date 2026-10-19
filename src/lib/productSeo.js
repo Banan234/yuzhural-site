@@ -5,6 +5,7 @@
 // из react/react-router здесь быть не должно.
 
 import { CATALOG_CANONICAL_PATH } from './canonicalPaths.js';
+import { formatCableProductAttributes } from '../../shared/productTitle.js';
 import {
   SITE_LEGAL_NAME,
   SITE_NAME,
@@ -114,7 +115,9 @@ function formatProductSpecs(product) {
   }
 
   if (Array.isArray(product?.attributes)) {
-    const attributes = product.attributes.map(normalizeText).filter(Boolean);
+    const attributes = formatCableProductAttributes(product)
+      .map(normalizeText)
+      .filter(Boolean);
     if (attributes.length > 0) specs.push(attributes.join(', '));
   }
 

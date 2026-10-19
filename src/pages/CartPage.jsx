@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Container from '../components/ui/Container';
+import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { MAX_CART_ITEMS, useCartStore } from '../store/useCartStore';
 import { useSEO } from '../hooks/useSEO';
 import { CATALOG_CANONICAL_PATH } from '../lib/canonicalPaths.js';
@@ -238,8 +239,9 @@ export default function CartPage() {
   }
 
   return (
-    <section className="section">
+    <section className="section cart-page">
       <Container>
+        <Breadcrumbs current="Список для КП" />
         <div className="cart-page__head">
           <div>
             <h1 className="page-title">Список для КП</h1>
@@ -252,7 +254,12 @@ export default function CartPage() {
 
         {items.length === 0 ? (
           <div className="cart-empty">
-            <p className="page-subtitle">Список пока пуст.</p>
+            <div className="cart-empty__content">
+              <h2 className="cart-empty__title">Список пока пуст</h2>
+              <p className="cart-empty__text">
+                Выберите товары в каталоге или добавьте позицию вручную ниже.
+              </p>
+            </div>
             <Link to={CATALOG_CANONICAL_PATH} className="button-primary">
               Перейти в каталог
             </Link>

@@ -61,10 +61,11 @@ export default function HeaderCatalogMenu() {
     }, 140);
   }
 
-  function pinCatalogMenuOpen() {
+  function toggleCatalogMenu() {
     clearCatalogCloseTimeout();
-    setIsCatalogPinnedOpen(true);
-    setIsCatalogOpen(true);
+    const nextIsOpen = !isCatalogPinnedOpen;
+    setIsCatalogPinnedOpen(nextIsOpen);
+    setIsCatalogOpen(nextIsOpen);
   }
 
   useEffect(() => {
@@ -141,7 +142,7 @@ export default function HeaderCatalogMenu() {
             isCatalogPage || isCatalogOpen ? 'catalog-button--active' : ''
           }`}
           onMouseEnter={openCatalogMenu}
-          onClick={pinCatalogMenuOpen}
+          onClick={toggleCatalogMenu}
           aria-controls={isCatalogOpen ? CATALOG_DROPDOWN_ID : undefined}
           aria-expanded={isCatalogOpen}
         >

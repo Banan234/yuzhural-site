@@ -1,0 +1,204 @@
+{
+  "checkedAt": "2026-10-16T19:28:13.095Z",
+  "pageErrors": [],
+  "checks": [
+    {
+      "type": "одножильный провод",
+      "sku": "YU-0005102",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_pugv__1c__stranded__round__1core-white__p-158003053538284a.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 1440
+    },
+    {
+      "type": "2 жилы",
+      "sku": "YU-0000584",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_vbshvng-a-ls__2c__solid__round__2core-brown-blue__p-a75c26c24de773d7.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 1440
+    },
+    {
+      "type": "3 жилы",
+      "sku": "YU-0000600",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_vbshvng-a-hl__3c__solid__round__3core-brown-blue-yellow-green__p-46b49021cf1dbbb4.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 1440
+    },
+    {
+      "type": "4 жилы",
+      "sku": "YU-0000511",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_vbshvng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-b5afecbd49f1a632.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 1440
+    },
+    {
+      "type": "5 жил",
+      "sku": "YU-0000556",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_vbshvng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-61555309cba118d1.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 1440
+    },
+    {
+      "type": "многожильный контрольный",
+      "sku": "YU-0002764",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_kvvgng-a-ls__7c__solid__round__7core-control-black__p-5ddfe9e44500c0ff.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 1440
+    },
+    {
+      "type": "плоский",
+      "sku": "YU-0005217",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_shvvp__2c__stranded__flat__2core-brown-blue__p-3e347be614526744.png",
+      "width": 1774,
+      "height": 887,
+      "scroll": 1440
+    },
+    {
+      "type": "stranded",
+      "sku": "YU-0002946",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+      "width": 1774,
+      "height": 887,
+      "scroll": 1440
+    },
+    {
+      "type": "бронированный",
+      "sku": "YU-0000511",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_vbshvng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-b5afecbd49f1a632.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 1440
+    },
+    {
+      "type": "экранированный",
+      "sku": "YU-0002706",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_kvvgeng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-948d5c297ffa969d.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 1440
+    },
+    {
+      "type": "СИП",
+      "sku": "YU-0004818",
+      "viewport": 1440,
+      "src": "/product-images/generated/pr1_sip-4__4c__stranded__twisted-bundle__4core-black-black-black-black__p-35a9ef805227b5ad.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 1440
+    },
+    {
+      "type": "одножильный провод",
+      "sku": "YU-0005102",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_pugv__1c__stranded__round__1core-white__p-158003053538284a.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 390
+    },
+    {
+      "type": "2 жилы",
+      "sku": "YU-0000584",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_vbshvng-a-ls__2c__solid__round__2core-brown-blue__p-a75c26c24de773d7.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 390
+    },
+    {
+      "type": "3 жилы",
+      "sku": "YU-0000600",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_vbshvng-a-hl__3c__solid__round__3core-brown-blue-yellow-green__p-46b49021cf1dbbb4.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 390
+    },
+    {
+      "type": "4 жилы",
+      "sku": "YU-0000511",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_vbshvng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-b5afecbd49f1a632.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 390
+    },
+    {
+      "type": "5 жил",
+      "sku": "YU-0000556",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_vbshvng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-61555309cba118d1.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 390
+    },
+    {
+      "type": "многожильный контрольный",
+      "sku": "YU-0002764",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_kvvgng-a-ls__7c__solid__round__7core-control-black__p-5ddfe9e44500c0ff.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 390
+    },
+    {
+      "type": "плоский",
+      "sku": "YU-0005217",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_shvvp__2c__stranded__flat__2core-brown-blue__p-3e347be614526744.png",
+      "width": 1774,
+      "height": 887,
+      "scroll": 390
+    },
+    {
+      "type": "stranded",
+      "sku": "YU-0002946",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+      "width": 1774,
+      "height": 887,
+      "scroll": 390
+    },
+    {
+      "type": "бронированный",
+      "sku": "YU-0000511",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_vbshvng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-b5afecbd49f1a632.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 390
+    },
+    {
+      "type": "экранированный",
+      "sku": "YU-0002706",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_kvvgeng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-948d5c297ffa969d.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 390
+    },
+    {
+      "type": "СИП",
+      "sku": "YU-0004818",
+      "viewport": 390,
+      "src": "/product-images/generated/pr1_sip-4__4c__stranded__twisted-bundle__4core-black-black-black-black__p-35a9ef805227b5ad.png",
+      "width": 1536,
+      "height": 1024,
+      "scroll": 390
+    }
+  ]
+}

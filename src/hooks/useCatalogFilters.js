@@ -9,6 +9,7 @@ import {
 
 const BASE_PRODUCT_QUERY_KEYS = [
   'search',
+  'mark',
   'priceMin',
   'priceMax',
   'material',
@@ -24,6 +25,7 @@ export const CATALOG_PAGE_SIZE_OPTIONS = [21, 24, 48, 96];
 const ADVANCED_PRODUCT_QUERY_KEYS = ['appType', 'spe'];
 const RESET_FILTER_KEYS = [
   'search',
+  'mark',
   'priceMin',
   'priceMax',
   'material',
@@ -72,6 +74,7 @@ export function parseCatalogFilters(searchParams) {
   return {
     category: searchParams.get('category') || '',
     search: normalized.search,
+    mark: searchParams.get('mark') || '',
     priceMin,
     priceMax,
     priceMinNumber: normalized.priceMinNumber,
@@ -117,6 +120,7 @@ export function buildCatalogProductQueryOptions(
 function createCatalogFiltersKey(filters) {
   return [
     filters.search,
+    filters.mark,
     filters.priceMin,
     filters.priceMax,
     filters.sortBy,
@@ -168,6 +172,10 @@ export function useCatalogFilters({
         if (key !== 'page') {
           shouldResetPage = true;
         }
+      }
+
+      if (Object.hasOwn(values, 'search') && !Object.hasOwn(values, 'mark')) {
+        next.delete('mark');
       }
 
       if (resetPage && shouldResetPage) {

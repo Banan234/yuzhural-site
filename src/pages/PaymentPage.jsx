@@ -1,6 +1,7 @@
 // Файл рендерит страницу оплаты: единый сценарий сделки, условия для B2B/физлиц, документы и CTA.
 
 import Container from '../components/ui/Container';
+import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { useJsonLd } from '../hooks/useJsonLd';
 import { useSEO } from '../hooks/useSEO';
 import {
@@ -119,6 +120,7 @@ export default function PaymentPage() {
     <>
       <section className="section">
         <Container>
+          <Breadcrumbs current="Оплата" />
           <div className="payment-page__hero">
             <div className="payment-page__intro">
               <h1 className="page-title">Оплата и оформление поставки</h1>

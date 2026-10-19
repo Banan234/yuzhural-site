@@ -18,7 +18,7 @@ import { randomUUID } from 'crypto';
 import { monitorEventLoopDelay } from 'perf_hooks';
 import { pathToFileURL } from 'url';
 import { createCatalogStore } from './lib/catalog.js';
-import { buildMarkIndex } from './shared/markIndex.js';
+import { buildMarkIndex, normalizeMarkKey } from './shared/markIndex.js';
 import {
   DEFAULT_FEATURED_PRODUCTS_LIMIT,
   getFeaturedProducts,
@@ -30,6 +30,7 @@ import {
   MAX_QUOTE_PAYLOAD_BYTES,
   isValidQuoteRequest,
   isValidRussianPhone,
+  isValidEmail,
 } from './shared/quoteValidation.js';
 import { formatMessage, messages } from './shared/messages.js';
 import { accessLog, logger } from './lib/logger.js';
@@ -299,7 +300,6 @@ async function flushPendingManagerNotifications({
 
   return deliveredCount;
 }
-
 
 async function warmCatalogCaches({
   catalogStore,
@@ -1681,10 +1681,19 @@ export function createApp({
         allItems,
         categorySlug
       );
-      const searchedItems = catalogQueryStore.getSearchFilteredProducts(
+      const searchResults = catalogQueryStore.getSearchFilteredProducts(
         baseItems,
         req.query.search
       );
+      const markKey =
+        typeof req.query.mark === 'string'
+          ? normalizeMarkKey(req.query.mark)
+          : '';
+      const searchedItems = markKey
+        ? searchResults.filter(
+            (product) => normalizeMarkKey(product.mark) === markKey
+          )
+        : searchResults;
       const facets = catalogQueryStore.getCatalogFacets(searchedItems, {
         categorySlug,
         search: req.query.search,
@@ -2079,6 +2088,8 @@ export function createApp({
         const {
           name,
           phone,
+          email,
+          contactChannel = 'phone',
           comment,
           source,
           createdAt,
@@ -2090,6 +2101,7 @@ export function createApp({
         const leadPage = String(page || '').trim();
         const contactName = String(name || '').trim();
         const normalizedPhone = normalizePhoneInput(phone);
+        const contactEmail = String(email || '').trim();
         const leadComment = String(comment || '').trim();
         const leadSource = String(source || '').trim();
 
@@ -2103,12 +2115,31 @@ export function createApp({
           );
         }
 
-        if (!isValidRussianPhone(normalizedPhone)) {
+        if (
+          !['phone', 'email'].includes(contactChannel) ||
+          (isCallback && contactChannel !== 'phone')
+        ) {
           return sendFormErrorResponse(
             res,
             formResponseStartedAt,
             formResponseDelayMs,
-            messages.errors.api.phoneInvalid,
+            messages.errors.api.invalidQuoteRequest,
+            400
+          );
+        }
+
+        if (
+          contactChannel === 'email'
+            ? !isValidEmail(contactEmail)
+            : !isValidRussianPhone(normalizedPhone)
+        ) {
+          return sendFormErrorResponse(
+            res,
+            formResponseStartedAt,
+            formResponseDelayMs,
+            contactChannel === 'email'
+              ? 'Укажите корректный email'
+              : messages.errors.api.phoneInvalid,
             400
           );
         }
@@ -2137,7 +2168,8 @@ export function createApp({
         <p><strong>Страница:</strong> ${escapeHtml(leadPage) || '—'}</p>
         <p><strong>Согласие на обработку данных:</strong> получено</p>
         <p><strong>Контактное лицо:</strong> ${escapeHtml(contactName) || 'Не указано'}</p>
-        <p><strong>Телефон:</strong> ${escapeHtml(normalizedPhone)}</p>
+        <p><strong>Способ связи:</strong> ${contactChannel === 'email' ? 'Email' : 'Телефон'}</p>
+        <p><strong>${contactChannel === 'email' ? 'Email' : 'Телефон'}:</strong> ${escapeHtml(contactChannel === 'email' ? contactEmail : normalizedPhone)}</p>
         <p><strong>Комментарий:</strong> ${escapeHtml(leadComment) || '—'}</p>
       `;
 
@@ -2146,6 +2178,9 @@ export function createApp({
           {
             from: env.SMTP_FROM,
             to: env.QUOTE_TO_EMAIL,
+            ...(contactChannel === 'email' && safeReplyTo(contactEmail)
+              ? { replyTo: safeReplyTo(contactEmail) }
+              : {}),
             subject: isCallback
               ? 'Заказ обратного звонка — ЮжУралЭлектроКабель'
               : 'Новая короткая заявка — ЮжУралЭлектроКабель',

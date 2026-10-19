@@ -1,0 +1,103 @@
+{
+  "summary": {
+    "totalProducts": 5708,
+    "recognized": 1877,
+    "needsReview": 3831,
+    "familyRecognized": 4111,
+    "uniqueFamilyIds": 1676,
+    "verifiedFamilyIds": 556,
+    "uniqueVisualProfiles": 3424,
+    "uniqueVisualKeys": 3424,
+    "readyVisualProfiles": 565,
+    "existingApprovedImages": 119,
+    "currentProductsWithImages": 570,
+    "imageStatus": {
+      "REUSE": 570,
+      "MISSING": 1307,
+      "NEEDS_REVIEW": 3831
+    },
+    "confidence": {
+      "high": 0,
+      "medium": 1877,
+      "low": 3831
+    },
+    "reviewReasons": {
+      "unknown_coreColors": 3676,
+      "unknown_conductorShape": 3658,
+      "unknown_hasOuterJacket": 3658,
+      "unknown_outerJacket": 3658,
+      "unknown_geometry": 3649,
+      "unknown_conductorConstruction": 3570,
+      "unknown_productType": 3431,
+      "unknown_armor": 3187,
+      "unknown_conductorMaterial": 3026,
+      "unknown_shield": 2476,
+      "unknown_family": 1597,
+      "special_configuration": 1558,
+      "shield_detail_unknown": 1217,
+      "unverified_modifier": 669,
+      "armor_detail_unknown": 425,
+      "unverified_family_suffix": 424,
+      "missing_cores": 303,
+      "unknown_cores": 303,
+      "special_structure": 98,
+      "auxiliary_role_unknown": 38,
+      "family_structure_conflict": 35,
+      "unsupported_core_range": 18,
+      "family_conflict": 9,
+      "parsing_warning": 3
+    },
+    "apiRequests": 0,
+    "bindingsChanged": 0,
+    "imagesGenerated": 0,
+    "autoApproved": 1877,
+    "reuse": {
+      "visualKeys": 119,
+      "products": 570,
+      "existingImagesUsed": 119
+    },
+    "missing": {
+      "visualKeys": 446,
+      "products": 1307
+    },
+    "previousNeedsReview": 5404,
+    "needsReviewReduction": 1573,
+    "automaticFamilies": [
+      "H05V-K",
+      "H07V-K",
+      "NYM",
+      "NYY",
+      "АВББШВ",
+      "АВБШВ",
+      "АВВГ",
+      "АВВГ-П",
+      "АКВВГ",
+      "ВББШВ",
+      "ВБШВ",
+      "ВВГ",
+      "ВВГ-П",
+      "КВББШВ",
+      "КВБШВ",
+      "КВВГ",
+      "КВВГЭ",
+      "КВКБШВ",
+      "КГ",
+      "КГВВ",
+      "ПБП",
+      "ПВ1",
+      "ПВ3",
+      "ПВС",
+      "ППГ",
+      "ППГЭ",
+      "ПУВ",
+      "ПУГВ",
+      "СИП-4",
+      "ШВВП"
+    ]
+  },
+  "integrity": {
+    "unchanged": true,
+    "protectedFiles": 815
+  },
+  "report": "/Users/Shared/yuzhural-site/outputs/cable-visual-practical-2026-10-16/report.html"
+}

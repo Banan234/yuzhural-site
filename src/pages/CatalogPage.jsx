@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import Container from '../components/ui/Container';
+import Breadcrumbs from '../components/ui/Breadcrumbs';
 import ProductListingView from '../components/catalog/ProductListingView';
 import { fetchProducts } from '../lib/productsApi';
 import { captureException } from '../lib/errorTracking';
@@ -10,6 +11,7 @@ import { useSEO } from '../hooks/useSEO';
 import { useCatalogFilters } from '../hooks/useCatalogFilters';
 import { usePrerenderData } from '../lib/prerenderData';
 import { toCanonicalSitePath } from '../lib/canonicalPaths.js';
+import { russianCountNoun } from '../lib/russianCount.js';
 import { messages } from '../../shared/messages.js';
 import { NOT_FOUND_SEO, NotFoundPageContent } from './NotFoundPage.jsx';
 import catalogCategoriesData from '../../shared/catalogCategories.json';
@@ -26,6 +28,7 @@ const CATEGORY_ROUTE_FILTERS = { showAppType: true, showSPE: true };
 const POWER_CABLE_CATEGORY_SLUG = 'silovoy-kabel';
 const CATALOG_PRERENDER_FILTER_KEYS = [
   'search',
+  'mark',
   'priceMin',
   'priceMax',
   'material',
@@ -341,19 +344,7 @@ export default function CatalogPage() {
     >
       <Container>
         <div className="catalog-page">
-          <nav className="catalog-breadcrumbs" aria-label="Хлебные крошки">
-            <ol>
-              {breadcrumbItems.map((item, index) => (
-                <li key={`${item.label}-${index}`}>
-                  {item.to ? (
-                    <Link to={item.to}>{item.label}</Link>
-                  ) : (
-                    <span aria-current="page">{item.label}</span>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </nav>
+          <Breadcrumbs items={breadcrumbItems} />
           <div className="catalog-page__header">
             <h1 className="page-title catalog-page__title">{pageTitle}</h1>
             <p className="catalog-page__subtitle">
@@ -363,7 +354,13 @@ export default function CatalogPage() {
                 <>
                   <span className="catalog-page__availability">В наличии</span>{' '}
                   <strong>{visibleCount.toLocaleString('ru-RU')}</strong>{' '}
-                  позиций · Отгрузка со склада в Челябинске
+                  {russianCountNoun(visibleCount, {
+                    one: 'позиция',
+                    few: 'позиции',
+                    many: 'позиций',
+                  })}
+                  {filters.mark && <> · Марка «{filters.mark}»</>}
+                  {' · Отгрузка со склада в Челябинске'}
                 </>
               )}
             </p>

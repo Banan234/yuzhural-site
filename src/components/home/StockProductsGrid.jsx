@@ -1,179 +1,40 @@
 // Файл рендерит блок товаров в наличии на главной странице с карточками и состояниями загрузки.
 
-import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CATALOG_CANONICAL_PATH } from '../../lib/canonicalPaths.js';
+import { useId } from 'react';
 import Container from '../ui/Container';
 import ProductCard from '../ui/ProductCard';
-
-const SLIDE_DURATION_MS = 320;
+import useProductCarousel from './useProductCarousel';
 
 export default function StockProductsGrid({ products, isLoading, loadError }) {
-  const trackRef = useRef(null);
-  const animationTimeoutRef = useRef(null);
-  const cloneKeyRef = useRef(0);
-  const [orderedProducts, setOrderedProducts] = useState(products);
-  const [renderedProducts, setRenderedProducts] = useState(() =>
-    products.map((product) => ({ key: String(product.id), product }))
-  );
-  const [animationStyles, setAnimationStyles] = useState({});
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  useEffect(() => {
-    setOrderedProducts(products);
-    setRenderedProducts(
-      products.map((product) => ({ key: String(product.id), product }))
-    );
-    setAnimationStyles({});
-    setIsAnimating(false);
-  }, [products]);
-
-  useEffect(() => {
-    return () => {
-      if (animationTimeoutRef.current) {
-        clearTimeout(animationTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  function getSlideStep() {
-    const track = trackRef.current;
-
-    if (!track) {
-      return 0;
-    }
-
-    const firstCard = track.querySelector('.product-card--stock');
-
-    if (!firstCard) {
-      return 0;
-    }
-
-    const cardWidth = firstCard.getBoundingClientRect().width;
-    const trackStyles = window.getComputedStyle(track);
-    const gap =
-      Number.parseFloat(trackStyles.columnGap || trackStyles.gap || '0') || 0;
-
-    return cardWidth + gap;
-  }
-
-  function buildRenderedProducts(items) {
-    return items.map((product) => ({
-      key: String(product.id),
-      product,
-    }));
-  }
-
-  function getCloneKey(prefix, productId) {
-    cloneKeyRef.current += 1;
-    return `${prefix}-${cloneKeyRef.current}-${productId}`;
-  }
-
-  function handleScroll(direction) {
-    if (orderedProducts.length <= 1 || isAnimating) {
-      return;
-    }
-
-    if (animationTimeoutRef.current) {
-      clearTimeout(animationTimeoutRef.current);
-      animationTimeoutRef.current = null;
-    }
-
-    const step = getSlideStep();
-
-    if (!step) {
-      return;
-    }
-
-    setIsAnimating(true);
-
-    if (direction > 0) {
-      const [firstProduct, ...restProducts] = orderedProducts;
-
-      setRenderedProducts([
-        ...buildRenderedProducts(orderedProducts),
-        {
-          key: getCloneKey('tail-clone', firstProduct.id),
-          product: firstProduct,
-        },
-      ]);
-
-      setAnimationStyles({
-        transform: 'translateX(0)',
-        transition: 'none',
-      });
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setAnimationStyles({
-            transform: `translateX(-${step}px)`,
-            transition: `transform ${SLIDE_DURATION_MS}ms ease`,
-          });
-        });
-      });
-
-      animationTimeoutRef.current = setTimeout(() => {
-        const nextProducts = [...restProducts, firstProduct];
-
-        setOrderedProducts(nextProducts);
-        setRenderedProducts(buildRenderedProducts(nextProducts));
-        setAnimationStyles({});
-        setIsAnimating(false);
-      }, SLIDE_DURATION_MS);
-
-      return;
-    }
-
-    const lastProduct = orderedProducts[orderedProducts.length - 1];
-    const previousProducts = [lastProduct, ...orderedProducts.slice(0, -1)];
-
-    setRenderedProducts([
-      {
-        key: getCloneKey('head-clone', lastProduct.id),
-        product: lastProduct,
-      },
-      ...buildRenderedProducts(orderedProducts),
-    ]);
-
-    setAnimationStyles({
-      transform: `translateX(-${step}px)`,
-      transition: 'none',
-    });
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setAnimationStyles({
-          transform: 'translateX(0)',
-          transition: `transform ${SLIDE_DURATION_MS}ms ease`,
-        });
-      });
-    });
-
-    animationTimeoutRef.current = setTimeout(() => {
-      setOrderedProducts(previousProducts);
-      setRenderedProducts(buildRenderedProducts(previousProducts));
-      setAnimationStyles({});
-      setIsAnimating(false);
-    }, SLIDE_DURATION_MS);
-  }
+  const titleId = useId();
+  const trackId = useId();
+  const {
+    carouselRef,
+    viewportRef,
+    trackRef,
+    items,
+    trailingProduct,
+    move,
+    carouselEvents,
+    viewportEvents,
+    canScroll,
+    visibleCount,
+    isAnimating,
+  } = useProductCarousel(products, !isLoading && !loadError);
 
   return (
-    <section id="stock-now" className="section home-stock-showcase">
+    <section
+      id="stock-now"
+      className="section home-stock-showcase"
+      aria-labelledby={titleId}
+    >
       <Container>
         <div className="home-stock-showcase__head section-head">
           <div>
-            <h2 className="section-title section-title--left">
+            <h2 id={titleId} className="section-title section-title--left">
               Товары из каталога
             </h2>
           </div>
-
-          <Link
-            to={CATALOG_CANONICAL_PATH}
-            className="section-link home-stock-showcase__link"
-          >
-            Смотреть весь каталог
-            <span aria-hidden="true">→</span>
-          </Link>
         </div>
 
         {isLoading ? (
@@ -185,12 +46,22 @@ export default function StockProductsGrid({ products, isLoading, loadError }) {
             {loadError}
           </div>
         ) : (
-          <div className="home-stock-showcase__carousel">
+          <div
+            ref={carouselRef}
+            className="home-stock-showcase__carousel"
+            role="group"
+            aria-roledescription="карусель"
+            aria-label="Товары из каталога"
+            tabIndex={canScroll ? 0 : undefined}
+            {...carouselEvents}
+          >
             <button
               type="button"
               className="home-stock-showcase__arrow home-stock-showcase__arrow--prev"
-              onClick={() => handleScroll(-1)}
-              disabled={orderedProducts.length <= 1}
+              onClick={() => move(-1)}
+              disabled={!canScroll}
+              aria-disabled={isAnimating || !canScroll}
+              aria-controls={trackId}
               aria-label="Показать предыдущие товары"
             >
               <svg
@@ -206,23 +77,47 @@ export default function StockProductsGrid({ products, isLoading, loadError }) {
               </svg>
             </button>
 
-            <div className="home-stock-showcase__viewport">
+            <div
+              ref={viewportRef}
+              className="home-stock-showcase__viewport"
+              aria-live="off"
+              {...viewportEvents}
+            >
               <div
                 ref={trackRef}
+                id={trackId}
                 className="products-grid products-grid--stock-showcase"
-                style={animationStyles}
               >
-                {renderedProducts.map(({ key, product }) => (
-                  <ProductCard key={key} product={product} variant="stock" />
+                {items.map((product, index) => (
+                  <div
+                    key={product.id}
+                    className="home-stock-showcase__slide"
+                    inert={index >= visibleCount ? '' : undefined}
+                    aria-hidden={index >= visibleCount ? true : undefined}
+                  >
+                    <ProductCard product={product} variant="stock" />
+                  </div>
                 ))}
+                {trailingProduct && (
+                  <div
+                    className="home-stock-showcase__slide"
+                    key="transition-tail"
+                    inert=""
+                    aria-hidden="true"
+                  >
+                    <ProductCard product={trailingProduct} variant="stock" />
+                  </div>
+                )}
               </div>
             </div>
 
             <button
               type="button"
               className="home-stock-showcase__arrow home-stock-showcase__arrow--next"
-              onClick={() => handleScroll(1)}
-              disabled={orderedProducts.length <= 1}
+              onClick={() => move(1)}
+              disabled={!canScroll}
+              aria-disabled={isAnimating || !canScroll}
+              aria-controls={trackId}
               aria-label="Показать следующие товары"
             >
               <svg

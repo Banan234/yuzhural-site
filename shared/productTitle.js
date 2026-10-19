@@ -6,6 +6,72 @@ const CONSTRUCTION_SUFFIX = /^(?:эф|эа|эм|ээ|э|зэл|з|хл|уф)$/iu
 const BEFORE_FIRE_SUFFIX = /^(?:эф|эа|эм|ээ|э|зэл|з)$/iu;
 const FIRE_SUFFIX = /^нг(?:\([АБВГДСA-D]\))?(?:-|$)/iu;
 
+const PUGV_COLORS = [
+  ['белый', ['бел', 'белый']],
+  ['красный', ['красн', 'красный']],
+  ['чёрный', ['черн', 'чёрн', 'черный', 'чёрный']],
+  ['жёлтый', ['желт', 'жёлт', 'желтый', 'жёлтый']],
+  ['зелёный', ['зел', 'зелен', 'зелён', 'зеленый', 'зелёный']],
+  ['жёлто-зелёный', ['ж/з', 'желто-зеленый', 'жёлто-зелёный']],
+  ['голубой', ['гол', 'голуб', 'голубой']],
+  ['синий', ['син', 'синий']],
+  ['коричневый', ['кор', 'корич', 'коричн', 'коричневый']],
+  ['оранжевый', ['оранж', 'оранжевый']],
+  ['фиолетовый', ['фиол', 'фиолетовый']],
+  ['серый', ['сер', 'серый']],
+  ['розовый', ['роз', 'розовый']],
+  ['бежевый', ['беж', 'бежевый']],
+];
+const PUGV_COLOR_ALIASES = new Map(
+  PUGV_COLORS.flatMap(([color, aliases]) =>
+    aliases.map((alias) => [alias, color])
+  )
+);
+
+function isPugv(product) {
+  return /^пугв$/iu.test(String(product?.markFamily || product?.mark || ''));
+}
+
+function normalizePugvColorText(value) {
+  return value.replace(
+    /(^|\s)([\p{L}]+(?:[-/][\p{L}]+)*)(\.)?(?=$|\s|\()/gu,
+    (match, separator, token) => {
+      const color = PUGV_COLOR_ALIASES.get(token.toLocaleLowerCase('ru'));
+      return color ? `${separator}${color}` : match;
+    }
+  );
+}
+
+export function formatCableProductAttributes(product) {
+  const attributes = Array.isArray(product?.attributes)
+    ? product.attributes
+    : [];
+  return isPugv(product)
+    ? attributes.map((attribute) => normalizePugvColorText(String(attribute)))
+    : attributes;
+}
+
+function normalizePugvColors(title, product) {
+  if (!isPugv(product)) return title;
+  const specification = findCableSpecification(title);
+  if (!specification || specification.warnings.length) return title;
+  const tailIndex = specification.index + specification.length;
+  // Только целые обозначения цвета после сечения. Примечания и суффиксы
+  // сохраняются, attributes остаются исходными для стабильного ключа импорта.
+  let tail = normalizePugvColorText(title.slice(tailIndex));
+  const colorThenSuffix = tail.match(/^\s*(\S+)\s+(.+)$/u);
+  if (colorThenSuffix && PUGV_COLOR_ALIASES.has(colorThenSuffix[1])) {
+    const after = consumeSuffixes(
+      colorThenSuffix[2],
+      movableAttributes(product)
+    );
+    if (after.suffixes.length && !after.rest.trim()) {
+      tail = ` ${after.suffixes.join(' ')} ${colorThenSuffix[1]}`;
+    }
+  }
+  return title.slice(0, tailIndex) + tail;
+}
+
 function movableAttributes(product) {
   return (Array.isArray(product?.attributes) ? product.attributes : [])
     .map((attribute) => String(attribute || '').trim())
@@ -57,6 +123,11 @@ function consumeSuffixes(value, attributes, { fromTail = false } = {}) {
 }
 
 export function formatCableProductTitle(title, product) {
+  if (typeof title !== 'string') return title;
+  return formatCableTitleSuffixes(normalizePugvColors(title, product), product);
+}
+
+function formatCableTitleSuffixes(title, product) {
   const mark = String(product?.mark || '').trim();
   if (!mark || typeof title !== 'string') return title;
 

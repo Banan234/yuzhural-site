@@ -1,0 +1,28 @@
+{
+  "planId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764",
+  "counts": {
+    "missing": 446,
+    "reuse": 119,
+    "eligible": 1877,
+    "needsReview": 3831
+  },
+  "renderConfig": {
+    "provider": "codex-sale",
+    "apiBaseUrl": "https://codex.sale/v1",
+    "endpoint": "/images/generations",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "background": "transparent",
+    "format": "png",
+    "style": "approved-compact-catalogue",
+    "templateVersion": "visual-profile-production-v1",
+    "concurrency": 2,
+    "retries": 2,
+    "timeoutMs": 240000,
+    "referenceSha256": "bb51f0bb18383873b4572494a7bd27e319e545c3d76e84eec636dbccf81d3d59"
+  },
+  "separateKeyConfigured": true,
+  "protectedFilesVerified": 815,
+  "apiRequests": 0
+}

@@ -1,0 +1,67 @@
+{
+  "frontend": {
+    "status": 200
+  },
+  "health": {
+    "status": 200
+  },
+  "products": {
+    "status": 200
+  },
+  "importRoundTrip": {
+    "products": 1270,
+    "mismatches": 0
+  },
+  "subcategories": [
+    {
+      "slug": "silovoy-kabel-bronirovannyy",
+      "total": 342,
+      "unique": true
+    },
+    {
+      "slug": "silovoy-kabel-rezinovaya-izolyaciya",
+      "total": 164,
+      "unique": true
+    },
+    {
+      "slug": "silovoy-kabel-polimernye-kompozicii",
+      "total": 57,
+      "unique": true
+    },
+    {
+      "slug": "silovoy-kabel-bumazhnaya-izolyaciya",
+      "total": 69,
+      "unique": true
+    },
+    {
+      "slug": "silovoy-kabel-spe",
+      "total": 101,
+      "unique": true
+    },
+    {
+      "slug": "silovoy-kabel-pvh",
+      "total": 537,
+      "unique": true
+    }
+  ],
+  "powerGroups": [
+    "Бронированный кабель",
+    "Резиновая изоляция",
+    "Полимерные композиции",
+    "Бумажная изоляция",
+    "Сшитый полиэтилен (XLPE)",
+    "ПВХ изоляция"
+  ],
+  "sitemap": {
+    "allSubcategories": true
+  },
+  "tests": {
+    "passed": 990,
+    "failed": 0
+  },
+  "build": "passed",
+  "mobile": {
+    "width": 390,
+    "pageWidth": 390
+  }
+}

@@ -1,0 +1,13 @@
+
+> yuzhural-site@0.0.1 test
+> vitest run
+
+
+ RUN  v4.1.11 /Users/Shared/yuzhural-site
+
+
+ Test Files  78 passed (78)
+      Tests  1068 passed (1068)
+   Start at  19:58:17
+   Duration  5.13s (transform 2.73s, setup 0ms, import 8.20s, tests 14.18s, environment 10.49s)
+

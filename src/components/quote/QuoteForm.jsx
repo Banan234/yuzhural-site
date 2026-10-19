@@ -41,6 +41,7 @@ export default function QuoteForm({
   idPrefix = 'quote',
   specificationOnly = false,
   defaultComment = '',
+  compact = false,
 }) {
   const { items: cartItems, clearCart } = useCartStore();
   const items = itemsOverride || cartItems;
@@ -51,6 +52,7 @@ export default function QuoteForm({
     comment: defaultComment,
   }));
   const [files, setFiles] = useState([]);
+  const [showOptional, setShowOptional] = useState(false);
   const [fileError, setFileError] = useState('');
   const [submittedSummary, setSubmittedSummary] = useState(null);
   const [honeypot, setHoneypot] = useState('');
@@ -209,10 +211,14 @@ export default function QuoteForm({
 
   return (
     <div className="quote-form-wrap">
-      <div className="quote-form-head">
-        <h2 className="section-title section-title--left">{title}</h2>
-        <p className="page-subtitle">{description}</p>
-      </div>
+      {(title || description) && (
+        <div className="quote-form-head">
+          {title && (
+            <h2 className="section-title section-title--left">{title}</h2>
+          )}
+          {description && <p className="page-subtitle">{description}</p>}
+        </div>
+      )}
 
       {!specificationOnly &&
       items.length === 0 &&
@@ -222,7 +228,10 @@ export default function QuoteForm({
           Прикрепите спецификацию или добавьте позиции из{' '}
           <a
             href={CATALOG_CANONICAL_PATH}
-            style={{ color: 'inherit', fontWeight: 700 }}
+            style={{
+              color: 'inherit',
+              fontWeight: 'var(--font-weight-medium)',
+            }}
           >
             каталога
           </a>
@@ -310,83 +319,102 @@ export default function QuoteForm({
             ) : null}
           </div>
 
-          <div className="quote-field">
-            <label htmlFor={fieldIds.email}>
-              Email <span className="quote-field__optional">(опционально)</span>
-            </label>
-            <input
-              id={fieldIds.email}
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="mail@company.ru"
-              aria-invalid={errors.email ? 'true' : undefined}
-              aria-describedby={errors.email ? errorIds.email : undefined}
-            />
-            {errors.email ? (
-              <span id={errorIds.email} className="field-error">
-                {errors.email}
-              </span>
-            ) : null}
-          </div>
-
-          <div className="quote-field quote-field--full">
-            <label>Как удобнее связаться?</label>
-            <div className="quote-channels">
-              {CHANNEL_OPTIONS.map((option) => (
-                <label
-                  key={option.value}
-                  className={`quote-channel${
-                    form.preferredChannel === option.value
-                      ? ' quote-channel--active'
-                      : ''
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="preferredChannel"
-                    value={option.value}
-                    checked={form.preferredChannel === option.value}
-                    onChange={() => handleChannelChange(option.value)}
-                  />
-                  <span>{option.label}</span>
-                </label>
-              ))}
-            </div>
-            <span className="quote-field__hint">
-              Если выбран мессенджер — отправим КП в чат на указанный телефон.
-            </span>
-          </div>
-
-          <div className="quote-field quote-field--full">
-            <label htmlFor={fieldIds.comment}>Комментарий</label>
-            <textarea
-              id={fieldIds.comment}
-              name="comment"
-              value={form.comment}
-              onChange={handleChange}
-              placeholder="Уточнения по объему, срокам, доставке, реквизитам"
-              rows="5"
-              maxLength={MAX_QUOTE_CUSTOMER_COMMENT_LENGTH}
-              aria-invalid={errors.comment ? 'true' : undefined}
-              aria-describedby={errors.comment ? errorIds.comment : undefined}
-            />
-
-            <div className="field-meta">
-              {errors.comment ? (
-                <span id={errorIds.comment} className="field-error">
-                  {errors.comment}
+          {compact && (
+            <button
+              className="quote-form__optional-toggle"
+              type="button"
+              aria-expanded={showOptional}
+              onClick={() => setShowOptional((value) => !value)}
+            >
+              {showOptional
+                ? 'Скрыть дополнительные поля'
+                : 'Добавить email и комментарий'}
+            </button>
+          )}
+          {(!compact || showOptional) && (
+            <div className="quote-field">
+              <label htmlFor={fieldIds.email}>
+                Email{' '}
+                <span className="quote-field__optional">(опционально)</span>
+              </label>
+              <input
+                id={fieldIds.email}
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="mail@company.ru"
+                aria-invalid={errors.email ? 'true' : undefined}
+                aria-describedby={errors.email ? errorIds.email : undefined}
+              />
+              {errors.email ? (
+                <span id={errorIds.email} className="field-error">
+                  {errors.email}
                 </span>
-              ) : (
-                <span />
-              )}
+              ) : null}
+            </div>
+          )}
 
-              <span className="char-counter">
-                {form.comment.length} / {MAX_QUOTE_CUSTOMER_COMMENT_LENGTH}
+          {!compact && (
+            <div className="quote-field quote-field--full">
+              <label>Как удобнее связаться?</label>
+              <div className="quote-channels">
+                {CHANNEL_OPTIONS.map((option) => (
+                  <label
+                    key={option.value}
+                    className={`quote-channel${
+                      form.preferredChannel === option.value
+                        ? ' quote-channel--active'
+                        : ''
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="preferredChannel"
+                      value={option.value}
+                      checked={form.preferredChannel === option.value}
+                      onChange={() => handleChannelChange(option.value)}
+                    />
+                    <span>{option.label}</span>
+                  </label>
+                ))}
+              </div>
+              <span className="quote-field__hint">
+                Если выбран мессенджер — отправим КП в чат на указанный телефон.
               </span>
             </div>
-          </div>
+          )}
+
+          {(!compact || showOptional) && (
+            <div className="quote-field quote-field--full">
+              <label htmlFor={fieldIds.comment}>Комментарий</label>
+              <textarea
+                id={fieldIds.comment}
+                name="comment"
+                value={form.comment}
+                onChange={handleChange}
+                placeholder="Уточнения по объему, срокам, доставке, реквизитам"
+                rows={compact ? 2 : 5}
+                maxLength={MAX_QUOTE_CUSTOMER_COMMENT_LENGTH}
+                aria-invalid={errors.comment ? 'true' : undefined}
+                aria-describedby={errors.comment ? errorIds.comment : undefined}
+              />
+
+              <div className="field-meta">
+                {errors.comment ? (
+                  <span id={errorIds.comment} className="field-error">
+                    {errors.comment}
+                  </span>
+                ) : (
+                  <span />
+                )}
+
+                <span className="char-counter">
+                  {form.comment.length} / {MAX_QUOTE_CUSTOMER_COMMENT_LENGTH}
+                </span>
+              </div>
+            </div>
+          )}
 
           <div className="quote-field quote-field--full">
             <label className="quote-form__consent">

@@ -1,0 +1,9 @@
+
+ RUN  v4.1.11 /Users/Shared/yuzhural-site
+
+
+ Test Files  6 passed (6)
+      Tests  172 passed (172)
+   Start at  00:23:33
+   Duration  1.26s (transform 569ms, setup 0ms, import 1.12s, tests 1.04s, environment 939ms)
+

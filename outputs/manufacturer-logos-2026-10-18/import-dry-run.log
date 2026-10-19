@@ -1,0 +1,13 @@
+
+> yuzhural-site@0.0.1 import:price
+> node scripts/importPrice.js --dry-run
+
+[dotenv@17.3.1] injecting env (62) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+Скачивание прайса: http://kabelhome.ru/images/price/price.xls (источник http://kabelhome.ru/images/price/price.xls, лимит 50.0 МБ)
+Скачано http://kabelhome.ru/images/price/price.xls (858.5 КБ)
+Чтение прайса: http://kabelhome.ru/images/price/price.xls
+Источник проверен: remote, 879104 байт, SHA-256 5945cf5e1becdbdb1f3e4e1233eeae8384bcbfd4fcd1e679b21b7ec1fa8c4ee2
+Режим: --dry-run (файлы не записываются)
+Ошибка импорта прайса: Публикация прайса остановлена защитным контролем:
+- Категория изменилась у 74.22% каталога, допустимо не более 1%.
+Проверь импорт и повтори запуск. Для осознанного ручного обхода используй --override-publish-guard.

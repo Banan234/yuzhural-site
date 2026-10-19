@@ -1,0 +1,175 @@
+{
+  "originalPositions": 705,
+  "originalCounts": {
+    "kabeli-svyazi": 511,
+    "kontrolnyy-kabel": 76,
+    "lan-kabeli": 118
+  },
+  "parentPositions": 588,
+  "countBySubcategory": {
+    "universalnye-kabeli": 76,
+    "kabeli-svyazi": 251,
+    "lan-kabeli": 114,
+    "koaksialnye-kabeli": 65,
+    "optovolokonnye-kabeli": 44
+  },
+  "unresolved": [
+    {
+      "sku": "YU-0001203",
+      "sourceName": "ВЭОВКВ-ВП нг(А) LS 12х2х1,5"
+    },
+    {
+      "sku": "YU-0001205",
+      "sourceName": "ВЭОВКВ-ВП нг(А) LS 14х2х1,5л"
+    },
+    {
+      "sku": "YU-0001202",
+      "sourceName": "ВЭОВКВ-ВП нг(А) LS 4х2х1,5л"
+    },
+    {
+      "sku": "YU-0001208",
+      "sourceName": "ВЭОВКВ-ВП нг(А) LS 8х2х1,5"
+    },
+    {
+      "sku": "YU-0001209",
+      "sourceName": "ВЭОВКВ-ВП нг(А) LS 8х2х1,5л"
+    },
+    {
+      "sku": "YU-0001210",
+      "sourceName": "ВЭОВКВ-ВЭОП нг(А) LS 12х2х1,5л"
+    },
+    {
+      "sku": "YU-0001089",
+      "sourceName": "Кабель РАПМ 685442.003 красн"
+    },
+    {
+      "sku": "YU-0001090",
+      "sourceName": "Кабель РАПМ 685442.003 синий"
+    },
+    {
+      "sku": "YU-0001962",
+      "sourceName": "ПсВКВ-ВЭоП нг(А) LS 2х2х0,5л"
+    },
+    {
+      "sku": "YU-0003311",
+      "sourceName": "РЭкП-ВП нг(А)FRHF хл 7х2х1"
+    },
+    {
+      "sku": "YU-0007607",
+      "sourceName": "Сегмент-КИ185-Эк нг(А)HF 2х2х0.6"
+    },
+    {
+      "sku": "YU-0006933",
+      "sourceName": "КПЭП  1х2х0.8 нг(А)HF"
+    },
+    {
+      "sku": "YU-0006934",
+      "sourceName": "КПЭП  1х2х1.38 нг(А)HF"
+    },
+    {
+      "sku": "YU-0006935",
+      "sourceName": "КПЭП  2х2х0.8 нг(А)HF"
+    },
+    {
+      "sku": "YU-0006948",
+      "sourceName": "КПЭП  4х2х0.8 нг(А)HF"
+    },
+    {
+      "sku": "YU-0001985",
+      "sourceName": "ЛПГРС 2.5 э"
+    },
+    {
+      "sku": "YU-0001986",
+      "sourceName": "ЛПГРС 4 э"
+    },
+    {
+      "sku": "YU-0001987",
+      "sourceName": "ЛПГРС 6"
+    },
+    {
+      "sku": "YU-0001988",
+      "sourceName": "ЛПГРС 6 э"
+    },
+    {
+      "sku": "YU-0001989",
+      "sourceName": "ЛПГРС 70 э"
+    },
+    {
+      "sku": "YU-0003106",
+      "sourceName": "КПГКПКГ нг(А)FRHF 1х2х1.5"
+    },
+    {
+      "sku": "YU-0003107",
+      "sourceName": "КПГКПКГ нг(А)FRHF 1х2х2.5"
+    },
+    {
+      "sku": "YU-0003108",
+      "sourceName": "КПГКПКГ нг(А)FRHF 2х2х1.5"
+    },
+    {
+      "sku": "YU-0003224",
+      "sourceName": "ШОВЗ  1х0.35"
+    },
+    {
+      "sku": "YU-0003430",
+      "sourceName": "КМС 2х0,5"
+    },
+    {
+      "sku": "YU-0003700",
+      "sourceName": "РКЭал-лКоВ 10х2х1,5  нг(А)FRLS УФ"
+    },
+    {
+      "sku": "YU-0003701",
+      "sourceName": "РКЭал-лКоВ 6х2х1,5  нг(А)FRLS УФ"
+    },
+    {
+      "sku": "YU-0003702",
+      "sourceName": "РКЭалКоВ 1х2х0,35 нг(А)FRLS"
+    },
+    {
+      "sku": "YU-0003703",
+      "sourceName": "РКЭалКоВ 1х2х1 нг(А)FRLS"
+    },
+    {
+      "sku": "YU-0003763",
+      "sourceName": "КПЭП  6х2х0.8 нг(А)FRHF"
+    },
+    {
+      "sku": "YU-0003764",
+      "sourceName": "КПЭП 10х2х0.8 нг(А)FRHF"
+    },
+    {
+      "sku": "YU-0004202",
+      "sourceName": "ASO2  2х0.2 КНР"
+    },
+    {
+      "sku": "YU-0004203",
+      "sourceName": "BSO4  4х0.2 КНР"
+    },
+    {
+      "sku": "YU-0004204",
+      "sourceName": "ВСЭК 5х2х0.35"
+    },
+    {
+      "sku": "YU-0004205",
+      "sourceName": "ВСЭК 5х2эх0.5"
+    },
+    {
+      "sku": "YU-0004566",
+      "sourceName": "КТМ 2.0/3.8"
+    },
+    {
+      "sku": "YU-0005356",
+      "sourceName": "КММЭС 4х0.35"
+    },
+    {
+      "sku": "YU-0005359",
+      "sourceName": "КМСГ 4х0.8 нг(А)LS"
+    }
+  ],
+  "movedOut": 117,
+  "movedIn": 76,
+  "catalogPositions": 5708,
+  "uniqueSkus": 5708,
+  "importRuntimeDifferences": []
+}

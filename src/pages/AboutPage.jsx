@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Container from '../components/ui/Container';
+import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { useJsonLd } from '../hooks/useJsonLd';
 import { useSEO } from '../hooks/useSEO';
 import {
@@ -125,6 +126,7 @@ export default function AboutPage() {
     <>
       <section className="section">
         <Container>
+          <Breadcrumbs current="О компании" />
           <div className="about-page__hero">
             <div className="about-page__intro">
               <h1 className="page-title">О компании</h1>

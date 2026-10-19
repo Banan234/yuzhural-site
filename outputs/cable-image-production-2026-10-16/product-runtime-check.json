@@ -1,0 +1,39 @@
+{
+  "sku": "YU-0005102",
+  "url": "http://localhost:5173/product/pugv-1h0-5-bel-3xq",
+  "errors": [],
+  "images": [
+    {
+      "src": "/logo.png",
+      "loaded": true
+    },
+    {
+      "src": "/product-images/generated/pr1_pugv__1c__stranded__round__1core-white__p-158003053538284a.png",
+      "loaded": true
+    },
+    {
+      "src": "/product-images/generated/pr1_pugvng-a-ls__1c__stranded__round__1core-white__p-2f47459a73ca61e1.png",
+      "loaded": true
+    },
+    {
+      "src": "/product-images/generated/pr1_pugv__1c__stranded__round__1core-blue__p-fe60547bc9a400be.png",
+      "loaded": true
+    },
+    {
+      "src": "/category-placeholders/wire.svg",
+      "loaded": true
+    },
+    {
+      "src": "/category-placeholders/wire.svg",
+      "loaded": true
+    },
+    {
+      "src": "/category-placeholders/wire.svg",
+      "loaded": true
+    },
+    {
+      "src": "/product-images/generated/pr1_pugv__1c__stranded__round__1core-blue__p-fe60547bc9a400be.png",
+      "loaded": true
+    }
+  ]
+}

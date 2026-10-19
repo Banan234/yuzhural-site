@@ -1,0 +1,194 @@
+.delivery-page .page-title {
+  font-size: clamp(30px, 3.1vw, 42px);
+  line-height: 1.15;
+}
+
+.delivery-page .page-subtitle {
+  max-width: 740px;
+  color: #475569;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.delivery-page__tabs {
+  display: flex;
+  gap: 40px;
+  margin: 28px 0 32px;
+}
+
+.delivery-page__tabs [role='tab'] {
+  padding: 0 0 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+
+.delivery-page__tabs [role='tab']:hover {
+  color: var(--text);
+}
+
+.delivery-page__tabs [aria-selected='true'] {
+  border-bottom-color: var(--primary-dark);
+  color: var(--primary-dark);
+}
+
+.delivery-page__tabs [role='tab']:focus-visible,
+.delivery-page__panel:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+.delivery-page__panel[hidden] {
+  display: none;
+}
+
+.delivery-page__panel .delivery-option {
+  max-width: 850px;
+}
+
+.delivery-page .info-note,
+.delivery-page .delivery-option,
+.delivery-page .delivery-manager-card,
+.delivery-page .delivery-steps li,
+.delivery-page .contacts-map-card,
+.delivery-page .contacts-map-frame {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.delivery-page .delivery-option {
+  min-height: 0;
+}
+
+.delivery-page .delivery-option__title,
+.delivery-page .delivery-section-title,
+.delivery-page .delivery-manager-card__title,
+.delivery-page .contacts-map-card__title {
+  margin: 0 0 16px;
+  color: #102947;
+  font-size: clamp(24px, 2.3vw, 32px);
+  line-height: 1.2;
+}
+
+.delivery-page .delivery-option p,
+.delivery-page .content-lead,
+.delivery-page .delivery-manager-card__text {
+  margin: 0;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: var(--font-weight-regular);
+}
+
+.delivery-page .delivery-option .content-actions {
+  margin-top: 16px;
+  padding: 0;
+}
+
+.delivery-page__text-link,
+.delivery-page .info-note__link {
+  color: var(--primary-dark);
+  font-weight: var(--font-weight-regular);
+  text-decoration: none;
+}
+
+.delivery-page .delivery-page__shipping-note {
+  max-width: 850px;
+  margin: 28px 0 0;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.delivery-page .delivery-route-map,
+.delivery-page .content-columns--spaced,
+.delivery-page .delivery-manager-card {
+  margin-top: 48px;
+}
+
+.delivery-page .contacts-map-frame {
+  border-radius: 4px;
+}
+
+.delivery-page .content-columns {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+}
+
+.delivery-page .delivery-steps {
+  gap: 22px;
+}
+
+.delivery-page .delivery-steps li {
+  min-height: 0;
+  padding-left: 30px;
+}
+
+.delivery-page .delivery-steps li::before {
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  color: #92969c;
+  font-size: 16px;
+  line-height: 1.5;
+  content: counter(delivery-steps) '.';
+}
+
+.delivery-page .delivery-steps span {
+  color: #475569;
+}
+
+.delivery-page .info-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 18px;
+  list-style: disc;
+  color: #475569;
+}
+
+.delivery-page .info-list li {
+  padding: 0;
+}
+
+.delivery-page .info-list li::before {
+  content: none;
+}
+
+.delivery-page .delivery-manager-card {
+  max-width: 850px;
+}
+
+.delivery-page .delivery-manager-card__text {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .delivery-page .content-columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .delivery-page__tabs {
+    gap: 28px;
+    margin: 24px 0 28px;
+  }
+
+  .delivery-page .delivery-route-map,
+  .delivery-page .content-columns--spaced,
+  .delivery-page .delivery-manager-card {
+    margin-top: 36px;
+  }
+}

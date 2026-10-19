@@ -1,0 +1,21 @@
+{
+  "catalog": "/Users/Shared/yuzhural-site/data/catalog-current/products.json",
+  "jobs": [],
+  "skipped": [
+    {
+      "sku": "YU-0000815",
+      "name": "ВВГ  3х1.5 нг(А)LS",
+      "reason": "existing_product_image"
+    }
+  ],
+  "summary": {
+    "selected": 0,
+    "generate": 0,
+    "reuse": 0,
+    "skipped": 1,
+    "needs_review": 0,
+    "approved": 0,
+    "failed": 0
+  },
+  "results": []
+}

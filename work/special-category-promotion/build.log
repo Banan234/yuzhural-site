@@ -1,0 +1,102 @@
+
+> yuzhural-site@0.0.1 build:prod
+> npm run build && npm run build:ssr && node scripts/prerender.js && npm run sync:runtime-artifacts && npm run precompress
+
+
+> yuzhural-site@0.0.1 build
+> vite build --configLoader native
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 721 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                     2.61 kB │ gzip:   0.94 kB
+dist/.vite/manifest.json                           12.92 kB │ gzip:   1.78 kB
+dist/assets/MarksPage-DdDFvCgg.css                  2.87 kB │ gzip:   0.90 kB
+dist/assets/InternalRuntimePage-D_HbtJb8.css        3.15 kB │ gzip:   0.94 kB
+dist/assets/ProductPage-6oQg0u9B.css                3.59 kB │ gzip:   1.06 kB
+dist/assets/CartPage-BkLHW5TE.css                   4.01 kB │ gzip:   1.18 kB
+dist/assets/purchase-CisGLsu1.css                   4.63 kB │ gzip:   1.30 kB
+dist/assets/services-hDRVkpVW.css                   8.18 kB │ gzip:   2.25 kB
+dist/assets/content-CwsKK6cK.css                   18.80 kB │ gzip:   3.39 kB
+dist/assets/CatalogPage-BfhEcaWi.css               39.57 kB │ gzip:   7.11 kB
+dist/assets/index-6SCJRxEI.css                     69.96 kB │ gzip:  13.70 kB
+dist/assets/PurchaseLayout-CLsHX2ID.js              0.73 kB │ gzip:   0.42 kB
+dist/assets/ConsentGatedMap-wh2LC_r3.js             0.75 kB │ gzip:   0.50 kB
+dist/assets/NotFoundPage-Cg5aHjGZ.js                1.03 kB │ gzip:   0.56 kB
+dist/assets/ServicesPage-CfGqyiZ_.js                1.05 kB │ gzip:   0.60 kB
+dist/assets/calculationPdf-DpEu1gwm.js              1.60 kB │ gzip:   0.92 kB
+dist/assets/ServiceLayout-CddZNN8d.js               1.61 kB │ gzip:   0.78 kB
+dist/assets/SpecificationPage-Cv9_uemV.js           1.61 kB │ gzip:   0.85 kB
+dist/assets/ReportActions-F8Ijg2jH.js               1.78 kB │ gzip:   0.88 kB
+dist/assets/cableLogistics-DvDHRCeg.js              2.05 kB │ gzip:   0.96 kB
+dist/assets/OrderGuidePage-DA7aDbmy.js              2.13 kB │ gzip:   0.98 kB
+dist/assets/MarksPage-C9OUYMfN.js                   3.38 kB │ gzip:   1.46 kB
+dist/assets/MobileNav-C5VsIYXQ.js                   3.47 kB │ gzip:   1.28 kB
+dist/assets/QualityPage-Wo-AENUo.js                 4.84 kB │ gzip:   1.85 kB
+dist/assets/quotePdf-CxBtIj7i.js                    4.87 kB │ gzip:   2.36 kB
+dist/assets/CableApplicationPage-BAtJId7t.js        5.95 kB │ gzip:   2.25 kB
+dist/assets/ContactsPage-DH-__q7a.js                6.44 kB │ gzip:   1.85 kB
+dist/assets/cableSpecification-BR331i5y.js          7.19 kB │ gzip:   2.60 kB
+dist/assets/InternalRuntimePage-DYz0_2sJ.js         7.94 kB │ gzip:   2.76 kB
+dist/assets/DeliveryPage-BZAdcbOe.js                8.55 kB │ gzip:   2.72 kB
+dist/assets/CartPage-B9xF19r9.js                    9.45 kB │ gzip:   3.53 kB
+dist/assets/CableDrumPage-bP8yMi3j.js               9.70 kB │ gzip:   3.37 kB
+dist/assets/staticPageJsonLd-CPw03bnM.js            9.82 kB │ gzip:   3.09 kB
+dist/assets/QuoteForm-hDb-9tpT.js                  10.29 kB │ gzip:   4.05 kB
+dist/assets/CableShippingPage-DnbVw2xu.js          11.08 kB │ gzip:   3.96 kB
+dist/assets/AboutPage-Dys0-q3i.js                  12.29 kB │ gzip:   3.89 kB
+dist/assets/PaymentPage-CQvtsdb7.js                13.49 kB │ gzip:   3.54 kB
+dist/assets/CableSectionPage-BuilGkVB.js           16.01 kB │ gzip:   5.90 kB
+dist/assets/CableWeightPage-cpFG_3Ag.js            17.26 kB │ gzip:   5.50 kB
+dist/assets/PrivacyPage-CVovmMHn.js                26.05 kB │ gzip:   6.21 kB
+dist/assets/CableKnowledgePage-DNGU_dI4.js         26.14 kB │ gzip:   7.33 kB
+dist/assets/purify.es-BPuvlvQ_.js                  29.05 kB │ gzip:  11.07 kB
+dist/assets/CatalogPage-L9PC92un.js                30.85 kB │ gzip:  10.09 kB
+dist/assets/jspdf.plugin.autotable-KFqWVtFs.js     31.02 kB │ gzip:   9.92 kB
+dist/assets/index.es-NGtDxCcX.js                  158.83 kB │ gzip:  52.93 kB
+dist/assets/html2canvas.esm-DXEQVQnt.js           201.04 kB │ gzip:  47.07 kB
+dist/assets/jspdf.es.min-O9pmAwXU.js              386.01 kB │ gzip: 124.94 kB
+dist/assets/ProductPage-DKpX52ZN.js               460.36 kB │ gzip:  32.67 kB
+dist/assets/cableMass-BE8-yKjl.js                 672.97 kB │ gzip:  44.74 kB
+dist/assets/index-WjugPOHp.js                   1,701.50 kB │ gzip: 206.96 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.34s
+
+> yuzhural-site@0.0.1 build:ssr
+> vite build --configLoader native --ssr src/entry-server.jsx --outDir dist/server
+
+vite v7.3.7 building ssr environment for production...
+transforming...
+✓ 124 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /Users/Shared/yuzhural-site/src/components/quote/QuoteForm.jsx is dynamically imported by /Users/Shared/yuzhural-site/src/components/layout/MainLayout.jsx but also statically imported by /Users/Shared/yuzhural-site/src/pages/SpecificationPage.jsx, dynamic import will not move module into another chunk.
+
+dist/server/.vite/manifest.json                    1.08 kB
+dist/server/assets/calculationPdf-Di3yYIzG.js      2.04 kB
+dist/server/assets/MobileNav-CAaymI2H.js           7.10 kB
+dist/server/assets/quotePdf-BypYo6lO.js            8.10 kB
+dist/server/entry-server.js                    3,104.60 kB
+✓ built in 813ms
+[prerender] static: 21 pages → dist/{/specification/, /how-to-order/, /quality/, /services/, /services/application/, /calculator/section/, /services/marking/, /services/reference/, /services/analogs/, /services/drum/, /services/shipping/, /services/manufacturers/, /, /catalog, /marks, /about, /contacts, /delivery, /calculator/weight, /payment, /privacy}
+[prerender] categories: 57 pages → dist/catalog/<slug>/index.html
+[prerender] 404: dist/404.html
+[prerender] build product cap: 720/5708 pages (limit=720; long-tail → runtime/static fallback)
+[prerender] products: 720/5708 pages → dist/product/<slug>.html
+[prerender] done.
+
+> yuzhural-site@0.0.1 sync:runtime-artifacts
+> node scripts/syncRuntimeArtifacts.js
+
+[runtime-sync] publicDir=data/public pages=21 categories=57 products=5708 productHtml=5708
+
+> yuzhural-site@0.0.1 precompress
+> node scripts/precompress.js
+
+[precompress] wrote .br/.gz for 153/161 files

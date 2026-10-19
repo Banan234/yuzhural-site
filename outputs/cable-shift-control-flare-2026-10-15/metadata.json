@@ -1,0 +1,33 @@
+{
+  "model": "gpt-image-2.5-flare",
+  "httpStatus": 200,
+  "apiRequests": 1,
+  "file": "/Users/Shared/yuzhural-site/outputs/cable-shift-control-flare-2026-10-15/control-flare-shift-right.png",
+  "endpoint": "/v1/images/edits",
+  "reference": "/Users/Shared/yuzhural-site/public/product-images/generated/YU-0000815-dd57341d425b.png",
+  "width": 1536,
+  "height": 1024,
+  "requested_size": "1536x1024",
+  "has_alpha_channel": true,
+  "touches_right_edge": false,
+  "right_edge_foreground_ratio": 0,
+  "has_transparency": true,
+  "transparent_ratio": 0.776452382405599,
+  "non_opaque_ratio": 1,
+  "foreground_ratio": 0.22285143534342447,
+  "bounds": {
+    "minX": 175,
+    "minY": 298,
+    "maxX": 1527,
+    "maxY": 724
+  },
+  "warnings": [
+    "PNG subject touches the frame margin; review cropping"
+  ],
+  "sha256": "432f6ec41624599eb1959afd93a5d1cd04916321c5ed8a02258e43c343bb4b21",
+  "bytes": 1283580,
+  "objectWidthPercent": 88.1,
+  "objectHeightPercent": 41.7,
+  "catalogFilesUnchanged": true,
+  "normalizationApplied": false
+}

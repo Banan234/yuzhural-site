@@ -2,6 +2,9 @@
 
 /* TOKENS */
 :root {
+  --font-family: 'Noto Sans', Arial, sans-serif;
+  --font-weight-regular: 450;
+  --font-weight-medium: 550;
   --bg: #ffffff;
   --bg-soft: #f7f8fa;
   --surface: #ffffff;
@@ -37,18 +40,28 @@ body,
 body {
   margin: 0;
   min-width: 320px;
-  font-family:
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    Arial,
-    sans-serif;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
   background: var(--bg);
   color: var(--text);
 }
 
 a {
   color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b,
+th {
+  font-weight: var(--font-weight-medium);
 }
 
 img {
@@ -96,7 +109,7 @@ select {
   min-height: 42px;
   padding: 0 16px;
   border-radius: 4px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   font-size: 15px;
   cursor: pointer;
   text-decoration: none;
@@ -153,7 +166,7 @@ main > .section:first-child {
   margin: 0 0 8px;
   font-size: 44px;
   line-height: 1.1;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
 }
 .section-title--left {
   text-align: left;
@@ -167,7 +180,7 @@ main > .section:first-child {
   margin-bottom: 24px;
 }
 .section-link {
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: var(--primary-dark);
   text-decoration: none;
 }
@@ -176,7 +189,7 @@ main > .section:first-child {
   margin: 0 0 12px;
   font-size: 53px;
   line-height: 1.08;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
 }
 .page-subtitle {
   margin: 0;
@@ -196,7 +209,7 @@ main > .section:first-child {
   padding: 40px 20px;
   color: #5a6f87;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 .route-fallback--page {
   min-height: 100svh;

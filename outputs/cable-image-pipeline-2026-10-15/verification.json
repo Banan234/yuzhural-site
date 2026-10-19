@@ -1,0 +1,37 @@
+{
+  "tests": {
+    "passed": 1048,
+    "failed": 0,
+    "success": true
+  },
+  "build": {
+    "frontend": true,
+    "ssr": true
+  },
+  "visual": {
+    "desktop": true,
+    "mobile": true
+  },
+  "generated_in_this_pipeline": 1,
+  "approved_skus": [
+    "YU-0000815"
+  ],
+  "repeat_run": {
+    "selected": 0,
+    "generate": 0,
+    "reuse": 0,
+    "skipped": 1,
+    "needs_review": 0,
+    "approved": 0,
+    "failed": 0
+  },
+  "other_section_reuse_dry_run": {
+    "sku": "YU-0000838",
+    "section": 2.5,
+    "action": "reuse"
+  },
+  "provider": "codex-imagegen",
+  "model": "tool-managed",
+  "live_openai_api_verified": false,
+  "api_contract_verified_with_local_server": true
+}

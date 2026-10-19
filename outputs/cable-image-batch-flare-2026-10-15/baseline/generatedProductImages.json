@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "bySku": {
+    "YU-0000815": {
+      "image": "/product-images/generated/YU-0000815-dd57341d425b.png",
+      "status": "approved",
+      "kind": "generated-illustration",
+      "productId": 815,
+      "sourceName": "ВВГ  3х1.5 нг(А)LS",
+      "productName": "ВВГнг(А)-LS 3х1.5",
+      "primaryCores": 3,
+      "cores": 3,
+      "section": 1.5,
+      "family": "ВВГ",
+      "colors": ["brown", "blue", "yellow-green"],
+      "visualKey": "dd57341d425b55ff20556351347f858f9ef43a99f1dc7728d7bdeed3cb9cc4eb",
+      "sha256": "3d4bbfa5b129894578fa7baf1823bf57d715cc9495bf7b4d4218d2bb5b0d1f6d"
+    }
+  }
+}

@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import Container from '../ui/Container';
+import Breadcrumbs from '../ui/Breadcrumbs';
 import { useJsonLd } from '../../hooks/useJsonLd';
 import {
   buildStaticPageJsonLd,
@@ -19,11 +19,7 @@ export default function PurchaseLayout({ pageKey, children }) {
   return (
     <section className="purchase-page">
       <Container>
-        <nav className="purchase-breadcrumbs" aria-label="Хлебные крошки">
-          <Link to="/">Главная</Link>
-          <span>/</span>
-          <span>{page.title}</span>
-        </nav>
+        <Breadcrumbs current={page.title} />
         <header className="purchase-heading">
           <h1>{page.title}</h1>
           <p>{page.description}</p>

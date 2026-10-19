@@ -1,0 +1,71 @@
+/* Единый отступ под шапкой, как на странице алфавитного перечня. */
+main > :is(section, main):first-child:has(.breadcrumbs) {
+  padding-top: 28px;
+}
+
+/* У каталога есть верхняя рамка толщиной 1px. */
+main > .catalog-section:first-child:has(.breadcrumbs) {
+  padding-top: 27px;
+}
+
+.breadcrumbs {
+  margin: -4px 0 10px;
+  color: #92969c;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 3px 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 0;
+  max-width: 100%;
+}
+.breadcrumbs a,
+.breadcrumbs__label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.breadcrumbs a {
+  color: inherit;
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  color: #626871;
+  text-decoration: none;
+}
+.breadcrumbs a:focus-visible {
+  outline: 2px solid #0967bd;
+  outline-offset: 3px;
+}
+.breadcrumbs__separator {
+  flex-shrink: 0;
+  color: #b9bdc3;
+}
+.breadcrumbs [aria-current='page'] {
+  color: inherit;
+}
+@media (max-width: 600px) {
+  main > :is(section, main):first-child:has(.breadcrumbs) {
+    padding-top: 20px;
+  }
+
+  main > .catalog-section:first-child:has(.breadcrumbs) {
+    padding-top: 19px;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 8px;
+    font-size: 11px;
+  }
+}

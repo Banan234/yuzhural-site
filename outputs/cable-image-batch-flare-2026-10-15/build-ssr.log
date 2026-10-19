@@ -1,0 +1,17 @@
+
+> yuzhural-site@0.0.1 build:ssr
+> vite build --configLoader native --ssr src/entry-server.jsx --outDir dist/server
+
+vite v7.3.7 building ssr environment for production...
+transforming...
+✓ 119 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /Users/Shared/yuzhural-site/src/components/quote/QuoteForm.jsx is dynamically imported by /Users/Shared/yuzhural-site/src/components/layout/MainLayout.jsx but also statically imported by /Users/Shared/yuzhural-site/src/pages/SpecificationPage.jsx, dynamic import will not move module into another chunk.
+
+dist/server/.vite/manifest.json                    1.08 kB
+dist/server/assets/calculationPdf-B1fAbHQd.js      2.04 kB
+dist/server/assets/MobileNav-CEU75JN8.js           6.79 kB
+dist/server/assets/quotePdf-NSiEUuJt.js            8.10 kB
+dist/server/entry-server.js                    2,014.90 kB
+✓ built in 470ms

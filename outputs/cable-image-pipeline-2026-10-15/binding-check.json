@@ -1,0 +1,24 @@
+{
+  "sku": "YU-0000815",
+  "name": "ВВГнг(А)-LS 3х1.5",
+  "slug": "vvg-3h1-5-ng-a-ls-mn",
+  "image": "/product-images/generated/YU-0000815-dd57341d425b.png",
+  "frontendListImage": "/product-images/generated/YU-0000815-dd57341d425b.png",
+  "alt": "ВВГнг(А)-LS 3х1.5 — иллюстрация конструкции кабеля",
+  "metadataStatus": "approved",
+  "actualProvider": "codex-imagegen",
+  "actualModel": "tool-managed",
+  "repeatSummary": {
+    "selected": 0,
+    "generate": 0,
+    "reuse": 0,
+    "skipped": 1
+  },
+  "repeatReason": "existing_product_image",
+  "generatedFiles": [
+    "YU-0000815-dd57341d425b.png"
+  ],
+  "manifestKeys": [
+    "YU-0000815"
+  ]
+}

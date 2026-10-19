@@ -87,7 +87,7 @@
   min-height: 26px;
   color: #35659a;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
 }
 
@@ -116,7 +116,7 @@
   margin: 0 0 20px;
   color: #263a53;
   font-size: 34px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   line-height: 1;
 }
 
@@ -126,16 +126,21 @@
 }
 
 .marks-page__group ul {
-  columns: 6 170px;
+  /* Explicit rows avoid multicolumn rebalancing when a link is repainted. */
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(var(--marks-rows-6), max-content);
   column-gap: 24px;
+  row-gap: 11px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .marks-page__group li {
-  break-inside: avoid;
-  margin: 0 0 11px;
+  min-width: 0;
+  margin: 0;
   font-size: 15px;
   line-height: 1.35;
 }
@@ -153,6 +158,13 @@
   text-underline-offset: 3px;
 }
 
+@media (max-width: 1200px) {
+  .marks-page__group ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(var(--marks-rows-4), max-content);
+  }
+}
+
 @media (max-width: 900px) {
   .marks-page__group {
     scroll-margin-top: 85px;
@@ -160,7 +172,8 @@
   }
 
   .marks-page__group ul {
-    columns: 3 170px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(var(--marks-rows-3), max-content);
   }
 }
 
@@ -216,13 +229,15 @@
   }
 
   .marks-page__group ul {
-    columns: 2 130px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(var(--marks-rows-2), max-content);
     column-gap: 18px;
   }
 }
 
 @media (max-width: 340px) {
   .marks-page__group ul {
-    columns: 1;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(var(--marks-rows-1), max-content);
   }
 }

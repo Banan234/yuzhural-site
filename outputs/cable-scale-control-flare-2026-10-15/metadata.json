@@ -1,0 +1,29 @@
+{
+  "model": "gpt-image-2.5-flare",
+  "httpStatus": 200,
+  "apiRequests": 1,
+  "file": "/Users/Shared/yuzhural-site/outputs/cable-scale-control-flare-2026-10-15/control-flare-large.png",
+  "width": 1536,
+  "height": 1024,
+  "requested_size": "1536x1024",
+  "has_alpha_channel": true,
+  "touches_right_edge": true,
+  "right_edge_foreground_ratio": 0.3837890625,
+  "has_transparency": true,
+  "transparent_ratio": 0.66217041015625,
+  "non_opaque_ratio": 1,
+  "foreground_ratio": 0.33701324462890625,
+  "bounds": {
+    "minX": 82,
+    "minY": 238,
+    "maxX": 1535,
+    "maxY": 804
+  },
+  "warnings": [],
+  "sha256": "b45f43cec58d67e65a4412a04d85467a81bde0f2c13bfb71ba706701c7612459",
+  "bytes": 1708996,
+  "objectWidthPercent": 94.7,
+  "objectHeightPercent": 55.4,
+  "catalogFilesUnchanged": true,
+  "normalizationApplied": false
+}

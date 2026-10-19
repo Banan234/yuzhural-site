@@ -1,0 +1,121 @@
+{
+  "originalPositions": 1381,
+  "originalCounts": {
+    "kontrolnyy-kabel": 1143,
+    "signalno-blokirovochnye": 47,
+    "kabeli-pozharnoy-signalizacii": 191
+  },
+  "countBySubcategory": {
+    "signalno-blokirovochnye": 263,
+    "kontrolnye-kabeli": 613,
+    "kabel-upravleniya": 486
+  },
+  "parentPositions": 1378,
+  "unresolved": [
+    {
+      "sku": "YU-0001194",
+      "name": "VIKAB-КВЭлнг(А)-ХЛ 1х3х1м"
+    },
+    {
+      "sku": "YU-0001196",
+      "name": "АРМОФЛЕКС ВЭфВ нг(А)-LS 4х1"
+    },
+    {
+      "sku": "YU-0001197",
+      "name": "АРМОФЛЕКС ВЭфВ нг(А)-LS 5х2х1"
+    },
+    {
+      "sku": "YU-0001198",
+      "name": "АРМОФЛЕКС ВЭфКВ нг(А)-LS 5х1"
+    },
+    {
+      "sku": "YU-0001199",
+      "name": "ВКЭФнг(А)-ХЛ 12х2х2"
+    },
+    {
+      "sku": "YU-0001200",
+      "name": "ВЭАлКВ нг(А)-FRLS-уф 2эх2х0.75"
+    },
+    {
+      "sku": "YU-0001201",
+      "name": "ВЭАлКВ нг(А)-FRLS-уфхл 1х2х0.75"
+    },
+    {
+      "sku": "YU-0001211",
+      "name": "ВЭфВ унг(А) 2х2х1"
+    },
+    {
+      "sku": "YU-0001424",
+      "name": "КВЭВВ 1х2х1"
+    },
+    {
+      "sku": "YU-0001845",
+      "name": "УКВЭМКШВ нг(А)-FRLS 14х1.5м"
+    },
+    {
+      "sku": "YU-0001892",
+      "name": "УКВЭМКШВ нг(А)-LS 4х1"
+    },
+    {
+      "sku": "YU-0001910",
+      "name": "УКВЭмКШв нг(А)-LS 4х2х1.5"
+    },
+    {
+      "sku": "YU-0001849",
+      "name": "УКВЭмКШв нг(А)-LS 7х2х1.5"
+    },
+    {
+      "sku": "YU-0001850",
+      "name": "УКВЭМКШВ нг(А)-LS 10х0.75"
+    },
+    {
+      "sku": "YU-0007117",
+      "name": "КасГэФэФ-Внг(А)-LS 16х2х0,6"
+    },
+    {
+      "sku": "YU-0002934",
+      "name": "КВВзЭБГнг 4х2.5"
+    }
+  ],
+  "moved": [
+    {
+      "sku": "YU-0001507",
+      "name": "КУИН-ПУГВВ нг(В) 1х1.5",
+      "mark": "КУИН-ПУГВВ",
+      "manufacturer": null,
+      "sourceCategory": "Без категории",
+      "originalCategory": "kontrolnyy-kabel",
+      "category": "provoda",
+      "subcategory": "provoda-ustanovochnye",
+      "rule": "kuin-installation-wire",
+      "reference": "https://kazkabel.kz/wp-content/uploads/kek/2025/03/tablica-diametrov-i-mass-na-kabel-kuin-pu-ku.pdf"
+    },
+    {
+      "sku": "YU-0001508",
+      "name": "КУИН-ПУГВВ нг(В) 1х2.5 красн.",
+      "mark": "КУИН-ПУГВВ",
+      "manufacturer": null,
+      "sourceCategory": "Без категории",
+      "originalCategory": "kontrolnyy-kabel",
+      "category": "provoda",
+      "subcategory": "provoda-ustanovochnye",
+      "rule": "kuin-installation-wire",
+      "reference": "https://kazkabel.kz/wp-content/uploads/kek/2025/03/tablica-diametrov-i-mass-na-kabel-kuin-pu-ku.pdf"
+    },
+    {
+      "sku": "YU-0007222",
+      "name": "КГВ 3х10+1х6",
+      "mark": "КГВ",
+      "manufacturer": null,
+      "sourceCategory": "Без категории",
+      "originalCategory": "kontrolnyy-kabel",
+      "category": "silovoy-kabel",
+      "subcategory": "silovoy-kabel-pvh",
+      "rule": "kgv-power",
+      "reference": "https://energoprom.net.ua/ru/production/catalog/silovie/pvh/kgv/"
+    }
+  ],
+  "invalid": [],
+  "emptySubcategories": [],
+  "importRuntimeDifferences": []
+}

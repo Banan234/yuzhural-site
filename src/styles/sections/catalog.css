@@ -20,7 +20,7 @@
 }
 .catalog-label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 .catalog-input,
 .catalog-select {
@@ -42,7 +42,7 @@
   text-align: center;
   color: #5a6f87;
   font-size: 16px;
-  font-weight: 550;
+  font-weight: var(--font-weight-medium);
   box-shadow: 0 14px 34px rgba(17, 53, 95, 0.06);
 }
 .catalog-empty--centered {
@@ -65,7 +65,7 @@
   border: 1px solid #d7e3ef;
   background: #ffffff;
   color: #102238;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   font-size: 14px;
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(17, 53, 95, 0.06);
@@ -88,7 +88,7 @@
 }
 .catalog-pagination__info {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   color: var(--muted);
 }
 .catalog-pagination__page {
@@ -99,7 +99,7 @@
   border: 1px solid #d7e3ef;
   background: #ffffff;
   color: #102238;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   font-size: 14px;
   cursor: pointer;
   transition:
@@ -123,7 +123,7 @@
 }
 .catalog-pagination__dots {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   color: var(--muted);
   padding: 0 4px;
   line-height: 36px;
@@ -152,7 +152,7 @@
   border: 1px solid #cad8e5;
   color: #35556d;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -160,8 +160,8 @@
   margin: 0;
   font-size: clamp(34px, 4vw, 52px);
   line-height: 1.04;
-  font-weight: 850;
-  letter-spacing: -0.025em;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: normal;
   color: #0a1628;
   text-wrap: balance;
 }
@@ -173,7 +173,7 @@
 }
 .catalog-page__subtitle strong {
   color: #102238;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
 }
 .catalog-sidebar {
   display: grid;
@@ -205,7 +205,7 @@
 }
 .catalog-sidebar__panel-title {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #35556d;
@@ -215,7 +215,7 @@
   background: none;
   color: var(--primary);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
 .catalog-filter-group {
@@ -232,7 +232,7 @@
 }
 .catalog-filter-group__title {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #6a7f95;
@@ -243,7 +243,7 @@
   gap: 10px;
   color: #203854;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
 .catalog-check input {
@@ -263,7 +263,7 @@
   background: none;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: #102238;
   text-align: left;
   transition:
@@ -295,7 +295,7 @@
 .catalog-sidebar__section-title {
   padding: 12px 20px 8px;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #6a7f95;
@@ -329,7 +329,7 @@
   background: linear-gradient(180deg, #ffd35a 0%, #f2b705 100%);
   border-color: #e2a800;
   color: #08121e;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   box-shadow: 0 8px 18px rgba(242, 183, 5, 0.22);
 }
 .catalog-sidebar__item--active:hover {
@@ -347,7 +347,7 @@
 }
 .catalog-sidebar__item--sub.catalog-sidebar__item--active {
   color: var(--primary);
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 .subcategories-grid {
   display: grid;
@@ -374,7 +374,7 @@
 }
 .subcategory-card__name {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   color: var(--text);
   line-height: 1.3;
 }
@@ -400,7 +400,7 @@
 .subcategory-card__count {
   color: var(--primary);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 .subcategories-grid--power {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -430,7 +430,7 @@
 }
 .catalog-sidebar__count {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: #5a6f87;
   background: #eef4fa;
   border: 1px solid #d7e3ef;
@@ -480,7 +480,7 @@
 }
 .catalog-price-range__label {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   color: #5a6f87;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -495,7 +495,7 @@
   background: #fbfdff;
   font-size: 14px;
   color: #102238;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   outline: none;
   text-align: right;
   -moz-appearance: textfield;
@@ -507,7 +507,7 @@
 }
 .catalog-price-range__input::placeholder {
   color: #8aa0b6;
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
 }
 .catalog-price-range__input:focus {
   border-color: #f2b705;
@@ -515,7 +515,7 @@
 }
 .catalog-price-range__dash {
   color: #8aa0b6;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 .catalog-price-range__apply {
   height: 32px;
@@ -525,7 +525,7 @@
   background: linear-gradient(180deg, #ffd35a 0%, #f2b705 100%);
   color: #102238;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: filter 0.15s ease;
 }
@@ -558,7 +558,7 @@
   background: var(--primary);
   color: #fff;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   border-radius: 0;
 }
 .sidebar-active-cat__arrow {
@@ -583,7 +583,7 @@
   background: none;
   cursor: pointer;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   color: var(--text);
   text-align: left;
   transition: background 0.15s;
@@ -608,7 +608,7 @@
   background: var(--primary);
   color: #fff;
   font-size: 10px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
 }
 .sidebar-filter-group__chevron {
   font-size: 18px;
@@ -636,7 +636,7 @@
   border-radius: 6px;
   background: #fff;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   color: var(--text);
   cursor: pointer;
   transition:
@@ -661,7 +661,7 @@
   background: none;
   color: #c0392b;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
   text-align: left;
   transition: background 0.15s;
@@ -681,7 +681,7 @@
   padding: 0;
   font-size: 16px;
   color: var(--muted);
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
 }
 
 .products-grid--catalog .product-card {
@@ -889,7 +889,7 @@
   align-items: center;
   gap: 10px;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.04em;
   color: #102238;
   text-transform: uppercase;
@@ -946,7 +946,7 @@
   width: 140px;
   padding-top: 7px;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #6a7f95;
@@ -962,7 +962,7 @@
   border-radius: 999px;
   background: #fff;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   color: #35556d;
   cursor: pointer;
   transition:
@@ -1005,7 +1005,7 @@
   padding: 8px 16px;
   border-radius: 999px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition:
     background 0.18s ease,
@@ -1031,11 +1031,11 @@
 .catalog-filter-panel__results {
   font-size: 15px;
   color: #5a6f87;
-  font-weight: 550;
+  font-weight: var(--font-weight-medium);
 }
 .catalog-filter-panel__results strong {
   color: #0a1628;
-  font-weight: 800;
+  font-weight: var(--font-weight-medium);
 }
 .catalog-filter-panel__sort {
   display: flex;
@@ -1044,7 +1044,7 @@
 }
 .catalog-filter-panel__sort-label {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   color: var(--muted);
   white-space: nowrap;
 }
@@ -1083,8 +1083,8 @@
 .catalog-page__title {
   color: #20232a;
   font-size: clamp(34px, 3.2vw, 46px);
-  letter-spacing: -0.035em;
-  font-weight: 750;
+  letter-spacing: normal;
+  font-weight: var(--font-weight-medium);
 }
 
 .catalog-page__eyebrow {
@@ -1105,7 +1105,7 @@
 
 .catalog-page__availability {
   color: #249b50;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
 }
 
 .catalog-layout {
@@ -1456,7 +1456,7 @@
 
 .product-card__list-stock--available {
   color: #249b50;
-  font-weight: 650;
+  font-weight: var(--font-weight-medium);
 }
 
 .product-card__list-specs {
@@ -1482,7 +1482,7 @@
 .product-card__list-specs dd {
   margin: 0;
   color: #343941;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
 }
 
 .product-card__list-aside {
@@ -1515,7 +1515,7 @@
   background: #287be0;
   color: #fff;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
 
@@ -1795,7 +1795,7 @@
   border: 0;
   background: transparent;
   color: #1769ce;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   box-shadow: none;
 }
 
@@ -1891,7 +1891,7 @@
   width: 125px;
   padding-top: 5px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
   text-transform: none;
 }
@@ -2089,7 +2089,7 @@
   color: #3c4046;
   font-family: inherit;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
   line-height: 1.4;
   text-transform: none;
@@ -2119,7 +2119,7 @@
   color: #353b44;
   font-family: inherit;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   text-align: left;
 }
 
@@ -2217,7 +2217,7 @@
   margin: 3px 0 0;
   color: #78838e;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   line-height: 1.2;
   text-align: center;
 }
@@ -2264,7 +2264,7 @@
   color: #287be0;
   font-family: inherit;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
   text-transform: none;
 }
@@ -2340,7 +2340,7 @@
   background: transparent;
   color: #3c4046;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   line-height: 1.35;
   text-align: left;
   box-shadow: none;
@@ -2375,7 +2375,7 @@
   background: #ed673d;
   content: '✓';
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-medium);
   line-height: 1;
 }
 
