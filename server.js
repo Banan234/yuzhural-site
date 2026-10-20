@@ -40,6 +40,7 @@ import {
   MAX_PRODUCTS_LIMIT,
   applyCatalogFiltersAndSort,
   buildProductSuggestions,
+  getCatalogSearchCorrections,
   createCatalogQueryStore,
   hasProductFilters,
   parseLimit,
@@ -1746,6 +1747,16 @@ export function createApp({
           catalogCount: allItems.length,
           pagination,
           facets,
+          search:
+            typeof req.query.search === 'string' && req.query.search.trim()
+              ? {
+                  query: req.query.search.trim(),
+                  matchedBeforeFilters: searchResults.length,
+                  corrections: searchResults.length
+                    ? []
+                    : getCatalogSearchCorrections(baseItems, req.query.search),
+                }
+              : null,
           // Дерево категорий считаем всегда по полному каталогу, чтобы фильтр в URL
           // не схлопывал боковую навигацию.
           catalogSections: catalogQueryStore.getCatalogSections(allItems),

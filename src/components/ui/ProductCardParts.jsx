@@ -130,24 +130,69 @@ function CartIconButton({ addedToCart, onClick }) {
   );
 }
 
+export function CartQuantityControl({
+  quantity,
+  title,
+  onIncrease,
+  onDecrease,
+}) {
+  return (
+    <div
+      className="product-card__quantity"
+      role="group"
+      aria-label={`Количество ${title} в корзине`}
+    >
+      <button
+        type="button"
+        onClick={onDecrease}
+        aria-label={`Уменьшить количество ${title}`}
+      >
+        −
+      </button>
+      <output aria-live="polite" aria-atomic="true">
+        {quantity.toLocaleString('ru-RU')}
+      </output>
+      <button
+        type="button"
+        onClick={onIncrease}
+        aria-label={`Увеличить количество ${title}`}
+      >
+        +
+      </button>
+    </div>
+  );
+}
+
 export function CardActions({
   isStockVariant,
-  addedToCart,
+  quantity = 0,
+  title,
+  onDecrease,
   onAddToCart,
   onOpenQuote,
 }) {
-  if (isStockVariant) {
-    return (
-      <div className="product-card__actions">
-        <button
-          className="product-card__cta"
-          type="button"
-          onClick={onAddToCart}
-        >
-          {addedToCart ? '✓ В списке КП' : 'В список КП'}
-        </button>
-      </div>
+  const cartAction =
+    quantity > 0 ? (
+      <CartQuantityControl
+        quantity={quantity}
+        title={title}
+        onIncrease={onAddToCart}
+        onDecrease={onDecrease}
+      />
+    ) : (
+      <button
+        className={
+          isStockVariant ? 'product-card__cta' : 'product-card__secondary'
+        }
+        type="button"
+        onClick={onAddToCart}
+      >
+        В корзину
+      </button>
     );
+
+  if (isStockVariant) {
+    return <div className="product-card__actions">{cartAction}</div>;
   }
 
   return (
@@ -159,18 +204,7 @@ export function CardActions({
       >
         Получить КП
       </button>
-
-      <div className="product-card__utility-row">
-        <button
-          className={`product-card__secondary${
-            addedToCart ? ' product-card__secondary--added' : ''
-          }`}
-          type="button"
-          onClick={onAddToCart}
-        >
-          {addedToCart ? '✓ В корзине' : 'В корзину'}
-        </button>
-      </div>
+      <div className="product-card__utility-row">{cartAction}</div>
     </div>
   );
 }

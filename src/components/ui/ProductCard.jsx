@@ -1,11 +1,11 @@
 // Файл рендерит товарную карточку каталога с ценой, статусом, действиями корзины и ссылкой на товар.
 
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';
 import {
   CardActions,
   CardPrice,
+  CartQuantityControl,
   ProductBadges,
   ProductMeta,
   ProductSummary,
@@ -25,7 +25,10 @@ function formatStockLabel(product) {
 
 export default function ProductCard({ product, variant = 'default' }) {
   const addItem = useCartStore((state) => state.addItem);
-  const [addedToCart, setAddedToCart] = useState(false);
+  const quantity = useCartStore(
+    (state) => state.items.find((item) => item.id === product.id)?.quantity || 0
+  );
+  const decreaseItem = useCartStore((state) => state.decreaseItem);
   const isStockVariant = variant === 'stock';
   const productUrl = `/product/${product.slug}`;
   const stockLabel = `В наличии: ${formatStockLabel(product)}`;
@@ -121,10 +124,7 @@ export default function ProductCard({ product, variant = 'default' }) {
   }
 
   function handleAddToCart() {
-    const wasAdded = addItem(product);
-    if (!wasAdded) return;
-    setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 1500);
+    addItem({ ...product, quantity: 1 });
   }
 
   if (variant === 'catalog-list') {
@@ -171,16 +171,23 @@ export default function ProductCard({ product, variant = 'default' }) {
             priceValue={priceValue}
             priceUnitLabel={priceUnitLabel}
           />
-          <button
-            type="button"
-            className={`product-card__list-cart${
-              addedToCart ? ' product-card__list-cart--added' : ''
-            }`}
-            onClick={handleAddToCart}
-            aria-label={`${addedToCart ? 'Добавлено' : 'Добавить'} ${displayTitle} в корзину`}
-          >
-            {addedToCart ? '✓ В корзине' : 'В корзину'}
-          </button>
+          {quantity > 0 ? (
+            <CartQuantityControl
+              quantity={quantity}
+              title={displayTitle}
+              onIncrease={handleAddToCart}
+              onDecrease={() => decreaseItem(product.id)}
+            />
+          ) : (
+            <button
+              type="button"
+              className="product-card__list-cart"
+              onClick={handleAddToCart}
+              aria-label={`Добавить ${displayTitle} в корзину`}
+            >
+              В корзину
+            </button>
+          )}
         </div>
       </article>
     );
@@ -228,7 +235,9 @@ export default function ProductCard({ product, variant = 'default' }) {
         />
         <CardActions
           isStockVariant={isStockVariant}
-          addedToCart={addedToCart}
+          quantity={quantity}
+          title={displayTitle}
+          onDecrease={() => decreaseItem(product.id)}
           onAddToCart={handleAddToCart}
           onOpenQuote={handleOpenQuote}
         />

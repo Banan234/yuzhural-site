@@ -33,6 +33,39 @@ function renderCatalogPage(initialEntry = '/catalog', prerenderData = {}) {
   );
 }
 
+it('offers an explicit correction without replacing the query', async () => {
+  fetchProducts.mockResolvedValue({
+    items: [],
+    meta: {
+      total: 0,
+      search: {
+        matchedBeforeFilters: 0,
+        corrections: [{ query: 'ВВГ 3х2.5', count: 4 }],
+      },
+    },
+  });
+  renderCatalogPage('/catalog/?search=ddu%203х2.5');
+  const correction = await screen.findByRole('link', { name: 'ВВГ 3х2.5' });
+  expect(correction.getAttribute('href')).toBe(
+    `/catalog/?${new URLSearchParams({ search: 'ВВГ 3х2.5' })}`
+  );
+  expect(screen.getByText('Поиск: «ddu 3х2.5»')).toBeVisible();
+});
+
+it('explains when filters hide existing search matches', async () => {
+  fetchProducts.mockResolvedValue({
+    items: [],
+    meta: { total: 0, search: { matchedBeforeFilters: 4, corrections: [] } },
+  });
+  renderCatalogPage('/catalog/?search=ВВГ%20185&priceMin=99999');
+  expect(
+    await screen.findByRole('link', { name: 'Показать без фильтров' })
+  ).toHaveAttribute(
+    'href',
+    `/catalog/?${new URLSearchParams({ search: 'ВВГ 185' })}`
+  );
+});
+
 beforeEach(() => {
   fetchProducts.mockReset();
   fetchProducts.mockResolvedValue({

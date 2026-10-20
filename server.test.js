@@ -1908,6 +1908,62 @@ describe('catalog public API rate limit', () => {
   });
 });
 
+describe('catalog buyer search API', () => {
+  it('shares size constraints between suggestions and the paginated listing', async () => {
+    const { app } = createProductCatalogApp();
+    await withTestServer(app, async (base) => {
+      const search = 'ВВГ 3х2,5 LS';
+      const suggestions = await (
+        await fetch(
+          `${base}/api/products/suggestions?${new URLSearchParams({ search })}`
+        )
+      ).json();
+      expect(suggestions.items).toHaveLength(1);
+      const suggestion = suggestions.items[0];
+      expect(suggestion.query).toBe(search);
+      const listing = await (
+        await fetch(
+          `${base}/api/products?${new URLSearchParams({ search: suggestion.query, mark: suggestion.filterMark, limit: '24' })}`
+        )
+      ).json();
+      expect(listing.meta.total).toBe(suggestion.count);
+      expect(listing.items.map((item) => item.id)).toEqual([101]);
+    });
+  });
+  it('keeps the requested query and offers corrections only as separate actions', async () => {
+    const { app } = createProductCatalogApp();
+    await withTestServer(app, async (base) => {
+      const search = 'ddu 3x2.5';
+      const listing = await (
+        await fetch(
+          `${base}/api/products?${new URLSearchParams({ search, limit: '24' })}`
+        )
+      ).json();
+      expect(listing.items).toEqual([]);
+      expect(listing.meta.search.query).toBe(search);
+      expect(listing.meta.search.corrections[0]).toMatchObject({
+        query: 'ввг 3x2.5',
+        count: 1,
+      });
+    });
+  });
+  it('distinguishes no search matches from matches hidden by old filters', async () => {
+    const { app } = createProductCatalogApp();
+    await withTestServer(app, async (base) => {
+      const listing = await (
+        await fetch(
+          `${base}/api/products?${new URLSearchParams({ search: 'ВВГ 2.5', mark: 'АВВГ', priceMin: '10000', limit: '24' })}`
+        )
+      ).json();
+      expect(listing.meta.total).toBe(0);
+      expect(listing.meta.search).toMatchObject({
+        matchedBeforeFilters: 1,
+        corrections: [],
+      });
+    });
+  });
+});
+
 describe('POST /api/products/lookup', () => {
   async function postLookup(localBaseUrl, body, headers = {}) {
     return fetch(`${localBaseUrl}/api/products/lookup`, {

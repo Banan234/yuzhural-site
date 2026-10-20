@@ -3,31 +3,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Container from '../components/ui/Container';
-import Breadcrumbs from '../components/ui/Breadcrumbs';
-import { MAX_CART_ITEMS, useCartStore } from '../store/useCartStore';
+import { useCartStore } from '../store/useCartStore';
 import { useSEO } from '../hooks/useSEO';
 import { CATALOG_CANONICAL_PATH } from '../lib/canonicalPaths.js';
 import { trackEvent } from '../lib/analytics';
 import { expectOkApiJson } from '../lib/apiResponse';
 import { captureException } from '../lib/errorTracking';
 import { formatProductPrice } from '../lib/productPrice';
-import { formatMessage, messages } from '../../shared/messages.js';
+import { messages } from '../../shared/messages.js';
 import {
   getProductImage,
   getProductImageAlt,
 } from '../../shared/productImages.js';
-import {
-  MAX_QUOTE_ITEM_COMMENT_LENGTH,
-  MAX_QUOTE_ITEM_TITLE_LENGTH,
-} from '../../shared/quoteValidation.js';
 import '../styles/sections/cart-favorites.css';
-
-const initialManualItem = {
-  mark: '',
-  quantity: '',
-  unit: 'м',
-  comment: '',
-};
 
 function formatNumber(value) {
   return Number(value || 0).toLocaleString('ru-RU');
@@ -51,21 +39,13 @@ function formatCartSummaryTotal(totalPrice, hasRequestPriceItems) {
 
 export default function CartPage() {
   useSEO({
-    title: 'Список для КП',
+    title: 'Корзина',
     description:
       'Список кабельно-проводниковой продукции для запроса коммерческого предложения.',
     noindex: true,
   });
-  const {
-    items,
-    addManualItem,
-    updateItemQuantity,
-    removeItem,
-    clearCart,
-    syncWithCatalog,
-  } = useCartStore();
-  const [manualItem, setManualItem] = useState(initialManualItem);
-  const [manualError, setManualError] = useState('');
+  const { items, updateItemQuantity, removeItem, clearCart, syncWithCatalog } =
+    useCartStore();
   const [isPdfBuilding, setIsPdfBuilding] = useState(false);
   const [pdfError, setPdfError] = useState('');
   const [syncNotice, setSyncNotice] = useState(null);
@@ -140,7 +120,6 @@ export default function CartPage() {
   }
 
   const positionsCount = items.length;
-  const isCartLimitReached = positionsCount >= MAX_CART_ITEMS;
   const totalLength = items.reduce((sum, item) => {
     if ((item.unit || '').toLowerCase() !== 'м') {
       return sum;
@@ -161,107 +140,86 @@ export default function CartPage() {
     hasRequestPriceItems
   );
 
-  function handleManualChange(event) {
-    const { name, value } = event.target;
-
-    setManualItem((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    setManualError('');
-  }
-
-  function handleManualSubmit(event) {
-    event.preventDefault();
-
-    const mark = manualItem.mark.trim();
-    const quantity = Number(manualItem.quantity);
-
-    if (!mark) {
-      setManualError(messages.errors.cart.manualTitleRequired);
-      return;
-    }
-
-    if (mark.length > MAX_QUOTE_ITEM_TITLE_LENGTH) {
-      setManualError(
-        formatMessage(messages.errors.cart.manualTitleTooLong, {
-          max: MAX_QUOTE_ITEM_TITLE_LENGTH,
-        })
-      );
-      return;
-    }
-
-    if (manualItem.comment.trim().length > MAX_QUOTE_ITEM_COMMENT_LENGTH) {
-      setManualError(
-        formatMessage(messages.errors.cart.manualCommentTooLong, {
-          max: MAX_QUOTE_ITEM_COMMENT_LENGTH,
-        })
-      );
-      return;
-    }
-
-    if (!Number.isFinite(quantity) || quantity <= 0) {
-      setManualError(messages.errors.cart.quantityRequired);
-      return;
-    }
-
-    if (isCartLimitReached) {
-      setManualError(
-        formatMessage(messages.errors.cart.limitReached, {
-          max: MAX_CART_ITEMS,
-        })
-      );
-      return;
-    }
-
-    const wasAdded = addManualItem({
-      title: mark,
-      name: mark,
-      fullName: mark,
-      mark,
-      shortDescription:
-        manualItem.comment.trim() || messages.text.cartManualDefaultDescription,
-      quantity,
-      unit: manualItem.unit,
-      comment: manualItem.comment.trim(),
-    });
-
-    if (!wasAdded) {
-      setManualError(
-        formatMessage(messages.errors.cart.limitReached, {
-          max: MAX_CART_ITEMS,
-        })
-      );
-      return;
-    }
-
-    setManualItem(initialManualItem);
-  }
-
   return (
     <section className="section cart-page">
       <Container>
-        <Breadcrumbs current="Список для КП" />
+        <Link to={CATALOG_CANONICAL_PATH} className="cart-page__back">
+          <span aria-hidden="true">←</span> Вернуться в каталог
+        </Link>
         <div className="cart-page__head">
           <div>
-            <h1 className="page-title">Список для КП</h1>
-            <p className="page-subtitle">
-              Соберите позиции, укажите метраж и отправьте список на расчёт. Это
-              не оформление оплаты.
-            </p>
+            <h1 className="page-title">Корзина</h1>
           </div>
+          {items.length > 0 ? (
+            <div className="cart-toolbar">
+              <div className="cart-toolbar__actions">
+                <button
+                  type="button"
+                  onClick={handleDownloadPdf}
+                  disabled={isPdfBuilding}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" />
+                  </svg>
+                  {isPdfBuilding ? 'Формируем PDF…' : 'Скачать PDF'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        'Очистить список для КП? Все позиции будут удалены.'
+                      )
+                    )
+                      clearCart();
+                  }}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7" />
+                  </svg>
+                  Очистить корзину
+                </button>
+              </div>
+            </div>
+          ) : null}
         </div>
 
         {items.length === 0 ? (
           <div className="cart-empty">
-            <div className="cart-empty__content">
-              <h2 className="cart-empty__title">Список пока пуст</h2>
-              <p className="cart-empty__text">
-                Выберите товары в каталоге или добавьте позицию вручную ниже.
-              </p>
-            </div>
-            <Link to={CATALOG_CANONICAL_PATH} className="button-primary">
-              Перейти в каталог
+            <svg
+              className="cart-empty__icon"
+              width="112"
+              height="112"
+              viewBox="0 0 64 64"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 10h8l10 34h29l7-24H18M22 32h34M34 20v24M46 20v24" />
+              <circle cx="28" cy="54" r="4" />
+              <circle cx="49" cy="54" r="4" />
+            </svg>
+            <h2 className="cart-empty__title">Ваша корзина пуста</h2>
+            <p className="cart-empty__text">
+              Добавьте товары, чтобы отправить список на расчёт.
+            </p>
+            <Link to={CATALOG_CANONICAL_PATH} className="cart-empty__link">
+              Вернуться в каталог
             </Link>
           </div>
         ) : null}
@@ -296,230 +254,192 @@ export default function CartPage() {
           </div>
         ) : null}
 
-        <div className="cart-manual">
-          <div className="cart-manual__head">
-            <h2 className="cart-manual__title">Добавить позицию вручную</h2>
-            <p className="cart-manual__text">
-              Для срочной заявки: введите марку или описание кабеля, даже если
-              позиции нет в каталоге.
-            </p>
-          </div>
-
-          <form className="cart-manual__form" onSubmit={handleManualSubmit}>
-            <label className="cart-manual__field cart-manual__field--mark">
-              <span>Марка или наименование</span>
-              <input
-                name="mark"
-                value={manualItem.mark}
-                onChange={handleManualChange}
-                maxLength={MAX_QUOTE_ITEM_TITLE_LENGTH}
-                placeholder="Например: ВВГнг-LS 3×2.5"
-              />
-            </label>
-
-            <label className="cart-manual__field">
-              <span>Метраж</span>
-              <input
-                name="quantity"
-                type="number"
-                min="0"
-                step="0.01"
-                value={manualItem.quantity}
-                onChange={handleManualChange}
-                placeholder="500"
-              />
-            </label>
-
-            <label className="cart-manual__field">
-              <span>Ед.</span>
-              <select
-                name="unit"
-                value={manualItem.unit}
-                onChange={handleManualChange}
-              >
-                <option value="м">м</option>
-                <option value="шт">шт</option>
-                <option value="кг">кг</option>
-                <option value="бухта">бухта</option>
-              </select>
-            </label>
-
-            <label className="cart-manual__field cart-manual__field--comment">
-              <span>Комментарий</span>
-              <input
-                name="comment"
-                value={manualItem.comment}
-                onChange={handleManualChange}
-                maxLength={MAX_QUOTE_ITEM_COMMENT_LENGTH}
-                placeholder="Например: нужен аналог, срочно"
-              />
-            </label>
-
-            <button
-              type="submit"
-              className="button-secondary cart-manual__submit"
-            >
-              Добавить в список
-            </button>
-          </form>
-
-          {manualError ? (
-            <div className="field-error">{manualError}</div>
-          ) : null}
-        </div>
-
         {items.length > 0 ? (
           <>
-            <div className="cart-list">
-              {items.map((item) => {
-                const quantity = Number(item.quantity || 0);
-                const unit = item.unit || 'м';
-                const lineTotal = Number(item.price || 0) * quantity;
-                const itemPrice = formatProductPrice(item.price, unit, {
-                  context: 'quote',
-                });
-                const itemImage = getProductImage(item);
-                const itemImageAlt = getProductImageAlt(item);
-
-                return (
-                  <article key={item.id} className="cart-item">
-                    <img
-                      src={itemImage}
-                      alt={itemImageAlt}
-                      className="cart-item__image"
-                      width="560"
-                      height="320"
-                      loading="lazy"
-                      decoding="async"
-                    />
-
-                    <div className="cart-item__content">
-                      <div className="cart-item__meta">
-                        {item.sku ? (
-                          <div className="cart-item__sku">SKU: {item.sku}</div>
-                        ) : null}
-                        <div className="cart-item__category">
-                          {item.category}
-                        </div>
-                      </div>
-
-                      <h2 className="cart-item__title">
-                        {item.slug ? (
-                          <Link
-                            to={`/product/${item.slug}`}
-                            className="cart-item__title-link"
-                          >
-                            {item.title}
-                          </Link>
-                        ) : (
-                          <span>{item.title}</span>
-                        )}
-                      </h2>
-
-                      {item.shortDescription ? (
-                        <p className="cart-item__description">
-                          {item.shortDescription}
-                        </p>
-                      ) : null}
-
-                      <div className="cart-item__price-row">
-                        <div className="cart-item__price">{itemPrice.text}</div>
-                        {lineTotal > 0 ? (
-                          <div className="cart-item__line-total">
-                            Предварительно: {lineTotal.toLocaleString('ru-RU')}{' '}
-                            ₽
-                          </div>
-                        ) : null}
-                      </div>
-
-                      <div className="cart-item__actions">
-                        <label className="cart-item__quantity">
-                          <span>Метраж</span>
-                          <div className="cart-item__quantity-control">
-                            <input
-                              key={`${item.id}-${quantity}`}
-                              type="number"
-                              min="0"
-                              step="0.01"
-                              defaultValue={quantity}
-                              onBlur={(event) =>
-                                updateItemQuantity(item.id, event.target.value)
-                              }
-                            />
-                            <strong>{unit}</strong>
-                          </div>
-                        </label>
-
-                        <button
-                          type="button"
-                          onClick={() => removeItem(item.id)}
-                        >
-                          Удалить
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-
-            <div className="cart-summary">
-              <div className="cart-summary__counts">
-                <span>
-                  Позиций: {formatNumber(positionsCount)} /{' '}
-                  {formatNumber(MAX_CART_ITEMS)}
-                </span>
-                <span>Общая длина: {formatNumber(totalLength)} м</span>
-                <span className="cart-summary__total">
-                  Предварительная сумма: <strong>{cartSummaryTotal}</strong>
-                </span>
+            {pdfError ? (
+              <div className="field-error" role="alert">
+                {pdfError}
               </div>
-              <p className="cart-summary__note">
-                Сумма справочная, без скидки объёма и без учёта ручных позиций.
-                Итоговые цены фиксируем в коммерческом предложении.
-              </p>
-
-              <div className="cart-summary__actions">
+            ) : null}
+            <div className="cart-layout">
+              <div className="cart-list">
+                <div className="cart-list__head" aria-hidden="true">
+                  <span>Товары в корзине · {formatNumber(positionsCount)}</span>
+                  <span>Количество</span>
+                  <span>Сумма</span>
+                  <span />
+                </div>
+                {items.map((item) => {
+                  const quantity = Number(item.quantity || 0);
+                  const unit = item.unit || 'м';
+                  const lineTotal = Number(item.price || 0) * quantity;
+                  const itemPrice = formatProductPrice(item.price, unit, {
+                    fallback: 'Цена по запросу',
+                  });
+                  return (
+                    <article key={item.id} className="cart-item">
+                      <img
+                        src={getProductImage(item)}
+                        alt={getProductImageAlt(item)}
+                        className="cart-item__image"
+                        width="104"
+                        height="88"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="cart-item__content">
+                        {item.sku ? (
+                          <div className="cart-item__sku">
+                            Артикул: {item.sku}
+                          </div>
+                        ) : null}
+                        <h2 className="cart-item__title">
+                          {item.slug ? (
+                            <Link
+                              to={`/product/${item.slug}`}
+                              className="cart-item__title-link"
+                            >
+                              {item.title}
+                            </Link>
+                          ) : (
+                            <span>{item.title}</span>
+                          )}
+                        </h2>
+                        {item.category ? (
+                          <p className="cart-item__category">{item.category}</p>
+                        ) : null}
+                      </div>
+                      <div className="cart-item__quantity">
+                        <span className="cart-item__mobile-label">
+                          {unit === 'м' ? 'Метраж' : 'Количество'} ({unit})
+                        </span>
+                        <div className="cart-item__quantity-control">
+                          <button
+                            type="button"
+                            aria-label={`Уменьшить количество: ${item.title}`}
+                            disabled={quantity <= 1}
+                            onClick={() =>
+                              updateItemQuantity(
+                                item.id,
+                                Math.max(
+                                  0.01,
+                                  Math.round((quantity - 1) * 100) / 100
+                                )
+                              )
+                            }
+                          >
+                            −
+                          </button>
+                          <input
+                            key={`${item.id}-${quantity}`}
+                            aria-label={`${unit === 'м' ? 'Метраж' : 'Количество'}: ${item.title}`}
+                            type="number"
+                            min="0.01"
+                            step={unit === 'м' ? '0.01' : '1'}
+                            defaultValue={quantity}
+                            onBlur={(event) => {
+                              const value = Number(event.target.value);
+                              if (Number.isFinite(value) && value > 0)
+                                updateItemQuantity(item.id, value);
+                              else event.target.value = String(quantity);
+                            }}
+                            onKeyDown={(event) => {
+                              if (event.key === 'Enter')
+                                event.currentTarget.blur();
+                            }}
+                          />
+                          <button
+                            type="button"
+                            aria-label={`Увеличить количество: ${item.title}`}
+                            onClick={() =>
+                              updateItemQuantity(
+                                item.id,
+                                Math.round((quantity + 1) * 100) / 100
+                              )
+                            }
+                          >
+                            +
+                          </button>
+                        </div>
+                        <span className="cart-item__unit">{unit}</span>
+                      </div>
+                      <div className="cart-item__price-row">
+                        <strong
+                          className={`cart-item__line-total${itemPrice.hasPrice ? '' : ' cart-item__line-total--request'}`}
+                        >
+                          {itemPrice.hasPrice
+                            ? `${formatNumber(Math.round(lineTotal * 100) / 100)} ₽`
+                            : 'По запросу'}
+                        </strong>
+                        <span className="cart-item__price">
+                          {itemPrice.text}
+                        </span>
+                      </div>
+                      <button
+                        className="cart-item__remove"
+                        type="button"
+                        aria-label={`Удалить: ${item.title}`}
+                        title="Удалить товар"
+                        onClick={() => removeItem(item.id)}
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          aria-hidden="true"
+                        >
+                          <path d="m6 6 12 12M6 18 18 6" />
+                        </svg>
+                      </button>
+                    </article>
+                  );
+                })}
+              </div>
+              <aside
+                className="cart-summary"
+                aria-labelledby="cart-summary-title"
+              >
+                <h2 id="cart-summary-title">Ваш заказ</h2>
+                <dl className="cart-summary__counts">
+                  <div>
+                    <dt>Позиций</dt>
+                    <dd>{formatNumber(positionsCount)}</dd>
+                  </div>
+                  {totalLength > 0 ? (
+                    <div>
+                      <dt>Общий метраж</dt>
+                      <dd>{formatNumber(totalLength)} м</dd>
+                    </div>
+                  ) : null}
+                </dl>
+                <div className="cart-summary__total">
+                  <span>Предварительная сумма</span>
+                  <strong>{cartSummaryTotal}</strong>
+                </div>
                 <button
                   type="button"
                   className="button-primary cart-summary__quote"
+                  aria-label="Запросить коммерческое предложение"
                   onClick={() =>
                     window.dispatchEvent(
                       new CustomEvent('open-cart-quote-modal')
                     )
                   }
                 >
-                  Запросить коммерческое предложение
+                  Запросить КП <span aria-hidden="true">→</span>
                 </button>
-
-                <button
-                  type="button"
-                  className="button-secondary"
-                  onClick={handleDownloadPdf}
-                  disabled={isPdfBuilding}
-                  title="Сформировать КП на бланке и сохранить в PDF"
-                >
-                  {isPdfBuilding ? 'Формируем PDF...' : '↓ Скачать КП в PDF'}
-                </button>
-
-                <button
-                  type="button"
-                  className="button-secondary"
-                  onClick={() => {
-                    if (
-                      window.confirm(
-                        'Очистить список для КП? Все позиции будут удалены.'
-                      )
-                    ) {
-                      clearCart();
-                    }
-                  }}
-                >
-                  Очистить корзину
-                </button>
-              </div>
-
-              {pdfError ? <div className="field-error">{pdfError}</div> : null}
+                <p className="cart-summary__note">
+                  Уточним наличие, сроки поставки и итоговую стоимость в
+                  коммерческом предложении.
+                </p>
+                {hasRequestPriceItems ? (
+                  <p className="cart-summary__request-note">
+                    В списке есть позиции без цены. Рассчитаем их при подготовке
+                    КП.
+                  </p>
+                ) : null}
+              </aside>
             </div>
           </>
         ) : null}

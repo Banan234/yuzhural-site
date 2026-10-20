@@ -3,7 +3,7 @@
 
 import '../../test/renderTestSetup.js';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
 import ProductCard from './ProductCard.jsx';
 import { useCartStore } from '../../store/useCartStore.js';
@@ -45,4 +45,45 @@ describe('ProductCard', () => {
     expect(screen.getByText('Цена по запросу')).toBeInTheDocument();
     expect(screen.queryByText('/ м')).not.toBeInTheDocument();
   });
+});
+
+describe('Счётчик корзины в карточке', () => {
+  it.each(['default', 'stock', 'catalog-list'])(
+    'синхронизирует количество и возвращает кнопку при удалении (%s)',
+    (variant) => {
+      render(
+        <MemoryRouter>
+          <ProductCard product={baseProduct} variant={variant} />
+        </MemoryRouter>
+      );
+      fireEvent.click(
+        screen.getByRole('button', {
+          name: /^(В корзину|Добавить .* в корзину)$/,
+        })
+      );
+      expect(screen.getByRole('status')).toHaveTextContent('1');
+      fireEvent.click(
+        screen.getByRole('button', { name: /Увеличить количество/ })
+      );
+      expect(useCartStore.getState().items[0].quantity).toBe(2);
+      expect(screen.getByRole('status')).toHaveTextContent('2');
+      act(() =>
+        useCartStore.getState().updateItemQuantity(baseProduct.id, 12.5)
+      );
+      expect(screen.getByRole('status')).toHaveTextContent('12,5');
+      act(() => useCartStore.getState().updateItemQuantity(baseProduct.id, 1));
+      fireEvent.click(
+        screen.getByRole('button', { name: /Уменьшить количество/ })
+      );
+      expect(useCartStore.getState().items).toHaveLength(0);
+      expect(
+        screen.queryByRole('group', { name: /Количество .* в корзине/ })
+      ).toBeNull();
+      expect(
+        screen.getByRole('button', {
+          name: /^(В корзину|Добавить .* в корзину)$/,
+        })
+      ).toBeVisible();
+    }
+  );
 });

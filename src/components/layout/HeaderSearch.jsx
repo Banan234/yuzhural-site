@@ -14,9 +14,9 @@ const HEADER_SEARCH_LISTBOX_ID = 'header-search-suggestions';
 const HEADER_SEARCH_STATUS_ID = 'site-header-search-status';
 // Реальные позиции из текущего каталога; порядок задаёт цикл подсказок.
 const SEARCH_PLACEHOLDERS = [
-  'ВВГ 3х1.5 нг(А)-LS',
-  'ВВГ 3х2.5 нг(А)-FRLS',
-  'ВВГ 5х2.5 нг(А)-LS',
+  'ВВГнг(А)-LS 3х1.5',
+  'ВВГнг(А)-FRLS 3х2.5',
+  'ВВГнг(А)-LS 5х2.5',
   'КГ 4х16',
   'СИП-4 4х16',
   'ПВС 3х1.5',
@@ -25,7 +25,7 @@ const SEARCH_PLACEHOLDERS = [
   'ШВВП 2х0.75',
   'ПУГВ 1х6 белый',
   'КВВГ 4х1.5',
-  'ВБШВ 4х10 нг(А)-LS',
+  'ВБШВнг(А)-LS 4х10',
   'NYM 2х1.5',
 ];
 
@@ -168,7 +168,13 @@ export default function HeaderSearch() {
     const value = headerSearch.trim();
     setIsSearchSuggestionsOpen(false);
     setActiveSearchSuggestionIndex(-1);
-    const params = new URLSearchParams(location.search);
+    // A header search starts across the whole catalog. Old category, mark,
+    // price and pagination constraints must not hide the new results.
+    const params = new URLSearchParams();
+    const currentParams = new URLSearchParams(location.search);
+    for (const key of ['limit', 'sort']) {
+      if (currentParams.has(key)) params.set(key, currentParams.get(key));
+    }
 
     if (value) {
       trackEvent('search-submit', { query: value, source: 'header' });
@@ -209,9 +215,19 @@ export default function HeaderSearch() {
 
     fetchProductSuggestions(search, SEARCH_SUGGESTIONS_LIMIT, controller.signal)
       .then((items) => {
+        if (
+          controller.signal.aborted ||
+          searchLoadControllerRef.current !== controller
+        )
+          return;
         setSearchSuggestions(Array.isArray(items) ? items : []);
       })
       .catch((error) => {
+        if (
+          controller.signal.aborted ||
+          searchLoadControllerRef.current !== controller
+        )
+          return;
         if (error.name !== 'AbortError') {
           captureException(error, { source: 'HeaderSearch.suggestions' });
           setSearchSuggestions([]);
@@ -240,6 +256,7 @@ export default function HeaderSearch() {
     clearSearchSuggestionsDebounce();
     searchLoadControllerRef.current?.abort();
     searchLoadControllerRef.current = null;
+    setSearchSuggestions([]);
 
     if (!search) {
       setSearchSuggestions([]);
@@ -263,12 +280,15 @@ export default function HeaderSearch() {
     scheduleSearchSuggestionsLoad(value);
   }
 
-  function handleSearchSuggestionSelect(mark) {
-    setHeaderSearch(mark);
+  function handleSearchSuggestionSelect(suggestion) {
+    const query = suggestion.query || suggestion.mark;
+    setHeaderSearch(query);
     setIsSearchSuggestionsOpen(false);
     setActiveSearchSuggestionIndex(-1);
-    trackEvent('search-submit', { query: mark, source: 'header-suggestion' });
-    navigate(`${CATALOG_CANONICAL_PATH}?search=${encodeURIComponent(mark)}`);
+    trackEvent('search-submit', { query, source: 'header-suggestion' });
+    const params = new URLSearchParams({ search: query });
+    if (suggestion.filterMark) params.set('mark', suggestion.filterMark);
+    navigate(`${CATALOG_CANONICAL_PATH}?${params}`);
   }
 
   function handleSearchInputKeyDown(event) {
@@ -284,7 +304,7 @@ export default function HeaderSearch() {
       activeSearchSuggestion
     ) {
       event.preventDefault();
-      handleSearchSuggestionSelect(activeSearchSuggestion.mark);
+      handleSearchSuggestionSelect(activeSearchSuggestion);
       return;
     }
 
@@ -379,7 +399,7 @@ export default function HeaderSearch() {
               role="status"
               aria-live="polite"
             >
-              Загружаем марки...
+              Ищем товары...
             </div>
           ) : (
             searchSuggestions.map((suggestion, index) => {
@@ -398,10 +418,12 @@ export default function HeaderSearch() {
                   }`}
                   onMouseDown={(event) => event.preventDefault()}
                   onMouseEnter={() => setActiveSearchSuggestionIndex(index)}
-                  onClick={() => handleSearchSuggestionSelect(suggestion.mark)}
+                  onClick={() => handleSearchSuggestionSelect(suggestion)}
                 >
                   <span className="site-header__search-suggestion-mark">
-                    {suggestion.mark}
+                    {suggestion.type === 'correction'
+                      ? `Возможно: ${suggestion.mark}`
+                      : suggestion.mark}
                   </span>
                   <span className="site-header__search-suggestion-count">
                     {formatPositionCount(suggestion.count)}

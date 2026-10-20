@@ -68,12 +68,12 @@ describe('MainLayout', () => {
     expect(searchInput).toHaveAttribute('placeholder', 'В');
 
     fireEvent.focus(searchInput);
-    expect(searchInput).toHaveAttribute('placeholder', 'ВВГ 3х1.5 нг(А)-LS');
+    expect(searchInput).toHaveAttribute('placeholder', 'ВВГнг(А)-LS 3х1.5');
 
     fireEvent.change(searchInput, { target: { value: 'КГ 4х16' } });
     act(() => vi.advanceTimersByTime(3000));
     expect(searchInput).toHaveValue('КГ 4х16');
-    expect(searchInput).toHaveAttribute('placeholder', 'ВВГ 3х1.5 нг(А)-LS');
+    expect(searchInput).toHaveAttribute('placeholder', 'ВВГнг(А)-LS 3х1.5');
   });
 
   it('показывает плавающий виджет не только на главной, но и на внутренних страницах', () => {

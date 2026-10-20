@@ -421,3 +421,71 @@
   padding: 40px 24px;
   color: var(--muted);
 }
+
+/* Счётчик выбранного товара в карточке. */
+.product-card__quantity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: flex-start;
+  width: 128px;
+  max-width: 100%;
+  min-height: var(--cart-counter-height, 38px);
+  border-radius: 4px;
+  background: #eff0f2;
+  color: var(--text);
+}
+.product-card__quantity button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  min-height: var(--cart-counter-height, 38px);
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.product-card__quantity button:hover {
+  background: #e2e4e8;
+}
+.product-card__quantity button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.product-card__quantity output {
+  min-width: 40px;
+  padding: 0 4px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+}
+
+.product-card--stock .product-card__quantity {
+  --cart-counter-height: 42px;
+}
+.product-card--catalog-list .product-card__quantity {
+  --cart-counter-height: 40px;
+  width: 128px;
+  border-radius: 7px;
+}
+
+/* Кнопка и счётчик занимают одинаковое место в карточке. */
+article.product-card .product-card__secondary,
+article.product-card .product-card__cta,
+article.product-card .product-card__list-cart,
+article.product-card .product-card__quantity {
+  flex: 0 0 auto;
+  width: 128px;
+  max-width: 100%;
+  min-height: 44px;
+  border-radius: 8px;
+}
+article.product-card .product-card__quantity {
+  --cart-counter-height: 44px;
+}

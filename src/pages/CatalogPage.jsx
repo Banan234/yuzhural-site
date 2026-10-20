@@ -366,9 +366,43 @@ export default function CatalogPage() {
             </p>
           </div>
 
+          {!isLoading && !error && filters.search && (
+            <div className="catalog-search-feedback" role="status">
+              <p>Поиск: «{filters.search}»</p>
+              {visibleCount === 0 &&
+                productsMeta.search?.matchedBeforeFilters > 0 && (
+                  <p>
+                    Товары найдены, но не подходят под выбранные фильтры.{' '}
+                    <Link
+                      to={`/catalog/?${new URLSearchParams({ search: filters.search })}`}
+                    >
+                      Показать без фильтров
+                    </Link>
+                  </p>
+                )}
+              {productsMeta.search?.corrections?.length > 0 && (
+                <p>
+                  Возможно, вы искали:{' '}
+                  {productsMeta.search.corrections.map(({ query }, index) => (
+                    <span key={query}>
+                      {index > 0 && ' · '}
+                      <Link
+                        to={`/catalog/?${new URLSearchParams({ search: query })}`}
+                      >
+                        {query}
+                      </Link>
+                    </span>
+                  ))}
+                </p>
+              )}
+            </div>
+          )}
+
           <div className="catalog-layout">
             <div className="catalog-main">
               {isCategoryRoute &&
+              !filters.search &&
+              !filters.mark &&
               hasSubcategories &&
               !isPowerCableCategory &&
               activeCategoryParam !== 'provoda' &&

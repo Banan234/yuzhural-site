@@ -1,3 +1,4 @@
+import { searchCatalogProducts } from './catalogSearch.js';
 // Файл содержит чистые функции нормализации и построения query string для фильтров каталога.
 
 import {
@@ -101,30 +102,11 @@ export function normalizeCatalogFilterQueryCore(query = {}) {
 }
 
 export function productMatchesSearchCore(product, search) {
-  const query = String(search || '')
-    .trim()
-    .toLowerCase();
-  if (!query) return true;
-
-  const normalizedSearch = normalizeSearchKey(query);
-
-  for (const key of ['mark', 'title', 'fullName', 'sku']) {
-    const value = String(product?.[key] || '');
-    if (value.toLowerCase().includes(query)) return true;
-    if (
-      normalizedSearch &&
-      normalizeSearchKey(value).includes(normalizedSearch)
-    ) {
-      return true;
-    }
-  }
-
-  return false;
+  return searchCatalogProducts([product], search).length > 0;
 }
 
 export function filterProductsBySearchCore(items, search) {
-  if (!String(search || '').trim()) return items;
-  return items.filter((product) => productMatchesSearchCore(product, search));
+  return searchCatalogProducts(items, search);
 }
 
 export function buildCatalogFacetsCore(items) {
