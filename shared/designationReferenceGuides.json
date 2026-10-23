@@ -1,0 +1,478 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-10-20.1",
+  "guides": [
+    {
+      "schemaVersion": 1,
+      "revision": "2026-10-20.1",
+      "sourceDocumentId": "profsector-marking-guide",
+      "sourceSha256": "fbe0eef74ce37145e1a42388b63c6395ea98253b9b8fa7c1676da014c6dfb2f3",
+      "sourceUrl": "https://profsector.com/reference-data/show/24/rasshifrovki-kabelnyih-oboznacheniy-markirovok",
+      "reviewedAt": "2026-10-20",
+      "scopePolicy": "Position-dependent reference facts. No global letter decoder. Manufacturer rules retain priority.",
+      "scopes": [
+        {
+          "id": "power-plastic-lv",
+          "title": "Силовые кабели с пластмассовой изоляцией 0,66–3 кВ",
+          "standardId": "gost-31996-2012",
+          "rules": [
+            {
+              "field": "conductor",
+              "values": {
+                "А": "Al",
+                "без кода": "Cu"
+              }
+            },
+            {
+              "field": "insulation",
+              "values": {
+                "В": "PVC",
+                "Пв": "XLPE",
+                "П": "halogen-free compound"
+              }
+            },
+            {
+              "field": "protection",
+              "values": {
+                "Г": "unarmoured"
+              }
+            },
+            {
+              "field": "screen",
+              "values": {
+                "Э": "screen present"
+              }
+            },
+            {
+              "field": "filling",
+              "values": {
+                "з": "filling present"
+              }
+            },
+            {
+              "field": "flat-form",
+              "values": {
+                "-П": "flat cable"
+              }
+            },
+            {
+              "field": "conductor-stranding",
+              "values": {
+                "о": "solid",
+                "м": "stranded"
+              }
+            },
+            {
+              "field": "conductor-shape",
+              "values": {
+                "к": "round",
+                "с": "sector"
+              }
+            },
+            {
+              "field": "auxiliary-core-role",
+              "values": {
+                "N": "neutral",
+                "PE": "protective conductor",
+                "N,PE": "neutral and protective conductors"
+              }
+            },
+            {
+              "field": "dimensions",
+              "values": {
+                "cores": "count",
+                "area": "mm²",
+                "voltage": "kV",
+                "additional-group": "separate count and area"
+              }
+            }
+          ],
+          "automaticProductInference": false
+        },
+        {
+          "id": "power-paper",
+          "title": "Силовые кабели с пропитанной бумажной изоляцией",
+          "standardId": "gost-18410-73",
+          "rules": [
+            {
+              "field": "impregnation",
+              "values": {
+                "Ц": "non-draining compound"
+              }
+            },
+            {
+              "field": "conductor",
+              "values": {
+                "А": "Al",
+                "без кода": "Cu"
+              }
+            },
+            {
+              "field": "sheath",
+              "values": {
+                "А": "Al",
+                "С": "Pb",
+                "ОС": "individual Pb sheath"
+              }
+            },
+            {
+              "field": "core-execution",
+              "values": {
+                "ож": "solid conductor"
+              }
+            },
+            {
+              "field": "dimensions",
+              "values": {
+                "area": "mm²",
+                "voltage": "kV"
+              }
+            }
+          ],
+          "automaticProductInference": false
+        },
+        {
+          "id": "mobile-power",
+          "title": "Силовые кабели для нестационарной прокладки",
+          "standardId": "gost-24334-2020",
+          "rules": [
+            {
+              "field": "flexibility",
+              "values": {
+                "Г": "flexible",
+                "ПГ": "increased flexibility",
+                "ОГ": "extra flexibility"
+              }
+            },
+            {
+              "field": "material",
+              "values": {
+                "без кода": "rubber",
+                "Н": "flame-retardant rubber",
+                "В": "PVC"
+              }
+            },
+            {
+              "field": "screen",
+              "values": {
+                "Э": "screened construction"
+              }
+            },
+            {
+              "field": "reinforcement",
+              "values": {
+                "У": "reinforced",
+                "УШ": "coal-mine reinforcement"
+              }
+            },
+            {
+              "field": "heat-execution",
+              "values": {
+                "Т": "higher heat resistance; separate from climatic T"
+              }
+            },
+            {
+              "field": "dimensions",
+              "values": {
+                "main-group": "count and mm²",
+                "auxiliary-group": "separate count and mm²"
+              }
+            }
+          ],
+          "automaticProductInference": false
+        },
+        {
+          "id": "installation-current",
+          "title": "Установочные провода и кабели: проверять по действующему преемнику",
+          "standardId": "gost-31947-2012",
+          "rules": [
+            {
+              "field": "type",
+              "values": {
+                "Пу": "installation wire",
+                "Ку": "installation cable"
+              }
+            },
+            {
+              "field": "flexibility",
+              "values": {
+                "Г": "flexible use"
+              }
+            },
+            {
+              "field": "material",
+              "values": {
+                "В": "PVC",
+                "П": "halogen-free compound"
+              }
+            },
+            {
+              "field": "core-role",
+              "values": {
+                "N": "neutral",
+                "PE": "protective conductor"
+              }
+            }
+          ],
+          "automaticProductInference": false
+        },
+        {
+          "id": "control",
+          "title": "Контрольные кабели",
+          "standardId": "gost-26411-85",
+          "rules": [
+            {
+              "field": "conductor",
+              "values": {
+                "А": "Al",
+                "АМ": "aluminium-copper",
+                "без кода": "Cu"
+              }
+            },
+            {
+              "field": "insulation",
+              "values": {
+                "Р": "rubber",
+                "В": "PVC",
+                "П": "PE",
+                "Пс": "self-extinguishing PE"
+              }
+            },
+            {
+              "field": "screen",
+              "values": {
+                "Э": "overall screen"
+              }
+            },
+            {
+              "field": "filling",
+              "values": {
+                "з": "filled"
+              }
+            },
+            {
+              "field": "core-identification",
+              "values": {
+                "Ц": "distinct core marking"
+              }
+            },
+            {
+              "field": "form",
+              "values": {
+                "-П": "flat cable"
+              }
+            },
+            {
+              "field": "dimensions",
+              "values": {
+                "core-count": "count",
+                "conductor-area": "mm²"
+              }
+            }
+          ],
+          "automaticProductInference": false
+        },
+        {
+          "id": "household-cords",
+          "title": "Соединительные провода и шнуры",
+          "standardId": "gost-7399-97",
+          "rules": [
+            {
+              "field": "type",
+              "values": {
+                "ПВС": "twisted insulated cores, PVC sheath",
+                "ПВСП": "parallel PVC-insulated cores, PVC sheath",
+                "ШВВП": "parallel cores, PVC insulation and sheath",
+                "ШВП": "parallel cores, PVC insulation",
+                "ШОГ": "extra-flexible cord",
+                "ШОГ-С": "coiled extra-flexible cord"
+              }
+            },
+            {
+              "field": "plug-assembly",
+              "values": {
+                "н": "not intended for non-rewirable accessories"
+              }
+            },
+            {
+              "field": "conductor",
+              "values": {
+                "л": "tinned Cu"
+              }
+            },
+            {
+              "field": "coiled-cord-dimension",
+              "values": {
+                "length": "m; not conductor area"
+              }
+            }
+          ],
+          "automaticProductInference": false
+        },
+        {
+          "id": "command",
+          "title": "Кабели управления",
+          "standardId": "gost-18404-0-78",
+          "rules": [
+            {
+              "field": "purpose",
+              "values": {
+                "КУ": "control signals"
+              }
+            },
+            {
+              "field": "material",
+              "values": {
+                "Р": "rubber",
+                "С": "silicone rubber",
+                "ФС": "fluororubber",
+                "П": "PE",
+                "В": "PVC",
+                "ПК": "PE/capron",
+                "Ф": "fluoroplastic",
+                "Л": "polyester",
+                "К": "capron",
+                "ФН": "phenylon"
+              }
+            },
+            {
+              "field": "screen",
+              "values": {
+                "Э": "overall screen",
+                "ЭЭ": "double screen"
+              }
+            },
+            {
+              "field": "sheath",
+              "values": {
+                "У": "reinforced same-material double sheath, in this constructor"
+              }
+            },
+            {
+              "field": "braid",
+              "values": {
+                "-П": "armoured braid"
+              }
+            },
+            {
+              "field": "dimensions",
+              "values": {
+                "area": "mm²",
+                "rated-voltage": "V",
+                "screened-core-count": "separate from total core count"
+              }
+            }
+          ],
+          "automaticProductInference": false
+        },
+        {
+          "id": "wire-colours",
+          "title": "Цветовые коды: самостоятельная область значений",
+          "standardId": "gost-28763-90",
+          "rules": [
+            {
+              "field": "colour-coding",
+              "values": {
+                "policy": "Do not interpret a letter inside a cable mark as a colour without an explicit colour position."
+              }
+            },
+            {
+              "field": "latin-colour-codes",
+              "values": {
+                "BK": "black",
+                "BN": "brown",
+                "RD": "red",
+                "OG": "orange",
+                "YE": "yellow",
+                "GN": "green",
+                "BU": "blue",
+                "VT": "violet",
+                "GY": "grey",
+                "WH": "white",
+                "PK": "pink",
+                "GD": "gold",
+                "TQ": "turquoise",
+                "SR": "silver",
+                "GNYE": "green-yellow"
+              }
+            },
+            {
+              "field": "russian-colour-codes",
+              "values": {
+                "Ч": [
+                  "black",
+                  "violet"
+                ],
+                "КЧ": [
+                  "brown"
+                ],
+                "К": [
+                  "red",
+                  "pink"
+                ],
+                "Ж": [
+                  "orange",
+                  "yellow"
+                ],
+                "З": [
+                  "green"
+                ],
+                "С": [
+                  "blue"
+                ],
+                "Б": [
+                  "grey",
+                  "white"
+                ],
+                "ЗЛ": [
+                  "gold"
+                ],
+                "БЗ": [
+                  "turquoise"
+                ],
+                "СР": [
+                  "silver"
+                ],
+                "ЗЖ": [
+                  "green-yellow"
+                ]
+              }
+            },
+            {
+              "field": "combination",
+              "values": {
+                "same-element": "concatenation",
+                "separate-elements": "+",
+                "case": "lowercase permitted"
+              }
+            }
+          ],
+          "automaticProductInference": false,
+          "verifiedStandardPages": [
+            2
+          ]
+        }
+      ],
+      "withheldSourceClaims": [
+        {
+          "location": "Раздел 6, материал оболочки",
+          "claim": "П = резина",
+          "reason": "Противоречие с назначением буквы П для полиэтилена; не переносить без проверки первичного стандарта."
+        },
+        {
+          "location": "Раздел 5, ГОСТ 6323-79 и ГОСТ Р 53768-2010",
+          "reason": "Исключены по указанию пользователя об устаревших ГОСТах."
+        },
+        {
+          "location": "Раздел 2, кабели 6–35 кВ",
+          "reason": "На странице есть пункт оглавления, но отдельного содержательного раздела нет."
+        },
+        {
+          "location": "Общие числовые ряды и таблица гибкости старой редакции",
+          "reason": "Не использовать как доказательство допустимости маркоразмера или класса конкретного изделия."
+        }
+      ],
+      "referencedStandardsPolicy": "Only currently applicable RU standards in the normative index; raw article is not normative evidence."
+    }
+  ]
+}

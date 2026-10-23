@@ -28,12 +28,15 @@ const COLORS = {
   красн: 'красный',
   красный: 'красный',
   зел: 'зелёный',
+  зелен: 'зелёный',
   зеленый: 'зелёный',
   корич: 'коричневый',
+  кор: 'коричневый',
   коричн: 'коричневый',
   коричневый: 'коричневый',
   сер: 'серый',
   серый: 'серый',
+  бежевый: 'бежевый',
   желт: 'жёлтый',
   желтый: 'жёлтый',
   жёлт: 'жёлтый',
@@ -350,6 +353,43 @@ function sourceFor(family) {
 }
 
 function sizeTokens(product, family, designation) {
+  if (family?.dimension === 'coax' && family.coaxConfiguration) {
+    const c = family.coaxConfiguration;
+    const complete =
+      c.impedance > 0 &&
+      c.insulationDiameter > 0 &&
+      [
+        'innerConductor',
+        'insulation',
+        'outerConductor',
+        'sheath',
+        'constructionCode',
+      ].every((key) => typeof c[key] === 'string' && c[key].trim());
+    return complete
+      ? {
+          rows: [
+            {
+              code: `${c.impedance} Ом`,
+              text: `Номинальное волновое сопротивление ${number(c.impedance)} Ом`,
+            },
+            {
+              code: `${c.insulationDiameter} мм`,
+              text: `Диаметр по изоляции ${number(c.insulationDiameter)} мм; это не сечение жилы`,
+            },
+            {
+              code: c.constructionCode,
+              text: 'Индекс конкретной конструкции по заводскому техническому листу',
+            },
+          ],
+          warnings: [],
+        }
+      : {
+          rows: [],
+          warnings: [
+            'Полная конструкция коаксиального исполнения не подтверждена заводским источником.',
+          ],
+        };
+  }
   const compound = family?.compoundSectionPattern
     ? new RegExp(family.compoundSectionPattern, 'u').exec(designation)?.groups
     : null;
@@ -379,6 +419,36 @@ function sizeTokens(product, family, designation) {
         code: `${amounts[i]}×${i ? compound.section2 : compound.section1}`,
         text: `Группа ${i + 1}: ${amounts[i]} жил; номинальное сечение каждой жилы ${number(area)} мм²`,
       })),
+      warnings: [],
+    };
+  }
+  const screened = family?.screenedSizePattern
+    ? new RegExp(family.screenedSizePattern, 'u').exec(designation)?.groups
+    : null;
+  if (screened) {
+    const count = Number(screened.cores);
+    const section = Number(screened.section.replace(',', '.'));
+    const rule = family.screenedConfiguration;
+    const maximum = rule?.maximumCountBySection?.[section];
+    if (
+      !maximum ||
+      count < rule.minimumCount ||
+      count > maximum ||
+      (rule.allowedCounts && !rule.allowedCounts.includes(count))
+    )
+      return {
+        rows: [],
+        warnings: [
+          'Экранированная конфигурация отсутствует в подтверждённом заводском ряду.',
+        ],
+      };
+    return {
+      rows: [
+        {
+          code: `${count}э×${screened.section}`,
+          text: `${count} индивидуально экранированных жил; сечение каждой жилы ${number(section)} мм²`,
+        },
+      ],
       warnings: [],
     };
   }
@@ -414,6 +484,42 @@ function sizeTokens(product, family, designation) {
   const profile = family?.sourceNamePattern
     ? new RegExp(family.sourceNamePattern, 'u').exec(designation)?.groups
     : null;
+  if (
+    profile &&
+    family.sourceProfile === 'installation-wire-section-class-voltage'
+  ) {
+    const section = Number(profile.section.replace(',', '.'));
+    const conductorClass =
+      profile.leadClass || profile.attachedClass || profile.class;
+    const voltage = Number(profile.leadVoltage || profile.voltage);
+    if (
+      !family.sizesByConductorClass?.[conductorClass]?.includes(section) ||
+      ![600, 1000].includes(voltage)
+    )
+      return {
+        rows: [],
+        warnings: [
+          'Сечение, класс жилы или напряжение отсутствуют в подтверждённом заводском ряду монтажного провода.',
+        ],
+      };
+    return {
+      rows: [
+        {
+          code: profile.section,
+          text: `Одна жила; номинальное сечение ${number(section)} мм²`,
+        },
+        {
+          code: `класс ${conductorClass}`,
+          text: `Класс токопроводящей жилы ${conductorClass}`,
+        },
+        {
+          code: `${voltage} В`,
+          text: `Номинальное переменное напряжение ${voltage} В`,
+        },
+      ],
+      warnings: [],
+    };
+  }
   if (profile && family.sourceProfile === 'aluminium-steel-sections') {
     return {
       rows: [
@@ -529,6 +635,21 @@ function sizeTokens(product, family, designation) {
     };
   }
   const group = spec?.groupCores ?? product.groupCores;
+  const conductorCount = Number(cores) * Number(group || 1);
+  if (
+    conductorCount > 0 &&
+    ((family.coreCounts && !family.coreCounts.includes(conductorCount)) ||
+      (family.nominalCoreCounts?.[Number(section)] &&
+        !family.nominalCoreCounts[Number(section)].includes(conductorCount)) ||
+      (family.maximumConductorCount &&
+        conductorCount > family.maximumConductorCount))
+  )
+    return {
+      rows: [],
+      warnings: [
+        'Число жил не соответствует подтверждённому заводскому ряду этой марки.',
+      ],
+    };
   if (
     family.groupSizes &&
     group > 0 &&
@@ -691,7 +812,10 @@ export function buildProductDesignation(product = {}) {
     ...new Set([
       ...(product.attributes || []),
       ...(index ? [index] : []),
-      ...(family?.sourceProfile === 'single-conductor-section'
+      ...([
+        'single-conductor-section',
+        'installation-wire-section-class-voltage',
+      ].includes(family?.sourceProfile)
         ? (
             new RegExp(family.sourceNamePattern, 'u').exec(designation)?.groups
               ?.tail || ''
@@ -850,7 +974,10 @@ export function buildProductDesignation(product = {}) {
     status === 'reviewed' &&
     family?.evidence?.kind === 'manufacturer-documentation' &&
     Boolean(officialDocument) &&
-    ['section', 'diameter'].includes(sizeFamily?.dimension);
+    (['section', 'diameter'].includes(sizeFamily?.dimension) ||
+      (sizeFamily?.dimension === 'coax' &&
+        Boolean(sizeFamily.coaxConfiguration) &&
+        size.rows.length >= 3));
   const crossCheck = DESIGNATION_CROSS_CHECKS.find(
     (check) => check.id === family?.crossCheckId
   );

@@ -81,6 +81,44 @@ const first = () => screen.getAllByTestId('slide')[0].textContent;
 const advance = (ms) => act(() => vi.advanceTimersByTime(ms));
 
 describe('product carousel lifecycle', () => {
+  it('waits three seconds after hover ends, then returns to four-second intervals', async () => {
+    render(<Harness />);
+    fireEvent.click(screen.getByText('Вперёд'));
+    await act(async () => animations[0].complete());
+    const carousel = screen.getByText('Вперёд').parentElement;
+    fireEvent.pointerEnter(carousel);
+    advance(10000);
+    expect(animations).toHaveLength(1);
+    fireEvent.pointerLeave(carousel);
+    advance(2999);
+    expect(animations).toHaveLength(1);
+    advance(1);
+    expect(animations).toHaveLength(2);
+    await act(async () => animations[1].complete());
+    advance(3999);
+    expect(animations).toHaveLength(2);
+    advance(1);
+    expect(animations).toHaveLength(3);
+  });
+
+  it('waits two seconds, then three, then four between automatic moves', async () => {
+    render(<Harness />);
+    advance(1999);
+    expect(animations).toHaveLength(0);
+    advance(1);
+    expect(animations).toHaveLength(1);
+    await act(async () => animations[0].complete());
+    advance(2999);
+    expect(animations).toHaveLength(1);
+    advance(1);
+    expect(animations).toHaveLength(2);
+    await act(async () => animations[1].complete());
+    advance(3999);
+    expect(animations).toHaveLength(2);
+    advance(1);
+    expect(animations).toHaveLength(3);
+  });
+
   it('does not rotate a list that fits entirely in the viewport', () => {
     render(<Harness items={products.slice(0, 2)} />);
     advance(10000);
@@ -92,7 +130,7 @@ describe('product carousel lifecycle', () => {
   it('waits a full interval after returning from a hidden tab', () => {
     const hidden = vi.spyOn(document, 'hidden', 'get').mockReturnValue(false);
     render(<Harness />);
-    advance(3000);
+    advance(1000);
     hidden.mockReturnValue(true);
     fireEvent(document, new Event('visibilitychange'));
     advance(10000);
@@ -133,7 +171,7 @@ describe('product carousel lifecycle', () => {
 
   it('starts a fresh interval after a manual move completes', async () => {
     render(<Harness />);
-    advance(3000);
+    advance(1000);
     fireEvent.click(screen.getByText('Вперёд'));
     await act(async () => animations[0].complete());
     expect(first()).toBe('1');

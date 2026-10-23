@@ -12,11 +12,13 @@ describe('ContactRequestForm', () => {
     const user = userEvent.setup();
     render(<ContactRequestForm />);
     const phone = screen.getByLabelText('Ваш телефон');
+    const example = phone.getAttribute('placeholder');
+    expect(example).toMatch(/^\+7.*\d/);
     await user.click(phone);
     expect(phone).toHaveValue('+7 (');
     await user.tab();
     expect(phone).toHaveValue('');
-    expect(phone).toHaveAttribute('placeholder', '+7 (999) 123-45-67');
+    expect(phone).toHaveAttribute('placeholder', example);
   });
   it('позволяет вводить 8 первой цифрой внутри скобок', async () => {
     const user = userEvent.setup();

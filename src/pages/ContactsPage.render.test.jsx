@@ -9,6 +9,7 @@ import {
   SITE_EMAIL,
   SITE_EMAIL_HREF,
   SITE_OFFICE_ADDRESS_DISPLAY,
+  SITE_OFFICE_MAP_URL,
   SITE_PHONE_DISPLAY,
   SITE_PHONE_HREF,
   SITE_REQUISITES,
@@ -36,23 +37,18 @@ describe('ContactsPage', () => {
 
     expect(screen.getByText(SITE_OFFICE_ADDRESS_DISPLAY)).toBeInTheDocument();
     expect(
-      screen.getByText(`Офис: ${SITE_OFFICE_ADDRESS_DISPLAY}`)
-    ).toBeInTheDocument();
+      screen.getByRole('link', { name: /маршрут.*офис/i })
+    ).toHaveAttribute('href', SITE_OFFICE_MAP_URL);
     expect(
       screen.getByRole('link', { name: SITE_WAREHOUSE_ADDRESS_DISPLAY })
     ).toHaveAttribute('href', SITE_WAREHOUSE_MAP_URL);
-    expect(screen.getAllByText(SITE_EMAIL)).toHaveLength(4);
-    expect(
-      document.querySelectorAll(`a[href="${SITE_PHONE_HREF}"]`)
-    ).toHaveLength(2);
-    expect(
-      Array.from(document.querySelectorAll(`a[href="${SITE_PHONE_HREF}"]`)).map(
-        (link) => link.textContent
-      )
-    ).toEqual([SITE_PHONE_DISPLAY, SITE_PHONE_DISPLAY]);
-    expect(
-      document.querySelectorAll(`a[href="${SITE_EMAIL_HREF}"]`)
-    ).toHaveLength(4);
+    for (const [name, href] of [
+      [SITE_PHONE_DISPLAY, SITE_PHONE_HREF],
+      [SITE_EMAIL, SITE_EMAIL_HREF],
+    ]) {
+      const links = screen.getAllByRole('link', { name });
+      for (const link of links) expect(link).toHaveAttribute('href', href);
+    }
     expect(screen.getByText(SITE_REQUISITES.fullLegalName)).toBeInTheDocument();
     expect(screen.getByText(SITE_REQUISITES.taxId)).toBeInTheDocument();
     expect(

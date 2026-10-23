@@ -1,170 +1,124 @@
-// Файл покрывает лид-форму в hero-блоке главной страницы: валидацию, отправку и ошибку недоступности.
-
+// Проверяем текущую форму связи на главной: валидацию, оба канала и сбой API.
 import { expect, test } from '@playwright/test';
-import { messages } from '../shared/messages.js';
+import { expectFieldError } from './helpers/assertions.js';
 
-const HERO_FORM_TITLE = 'Не тратьте время на поиск кабеля';
-const VALID_PHONE = '+7 900 123-45-67';
+const PHONE_INPUT = '+7 (900) 123-45-67';
+const PHONE_PAYLOAD = '+79001234567';
 
-test.beforeEach(async ({ request }) => {
-  await expect
-    .poll(
-      async () => {
-        const response = await request.get('/api/products?limit=1');
-        return response.status();
-      },
-      { timeout: 30_000 }
-    )
-    .toBe(200);
-});
-
-async function fulfillJson(route, payload, { status = 200 } = {}) {
-  await route.fulfill({
-    status,
-    contentType: 'application/json',
-    body: JSON.stringify(payload),
-  });
-}
-
-async function openHeroLeadForm(page) {
+async function openContactForm(page) {
   await page.goto('/');
-
-  const heroForm = page.locator('.home-hero-zone__form');
-  await expect(
-    heroForm.getByRole('heading', { name: HERO_FORM_TITLE })
-  ).toBeVisible();
-
-  return heroForm;
-}
-
-async function fillHeroLeadForm(
-  form,
-  { phone = VALID_PHONE, consent = true, comment = '' } = {}
-) {
-  await form.getByLabel('Ваш телефон').fill(phone);
-
-  if (comment) {
-    await form.getByLabel(/Комментарий/i).fill(comment);
-  }
-
-  if (consent) {
-    await form.getByLabel(/Даю согласие/i).check();
-  }
-}
-
-test('home hero lead form validates empty and invalid phone values', async ({
-  page,
-}) => {
-  let submitAttempts = 0;
-
-  await page.route('**/api/lead-request', async (route) => {
-    submitAttempts += 1;
-    await fulfillJson(route, { ok: true, message: messages.success.leadSent });
-  });
-
-  const heroForm = await openHeroLeadForm(page);
-  const phoneField = heroForm.getByLabel('Ваш телефон');
-  const submitButton = heroForm.getByRole('button', { name: 'Получить КП' });
-
-  await submitButton.click();
-
-  await expect(
-    heroForm.getByText(messages.errors.leadForm.phoneInvalid)
-  ).toBeVisible();
-  await expect(phoneField).toHaveAttribute('aria-invalid', 'true');
-
-  await phoneField.fill('12345');
-  await heroForm.getByLabel(/Даю согласие/i).check();
-  await submitButton.click();
-
-  await expect(
-    heroForm.getByText(messages.errors.leadForm.phoneInvalid)
-  ).toBeVisible();
-  expect(submitAttempts).toBe(0);
-});
-
-test('home hero lead form requires consent before submit', async ({ page }) => {
-  let submitAttempts = 0;
-
-  await page.route('**/api/lead-request', async (route) => {
-    submitAttempts += 1;
-    await fulfillJson(route, { ok: true, message: messages.success.leadSent });
-  });
-
-  const heroForm = await openHeroLeadForm(page);
-
-  await fillHeroLeadForm(heroForm, { consent: false });
-  await heroForm.getByRole('button', { name: 'Получить КП' }).click();
-
-  await expect(
-    heroForm.getByText(messages.errors.leadForm.consentRequired)
-  ).toBeVisible();
-  await expect(heroForm.getByLabel(/Даю согласие/i)).toHaveAttribute(
-    'aria-invalid',
-    'true'
+  const form = page.getByRole('form', { name: /заявка на связь/i });
+  await expect(form).toBeVisible();
+  await expect(form.locator('button[type="submit"]')).toHaveAccessibleName(
+    /\S/
   );
+  return form;
+}
+
+async function fillContactForm(form, { consent = true } = {}) {
+  await form.getByRole('textbox', { name: /имя/i }).fill('Иван Петров');
+  await form.getByRole('textbox', { name: /телефон/i }).fill(PHONE_INPUT);
+  if (consent) await form.getByRole('checkbox', { name: /согласи/i }).check();
+}
+
+test('home contact form validates empty and invalid phone values', async ({
+  page,
+}) => {
+  let submitAttempts = 0;
+  await page.route('**/api/lead-request', async (route) => {
+    submitAttempts += 1;
+    await route.fulfill({ json: { ok: true } });
+  });
+  const form = await openContactForm(page);
+  const submit = form.locator('button[type="submit"]');
+  const name = form.getByRole('textbox', { name: /имя/i });
+  const phone = form.getByRole('textbox', { name: /телефон/i });
+  await submit.click();
+  await expectFieldError(name);
+  await expectFieldError(phone);
+  await expect(name).toBeFocused();
+  await name.fill('Иван Петров');
+  await phone.fill('12345');
+  await form.getByRole('checkbox', { name: /согласи/i }).check();
+  await submit.click();
+  await expectFieldError(phone);
+  await expect(phone).toBeFocused();
   expect(submitAttempts).toBe(0);
 });
 
-test('home hero lead form submits valid payload successfully', async ({
+test('home contact form requires consent before submit', async ({ page }) => {
+  let submitAttempts = 0;
+  await page.route('**/api/lead-request', async (route) => {
+    submitAttempts += 1;
+    await route.fulfill({ json: { ok: true } });
+  });
+  const form = await openContactForm(page);
+  await fillContactForm(form, { consent: false });
+  await form.locator('button[type="submit"]').click();
+  const consent = form.getByRole('checkbox', { name: /согласи/i });
+  await expectFieldError(consent);
+  await expect(consent).toBeFocused();
+  expect(submitAttempts).toBe(0);
+});
+
+for (const channel of ['phone', 'email']) {
+  test(`home contact form submits only the selected ${channel} contact`, async ({
+    page,
+  }) => {
+    let payload;
+    await page.route('**/api/lead-request', async (route) => {
+      payload = route.request().postDataJSON();
+      await route.fulfill({ json: { ok: true } });
+    });
+    const form = await openContactForm(page);
+    await fillContactForm(form);
+    const contact = channel === 'phone' ? PHONE_PAYLOAD : 'buyer@example.com';
+    if (channel === 'email') {
+      await form.getByRole('radio', { name: /email/i }).check();
+      await form.getByRole('textbox', { name: /email/i }).fill(contact);
+    }
+    await form.locator('button[type="submit"]').click();
+    await expect(page.getByRole('status')).toContainText(contact);
+    expect(payload).toMatchObject({
+      name: 'Иван Петров',
+      contactChannel: channel,
+      [channel]: contact,
+      consent: true,
+      requestType: 'lead',
+      source: 'Главная: помощь с подбором кабеля',
+      page: '/',
+      company_website: '',
+    });
+    expect(payload).not.toHaveProperty(channel === 'phone' ? 'email' : 'phone');
+    expect(payload.createdAt).toEqual(expect.any(String));
+    expect(payload.rendered_at).toEqual(expect.any(Number));
+    expect(payload.submit_at).toBeGreaterThan(payload.rendered_at);
+  });
+}
+
+test('home contact form preserves fields and allows retry after backend failure', async ({
   page,
 }) => {
-  let leadPayload;
-
   await page.route('**/api/lead-request', async (route) => {
-    leadPayload = route.request().postDataJSON();
-    await fulfillJson(route, {
-      ok: true,
-      message: messages.success.leadSentDetailed,
+    await route.fulfill({
+      status: 503,
+      json: { ok: false, message: 'Forms unavailable (fixture)' },
     });
   });
-
-  const heroForm = await openHeroLeadForm(page);
-
-  await fillHeroLeadForm(heroForm, {
-    comment: 'ВВГ 3x2.5, 500 метров',
-  });
-  await heroForm.getByRole('button', { name: 'Получить КП' }).click();
-
-  await expect(
-    heroForm.getByText(messages.success.leadSentDetailed)
-  ).toBeVisible();
-
-  expect(leadPayload).toMatchObject({
-    phone: VALID_PHONE,
-    comment: 'ВВГ 3x2.5, 500 метров',
-    source: 'Форма на главной',
-    company_website: '',
-  });
-  expect(leadPayload.createdAt).toEqual(expect.any(String));
-  expect(leadPayload.rendered_at).toEqual(expect.any(Number));
-  expect(leadPayload.submit_at).toEqual(expect.any(Number));
-  expect(leadPayload.submit_at).toBeGreaterThan(leadPayload.rendered_at);
-});
-
-test('home hero lead form shows disabled-backend message to user', async ({
-  page,
-}) => {
-  await page.route('**/api/lead-request', async (route) => {
-    await fulfillJson(
-      route,
-      {
-        ok: false,
-        message: messages.errors.api.formsDisabled,
-      },
-      { status: 503 }
-    );
-  });
-
-  const heroForm = await openHeroLeadForm(page);
-
-  await fillHeroLeadForm(heroForm);
-  await heroForm.getByRole('button', { name: 'Получить КП' }).click();
-
-  await expect(
-    heroForm.getByText(messages.errors.api.formsDisabled)
-  ).toBeVisible();
-  await expect(
-    heroForm.getByRole('button', { name: 'Получить КП' })
-  ).toBeEnabled();
+  const form = await openContactForm(page);
+  await fillContactForm(form);
+  const submit = form.locator('button[type="submit"]');
+  await submit.click();
+  await expect(form.getByRole('alert')).toHaveText(
+    'Forms unavailable (fixture)'
+  );
+  await expect(form.getByRole('textbox', { name: /имя/i })).toHaveValue(
+    'Иван Петров'
+  );
+  await expect(form.getByRole('textbox', { name: /телефон/i })).toHaveValue(
+    PHONE_INPUT
+  );
+  await expect(form.getByRole('checkbox', { name: /согласи/i })).toBeChecked();
+  await expect(page.getByRole('status')).toHaveCount(0);
+  await expect(submit).toBeEnabled();
 });

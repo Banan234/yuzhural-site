@@ -42,8 +42,10 @@ describe('ProductCard', () => {
     renderCard();
 
     expect(screen.getByText('Кабель под расчет')).toBeInTheDocument();
-    expect(screen.getByText('Цена по запросу')).toBeInTheDocument();
-    expect(screen.queryByText('/ м')).not.toBeInTheDocument();
+    const card = screen.getByRole('article');
+    expect(card).toHaveTextContent(/по запросу|рассчитан.*КП/i);
+    expect(card).not.toHaveTextContent(/₽/);
+    expect(screen.queryByText(/^\/\s*м$/)).not.toBeInTheDocument();
   });
 });
 

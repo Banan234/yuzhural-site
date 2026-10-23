@@ -49,7 +49,7 @@ it('offers an explicit correction without replacing the query', async () => {
   expect(correction.getAttribute('href')).toBe(
     `/catalog/?${new URLSearchParams({ search: 'ВВГ 3х2.5' })}`
   );
-  expect(screen.getByText('Поиск: «ddu 3х2.5»')).toBeVisible();
+  expect(screen.getByRole('status')).toHaveTextContent('ddu 3х2.5');
 });
 
 it('explains when filters hide existing search matches', async () => {

@@ -8,6 +8,7 @@ import ProductCard from '../components/ui/ProductCard';
 import ProductSupplyPanel from '../components/purchase/ProductSupplyPanel';
 import ProductServiceLinks from '../components/services/ProductServiceLinks';
 import ProductDesignation from '../components/catalog/ProductDesignation';
+import ProductVariantPicker from '../components/catalog/ProductVariantPicker';
 import { fetchProductBySlug, fetchRelatedProducts } from '../lib/productsApi';
 import { useCartStore } from '../store/useCartStore';
 import { useSEO } from '../hooks/useSEO';
@@ -42,6 +43,42 @@ function getProductDisplayTitle(product) {
   );
 }
 
+function SupplyIcon({ type }) {
+  const paths = {
+    truck: (
+      <>
+        <path d="M3 5h11v12H3zM14 9h4l3 4v4h-7" />
+        <circle cx="7" cy="18" r="2" />
+        <circle cx="18" cy="18" r="2" />
+      </>
+    ),
+    pin: (
+      <>
+        <path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </>
+    ),
+    file: (
+      <>
+        <path d="M14 3H5v18h14V8zM14 3v5h5M8 13h8M8 17h5" />
+      </>
+    ),
+  };
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {paths[type]}
+    </svg>
+  );
+}
+
 export default function ProductPage() {
   const { slug } = useParams();
   const prerenderData = usePrerenderData();
@@ -51,6 +88,7 @@ export default function ProductPage() {
       : null;
   const addItem = useCartStore((state) => state.addItem);
   const [quantity, setQuantity] = useState(1);
+  const [cartFeedback, setCartFeedback] = useState('');
   const [product, setProduct] = useState(() => initialProduct);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(() => !initialProduct);
@@ -75,6 +113,7 @@ export default function ProductPage() {
 
     if (initialProduct) {
       setQuantity(1);
+      setCartFeedback('');
       setRelatedProducts([]);
       setProduct(initialProduct);
       setIsLoading(false);
@@ -84,6 +123,7 @@ export default function ProductPage() {
     }
 
     setQuantity(1);
+    setCartFeedback('');
     setRelatedProducts([]);
     setProduct(null);
     setIsNotFound(false);
@@ -240,138 +280,303 @@ export default function ProductPage() {
     context: 'request',
   });
 
+  const specs = Object.entries(product.specs || {}).filter(
+    ([, value]) => value !== null && value !== undefined && String(value).trim()
+  );
+  const summarySpecs = specs
+    .filter(([key]) => !/остаток|ед\.\s*изм|марка/i.test(key))
+    .slice(0, 5);
+  const unit = product.unit || 'шт';
+  const totalPrice = formatProductPrice(Number(product.price) * quantity);
+  const formatNumber = (value) =>
+    Number(value).toLocaleString('ru-RU', { maximumFractionDigits: 2 });
+
+  function addProductToCart() {
+    const added = addItem({ ...product, quantity });
+    setCartFeedback(
+      added === false
+        ? 'В корзине достигнут лимит позиций. Отправьте текущий список на расчёт.'
+        : `Добавлено в корзину: ${formatNumber(quantity)} ${unit}`
+    );
+  }
+
   return (
-    <section className="section">
+    <section className="section product-detail-page">
       <Container>
         <Breadcrumbs items={getProductBreadcrumbs(product)} />
+        <header className="product-page__heading">
+          <h1 className="page-title">{productTitle}</h1>
+          <div className="product-page__meta">
+            {product.sku ? <span>Артикул: {product.sku}</span> : null}
+            <span>{product.category}</span>
+            {manufacturerName ? (
+              <span>Производитель: {manufacturerName}</span>
+            ) : null}
+          </div>
+        </header>
+
         <div className="product-page">
-          <div className="product-page__media">
-            <img
-              src={productImage}
-              alt={productImageAlt}
-              className="product-page__image"
-              width="560"
-              height="320"
-              loading="eager"
-              decoding="async"
-            />
+          <div className="product-page__gallery">
+            <div className="product-page__media">
+              <img
+                src={productImage}
+                alt={productImageAlt}
+                className="product-page__image"
+                width="560"
+                height="360"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <p className="product-page__image-note">
+              Изображение показывает конструкцию. Внешний вид зависит от
+              исполнения и изготовителя.
+            </p>
           </div>
 
-          <div className="product-page__content">
-            <div className="product-page__category">{product.category}</div>
-            <h1 className="page-title">{productTitle}</h1>
-
-            <div className="product-page__meta">
-              <div>SKU: {product.sku}</div>
+          <div className="product-page__parameters">
+            <ProductVariantPicker product={product} />
+            <h2>Основные характеристики</h2>
+            <dl className="product-page__summary">
+              {summarySpecs.length ? (
+                summarySpecs.map(([key, value]) => (
+                  <div key={key}>
+                    <dt>{key}</dt>
+                    <dd>{value}</dd>
+                  </div>
+                ))
+              ) : (
+                <div>
+                  <dt>Марка</dt>
+                  <dd>{product.mark || product.category}</dd>
+                </div>
+              )}
               {manufacturerName ? (
-                <div>Производитель: {manufacturerName}</div>
+                <div>
+                  <dt>Производитель</dt>
+                  <dd>{manufacturerName}</dd>
+                </div>
               ) : null}
-            </div>
+            </dl>
+            <a
+              className="product-page__details-link"
+              href={
+                specs.length
+                  ? '#product-specifications'
+                  : '#product-description'
+              }
+            >
+              Все характеристики →
+            </a>
+          </div>
 
-            <p className="page-subtitle">{productDescription}</p>
-
-            <div className="product-page__status-row">
-              <span
-                className={
-                  isProductInStock
-                    ? 'product-page__status product-page__status--in-stock'
-                    : 'product-page__status product-page__status--out'
-                }
+          <aside className="product-page__purchase" aria-label="Заказ товара">
+            <div className="product-page__order">
+              <div className="product-page__availability">
+                <span
+                  className="product-page__availability-dot"
+                  aria-hidden="true"
+                />
+                {isProductInStock
+                  ? `Остаток в каталоге: ${formatNumber(product.stock || 0)} ${unit}`
+                  : 'Под заказ'}
+              </div>
+              <div className="product-page__price-label">
+                {productPrice.hasPrice
+                  ? 'Ориентировочная цена'
+                  : 'Стоимость поставки'}
+              </div>
+              <div
+                className={`product-page__price${productPrice.hasPrice ? '' : ' product-page__price--request'}`}
               >
-                {isProductInStock ? 'В наличии' : 'Под заказ'}
-              </span>
-
-              <span className="product-page__lead-time">
-                Срок поставки: {leadTime}
-              </span>
-            </div>
-
-            <div className="product-page__price">{productPrice.value}</div>
-
-            {productPrice.unitLabel ? (
-              <div className="product-page__unit">{productPrice.unitLabel}</div>
-            ) : null}
-
-            <div className="product-page__buttons">
+                {productPrice.value}
+                {productPrice.unitLabel ? (
+                  <span className="product-page__unit">
+                    {productPrice.unitLabel}
+                  </span>
+                ) : null}
+              </div>
+              <p className="product-page__price-note">
+                {productPrice.hasPrice
+                  ? 'Для предварительного расчёта'
+                  : 'Рассчитаем по вашему объёму'}
+              </p>
+              <label
+                className="product-page__quantity-label"
+                htmlFor={QUANTITY_INPUT_ID}
+              >
+                {unit === 'м' ? 'Нужная длина, м' : `Количество, ${unit}`}
+              </label>
               <div className="product-qty">
                 <button
                   type="button"
                   aria-label="Уменьшить количество товара"
                   aria-controls={QUANTITY_INPUT_ID}
-                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  onClick={() =>
+                    setQuantity((q) =>
+                      Math.max(1, Math.round((q - 1) * 100) / 100)
+                    )
+                  }
                 >
                   −
                 </button>
-
-                <label className="visually-hidden" htmlFor={QUANTITY_INPUT_ID}>
-                  Количество товара
-                </label>
                 <input
                   id={QUANTITY_INPUT_ID}
                   type="number"
+                  aria-label="Количество товара"
                   value={quantity}
                   min="1"
+                  step={unit === 'м' ? '0.01' : '1'}
+                  inputMode={unit === 'м' ? 'decimal' : 'numeric'}
                   onChange={(event) =>
                     setQuantity(Math.max(1, Number(event.target.value) || 1))
                   }
                 />
-
                 <button
                   type="button"
                   aria-label="Увеличить количество товара"
                   aria-controls={QUANTITY_INPUT_ID}
-                  onClick={() => setQuantity((q) => q + 1)}
+                  onClick={() =>
+                    setQuantity((q) => Math.round((q + 1) * 100) / 100)
+                  }
                 >
                   +
                 </button>
               </div>
-
-              <button
-                type="button"
-                className="button-primary"
-                onClick={openProductQuoteModal}
-              >
-                Запросить КП по этой позиции
-              </button>
-
-              <button
-                type="button"
-                className="button-secondary"
-                onClick={() => addItem({ ...product, quantity })}
-              >
-                Добавить в корзину
-              </button>
-
-              <Link to="/cart" className="button-secondary">
-                Перейти в корзину
+              {productPrice.hasPrice ? (
+                <div className="product-page__total" aria-live="polite">
+                  <span>
+                    Сумма за {formatNumber(quantity)} {unit}
+                  </span>
+                  <strong>{totalPrice.value}</strong>
+                </div>
+              ) : null}
+              <div className="product-page__buttons">
+                <button
+                  type="button"
+                  className="button-primary"
+                  onClick={addProductToCart}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 3h2l3 12h10l3-9H6M9 20h.01M18 20h.01"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Добавить в корзину
+                </button>
+                <button
+                  type="button"
+                  className="button-secondary"
+                  aria-label="Запросить КП по этой позиции"
+                  onClick={openProductQuoteModal}
+                >
+                  Запросить КП
+                </button>
+              </div>
+              <p className="product-page__order-note">
+                Подтвердим наличие, сроки поставки и итоговую стоимость в
+                коммерческом предложении.
+              </p>
+              {cartFeedback ? (
+                <div className="product-page__cart-feedback" role="status">
+                  {cartFeedback} <Link to="/cart">Перейти в корзину →</Link>
+                </div>
+              ) : null}
+            </div>
+            <div className="product-page__conditions">
+              <Link to="/delivery/">
+                <SupplyIcon type="truck" />
+                <div>
+                  <strong>Доставка по России</strong>
+                  <small>Транспортной компанией</small>
+                </div>
               </Link>
+              <Link to="/contacts/">
+                <SupplyIcon type="pin" />
+                <div>
+                  <strong>Самовывоз в Челябинске</strong>
+                  <small>После согласования заказа</small>
+                </div>
+              </Link>
+              <a href="#product-documents">
+                <SupplyIcon type="file" />
+                <div>
+                  <strong>Документы к поставке</strong>
+                  <small>Счёт и договор</small>
+                </div>
+              </a>
             </div>
-            <ProductServiceLinks product={product} quantity={quantity} />
-          </div>
+          </aside>
         </div>
-        <ProductSupplyPanel product={product} quantity={quantity} />
-        <ProductDesignation product={product} />
 
-        {product.specs && Object.keys(product.specs).length > 0 && (
-          <div className="product-details">
-            <div className="product-details__card">
-              <h2 className="section-title section-title--left">
-                Технические характеристики
-              </h2>
+        <nav className="product-page__tabs" aria-label="Информация о товаре">
+          {specs.length ? (
+            <a href="#product-specifications">Характеристики</a>
+          ) : null}
+          <a href="#product-description">Описание</a>
+          <a href="#product-marking">Расшифровка марки</a>
+          <a href="#product-documents">Партия и документы</a>
+          <a href="#product-delivery">Доставка и оплата</a>
+        </nav>
 
-              <table className="product-specs-table">
-                <tbody>
-                  {Object.entries(product.specs).map(([key, value]) => (
-                    <tr key={key} className="product-specs-table__row">
-                      <td className="product-specs-table__label">{key}</td>
-                      <td className="product-specs-table__value">{value}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+        {specs.length > 0 ? (
+          <section id="product-specifications" className="product-details">
+            <h2>Технические характеристики</h2>
+            <table className="product-specs-table">
+              <tbody>
+                {specs.map(([key, value]) => (
+                  <tr key={key} className="product-specs-table__row">
+                    <td className="product-specs-table__label">{key}</td>
+                    <td className="product-specs-table__value">{value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        ) : null}
+        <section
+          id="product-description"
+          className="product-details product-page__description"
+        >
+          <h2>Описание</h2>
+          <p>{productDescription}</p>
+        </section>
+        <div id="product-marking">
+          <ProductDesignation product={product} />
+        </div>
+        <div id="product-documents">
+          <ProductSupplyPanel product={product} quantity={quantity} />
+        </div>
+        <section
+          id="product-delivery"
+          className="product-details product-page__delivery"
+        >
+          <h2>Доставка и оплата</h2>
+          <p>
+            Самовывоз в Челябинске или отправка транспортной компанией. Наличие,
+            стоимость доставки и дату отгрузки согласуем при подготовке
+            предложения.
+          </p>
+          <p className="product-page__delivery-time">
+            Срок поставки по каталогу: {leadTime}. Подтверждается при заказе.
+          </p>
+          <div>
+            <Link to="/delivery/">Условия доставки →</Link>
+            <Link to="/payment/">Способы оплаты →</Link>
           </div>
-        )}
+        </section>
+        <section className="product-page__services">
+          <h2>Сервисы для этого кабеля</h2>
+          <ProductServiceLinks product={product} quantity={quantity} />
+        </section>
 
         {relatedProducts.length > 0 ? (
           <div className="related-products">

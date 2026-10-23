@@ -28,29 +28,24 @@ function renderPrivacyPage() {
 }
 
 describe('PrivacyPage', () => {
-  it('оставляет canonical без завершающего слэша', () => {
+  it('показывает разделы политики, данные оператора и каналы связи', () => {
     renderPrivacyPage();
 
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
       `${SITE_URL}${STATIC_PAGE_SEO.privacy.path}`
     );
-  });
-
-  it('показывает разделы политики, данные оператора и каналы связи', () => {
-    renderPrivacyPage();
-
     expect(
       screen.getByRole('heading', { name: 'Политика конфиденциальности' })
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: '2. Какие данные обрабатываются',
+        name: /какие данные/i,
       })
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: '6. Аналитика, cookie и данные браузера',
+        name: /аналитика.*cookie/i,
       })
     ).toBeInTheDocument();
     expect(

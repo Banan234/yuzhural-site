@@ -110,7 +110,7 @@
 .order-steps__number {
   font-weight: var(--font-weight-medium);
   font-size: 32px;
-  color: #de792f;
+  color: var(--primary);
 }
 .order-steps h2 {
   font-size: 21px;

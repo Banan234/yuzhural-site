@@ -7,6 +7,8 @@ import {
 } from 'react';
 
 const AUTO_DELAY_MS = 4000;
+const INITIAL_AUTO_DELAY_MS = 2000;
+const SECOND_AUTO_DELAY_MS = 3000;
 const SLIDE_DURATION_MS = 420;
 const useBrowserLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect;
@@ -17,6 +19,7 @@ export default function useProductCarousel(products, enabled) {
   const trackRef = useRef(null);
   const orderRef = useRef(products);
   const busyRef = useRef(false);
+  const nextAutoDelayRef = useRef(INITIAL_AUTO_DELAY_MS);
   const gestureRef = useRef(null);
   const suppressClickRef = useRef(false);
   const [order, setOrder] = useState(products);
@@ -74,9 +77,9 @@ export default function useProductCarousel(products, enabled) {
     }
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting && entry.intersectionRatio >= 0.3);
+        setInView(entry.isIntersecting && entry.intersectionRatio >= 0.1);
       },
-      { threshold: [0, 0.3] }
+      { threshold: [0, 0.1] }
     );
     observer.observe(carouselRef.current);
     return () => observer.disconnect();
@@ -111,11 +114,15 @@ export default function useProductCarousel(products, enabled) {
   }, [enabled, products]);
 
   const move = useCallback(
-    (direction) => {
+    (direction, automatic = false) => {
       if (!enabled || !geometry.canScroll || busyRef.current) return false;
       const current = orderRef.current;
       if (current.length < 2) return false;
       busyRef.current = true;
+      nextAutoDelayRef.current =
+        automatic && nextAutoDelayRef.current === INITIAL_AUTO_DELAY_MS
+          ? SECOND_AUTO_DELAY_MS
+          : AUTO_DELAY_MS;
       const next =
         direction > 0
           ? [...current.slice(1), current[0]]
@@ -183,6 +190,11 @@ export default function useProductCarousel(products, enabled) {
   }, [motion, reducedMotion]);
 
   useEffect(() => {
+    if (!pageVisible || reading || touching) {
+      nextAutoDelayRef.current = AUTO_DELAY_MS;
+    } else if (hovered) {
+      nextAutoDelayRef.current = SECOND_AUTO_DELAY_MS;
+    }
     if (
       !enabled ||
       reducedMotion ||
@@ -195,8 +207,11 @@ export default function useProductCarousel(products, enabled) {
       motion
     )
       return;
-    // После ручного действия, возврата на вкладку или снятия паузы — полные 4 секунды.
-    const timer = setTimeout(() => move(1), AUTO_DELAY_MS);
+    // При первом появлении: 2, 3, затем 4 секунды. После ухода курсора — 3.
+    const timer = setTimeout(
+      () => move(1, true),
+      nextAutoDelayRef.current
+    );
     return () => clearTimeout(timer);
   }, [
     enabled,

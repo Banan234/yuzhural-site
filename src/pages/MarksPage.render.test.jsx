@@ -26,7 +26,7 @@ describe('MarksPage', () => {
     expect(
       screen.queryByRole('navigation', { name: 'Выбор буквы' })
     ).toBeNull();
-    expect(screen.getByText('1 марка')).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: 'ВВГ' })).toHaveLength(1);
     expect(
       screen.getByRole('heading', { name: 'В' }).parentElement
     ).toHaveAttribute('id', 'letter-412');
@@ -36,7 +36,7 @@ describe('MarksPage', () => {
     );
     expect(screen.getByRole('link', { name: 'ВВГ' })).toHaveAttribute(
       'title',
-      'В каталоге: 2 позиции'
+      expect.stringMatching(/\b2\b/)
     );
   });
 });

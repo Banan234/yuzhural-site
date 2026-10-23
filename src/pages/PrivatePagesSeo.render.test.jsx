@@ -3,7 +3,7 @@
 
 import '../test/renderTestSetup.js';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import CartPage from './CartPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
@@ -57,15 +57,7 @@ beforeEach(() => {
 });
 
 describe('private pages SEO', () => {
-  it('ставит noindex на страницу корзины', async () => {
-    renderPage(<CartPage />, '/cart');
-
-    await waitFor(() => {
-      expect(getRobotsMetaContent()).toBe('noindex,follow');
-    });
-  });
-
-  it('показывает расчет цены в КП для нулевой цены в корзине', () => {
+  it('не индексирует корзину и показывает расчет цены в КП для нулевой цены', async () => {
     vi.stubGlobal(
       'fetch',
       vi.fn().mockResolvedValue({
@@ -77,9 +69,18 @@ describe('private pages SEO', () => {
 
     renderPage(<CartPage />, '/cart');
 
-    expect(screen.getByText('Кабель без цены')).toBeInTheDocument();
-    expect(screen.getByText('Цена будет рассчитана в КП')).toBeInTheDocument();
-    expect(screen.getByText('Итог будет рассчитан в КП')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(getRobotsMetaContent()).toBe('noindex,follow');
+    });
+    const item = screen.getByRole('article');
+    expect(
+      within(item).getByRole('link', { name: noPriceItem.title })
+    ).toHaveAttribute('href', `/product/${noPriceItem.slug}`);
+    expect(item).toHaveTextContent(/по запросу|рассчитан.*КП/i);
+    expect(item).not.toHaveTextContent(/₽/);
+    const summary = screen.getByRole('complementary');
+    expect(summary).toHaveTextContent(/рассчитан.*КП|по запросу/i);
+    expect(summary).not.toHaveTextContent(/₽/);
   });
 
   it('показывает в итогах корзины сумму и позиции по запросу вместе', () => {
@@ -100,9 +101,9 @@ describe('private pages SEO', () => {
 
     expect(screen.getByText('Кабель с ценой')).toBeInTheDocument();
     expect(screen.getByText('Кабель без цены')).toBeInTheDocument();
-    expect(
-      screen.getByText('1 200 ₽ + позиции по запросу')
-    ).toBeInTheDocument();
+    const summary = screen.getByRole('complementary');
+    expect(summary).toHaveTextContent(/1\s*200\s*₽/);
+    expect(summary).toHaveTextContent(/по запросу|рассчитан.*КП/i);
   });
 
   it('убирает canonical и ставит noindex на 404-страницу', async () => {

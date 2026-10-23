@@ -71,7 +71,7 @@
 .hero-lead-form__quick-btn--active {
   border-color: #35556d;
   background: #e7f1ff;
-  color: #1769ce;
+  color: var(--primary-dark);
   box-shadow: none;
 }
 .hero-lead-form__field label {
@@ -120,7 +120,7 @@
   outline: none;
   background: #fff;
   border-color: #8eb9ef;
-  box-shadow: 0 0 0 3px rgba(40, 123, 224, 0.1);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
 }
 .hero-lead-form__consent {
   display: flex;
@@ -132,7 +132,7 @@
 }
 .hero-lead-form__consent input {
   margin-top: 3px;
-  accent-color: #287be0;
+  accent-color: var(--primary);
   flex: 0 0 18px;
   width: 18px;
   height: 18px;
@@ -145,11 +145,11 @@
   letter-spacing: 0.015em;
   min-height: 48px;
   border-radius: 4px;
-  background: #287be0;
+  background: var(--primary);
   box-shadow: none;
 }
 .hero-lead-form__submit:hover:not(:disabled) {
-  background: #1769ce;
+  background: var(--primary-dark);
   box-shadow: none;
 }
 .hero-lead-form__submit:disabled {

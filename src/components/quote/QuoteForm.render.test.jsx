@@ -6,6 +6,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import QuoteForm from './QuoteForm.jsx';
+import { expectFieldError } from '../../test/assertFieldError.js';
 
 const quoteItem = {
   id: 101,
@@ -24,12 +25,12 @@ async function fillRequiredFields(user) {
 }
 
 describe('QuoteForm render flow', () => {
-  it('рендерит обязательный checkbox согласия с ожидаемым текстом', () => {
+  it('рендерит checkbox согласия и ссылку на политику', () => {
     render(<QuoteForm itemsOverride={[quoteItem]} />);
 
     expect(
-      screen.getByLabelText('Даю согласие на обработку персональных данных')
-    ).toBeInTheDocument();
+      screen.getByRole('checkbox', { name: /согласи/i })
+    ).not.toBeChecked();
     expect(
       screen.getByRole('link', { name: /обработку персональных\sданных/i })
     ).toHaveAttribute('href', '/privacy');
@@ -71,12 +72,11 @@ describe('QuoteForm render flow', () => {
     render(<QuoteForm itemsOverride={[]} />);
 
     await fillRequiredFields(user);
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
     expect(fetchMock).not.toHaveBeenCalled();
-    expect(screen.getByText(/^Корзина пуста$/)).toBeInTheDocument();
+    expect(screen.getByText(/корзин.*пуст/i)).toBeVisible();
+    expect(screen.queryByRole('status')).not.toBeInTheDocument();
   });
 
   it('блокирует отправку без согласия и не вызывает API', async () => {
@@ -88,14 +88,10 @@ describe('QuoteForm render flow', () => {
 
     await user.type(screen.getByLabelText(/Имя/), 'Иван Петров');
     await user.type(screen.getByLabelText(/Телефон/), '+7 900 123-45-67');
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
     expect(fetchMock).not.toHaveBeenCalled();
-    expect(
-      screen.getByText('Нужно согласие на обработку данных')
-    ).toBeInTheDocument();
+    expectFieldError(screen.getByRole('checkbox', { name: /согласи/i }));
   });
 
   it('показывает success-сообщение после успешной отправки', async () => {
@@ -109,11 +105,11 @@ describe('QuoteForm render flow', () => {
     render(<QuoteForm itemsOverride={[quoteItem]} />);
 
     await fillRequiredFields(user);
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
-    expect(await screen.findByText('Заявка принята')).toBeInTheDocument();
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Заявка принята'
+    );
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
 
     const [, request] = fetchMock.mock.calls[0];
@@ -139,18 +135,11 @@ describe('QuoteForm render flow', () => {
 
     await fillRequiredFields(user);
     await user.click(screen.getByLabelText('Email'));
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
     expect(fetchMock).not.toHaveBeenCalled();
-    expect(screen.getByText(/Укажите email/)).toBeInTheDocument();
-
     const emailInput = screen.getByRole('textbox', { name: /Email/ });
-    const emailError = screen.getByText(/Укажите email/);
-    expect(emailInput).toHaveAttribute('aria-invalid', 'true');
-    expect(emailInput).toHaveAttribute('aria-describedby', emailError.id);
-    expect(emailInput).toHaveAccessibleDescription(emailError.textContent);
+    expectFieldError(emailInput);
   });
 
   it('показывает ошибку, когда сервер возвращает ok:false', async () => {
@@ -164,15 +153,13 @@ describe('QuoteForm render flow', () => {
     render(<QuoteForm itemsOverride={[quoteItem]} />);
 
     await fillRequiredFields(user);
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
     expect(
       await screen.findByText('Сервис временно недоступен')
     ).toBeInTheDocument();
     // Ошибка ⇒ нет success-сообщения, форма не очистилась
-    expect(screen.queryByText(/Заявка/)).not.toBeInTheDocument();
+    expect(screen.queryByRole('status')).not.toBeInTheDocument();
     expect(screen.getByLabelText(/Имя/)).toHaveValue('Иван Петров');
     expect(screen.getByLabelText(/Телефон/)).toHaveValue('+7 900 123-45-67');
   });
@@ -185,19 +172,17 @@ describe('QuoteForm render flow', () => {
     render(<QuoteForm itemsOverride={[quoteItem]} />);
 
     await fillRequiredFields(user);
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
     expect(await screen.findByText('Network down')).toBeInTheDocument();
     // Кнопка снова активна — пользователь может повторить
     const submitButton = screen.getByRole('button', {
-      name: /Отправить запрос КП/,
+      name: /отправить.*КП/i,
     });
     expect(submitButton).not.toBeDisabled();
   });
 
-  it('блокирует кнопку и меняет лейбл во время отправки', async () => {
+  it('блокирует повторную отправку до получения ответа', async () => {
     const user = userEvent.setup();
     let resolveFetch;
     const pending = new Promise((resolve) => {
@@ -209,15 +194,13 @@ describe('QuoteForm render flow', () => {
     render(<QuoteForm itemsOverride={[quoteItem]} />);
 
     await fillRequiredFields(user);
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
-
-    // Во время полёта кнопка дизейблится и меняет текст
-    const submittingBtn = await screen.findByRole('button', {
-      name: 'Отправка...',
+    const submitButton = screen.getByRole('button', {
+      name: /Отправить.*КП/,
     });
-    expect(submittingBtn).toBeDisabled();
+    await user.click(submitButton);
+    expect(submitButton).toBeDisabled();
+    await user.click(submitButton);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
 
     // Резолвим — после успеха кнопка возвращается
     resolveFetch({
@@ -225,7 +208,8 @@ describe('QuoteForm render flow', () => {
       json: async () => ({ ok: true, message: 'Готово' }),
     });
 
-    expect(await screen.findByText('Готово')).toBeInTheDocument();
+    expect(await screen.findByRole('status')).toHaveTextContent('Готово');
+    expect(submitButton).toBeEnabled();
   });
 
   it('успешно отправляет с email-каналом, когда email указан', async () => {
@@ -244,11 +228,9 @@ describe('QuoteForm render flow', () => {
       'buyer@company.ru'
     );
     await user.click(screen.getByLabelText('Email'));
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
-    expect(await screen.findByText('Принято')).toBeInTheDocument();
+    expect(await screen.findByRole('status')).toHaveTextContent('Принято');
     const [, request] = fetchMock.mock.calls[0];
     const payload = JSON.parse(request.body);
     expect(payload.customer.preferredChannel).toBe('email');
@@ -270,11 +252,9 @@ describe('QuoteForm render flow', () => {
       screen.getByLabelText(/Комментарий/),
       'Срочно, до конца недели'
     );
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
-    await screen.findByText('OK');
+    expect(await screen.findByRole('status')).toHaveTextContent('OK');
 
     expect(screen.getByLabelText(/Имя/)).toHaveValue('');
     expect(screen.getByLabelText(/Телефон/)).toHaveValue('');
@@ -290,26 +270,11 @@ describe('QuoteForm render flow', () => {
 
     render(<QuoteForm itemsOverride={[quoteItem]} />);
 
-    await user.click(
-      screen.getByRole('button', { name: /Отправить запрос КП/ })
-    );
-
-    const nameInput = screen.getByLabelText(/Имя/);
-    const phoneInput = screen.getByLabelText(/Телефон/);
-    const consentInput = screen.getByLabelText(/Даю согласие/);
-    const nameError = screen.getByText('Введите имя');
-    const phoneError = screen.getByText('Введите телефон');
-    const consentError = screen.getByText('Нужно согласие на обработку данных');
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
     expect(fetchMock).not.toHaveBeenCalled();
-    expect(nameInput).toHaveAttribute('aria-invalid', 'true');
-    expect(nameInput).toHaveAttribute('aria-describedby', nameError.id);
-    expect(nameInput).toHaveAccessibleDescription(nameError.textContent);
-    expect(phoneInput).toHaveAttribute('aria-invalid', 'true');
-    expect(phoneInput).toHaveAttribute('aria-describedby', phoneError.id);
-    expect(phoneInput).toHaveAccessibleDescription(phoneError.textContent);
-    expect(consentInput).toHaveAttribute('aria-invalid', 'true');
-    expect(consentInput).toHaveAttribute('aria-describedby', consentError.id);
-    expect(consentInput).toHaveAccessibleDescription(consentError.textContent);
+    expectFieldError(screen.getByRole('textbox', { name: /имя/i }));
+    expectFieldError(screen.getByRole('textbox', { name: /телефон/i }));
+    expectFieldError(screen.getByRole('checkbox', { name: /согласи/i }));
   });
 });

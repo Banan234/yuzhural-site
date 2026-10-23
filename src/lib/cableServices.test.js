@@ -19,8 +19,8 @@ describe('service handoff and canonical paths', () => {
       MAX_QUOTE_CUSTOMER_COMMENT_LENGTH
     );
     expect(detail.comment).toContain('Итого: 1200 кг');
-    expect(detail.comment).toContain('Полный расчёт');
-    expect(detail.subtitle).toContain('начало расчёта');
+    expect(detail.comment).toMatch(/PDF/i);
+    expect(detail.subtitle).toMatch(/PDF/i);
   });
   it('uses identical canonical paths across all service links', () => {
     for (const service of CABLE_SERVICES)

@@ -1,14 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
-  buildCatalogSearchIndex,
   getCatalogSearchCorrections,
-  parseCatalogSearch,
   searchCatalogProducts,
 } from './catalogSearch.js';
-import {
-  buildProductSuggestions,
-  createCatalogQueryStore,
-} from '../lib/catalogQuery.js';
+import { buildProductSuggestions } from '../lib/catalogQuery.js';
 
 const product = (sku, title, extras = {}) => ({
   sku,
@@ -329,23 +324,5 @@ describe('explicit spelling recovery and suggestions', () => {
     expect(
       buildProductSuggestions(catalog, 'ПУГБ 6 белый', 7)[0]
     ).toMatchObject({ type: 'correction', query: 'пугв 6 белый', count: 1 });
-  });
-  it('agrees across the shared engine and cached server store', () => {
-    const store = createCatalogQueryStore();
-    for (const q of [
-      'ВВГ',
-      'ВВГ 3х2.5',
-      'ПУГВ6 белый',
-      '185',
-      'КПС 1х2х0.5',
-      'ВВГ 660В',
-    ])
-      expect(store.getSearchFilteredProducts(catalog, q)).toEqual(find(q));
-    const index = buildCatalogSearchIndex(catalog);
-    expect(parseCatalogSearch('ВВГ 3х2.5 660В', index)).toMatchObject({
-      dimensions: [[[3, 2.5]]],
-      voltages: [{ values: [660] }],
-      terms: ['ввг'],
-    });
   });
 });

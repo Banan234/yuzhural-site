@@ -62,16 +62,14 @@ describe('ProductPage', () => {
   it('показывает расшифровку позиции и внешние источники', async () => {
     renderProductPage();
     expect(
-      await screen.findByRole('heading', { name: 'Расшифровка обозначения' })
+      await screen.findByRole('heading', { name: /расшифровк/i })
     ).toBeInTheDocument();
     expect(screen.getByText('Изоляция жил из ПВХ')).toBeInTheDocument();
     expect(
-      screen.getByText('Описание и применение по данным изготовителей')
+      screen.getByRole('heading', { name: /применение.*изготовител/i })
     ).toBeInTheDocument();
-    expect(
-      screen.getByText('Камский кабель · Область применения')
-    ).toBeInTheDocument();
-    expect(screen.getByText('Подольсккабель · Применение')).toBeInTheDocument();
+    expect(screen.getByText(/Камский кабель.*применени/i)).toBeInTheDocument();
+    expect(screen.getByText(/Подольсккабель.*применени/i)).toBeInTheDocument();
     expect(
       screen.getAllByRole('link', {
         name: /ХКА.*каталог кабельной продукции/,
@@ -86,7 +84,7 @@ describe('ProductPage', () => {
       sourceName: 'Неизвестная 3х2,5',
     });
     renderProductPage();
-    expect(await screen.findByText('Требует уточнения:')).toBeInTheDocument();
+    expect(await screen.findByText(/требует уточнения/i)).toBeVisible();
     expect(
       screen.getByRole('link', { name: /Найти полное обозначение в Google/ })
     ).toHaveAttribute('target', '_blank');
@@ -98,16 +96,14 @@ describe('ProductPage', () => {
       await screen.findByRole('heading', { level: 1, name: product.title })
     ).toBeInTheDocument();
 
-    expect(screen.getByLabelText('Количество товара')).toHaveAttribute(
-      'type',
-      'number'
-    );
+    const quantity = screen.getByRole('spinbutton', { name: /количество/i });
+    expect(quantity.id).not.toBe('');
     expect(
       screen.getByRole('button', { name: 'Уменьшить количество товара' })
-    ).toHaveAttribute('aria-controls', 'product-quantity-input');
+    ).toHaveAttribute('aria-controls', quantity.id);
     expect(
       screen.getByRole('button', { name: 'Увеличить количество товара' })
-    ).toHaveAttribute('aria-controls', 'product-quantity-input');
+    ).toHaveAttribute('aria-controls', quantity.id);
     expect(screen.queryByText(/^Производитель:/)).not.toBeInTheDocument();
   });
 
@@ -119,8 +115,9 @@ describe('ProductPage', () => {
 
     renderProductPage();
 
-    expect(await screen.findByText('Цена по запросу')).toBeInTheDocument();
-    expect(screen.queryByText('/ м')).not.toBeInTheDocument();
+    expect(await screen.findByText(/по запросу|рассчитан.*КП/i)).toBeVisible();
+    expect(screen.queryByText(/^\s*0(?:[,.]0+)?\s*₽/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/^\/\s*м$/)).not.toBeInTheDocument();
   });
 
   it('показывает 404-экран для несуществующего товара', async () => {

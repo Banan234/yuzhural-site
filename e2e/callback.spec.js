@@ -1,4 +1,6 @@
 import { expect, test } from '@playwright/test';
+import { expectFieldError } from './helpers/assertions.js';
+import { SITE_WORKING_HOURS_DISPLAY } from '../src/lib/siteConfig.js';
 
 const phone = '+7 (900) 123-45-67';
 const dialogFor = (page) =>
@@ -37,14 +39,29 @@ test('callback has its own styles on direct entry and after visiting home', asyn
       form: el.closest('form').clientWidth,
     }));
     expect(Math.abs(widths.input - widths.form)).toBeLessThan(4);
-    await expect(dialog.getByText(/Пн–Пт 09:00–17:00/)).toBeVisible();
+    await expect(dialog.locator('.hero-lead-card__schedule')).toContainText(
+      SITE_WORKING_HOURS_DISPLAY
+    );
     if (path.includes('montazh')) {
       await page.screenshot({
         path: testInfo.outputPath('callback-desktop.png'),
       });
     }
+    if (path === '/') {
+      const close = dialog.getByRole('button', { name: 'Закрыть' });
+      await expect(close).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(input).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(close).toBeFocused();
+    }
     await page.keyboard.press('Escape');
     await expect(dialog).toBeHidden();
+    await expect(
+      page
+        .locator('.site-header')
+        .getByRole('button', { name: 'Заказать звонок', exact: true })
+    ).toBeFocused();
   }
 });
 
@@ -68,14 +85,16 @@ test('callback validates, handles failure without losing data and submits once',
     }
   });
   const dialog = await openHeaderCallback(page);
-  const submit = dialog.getByRole('button', { name: 'Жду звонка' });
+  const submit = dialog.locator('button[type="submit"]');
+  await expect(submit).toHaveAccessibleName(/\S/);
   await submit.click();
   await expect(dialog.getByLabel('Ваш телефон')).toBeFocused();
-  await expect(dialog.getByText('Укажите корректный телефон')).toBeVisible();
+  await expectFieldError(dialog.getByLabel(/телефон/i));
   expect(submissions).toHaveLength(0);
   await dialog.getByLabel('Ваш телефон').fill(phone);
   await submit.click();
   await expect(dialog.getByLabel(/Даю согласие/)).toBeFocused();
+  await expectFieldError(dialog.getByRole('checkbox', { name: /согласи/i }));
   expect(submissions).toHaveLength(0);
   await dialog.getByLabel(/Даю согласие/).check();
   await dialog
@@ -91,15 +110,11 @@ test('callback validates, handles failure without losing data and submits once',
   );
   await expect(dialog.getByLabel(/Даю согласие/)).toBeChecked();
   await submit.click();
-  await expect(
-    dialog.getByRole('button', { name: 'Отправка...' })
-  ).toBeDisabled();
+  await expect(submit).toBeDisabled();
   await expect.poll(() => Boolean(releaseSuccess)).toBe(true);
   expect(submissions).toHaveLength(2);
   releaseSuccess();
-  await expect(dialog.getByRole('status')).toContainText(
-    'Заявка на звонок отправлена'
-  );
+  await expect(dialog.getByRole('status').getByRole('heading')).toBeVisible();
   await expect(dialog.getByRole('status')).toContainText(phone);
   expect(submissions[1]).toMatchObject({
     requestType: 'callback',

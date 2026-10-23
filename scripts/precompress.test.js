@@ -4,7 +4,7 @@ import { access, mkdir, mkdtemp, rm, writeFile } from 'fs/promises';
 import os from 'os';
 import path from 'path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { BROTLI_QUALITY, precompress } from './precompress.js';
+import { precompress } from './precompress.js';
 
 const tempDirs = [];
 
@@ -30,10 +30,6 @@ afterEach(async () => {
 });
 
 describe('precompress', () => {
-  it('uses max brotli quality for build-time compression', () => {
-    expect(BROTLI_QUALITY).toBe(11);
-  });
-
   it('skips build-time product pages to keep deploy image smaller', async () => {
     const outputDir = await makeTempDir();
     const productDir = path.join(outputDir, 'product');

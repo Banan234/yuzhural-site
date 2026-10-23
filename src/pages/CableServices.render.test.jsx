@@ -24,7 +24,9 @@ describe('complete service flows', () => {
     fireEvent.click(
       screen.getByRole('button', { name: 'Добавить позицию в расчёт' })
     );
-    expect(screen.getByText('Сохранённые позиции: 2')).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: /^удалить /i })).toHaveLength(
+      2
+    );
     expect(screen.getByText(/15–15,3/)).toBeInTheDocument();
     let detail;
     const listener = (event) => {
@@ -57,10 +59,12 @@ describe('complete service flows', () => {
     );
     first.unmount();
     mount(<CableWeightPage />, '/calculator/weight/');
-    expect(screen.getByText('Сохранённые позиции: 1')).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: /^удалить /i })).toHaveLength(
+      1
+    );
     fireEvent.click(screen.getByRole('button', { name: 'Очистить расчёт' }));
     expect(
-      screen.queryByText('Сохранённые позиции: 1')
+      screen.queryByRole('button', { name: /^удалить /i })
     ).not.toBeInTheDocument();
   });
   it('shows telephone diameter units and identifies unknown suffixes', () => {
@@ -69,7 +73,7 @@ describe('complete service flows', () => {
       '/services/marking/?designation=ТППэп+10х2х0,5'
     );
     expect(
-      screen.getByText('10 пар по 2 жилы, диаметр жилы 0.5 мм')
+      screen.getByText(/10 пар.*2 жилы.*диаметр.*0[,.]5 мм/)
     ).toBeInTheDocument();
     fireEvent.change(screen.getByLabelText('Полное обозначение кабеля'), {
       target: { value: 'ВВГ-XYZ 3х2,5' },

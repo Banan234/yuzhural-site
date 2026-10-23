@@ -6,6 +6,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import FloatingLeadWidget from './FloatingLeadWidget.jsx';
+import { expectFieldError } from '../../test/assertFieldError.js';
 
 function createJsonResponse(payload, ok = true) {
   return {
@@ -73,15 +74,7 @@ describe('FloatingLeadWidget', () => {
       screen.getByRole('button', { name: 'Отправить сообщение' })
     );
 
-    const consentError = await screen.findByText(
-      'Нужно согласие на обработку данных'
-    );
-    const consentInput = screen.getByLabelText(/Даю согласие/);
-
-    expect(consentError).toBeInTheDocument();
-    expect(consentInput).toHaveAttribute('aria-invalid', 'true');
-    expect(consentInput).toHaveAttribute('aria-describedby', consentError.id);
-    expect(consentInput).toHaveAccessibleDescription(consentError.textContent);
+    expectFieldError(screen.getByRole('checkbox', { name: /согласи/i }));
     expect(fetchMock).not.toHaveBeenCalled();
     expect(localStorage.getItem('yuzhural-chat-session')).toBeNull();
   });

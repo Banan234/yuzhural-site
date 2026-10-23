@@ -6,37 +6,48 @@ const CONSTRUCTION_SUFFIX = /^(?:эф|эа|эм|ээ|э|зэл|з|хл|уф)$/iu
 const BEFORE_FIRE_SUFFIX = /^(?:эф|эа|эм|ээ|э|зэл|з)$/iu;
 const FIRE_SUFFIX = /^нг(?:\([АБВГДСA-D]\))?(?:-|$)/iu;
 
-const PUGV_COLORS = [
+const CABLE_COLORS = [
   ['белый', ['бел', 'белый']],
   ['красный', ['красн', 'красный']],
   ['чёрный', ['черн', 'чёрн', 'черный', 'чёрный']],
-  ['жёлтый', ['желт', 'жёлт', 'желтый', 'жёлтый']],
+  ['жёлтый', ['жел', 'желт', 'жёлт', 'желтый', 'жёлтый']],
   ['зелёный', ['зел', 'зелен', 'зелён', 'зеленый', 'зелёный']],
-  ['жёлто-зелёный', ['ж/з', 'желто-зеленый', 'жёлто-зелёный']],
+  ['жёлто-зелёный', ['ж/з', 'жел/зел', 'желто-зеленый', 'жёлто-зелёный']],
   ['голубой', ['гол', 'голуб', 'голубой']],
   ['синий', ['син', 'синий']],
   ['коричневый', ['кор', 'корич', 'коричн', 'коричневый']],
   ['оранжевый', ['оранж', 'оранжевый']],
-  ['фиолетовый', ['фиол', 'фиолетовый']],
+  ['фиолетовый', ['фиол', 'фиолет', 'фиолетовый']],
   ['серый', ['сер', 'серый']],
-  ['розовый', ['роз', 'розовый']],
+  ['розовый', ['роз', 'розов', 'розовый']],
   ['бежевый', ['беж', 'бежевый']],
+  ['сиреневый', ['сирень', 'сиреневый']],
+  ['бело-жёлтый', ['бело/желт', 'бело-желтый', 'бело-жёлтый']],
+  ['бело-синий', ['бел/син', 'бело/син', 'бело-синий']],
+  ['бело-фиолетовый', ['бело/фиол', 'бело-фиолетовый']],
+  ['бело-красный', ['бел/красн', 'бело-красный']],
+  ['бело-зелёный', ['бел/зел', 'бело-зеленый', 'бело-зелёный']],
+  ['чёрно-белый', ['черн-бел', 'черно-белый', 'чёрно-белый']],
+  ['сине-чёрный', ['сине/черн', 'сине-черный', 'сине-чёрный']],
 ];
-const PUGV_COLOR_ALIASES = new Map(
-  PUGV_COLORS.flatMap(([color, aliases]) =>
+const CABLE_COLOR_ALIASES = new Map(
+  CABLE_COLORS.flatMap(([color, aliases]) =>
     aliases.map((alias) => [alias, color])
   )
 );
 
-function isPugv(product) {
-  return /^пугв$/iu.test(String(product?.markFamily || product?.mark || ''));
-}
-
-function normalizePugvColorText(value) {
-  return value.replace(
+function normalizeCableColorText(value) {
+  // Скобки раскрываем только для целого обозначения цвета, а не примечаний.
+  const text = value.replace(/\(([^()]+)\)/gu, (match, token) => {
+    const color = CABLE_COLOR_ALIASES.get(
+      token.trim().replace(/\.$/u, '').toLocaleLowerCase('ru')
+    );
+    return color ? `(${color})` : match;
+  });
+  return text.replace(
     /(^|\s)([\p{L}]+(?:[-/][\p{L}]+)*)(\.)?(?=$|\s|\()/gu,
     (match, separator, token) => {
-      const color = PUGV_COLOR_ALIASES.get(token.toLocaleLowerCase('ru'));
+      const color = CABLE_COLOR_ALIASES.get(token.toLocaleLowerCase('ru'));
       return color ? `${separator}${color}` : match;
     }
   );
@@ -46,21 +57,20 @@ export function formatCableProductAttributes(product) {
   const attributes = Array.isArray(product?.attributes)
     ? product.attributes
     : [];
-  return isPugv(product)
-    ? attributes.map((attribute) => normalizePugvColorText(String(attribute)))
-    : attributes;
+  return attributes.map((attribute) =>
+    normalizeCableColorText(String(attribute))
+  );
 }
 
-function normalizePugvColors(title, product) {
-  if (!isPugv(product)) return title;
+function normalizeCableColors(title, product) {
   const specification = findCableSpecification(title);
   if (!specification || specification.warnings.length) return title;
   const tailIndex = specification.index + specification.length;
   // Только целые обозначения цвета после сечения. Примечания и суффиксы
   // сохраняются, attributes остаются исходными для стабильного ключа импорта.
-  let tail = normalizePugvColorText(title.slice(tailIndex));
+  let tail = normalizeCableColorText(title.slice(tailIndex));
   const colorThenSuffix = tail.match(/^\s*(\S+)\s+(.+)$/u);
-  if (colorThenSuffix && PUGV_COLOR_ALIASES.has(colorThenSuffix[1])) {
+  if (colorThenSuffix && CABLE_COLOR_ALIASES.has(colorThenSuffix[1])) {
     const after = consumeSuffixes(
       colorThenSuffix[2],
       movableAttributes(product)
@@ -124,7 +134,10 @@ function consumeSuffixes(value, attributes, { fromTail = false } = {}) {
 
 export function formatCableProductTitle(title, product) {
   if (typeof title !== 'string') return title;
-  return formatCableTitleSuffixes(normalizePugvColors(title, product), product);
+  return formatCableTitleSuffixes(
+    normalizeCableColors(title, product),
+    product
+  );
 }
 
 function formatCableTitleSuffixes(title, product) {

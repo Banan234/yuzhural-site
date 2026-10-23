@@ -43,7 +43,8 @@ test.beforeEach(async ({ request }) => {
     .toBe(200);
 });
 
-test('chat widget starts a session with the first message and restores it after reload', async ({
+test('chat widget restores the same session after reload and reopening the page', async ({
+  context,
   page,
 }) => {
   const initialConversation = {
@@ -79,7 +80,7 @@ test('chat widget starts a session with the first message and restores it after 
   let createCalls = 0;
   let restoreReads = 0;
 
-  await page.route('**/api/chat/conversations', async (route) => {
+  await context.route('**/api/chat/conversations', async (route) => {
     createCalls += 1;
 
     expect(route.request().method()).toBe('POST');
@@ -98,7 +99,7 @@ test('chat widget starts a session with the first message and restores it after 
     });
   });
 
-  await page.route('**/api/chat/conversations/chat-e2e', async (route) => {
+  await context.route('**/api/chat/conversations/chat-e2e', async (route) => {
     restoreReads += 1;
 
     expect(route.request().method()).toBe('GET');
@@ -141,6 +142,19 @@ test('chat widget starts a session with the first message and restores it after 
   await expect(
     page.getByText('Менеджер подключился, готовим предложение.')
   ).toBeVisible();
+
+  await page.close();
+  const reopenedPage = await context.newPage();
+  await reopenedPage.goto('/');
+  await expect.poll(() => restoreReads).toBeGreaterThanOrEqual(3);
+  await openChatWidget(reopenedPage);
+  await expect(
+    reopenedPage.getByText('Менеджер подключился, готовим предложение.')
+  ).toBeVisible();
+  expect(await readStoredSession(reopenedPage)).toEqual({
+    conversationId: 'chat-e2e',
+    customerToken: 'customer-token',
+  });
   expect(createCalls).toBe(1);
 });
 

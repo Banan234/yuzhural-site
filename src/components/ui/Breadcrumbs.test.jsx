@@ -60,9 +60,17 @@ describe('Breadcrumbs', () => {
         <Breadcrumbs current="Доставка" />
       </MemoryRouter>
     );
-    expect(html).toContain('aria-label="Хлебные крошки"');
-    expect(html).toContain('aria-current="page">Доставка');
-    expect(html).toContain('href="/"');
+    const container = document.createElement('div');
+    container.innerHTML = html;
+    const nav = within(container).getByRole('navigation', { name: /крошки/i });
+    expect(within(nav).getByText('Доставка')).toHaveAttribute(
+      'aria-current',
+      'page'
+    );
+    expect(within(nav).getByRole('link', { name: /главная/i })).toHaveAttribute(
+      'href',
+      '/'
+    );
   });
 
   it('omits breadcrumbs when the path only contains home', () => {

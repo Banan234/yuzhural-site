@@ -23,10 +23,9 @@ test('catalog loads products from API and opens a product page', async ({
 }) => {
   await page.goto('/catalog');
 
-  await expect(
-    page.getByRole('heading', { name: /Каталог продукции|Кабель/i })
-  ).toBeVisible();
-  await expect(page.getByText(/Найдено:/)).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  await expect(page.locator('.product-card').first()).toBeVisible();
+  await expect(page.locator('.catalog-search-bar')).toHaveCount(0);
 
   const firstProductTitle = page.locator('.product-card__title-link').first();
   await expect(firstProductTitle).toBeVisible();
@@ -43,15 +42,6 @@ test('catalog loads products from API and opens a product page', async ({
   await expect(
     page.getByRole('button', { name: 'Запросить КП по этой позиции' })
   ).toBeVisible();
-});
-
-test('catalog listing does not show a separate mark search', async ({
-  page,
-}) => {
-  await page.goto('/catalog');
-
-  await expect(page.locator('.catalog-search-bar')).toHaveCount(0);
-  await expect(page.getByText(/Найдено:/)).toBeVisible();
 });
 
 test('mobile category page shows products without a separate mark search', async ({

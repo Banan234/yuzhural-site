@@ -86,15 +86,61 @@ describe('цвета ПУГВ при импорте', () => {
   });
 
   test.each([
-    ['ПУГВВ 1х6 красн.', 'ПУГВВ'],
-    ['КУИН-ПУГВВ 1х6 красн.', 'КУИН-ПУГВВ'],
-    ['ВВГ 1х6 бел', 'ВВГ'],
     ['ПУГВ 1х6 красноватый', 'ПУГВ'],
     ['ПУГВ 1х6 неизвестный', 'ПУГВ'],
     ['ПУГВ 1х6 кор/син', 'ПУГВ'],
     ['ПУГВ 1х6 (красн. по запросу)', 'ПУГВ'],
     ['ПУГВ без сечения красн.', 'ПУГВ'],
-  ])('не угадывает цвет и не меняет другие марки: %s', (title, mark) => {
+  ])('не угадывает неизвестные цвета и примечания: %s', (title, mark) => {
     expect(formatCableProductTitle(title, { mark })).toBe(title);
+  });
+});
+
+describe('единые цвета всех марок', () => {
+  test.each([
+    ['ПВС 3х2.5 бел', 'ПВС 3х2.5 белый'],
+    ['ШВВП 2х0.75 черн.', 'ШВВП 2х0.75 чёрный'],
+    ['ПВ-1 1х6 ж/з', 'ПВ-1 1х6 жёлто-зелёный'],
+    ['ПУГВВ 1х6 красн.', 'ПУГВВ 1х6 красный'],
+    ['КУИН-ПУГВВ 1х6 красн.', 'КУИН-ПУГВВ 1х6 красный'],
+    ['ВВГ 1х6 бел', 'ВВГ 1х6 белый'],
+    ['ПВКВ 1х1.5 розов.', 'ПВКВ 1х1.5 розовый'],
+    ['МГШВ 1х0.5 бел/син', 'МГШВ 1х0.5 бело-синий'],
+    ['МГШВ 1х0.5 бело/желт', 'МГШВ 1х0.5 бело-жёлтый'],
+    ['МГШВ 1х0.5 сине/черн', 'МГШВ 1х0.5 сине-чёрный'],
+    ['ПВС 3х2.5 (бел)', 'ПВС 3х2.5 (белый)'],
+    ['ШВВП 2х0.75 (черн.)', 'ШВВП 2х0.75 (чёрный)'],
+    ['ПВС 3х2.5 бел ндг LS', 'ПВС 3х2.5 белый ндг LS'],
+  ])('%s → %s при импорте и выдаче', (sourceName, expected) => {
+    const product = normalizeImportedProduct({ name: sourceName, unit: 'м' });
+    expect(product.name).toBe(expected);
+    expect(product.fullName).toBe(expected);
+    expect(product.sourceName).toBe(sourceName);
+    expect(normalizeImportedProduct(product)).toEqual(product);
+    expect(formatCableProductTitle(sourceName, product)).toBe(expected);
+    expect(formatCableProductTitle(expected, product)).toBe(expected);
+    const attributes = [...product.attributes];
+    const key = buildStableKey(product);
+    const displayedAttributes = formatCableProductAttributes(product);
+    expect(displayedAttributes.join(' ')).not.toMatch(
+      /(?:^|[ (])(?:бел|черн|розов)\.?(?=$|[ )])/u
+    );
+    expect(product.attributes).toEqual(attributes);
+    expect(buildStableKey(product)).toBe(key);
+    expect(
+      buildProductMetaDescription({ ...product, title: expected })
+    ).toContain(expected);
+  });
+
+  test.each([
+    'ПВС 3х2.5 (бел по запросу)',
+    'ПВС 3х2.5 бел/неизвестный',
+    'ПВС 3х2.5 белый с красной полосой',
+    'ПВС без сечения бел',
+    'БЕЛ 3х2.5',
+  ])('сохраняет марку и неоднозначные обозначения: %s', (title) => {
+    expect(formatCableProductTitle(title, { mark: title.split(' ')[0] })).toBe(
+      title
+    );
   });
 });

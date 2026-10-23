@@ -6,6 +6,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import HeroLeadForm from './HeroLeadForm.jsx';
+import { expectFieldError } from '../../test/assertFieldError.js';
 
 describe('HeroLeadForm render flow', () => {
   it('связывает ошибки телефона и согласия с полями формы', async () => {
@@ -15,30 +16,14 @@ describe('HeroLeadForm render flow', () => {
 
     render(<HeroLeadForm />);
 
-    await user.click(screen.getByRole('button', { name: 'Получить КП' }));
-
-    const phoneInput = screen.getByLabelText('Ваш телефон');
-    const consentInput = screen.getByLabelText(
-      'Даю согласие на обработку персональных данных'
-    );
-    const phoneError = screen.getByText('Укажите корректный телефон');
-    const consentError = screen.getByText('Нужно согласие на обработку данных');
-
-    expect(fetchMock).not.toHaveBeenCalled();
-    expect(phoneInput).toHaveAttribute('aria-invalid', 'true');
-    expect(phoneInput).toHaveAttribute('aria-describedby', phoneError.id);
-    expect(phoneInput).toHaveAccessibleDescription(phoneError.textContent);
-    expect(consentInput).toHaveAttribute('aria-invalid', 'true');
-    expect(consentInput).toHaveAttribute('aria-describedby', consentError.id);
-    expect(consentInput).toHaveAccessibleDescription(consentError.textContent);
-  });
-
-  it('показывает ссылку на политику конфиденциальности рядом с согласием', () => {
-    render(<HeroLeadForm />);
-
     expect(
       screen.getByRole('link', { name: /обработку персональных\sданных/i })
     ).toHaveAttribute('href', '/privacy');
+    await user.click(screen.getByRole('button', { name: 'Получить КП' }));
+
+    expect(fetchMock).not.toHaveBeenCalled();
+    expectFieldError(screen.getByRole('textbox', { name: /телефон/i }));
+    expectFieldError(screen.getByRole('checkbox', { name: /согласи/i }));
   });
 
   it('обновляет комментарий, если форма открывается с новым defaultComment', async () => {

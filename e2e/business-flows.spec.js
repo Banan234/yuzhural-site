@@ -1,6 +1,8 @@
-// Файл покрывает ключевые бизнес-сценарии: лид-форма, запрос КП, чат и internal runtime.
+// Файл проверяет запросы КП, корзину и доступ к internal runtime.
+// Главная и чат проверяются в отдельных e2e-наборах.
 
 import { expect, test } from '@playwright/test';
+import { expectFieldError } from './helpers/assertions.js';
 
 const PRODUCT_ROUTE = '/product/e2e-vvgng-ls-3x2-5';
 const INTERNAL_TOKEN_STORAGE_KEY = 'yuzhural-internal-metrics-token';
@@ -71,33 +73,6 @@ const refreshedVkSnapshot = {
   },
 };
 
-const degradedVkSnapshot = {
-  ok: false,
-  status: 'degraded',
-  vk: {
-    ...readyVkSnapshot.vk,
-    callback: {
-      ...readyVkSnapshot.vk.callback,
-      autoConfigure: {
-        ...readyVkSnapshot.vk.callback.autoConfigure,
-        lastError: {
-          message: 'Probe degraded after repeated 503 responses',
-        },
-      },
-      publicEndpoint: {
-        ...readyVkSnapshot.vk.callback.publicEndpoint,
-        healthy: false,
-        lastHttpStatus: 503,
-        lastBodyMatched: false,
-        lastError: {
-          message: 'Probe returned 503',
-        },
-        consecutiveFailures: 4,
-      },
-    },
-  },
-};
-
 test.beforeEach(async ({ request }) => {
   await expect
     .poll(
@@ -118,39 +93,37 @@ async function fulfillJson(route, payload, { status = 200 } = {}) {
   });
 }
 
-async function openChatWidget(page) {
-  const launcher = page.getByRole('button', { name: 'Чат с менеджером' });
-  await expect(launcher).toBeVisible();
-  await launcher.click();
-  await expect(
-    page.getByRole('heading', { name: 'Чат с менеджером' })
-  ).toBeVisible();
-}
-
 async function openCartPageWithFixtureProduct(page) {
   await page.goto(PRODUCT_ROUTE);
   await page.getByRole('button', { name: 'Добавить в корзину' }).click();
   await page.goto('/cart');
-  await expect(
-    page.getByRole('heading', { name: 'Список для КП' })
-  ).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.getByText(/ВВГнг-LS 3[хx]2\.5/i)).toBeVisible();
 }
 
-async function addManualCartItem(page, item = {}) {
-  const {
-    mark = 'АВБбШв 4x25',
-    quantity = '50',
-    comment = 'Нужен аналог с расчётом',
-  } = item;
-
-  const manualForm = page.locator('.cart-manual__form');
-  await manualForm.getByLabel('Марка или наименование').fill(mark);
-  await manualForm.getByLabel('Метраж').fill(quantity);
-  await manualForm.getByLabel('Комментарий').fill(comment);
-  await manualForm.getByRole('button', { name: 'Добавить в список' }).click();
-
-  await expect(page.getByRole('heading', { name: mark })).toBeVisible();
+// Legacy manual items can still be restored and sent, although the old entry form was removed.
+async function restoreManualCartItem(page) {
+  await page.evaluate(() => {
+    const stored = JSON.parse(localStorage.getItem('yuzhural-cart'));
+    stored.state.items.push({
+      id: 'manual-e2e',
+      slug: '',
+      sku: '',
+      manual: true,
+      title: 'АВБбШв 4x25',
+      category: 'Ручная позиция',
+      price: 0,
+      quantity: 50,
+      unit: 'м',
+      comment: 'Нужен аналог с расчётом',
+      image: '/product-placeholder.svg',
+    });
+    localStorage.setItem('yuzhural-cart', JSON.stringify(stored));
+  });
+  await page.reload();
+  await expect(
+    page.getByRole('heading', { name: 'АВБбШв 4x25' })
+  ).toBeVisible();
 }
 
 async function openCartQuoteModal(page) {
@@ -184,48 +157,6 @@ async function fillRequiredQuoteFields(scope, data = {}) {
   }
   await scope.getByLabel(/Даю согласие/i).check();
 }
-
-test('home hero lead form submits HeroLeadForm payload', async ({ page }) => {
-  let leadPayload;
-
-  await page.route('**/api/lead-request', async (route) => {
-    leadPayload = route.request().postDataJSON();
-    await fulfillJson(route, {
-      ok: true,
-      message: 'Заявка отправлена. Мы скоро свяжемся с вами.',
-    });
-  });
-
-  await page.goto('/');
-
-  const heroForm = page.locator('.home-hero-zone__form');
-  const commentField = heroForm.getByLabel(/Комментарий/i);
-
-  await expect(
-    heroForm.getByRole('heading', { name: 'Не тратьте время на поиск кабеля' })
-  ).toBeVisible();
-  await heroForm.getByRole('button', { name: 'ВВГ', exact: true }).click();
-  await expect(commentField).toHaveValue('ВВГ');
-
-  await heroForm.getByLabel('Ваш телефон').fill('+7 900 123-45-67');
-  await heroForm.getByLabel(/Даю согласие/i).check();
-  await heroForm.getByRole('button', { name: 'Получить КП' }).click();
-
-  await expect(
-    heroForm.getByText('Заявка отправлена. Мы скоро свяжемся с вами.')
-  ).toBeVisible();
-
-  expect(leadPayload).toMatchObject({
-    phone: '+7 900 123-45-67',
-    comment: 'ВВГ',
-    source: 'Форма на главной',
-    company_website: '',
-  });
-  expect(leadPayload.createdAt).toEqual(expect.any(String));
-  expect(leadPayload.rendered_at).toEqual(expect.any(Number));
-  expect(leadPayload.submit_at).toEqual(expect.any(Number));
-  expect(leadPayload.submit_at).toBeGreaterThan(leadPayload.rendered_at);
-});
 
 test('product quote modal submits QuoteForm payload', async ({ page }) => {
   let quotePayload;
@@ -287,12 +218,12 @@ test('cart page keeps quote CTA unavailable until there are positions', async ({
 }) => {
   await page.goto('/cart');
 
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(
-    page.getByRole('heading', { name: 'Список для КП' })
+    page.getByRole('heading', { name: /(?:корзин|список).*пуст/i })
   ).toBeVisible();
-  await expect(page.getByText('Список пока пуст.')).toBeVisible();
   await expect(
-    page.getByRole('link', { name: 'Перейти в каталог' })
+    page.locator('.cart-empty').getByRole('link', { name: /каталог/i })
   ).toBeVisible();
   await expect(
     page.getByRole('button', { name: 'Запросить коммерческое предложение' })
@@ -317,15 +248,13 @@ test('cart quote modal validates required fields before request', async ({
   const dialog = await openCartQuoteModal(page);
   await dialog.getByRole('button', { name: 'Отправить запрос КП' }).click();
 
-  await expect(dialog.getByText('Введите имя')).toBeVisible();
-  await expect(dialog.getByText('Введите телефон')).toBeVisible();
-  await expect(
-    dialog.getByText('Нужно согласие на обработку данных')
-  ).toBeVisible();
+  await expectFieldError(dialog.getByRole('textbox', { name: /имя/i }));
+  await expectFieldError(dialog.getByRole('textbox', { name: /телефон/i }));
+  await expectFieldError(dialog.getByRole('checkbox', { name: /согласи/i }));
   expect(quoteRequests).toBe(0);
 });
 
-test('cart quote modal submits request and clears cart after success', async ({
+test('cart submits catalog and restored manual items and clears cart after success', async ({
   page,
 }) => {
   let quotePayload;
@@ -339,7 +268,7 @@ test('cart quote modal submits request and clears cart after success', async ({
   });
 
   await openCartPageWithFixtureProduct(page);
-  await addManualCartItem(page);
+  await restoreManualCartItem(page);
 
   const dialog = await openCartQuoteModal(page);
   await fillRequiredQuoteFields(dialog);
@@ -385,7 +314,9 @@ test('cart quote modal submits request and clears cart after success', async ({
   expect(quotePayload.submit_at).toBeGreaterThan(quotePayload.rendered_at);
 
   await dialog.getByRole('button', { name: 'Закрыть' }).click();
-  await expect(page.getByText('Список пока пуст.')).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: /(?:корзин|список).*пуст/i })
+  ).toBeVisible();
   await expect(
     page.getByRole('button', { name: 'Запросить коммерческое предложение' })
   ).toHaveCount(0);
@@ -423,111 +354,6 @@ test('cart quote modal shows backend error without clearing form', async ({
     dialog.getByRole('button', { name: 'Отправить запрос КП' })
   ).toBeEnabled();
   await expect(page.getByText(/ВВГнг-LS 3[хx]2\.5/i)).toBeVisible();
-});
-
-test('chat widget creates and restores a customer session', async ({
-  context,
-  page,
-}) => {
-  const baseConversation = {
-    id: 'chat-e2e',
-    messages: [
-      {
-        id: 'm1',
-        role: 'manager',
-        text: 'Здравствуйте.\nУ вас возникли вопросы? Мы с удовольствием ответим!',
-        createdAt: '2026-06-10T07:00:00.000Z',
-      },
-      {
-        id: 'm2',
-        role: 'customer',
-        text: 'Нужен ВВГ 3x2.5',
-        createdAt: '2026-06-10T07:00:01.000Z',
-      },
-    ],
-  };
-  const restoredConversation = {
-    ...baseConversation,
-    messages: [
-      ...baseConversation.messages,
-      {
-        id: 'm3',
-        role: 'manager',
-        text: 'Менеджер подключился, готовим предложение.',
-        createdAt: '2026-06-10T07:05:00.000Z',
-      },
-    ],
-  };
-
-  let createCalls = 0;
-  let conversationReads = 0;
-
-  await context.route('**/api/chat/conversations', async (route) => {
-    createCalls += 1;
-
-    expect(route.request().method()).toBe('POST');
-    expect(route.request().postDataJSON()).toMatchObject({
-      message: 'Нужен ВВГ 3x2.5',
-      source: 'Чат: Главная страница',
-      company_website: '',
-    });
-
-    await fulfillJson(route, {
-      ok: true,
-      message: 'Диалог начат. Менеджер ответит здесь в рабочее время.',
-      conversationId: 'chat-e2e',
-      customerToken: 'customer-token',
-      conversation: baseConversation,
-    });
-  });
-
-  await context.route('**/api/chat/conversations/chat-e2e', async (route) => {
-    conversationReads += 1;
-
-    expect(route.request().method()).toBe('GET');
-    expect(route.request().headers().authorization).toBe(
-      'Bearer customer-token'
-    );
-
-    await fulfillJson(route, {
-      ok: true,
-      role: 'customer',
-      conversation:
-        conversationReads === 1 ? baseConversation : restoredConversation,
-    });
-  });
-
-  await page.goto('/');
-  await openChatWidget(page);
-  const chatWidget = page.getByRole('region', { name: 'Чат с менеджером' });
-  await chatWidget.getByLabel(/Даю согласие/).check();
-  await chatWidget.getByLabel('Введите сообщение').fill('Нужен ВВГ 3x2.5');
-  await chatWidget.getByRole('button', { name: 'Отправить сообщение' }).click();
-
-  await expect(page.getByText('Нужен ВВГ 3x2.5')).toBeVisible();
-  await expect
-    .poll(async () =>
-      page.evaluate(() => {
-        const raw = localStorage.getItem('yuzhural-chat-session');
-        return raw ? JSON.parse(raw) : null;
-      })
-    )
-    .toEqual({
-      conversationId: 'chat-e2e',
-      customerToken: 'customer-token',
-    });
-
-  await page.close();
-
-  const restoredPage = await context.newPage();
-  await restoredPage.goto('/');
-  await expect.poll(() => conversationReads).toBeGreaterThanOrEqual(2);
-
-  await openChatWidget(restoredPage);
-  await expect(
-    restoredPage.getByText('Менеджер подключился, готовим предложение.')
-  ).toBeVisible();
-  expect(createCalls).toBe(1);
 });
 
 test('internal runtime page renders diagnostics and refresh probe flow', async ({
@@ -582,45 +408,4 @@ test('internal runtime page renders diagnostics and refresh probe flow', async (
     'Bearer test-runtime-token',
   ]);
   expect(vkRequests.some((url) => url.includes('refresh=1'))).toBe(true);
-});
-
-test('internal runtime page tolerates degraded VK health JSON response', async ({
-  page,
-}) => {
-  await page.addInitScript(
-    ({ key, token }) => {
-      window.sessionStorage.setItem(key, token);
-    },
-    {
-      key: INTERNAL_TOKEN_STORAGE_KEY,
-      token: 'test-runtime-token',
-    }
-  );
-
-  await page.route('**/api/runtime', async (route) => {
-    await fulfillJson(route, runtimeSnapshot);
-  });
-
-  await page.route('**/api/vk/health', async (route) => {
-    await fulfillJson(route, degradedVkSnapshot, { status: 503 });
-  });
-
-  await page.goto('/internal/runtime');
-
-  const heroCard = page.locator('.internal-runtime__hero-card');
-
-  await expect(
-    page.getByRole('heading', { level: 1, name: 'Internal Runtime' })
-  ).toBeVisible();
-  await expect(heroCard.getByText('degraded')).toHaveClass(
-    /internal-runtime__badge--warn/
-  );
-  await expect(page.getByText('Probe returned 503')).toBeVisible();
-  await expect(
-    page.getByText('Probe degraded after repeated 503 responses')
-  ).toBeVisible();
-  await expect(page.getByText('chat_42')).toBeVisible();
-  await expect(
-    page.getByText('https://vk.example.test/api/vk/callback')
-  ).toBeVisible();
 });

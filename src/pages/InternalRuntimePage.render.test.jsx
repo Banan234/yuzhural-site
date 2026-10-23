@@ -189,9 +189,10 @@ describe('InternalRuntimePage render flow', () => {
     expect(
       await screen.findByRole('heading', { level: 1, name: 'Internal Runtime' })
     ).toBeInTheDocument();
-    expect(
-      screen.getByPlaceholderText('Введите внутренний токен')
-    ).toBeInTheDocument();
+    expect(screen.getByLabelText('INTERNAL_METRICS_TOKEN')).toHaveAttribute(
+      'type',
+      'password'
+    );
 
     await user.click(
       screen.getByRole('button', { name: 'Сохранить и обновить' })
@@ -236,6 +237,10 @@ describe('InternalRuntimePage render flow', () => {
     await waitFor(() => {
       expect(fetchMock).toHaveBeenCalledTimes(2);
     });
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([
+      '/api/runtime',
+      '/api/vk/health',
+    ]);
     expect(screen.getByLabelText('INTERNAL_METRICS_TOKEN')).toHaveValue(
       'fresh-token'
     );
@@ -437,46 +442,6 @@ describe('InternalRuntimePage render flow', () => {
       expect(screen.queryByText('degraded')).not.toBeInTheDocument();
     }
   );
-
-  it('делает только один цикл загрузки после сохранения нового токена', async () => {
-    const fetchMock = vi.fn((url, options) => {
-      expect(options).toMatchObject({
-        headers: { Authorization: 'Bearer fresh-runtime-token' },
-      });
-
-      if (url === '/api/runtime') {
-        return Promise.resolve(jsonResponse(runtimeSnapshot));
-      }
-
-      if (url === '/api/vk/health') {
-        return Promise.resolve(jsonResponse(readyVkSnapshot));
-      }
-
-      throw new Error(`Unexpected request: ${String(url)}`);
-    });
-    vi.stubGlobal('fetch', fetchMock);
-
-    renderInternalRuntimeRoute();
-
-    fireEvent.change(screen.getByLabelText('INTERNAL_METRICS_TOKEN'), {
-      target: { value: 'fresh-runtime-token' },
-    });
-    fireEvent.click(
-      screen.getByRole('button', { name: 'Сохранить и обновить' })
-    );
-
-    await waitFor(() => {
-      expect(fetchMock).toHaveBeenCalledTimes(2);
-    });
-
-    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([
-      '/api/runtime',
-      '/api/vk/health',
-    ]);
-    expect(window.sessionStorage.getItem(INTERNAL_TOKEN_STORAGE_KEY)).toBe(
-      'fresh-runtime-token'
-    );
-  });
 
   it('делает initial load из сохраненного токена и один auto-refresh через 15 секунд', async () => {
     vi.useFakeTimers();

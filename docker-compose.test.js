@@ -65,15 +65,6 @@ describe('docker-compose.yml', () => {
     expect(webBlock).toContain('- ./data:/usr/share/nginx/runtime-data:ro');
   });
 
-  it('copies shared modules and the build template into the runtime image', () => {
-    const source = readFileSync('Dockerfile', 'utf8');
-
-    expect(source).toContain('COPY shared ./shared');
-    expect(source).toContain(
-      'COPY --from=build /home/node/app/dist/index.html ./dist/index.html'
-    );
-  });
-
   it('uses curl for web healthcheck', () => {
     const source = readFileSync('docker-compose.yml', 'utf8');
     const webBlock = extractTopLevelBlock(source, 'web');

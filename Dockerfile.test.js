@@ -151,5 +151,9 @@ describe('Dockerfile', () => {
 
     expect(runtimeStage).toContain('COPY src/lib ./src/lib');
     expect(runtimeStage).toContain('COPY scripts ./scripts');
+    expect(runtimeStage).toContain('COPY shared ./shared');
+    expect(runtimeStage).toContain(
+      'COPY --from=build /home/node/app/dist/index.html ./dist/index.html'
+    );
   });
 });

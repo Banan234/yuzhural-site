@@ -93,7 +93,7 @@
 
 .marks-page__alphabet a:hover,
 .marks-page__alphabet a:focus-visible {
-  color: #d45e21;
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -153,7 +153,7 @@
 
 .marks-page__group li a:hover,
 .marks-page__group li a:focus-visible {
-  color: #d45e21;
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

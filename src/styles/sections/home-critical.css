@@ -134,7 +134,7 @@
   padding: 0 36px;
   border: 0;
   border-radius: 18px;
-  background: #287be0;
+  background: var(--primary);
   color: #fff;
   font-size: 20px;
   font-weight: var(--font-weight-medium);
@@ -145,7 +145,7 @@
     transform 0.15s ease,
     box-shadow 0.2s ease,
     filter 0.2s ease;
-  box-shadow: 0 8px 22px rgba(40, 123, 224, 0.24);
+  box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.24);
   white-space: nowrap;
   letter-spacing: 0.015em;
 }
@@ -156,9 +156,9 @@
   transition: transform 0.18s ease;
 }
 .home-hero__btn-primary:hover {
-  background: #1769ce;
+  background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(40, 123, 224, 0.3);
+  box-shadow: 0 12px 28px rgba(var(--primary-rgb), 0.3);
 }
 .home-hero__btn-primary:hover::after {
   transform: translateX(3px);
@@ -300,7 +300,7 @@
   align-items: center;
   gap: 12px;
   margin: 0 0 30px;
-  color: #ff8b39;
+  color: var(--primary-light);
   font-size: 13px;
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.18em;
@@ -311,7 +311,7 @@
   content: '';
   width: 30px;
   height: 2px;
-  background: #ff7417;
+  background: var(--primary);
 }
 
 .home-hero__title {
@@ -341,7 +341,7 @@
   min-height: 60px;
   padding: 0 30px;
   border-radius: 6px;
-  background: #f46b08;
+  background: var(--primary);
   box-shadow: none;
   font-size: 18px;
   font-weight: var(--font-weight-medium);
@@ -349,7 +349,7 @@
 }
 
 .home-hero__btn-primary:hover {
-  background: #e65e00;
+  background: var(--primary-dark);
   box-shadow: none;
 }
 
@@ -421,13 +421,13 @@
 }
 
 .home-benefits__link span {
-  color: #ff7417;
+  color: var(--primary);
 }
 
 .home-benefits__item--active .home-benefits__link,
 .home-benefits__link:hover,
 .home-benefits__link:focus-visible {
-  border-top-color: #ff7417;
+  border-top-color: var(--primary);
   color: #fff;
 }
 
@@ -476,11 +476,11 @@
 }
 
 .home-hero-facts__item--link span:last-child {
-  color: #d95e0b;
+  color: var(--primary);
 }
 
 .home-hero-facts__item--link:hover strong {
-  color: #d95e0b;
+  color: var(--primary);
 }
 
 @media (min-width: 981px) and (max-height: 850px) {
@@ -537,7 +537,7 @@
 }
 
 .home-quote-section__eyebrow {
-  color: #d95e0b;
+  color: var(--primary);
   font-size: 13px;
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.12em;
@@ -836,7 +836,7 @@
     padding: 0 28px;
     border: 0;
     border-radius: 8px;
-    background: #f46b08;
+    background: var(--primary);
     color: #fff;
     font-size: 18px;
     font-weight: var(--font-weight-medium);
@@ -875,7 +875,7 @@
   .home-mobile-highlights__item svg {
     width: 25px;
     height: 25px;
-    stroke: #1769ce;
+    stroke: var(--primary-dark);
     stroke-width: 1.7;
     stroke-linecap: round;
     stroke-linejoin: round;

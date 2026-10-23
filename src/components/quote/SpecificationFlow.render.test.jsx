@@ -31,7 +31,9 @@ describe('specification form', () => {
       items: [],
       customer: { comment: 'Требуется 200 м' },
     });
-    expect(await screen.findByText('Заявка принята')).toBeInTheDocument();
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Заявка принята'
+    );
     expect(screen.getByText('спецификация.pdf')).toBeInTheDocument();
   });
   it('сохраняет файл и введённые поля после серверной ошибки', async () => {

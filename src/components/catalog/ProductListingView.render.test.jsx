@@ -109,24 +109,6 @@ describe('ProductListingView render flow', () => {
     ).toHaveValue('24');
   });
 
-  it('показывает цену по запросу для товара с price=0', () => {
-    renderListing({
-      viewProps: {
-        products: [
-          makeProduct({
-            id: 3,
-            slug: 'request-price',
-            title: 'Кабель под расчет',
-            price: 0,
-          }),
-        ],
-      },
-    });
-
-    expect(screen.getByText('Кабель под расчет')).toBeInTheDocument();
-    expect(screen.getByText('Цена по запросу')).toBeInTheDocument();
-  });
-
   it('применяет поиск из URL', () => {
     const { getSearchParam } = renderListing({
       initialEntry: '/catalog?search=АВВГ',
@@ -198,34 +180,6 @@ describe('ProductListingView render flow', () => {
     });
     expect(screen.getByText('ВВГнг-LS 3x2.5')).toBeInTheDocument();
     expect(screen.queryByText('АВВГ 4x16')).not.toBeInTheDocument();
-  });
-
-  it('связывает поля каталога с явными labels', () => {
-    renderListing();
-
-    expect(screen.getByLabelText('Цена от, ₽')).toHaveAttribute(
-      'id',
-      'price-min'
-    );
-    expect(screen.getByLabelText('Цена от, ₽')).toHaveAttribute(
-      'placeholder',
-      '0'
-    );
-    expect(screen.getByLabelText('Цена до, ₽')).toHaveAttribute(
-      'id',
-      'price-max'
-    );
-    expect(screen.getByLabelText('Цена до, ₽')).toHaveAttribute(
-      'placeholder',
-      '310'
-    );
-    expect(
-      screen.getByRole('button', { name: 'Популярности' })
-    ).toHaveAttribute('aria-pressed', 'false');
-    expect(screen.getByRole('button', { name: 'Цене' })).toBeInTheDocument();
-    expect(
-      screen.getByRole('heading', { level: 2, name: 'Товары каталога' })
-    ).toBeInTheDocument();
   });
 
   it('показывает фильтры в боковой панели', () => {

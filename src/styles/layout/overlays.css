@@ -126,8 +126,8 @@
 }
 .quote-channel--active {
   background: #edf5ff;
-  border-color: #287be0;
-  color: #1769ce;
+  border-color: var(--primary);
+  color: var(--primary-dark);
 }
 
 /* MODAL */
@@ -247,7 +247,7 @@
   min-height: 70px;
   padding: 0 14px 0 16px;
   color: #f0f1f1;
-  background: linear-gradient(135deg, #06070e 0%, #4b4e73 100%);
+  background: linear-gradient(135deg, #102947 0%, var(--primary-dark) 100%);
   position: relative;
 }
 
@@ -464,7 +464,7 @@
   height: 32px;
   border: 0;
   border-radius: 999px;
-  background: #2f80ed;
+  background: var(--primary);
   color: #fff;
   cursor: pointer;
   display: inline-flex;
@@ -499,7 +499,7 @@
   padding: 0 16px;
   border: 0;
   border-radius: 8px 34px 0 0;
-  background: linear-gradient(135deg, #080a14 0%, #44486d 100%);
+  background: linear-gradient(135deg, #102947 0%, var(--primary-dark) 100%);
   color: #f0f1f1;
   font-size: 15px;
   font-weight: var(--font-weight-regular);

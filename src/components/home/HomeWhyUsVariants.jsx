@@ -3,48 +3,38 @@ import '../../styles/sections/home-why-us.css';
 
 const facts = [
   {
-    value: '15',
-    unit: 'минут',
-    label: 'свяжемся после заявки в рабочее время',
+    value: '15+ лет',
+    label: 'На рынке кабельно-проводниковой продукции.',
   },
   {
-    value: '2',
-    unit: 'способа',
-    label: 'получения: самовывоз или транспортная компания',
+    value: 'Цены производителей',
+    label: 'Кабель по ценам заводов-изготовителей.',
   },
-  { value: 'НДС', label: 'счёт, договор и документы к поставке' },
-  { value: 'Челябинск', label: 'склад самовывоза и отправка заказов' },
-];
-
-const extendedFacts = [
-  ...facts,
   {
-    value: 'Подбор',
-    label: 'кабель под вашу задачу и требования проекта',
+    value: 'С НДС',
+    label: 'Оформим счёт, договор и закрывающие документы на поставку.',
   },
-  { value: 'Excel', label: 'принимаем таблицы со списком позиций' },
-  { value: 'PDF', label: 'принимаем спецификации для расчёта' },
-  { value: 'РФ', label: 'поставка кабеля по России' },
+  {
+    value: '5\u202f700+',
+    label: 'Позиций в прайсе: кабели, провода и сопутствующая продукция.',
+  },
+  {
+    value: 'Сертификаты',
+    label:
+      'По запросу предоставим документы качества для выбранной продукции и партии.',
+  },
+  {
+    value: 'По России',
+    label:
+      'Передадим заказ транспортной компании. Стоимость и сроки перевозки согласуем заранее.',
+  },
 ];
-
-function FactValue({ fact }) {
-  return (
-    <>
-      <span
-        className={fact.value.length > 5 ? 'home-why__long-value' : undefined}
-      >
-        {fact.value}
-      </span>
-      {fact.unit && <small>{fact.unit}</small>}
-    </>
-  );
-}
 
 export default function HomeWhyUsVariants() {
   return (
     <>
       <section
-        className="home-why home-why--numbers"
+        className="home-why home-why--numbers home-why--supply"
         aria-labelledby="home-why-numbers-title"
         data-why-variant="1"
       >
@@ -53,11 +43,9 @@ export default function HomeWhyUsVariants() {
             ЮжУралЭлектроКабель в цифрах и фактах
           </h2>
           <dl className="home-why__numbers">
-            {extendedFacts.map((fact) => (
+            {facts.map((fact) => (
               <div key={fact.label}>
-                <dt>
-                  <FactValue fact={fact} />
-                </dt>
+                <dt>{fact.value}</dt>
                 <dd>{fact.label}</dd>
               </div>
             ))}

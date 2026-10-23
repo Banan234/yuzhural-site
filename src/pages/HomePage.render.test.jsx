@@ -3,7 +3,7 @@
 
 import '../test/renderTestSetup.js';
 import { renderToString } from 'react-dom/server';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import {
   MemoryRouter,
   RouterProvider,
@@ -116,10 +116,12 @@ describe('HomePage SSR render', () => {
       </MemoryRouter>
     );
 
-    expect(html).toContain('Товары из каталога');
-    expect(html).toContain('ВВГнг(A)-LS 3х2,5');
-    expect(html).not.toContain('Загружаем актуальные позиции');
-    expect(html).not.toContain('aria-busy="true"');
+    const container = document.createElement('div');
+    container.innerHTML = html;
+    expect(
+      within(container).getByRole('link', { name: featuredProduct.title })
+    ).toHaveAttribute('href', `/product/${featuredProduct.slug}`);
+    expect(container.querySelector('[aria-busy="true"]')).toBeNull();
     expect(html).not.toContain('<!--$!--><template');
   });
 

@@ -65,15 +65,18 @@ describe('MainLayout', () => {
     });
 
     act(() => vi.advanceTimersByTime(250));
-    expect(searchInput).toHaveAttribute('placeholder', 'В');
+    const typedPlaceholder = searchInput.getAttribute('placeholder');
+    expect(typedPlaceholder).toMatch(/\S/);
 
     fireEvent.focus(searchInput);
-    expect(searchInput).toHaveAttribute('placeholder', 'ВВГнг(А)-LS 3х1.5');
+    const fullPlaceholder = searchInput.getAttribute('placeholder');
+    expect(fullPlaceholder.startsWith(typedPlaceholder)).toBe(true);
+    expect(fullPlaceholder.length).toBeGreaterThan(typedPlaceholder.length);
 
     fireEvent.change(searchInput, { target: { value: 'КГ 4х16' } });
     act(() => vi.advanceTimersByTime(3000));
     expect(searchInput).toHaveValue('КГ 4х16');
-    expect(searchInput).toHaveAttribute('placeholder', 'ВВГнг(А)-LS 3х1.5');
+    expect(searchInput).toHaveAttribute('placeholder', fullPlaceholder);
   });
 
   it('показывает плавающий виджет не только на главной, но и на внутренних страницах', () => {
@@ -94,9 +97,9 @@ describe('MainLayout', () => {
       })
     );
 
-    expect(await screen.findByRole('alert')).toHaveTextContent(
-      'браузер не дал сохранить корзину'
-    );
+    const alert = await screen.findByRole('alert');
+    expect(alert).toBeVisible();
+    expect(alert).toHaveTextContent(/корзин/i);
 
     await user.click(screen.getByRole('button', { name: 'Понятно' }));
 
@@ -112,12 +115,8 @@ describe('MainLayout', () => {
     });
 
     expect(searchInput).toHaveAttribute('aria-autocomplete', 'list');
-    expect(searchInput).toHaveAttribute('id', 'header-search');
+    expect(searchInput).toHaveAccessibleName(/поиск/i);
     expect(searchInput).toHaveAttribute('type', 'search');
-    expect(searchInput).toHaveAttribute(
-      'aria-controls',
-      'header-search-suggestions'
-    );
     expect(searchInput).toHaveAttribute('aria-expanded', 'false');
 
     fireEvent.change(searchInput, { target: { value: 'В' } });
@@ -132,6 +131,8 @@ describe('MainLayout', () => {
     });
     const options = within(listbox).getAllByRole('option');
 
+    expect(listbox.id).not.toBe('');
+    expect(searchInput).toHaveAttribute('aria-controls', listbox.id);
     expect(searchInput).toHaveAttribute('aria-expanded', 'true');
     expect(options).toHaveLength(2);
     expect(options[0]).toHaveTextContent('ВВГнг-LS');
@@ -199,13 +200,11 @@ describe('MainLayout', () => {
     await user.click(mobileMenuButton);
 
     expect(mobileMenuButton).toHaveAttribute('aria-expanded', 'true');
-    expect(mobileMenuButton).toHaveAttribute(
-      'aria-controls',
-      'mobile-navigation'
-    );
-    expect(
-      await screen.findByRole('dialog', { name: 'Мобильное меню' })
-    ).toHaveAttribute('id', 'mobile-navigation');
+    const mobileMenu = await screen.findByRole('dialog', {
+      name: /мобильное меню/i,
+    });
+    expect(mobileMenu.id).not.toBe('');
+    expect(mobileMenuButton).toHaveAttribute('aria-controls', mobileMenu.id);
 
     await user.click(
       screen.getAllByRole('button', { name: 'Закрыть меню' })[0]
@@ -220,8 +219,9 @@ describe('MainLayout', () => {
     await user.click(catalogButton);
 
     expect(catalogButton).toHaveAttribute('aria-expanded', 'true');
-    expect(catalogButton).toHaveAttribute('aria-controls', 'catalog-dropdown');
-    expect(document.getElementById('catalog-dropdown')).toBeInTheDocument();
+    const controlledId = catalogButton.getAttribute('aria-controls');
+    expect(controlledId).toBeTruthy();
+    expect(document.getElementById(controlledId)).toBeVisible();
     expect(
       screen.getAllByRole('link', { name: 'Силовой кабель' }).length
     ).toBeGreaterThan(0);
