@@ -101,11 +101,16 @@ describe('complete service flows', () => {
     };
     window.addEventListener('open-lead-modal', listener);
     fireEvent.click(
-      screen.getByRole('button', { name: 'Запросить расчёт доставки' })
+      screen.getByRole('button', { name: 'Уточнить параметры груза' })
     );
     window.removeEventListener('open-lead-modal', listener);
     expect(detail.comment).toContain('800 кг брутто');
     expect(detail.comment).toContain('3,84 м³');
-    expect(detail.comment).toContain('тарифам выбранной ТК');
+    expect(detail.comment).toContain(
+      'Покупатель самостоятельно заказывает и оплачивает перевозку'
+    );
+    expect(detail.comment).toContain(
+      'Просьба уточнить параметры груза для забора со склада'
+    );
   });
 });
