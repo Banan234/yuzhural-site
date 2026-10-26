@@ -27,6 +27,8 @@ export function createItemsStore({
   mergeItem = keepExistingItem,
   withQuantity = false,
   maxItems = NO_ITEM_LIMIT,
+  normalizeStoredItem = identity,
+  normalizeQuantity = (_item, quantity) => quantity,
   createExtraActions = createNoExtraActions,
 }) {
   if (!name) {
@@ -44,6 +46,7 @@ export function createItemsStore({
           addItem: (item) => {
             const state = get();
             const nextItem = prepareItem(item, state);
+            if (withQuantity && nextItem.quantity <= 0) return false;
             const existingItem = state.items.find(
               (currentItem) => currentItem.id === nextItem.id
             );
@@ -85,7 +88,10 @@ export function createItemsStore({
                     items: state.items
                       .map((item) =>
                         item.id === id
-                          ? { ...item, quantity: nextQuantity }
+                          ? {
+                              ...item,
+                              quantity: normalizeQuantity(item, nextQuantity),
+                            }
                           : item
                       )
                       .filter((item) => item.quantity > 0),
@@ -123,7 +129,9 @@ export function createItemsStore({
 
           return {
             ...nextState,
-            items: applyItemLimit(nextState.items, itemLimit),
+            items: applyItemLimit(nextState.items, itemLimit)
+              .map(normalizeStoredItem)
+              .filter((item) => !withQuantity || item.quantity > 0),
           };
         },
         merge: (persistedState, currentState) => {
@@ -135,7 +143,9 @@ export function createItemsStore({
           return {
             ...currentState,
             ...nextState,
-            items: applyItemLimit(nextState.items, itemLimit),
+            items: applyItemLimit(nextState.items, itemLimit)
+              .map(normalizeStoredItem)
+              .filter((item) => !withQuantity || item.quantity > 0),
           };
         },
         version,

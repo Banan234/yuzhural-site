@@ -55,7 +55,7 @@ export default function OrderGuidePage() {
       </section>
       <div className="purchase-actions">
         <Link to="/payment/">Оплата →</Link>
-        <Link to="/delivery/">Доставка и самовывоз →</Link>
+        <Link to="/delivery/">Получение заказа →</Link>
         <Link to="/contacts/">Контакты →</Link>
       </div>
     </PurchaseLayout>

@@ -1,3 +1,4 @@
+import { PERSONAL_DATA_CONSENT_VERSION } from '../../../shared/personalDataConsent';
 import { useRef, useState } from 'react';
 import HoneypotField from '../forms/HoneypotField';
 import {
@@ -77,6 +78,7 @@ export default function ContactRequestForm() {
           contactChannel: channel,
           [channel]: contact,
           consent,
+          consentVersion: PERSONAL_DATA_CONSENT_VERSION,
           source: 'Главная: помощь с подбором кабеля',
           comment: isEmail
             ? 'Просьба связаться по email'
@@ -276,7 +278,10 @@ export default function ContactRequestForm() {
           />
           <span>
             Даю согласие на{' '}
-            <a href="/privacy/">обработку персональных данных</a>
+            <a href="/personal-data-consent">обработку персональных данных</a> ·{' '}
+            <a href="/privacy/" target="_blank" rel="noopener noreferrer">
+              Политика конфиденциальности
+            </a>
           </span>
         </label>
       </div>

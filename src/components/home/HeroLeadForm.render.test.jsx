@@ -18,7 +18,7 @@ describe('HeroLeadForm render flow', () => {
 
     expect(
       screen.getByRole('link', { name: /обработку персональных\sданных/i })
-    ).toHaveAttribute('href', '/privacy');
+    ).toHaveAttribute('href', '/personal-data-consent');
     await user.click(screen.getByRole('button', { name: 'Получить КП' }));
 
     expect(fetchMock).not.toHaveBeenCalled();

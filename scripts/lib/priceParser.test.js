@@ -229,7 +229,8 @@ describe('parseProductName', () => {
       price: 1,
       stock: 1,
     });
-    expect(product.fullName).toBe('LAPPKABEL H07V-K 1х2,5');
+    expect(product.fullName).toBe('H07V-K 1х2,5');
+    expect(product.manufacturer).toBe('LAPP KABEL');
     const screened = normalizeImportedProduct({
       name: 'БПДОЭ 0,035',
       unit: 'м',

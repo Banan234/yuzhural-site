@@ -1,3 +1,4 @@
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 // Файл рендерит мобильную навигацию, поиск, корзину и раскрытие каталога.
 
 import { useEffect } from 'react';
@@ -15,6 +16,7 @@ import { SITE_PHONE_DISPLAY, SITE_PHONE_HREF } from '../../lib/siteConfig';
 import CallbackButton from '../forms/CallbackButton';
 
 export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
+  const dialogRef = useDialogFocus(isOpen);
   useEffect(() => {
     if (!isOpen) return undefined;
 
@@ -45,6 +47,8 @@ export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
   return (
     <div
       id={id}
+      ref={dialogRef}
+      tabIndex={-1}
       className="mobile-nav"
       role="dialog"
       aria-modal="true"
@@ -139,7 +143,7 @@ export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
                 Заявка по спецификации
               </Link>
               <Link to={DELIVERY_CANONICAL_PATH} onClick={onClose}>
-                Доставка
+                Получение заказа
               </Link>
               <Link to={PAYMENT_CANONICAL_PATH} onClick={onClose}>
                 Оплата

@@ -76,3 +76,47 @@ for (const width of [1440, 1024, 768, 390, 320]) {
     ).toBe(true);
   });
 }
+
+test('Back keeps fast navigation and restores an interactive list without refetching', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  let marksRequests = 0;
+  await page.route('**/api/marks', async (route) => {
+    marksRequests += 1;
+    await route.fulfill({ json: { ok: true, groups } });
+  });
+  await page.goto('/marks/');
+  const link = page.locator('#letter-41a a').nth(10);
+  await expect(link).toBeVisible();
+  await link.scrollIntoViewIfNeeded();
+  await page.evaluate(() => document.fonts.ready);
+  await page.locator('.site-header').evaluate(async (header) => {
+    await Promise.all(
+      header
+        .getAnimations({ subtree: true })
+        .map((animation) => animation.finished.catch(() => {}))
+    );
+  });
+  await page.evaluate(() => {
+    window.marksDocument = true;
+  });
+  await link.click();
+  await page.waitForURL('**/catalog/**');
+  expect(await page.evaluate(() => window.marksDocument)).toBe(true);
+  const requestsBeforeBack = marksRequests;
+  await page.goBack();
+  await expect(page.locator('.marks-page__group a')).toHaveCount(434);
+  const savedTop = await page.evaluate(() => history.state.marksReturn.top);
+  await expect
+    .poll(() => page.evaluate(() => scrollY))
+    .toBeCloseTo(savedTop, 0);
+  await page.mouse.move(800, 600);
+  await page.mouse.wheel(0, 350);
+  await expect
+    .poll(() => page.evaluate(() => scrollY))
+    .toBeGreaterThan(savedTop + 200);
+  expect(marksRequests).toBe(requestsBeforeBack);
+  expect(await page.evaluate(() => window.marksDocument)).toBe(true);
+  await expect(page.locator('[role="status"]')).toHaveCount(0);
+});

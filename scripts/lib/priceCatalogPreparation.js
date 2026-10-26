@@ -96,6 +96,13 @@ export function extractProducts(
 
       if (record.type === 'excluded') {
         result.excludedNonCable += 1;
+        result.skippedRows.push({
+          rowIndex,
+          product: pageCells.join(' '),
+          category: currentCategory,
+          reason: `Исключена некабельная позиция (${currentCategory})`,
+          expectedExclusion: true,
+        });
         continue;
       }
 
@@ -382,7 +389,10 @@ export function createProductRecord(
   };
 }
 
-export function classifyEligibleProducts(products) {
+export function classifyEligibleProducts(
+  products,
+  { reviewRows = [], skippedRows = [] } = {}
+) {
   const categoryByFamily = buildCategoryMap(products);
   const classifiedProducts = products.map((product) => {
     const resolved = {
@@ -401,24 +411,35 @@ export function classifyEligibleProducts(products) {
     };
   });
 
-  const conflicts = classifiedProducts.filter(
-    (product) => !isCableCatalogProduct(product)
-  );
-  if (conflicts.length > 0) {
-    const examples = conflicts
-      .slice(0, 10)
-      .map(
-        (product) =>
-          `${product.name} [${product.sourceCategory || 'Без категории'}]`
-      )
-      .join('; ');
-    throw new Error(
-      `Классификатор вернул некабельные позиции после решения импорта (${conflicts.length}). ` +
-        `Расширь правила importDisposition. Примеры: ${examples}`
-    );
-  }
-
-  return classifiedProducts;
+  return classifiedProducts.filter((product) => {
+    const row = {
+      rowIndex: product.sourceRowIndex,
+      product: product.name,
+      sourceName: product.sourceName,
+      category: product.sourceCategory,
+    };
+    if (!isCableCatalogProduct(product)) {
+      skippedRows.push({
+        ...row,
+        reason: 'Классификатор подтвердил некабельный товар',
+        expectedExclusion: true,
+      });
+      return false;
+    }
+    if (product.importDisposition === 'review') {
+      const review = reviewRows.find(
+        (item) =>
+          item.rowIndex === product.sourceRowIndex &&
+          item.product === product.name
+      );
+      const reason =
+        'Кабельное назначение не подтверждено; обновление позиции отложено';
+      if (review) review.reason = reason;
+      else reviewRows.push({ ...row, reason });
+      return false;
+    }
+    return true;
+  });
 }
 
 export function isHeaderRow(cells) {

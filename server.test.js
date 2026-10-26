@@ -1,3 +1,4 @@
+import { PERSONAL_DATA_CONSENT_VERSION } from './shared/personalDataConsent.js';
 // Файл проверяет Express API, валидацию заявок, антибот-защиту, каталожные endpoints и health checks.
 
 import { promises as fs } from 'fs';
@@ -205,6 +206,7 @@ const validPayload = {
     comment: '',
     preferredChannel: 'phone',
     consent: true,
+    consentVersion: PERSONAL_DATA_CONSENT_VERSION,
   },
   items: [
     {
@@ -226,6 +228,7 @@ const validPayload = {
 
 const validLeadPayload = {
   consent: true,
+  consentVersion: PERSONAL_DATA_CONSENT_VERSION,
   phone: '+7 (900) 123-45-67',
   comment: 'ВВГ 3х2.5',
   source: 'Тест',
@@ -236,6 +239,8 @@ const validLeadPayload = {
 };
 
 const validChatPayload = {
+  consent: true,
+  consentVersion: PERSONAL_DATA_CONSENT_VERSION,
   message: 'Нужен ВВГнг-LS 3х2.5, 400 метров',
   source: 'Виджет',
   rendered_at: renderedAt,
@@ -2098,6 +2103,7 @@ describe('POST /api/quote', () => {
       customer: {
         ...validPayload.customer,
         consent: true,
+        consentVersion: PERSONAL_DATA_CONSENT_VERSION,
       },
     });
     const data = await res.json();
@@ -3709,4 +3715,31 @@ describe('chat conversations API', () => {
       expect(storedConversation.managerNotifications).toHaveLength(0);
     });
   });
+});
+
+describe('серверное подтверждение согласия', () => {
+  for (const [endpoint, payload, nested] of [
+    ['/api/lead-request', validLeadPayload, false],
+    ['/api/quote', validPayload, true],
+    ['/api/chat/conversations', validChatPayload, false],
+  ]) {
+    for (const mode of ['missing', 'stale', 'refused']) {
+      it(`${endpoint}: отклоняет ${mode} до отправки и сохранения диалога`, async () => {
+        const body = structuredClone(payload);
+        const target = nested ? body.customer : body;
+        if (mode === 'missing') delete target.consentVersion;
+        if (mode === 'stale') target.consentVersion = 'old-version';
+        if (mode === 'refused') target.consent = false;
+        const chatStore = createInMemoryChatStore();
+        const createSpy = vi.spyOn(chatStore, 'createConversation');
+        const app = createTestApp({ chatStore });
+        await withTestServer(app, async (url) => {
+          const response = await postJsonTo(url, endpoint, body);
+          expect(response.status).toBe(400);
+          expect(sendMailMock).not.toHaveBeenCalled();
+          expect(createSpy).not.toHaveBeenCalled();
+        });
+      });
+    }
+  }
 });

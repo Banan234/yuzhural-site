@@ -134,7 +134,7 @@ export function HomeDelivery() {
       <Container>
         <div className="home-delivery__panel">
           <h2 id="home-delivery-title" className="home-details-title">
-            Получение и доставка
+            Получение заказа
           </h2>
           <div className="home-delivery__options">
             <div className="home-delivery__option">
@@ -159,13 +159,13 @@ export function HomeDelivery() {
             <div className="home-delivery__option">
               <DetailIcon name="truck" />
               <div>
-                <h3>Отправка по России</h3>
+                <h3>Забор вашей транспортной компанией</h3>
                 <p>
-                  Передадим заказ в выбранную транспортную компанию. Условия и
-                  стоимость согласуем до оплаты.
+                  Выберите перевозчика и самостоятельно закажите забор со склада
+                  после подтверждения готовности заказа.
                 </p>
                 <Link to="/delivery/" className="home-details-link">
-                  Условия доставки <span aria-hidden="true">→</span>
+                  Получение заказа <span aria-hidden="true">→</span>
                 </Link>
               </div>
             </div>
@@ -186,7 +186,7 @@ const homeQuestions = [
   ['Как отправить спецификацию?', ORDER_FAQ[0][1]],
   ['Как оплачивается заказ?', ORDER_FAQ[2][1]],
   ['Можно ли зарезервировать кабель?', ORDER_FAQ[4][1]],
-  ['Как получить заказ — есть ли доставка?', ORDER_FAQ[6][1]],
+  ['Как получить заказ?', ORDER_FAQ[6][1]],
 ];
 
 export function HomeFaq() {

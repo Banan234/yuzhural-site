@@ -77,7 +77,7 @@ describe('evaluatePublishGuard', () => {
     expect(result.issues.map((issue) => issue.key)).toContain('maxErrors');
   });
 
-  it('останавливает новые неопределённые позиции и избыток Прочего', () => {
+  it('предупреждает о спорной строке, но блокирует избыток Прочего', () => {
     const result = evaluatePublishGuard({
       products: Array.from({ length: 100 }, () => ({})),
       reviewRows: [{}],
@@ -86,8 +86,31 @@ describe('evaluatePublishGuard', () => {
       totalRows: 100,
     });
     expect(result.issues.map((issue) => issue.key)).toEqual(
-      expect.arrayContaining(['maxNewReviewRows', 'maxOtherPercent'])
+      expect.arrayContaining(['maxOtherPercent'])
     );
+  });
+
+  it('пропускает отдельные спорные строки и смену категорий с предупреждениями', () => {
+    const result = evaluatePublishGuard({
+      products: Array.from({ length: 100 }, () => ({})),
+      reviewRows: [{}, {}, {}],
+      totalRows: 100,
+      diff: { categoryChanged: Array.from({ length: 80 }, () => ({})) },
+    });
+    expect(result.ok).toBe(true);
+    expect(result.warnings.map((item) => item.key)).toEqual([
+      'maxNewReviewRows',
+      'maxCategoryChangedPercent',
+    ]);
+  });
+
+  it('блокирует массовую отправку строк на проверку', () => {
+    const result = evaluatePublishGuard({
+      products: Array.from({ length: 100 }, () => ({})),
+      reviewRows: Array.from({ length: 10 }, () => ({})),
+      totalRows: 100,
+    });
+    expect(result.issues.map((item) => item.key)).toContain('maxReviewPercent');
   });
 
   it('учитывает отключение guard', () => {

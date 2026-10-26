@@ -1,3 +1,4 @@
+import { PERSONAL_DATA_CONSENT_VERSION } from '../../../shared/personalDataConsent';
 // Файл добавляет плавающий чат-виджет с реальным диалогом клиента и менеджера.
 
 import { useEffect, useRef, useState } from 'react';
@@ -278,6 +279,8 @@ export default function FloatingLeadWidget({
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            consent,
+            consentVersion: PERSONAL_DATA_CONSENT_VERSION,
             message: trimmedComment,
             source: `Чат: ${sourceLabel}`,
             createdAt: new Date().toLocaleString('ru-RU'),
@@ -445,7 +448,17 @@ export default function FloatingLeadWidget({
                   />
                   <span>
                     Даю согласие на{' '}
-                    <a href="/privacy">обработку персональных&nbsp;данных</a>
+                    <a href="/personal-data-consent">
+                      обработку персональных&nbsp;данных
+                    </a>{' '}
+                    ·{' '}
+                    <a
+                      href="/privacy/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Политика конфиденциальности
+                    </a>
                   </span>
                 </label>
                 {consentError ? (

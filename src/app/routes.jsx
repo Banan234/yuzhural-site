@@ -1,3 +1,5 @@
+import OfferPage from '../pages/OfferPage';
+import PersonalDataConsentPage from '../pages/PersonalDataConsentPage';
 // Файл собирает общие route objects, layout, SEO-хуки и scroll-поведение для всех страниц.
 
 import { Navigate, useLocation } from 'react-router-dom';
@@ -51,6 +53,8 @@ export function createRouteObjects({
     { path: 'delivery', element: <DeliveryPage /> },
     { path: 'payment', element: <PaymentPage /> },
     { path: 'privacy', element: <PrivacyPage /> },
+    { path: 'oferta', element: <OfferPage /> },
+    { path: 'personal-data-consent', element: <PersonalDataConsentPage /> },
     { path: 'about', element: <AboutPage /> },
   ];
 

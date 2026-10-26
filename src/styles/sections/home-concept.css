@@ -1418,3 +1418,37 @@ body:has(.home-concept) .home-concept__quote > .container {
     height: 64px;
   }
 }
+
+/* Единый вертикальный ритм блоков главной, как у витрины каталога. */
+.home-concept {
+  --home-section-top: 34px;
+  --home-section-bottom: 36px;
+  --home-heading-gap: clamp(32px, 2.8vw, 40px);
+}
+.home-concept > section:not(.home-concept__hero):not(.home-concept__quote) {
+  padding-block: var(--home-section-top) var(--home-section-bottom);
+}
+.home-concept .home-category-showcase__head,
+.home-concept .home-stock-showcase__head,
+.home-concept .home-concept__section-head {
+  margin-block: 0 var(--home-heading-gap);
+}
+.home-concept .home-why h2,
+.home-concept .order-process h2,
+.home-concept .home-faq .home-details-title,
+.home-concept .home-concept__quote h2 {
+  margin-block: 0 var(--home-heading-gap);
+}
+.home-concept .home-concept__quote-panel {
+  padding-block: var(--home-section-top) var(--home-section-bottom);
+}
+@media (max-width: 768px) {
+  .home-concept {
+    --home-section-top: 26px;
+    --home-section-bottom: 28px;
+  }
+}
+
+.home-concept .home-concept__quote h2 {
+  margin-bottom: 20px;
+}

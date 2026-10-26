@@ -81,7 +81,7 @@ const first = () => screen.getAllByTestId('slide')[0].textContent;
 const advance = (ms) => act(() => vi.advanceTimersByTime(ms));
 
 describe('product carousel lifecycle', () => {
-  it('waits three seconds after hover ends, then returns to four-second intervals', async () => {
+  it('waits one second after hover ends, then returns to four-second intervals', async () => {
     render(<Harness />);
     fireEvent.click(screen.getByText('Вперёд'));
     await act(async () => animations[0].complete());
@@ -90,7 +90,7 @@ describe('product carousel lifecycle', () => {
     advance(10000);
     expect(animations).toHaveLength(1);
     fireEvent.pointerLeave(carousel);
-    advance(2999);
+    advance(999);
     expect(animations).toHaveLength(1);
     advance(1);
     expect(animations).toHaveLength(2);
@@ -101,9 +101,9 @@ describe('product carousel lifecycle', () => {
     expect(animations).toHaveLength(3);
   });
 
-  it('waits two seconds, then three, then four between automatic moves', async () => {
+  it('waits one second, then three, then four between automatic moves', async () => {
     render(<Harness />);
-    advance(1999);
+    advance(999);
     expect(animations).toHaveLength(0);
     advance(1);
     expect(animations).toHaveLength(1);
@@ -130,7 +130,7 @@ describe('product carousel lifecycle', () => {
   it('waits a full interval after returning from a hidden tab', () => {
     const hidden = vi.spyOn(document, 'hidden', 'get').mockReturnValue(false);
     render(<Harness />);
-    advance(1000);
+    advance(500);
     hidden.mockReturnValue(true);
     fireEvent(document, new Event('visibilitychange'));
     advance(10000);
@@ -171,7 +171,7 @@ describe('product carousel lifecycle', () => {
 
   it('starts a fresh interval after a manual move completes', async () => {
     render(<Harness />);
-    advance(1000);
+    advance(500);
     fireEvent.click(screen.getByText('Вперёд'));
     await act(async () => animations[0].complete());
     expect(first()).toBe('1');

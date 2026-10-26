@@ -1,3 +1,16 @@
+import { quarantineInvalidProducts } from './lib/quarantineProducts.js';
+import { updateImportStatus } from './lib/importStatus.js';
+import { runImportProcess } from './lib/importProcess.js';
+import {
+  readSourceState,
+  isUnchangedPrice,
+  saveSourceState,
+} from './lib/importSourceState.js';
+import { isRetryableHttpError } from './lib/priceSource.js';
+import {
+  archiveAndNotifyImport,
+  retryPendingImportEmails,
+} from './lib/importNotification.js';
 // Файл импортирует прайс XLS, нормализует товары, категории, SEO-данные и публичные файлы каталога.
 
 import fs from 'fs/promises';
@@ -730,7 +743,26 @@ async function saveHtmlReport(report) {
   );
 }
 
+const importStatusFile = path.join(projectRoot, 'data', 'import-status.json');
+
+let currentAttemptReport = null;
+let unchangedPrice = false;
+let currentSourceMetadata = null;
+const sourceStateFile = path.join(
+  projectRoot,
+  'data',
+  '.price-source-state.json'
+);
+
 async function main() {
+  if (!isDryRun) await updateImportStatus(importStatusFile, 'checking');
+  if (!isDryRun) {
+    try {
+      await retryPendingImportEmails({ projectRoot });
+    } catch (error) {
+      console.error('Не удалось проверить очередь писем:', error.message);
+    }
+  }
   if (
     process.env.CATALOG_PRODUCTS_FILE &&
     path.resolve(projectRoot, process.env.CATALOG_PRODUCTS_FILE) !== outputFile
@@ -751,7 +783,32 @@ async function main() {
   const priceSource = await acquirePriceSource({
     remoteUrl: remoteSourceUrl,
     filePath: inputFile,
+  }).catch((error) => {
+    error.retryableDownload =
+      Boolean(remoteSourceUrl) && isRetryableHttpError(error);
+    throw error;
   });
+  currentSourceMetadata = priceSource.metadata;
+  if (!isDryRun)
+    await updateImportStatus(importStatusFile, 'checked', {
+      source: currentSourceMetadata,
+    });
+  if (
+    cliFlags.has('--if-changed') &&
+    !isDryRun &&
+    isUnchangedPrice(
+      await readSourceState(sourceStateFile),
+      priceSource.metadata
+    )
+  ) {
+    unchangedPrice = true;
+    await updateImportStatus(importStatusFile, 'unchanged', {
+      source: currentSourceMetadata,
+      message: 'Прайс не изменился; обновление каталога не требуется.',
+    });
+    console.log('Прайс не изменился: импорт и письмо пропущены.');
+    return;
+  }
   const sourcePriceBuffer = priceSource.buffer;
   const downloadedPriceBuffer = remoteSourceUrl ? sourcePriceBuffer : null;
   console.log(
@@ -787,11 +844,41 @@ async function main() {
 
   const importResult = extractProducts(rows, { applyPriceOverride });
   const manufacturerSummary = summarizeManufacturers(importResult.products);
-  const classifiedProducts = classifyEligibleProducts(importResult.products);
+  let classifiedProducts = classifyEligibleProducts(
+    importResult.products,
+    importResult
+  );
+  importResult.excludedNonCable = importResult.skippedRows.filter(
+    (row) => row.expectedExclusion
+  ).length;
+  const quarantined = importResult.products.filter(
+    (product) => product.importDisposition === 'review'
+  );
   const diagnostics = validateNormalizedProducts(classifiedProducts, {
     excludedNonCable: importResult.excludedNonCable,
     reviewRows: importResult.reviewRows,
   });
+  const validation = quarantineInvalidProducts(
+    classifiedProducts,
+    diagnostics.errors,
+    importResult.reviewRows
+  );
+  quarantined.push(...validation.quarantined);
+  classifiedProducts = validation.eligible;
+  // Для отложенных строк сохраняем прежние цены и остатки, если товар уже был в каталоге.
+  const quarantinedKeys = new Set(quarantined.map(buildStableKey));
+  const importedKeys = new Set(classifiedProducts.map(buildStableKey));
+  for (const previous of previousProducts) {
+    const key = buildStableKey(previous);
+    if (
+      quarantinedKeys.has(key) &&
+      !importedKeys.has(key) &&
+      isCableCatalogProduct(previous)
+    ) {
+      classifiedProducts.push(previous);
+      importedKeys.add(key);
+    }
+  }
   const previousCableProducts = previousProducts.filter(isCableCatalogProduct);
 
   // Pre-pass: считаем стабильные ключи всех текущих позиций, чтобы
@@ -882,10 +969,12 @@ async function main() {
     products,
     diff: buildDiff(previousCableProducts, products),
     suspicious,
-    skippedRows: importResult.skippedRows,
+    skippedRows: importResult.skippedRows.filter(
+      (row) => !row.expectedExclusion
+    ),
     reviewRows: importResult.reviewRows,
     newReviewRows,
-    errors: diagnostics.errors,
+    errors: [],
     totalRows: importResult.totalRows,
     fallbackToOther: classification.fallbackToOther.count,
     otherProducts: products.filter(
@@ -959,6 +1048,8 @@ async function main() {
         }
       : null,
   };
+
+  currentAttemptReport = report;
 
   if (!publishGuard.ok && !isPublishGuardOverride) {
     const validationDetails = diagnostics.errors.length
@@ -1206,24 +1297,105 @@ async function main() {
 const isMainModule =
   import.meta.url === pathToFileURL(process.argv[1] || '').href;
 
-if (isMainModule) {
+if (isMainModule && process.env.PRICE_IMPORT_WATCHDOG_CHILD !== '1') {
+  const configuredTimeout = Number(process.env.PRICE_IMPORT_TIMEOUT_MS);
+  runImportProcess(__filename, process.argv.slice(2), {
+    timeoutMs:
+      Number.isFinite(configuredTimeout) && configuredTimeout > 0
+        ? configuredTimeout
+        : 15 * 60 * 1000,
+  })
+    .then((code) => {
+      process.exitCode = code;
+    })
+    .catch(async (error) => {
+      process.exitCode = 1;
+      console.error('Ошибка импорта прайса:', error.message);
+      if (error.code === 'IMPORT_TIMEOUT' && !isDryRun) {
+        const report = {
+          generatedAt: new Date().toISOString(),
+          sourceFile: inputFile,
+          status: 'failed',
+          blocked: true,
+          message: error.message,
+        };
+        try {
+          await updateImportStatus(importStatusFile, 'failed', {
+            message: error.message,
+          });
+          await saveReport(report);
+          await saveHtmlReport(report);
+          await archiveAndNotifyImport(report, { projectRoot });
+        } catch (reportError) {
+          console.error(
+            'Не удалось сохранить отчёт таймаута:',
+            reportError.message
+          );
+        }
+      }
+    });
+} else if (isMainModule) {
+  let releaseImportLock;
   const run = async () => {
-    if (process.env.PRICE_IMPORT_LOCK_HELD_BY_SCHEDULER === '1') {
-      return main();
+    releaseImportLock = await acquirePriceImportLock(importLockFile);
+    if (!releaseImportLock) {
+      throw Object.assign(
+        new Error('Импорт прайса уже выполняется в другом процессе.'),
+        { code: 'IMPORT_ALREADY_RUNNING' }
+      );
     }
-    const releaseLock = await acquirePriceImportLock(importLockFile);
-    if (!releaseLock) {
-      throw new Error('Импорт прайса уже выполняется в другом процессе.');
-    }
-    try {
-      return await main();
-    } finally {
-      await releaseLock();
-    }
+    return main();
   };
 
-  run().catch((error) => {
-    console.error('Ошибка импорта прайса:', error.message);
-    process.exitCode = 1;
-  });
+  const startedAt = new Date().toISOString();
+  let attemptError = null;
+  run()
+    .catch((error) => {
+      attemptError = error;
+      console.error('Ошибка импорта прайса:', error.message);
+      process.exitCode = 1;
+    })
+    .finally(async () => {
+      try {
+        if (
+          isDryRun ||
+          unchangedPrice ||
+          attemptError?.code === 'IMPORT_ALREADY_RUNNING'
+        )
+          return;
+        const report = {
+          ...(currentAttemptReport || {}),
+          generatedAt: startedAt,
+          sourceFile: inputFile,
+          ...(currentSourceMetadata ? { source: currentSourceMetadata } : {}),
+          status: attemptError ? 'failed' : 'published',
+          completedAt: new Date().toISOString(),
+          retryableDownload: Boolean(attemptError?.retryableDownload),
+          blocked: Boolean(attemptError),
+          message: attemptError
+            ? attemptError.message
+            : 'Каталог успешно обновлён.',
+        };
+        try {
+          await updateImportStatus(
+            importStatusFile,
+            attemptError ? 'failed' : 'published',
+            { message: report.message }
+          );
+          await saveReport(report);
+          await saveHtmlReport(report);
+          if (!attemptError && currentSourceMetadata) {
+            await saveSourceState(sourceStateFile, currentSourceMetadata);
+          }
+          await archiveAndNotifyImport(report, { projectRoot });
+        } catch (error) {
+          console.error(
+            'Не удалось сохранить или отправить отчёт импорта:',
+            error.message
+          );
+        }
+      } finally {
+        await releaseImportLock?.();
+      }
+    });
 }

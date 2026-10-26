@@ -1,3 +1,4 @@
+import { PERSONAL_DATA_CONSENT_VERSION } from '../../../shared/personalDataConsent';
 // Файл реализует лид-форму на главном экране, включая отправку, аналитику и антибот-поля.
 
 import { useEffect, useRef, useState } from 'react';
@@ -204,6 +205,7 @@ export default function HeroLeadForm({
                 })),
           source,
           consent: form.consent,
+          consentVersion: PERSONAL_DATA_CONSENT_VERSION,
           requestType: isCallback ? 'callback' : 'lead',
           page: window.location.pathname,
           createdAt: new Date().toLocaleString('ru-RU'),
@@ -371,7 +373,7 @@ export default function HeroLeadForm({
               onChange={handleChange}
               placeholder={
                 isCallback
-                  ? 'Например, наличие кабеля, цена или доставка'
+                  ? 'Например, наличие кабеля, цена или самовывоз'
                   : 'Например: ВВГ 3×2.5, 500 метров'
               }
               disabled={isSubmitting}
@@ -397,12 +399,16 @@ export default function HeroLeadForm({
             <span>
               Даю согласие на{' '}
               <a
-                href="/privacy"
+                href="/personal-data-consent"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Откроется в новой вкладке"
               >
                 обработку персональных&nbsp;данных
+              </a>{' '}
+              ·{' '}
+              <a href="/privacy/" target="_blank" rel="noopener noreferrer">
+                Политика конфиденциальности
               </a>
             </span>
           </label>

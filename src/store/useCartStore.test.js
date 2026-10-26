@@ -198,3 +198,46 @@ describe('useCartStore.syncWithCatalog', () => {
     expect(useCartStore.getState().items.map((i) => i.id)).toEqual([1, 2]);
   });
 });
+
+describe('ограничение количеством в наличии', () => {
+  it('ограничивает первое добавление, повторные клики и ручное количество', async () => {
+    const store = await freshStore();
+    const product = { id: 1, title: 'Кабель', stock: 10, quantity: 17 };
+    store.getState().addItem(product);
+    expect(store.getState().items[0].quantity).toBe(10);
+    store.getState().addItem({ ...product, quantity: 1 });
+    expect(store.getState().items[0].quantity).toBe(10);
+    store.getState().updateItemQuantity(1, 99);
+    expect(store.getState().items[0].quantity).toBe(10);
+    store.getState().updateItemQuantity(1, 4.25);
+    expect(store.getState().items[0].quantity).toBe(4.25);
+  });
+  it('учитывает дробный остаток и его уменьшение при сверке каталога', async () => {
+    const store = await freshStore();
+    store.getState().addItem({ id: 1, title: 'Кабель', stock: 0.4 });
+    expect(store.getState().items[0].quantity).toBe(0.4);
+    store
+      .getState()
+      .syncWithCatalog({ found: [{ id: 1, stock: 0.2 }], missing: [] });
+    expect(store.getState().items[0].quantity).toBe(0.2);
+  });
+  it('исправляет сохранённую корзину с превышенным остатком', async () => {
+    localStorage.setItem(
+      'yuzhural-cart',
+      JSON.stringify({
+        state: { items: [{ id: 1, stock: 10, quantity: 17 }] },
+        version: 1,
+      })
+    );
+    const store = await freshStore();
+    expect(store.getState().items[0].quantity).toBe(10);
+  });
+  it('не ограничивает ручные позиции, но не добавляет отсутствующий товар', async () => {
+    const store = await freshStore();
+    expect(store.getState().addItem({ id: 1, stock: 0 })).toBe(false);
+    store
+      .getState()
+      .addManualItem({ title: 'Ручная позиция', stock: 0, quantity: 100 });
+    expect(store.getState().items[0].quantity).toBe(100);
+  });
+});

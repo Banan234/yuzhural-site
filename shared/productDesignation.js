@@ -165,6 +165,13 @@ function resolveFamily(product) {
   ].map((value) => normalize(Array.isArray(value) ? value[0] : value));
   for (const family of families) {
     if (
+      family.requiredSourcePattern &&
+      !new RegExp(family.requiredSourcePattern, 'u').test(
+        clean(product.sourceName)
+      )
+    )
+      continue;
+    if (
       (family.caseSensitiveMark || family.caseSensitiveStem) &&
       ![clean(product.mark), clean(product.sourceName).split(/\s+/u)[0]].some(
         (value) =>
@@ -206,8 +213,9 @@ function resolveFamily(product) {
       continue;
     if (
       family.sourceNamePattern &&
-      clean(product.mark).split(/\s+/u)[0] ===
-        clean(product.sourceName).split(/\s+/u)[0] &&
+      (family.requiredSourcePattern ||
+        clean(product.mark).split(/\s+/u)[0] ===
+          clean(product.sourceName).split(/\s+/u)[0]) &&
       new RegExp(family.sourceNamePattern, 'u').test(clean(product.sourceName))
     )
       return { family, index: '' };
@@ -353,6 +361,144 @@ function sourceFor(family) {
 }
 
 function sizeTokens(product, family, designation) {
+  if (family?.dimension === 'optical' && family.opticalConfiguration) {
+    const config = family.opticalConfiguration;
+    const p = new RegExp(family.sourceNamePattern, 'u').exec(
+      designation
+    )?.groups;
+    const fibers = Number(p?.fibers);
+    const modules = Number(p?.modules || (config.centralModule ? 1 : 0));
+    const perModule = Number(
+      p?.perModule || (config.centralModule ? fibers : 0)
+    );
+    const load = Number(p?.load?.replace(',', '.'));
+    const fiberType = config.fiberTypes?.[p?.fiber?.toUpperCase()];
+    if (
+      !p ||
+      !fiberType ||
+      !Number.isInteger(fibers) ||
+      fibers < 1 ||
+      fibers > config.maximumFibers ||
+      !Number.isInteger(modules) ||
+      modules < 1 ||
+      !Number.isInteger(perModule) ||
+      perModule < 1 ||
+      modules * perModule !== fibers ||
+      modules > config.maximumModules ||
+      perModule > config.maximumFibersPerModule ||
+      (config.centralModule && modules !== 1) ||
+      !config.loads.includes(load)
+    )
+      return {
+        rows: [],
+        warnings: [
+          'Тип волокна, модульная структура или растягивающая нагрузка не соответствуют подтверждённому заводскому исполнению.',
+        ],
+      };
+    return {
+      rows: [
+        {
+          code: p.fibers + p.fiber,
+          text: `${fibers} оптических волокон; ${fiberType}`,
+        },
+        {
+          code: `${modules}×${perModule}`,
+          text: `${modules} оптических модулей, по ${perModule} волокон; это не количество медных жил и не сечение`,
+        },
+        {
+          code: `${number(load)} кН`,
+          text: `Максимально допустимая растягивающая нагрузка ${number(load)} кН`,
+        },
+      ],
+      warnings: [],
+    };
+  }
+  if (family?.dimension === 'heating' && family.heatingConfiguration) {
+    const c = family.heatingConfiguration;
+    const matches =
+      family.sourceNamePattern &&
+      new RegExp(family.sourceNamePattern, 'u').test(designation);
+    if (
+      matches &&
+      c.type === 'series-resistance' &&
+      c.resistancePerKilometre > 0 &&
+      Number.isFinite(c.referenceTemperature) &&
+      c.workingVoltages?.length &&
+      c.workingVoltages.every((v) => v > 0)
+    )
+      return {
+        rows: [
+          {
+            code: 'Сопротивление',
+            text: `Номинальное сопротивление ${number(c.resistancePerKilometre)} Ом/км при ${number(c.referenceTemperature)} °C`,
+          },
+          {
+            code: 'Напряжение',
+            text: `Выпускается для ${c.workingVoltages.map(number).join(' или ')} В переменного тока; схема и длина секции определяются проектом`,
+          },
+        ],
+        warnings: [],
+      };
+    if (
+      !matches ||
+      !(c.powerPerMetre > 0) ||
+      !(c.voltage > 0) ||
+      !Number.isFinite(c.referenceTemperature)
+    )
+      return {
+        rows: [],
+        warnings: [
+          'Запись не соответствует подтверждённой заводской модели нагревательного кабеля.',
+        ],
+      };
+    return {
+      rows: [
+        {
+          code: 'Мощность',
+          text: `Номинальная линейная мощность ${number(c.powerPerMetre)} Вт/м при ${number(c.referenceTemperature)} °C`,
+        },
+        {
+          code: '2',
+          text: `Номинальное напряжение ${number(c.voltage)} В переменного тока`,
+        },
+      ],
+      warnings: [],
+    };
+  }
+  if (family?.dimension === 'model' && family.modelConfiguration) {
+    const config = family.modelConfiguration;
+    const exactModel =
+      family.sourceNamePattern &&
+      new RegExp(family.sourceNamePattern, 'u').test(designation);
+    const suppliedAwg = designation.match(/(?:AWG\s*(\d+)|(\d+)\s*AWG)/iu);
+    const conflicting =
+      (family.sourceNamePattern && !exactModel) ||
+      (/\d+\s*[xх×]\s*\d/iu.test(designation) && !exactModel) ||
+      (suppliedAwg && Number(suppliedAwg[1] || suppliedAwg[2]) !== config.awg);
+    const complete =
+      (config.pairs > 0 || config.cores > 0) &&
+      Number.isInteger(config.awg) &&
+      config.awg > 0;
+    if (!complete || conflicting)
+      return {
+        rows: [],
+        warnings: [
+          'Размерная запись не соответствует документированной конструкции этой заводской модели.',
+        ],
+      };
+    return {
+      rows: [
+        config.pairs
+          ? { code: 'Пары', text: `Количество витых пар: ${config.pairs}` }
+          : { code: 'Жилы', text: `Количество жил: ${config.cores}` },
+        {
+          code: 'AWG',
+          text: `Калибр каждого проводника ${config.awg} AWG; это не сечение в мм²`,
+        },
+      ],
+      warnings: [],
+    };
+  }
   if (family?.dimension === 'coax' && family.coaxConfiguration) {
     const c = family.coaxConfiguration;
     const complete =
@@ -484,6 +630,60 @@ function sizeTokens(product, family, designation) {
   const profile = family?.sourceNamePattern
     ? new RegExp(family.sourceNamePattern, 'u').exec(designation)?.groups
     : null;
+  if (family?.sourceProfile === 'pairs-with-common-drain') {
+    const pairs = Number(profile?.pairs);
+    const section = Number(profile?.section?.replace(',', '.'));
+    const drain = Number(profile?.drain?.replace(',', '.'));
+    const config = family.pairDrainConfiguration;
+    if (
+      !config?.pairCounts?.includes(pairs) ||
+      section !== config.section ||
+      drain !== config.drainSection
+    )
+      return {
+        rows: [],
+        warnings: [
+          'Количество пар, сечение или контактный проводник не соответствуют заводской таблице.',
+        ],
+      };
+    return {
+      rows: [
+        { code: `${pairs}×2`, text: `${pairs} пар, по 2 жилы в каждой паре` },
+        {
+          code: 'Сечение',
+          text: `Сечение каждой сигнальной жилы ${number(section)} мм²`,
+        },
+        {
+          code: `+${number(drain)}`,
+          text: `Общий контактный проводник экрана сечением ${number(drain)} мм²; это не дополнительная сигнальная пара`,
+        },
+      ],
+      warnings: [],
+    };
+  }
+  if (profile && family.sourceProfile === 'fixed-section-pairs') {
+    const pairs = Number(profile.pairs);
+    const section = family.fixedPairSection;
+    if (
+      !family.documentedPairCounts?.includes(pairs) ||
+      !(section > 0) ||
+      (profile.section && Number(profile.section.replace(',', '.')) !== section)
+    )
+      return {
+        rows: [],
+        warnings: ['Конфигурация отсутствует в заводской таблице этой марки.'],
+      };
+    return {
+      rows: [
+        { code: `${pairs}×2`, text: `${pairs} пар, по 2 жилы в каждой паре` },
+        {
+          code: 'Сечение',
+          text: `Номинальное сечение каждой жилы ${number(section)} мм² по заводской таблице`,
+        },
+      ],
+      warnings: [],
+    };
+  }
   if (
     profile &&
     family.sourceProfile === 'installation-wire-section-class-voltage'
@@ -639,6 +839,8 @@ function sizeTokens(product, family, designation) {
   if (
     conductorCount > 0 &&
     ((family.coreCounts && !family.coreCounts.includes(conductorCount)) ||
+      (family.maximumElementCount &&
+        Number(cores) > family.maximumElementCount) ||
       (family.nominalCoreCounts?.[Number(section)] &&
         !family.nominalCoreCounts[Number(section)].includes(conductorCount)) ||
       (family.maximumConductorCount &&
@@ -828,6 +1030,15 @@ export function buildProductDesignation(product = {}) {
   ];
   for (const attribute of indexes) {
     if (consumedAttribute === normalize(attribute)) continue;
+    // The factory optical grammar accounts for the entire original designation.
+    // Ignore only importer fragments that are literally present in that match.
+    if (
+      family?.dimension === 'optical' &&
+      family.opticalConfiguration &&
+      new RegExp(family.sourceNamePattern, 'u').test(designation) &&
+      indexKey(designation).includes(indexKey(attribute))
+    )
+      continue;
     const caseAttribute = family?.caseAttributes?.find(
       (item) =>
         normalize(attribute) === item.code &&
@@ -975,9 +1186,18 @@ export function buildProductDesignation(product = {}) {
     family?.evidence?.kind === 'manufacturer-documentation' &&
     Boolean(officialDocument) &&
     (['section', 'diameter'].includes(sizeFamily?.dimension) ||
+      (sizeFamily?.dimension === 'heating' &&
+        Boolean(sizeFamily.heatingConfiguration) &&
+        size.rows.length === 2) ||
+      (sizeFamily?.dimension === 'model' &&
+        Boolean(sizeFamily.modelConfiguration) &&
+        size.rows.length === 2) ||
       (sizeFamily?.dimension === 'coax' &&
         Boolean(sizeFamily.coaxConfiguration) &&
-        size.rows.length >= 3));
+        size.rows.length >= 3) ||
+      (sizeFamily?.dimension === 'optical' &&
+        Boolean(sizeFamily.opticalConfiguration) &&
+        size.rows.length === 3));
   const crossCheck = DESIGNATION_CROSS_CHECKS.find(
     (check) => check.id === family?.crossCheckId
   );

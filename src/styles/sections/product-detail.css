@@ -4,7 +4,7 @@
   padding-bottom: 64px;
 }
 .product-detail-page .breadcrumbs {
-  margin-bottom: 22px;
+  margin-bottom: 14px;
 }
 .product-page__heading .page-title {
   font-size: clamp(28px, 2.7vw, 40px);

@@ -169,7 +169,7 @@ describe('FloatingLeadWidget', () => {
     expect(screen.queryByLabelText('Телефон')).not.toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: /обработку персональных/ })
-    ).toHaveAttribute('href', '/privacy');
+    ).toHaveAttribute('href', '/personal-data-consent');
     await user.click(screen.getByLabelText(/Даю согласие/));
     expect(screen.getByLabelText(/Даю согласие/)).toBeChecked();
     await user.type(

@@ -63,16 +63,22 @@ describe('Счётчик корзины в карточке', () => {
           name: /^(В корзину|Добавить .* в корзину)$/,
         })
       );
-      expect(screen.getByRole('status')).toHaveTextContent('1');
+      expect(
+        screen.getByRole('textbox', { name: `Количество ${baseProduct.title}` })
+      ).toHaveValue('1');
       fireEvent.click(
         screen.getByRole('button', { name: /Увеличить количество/ })
       );
       expect(useCartStore.getState().items[0].quantity).toBe(2);
-      expect(screen.getByRole('status')).toHaveTextContent('2');
+      expect(
+        screen.getByRole('textbox', { name: `Количество ${baseProduct.title}` })
+      ).toHaveValue('2');
       act(() =>
-        useCartStore.getState().updateItemQuantity(baseProduct.id, 12.5)
+        useCartStore.getState().updateItemQuantity(baseProduct.id, 11.5)
       );
-      expect(screen.getByRole('status')).toHaveTextContent('12,5');
+      expect(
+        screen.getByRole('textbox', { name: `Количество ${baseProduct.title}` })
+      ).toHaveValue('11,5');
       act(() => useCartStore.getState().updateItemQuantity(baseProduct.id, 1));
       fireEvent.click(
         screen.getByRole('button', { name: /Уменьшить количество/ })
@@ -88,4 +94,51 @@ describe('Счётчик корзины в карточке', () => {
       ).toBeVisible();
     }
   );
+});
+
+describe('Производитель в названии карточки', () => {
+  it.each([
+    ['HELUKABEL 2х2х0.75', 'HELUKABEL', 'HELUKABEL 2х2х0.75'],
+    ['Герда КВ 4х2х1', 'ГЕРДА', 'Герда КВ 4х2х1'],
+    ['FTP cat.5 2PR Rexant', 'REXANT', 'FTP cat.5 2PR'],
+  ])('показывает %s по общему правилу', (title, manufacturer, expected) => {
+    renderCard({ ...baseProduct, title, manufacturer });
+    expect(screen.getByRole('heading', { name: expected })).toBeInTheDocument();
+    expect(screen.queryByText(/^Производитель:/)).not.toBeInTheDocument();
+  });
+});
+
+describe('Остаток в счётчике', () => {
+  it('останавливает добавление на доступном остатке', () => {
+    renderCard({ ...baseProduct, stock: 2 });
+    fireEvent.click(screen.getByRole('button', { name: 'В корзину' }));
+    const plus = screen.getByRole('button', {
+      name: `Увеличить количество ${baseProduct.title}`,
+    });
+    fireEvent.click(plus);
+    expect(plus).toBeDisabled();
+    expect(useCartStore.getState().items[0].quantity).toBe(2);
+    fireEvent.click(plus);
+    expect(useCartStore.getState().items[0].quantity).toBe(2);
+  });
+});
+
+it('позволяет вводить метраж вручную, с запятой и ограничением остатком', () => {
+  renderCard({ ...baseProduct, stock: 10 });
+  fireEvent.click(screen.getByRole('button', { name: 'В корзину' }));
+  const input = screen.getByRole('textbox', {
+    name: `Количество ${baseProduct.title}`,
+  });
+  fireEvent.change(input, { target: { value: '' } });
+  expect(input).toHaveValue('');
+  fireEvent.change(input, { target: { value: '5,5' } });
+  fireEvent.blur(input);
+  expect(useCartStore.getState().items[0].quantity).toBe(5.5);
+  fireEvent.change(input, { target: { value: '99' } });
+  fireEvent.blur(input);
+  expect(input).toHaveValue('10');
+  expect(useCartStore.getState().items[0].quantity).toBe(10);
+  fireEvent.change(input, { target: { value: 'ошибка' } });
+  fireEvent.blur(input);
+  expect(input).toHaveValue('10');
 });

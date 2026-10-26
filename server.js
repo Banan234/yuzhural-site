@@ -1,4 +1,8 @@
 import {
+  validateConsent,
+  createConsentEvidence,
+} from './lib/consentEvidence.js';
+import {
   parseQuoteSubmission,
   requireQuoteContentType,
 } from './lib/specificationUpload.js';
@@ -1568,7 +1572,20 @@ export function createApp({
           );
         }
 
+        const consentError = validateConsent(req.body);
+        if (consentError) {
+          return sendFormErrorResponse(
+            res,
+            formResponseStartedAt,
+            formResponseDelayMs,
+            consentError,
+            400
+          );
+        }
+        const consentEvidence = createConsentEvidence(req.body);
+
         const created = await app.locals.chatStore.createConversation({
+          consentEvidence,
           customerPhone: normalizedPhone,
           customerName: contactName,
           source: chatSource,
@@ -1999,10 +2016,23 @@ export function createApp({
           );
         }
 
+        const consentError = validateConsent(customer);
+        if (consentError) {
+          return sendFormErrorResponse(
+            res,
+            formResponseStartedAt,
+            formResponseDelayMs,
+            consentError,
+            400
+          );
+        }
+        const consentEvidence = createConsentEvidence(customer);
+
         const html = `
         <h2>Новая заявка на коммерческое предложение</h2>
 
-        <p><strong>Дата:</strong> ${escapeHtml(createdAt)}</p>
+        <p><strong>Дата получения сервером:</strong> ${consentEvidence.receivedAt}</p>
+        <p><strong>Согласие:</strong> получено; редакция ${consentEvidence.version}; /personal-data-consent</p>
 
         <h3>Контакты клиента</h3>
         <p><strong>Имя:</strong> ${escapeHtml(customer.name)}</p>
@@ -2172,12 +2202,24 @@ export function createApp({
           );
         }
 
+        const consentError = validateConsent(req.body);
+        if (consentError) {
+          return sendFormErrorResponse(
+            res,
+            formResponseStartedAt,
+            formResponseDelayMs,
+            consentError,
+            400
+          );
+        }
+        const consentEvidence = createConsentEvidence(req.body);
+
         const html = `
         <h2>${isCallback ? 'Заказ обратного звонка' : 'Новая короткая заявка'}</h2>
-        <p><strong>Дата:</strong> ${escapeHtml(createdAt) || '—'}</p>
+        <p><strong>Дата получения сервером:</strong> ${consentEvidence.receivedAt}</p>
         <p><strong>Источник:</strong> ${escapeHtml(leadSource) || '—'}</p>
         <p><strong>Страница:</strong> ${escapeHtml(leadPage) || '—'}</p>
-        <p><strong>Согласие на обработку данных:</strong> получено</p>
+        <p><strong>Согласие на обработку данных:</strong> получено; редакция ${consentEvidence.version}; /personal-data-consent</p>
         <p><strong>Контактное лицо:</strong> ${escapeHtml(contactName) || 'Не указано'}</p>
         <p><strong>Способ связи:</strong> ${contactChannel === 'email' ? 'Email' : 'Телефон'}</p>
         <p><strong>${contactChannel === 'email' ? 'Email' : 'Телефон'}:</strong> ${escapeHtml(contactChannel === 'email' ? contactEmail : normalizedPhone)}</p>

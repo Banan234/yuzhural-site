@@ -33,3 +33,13 @@ public/product/
 deploy/state/
 data/product-image-metadata/.pipeline.lock
 data/product-image-metadata/**/*.tmp
+
+# Локальная очередь почтовых отчётов импорта
+data/import-mail-outbox/
+data/.import-notification-state.json
+data/import-status.json
+data/.import-maintenance.json
+data/.import-maintenance.json.lock
+
+# Полные исследовательские оригиналы и поисковый SQLite-корпус
+data/designation-manufacturer-corpus/

@@ -152,6 +152,41 @@ describe('resolveProductDisposition', () => {
     });
   });
 
+  it.each([
+    'Мет.рук.в ПВХ с муфт.по 3м d=1/2дюй',
+    'Мет.рук.в ПВХ с муфт.по 3м d=3/4дюй',
+    'Мет.рук.в ПВХ с муфт.по 4м d=3/4дюй',
+    'Металл.рук. в ПВХ d=32мм',
+  ])('исключает сокращённое название металлорукава: %s', (name) => {
+    const product = { name, unit: 'м', price: 100, stock: 1 };
+    expect(resolveProductDisposition(product)).toMatchObject({
+      status: 'exclude',
+      reason: 'explicit_non_cable_name',
+    });
+    expect(createProductRecord(product, 'Без категории')).toEqual({
+      type: 'excluded',
+    });
+  });
+
+  it('не принимает материал ПВХ за кабельную марку ПВ', () => {
+    expect(
+      resolveProductDisposition({ name: 'ПВХ 3м', unit: 'м' })
+    ).toMatchObject({
+      status: 'review',
+      reason: 'unit_meter_requires_classification',
+    });
+  });
+
+  it.each(['ПВ 1х6', 'ПВ1 1х6', 'ПВ3 1х6', 'ПВС 3х2.5', 'ПВКВ 1х6'])(
+    'сохраняет распознавание кабельной марки: %s',
+    (name) => {
+      expect(resolveProductDisposition({ name, unit: 'м' })).toMatchObject({
+        status: 'publish',
+        reason: 'cable_name_evidence',
+      });
+    }
+  );
+
   it('исключает только ПМТК нг(А) 1х0.5 без подтверждённой длины штуки', () => {
     const product = {
       name: 'ПМТК нг(А)  1х0.5',

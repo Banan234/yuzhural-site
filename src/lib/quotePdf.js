@@ -257,7 +257,7 @@ export async function generateQuotePdf({ items, customer = null } = {}) {
   let footerY = afterTableY + 14;
   const notes = [
     `Предложение действительно ${QUOTE_VALIDITY_DAYS} дня — до ${formatDate(validUntil)}.`,
-    'Цены указаны с НДС. Условия отгрузки и доставки согласовываются отдельно.',
+    'Цены указаны с НДС. Условия самовывоза согласовываются отдельно.',
     'При оптовых объёмах от 5 000 м — индивидуальная скидка.',
     `По вопросам: ${COMPANY.phone} · ${COMPANY.email}`,
   ];

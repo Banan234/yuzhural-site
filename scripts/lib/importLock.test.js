@@ -39,7 +39,7 @@ describe('acquirePriceImportLock', () => {
   it('reclaims a stale lock before acquiring it', async () => {
     const lockFile = await createLockPath();
     await fs.mkdir(path.dirname(lockFile), { recursive: true });
-    await fs.writeFile(lockFile, '{"pid":1}');
+    await fs.writeFile(lockFile, '{"pid":2147483647}');
     const old = new Date(Date.now() - 7 * 60 * 60 * 1000);
     await fs.utimes(lockFile, old, old);
 
@@ -58,4 +58,37 @@ describe('acquirePriceImportLock', () => {
       'new-owner'
     );
   });
+});
+
+it('reclaims a fresh lock immediately when its owner is dead', async () => {
+  const lockFile = await createLockPath();
+  await fs.mkdir(path.dirname(lockFile), { recursive: true });
+  await fs.writeFile(
+    lockFile,
+    JSON.stringify({ pid: 2147483647, token: 'dead' })
+  );
+  const release = await acquirePriceImportLock(lockFile);
+  expect(typeof release).toBe('function');
+  await release();
+});
+
+it('keeps an old lock while its owner is alive', async () => {
+  const lockFile = await createLockPath();
+  const release = await acquirePriceImportLock(lockFile);
+  const old = new Date(Date.now() - 7 * 60 * 60 * 1000);
+  await fs.utimes(lockFile, old, old);
+  expect(await acquirePriceImportLock(lockFile)).toBeNull();
+  await release();
+});
+
+it('recovers an interrupted empty lock after a short initialisation grace period', async () => {
+  const lockFile = await createLockPath();
+  await fs.mkdir(path.dirname(lockFile), { recursive: true });
+  await fs.writeFile(lockFile, '');
+  expect(await acquirePriceImportLock(lockFile)).toBeNull();
+  const old = new Date(Date.now() - 31_000);
+  await fs.utimes(lockFile, old, old);
+  const release = await acquirePriceImportLock(lockFile);
+  expect(typeof release).toBe('function');
+  await release();
 });

@@ -54,6 +54,45 @@ function productRedirects() {
   };
 }
 
+export function runtimePriceMiddleware(root) {
+  return async (req, res, next) => {
+    if (
+      (req.url || '').split('?')[0] !== '/price.xls' ||
+      !['GET', 'HEAD'].includes(req.method)
+    )
+      return next();
+    try {
+      const buffer = await fs.promises.readFile(
+        path.join(root, 'data/catalog-current/public/price.xls')
+      );
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/vnd.ms-excel');
+      res.setHeader('Content-Length', buffer.length);
+      res.setHeader('Cache-Control', 'no-store');
+      res.end(req.method === 'HEAD' ? undefined : buffer);
+    } catch (error) {
+      if (error.code === 'ENOENT') return next();
+      next(error);
+    }
+  };
+}
+
+function runtimePriceDownload() {
+  let root;
+  return {
+    name: 'runtime-price-download',
+    configResolved(config) {
+      root = config.root;
+    },
+    configureServer(server) {
+      server.middlewares.use(runtimePriceMiddleware(root));
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(runtimePriceMiddleware(root));
+    },
+  };
+}
+
 export function moveStylesheetsBeforeModuleScripts(html) {
   return html.replace(/<head\b[^>]*>([\s\S]*?)<\/head>/i, (headMatch) => {
     const stylesheetTags = [];
@@ -97,7 +136,12 @@ function prioritizeStylesheets() {
 }
 
 export default defineConfig({
-  plugins: [react(), productRedirects(), prioritizeStylesheets()],
+  plugins: [
+    react(),
+    runtimePriceDownload(),
+    productRedirects(),
+    prioritizeStylesheets(),
+  ],
   build: {
     manifest: true,
   },

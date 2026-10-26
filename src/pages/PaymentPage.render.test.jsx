@@ -42,19 +42,13 @@ describe('PaymentPage', () => {
       })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { name: /юридическ.*лиц/i })
+      screen.getByRole('heading', { name: 'Для компаний и ИП' })
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', { level: 3, name: /физическ.*лиц/i })
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole('heading', { name: /до оплаты/i })
-    ).toBeInTheDocument();
-    expect(screen.getByText(SITE_REQUISITES.fullLegalName)).toBeInTheDocument();
-    expect(screen.getByText(/информационн.*характер/i)).toBeInTheDocument();
-    expect(
-      screen.getByText(/не оформляет покупку автоматически/i)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Для розничных покупок действуют условия/)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Резерв кабеля — до 3 дней' })).toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: 'Скачать реквизиты' })
     ).toHaveAttribute('href', '/documents/company-details.pdf');

@@ -21,10 +21,10 @@ export default function ServiceLayout({ serviceKey, children }) {
     }
   }, [serviceKey]);
   useSEO({
-    title: service?.title || 'Сервисы для выбора и доставки кабеля',
+    title: service?.title || 'Сервисы для выбора и самовывоза кабеля',
     description:
       service?.description ||
-      'Расчёт веса и диаметра, расшифровка маркировки, справочник кабеля, сравнение возможных замен и подготовка доставки.',
+      'Расчёт веса и диаметра, расшифровка маркировки, справочник кабеля, сравнение возможных замен и подготовка самовывоза.',
     canonical: service?.path || SERVICES_PATH,
   });
   return (

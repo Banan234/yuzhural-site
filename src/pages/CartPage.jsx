@@ -1,3 +1,4 @@
+import { getCartQuantityLimit } from '../lib/cartQuantity.js';
 // Файл рендерит корзину выбранных позиций, изменение количества и переход к запросу КП.
 
 import { useEffect, useRef, useState } from 'react';
@@ -335,13 +336,17 @@ export default function CartPage() {
                             aria-label={`${unit === 'м' ? 'Метраж' : 'Количество'}: ${item.title}`}
                             type="number"
                             min="0.01"
+                            max={getCartQuantityLimit(item)}
                             step={unit === 'м' ? '0.01' : '1'}
                             defaultValue={quantity}
                             onBlur={(event) => {
                               const value = Number(event.target.value);
-                              if (Number.isFinite(value) && value > 0)
+                              if (Number.isFinite(value) && value > 0) {
                                 updateItemQuantity(item.id, value);
-                              else event.target.value = String(quantity);
+                                event.target.value = String(
+                                  Math.min(value, getCartQuantityLimit(item))
+                                );
+                              } else event.target.value = String(quantity);
                             }}
                             onKeyDown={(event) => {
                               if (event.key === 'Enter')
@@ -351,6 +356,7 @@ export default function CartPage() {
                           <button
                             type="button"
                             aria-label={`Увеличить количество: ${item.title}`}
+                            disabled={quantity >= getCartQuantityLimit(item)}
                             onClick={() =>
                               updateItemQuantity(
                                 item.id,

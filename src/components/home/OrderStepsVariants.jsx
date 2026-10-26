@@ -57,31 +57,26 @@ function StepIcon({ step }) {
 
 export default function OrderStepsVariants() {
   return (
-    <>
-      {['road', 'editorial'].map((variant) => (
-        <section
-          key={variant}
-          className={`order-process order-process--${variant}`}
-          aria-labelledby={`order-process-${variant}-title`}
-        >
-          <Container>
-            <div className="order-process__layout">
-              <h2 id={`order-process-${variant}-title`}>Как проходит заказ?</h2>
-              <ol className="order-process__steps">
-                {steps.map((step, index) => (
-                  <li key={step.title}>
-                    <div className="order-process__icon">
-                      <StepIcon step={index} />
-                    </div>
-                    <h3>{step.title}</h3>
-                    <p>{step.description}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </Container>
-        </section>
-      ))}
-    </>
+    <section
+      className="order-process order-process--road"
+      aria-labelledby="order-process-road-title"
+    >
+      <Container>
+        <div className="order-process__layout">
+          <h2 id="order-process-road-title">Как проходит заказ?</h2>
+          <ol className="order-process__steps">
+            {steps.map((step, index) => (
+              <li key={step.title}>
+                <div className="order-process__icon">
+                  <StepIcon step={index} />
+                </div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </Container>
+    </section>
   );
 }

@@ -1,7 +1,12 @@
+import { formatManufacturerTitle } from '../../shared/manufacturerTitle.js';
 // Файл парсит строки XLS-прайса, извлекает марки, характеристики, единицы измерения и цены.
 import { readFileSync } from 'fs';
 import { findCableSpecification } from './cableSpecification.js';
-import { formatCableProductTitle } from '../../shared/productTitle.js';
+import {
+  formatCableProductTitle,
+  normalizeHeatingCableName,
+  normalizeCableColorName,
+} from '../../shared/productTitle.js';
 const UNIT_ALIASES = [
   'км',
   'м',
@@ -293,10 +298,11 @@ export function createEmptyImportResult() {
 
 export function normalizeImportedProduct(product) {
   const sourceName = String(product.sourceName ?? product.name ?? '').trim();
-  const fullName =
+  const fullName = normalizeHeatingCableName(
     product.parseCable === false
       ? normalizeText(sourceName)
-      : normalizeProductName(sourceName);
+      : normalizeProductName(sourceName)
+  );
   const parsedName =
     product.parseCable === false
       ? {
@@ -304,7 +310,7 @@ export function normalizeImportedProduct(product) {
           mark: fullName,
           markFamily: normalizeMarkFamily(fullName),
         }
-      : parseProductName(sourceName);
+      : parseProductName(normalizeHeatingCableName(sourceName));
   const normalizedName = formatCableProductTitle(
     buildNormalizedProductName(fullName, parsedName),
     parsedName
@@ -328,7 +334,10 @@ export function normalizeImportedProduct(product) {
     sourceName,
     name: normalizedName,
     fullName: normalizedName,
-    mark: parsedName.mark,
+    mark: formatManufacturerTitle(
+      normalizeCableColorName(parsedName.mark),
+      parsedName
+    ),
     markFamily: parsedName.markFamily,
     manufacturer: parsedName.manufacturer,
     manufacturerMatch: parsedName.manufacturerMatch,

@@ -13,10 +13,10 @@ export const STATIC_PAGE_SEO = {
   },
   delivery: {
     path: toCanonicalSitePath('/delivery'),
-    title: 'Доставка',
-    fullTitle: `Доставка — ${SITE_NAME}`,
+    title: 'Получение заказа',
+    fullTitle: `Получение заказа — ${SITE_NAME}`,
     description:
-      'Доставка кабельно-проводниковой продукции по всей России. Самовывоз со склада в Челябинске или через транспортные компании.',
+      'Получение кабеля со склада в Челябинске: самовывоз лично или вашей транспортной компанией. График выдачи, документы и условия погрузки.',
   },
   payment: {
     path: toCanonicalSitePath('/payment'),

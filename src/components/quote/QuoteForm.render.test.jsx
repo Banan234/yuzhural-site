@@ -33,7 +33,7 @@ describe('QuoteForm render flow', () => {
     ).not.toBeChecked();
     expect(
       screen.getByRole('link', { name: /обработку персональных\sданных/i })
-    ).toHaveAttribute('href', '/privacy');
+    ).toHaveAttribute('href', '/personal-data-consent');
   });
 
   it('не сохраняет контактные данные в localStorage и удаляет старый черновик', async () => {

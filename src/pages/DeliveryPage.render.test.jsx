@@ -39,25 +39,14 @@ describe('DeliveryPage', () => {
     renderDeliveryPage();
 
     expect(
-      screen.getByRole('heading', { name: /самовывоз/i })
+      screen.getByRole('heading', { name: 'Самовывоз со склада' })
     ).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: 'Самовывоз' })).toHaveAttribute(
-      'aria-selected',
-      'true'
-    );
+    expect(screen.queryByRole('tablist')).toBeNull();
     expect(
-      screen.queryByRole('heading', { name: /транспортн.*компани/i })
-    ).toBeNull();
-    expect(
-      screen.getByRole('link', {
-        name: /адрес.*склад/i,
-      })
-    ).toHaveAttribute('href', SITE_WAREHOUSE_MAP_URL);
+      screen.getByRole('heading', { name: 'Самовывоз транспортной компанией' })
+    ).toBeVisible();
     expect(
       screen.getByRole('link', { name: SITE_WAREHOUSE_ADDRESS_DISPLAY })
-    ).toHaveAttribute('href', SITE_WAREHOUSE_MAP_URL);
-    expect(
-      screen.getByRole('link', { name: 'Открыть в Яндекс Картах' })
     ).toHaveAttribute('href', SITE_WAREHOUSE_MAP_URL);
     expect(
       screen.queryByTitle('Схема проезда к складу самовывоза')
@@ -69,57 +58,14 @@ describe('DeliveryPage', () => {
     expect(
       screen.getByTitle('Схема проезда к складу самовывоза')
     ).toHaveAttribute('src', SITE_WAREHOUSE_MAP_EMBED_URL);
+    act(() => saveCookieConsent({ externalServices: false }));
+    expect(
+      screen.queryByTitle('Схема проезда к складу самовывоза')
+    ).not.toBeInTheDocument();
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
       `${SITE_URL}${STATIC_PAGE_SEO.delivery.path}`
     );
-  });
-
-  it('переключает условия, список данных и карту при выборе доставки', () => {
-    renderDeliveryPage();
-    fireEvent.click(screen.getByRole('tab', { name: 'Доставка' }));
-    expect(screen.getByRole('tab', { name: 'Доставка' })).toHaveAttribute(
-      'aria-selected',
-      'true'
-    );
-    expect(screen.getByRole('tabpanel', { name: 'Доставка' })).toBeVisible();
-    expect(
-      screen.getByRole('heading', { name: /транспортн.*компани/i })
-    ).toBeVisible();
-    expect(
-      screen.getByText(/перевозчик.*оплачивает покупатель/i)
-    ).toBeVisible();
-    expect(screen.getByText(/город.*данные получателя/i)).toBeVisible();
-    expect(
-      screen.queryByRole('heading', { name: 'Схема проезда к складу' })
-    ).toBeNull();
-    expect(
-      screen.queryByRole('button', { name: 'Настроить cookie' })
-    ).toBeNull();
-    fireEvent.click(screen.getByRole('tab', { name: 'Самовывоз' }));
-    expect(
-      screen.getByRole('heading', { name: 'Схема проезда к складу' })
-    ).toBeVisible();
-    expect(
-      screen.getByText(/дат.*самовывоз/i, { selector: 'li' })
-    ).toBeVisible();
-  });
-
-  it('поддерживает выбор вкладок с клавиатуры', () => {
-    renderDeliveryPage();
-    const pickup = screen.getByRole('tab', { name: 'Самовывоз' });
-    const shipping = screen.getByRole('tab', { name: 'Доставка' });
-    pickup.focus();
-    fireEvent.keyDown(pickup, { key: 'ArrowRight' });
-    expect(shipping).toHaveFocus();
-    expect(shipping).toHaveAttribute('aria-selected', 'true');
-    fireEvent.keyDown(shipping, { key: 'Home' });
-    expect(pickup).toHaveFocus();
-    fireEvent.keyDown(pickup, { key: 'End' });
-    expect(shipping).toHaveFocus();
-    fireEvent.keyDown(shipping, { key: 'ArrowLeft' });
-    expect(pickup).toHaveFocus();
-    expect(pickup).toHaveAttribute('aria-selected', 'true');
   });
 
   it('открывает форму вопроса менеджеру по кнопке', () => {

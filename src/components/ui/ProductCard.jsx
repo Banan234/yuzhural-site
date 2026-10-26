@@ -1,3 +1,5 @@
+import { getCartQuantityLimit } from '../../lib/cartQuantity.js';
+import { formatManufacturerTitle } from '../../../shared/manufacturerTitle.js';
 // Файл рендерит товарную карточку каталога с ценой, статусом, действиями корзины и ссылкой на товар.
 
 import { Link } from 'react-router-dom';
@@ -28,6 +30,7 @@ export default function ProductCard({ product, variant = 'default' }) {
   const quantity = useCartStore(
     (state) => state.items.find((item) => item.id === product.id)?.quantity || 0
   );
+  const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
   const decreaseItem = useCartStore((state) => state.decreaseItem);
   const isStockVariant = variant === 'stock';
   const productUrl = `/product/${product.slug}`;
@@ -55,15 +58,7 @@ export default function ProductCard({ product, variant = 'default' }) {
   const productImage = getProductImage(product);
   const productImageAlt = getProductImageAlt(product);
   const brand = product.brand || product.manufacturer || product.catalogBrand;
-  const displayTitle = (() => {
-    if (!brand) return product.title;
-    const upper = product.title.toUpperCase();
-    const brandUp = brand.toUpperCase();
-    if (upper.startsWith(brandUp + '-') || upper.startsWith(brandUp + ' ')) {
-      return product.title.slice(brand.length + 1).trim();
-    }
-    return product.title;
-  })();
+  const displayTitle = formatManufacturerTitle(product.title, product);
   const catalogSpecs = [
     product.cores != null && {
       label: 'Количество жил',
@@ -174,9 +169,13 @@ export default function ProductCard({ product, variant = 'default' }) {
           {quantity > 0 ? (
             <CartQuantityControl
               quantity={quantity}
+              maxQuantity={getCartQuantityLimit(product)}
               title={displayTitle}
               onIncrease={handleAddToCart}
               onDecrease={() => decreaseItem(product.id)}
+              onQuantityChange={(value) =>
+                updateItemQuantity(product.id, value)
+              }
             />
           ) : (
             <button
@@ -236,8 +235,10 @@ export default function ProductCard({ product, variant = 'default' }) {
         <CardActions
           isStockVariant={isStockVariant}
           quantity={quantity}
+          maxQuantity={getCartQuantityLimit(product)}
           title={displayTitle}
           onDecrease={() => decreaseItem(product.id)}
+          onQuantityChange={(value) => updateItemQuantity(product.id, value)}
           onAddToCart={handleAddToCart}
           onOpenQuote={handleOpenQuote}
         />

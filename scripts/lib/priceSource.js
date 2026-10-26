@@ -419,7 +419,7 @@ export async function fetchPriceWithTimeout(
   }
 }
 
-function isRetryableHttpError(error) {
+export function isRetryableHttpError(error) {
   if (typeof error?.retryable === 'boolean') {
     return error.retryable;
   }
@@ -502,7 +502,7 @@ async function downloadPriceFile(
       if (attempt === retries || !isRetryableHttpError(error)) {
         throw error;
       }
-      const backoffMs = 1000 * 2 ** (attempt - 1);
+      const backoffMs = 30_000 * 2 ** (attempt - 1);
       console.warn(
         `Попытка ${attempt}/${retries} провалена (${error.message}). Ретрай через ${backoffMs} мс.`
       );

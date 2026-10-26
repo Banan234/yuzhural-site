@@ -232,3 +232,25 @@ main > .section:first-child {
 .route-fallback__text {
   letter-spacing: 0.01em;
 }
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 10000;
+  padding: 12px 20px;
+  background: #fff;
+  color: #24303c;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+html {
+  scroll-padding-top: 220px;
+}
+@media (max-width: 980px) {
+  html {
+    scroll-padding-top: 100px;
+  }
+}

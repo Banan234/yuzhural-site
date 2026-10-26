@@ -3,6 +3,7 @@
 import { createItemsStore } from './createItemsStore.js';
 import { MAX_QUOTE_ITEMS } from '../../shared/quoteValidation.js';
 import { PRODUCT_IMAGE_FALLBACKS } from '../../shared/productImages.js';
+import { clampCartQuantity } from '../lib/cartQuantity.js';
 
 export const MAX_CART_ITEMS = MAX_QUOTE_ITEMS;
 
@@ -23,13 +24,22 @@ export const useCartStore = createItemsStore({
   version: 1,
   withQuantity: true,
   maxItems: MAX_CART_ITEMS,
+  normalizeQuantity: clampCartQuantity,
+  normalizeStoredItem: (item) => ({
+    ...item,
+    quantity: clampCartQuantity(item, item.quantity),
+  }),
   prepareItem: (product) => ({
     ...product,
-    quantity: product.quantity || 1,
+    quantity: clampCartQuantity(product, product.quantity || 1),
   }),
   mergeItem: (existingItem, product) => ({
     ...existingItem,
-    quantity: existingItem.quantity + (product.quantity || 1),
+    stock: product.stock ?? existingItem.stock,
+    quantity: clampCartQuantity(
+      { ...existingItem, stock: product.stock ?? existingItem.stock },
+      existingItem.quantity + (product.quantity || 1)
+    ),
   }),
   createExtraActions: ({ set, get }) => ({
     addManualItem: (item) =>
@@ -112,10 +122,14 @@ export const useCartStore = createItemsStore({
             price: Number(fresh.price) || 0,
             unit: fresh.unit || cartItem.unit,
             stock: fresh.stock,
+            quantity: clampCartQuantity(
+              { ...cartItem, stock: fresh.stock },
+              cartItem.quantity
+            ),
             image: fresh.image || cartItem.image,
           });
         }
-        return { items: nextItems };
+        return { items: nextItems.filter((item) => item.quantity > 0) };
       });
 
       return summary;

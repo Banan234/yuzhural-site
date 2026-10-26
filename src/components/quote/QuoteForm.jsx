@@ -1,3 +1,4 @@
+import { PERSONAL_DATA_CONSENT_VERSION } from '../../../shared/personalDataConsent';
 // Файл управляет формой запроса КП: позиции, контакты, PDF, отправка и пользовательские ошибки.
 
 import { useEffect, useRef, useState } from 'react';
@@ -136,6 +137,7 @@ export default function QuoteForm({
       comment: form.comment.trim(),
       preferredChannel: form.preferredChannel,
       consent: form.consent,
+      consentVersion: PERSONAL_DATA_CONSENT_VERSION,
     };
 
     const orderPayload = {
@@ -393,7 +395,7 @@ export default function QuoteForm({
                 name="comment"
                 value={form.comment}
                 onChange={handleChange}
-                placeholder="Уточнения по объему, срокам, доставке, реквизитам"
+                placeholder="Уточнения по объему, срокам, самовывозу, реквизитам"
                 rows={compact ? 2 : 5}
                 maxLength={MAX_QUOTE_CUSTOMER_COMMENT_LENGTH}
                 aria-invalid={errors.comment ? 'true' : undefined}
@@ -429,7 +431,13 @@ export default function QuoteForm({
               />
               <span>
                 Даю согласие на{' '}
-                <a href="/privacy">обработку персональных&nbsp;данных</a>
+                <a href="/personal-data-consent">
+                  обработку персональных&nbsp;данных
+                </a>{' '}
+                ·{' '}
+                <a href="/privacy/" target="_blank" rel="noopener noreferrer">
+                  Политика конфиденциальности
+                </a>
               </span>
             </label>
             {errors.consent ? (

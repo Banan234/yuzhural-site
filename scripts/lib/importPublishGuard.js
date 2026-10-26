@@ -165,6 +165,7 @@ export function evaluatePublishGuard({
   }
 
   const issues = [];
+  const warnings = [];
 
   if (metrics.products < normalizedConfig.minProducts) {
     issues.push(
@@ -243,8 +244,20 @@ export function evaluatePublishGuard({
     );
   }
 
-  if (metrics.newReview > normalizedConfig.maxNewReviewRows) {
+  const reviewPercent = percentage(metrics.review, metrics.totalRows);
+  if (reviewPercent > normalizedConfig.maxSkippedPercent) {
     issues.push(
+      createIssue({
+        key: 'maxReviewPercent',
+        actual: reviewPercent,
+        limit: normalizedConfig.maxSkippedPercent,
+        message: `На проверку отложено ${rounded(reviewPercent)}% строк прайса, допустимо не более ${normalizedConfig.maxSkippedPercent}%.`,
+      })
+    );
+  }
+
+  if (metrics.newReview > normalizedConfig.maxNewReviewRows) {
+    warnings.push(
       createIssue({
         key: 'maxNewReviewRows',
         actual: metrics.newReview,
@@ -268,7 +281,7 @@ export function evaluatePublishGuard({
   if (
     metrics.categoryChangedPercent > normalizedConfig.maxCategoryChangedPercent
   ) {
-    issues.push(
+    warnings.push(
       createIssue({
         key: 'maxCategoryChangedPercent',
         actual: metrics.categoryChangedPercent,
@@ -284,6 +297,7 @@ export function evaluatePublishGuard({
     config: normalizedConfig,
     metrics,
     issues,
+    warnings,
   };
 }
 

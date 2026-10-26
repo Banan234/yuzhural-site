@@ -572,7 +572,7 @@ export default function CableWeightPage() {
       {reportItems.length > 0 && (
         <div className="service-chips">
           <Link to={serviceUrl('shipping', { estimateKg: total.maxKg })}>
-            Подготовить данные для доставки →
+            Подготовить данные для самовывоза →
           </Link>
         </div>
       )}

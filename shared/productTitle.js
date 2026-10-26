@@ -1,5 +1,6 @@
 // Собирает отображаемое название из марки, подтверждённых суффиксов и сечения.
 // Исходное название прайса остаётся в sourceName.
+import { formatManufacturerTitle } from './manufacturerTitle.js';
 import { findCableSpecification } from '../scripts/lib/cableSpecification.js';
 
 const CONSTRUCTION_SUFFIX = /^(?:эф|эа|эм|ээ|э|зэл|з|хл|уф)$/iu;
@@ -50,6 +51,15 @@ function normalizeCableColorText(value) {
       const color = CABLE_COLOR_ALIASES.get(token.toLocaleLowerCase('ru'));
       return color ? `${separator}${color}` : match;
     }
+  );
+}
+
+// The first token is the cable designation, not a color abbreviation.
+export function normalizeCableColorName(value) {
+  if (typeof value !== 'string' || !/\d/u.test(value)) return value;
+  return value.replace(
+    /^(\S+\s+)([\s\S]*)$/u,
+    (_, mark, rest) => mark + normalizeCableColorText(rest)
   );
 }
 
@@ -132,10 +142,19 @@ function consumeSuffixes(value, attributes, { fromTail = false } = {}) {
   return { suffixes, rest };
 }
 
+export function normalizeHeatingCableName(value) {
+  if (typeof value !== 'string') return value;
+  return value.replace(/^греющий(?:\s+кабель)?(?=\s|$)/iu, 'Греющий кабель');
+}
+
 export function formatCableProductTitle(title, product) {
   if (typeof title !== 'string') return title;
-  return formatCableTitleSuffixes(
-    normalizeCableColors(title, product),
+  return formatManufacturerTitle(
+    normalizeHeatingCableName(
+      normalizeCableColorName(
+        formatCableTitleSuffixes(normalizeCableColors(title, product), product)
+      )
+    ),
     product
   );
 }

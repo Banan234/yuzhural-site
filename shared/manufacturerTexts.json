@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "2026-10-20.1",
+  "revision": "2026-10-26.1",
   "policy": "Каждый заводской раздел и каждая версия сохраняются отдельной записью. Текст — краткое изложение технического назначения; полный авторский текст доступен в указанном оригинале. Базовое назначение не подтверждает все исполнения и условия монтажа. Изготовитель источника не присваивается товару как его фактический завод.",
   "records": [
     {
@@ -10324,6 +10324,3523 @@
       "sourceSha256": "cba5f9acd404c1b6c6ab9a39c82fcd985c95f5bf00a6f0eda6154f713595f567",
       "contentHash": "d64fb535b947ce9370aa39a8b7fbc6903c2259f00831699d154e545c6e1e9d96",
       "id": "manufacturer-text-d64fb535b947ce93"
+    },
+    {
+      "documentId": "mkm-k9sp-2026",
+      "manufacturer": "Москабельмет",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача и распределение электрической энергии в стационарных электрических установках промышленных и энергетических объектов на переменное напряжение 0,66 или 1 кВ частотой 50 Гц. Исполнение HF имеет безгалогенную оболочку.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0780"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "ada81d53aba20ed927b90c6e46e1e61157aec0b5d2998ed8a3f53e0a6b296f91",
+      "firePattern": "^НГ\\([АA]\\)-?HF$",
+      "contentHash": "a8893a5216c116cfa1673a86d462ed3f01fa081c41501e1d73719000ec654d3f",
+      "id": "manufacturer-text-a8893a5216c116cf"
+    },
+    {
+      "documentId": "lapp-verified-13",
+      "manufacturer": "LAPP",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарные соединения в промышленной электронике, измерительных системах, системах управления, сигнализации и передачи данных. Монтаж на штукатурке и под ней в сухих и влажных помещениях.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0908"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "c04fbf7aaf7eafa4e17a21d41d0c43f3f1f6c4f2797cdf4ed9a9545fb354c120",
+      "contentHash": "bdae425f06f37eb6a01fc4857b23692269be9a6f1b55e01faee234fffaefd7bc",
+      "id": "manufacturer-text-bdae425f06f37eb6"
+    },
+    {
+      "documentId": "spec-automation",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Одиночная стационарная прокладка в системах RS-485. При размещении вне помещений кабель защищают от прямого солнечного излучения и атмосферных осадков.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0909"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        44
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "21d717be33ba543040ebe59dfd4ae9f6394e3b9ce6062bff5988513caaa356fe",
+      "contentHash": "ee5770e4eff368cbbc14207b244d78c4a12da3cff0a3bab18df78fb52fdf894d",
+      "id": "manufacturer-text-ee5770e4eff368cb"
+    },
+    {
+      "documentId": "belden-9842",
+      "manufacturer": "Belden",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Соединения RS-485 и передача сигналов в промышленной автоматизации. Конкретные электрические характеристики и условия монтажа определяются техническим листом модели 9842.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0910"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "2aaaffe791c876ddbbe1874494134cf6934ecb257a21eb90a54232ebd7ad5832",
+      "contentHash": "6532fafa2c24b194586809d6529ba05667335898676f8dbc0b9e31d3b2071a90",
+      "id": "manufacturer-text-6532fafa2c24b194"
+    },
+    {
+      "documentId": "belden-9844",
+      "manufacturer": "Belden",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Соединения RS-485 и передача сигналов в промышленной автоматизации. Конкретные электрические характеристики и условия монтажа определяются техническим листом модели 9844.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0911"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1c58645bd629035c99eb33b532b775227c38f115fca01f679877337882371ee6",
+      "contentHash": "27614432d9226145eda6139db3f3c21077c20ffe0ec9b3d43bacfd0902dc52c1",
+      "id": "manufacturer-text-27614432d9226145"
+    },
+    {
+      "documentId": "belden-3109a",
+      "manufacturer": "Belden",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Соединения RS-485 и передача сигналов в промышленной автоматизации. Конкретные электрические характеристики и условия монтажа определяются техническим листом модели 3109A.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0912"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "bca71ba25049cea2e5ea4f0f439c6a70fc520fae88ddd826a1958bc109d62f02",
+      "contentHash": "e7056f816d45f8f45996aef2f8673961263e83b339bf6af4609f86af98e0bb32",
+      "id": "manufacturer-text-e7056f816d45f8f4"
+    },
+    {
+      "documentId": "belden-9913",
+      "manufacturer": "Belden",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Коаксиальные антенные соединения для беспроводной связи, радиосвязи и радиочастотных систем.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0913"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "a004b463fd295c9b0581bee3786de03347d572dc4a46d11c7a23029fc7c48dc9",
+      "contentHash": "00e2dd7219343c8bd076dcdcc1bc6f2886503c95393895918c17e110b11354a8",
+      "id": "manufacturer-text-00e2dd7219343c8b"
+    },
+    {
+      "documentId": "belden-9880",
+      "manufacturer": "Belden",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Сети Ethernet Thicknet 10BASE5 по IEEE 802.3.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0914"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "62098a3550f34cbc90826bc49721756f6fb5b0dd041c1197a84ea3201f89092e",
+      "contentHash": "18643b9d824c7de67b7e933803d86286ecfdd63aca4c1f6b74448a1031774004",
+      "id": "manufacturer-text-18643b9d824c7de6"
+    },
+    {
+      "documentId": "bitner-as-fe180",
+      "manufacturer": "BITNER",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарные внутренние линии аварийного освещения, сигнализации, оповещения, пожарной автоматики и других систем безопасности. Испытания PH90 относятся к работоспособности кабеля, E90 — кабельной системы; сохраняются требования к испытанным креплениям.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0915"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b71562796a262054e53ed366fb5f98b727d05243a54bd39bffdd53877602e8ee",
+      "contentHash": "995ad001489159a914abffd20f628ddd4c29f539758dfbc3306e80e8e7ac24a2",
+      "id": "manufacturer-text-995ad001489159a9"
+    },
+    {
+      "documentId": "saransk-original-library",
+      "manufacturer": "Сарансккабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Неподвижное присоединение к электрическим приборам, аппаратам и сборкам зажимов распределительных устройств на переменное напряжение до 660 В частотой до 100 Гц либо постоянное напряжение до 1000 В.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0166"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        78,
+        79
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "fd2a0cc2f5848ced55b1806c991b32e43f2b1ed55d3c15fb3fd8ffb86e10684d",
+      "firePattern": "^НГ\\([АA]\\)-?LS$",
+      "contentHash": "6a63c50799055010d1c876f8572734a3c62318a2ab25a5ab5e52b56259bcd455",
+      "id": "manufacturer-text-6a63c50799055010"
+    },
+    {
+      "documentId": "saransk-original-library",
+      "manufacturer": "Сарансккабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Местные первичные сети связи с дистанционным питанием: 225 или 145 В переменного тока 50 Гц, соответственно 315 или 200 В постоянного тока. Применимость относится к приведённым в документе исполнениям ТППнг(А)-HF и ТППэп(А)-НДГ.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0916",
+        "family-0021"
+      ],
+      "scope": "documented-executions-purpose",
+      "pages": [
+        94,
+        95
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "fd2a0cc2f5848ced55b1806c991b32e43f2b1ed55d3c15fb3fd8ffb86e10684d",
+      "contentHash": "b4ad182c98a2a6ed67ea9211fb1d34dd742b0f071aa38c8dde34b8a898320dc6",
+      "id": "manufacturer-text-b4ad182c98a2a6ed"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая прокладка в системах пожарной сигнализации, оповещения и управления эвакуацией, контроля доступа и других системах безопасности. Пожарное исполнение и условия прокладки выбирают по полному обозначению и заводскому листу.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0917"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "378a1a780c10c3685945a373422e82e31220489d940135ba5b004b4f5ee2ad71",
+      "id": "manufacturer-text-378a1a780c10c368"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая прокладка в системах пожарной сигнализации, оповещения и управления эвакуацией, контроля доступа и других системах безопасности. Пожарное исполнение и условия прокладки выбирают по полному обозначению и заводскому листу.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0918"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "a9ec884d5c98376b9690050d11e466a2c312b3468ad313dd2294c6c3322750d1",
+      "id": "manufacturer-text-a9ec884d5c98376b"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая прокладка в системах пожарной сигнализации, оповещения и управления эвакуацией, контроля доступа и других системах безопасности. Пожарное исполнение и условия прокладки выбирают по полному обозначению и заводскому листу.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0919"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        13
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "36b44eabe68c1194cd9af308f54dee4a3311e08c9e82109962ed2886889aee03",
+      "id": "manufacturer-text-36b44eabe68c1194"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая прокладка в системах пожарной сигнализации, оповещения и управления эвакуацией, контроля доступа и других системах безопасности. Пожарное исполнение и условия прокладки выбирают по полному обозначению и заводскому листу.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0920"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        13
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "4861c23f0c0d689fc3daf14687f2239058d1ccce2a7cbeabe726a1c71967797a",
+      "id": "manufacturer-text-4861c23f0c0d689f"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая прокладка в системах пожарной сигнализации, оповещения и управления эвакуацией, контроля доступа и других системах безопасности. Пожарное исполнение и условия прокладки выбирают по полному обозначению и заводскому листу.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0921"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        22
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "46d07b1255b28173a8ca81dd4389873e401d105a0341b39d1309e17fb5c7e94e",
+      "id": "manufacturer-text-46d07b1255b28173"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Сбор и передача данных по промышленным интерфейсам RS-485, CAN и HART, в том числе в системах противопожарной защиты. Применяются в составе соответствующей огнестойкой кабельной линии с соблюдением требований к монтажу.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0922"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        156
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "94a56ddefe65d378c70eda6b60adb6896135c944486d915a713305cc6dfa8341",
+      "id": "manufacturer-text-94a56ddefe65d378"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача данных в системах связи, контроля доступа и управления инженерными подсистемами зданий: освещением, микроклиматом, электроприводами, безопасностью и конференц-связью. Исполнение и ограничения наружной прокладки определяются заводским листом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0923"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        186
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "97f24d21117ec0856ada925d5e735994fafbd9ef9550c08ecb3c1e5dc58f549f",
+      "id": "manufacturer-text-97f24d21117ec085"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача данных в системах связи, контроля доступа и управления инженерными подсистемами зданий: освещением, микроклиматом, электроприводами, безопасностью и конференц-связью. Исполнение и ограничения наружной прокладки определяются заводским листом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0924"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        194
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "ad5bfcfbad40c96426bf7c35a872ad9372cd147e0eb2d68a4bff49385381e8be",
+      "id": "manufacturer-text-ad5bfcfbad40c964"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача данных в системах связи, контроля доступа и управления инженерными подсистемами зданий: освещением, микроклиматом, электроприводами, безопасностью и конференц-связью. Исполнение и ограничения наружной прокладки определяются заводским листом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0925"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        195
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "eca7643a90ad7d38345cd15b9f5b4a81c62b65907bc5b30fff77756781d79f38",
+      "id": "manufacturer-text-eca7643a90ad7d38"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача данных в системах связи, контроля доступа и управления инженерными подсистемами зданий: освещением, микроклиматом, электроприводами, безопасностью и конференц-связью. Исполнение и ограничения наружной прокладки определяются заводским листом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0759"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        189
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "217315f6c72e3af6879a248cb54838d2a720b1e6d6db588760fe400cbe6f466f",
+      "id": "manufacturer-text-217315f6c72e3af6"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Силовые и контрольные цепи систем безопасности, сохраняющих работоспособность при пожаре. Применяются с соблюдением требований к полной огнестойкой кабельной линии.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0926"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        127
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "491562618a39b573714feca9e5664a00e821d7ede51ec89951f379427faef110",
+      "id": "manufacturer-text-491562618a39b573"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача цифровых и аналоговых сигналов в промышленных системах противопожарной защиты, безопасности, контроля и управления.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0927"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        74
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "f4beef169e38bf7a412ec37fc4ce67aba7ce179a5d7a6e78f073729d9c9ee4cf",
+      "id": "manufacturer-text-f4beef169e38bf7a"
+    },
+    {
+      "documentId": "spkb-techno-current",
+      "manufacturer": "СПКБ Техно",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача цифровых и аналоговых сигналов в промышленных системах противопожарной защиты, безопасности, контроля и управления.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0928"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        75
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b609977da9115747430720c62da6ecbd9d0b5936423357c4240f801e3766fa50",
+      "contentHash": "b88f6725494a9ceed412b49ef2b3cb368f2691f4e53cba4d0d6b4a3ec932df44",
+      "id": "manufacturer-text-b88f6725494a9cee"
+    },
+    {
+      "documentId": "paritet-1",
+      "manufacturer": "Паритет",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Системы видеонаблюдения, кабельного и спутникового телевидения, линии дальней связи, компьютерные сети и антенно-фидерные устройства. Допустимый способ прокладки определяется материалом оболочки и пожарным исполнением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0929"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        194,
+        195
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "fb0aa273a3df9fdb8c064ea2e573d2d562753ec869723b2dba9f91eef25cd364",
+      "contentHash": "93bf0ac599c96390105a62d4324c09e0b498c00f33e8161f39d78fc627c4bc9e",
+      "id": "manufacturer-text-93bf0ac599c96390"
+    },
+    {
+      "documentId": "paritet-1",
+      "manufacturer": "Паритет",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Системы видеонаблюдения, кабельного и спутникового телевидения, линии дальней связи, компьютерные сети и антенно-фидерные устройства. Допустимый способ прокладки определяется материалом оболочки и пожарным исполнением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0930"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        194,
+        195
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "fb0aa273a3df9fdb8c064ea2e573d2d562753ec869723b2dba9f91eef25cd364",
+      "contentHash": "ee870016ecb35fb19fd08f530982388372a1d218009c2370d9bb558ee056af90",
+      "id": "manufacturer-text-ee870016ecb35fb1"
+    },
+    {
+      "documentId": "paritet-1",
+      "manufacturer": "Паритет",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Системы видеонаблюдения, кабельного и спутникового телевидения, линии дальней связи, компьютерные сети и антенно-фидерные устройства. Допустимый способ прокладки определяется материалом оболочки и пожарным исполнением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0931"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        194,
+        195
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "fb0aa273a3df9fdb8c064ea2e573d2d562753ec869723b2dba9f91eef25cd364",
+      "contentHash": "fb08145c706e1456b2abe13f1a4b05022f3985ae6f9537893bdb2f30c4775300",
+      "id": "manufacturer-text-fb08145c706e1456"
+    },
+    {
+      "documentId": "paritet-1",
+      "manufacturer": "Паритет",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Системы видеонаблюдения, кабельного и спутникового телевидения, линии дальней связи, компьютерные сети и антенно-фидерные устройства. Допустимый способ прокладки определяется материалом оболочки и пожарным исполнением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0932"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        194,
+        196
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "fb0aa273a3df9fdb8c064ea2e573d2d562753ec869723b2dba9f91eef25cd364",
+      "contentHash": "952e852925da6cf66c1836a14913999ea4bc9a62f4e0aa060a91b7a097d8123c",
+      "id": "manufacturer-text-952e852925da6cf6"
+    },
+    {
+      "documentId": "spec-automation",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка для систем, работающих по RS-485, в том числе для систем атомных станций класса безопасности 3Н вне гермозоны. Область применения относится к описанному в заводском листе исполнению.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0933"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        52
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "21d717be33ba543040ebe59dfd4ae9f6394e3b9ce6062bff5988513caaa356fe",
+      "contentHash": "4a7f00ce9e1588781251074b8bad4c4c16d71673d1757ef7e429bc51bb484302",
+      "id": "manufacturer-text-4a7f00ce9e158878"
+    },
+    {
+      "documentId": "spec-automation",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка для систем, работающих по RS-485, в том числе для систем атомных станций класса безопасности 3Н вне гермозоны. Область применения относится к описанному в заводском листе исполнению.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0934"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        53
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "21d717be33ba543040ebe59dfd4ae9f6394e3b9ce6062bff5988513caaa356fe",
+      "contentHash": "da7043f6827b9ac79d5fbaf657242b0f0b06d97cc7518cb0b5ae48c648b68b97",
+      "id": "manufacturer-text-da7043f6827b9ac7"
+    },
+    {
+      "documentId": "spec-main-2019-copy",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в антенных трактах систем радиосвязи. Допускается использование внутри и вне помещений и кратковременное воздействие минерального масла и бензина. Описание относится к исполнению нг(С)-HF из заводского каталога 2019 года.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0935"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        187
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "3a7cab106824e4830c67b453ee3b4798752111ce7120a4d83942607cac327c11",
+      "contentHash": "80cdd9f85e16800a00918cd99b0ccc8cc71bff6919088a9e78fe3a33414b56d5",
+      "id": "manufacturer-text-80cdd9f85e16800a"
+    },
+    {
+      "documentId": "spec-main-2019-copy",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в антенных трактах систем радиосвязи. Допускается использование внутри и вне помещений и кратковременное воздействие минерального масла и бензина. Описание относится к исполнению нг(С)-HF из заводского каталога 2019 года.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0936"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        192
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "3a7cab106824e4830c67b453ee3b4798752111ce7120a4d83942607cac327c11",
+      "contentHash": "48ea9936ca7ce12f8e2f661dddd07c637c59f2fb1ef7b809ea8b06a0807850c1",
+      "id": "manufacturer-text-48ea9936ca7ce12f"
+    },
+    {
+      "documentId": "spec-main-2019-copy",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в антенных трактах систем радиосвязи. Допускается использование внутри и вне помещений и кратковременное воздействие минерального масла и бензина. Описание относится к исполнению нг(С)-HF из заводского каталога 2019 года.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0937"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        193
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "3a7cab106824e4830c67b453ee3b4798752111ce7120a4d83942607cac327c11",
+      "contentHash": "0826ba39752fe5ca152b5a7151edccd2a93cce420b7636e6d70b1fe4b09e73b1",
+      "id": "manufacturer-text-0826ba39752fe5ca"
+    },
+    {
+      "documentId": "spec-main-2019-copy",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в сетях кабельного телевидения как распределительный и субмагистральный кабель. Допускается использование внутри и вне помещений и кратковременное воздействие минерального масла и бензина. Описание относится к исполнению нг(С)-HF из заводского каталога 2019 года.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0938"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        224
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "3a7cab106824e4830c67b453ee3b4798752111ce7120a4d83942607cac327c11",
+      "contentHash": "feb1aec1a235a1f024207657ab446b902cf78d82dc17b90f627a872898deef31",
+      "id": "manufacturer-text-feb1aec1a235a1f0"
+    },
+    {
+      "documentId": "spec-main-2019-copy",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в сетях кабельного телевидения как распределительный и субмагистральный кабель. Допускается использование внутри и вне помещений и кратковременное воздействие минерального масла и бензина. Описание относится к исполнению нг(С)-HF из заводского каталога 2019 года.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0939"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        226
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "3a7cab106824e4830c67b453ee3b4798752111ce7120a4d83942607cac327c11",
+      "contentHash": "3335d74cc33489c4246ddc2b723a1490359cf300ac4ffa6912d6a11376ea8466",
+      "id": "manufacturer-text-3335d74cc33489c4"
+    },
+    {
+      "documentId": "podolsk-kmel-published",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Назначение и конструктивные варианты",
+      "kind": "description",
+      "text": "Межприборный монтаж электрических устройств при переменном напряжении до 500 В частотой до 400 Гц или постоянном до 750 В. Заводская таблица предусматривает водоблокирующий бандаж -1-, общий экран Эф из алюмополимерной обмотки и заполнение з материалом оболочки.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0702"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "9211dc993b0d6905213d110027a2874984374c3ec72be5d7f50880e7d45fabaf",
+      "contentHash": "2c55134f919135efaae931c301c20c5cd066f4914e28dcfbd650166df552d430",
+      "id": "manufacturer-text-2c55134f919135ef"
+    },
+    {
+      "documentId": "podolsk-9",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подвижный и фиксированный внутриприборный монтаж электрических устройств и выводных концов электроаппаратуры: до 500 В переменного тока частотой до 1000 Гц либо 750 В постоянного тока. Температура эксплуатации МЛП от −60 до +100 °C. В тропической аппаратуре требуется защита от прямых солнечных лучей.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0940"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        28
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "2d396df91f5f69688424c9486be7e382baef8a11b08dfb68d556990285475877",
+      "contentHash": "e1ce684a963fe7083cad06f7619ecfe6478174e96fc912692bdaca26cfee79e8",
+      "id": "manufacturer-text-e1ce684a963fe708"
+    },
+    {
+      "documentId": "kam-2026",
+      "manufacturer": "Камский кабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Фиксированный монтаж бортовой электрической сети авиационной техники: до 250 В переменного тока частотой до 6 кГц либо 350 В постоянного тока. Верхняя температура эксплуатации +250 °C; условия механических воздействий определяются заводской документацией.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0941"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        177
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "608ff145940fb9c261a1d58645dc7a2ae329f5d16f88cca5534020559778c4b0",
+      "contentHash": "113bb2794000161e74e55f2a3ee4830db11bde2508594e492ab7007c2ae34d24",
+      "id": "manufacturer-text-113bb2794000161e"
+    },
+    {
+      "documentId": "kam-2026",
+      "manufacturer": "Камский кабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Фиксированный монтаж бортовой электрической сети авиационной техники: до 250 В переменного тока частотой до 6 кГц либо 350 В постоянного тока. Верхняя температура эксплуатации +250 °C; условия механических воздействий определяются заводской документацией.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0942"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        177
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "608ff145940fb9c261a1d58645dc7a2ae329f5d16f88cca5534020559778c4b0",
+      "contentHash": "9753d9b3480bfed24976fce7041698cb30b3d4c88ca182e037ad0e36ba3169d8",
+      "id": "manufacturer-text-9753d9b3480bfed2"
+    },
+    {
+      "documentId": "kam-2026",
+      "manufacturer": "Камский кабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Неподвижная прокладка на вертикальных, наклонных и горизонтальных трассах на напряжение 660 В: в воздухе без опасности механического повреждения, сухих или сырых помещениях, каналах и кабельных сооружениях. Допускается применение в местах вибрации в пределах условий завода.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0943"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        55
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "608ff145940fb9c261a1d58645dc7a2ae329f5d16f88cca5534020559778c4b0",
+      "contentHash": "ca2c86015c9803e7d6cf13457d9161423f053abde9a2f43f9f178d90ed8802e4",
+      "id": "manufacturer-text-ca2c86015c9803e7"
+    },
+    {
+      "documentId": "kam-2026",
+      "manufacturer": "Камский кабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Неподвижная прокладка на вертикальных, наклонных и горизонтальных трассах на напряжение 660 В: в воздухе без опасности механического повреждения, сухих или сырых помещениях, каналах и кабельных сооружениях. Допускается применение в местах вибрации в пределах условий завода.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0944"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        55
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "608ff145940fb9c261a1d58645dc7a2ae329f5d16f88cca5534020559778c4b0",
+      "contentHash": "46e17561ef258176bfed4b0fe2022d129a0a660a1406bea412b0e26858352450",
+      "id": "manufacturer-text-46e17561ef258176"
+    },
+    {
+      "documentId": "podolsk-13",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Соединения и вводы в аппаратуре и на узлах связи. Для фиксированного монтажа температура эксплуатации от −50 до +50 °C. Заводская запись 5×2 или 10×2 обозначает количество пар; номинальное сечение проводника 0,35 мм² задаётся таблицей конструкции.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0945"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        9
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "4241c4b891ce0e0a69215656bc189c1dc454cd159dc1339bf6e20a29212ce872",
+      "contentHash": "6e1ecc992f01d3f994ea0d3a431cdd2b4eed2c4ddf57d5ae94ed29b7bfef8579",
+      "id": "manufacturer-text-6e1ecc992f01d3f9"
+    },
+    {
+      "documentId": "sigmian-htp",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для HTP предельная температура длительной работы под напряжением 65 °C, без напряжения 85 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0946"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "23e00b01aa855917c9b6a5c5d47aa7a63cda247cb16cc8d6625c8625e8069989",
+      "contentHash": "6b74b4880501c13ebc02a9d0b636e2d536dfeebf9c20335cf69645de028a626a",
+      "id": "manufacturer-text-6b74b4880501c13e"
+    },
+    {
+      "documentId": "sigmian-htp",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для HTP предельная температура длительной работы под напряжением 65 °C, без напряжения 85 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0947"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "23e00b01aa855917c9b6a5c5d47aa7a63cda247cb16cc8d6625c8625e8069989",
+      "contentHash": "fcdb760a52e93a77cef8b2c63229fe86f219fdba3cf83e4952d086d938a1db2f",
+      "id": "manufacturer-text-fcdb760a52e93a77"
+    },
+    {
+      "documentId": "sigmian-htp",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для HTP предельная температура длительной работы под напряжением 65 °C, без напряжения 85 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0948"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "23e00b01aa855917c9b6a5c5d47aa7a63cda247cb16cc8d6625c8625e8069989",
+      "contentHash": "0541fdef32dfcd28799c31a0d797181a96e30dda9332da620fb054149355d06d",
+      "id": "manufacturer-text-0541fdef32dfcd28"
+    },
+    {
+      "documentId": "sigmian-htp",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для HTP предельная температура длительной работы под напряжением 65 °C, без напряжения 85 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0949"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "23e00b01aa855917c9b6a5c5d47aa7a63cda247cb16cc8d6625c8625e8069989",
+      "contentHash": "18c2d81be1fcdb4f39d81eb21b7d90eb60c381802a7f626358ca2ba4ac72170e",
+      "id": "manufacturer-text-18c2d81be1fcdb4f"
+    },
+    {
+      "documentId": "sigmian-htp",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для HTP предельная температура длительной работы под напряжением 65 °C, без напряжения 85 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0950"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "23e00b01aa855917c9b6a5c5d47aa7a63cda247cb16cc8d6625c8625e8069989",
+      "contentHash": "f5af5778b441ef9e40e1849d9e521e6a3b9bf1f12daec8fb3331bc49d13af2c9",
+      "id": "manufacturer-text-f5af5778b441ef9e"
+    },
+    {
+      "documentId": "sigmian-htp",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для HTP предельная температура длительной работы под напряжением 65 °C, без напряжения 85 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0951"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "23e00b01aa855917c9b6a5c5d47aa7a63cda247cb16cc8d6625c8625e8069989",
+      "contentHash": "794a70e52849d87dc8f761c021d167d9b27fd54c0d913eed43e44904e521d550",
+      "id": "manufacturer-text-794a70e52849d87d"
+    },
+    {
+      "documentId": "sigmian-btc",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для BTC предельная температура длительной работы под напряжением 120 °C, без напряжения 200 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0952"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "64452f6364d7c2951d6d51495a9112fd944132c241f7e02dc95132a4c492375b",
+      "contentHash": "d2d6ffa6236b15f0c4736b847bc1cec8ed207bcb3f2b04d803b9633c6607e11a",
+      "id": "manufacturer-text-d2d6ffa6236b15f0"
+    },
+    {
+      "documentId": "sigmian-btc",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для BTC предельная температура длительной работы под напряжением 120 °C, без напряжения 200 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0953"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "64452f6364d7c2951d6d51495a9112fd944132c241f7e02dc95132a4c492375b",
+      "contentHash": "211e3e45953d9dd530c93ef428d743b0f384ff205865fe763b5753a0b8323547",
+      "id": "manufacturer-text-211e3e45953d9dd5"
+    },
+    {
+      "documentId": "sigmian-btc",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для BTC предельная температура длительной работы под напряжением 120 °C, без напряжения 200 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0954"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "64452f6364d7c2951d6d51495a9112fd944132c241f7e02dc95132a4c492375b",
+      "contentHash": "263402f4cf195fd48999f8de4c263ede2a698af43a23859f0556ec4bda10d14c",
+      "id": "manufacturer-text-263402f4cf195fd4"
+    },
+    {
+      "documentId": "sigmian-btc",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для BTC предельная температура длительной работы под напряжением 120 °C, без напряжения 200 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0955"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "64452f6364d7c2951d6d51495a9112fd944132c241f7e02dc95132a4c492375b",
+      "contentHash": "01bba25160544e38f2a719ad9217b4361851ce21ef48d7f8dd68e0c7f65b0799",
+      "id": "manufacturer-text-01bba25160544e38"
+    },
+    {
+      "documentId": "sigmian-btc",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для BTC предельная температура длительной работы под напряжением 120 °C, без напряжения 200 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0956"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "64452f6364d7c2951d6d51495a9112fd944132c241f7e02dc95132a4c492375b",
+      "contentHash": "5eca5140b881e7897e0a28dc8fb36c45ea57d7ace5ece04a241d0e66ecfd8a28",
+      "id": "manufacturer-text-5eca5140b881e789"
+    },
+    {
+      "documentId": "sigmian-btc",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для BTC предельная температура длительной работы под напряжением 120 °C, без напряжения 200 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0957"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "64452f6364d7c2951d6d51495a9112fd944132c241f7e02dc95132a4c492375b",
+      "contentHash": "7faaaed181763ddbc362a9b452886e407b34c8dceee92ab89842cc77c32e8e2b",
+      "id": "manufacturer-text-7faaaed181763ddb"
+    },
+    {
+      "documentId": "sigmian-btc",
+      "manufacturer": "Sigmian",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Поддержание температуры и защита трубопроводов и ёмкостей от замерзания. Линейная мощность автоматически меняется с температурой. Для BTC предельная температура длительной работы под напряжением 120 °C, без напряжения 200 °C. Конструкция и параметры относятся к исполнению BP, описанному изготовителем Sigmian; завод конкретной складской партии по одной маркировке не установлен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0958"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "64452f6364d7c2951d6d51495a9112fd944132c241f7e02dc95132a4c492375b",
+      "contentHash": "5fba6495ef534e34d34bbd3cd979987b0817ef322d71686279e6e5d8327fa991",
+      "id": "manufacturer-text-5fba6495ef534e34"
+    },
+    {
+      "documentId": "sst-teplomag-2017",
+      "manufacturer": "ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Обогрев трубопроводов, резервуаров и технологического оборудования, в том числе во влажных и химически агрессивных средах, в пределах проекта и инструкции. Линейное тепловыделение до 40 Вт/м определяется при проектировании, а не непосредственно кодом сопротивления. Рабочая температура в данной редакции до 240 °C. Сближение и самопересечение кабеля не допускаются.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0959"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        38,
+        39
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "735006161d469bcb9ed031239de4e0610503a85c8565318945ca5254455e25c7",
+      "contentHash": "b218a44138cd5f18c51ceefb7472305c1a6666ba8838b8673e05771c77855e0a",
+      "id": "manufacturer-text-b218a44138cd5f18"
+    },
+    {
+      "documentId": "sst-teplomag-2017",
+      "manufacturer": "ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Обогрев трубопроводов, резервуаров и технологического оборудования, в том числе во влажных и химически агрессивных средах, в пределах проекта и инструкции. Линейное тепловыделение до 40 Вт/м определяется при проектировании, а не непосредственно кодом сопротивления. Рабочая температура в данной редакции до 240 °C. Сближение и самопересечение кабеля не допускаются.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0960"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        38,
+        39
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "735006161d469bcb9ed031239de4e0610503a85c8565318945ca5254455e25c7",
+      "contentHash": "43288a01e8dd4c1aaf5c06fad67a319ab8fd80144b1af38de29d24effff22539",
+      "id": "manufacturer-text-43288a01e8dd4c1a"
+    },
+    {
+      "documentId": "sst-teplomag-2017",
+      "manufacturer": "ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Обогрев трубопроводов, резервуаров и технологического оборудования, в том числе во влажных и химически агрессивных средах, в пределах проекта и инструкции. Линейное тепловыделение до 40 Вт/м определяется при проектировании, а не непосредственно кодом сопротивления. Рабочая температура в данной редакции до 240 °C. Сближение и самопересечение кабеля не допускаются.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0961"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        38,
+        39
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "735006161d469bcb9ed031239de4e0610503a85c8565318945ca5254455e25c7",
+      "contentHash": "504defa3a0a1eb8c5db8d2d6b4cfc44f8e6dcd704f8e5fb0ea284133f4445f98",
+      "id": "manufacturer-text-504defa3a0a1eb8c"
+    },
+    {
+      "documentId": "sst-teplomag-2017",
+      "manufacturer": "ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Обогрев трубопроводов, резервуаров и технологического оборудования, в том числе во влажных и химически агрессивных средах, в пределах проекта и инструкции. Линейное тепловыделение до 40 Вт/м определяется при проектировании, а не непосредственно кодом сопротивления. Рабочая температура в данной редакции до 240 °C. Сближение и самопересечение кабеля не допускаются.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0962"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        38,
+        39
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "735006161d469bcb9ed031239de4e0610503a85c8565318945ca5254455e25c7",
+      "contentHash": "1ef6d1a8ca03564d8189cd83e2893317ad0412bc5e9e14f3a4b030b1db6340b8",
+      "id": "manufacturer-text-1ef6d1a8ca03564d"
+    },
+    {
+      "documentId": "sst-teplomag-2017",
+      "manufacturer": "ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Обогрев трубопроводов, резервуаров и технологического оборудования, в том числе во влажных и химически агрессивных средах, в пределах проекта и инструкции. Линейное тепловыделение до 40 Вт/м определяется при проектировании, а не непосредственно кодом сопротивления. Рабочая температура в данной редакции до 240 °C. Сближение и самопересечение кабеля не допускаются.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0963"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        38,
+        39
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "735006161d469bcb9ed031239de4e0610503a85c8565318945ca5254455e25c7",
+      "contentHash": "a9f5080bb9b49ea05c0fb489f2bae0b9495e1ee4c121e3023941752fda486a06",
+      "id": "manufacturer-text-a9f5080bb9b49ea0"
+    },
+    {
+      "documentId": "sst-heating-2021",
+      "manufacturer": "ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Защита трубопроводов и ёмкостей от замерзания и поддержание температуры. Саморегулирующийся нагревательный кабель с фторполимерной оболочкой BP, номинальное напряжение 230 В. Предельная температура длительной работы под напряжением +65 °C, без напряжения +85 °C. Это другая публикация той же группы изготовителя, а не независимая проверка.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0950",
+        "family-0951"
+      ],
+      "scope": "documented-models-purpose",
+      "pages": [
+        16,
+        17
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "e085b77802ab4cb9364799907111a00d01081c8b3d9828aa0d31bdfe03aa4495",
+      "contentHash": "a847202d04c77e1024a3cdecf850ca0c322843d73405fbe0b9f0f9204f554722",
+      "id": "manufacturer-text-a847202d04c77e10"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0964"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "0520ff5e46d869741f6dafde40a9ff2528201dc735382ca049a788c6d426212d",
+      "id": "manufacturer-text-0520ff5e46d86974"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0965"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "a48143dc306365c99acee8bdd39af449240bb3f8b32aa8930a2718383729169d",
+      "id": "manufacturer-text-a48143dc306365c9"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0966"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "0b1b9c74c9de6de8c6b1f5f96967a27dceeb00be6390c99155fdfeb6de28724e",
+      "id": "manufacturer-text-0b1b9c74c9de6de8"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0967"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "53e34a2c64728b6afc3edf22a0c1e080101f2fc716587369fb69f34dfa5c2be7",
+      "id": "manufacturer-text-53e34a2c64728b6a"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0968"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "586540de0fc4420b320b8e0f1661e6f0af704795838f55021cee4572c197fd33",
+      "id": "manufacturer-text-586540de0fc4420b"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0969"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "9828e52635dd283ec20ff776760d42f14298ac77adc54aeb72b7e587add81d58",
+      "id": "manufacturer-text-9828e52635dd283e"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0970"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "2c90afefe41ab19f2326548d3d608b597559b704225c12527dbf0b8cc609817c",
+      "id": "manufacturer-text-2c90afefe41ab19f"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0971"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "e70d4b23d1f750197440c38669b96546a4ce6e68887c926ef9835ed86f5dd64d",
+      "id": "manufacturer-text-e70d4b23d1f75019"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0972"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "6b55dd60668613301519b18305da41d8fb23758d0e57c76f6368d0778cd3899b",
+      "id": "manufacturer-text-6b55dd6066861330"
+    },
+    {
+      "documentId": "ufim-kpm-2017",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарный и нестационарный межприборный монтаж устройств на переменное напряжение до 660 В частотой до 400 Гц либо постоянное до 1000 В. Подключение датчиков, исполнительных механизмов и промышленных контроллеров, линии промышленной автоматики, охранной и пожарной сигнализации. Конкретное пожарное, климатическое и взрывозащищённое применение определяется исполнением кабеля и проектом.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0973"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        17,
+        18
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1252629e7d5ed15536efd4edddc78ca0f1903f236698d187618b2aa94945be77",
+      "contentHash": "5535880dbdd2ac8342b89cee6e1ccd23435763a5b5eefecb57ca5c2e9774ae26",
+      "id": "manufacturer-text-5535880dbdd2ac83"
+    },
+    {
+      "documentId": "lapp-unitronic-300-rus",
+      "manufacturer": "LAPP",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Сигнальные цепи и цепи управления при внутренней и наружной прокладке. Исполнение 2×18 AWG соответствует заводскому артикулу 301802. По UL номинальное напряжение 300 В; по IEC кабель не предназначен для силовых цепей. Американские допуски на прокладку относятся к условиям, указанным изготовителем.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0974"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "350645d7fe03c978103361333d79831327ff5d8c2789056b1c2286de89e550db",
+      "contentHash": "77775823de96f15a02cfffae9b26ea128f6ddd1a346070c252f3e174c9c2f24b",
+      "id": "manufacturer-text-77775823de96f15a"
+    },
+    {
+      "documentId": "lapp-unitronic-can-copy",
+      "manufacturer": "LAPP",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарное применение в шинах CAN. Заводская таблица задаёт одну или две пары с номинальным сечением жил 0,22; 0,34; 0,5; 0,75 мм². Артикул 2170264 имеет две пары по 0,34 мм². Напряжение до 250 В, применение в силовых цепях исключено.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0975"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "4063400bc6e7e357b8b23483e4852cfd2038bfb201becc43cf09614486a574d4",
+      "contentHash": "85eb282a53ac82f67617672f18a29d252dca3206d8627dccf3cfb9c61a525962",
+      "id": "manufacturer-text-85eb282a53ac82f6"
+    },
+    {
+      "documentId": "lapp-unitronic-can-tannehill",
+      "manufacturer": "LAPP",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарные системы управления движением, сборочные и сварочные машины, устройства обработки материалов, датчики, пневматические клапаны и приводы. Кабель рассчитан на CANopen и ISO 11898; допустимая скорость зависит от длины сегмента.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0975"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "83809c6308b4bc4a864b357994b5240f949962d7c8a43832cdb4a2d3ae0eca34",
+      "contentHash": "1b4d902fe64695071d80073ba40a6a2e95a8faed1348cd6a0cc4d1b776c362b5",
+      "id": "manufacturer-text-1b4d902fe6469507"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарные групповые линии охранно-пожарной сигнализации, оповещения и управления эвакуацией, управления и объектов с повышенной пожарной опасностью. Допускается монтаж внутри и снаружи зданий при защите от прямого солнца и осадков. Для исполнений FRHF допускается кратковременное воздействие минерального масла и бензина.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0976"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        28
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "0e581f60339ae86bf28f9e37979c9166b33f5dd973b37c31c843cefb9a256a04",
+      "id": "manufacturer-text-0e581f60339ae86b"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарные групповые линии охранно-пожарной сигнализации, оповещения и управления эвакуацией, управления и объектов с повышенной пожарной опасностью. Допускается монтаж внутри и снаружи зданий при защите от прямого солнца и осадков. Для исполнений FRHF допускается кратковременное воздействие минерального масла и бензина.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0762"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        28
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "c103da21f6c43896a8b58159c17a7e1af3a961fcd13503557681b091a52f369f",
+      "id": "manufacturer-text-c103da21f6c43896"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарные групповые линии охранно-пожарной сигнализации, оповещения и управления эвакуацией, управления и объектов с повышенной пожарной опасностью. Допускается монтаж внутри и снаружи зданий при защите от прямого солнца и осадков. Для исполнений FRHF допускается кратковременное воздействие минерального масла и бензина.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0977"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        29
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "5c082bc8c12f3dff71920823d4502bf68b1c69c3bf8454b403061b450aeb5471",
+      "id": "manufacturer-text-5c082bc8c12f3dff"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарные групповые линии охранно-пожарной сигнализации, оповещения и управления эвакуацией, управления и объектов с повышенной пожарной опасностью. Допускается монтаж внутри и снаружи зданий при защите от прямого солнца и осадков. Для исполнений FRHF допускается кратковременное воздействие минерального масла и бензина.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0978"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        29
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "a20c8d003be3f5bb71c17f2cfa4d9908e9440c35f2c7bc5af57c9901138866c4",
+      "id": "manufacturer-text-a20c8d003be3f5bb"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0979"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "a50bb58995aae003bf6eb3f014f7b9021026e4be6d681afae774b06642dbb679",
+      "id": "manufacturer-text-a50bb58995aae003"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0980"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "614f44040d87f58b97ee8ea97b764be41fa73c8072d4e591d5c1f6e7c2f02c4d",
+      "id": "manufacturer-text-614f44040d87f58b"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0981"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "6903163daea129ee688b8c3de2bf277b79da5222b573ec0d5a5d8b74d1513a96",
+      "id": "manufacturer-text-6903163daea129ee"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0982"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "fae615ab7cb0527224f6ecc42d200e3e53b2462ed3b28541569576f83c48068a",
+      "id": "manufacturer-text-fae615ab7cb05272"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0983"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "57e4d4a2281541536f579746905a042342d4c9d91155726bb0c50369d1526f5e",
+      "id": "manufacturer-text-57e4d4a228154153"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0984"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "40f1dde06cdeafda79841199777ac2c40db8d304a58df7733d3a7c98c74a7c7e",
+      "id": "manufacturer-text-40f1dde06cdeafda"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0985"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "a70b08f1df0ea51ec13d4cbe51e056c6d6a37ba89d27205a24f4422ebabc9f09",
+      "id": "manufacturer-text-a70b08f1df0ea51e"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0986"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "effc8983fe72804423dde457e11767d463cca014d04afa3295b322594d0285d4",
+      "id": "manufacturer-text-effc8983fe728044"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0987"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "12c7caaf7a58821f3dc809e02c2cd452157d18b35f8039874b1eb5dcee6c233f",
+      "id": "manufacturer-text-12c7caaf7a58821f"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0988"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "1253ddf4d0514c7586541d674b7e494b0b76017a6b8d8e1ad58c1a3bfe11d36d",
+      "id": "manufacturer-text-1253ddf4d0514c75"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0989"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "96fc83c3c5ec302b5ca4fc20fe461cd570c608dc925894cb2ddb9b0139d30ede",
+      "id": "manufacturer-text-96fc83c3c5ec302b"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0990"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "f23a21b9d0e8b8ab959d14be19045eaa67b3eec698769c82a0cc0a658cb4c421",
+      "id": "manufacturer-text-f23a21b9d0e8b8ab"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0991"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "4a30ffe900011a888e375683f1e0c5943730a56b3d4b306e0c9dfe849a5c988d",
+      "id": "manufacturer-text-4a30ffe900011a88"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0992"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "9c40a5d2f3b5bbb74f05aefabdda14827c2cfcfe37907474edce087620e0f672",
+      "id": "manufacturer-text-9c40a5d2f3b5bbb7"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0993"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "e1d8b94f5e09d30f7fd1e749b41c69a8c84d73e060ab3073f229b7ca53ce32bf",
+      "id": "manufacturer-text-e1d8b94f5e09d30f"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0994"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "3592e6567d7dc88e8345b22d0188ee6328ab07e46260684deb7db91ad5b6274b",
+      "id": "manufacturer-text-3592e6567d7dc88e"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0995"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "c07f98d693f9e7177c7d75abbd74f06aab15812265069b283dbf1efaaae66b66",
+      "id": "manufacturer-text-c07f98d693f9e717"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0996"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "41d51c86c40723a9a1b551264992f170b1d2eadfd6c84a403ee2cd7ef445928c",
+      "id": "manufacturer-text-41d51c86c40723a9"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0997"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "47448d4261269a73b4c54d6ed97b1b19dc5f936c7c5fdce4c22dadb5f25d2382",
+      "id": "manufacturer-text-47448d4261269a73"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0998"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "bbb166f6491823d6bdcf5c53a4dc443e2c06f17ea061b117e6e2933a02707b90",
+      "id": "manufacturer-text-bbb166f6491823d6"
+    },
+    {
+      "documentId": "uncom-mk-constructor",
+      "manufacturer": "Кирскабель / УНКОМТЕХ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Монтаж электрических устройств общепромышленного применения на переменное напряжение до 1000 В частотой до 400 Гц или постоянное до 1500 В. Парные конструкции применяются для межприборного монтажа, подключения автоматики, контроллеров, датчиков и исполнительных механизмов, передачи данных и организации промышленных интерфейсов. Условия групповой прокладки и применения в помещениях зависят от пожарного исполнения кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0999"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "63066272bafd50231f1110a658e2e7118535cddaf4f90a5d2244f2b0c9b7fb67",
+      "contentHash": "d87b2816bc26bc2f0cdb78ce4d638a225bbea759ceda0d14bf5ba2dd573a0afa",
+      "id": "manufacturer-text-d87b2816bc26bc2f"
+    },
+    {
+      "documentId": "inform-presentation",
+      "manufacturer": "НПП Информсистема",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Распределительные участки и абонентская проводка широкополосного доступа, интернет-телефонии, городских, корпоративных и сельских сетей связи, а также традиционная телефонная связь. Исполнение ТЦПВ предназначено для внутридомовой проводки, ТЦПП — для наружных линий. Достижимые длины Ethernet зависят от конкретной конструкции, диаметра, оборудования и технологии; результаты испытаний не являются общей гарантией для любой линии.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1000"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        2,
+        5,
+        6,
+        23,
+        30
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "4cbeecc094ca21c6b4c4cf761fd0140b17c0fb6a5073a2efe0edcfc20e793c61",
+      "contentHash": "7d49b2653e3457952a64e78802c0f0d216733135a489d20e2d38c74fe6155a24",
+      "id": "manufacturer-text-7d49b2653e345795"
+    },
+    {
+      "documentId": "inform-ethernet-paper",
+      "manufacturer": "НПП Информсистема",
+      "originalHeading": "Расшифровка обозначения и назначение",
+      "kind": "description",
+      "text": "В заводской таблице приведены результаты испытаний малопарных кабелей для передачи Fast Ethernet: ТЦПВ предназначен для внутренних стен зданий и помещений; ТЦПП — для коллекторов и наружных стен зданий. Указанные в таблице диаметры проводников — 0,52 и 0,64 мм; это не значения сечения в мм².",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1000"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "098130d90a96bcba6dd9cf9912e0f02583f15c355e0357be1fb72384ecdfac0f",
+      "contentHash": "3fbb8e3e372d080644430d492e0e23fcafe14052ee08f3a6221d5a7483c3c3f3",
+      "id": "manufacturer-text-3fbb8e3e372d0806"
+    },
+    {
+      "documentId": "inform-presentation",
+      "manufacturer": "НПП Информсистема",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Распределительные участки и абонентская проводка широкополосного доступа, интернет-телефонии, городских, корпоративных и сельских сетей связи, а также традиционная телефонная связь. Исполнение ТЦПВ предназначено для внутридомовой проводки, ТЦПП — для наружных линий. Достижимые длины Ethernet зависят от конкретной конструкции, диаметра, оборудования и технологии; результаты испытаний не являются общей гарантией для любой линии.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1001"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        2,
+        5,
+        6,
+        23,
+        30
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "4cbeecc094ca21c6b4c4cf761fd0140b17c0fb6a5073a2efe0edcfc20e793c61",
+      "contentHash": "55021a89cc1d14455811c26bac1030abbb5306e1f3c805fa247d2522b6131054",
+      "id": "manufacturer-text-55021a89cc1d1445"
+    },
+    {
+      "documentId": "inform-ethernet-paper",
+      "manufacturer": "НПП Информсистема",
+      "originalHeading": "Расшифровка обозначения и назначение",
+      "kind": "description",
+      "text": "В заводской таблице приведены результаты испытаний малопарных кабелей для передачи Fast Ethernet: ТЦПВ предназначен для внутренних стен зданий и помещений; ТЦПП — для коллекторов и наружных стен зданий. Указанные в таблице диаметры проводников — 0,52 и 0,64 мм; это не значения сечения в мм².",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1001"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "098130d90a96bcba6dd9cf9912e0f02583f15c355e0357be1fb72384ecdfac0f",
+      "contentHash": "aeeb6e741bd62d2c4562acbcdf7d4cac703dcaad1dabf6a408b05fe3b9f4c0df",
+      "id": "manufacturer-text-aeeb6e741bd62d2c"
+    },
+    {
+      "documentId": "sst-onekey-current",
+      "manufacturer": "ОКБ Гамма / ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подключение устройств промышленной автоматики, исполнительных механизмов, контроллеров, датчиков и аппаратуры пожарной сигнализации; цепи контроля и управления, передача данных в промышленных сетях. Стационарная прокладка в кабельных сооружениях, помещениях и на открытом воздухе. Применение на опасных объектах зависит от исполнения и проекта.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1002"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        6,
+        11
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "c8149599891e65dc4ae1f6cbc1c680c854f225d8a8d88682763bb4affe9decb4",
+      "contentHash": "64e498c83581c6f455085f1e4a9eaa8dbc59f758761ef94a96966336e92058e3",
+      "id": "manufacturer-text-64e498c83581c6f4"
+    },
+    {
+      "documentId": "sst-onekey-current",
+      "manufacturer": "ОКБ Гамма / ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача и распределение электрической энергии в стационарных установках на номинальное переменное напряжение 0,66, 0,69 или 1 кВ частотой 50 Гц, а также в сетях постоянного напряжения до 1,5 кВ. Прокладка в помещениях, на открытом воздухе и в грунте согласно условиям конкретного исполнения.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1003"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        13,
+        17
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "c8149599891e65dc4ae1f6cbc1c680c854f225d8a8d88682763bb4affe9decb4",
+      "contentHash": "82ea1b6b188ed282f6cb2ac5476186ecc6d3029fd9e7725d949d2104295902a1",
+      "id": "manufacturer-text-82ea1b6b188ed282"
+    },
+    {
+      "documentId": "sst-industry-current",
+      "manufacturer": "ОКБ Гамма / ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подключение промышленной автоматики, исполнительных механизмов, контроллеров и датчиков, аппаратуры пожарной сигнализации, цепей контроля и управления; передача данных в промышленных сетях. Прокладка в кабельных сооружениях, на открытом воздухе или в помещениях; условия эксплуатации выбираются по конкретному исполнению.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1004"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        130,
+        131
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "86c3d9c3d7afa4fb28dca9e8ef185e09a95fbe67f0769fa5f69c4a0103857c2c",
+      "contentHash": "40453c49a84548349751fee9195586bec40d71f8dcdb6dca89c24c5dea82c475",
+      "id": "manufacturer-text-40453c49a8454834"
+    },
+    {
+      "documentId": "sst-industry-current",
+      "manufacturer": "ОКБ Гамма / ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подключение промышленной автоматики, исполнительных механизмов, контроллеров и датчиков, аппаратуры пожарной сигнализации, цепей контроля и управления; передача данных в промышленных сетях. Прокладка в кабельных сооружениях, на открытом воздухе или в помещениях; условия эксплуатации выбираются по конкретному исполнению.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1005"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        130,
+        131
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "86c3d9c3d7afa4fb28dca9e8ef185e09a95fbe67f0769fa5f69c4a0103857c2c",
+      "contentHash": "08d3443b5bce7be2fb8df205746b44ec49ccbf5a1ac8bc3e57dacab462a584c3",
+      "id": "manufacturer-text-08d3443b5bce7be2"
+    },
+    {
+      "documentId": "sst-industry-current",
+      "manufacturer": "ОКБ Гамма / ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача и распределение электрической энергии в стационарных установках на переменное напряжение 0,66, 0,69 или 1 кВ частотой 50 Гц, а также в сетях постоянного напряжения до 1,5 кВ. Для помещений, открытого воздуха и грунта с соблюдением условий выбранного климатического и пожарного исполнения.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1006"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        132,
+        133
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "86c3d9c3d7afa4fb28dca9e8ef185e09a95fbe67f0769fa5f69c4a0103857c2c",
+      "contentHash": "e8dc27ff86186785a3de58a7089d81cb49e008050519b70fe1bb6ffeea8436af",
+      "id": "manufacturer-text-e8dc27ff86186785"
+    },
+    {
+      "documentId": "sst-onekey-current",
+      "manufacturer": "ОКБ Гамма / ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подключение аппаратуры промышленной автоматики, контроллеров, датчиков и исполнительных устройств, контрольных цепей и промышленных сетей. Для исполнения ХМ завод указывает монтаж без предварительного нагрева при температуре не ниже минус 45 °C. Допустимый радиус изгиба зависит от температуры и наличия брони.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1007"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        6,
+        11
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "c8149599891e65dc4ae1f6cbc1c680c854f225d8a8d88682763bb4affe9decb4",
+      "contentHash": "d8ac31991641a7979c5ccdda0d87cff061ebcf2383b97775b81217987576b508",
+      "id": "manufacturer-text-d8ac31991641a797"
+    },
+    {
+      "documentId": "tasker-rg223",
+      "manufacturer": "Tasker / MILAN S.r.l.",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подключение радиочастотных антенн и изготовление готовых кабельных сборок с волновым сопротивлением 50 Ом. Заводской лист указывает внутреннее применение, фиксированную прокладку или ограниченную подвижность. Диапазон рабочих температур от −30 до +70 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1008"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "bad7cc8b2f4dc2686aa48c8382a641f1d17f91a783587d432e50b69cf1608f5d",
+      "contentHash": "214161ef5a0b614fc21eb15455f3a165034c318ae92627b38696903e7f35dd1e",
+      "id": "manufacturer-text-214161ef5a0b614f"
+    },
+    {
+      "documentId": "tasker-data-network",
+      "manufacturer": "Tasker / MILAN S.r.l.",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Профессиональный радиочастотный коаксиальный кабель с двойным экраном для измерительных приборов и антенных соединений: WLAN, GPS, мобильная связь, автомобильная аппаратура, сетевой доступ и видеонаблюдение.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1008"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        23
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "9dfd5477e032063c517b440907139316cdba74e2773d1620c5c7443e4711944d",
+      "contentHash": "6e34b180249e901520f2e0da62dda42d431d2c01945adf673c2161c63efc2654",
+      "id": "manufacturer-text-6e34b180249e9015"
+    },
+    {
+      "documentId": "helu-rg-coax",
+      "manufacturer": "HELUKABEL",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов, соединения передатчиков и приёмников, компьютерные системы, радио- и телевизионные тракты. Механические, температурные и электрические параметры выбираются по конкретному типу RG; значения разных буквенных исполнений не взаимозаменяемы.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1009"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "492af29bd986dbf84d911b08472a53aba6b3c6da8bbb20cd6cd9306f8dcade7f",
+      "contentHash": "51d424c72ddafece6da445dd4b2d5387aa655df4a853b71918963d62fd070500",
+      "id": "manufacturer-text-51d424c72ddafece"
+    },
+    {
+      "documentId": "helu-rg-coax",
+      "manufacturer": "HELUKABEL",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов, соединения передатчиков и приёмников, компьютерные системы, радио- и телевизионные тракты. Механические, температурные и электрические параметры выбираются по конкретному типу RG; значения разных буквенных исполнений не взаимозаменяемы.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1010"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "492af29bd986dbf84d911b08472a53aba6b3c6da8bbb20cd6cd9306f8dcade7f",
+      "contentHash": "9533657f1e10b15dd050ab1b6ff0a6bf720dcbb63141a78f124f1739aced3e0f",
+      "id": "manufacturer-text-9533657f1e10b15d"
+    },
+    {
+      "documentId": "helu-rg-coax",
+      "manufacturer": "HELUKABEL",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов, соединения передатчиков и приёмников, компьютерные системы, радио- и телевизионные тракты. Механические, температурные и электрические параметры выбираются по конкретному типу RG; значения разных буквенных исполнений не взаимозаменяемы.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1011"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "492af29bd986dbf84d911b08472a53aba6b3c6da8bbb20cd6cd9306f8dcade7f",
+      "contentHash": "bb9dc97eb5aa26189c027f0bbe95028bc35cd2b339817808cf1f2a95c81cd90e",
+      "id": "manufacturer-text-bb9dc97eb5aa2618"
+    },
+    {
+      "documentId": "helu-rg-coax",
+      "manufacturer": "HELUKABEL",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов, соединения передатчиков и приёмников, компьютерные системы, радио- и телевизионные тракты. Механические, температурные и электрические параметры выбираются по конкретному типу RG; значения разных буквенных исполнений не взаимозаменяемы.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1012"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "492af29bd986dbf84d911b08472a53aba6b3c6da8bbb20cd6cd9306f8dcade7f",
+      "contentHash": "ad3f80b5274d04afa047ef4bfcbf4c72d288d7450d4b27f8e2d1c4486aecf207",
+      "id": "manufacturer-text-ad3f80b5274d04af"
+    },
+    {
+      "documentId": "helu-rg-coax",
+      "manufacturer": "HELUKABEL",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов, соединения передатчиков и приёмников, компьютерные системы, радио- и телевизионные тракты. Механические, температурные и электрические параметры выбираются по конкретному типу RG; значения разных буквенных исполнений не взаимозаменяемы.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1013"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "492af29bd986dbf84d911b08472a53aba6b3c6da8bbb20cd6cd9306f8dcade7f",
+      "contentHash": "677dbb6d9c26849b1b75ed3475f4e53127bc21a9cf3b15d64d1cad90e94abfa9",
+      "id": "manufacturer-text-677dbb6d9c26849b"
+    },
+    {
+      "documentId": "helu-rg-coax",
+      "manufacturer": "HELUKABEL",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов, соединения передатчиков и приёмников, компьютерные системы, радио- и телевизионные тракты. Механические, температурные и электрические параметры выбираются по конкретному типу RG; значения разных буквенных исполнений не взаимозаменяемы.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1014"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "492af29bd986dbf84d911b08472a53aba6b3c6da8bbb20cd6cd9306f8dcade7f",
+      "contentHash": "e206841a3f62b48e708edc5d1e5f150bd44c18f200ffaa42df1e636bc1a45045",
+      "id": "manufacturer-text-e206841a3f62b48e"
+    },
+    {
+      "documentId": "helu-oz500",
+      "manufacturer": "HELUKABEL",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Гибкие соединения при средних механических нагрузках в сухих, влажных и мокрых помещениях, при свободном движении без растягивающей нагрузки и принудительного ведения. Присоединительный и контрольный кабель станков, конвейеров, производственных линий и промышленного оборудования. Не предназначен для наружной прокладки.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1015"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "637292ff6827ef8ebc053ee125a938821f98e1edf36b3caccf4d12b3cc87ef45",
+      "contentHash": "02339f63cdace6367de34e8b77c747df758c15c60d0ce0cbe4948b17dcc7bbf6",
+      "id": "manufacturer-text-02339f63cdace636"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1016"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        299
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "848cc00563189fb1efb3b3b64dbf432df34eb91ec3afa72bbeb467c9ed62660f",
+      "id": "manufacturer-text-848cc00563189fb1"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1017"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        300
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "cd1512c5aef03c0660c271eb11b628183adf2c647cae3749c559dc915165ff03",
+      "id": "manufacturer-text-cd1512c5aef03c06"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1018"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        303
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "b34cf097acaffa64e5f964482255a4b743eb798915d0eee85a855022076ec025",
+      "id": "manufacturer-text-b34cf097acaffa64"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1019"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        304
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "4f400721e810c0fa621e0f042ab33f7f78599316d42f1cc2373c194ed6ce4bf3",
+      "id": "manufacturer-text-4f400721e810c0fa"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1020"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        299
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "3d353cc353491298914dab91d2a1083952b64c4e90df029d02fe70a03f8f96dc",
+      "id": "manufacturer-text-3d353cc353491298"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1021"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        300
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "bbe006e65e3a52ad31d85c4c5a9acccb42e0bbac0553aa2752ce0a71bd379d6c",
+      "id": "manufacturer-text-bbe006e65e3a52ad"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1022"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        303
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "4c2575f552cc9830e3efa7e9e137fa16336aa14e008f85e119f4698f0f4b108b",
+      "id": "manufacturer-text-4c2575f552cc9830"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1023"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        304
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "d6745795e4a20c73cbf50757bde063c03f4e7d8d0546b94e5387e05413fb0d94",
+      "id": "manufacturer-text-d6745795e4a20c73"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1024"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        299
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "ceef0257c642849bf6d5ef09b53591f5603b6ebc83d886534aaa1be2cc4ee579",
+      "id": "manufacturer-text-ceef0257c642849b"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1025"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        300
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "430610ce687c966931b3875855bc295bf9cc12c5f968f1bd07cf84fcc369670b",
+      "id": "manufacturer-text-430610ce687c9669"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1026"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        303
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "4cd33e5d9e357be17f4562a7989441c810b786494f58f3944db4bd938935d0a3",
+      "id": "manufacturer-text-4cd33e5d9e357be1"
+    },
+    {
+      "documentId": "spec-main",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Групповая стационарная прокладка в системах противопожарной защиты и энергоснабжения объектов повышенной пожарной опасности. Исполнения с ПВХ-оболочкой применяются внутри и вне помещений с защитой от прямого солнца и осадков; безгалогенные — внутри и вне помещений, с возможностью кратковременного воздействия минерального масла и бензина; полиуретановые — в том числе в химически агрессивных средах. Бронированные варианты допускаются в грунтах категорий I–III и защищены от грызунов.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1027"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        304
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "1ac9e3eb7acf1d73ca3eb653c86171c763ea30fbd0f3050484e87005e594ae99",
+      "contentHash": "07ae8bfff5aa522b2ca2ac7685cf3de3a442722a120637b76c016da273085729",
+      "id": "manufacturer-text-07ae8bfff5aa522b"
+    },
+    {
+      "documentId": "rkz-kupr",
+      "manufacturer": "Рыбинсккабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача электрических сигналов управления малой мощности при переменном напряжении до 250 В частотой до 1000 Гц или постоянном до 350 В. Кабель рассчитан на перемотки, осевое кручение, вибрационные, ударные и линейные нагрузки; конкретные условия и ресурс определяются заводским исполнением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1028"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "b1083f9a021983a0894d6cd35590bcf4d049f4ecd9de64ce30c34d5e7eba40ca",
+      "contentHash": "3caf357b904310e026ceae742cca2ac229f11a259c2d4aa1e940cd92c36b9904",
+      "id": "manufacturer-text-3caf357b904310e0"
+    },
+    {
+      "documentId": "kabeltec-flex-h",
+      "manufacturer": "Kabeltec",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Силовые, управляющие и соединительные цепи с повышенными требованиями к поведению при пожаре. Стационарная или гибкая прокладка в сухих и влажных помещениях; ограниченное наружное применение по условиям изготовителя. Безгалогенная конструкция отличается пониженным дымообразованием и ограниченным распространением пламени.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1029"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "2c5b7e8ae01bcd153356e5716de42a0c2cd8e3148f99f1b02d97bd414e4f6c49",
+      "contentHash": "e3a755b546fdb073c5596e1fa1b27664039bd90e3b81eadd9ed4f11835ba547c",
+      "id": "manufacturer-text-e3a755b546fdb073"
+    },
+    {
+      "documentId": "tkd-opvc-jz",
+      "manufacturer": "TKD",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача энергии, управление и соединение электрических установок. Допускаются стационарная прокладка и свободное движение без растягивающей нагрузки и принудительного направления. Применяется в сухих, влажных и мокрых помещениях; вне помещений нужна защита от ультрафиолета. Прямая прокладка в грунте не допускается. Для кабельных цепей изготовитель ограничивает число жил и сечение.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1030"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "ee95aa64073a374124694b4b40674750abfccbd689a4934e79f58fbeb3c3971f",
+      "contentHash": "bd4c09c36874997a9c4c24a5119dc12d3c2ffd971160f08b9cb05ec1ad5ba51d",
+      "id": "manufacturer-text-bd4c09c36874997a"
+    },
+    {
+      "documentId": "nestor-nesmak-hf",
+      "manufacturer": "Nestor Cables",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Внутренняя прокладка инструментальных цепей систем автоматизации, управления технологическими процессами и аудиосистем. Общий экран служит для уменьшения электрических помех. С февраля 2016 года семейство NESMAK-HF заменяет NESMAK и NESMAK-LSZH; требования конкретного исполнения проверяются по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1031"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "443d848d0e06b81ebe87527d55f2c8f0761f8e7890547f63a7cb85dd6018cc92",
+      "contentHash": "577b638eda0d6dcc8c04e2f4b0ed8727691c9c8b95a58157947cf14b3da13ce2",
+      "id": "manufacturer-text-577b638eda0d6dcc"
+    },
+    {
+      "documentId": "sst-industry-current",
+      "manufacturer": "ССТ",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подключение питания к нагревательным кабелям различных систем электрообогрева и к электротехническим установкам с повышенным тепловыделением. Внешний диаметр НУД 3×1,50 по таблице 7,55 мм; допустимое напряжение до 380 В.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1032"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        152
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "86c3d9c3d7afa4fb28dca9e8ef185e09a95fbe67f0769fa5f69c4a0103857c2c",
+      "contentHash": "c0438372a2d8e1f5a2d20a7cb1d708208835693ad884e4aa77af72e4fa0ed3ef",
+      "id": "manufacturer-text-c0438372a2d8e1f5"
+    },
+    {
+      "documentId": "spec-sklon",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Одиночная стационарная и подвижная прокладка с ограниченными перемещениями, робототехника, буксируемые кабельные цепи, подвижные части оборудования и автотранспорт. Внутри и вне помещений; допускаются кратковременные воздействия минерального масла и бензина. Для сечений 0,2–0,35 мм² рабочее напряжение до 300 В, от 0,5 мм² — до 500 В.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1033"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        8
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "814f7102f9e73978145bbe10a0befc389faf05cc21f1229804b4b6e70b50160f",
+      "contentHash": "a43d790735de188e78b8a7862e333b28fafe2359b6efd648384dc856749cf224",
+      "id": "manufacturer-text-a43d790735de188e"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Задувка в защитные полиэтиленовые трубы, прокладка в кабельной канализации, трубах, блоках, лотках, тоннелях, эстакадах, мостах и коллекторах при отсутствии угрозы повреждения грызунами. Материал наружной оболочки: полиэтилен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1034"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        61,
+        60
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "5e863725ab11cc44e2dea350c61d6e47597b3804ff6635dc0718899a40e7c716",
+      "id": "manufacturer-text-5e863725ab11cc44"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Задувка в защитные полиэтиленовые трубы, прокладка в кабельной канализации, трубах, блоках, лотках, тоннелях, эстакадах, мостах и коллекторах при отсутствии угрозы повреждения грызунами. Материал наружной оболочки: безгалогенный полимерный материал с низким дымовыделением, не распространяющий горение при групповой прокладке по категории а.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1035"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        61,
+        60
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "84aebf2d21b939a7b86d6cce013d0f0dac4978e7f744001d01f2400117a2a1d0",
+      "id": "manufacturer-text-84aebf2d21b939a7"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Прокладка в кабельной канализации, трубах, блоках, лотках, тоннелях, эстакадах, мостах и коллекторах; ленточная броня обеспечивает защиту от грызунов. Материал наружной оболочки: полиэтилен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1036"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        65,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "d1053963c747282af8024fd591a923440bd0f64b11dc4071e0bdab47bb15c000",
+      "id": "manufacturer-text-d1053963c747282a"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Прокладка в кабельной канализации, трубах, блоках, лотках, тоннелях, эстакадах, мостах и коллекторах; ленточная броня обеспечивает защиту от грызунов. Материал наружной оболочки: полимерный материал, не распространяющий горение при одиночной прокладке.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1037"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        65,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "29c34b4d53232e69f80bf5c341ae33d81bc96e541c4c1c79059a4b0712065a7c",
+      "id": "manufacturer-text-29c34b4d53232e69"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Прокладка в кабельной канализации, трубах, блоках, лотках, тоннелях, эстакадах, мостах и коллекторах; ленточная броня обеспечивает защиту от грызунов. Материал наружной оболочки: безгалогенный полимерный материал с низким дымовыделением, не распространяющий горение при групповой прокладке по категории а.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1038"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        65,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "8a137c1ff209064fbd6587c83557e58fecc6411b356fb1edaa0277faacdbf7b0",
+      "id": "manufacturer-text-8a137c1ff209064f"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Кабельная канализация, трубы, блоки, лотки, тоннели, эстакады, мосты и коллекторы. Промежуточная оболочка повышает защищённость сердечника; броня препятствует повреждению грызунами. Материал наружной оболочки: полиэтилен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1039"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        66,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "7b656ec1fbb767debfbca6bba387ca59a8ef9b1df35612e52e7e3b336acfbfb6",
+      "id": "manufacturer-text-7b656ec1fbb767de"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Кабельная канализация, трубы, блоки, лотки, тоннели, эстакады, мосты и коллекторы. Промежуточная оболочка повышает защищённость сердечника; броня препятствует повреждению грызунами. Материал наружной оболочки: полимерный материал, не распространяющий горение при одиночной прокладке.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1040"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        66,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "b70579a70214b77bee345ab7499cd02a73d12325f34237e14569d917a9f9889b",
+      "id": "manufacturer-text-b70579a70214b77b"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Кабельная канализация, трубы, блоки, лотки, тоннели, эстакады, мосты и коллекторы. Промежуточная оболочка повышает защищённость сердечника; броня препятствует повреждению грызунами. Материал наружной оболочки: безгалогенный полимерный материал с низким дымовыделением, не распространяющий горение при групповой прокладке по категории а.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1041"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        66,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "995d065a11281ebf38f3e834b6da491adca4832a8bd5d7fd0440768bcd66dfd9",
+      "id": "manufacturer-text-995d065a11281ebf"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Кабельная канализация, трубы, блоки, лотки, тоннели, эстакады, мосты и коллекторы. Облегчённая конструкция с центральным модулем, защищённая от грызунов. Материал наружной оболочки: полиэтилен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1042"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        67,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "9631b3f2e6330782d834355dc18c0453cf0c10db33d1b2804cff68029244f36c",
+      "id": "manufacturer-text-9631b3f2e6330782"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Кабельная канализация, трубы, блоки, лотки, тоннели, эстакады, мосты и коллекторы. Облегчённая конструкция с центральным модулем, защищённая от грызунов. Материал наружной оболочки: полимерный материал, не распространяющий горение при одиночной прокладке.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1043"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        67,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "1afa7c264f5e40ffd6f37516f6c84781b55f44983e9ef8c90f4935f3d3ad2bde",
+      "id": "manufacturer-text-1afa7c264f5e40ff"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Кабельная канализация, трубы, блоки, лотки, тоннели, эстакады, мосты и коллекторы. Облегчённая конструкция с центральным модулем, защищённая от грызунов. Материал наружной оболочки: безгалогенный полимерный материал с низким дымовыделением, не распространяющий горение при групповой прокладке по категории а.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1044"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        67,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "44353ac117092f391a3bac8c1bfae5e0b0dedc2a11aef95e0e0cd804c7d4fa3f",
+      "id": "manufacturer-text-44353ac117092f39"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Кабельная канализация для исполнения 2,7 кН; в грунт — для исполнения 7 кН. Центральный модуль с проволочной бронёй защищён от механических повреждений и грызунов. Материал наружной оболочки: полиэтилен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1045"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        69,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "4ed960e83e7aa52ff3255ff5e573ef6114a407bd07eefab8821adae9a4d615c4",
+      "id": "manufacturer-text-4ed960e83e7aa52f"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Кабельная канализация для исполнения 2,7 кН; в грунт — для исполнения 7 кН. Центральный модуль с проволочной бронёй защищён от механических повреждений и грызунов. Материал наружной оболочки: полимерный материал, не распространяющий горение при одиночной прокладке.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1046"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        69,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "2ffa757c99c865325e61ad72fbd99a866cb78c273932183478e27c33c32fbb0f",
+      "id": "manufacturer-text-2ffa757c99c86532"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Кабельная канализация для исполнения 2,7 кН; в грунт — для исполнения 7 кН. Центральный модуль с проволочной бронёй защищён от механических повреждений и грызунов. Материал наружной оболочки: безгалогенный полимерный материал с низким дымовыделением, не распространяющий горение при групповой прокладке по категории а.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1047"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        69,
+        64
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "667c9a25d51421a9ab05e9f6a19a6ead3d449c419a282a7b6d8a1906882b0cf1",
+      "id": "manufacturer-text-667c9a25d51421a9"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Прокладка в грунтах, где необходимы диэлектрическая конструкция, механическая защита и защита от грызунов. Применимость к конкретному грунту и нагрузкам определяется проектом и исполнением. Материал наружной оболочки: полиэтилен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1048"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        74,
+        72
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "a17bc22fb43fa2e1da8f3c356c7ddbb5dc9efbcc7c1d5d554ef1f32d63ff87e7",
+      "id": "manufacturer-text-a17bc22fb43fa2e1"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Прокладка в грунтах, где необходимы диэлектрическая конструкция, механическая защита и защита от грызунов. Применимость к конкретному грунту и нагрузкам определяется проектом и исполнением. Материал наружной оболочки: безгалогенный полимерный материал с низким дымовыделением, не распространяющий горение при групповой прокладке по категории а.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1049"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        74,
+        72
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "7530c53a48ad021a8634916783658342f191a190759a9cfc292bc2bb764cd21b",
+      "id": "manufacturer-text-7530c53a48ad021a"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подвесная самонесущая прокладка, в том числе на линиях электропередачи от 35 кВ. Нагрузки и пролёты определяются проектом; стеклонити обеспечивают диэлектрическое упрочнение. Материал наружной оболочки: полиэтилен.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1050"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        95,
+        92
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "a9e39603221b1a047478a09763bef9496e7247b0d9fab6cfc96f12d4f453263e",
+      "id": "manufacturer-text-a9e39603221b1a04"
+    },
+    {
+      "documentId": "incab-full-2025",
+      "manufacturer": "Инкаб",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подвесная самонесущая прокладка, в том числе на линиях электропередачи от 35 кВ. Нагрузки и пролёты определяются проектом; стеклонити обеспечивают диэлектрическое упрочнение. Материал наружной оболочки: безгалогенный полимерный материал с низким дымовыделением, не распространяющий горение при групповой прокладке по категории а.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1051"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        95,
+        92
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "db62d6cea8fdad829122346178b667c9569895795952ce26f1bbfcbd7633378b",
+      "contentHash": "085244dd1f327a8a29dbad3d4dfb0fe39b418fb2554ba14440784cce341fbee4",
+      "id": "manufacturer-text-085244dd1f327a8a"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1052"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "95fc54bae84e562d844a58d60e71be123aa2eb5c8ede07f20e5c371f3695bb94",
+      "id": "manufacturer-text-95fc54bae84e562d"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1053"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "800204c147a39a5ac955e7fc8b05c1f4c171f8d039e99f7aa4b5077155c49286",
+      "id": "manufacturer-text-800204c147a39a5a"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1054"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "2fcbdd5eedb1948c852dbf7aa58d5ecea787ecb8921f8851929e7473be9abd0b",
+      "id": "manufacturer-text-2fcbdd5eedb1948c"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1055"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "3cd620ca6a9cc1428b0edd175341f23807f9b8df0d21c549e0ca9dcec9e39228",
+      "id": "manufacturer-text-3cd620ca6a9cc142"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1056"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "851008b662908ab4e3eeb05ddf9f0c1e2e15ed9512bc3d63fa2e788b4a49f7e5",
+      "id": "manufacturer-text-851008b662908ab4"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1057"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "2158e740c29a8edf9b98443e7bd25d2404a0d3e0fa9169bea6f275b4aadbaddf",
+      "id": "manufacturer-text-2158e740c29a8edf"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1058"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "305573a466bc6b2e101a32de5b5523b7ffd68604cd95c7f83d3defb79817f4cb",
+      "id": "manufacturer-text-305573a466bc6b2e"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1059"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "caab6272303813bab01105811561c839c70dcb447afc07f47725d9e715a4e8f1",
+      "id": "manufacturer-text-caab6272303813ba"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1060"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "2b164fee38a42463096f626c8337b60f66db642352d456fa8584eb67ed8176e1",
+      "id": "manufacturer-text-2b164fee38a42463"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1061"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "4bd6571a6aa6449aafd3ce38a9fed7e3b118c02d60143a2dd91c41762fb75be5",
+      "id": "manufacturer-text-4bd6571a6aa6449a"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1062"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "2534acd6aa93a44d944224ff7da7aee6abd9a66b549b1425a21a9957533f5701",
+      "id": "manufacturer-text-2534acd6aa93a44d"
+    },
+    {
+      "documentId": "fengtai-rg-catalog",
+      "manufacturer": "Guangzhou Fengtai Meihua / Taifulong",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Передача высокочастотных сигналов в средствах связи, радиолокации, навигации, авиационной аппаратуре, ИТ-оборудовании и железнодорожных системах. Двойной экран выполнен из посеребрённой меди; тип проводника задаётся отдельным исполнением модели.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1063"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "44494c5da2babf0bb997b197fffc95ade313e0abbc3bf65bc7ba2cedfc39a806",
+      "contentHash": "b8ab22056005aedaa96101e12e24263c818bf6cbbc2aca99c998855dd74a8c54",
+      "id": "manufacturer-text-b8ab22056005aeda"
+    },
+    {
+      "documentId": "tk-kabel-full2024",
+      "manufacturer": "T.K. Kabel",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Соединения нагревательных устройств и установок с требованиями к теплостойкости, управление и компьютерные системы с высокой скоростью передачи, промышленная атмосфера и химическая промышленность. Рабочее напряжение 660 В, температурный диапазон по листу −90…+205 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1064"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        91
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "deab583236fc0162691b5ed9ab940883f5251911e430f0c02b8f5bd1b7ec8562",
+      "contentHash": "f487602cd1a5a3534b8432d27afc8023f0cb686af6ff71378b5bda2a8d9d2e92",
+      "id": "manufacturer-text-f487602cd1a5a353"
+    },
+    {
+      "documentId": "tasker-rg213u-current",
+      "manufacturer": "Tasker / MILAN S.r.l.",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Соединения радиочастотных антенн и изготовление кабельных сборок 50 Ом. По заводскому листу применяется внутри помещений при фиксированной прокладке или ограниченной подвижности. Специальные оболочки LSZH, PE, PUR и металлическая броня являются отдельными заказными модификациями.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1065"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "e4fadf5173b7fa2db826c5f397d54ee25310a41d5b3660ac231a2d9fe6cfad41",
+      "contentHash": "a98e333d75acb6abccbd9cca88f4169fee9b20d6cce3937508b32a3d412d029f",
+      "id": "manufacturer-text-a98e333d75acb6ab"
+    },
+    {
+      "documentId": "tasker-data-network",
+      "manufacturer": "Tasker / MILAN S.r.l.",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Подключение антенн на мачтах и передача радиочастотных сигналов, WLAN, GPS и мобильной связи, подключение сетевого оборудования. Многопроволочный центральный проводник обеспечивает гибкость кабеля.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1065"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        23
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "9dfd5477e032063c517b440907139316cdba74e2773d1620c5c7443e4711944d",
+      "contentHash": "a17292510decafecc21cb4dfdfbef3f410576a2e5ff55111ac885604366d433e",
+      "id": "manufacturer-text-a17292510decafec"
+    },
+    {
+      "documentId": "rezh-f196-full",
+      "manufacturer": "Режкабель",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Электрические установки железнодорожной сигнализации и блокировки, пожарной сигнализации и автоматики на напряжение 380 В переменного тока частотой 50 Гц или 700 В постоянного тока. Гидрофобное заполнение препятствует проникновению воды по сердечнику; экран из алюмофлекса уменьшает электромагнитные влияния.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0781"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        4,
+        15
+      ],
+      "reviewedAt": "2026-10-25",
+      "sourceSha256": "25e701fee48ac328f80a856889ccb7172108053f9853bdfa5ef904b2659565bd",
+      "contentHash": "aeb2277d3493f8b8c52d714cd1d592a4eb0466c3ad01a6a61c6c4549f039fd7d",
+      "id": "manufacturer-text-aeb2277d3493f8b8"
+    },
+    {
+      "documentId": "orel-punp",
+      "manufacturer": "Орловский кабельный завод",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарная прокладка в осветительных сетях и присоединение слаботочных бытовых приборов к сети до 250 В переменного тока частотой 50 Гц. Изготовитель выпускает провода под марками Мастер Тока, ГОСТок и Voltex; номенклатура на странице включает двух- и трёхжильные варианты сечением 1,5; 2,5 и 4 мм².",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1066"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-10-26",
+      "sourceSha256": "4106872212b107d3176f7c2389482f5f5c0c86db69eb4fc019353e7e1ec5ced1",
+      "contentHash": "8dbe87c05721aa9ab4c30bf2412bee49a1bdc94faf4b4ad6d3dc21e3b61eaeb4",
+      "id": "manufacturer-text-8dbe87c05721aa9a"
+    },
+    {
+      "documentId": "orel-punp",
+      "manufacturer": "Орловский кабельный завод",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Стационарная прокладка в осветительных сетях и присоединение слаботочных бытовых приборов к сети до 250 В переменного тока частотой 50 Гц. Изготовитель выпускает провода под марками Мастер Тока, ГОСТок и Voltex; номенклатура на странице включает двух- и трёхжильные варианты сечением 1,5; 2,5 и 4 мм².",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0659"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-10-26",
+      "sourceSha256": "4106872212b107d3176f7c2389482f5f5c0c86db69eb4fc019353e7e1ec5ced1",
+      "contentHash": "98fa638713b2b237fd63cae7ad733ec1d897d7fa45d90c628ea6a3dcb2b524e6",
+      "id": "manufacturer-text-98fa638713b2b237"
     }
   ]
 }

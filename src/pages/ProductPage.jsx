@@ -1,3 +1,8 @@
+import {
+  clampCartQuantity,
+  getCartQuantityLimit,
+} from '../lib/cartQuantity.js';
+import { formatManufacturerTitle } from '../../shared/manufacturerTitle.js';
 // Файл рендерит карточку товара, характеристики, похожие позиции, действия корзины и SEO.
 
 import { useEffect, useState } from 'react';
@@ -38,8 +43,9 @@ const PRODUCT_JSON_LD_ID = 'product-product-json-ld';
 const QUANTITY_INPUT_ID = 'product-quantity-input';
 
 function getProductDisplayTitle(product) {
-  return (
-    product?.title || product?.fullName || product?.name || product?.mark || ''
+  return formatManufacturerTitle(
+    product?.title || product?.fullName || product?.name || product?.mark || '',
+    product
   );
 }
 
@@ -90,6 +96,9 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1);
   const [cartFeedback, setCartFeedback] = useState('');
   const [product, setProduct] = useState(() => initialProduct);
+  useEffect(() => {
+    if (product) setQuantity((value) => clampCartQuantity(product, value));
+  }, [product]);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(() => !initialProduct);
   const [isNotFound, setIsNotFound] = useState(false);
@@ -414,7 +423,10 @@ export default function ProductPage() {
                   aria-controls={QUANTITY_INPUT_ID}
                   onClick={() =>
                     setQuantity((q) =>
-                      Math.max(1, Math.round((q - 1) * 100) / 100)
+                      clampCartQuantity(
+                        product,
+                        Math.max(0.01, Math.round((q - 1) * 100) / 100)
+                      )
                     )
                   }
                 >
@@ -425,19 +437,31 @@ export default function ProductPage() {
                   type="number"
                   aria-label="Количество товара"
                   value={quantity}
-                  min="1"
+                  min="0.01"
+                  max={getCartQuantityLimit(product)}
                   step={unit === 'м' ? '0.01' : '1'}
                   inputMode={unit === 'м' ? 'decimal' : 'numeric'}
                   onChange={(event) =>
-                    setQuantity(Math.max(1, Number(event.target.value) || 1))
+                    setQuantity(
+                      clampCartQuantity(
+                        product,
+                        Math.max(0.01, Number(event.target.value) || 1)
+                      )
+                    )
                   }
                 />
                 <button
                   type="button"
                   aria-label="Увеличить количество товара"
+                  disabled={quantity >= getCartQuantityLimit(product)}
                   aria-controls={QUANTITY_INPUT_ID}
                   onClick={() =>
-                    setQuantity((q) => Math.round((q + 1) * 100) / 100)
+                    setQuantity((q) =>
+                      clampCartQuantity(
+                        product,
+                        Math.round((q + 1) * 100) / 100
+                      )
+                    )
                   }
                 >
                   +
@@ -495,8 +519,8 @@ export default function ProductPage() {
               <Link to="/delivery/">
                 <SupplyIcon type="truck" />
                 <div>
-                  <strong>Доставка по России</strong>
-                  <small>Транспортной компанией</small>
+                  <strong>Самовывоз со склада</strong>
+                  <small>Вашим перевозчиком</small>
                 </div>
               </Link>
               <Link to="/contacts/">
@@ -524,7 +548,7 @@ export default function ProductPage() {
           <a href="#product-description">Описание</a>
           <a href="#product-marking">Расшифровка марки</a>
           <a href="#product-documents">Партия и документы</a>
-          <a href="#product-delivery">Доставка и оплата</a>
+          <a href="#product-delivery">Получение и оплата</a>
         </nav>
 
         {specs.length > 0 ? (
@@ -559,17 +583,17 @@ export default function ProductPage() {
           id="product-delivery"
           className="product-details product-page__delivery"
         >
-          <h2>Доставка и оплата</h2>
+          <h2>Получение и оплата</h2>
           <p>
-            Самовывоз в Челябинске или отправка транспортной компанией. Наличие,
-            стоимость доставки и дату отгрузки согласуем при подготовке
-            предложения.
+            Самовывоз со склада в Челябинске: приезжайте самостоятельно или
+            закажите забор своей транспортной компанией. Заказ готовим 1–3
+            рабочих дня после оплаты. Приезжайте после подтверждения готовности.
           </p>
           <p className="product-page__delivery-time">
             Срок поставки по каталогу: {leadTime}. Подтверждается при заказе.
           </p>
           <div>
-            <Link to="/delivery/">Условия доставки →</Link>
+            <Link to="/delivery/">Получение заказа →</Link>
             <Link to="/payment/">Способы оплаты →</Link>
           </div>
         </section>

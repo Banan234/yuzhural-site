@@ -1,10 +1,10 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Container from '../ui/Container';
 import { CATALOG_CANONICAL_PATH } from '../../lib/canonicalPaths.js';
 
 const quickFacts = [
-  { icon: 'truck', title: 'Доставка', detail: 'по России' },
+  { icon: 'truck', title: 'Самовывоз', detail: 'со склада' },
   { icon: 'shield', title: 'Работа с НДС', detail: 'документы к поставке' },
   { icon: 'box', title: 'Самовывоз', detail: 'в Челябинске' },
 ];
@@ -56,19 +56,42 @@ const slides = [
   },
   {
     id: 'delivery',
-    label: 'Доставка по России',
-    title: ['Доставка кабеля', 'по всей России'],
+    label: 'Самовывоз со склада',
+    title: ['Получение заказа', 'со склада'],
     description:
-      'Организуем отправку транспортной компанией. Согласуем сроки, документы и условия получения заказа.',
+      'Заберите заказ самостоятельно или закажите забор своей транспортной компанией. Подготовим груз и погрузим на складе.',
     image: '/mobile-hero-cable.webp',
     mobileImage: '/mobile-hero-cable.webp',
-    primary: { label: 'Условия доставки', to: '/delivery/' },
+    primary: { label: 'Получение заказа', to: '/delivery/' },
     secondary: { label: 'Запросить КП', to: '/specification/' },
   },
 ];
 
 export default function HomeHeroCarousel() {
   const [active, setActive] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [touching, setTouching] = useState(false);
+  const [available, setAvailable] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    const update = () => setAvailable(!document.hidden && !media?.matches);
+    update();
+    document.addEventListener('visibilitychange', update);
+    media?.addEventListener?.('change', update);
+    return () => {
+      document.removeEventListener('visibilitychange', update);
+      media?.removeEventListener?.('change', update);
+    };
+  }, []);
+  useEffect(() => {
+    if (!available || hovered || focused || touching) return;
+    const timer = setTimeout(
+      () => setActive((value) => (value + 1) % slides.length),
+      6000
+    );
+    return () => clearTimeout(timer);
+  }, [active, available, hovered, focused, touching]);
   const gesture = useRef(null);
   const suppressClick = useRef(false);
   function move(direction) {
@@ -119,13 +142,27 @@ export default function HomeHeroCarousel() {
   return (
     <section
       className="home-concept__hero home-concept__hero--carousel"
-      aria-label="Кабель, подбор и доставка"
+      aria-label="Кабель, подбор и самовывоз"
       aria-roledescription="карусель"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget))
+          setFocused(false);
+      }}
       onKeyDown={handleKeyDown}
-      onPointerDown={startGesture}
-      onPointerUp={finishGesture}
+      onPointerDown={(event) => {
+        if (event.pointerType === 'touch') setTouching(true);
+        startGesture(event);
+      }}
+      onPointerUp={(event) => {
+        setTouching(false);
+        finishGesture(event);
+      }}
       onPointerCancel={() => {
         gesture.current = null;
+        setTouching(false);
       }}
       onClickCapture={(event) => {
         if (!suppressClick.current) return;

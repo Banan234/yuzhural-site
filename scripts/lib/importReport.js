@@ -597,8 +597,12 @@ export function buildReportHtml(
         </details>
       </article>
       <article class="panel">
+        <h2>Результат запуска</h2>
+        <p>${escapeHtml(report.message || (report.blocked ? 'Публикация остановлена' : ''))}</p>
+        <h2>Предупреждения публикации</h2>
+        ${renderTable(report.publishGuard?.warnings || [], [{ key: 'message', label: 'Причина' }], 'Предупреждений нет.')}
         <h2>Строки на проверке</h2>
-        <p class="panel-note">Эти позиции не удалены: они импортированы, но исходная категория не подтверждает кабельный раздел.</p>
+        <p class="panel-note">Причина в каждой строке показывает, сохранена ли позиция или отложено её обновление. При отложенном обновлении известного товара сохраняются прежние данные; новый товар ожидает проверки.</p>
         ${renderTable(
           reviewRows,
           [

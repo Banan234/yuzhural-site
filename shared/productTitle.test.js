@@ -144,3 +144,52 @@ describe('единые цвета всех марок', () => {
     );
   });
 });
+
+describe('единое начало названий греющего кабеля', () => {
+  test.each([
+    ['Греющий СНФ 07R1', 'Греющий кабель СНФ 07R1'],
+    ['греющий DHP-10 V2 20W с вилкой', 'Греющий кабель DHP-10 V2 20W с вилкой'],
+    ['Греющий кабель SRL-16-2', 'Греющий кабель SRL-16-2'],
+  ])('%s → %s при импорте и отображении', (sourceName, expected) => {
+    const product = normalizeImportedProduct({
+      name: sourceName,
+      unit: 'м',
+      price: 123,
+      stock: 45,
+    });
+    expect(product.sourceName).toBe(sourceName);
+    expect(product.name).toBe(expected);
+    expect(product.mark).toBe(expected);
+    expect(formatCableProductTitle(sourceName, { mark: sourceName })).toBe(
+      expected
+    );
+    expect(formatCableProductTitle(expected, product)).toBe(expected);
+  });
+});
+
+describe('цвета в названиях и марках без распознанного сечения', () => {
+  test.each([
+    ['НВ 0.12 4 600 бел', 'НВ 0.12 4 600 белый'],
+    ['НВМ 0.2-1 600В син', 'НВМ 0.2-1 600В синий'],
+    ['МС 15-11 0.08 черный', 'МС 15-11 0.08 чёрный'],
+    ['НВМ-4 600 0.35 бел.', 'НВМ-4 600 0.35 белый'],
+    ['НВМ 0.2-1 600В гол', 'НВМ 0.2-1 600В голубой'],
+  ])('%s → %s', (sourceName, expected) => {
+    const p = normalizeImportedProduct({
+      name: sourceName,
+      unit: 'м',
+      price: 10,
+      stock: 5,
+    });
+    expect(p.name).toBe(expected);
+    expect(p.mark).toBe(expected);
+    expect(p.sourceName).toBe(sourceName);
+    expect(formatCableProductTitle(expected, p)).toBe(expected);
+  });
+  test('не меняет буквенные обозначения марок', () => {
+    expect(formatCableProductTitle('СЕР 2х1', { mark: 'СЕР' })).toBe('СЕР 2х1');
+    expect(
+      formatCableProductTitle('НВМ син-600', { mark: 'НВМ син-600' })
+    ).toBe('НВМ син-600');
+  });
+});

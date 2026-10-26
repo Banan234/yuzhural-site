@@ -26,3 +26,47 @@ describe('vite index html transforms', () => {
     expect(transformed.match(/type="module"/g)).toHaveLength(1);
   });
 });
+
+it('отдаёт свежий прайс после смены выпуска, включая HEAD и отсутствие кеширования', async () => {
+  const fs = await import('node:fs/promises');
+  const os = await import('node:os');
+  const path = await import('node:path');
+  const { runtimePriceMiddleware } = await import('./vite.config.js');
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'runtime-price-'));
+  const file = path.join(root, 'data/catalog-current/public/price.xls');
+  const middleware = runtimePriceMiddleware(root);
+  const request = async (method = 'GET') => {
+    const headers = {};
+    const res = {
+      setHeader: (key, value) => {
+        headers[key] = value;
+      },
+      end: (body) => {
+        res.body = body;
+      },
+    };
+    await middleware({ url: '/price.xls?download=1', method }, res, () => {
+      throw new Error('unexpected fallback');
+    });
+    return { ...res, headers };
+  };
+  try {
+    await fs.mkdir(path.dirname(file), { recursive: true });
+    await fs.writeFile(file, 'first');
+    expect((await request()).body.toString()).toBe('first');
+    await fs.writeFile(file, 'updated');
+    const updated = await request();
+    expect(updated.body.toString()).toBe('updated');
+    expect(updated.headers['Cache-Control']).toBe('no-store');
+    expect(updated.headers['Content-Length']).toBe(7);
+    expect((await request('HEAD')).body).toBeUndefined();
+    await fs.unlink(file);
+    let fallback = false;
+    await middleware({ url: '/price.xls', method: 'GET' }, {}, () => {
+      fallback = true;
+    });
+    expect(fallback).toBe(true);
+  } finally {
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});

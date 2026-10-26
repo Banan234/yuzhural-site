@@ -49,7 +49,11 @@ describe('PrivacyPage', () => {
       })
     ).toBeInTheDocument();
     expect(
-      screen.getAllByText(SITE_REQUISITES.fullLegalName).length
+      screen.getByRole('heading', { name: /3.1. Обращения/ })
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Редакция от 25 октября/)).toBeInTheDocument();
+    expect(
+      screen.getAllByText(/ОГРН 1237400004445, ИНН 7453351320/).length
     ).toBeGreaterThan(0);
     expect(
       screen.getAllByRole('link', { name: SITE_EMAIL })[0]

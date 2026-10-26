@@ -106,7 +106,7 @@ export default function CableShippingPage() {
       )
     );
   }
-  const report = `${shipment ? `Итого: ${shipment.count} мест; ${FORMAT.format(shipment.massKg)} кг брутто; ${FORMAT.format(shipment.volumeM3)} м³` : 'Параметры мест нужно уточнить.'}\nПодготовка доставки со склада: ${SITE_WAREHOUSE_ADDRESS_DISPLAY}\nПункт назначения: ${destination || 'уточнить'}\nТранспортная компания: ${carrier || 'выбор покупателя'}\n${packages.map((item, index) => `${index + 1}. ${item.label || 'Грузовое место'}: ${item.lengthM} × ${item.widthM} × ${item.heightM} м; ${item.massKg} кг брутто за место; ${item.count} шт.`).join('\n')}${estimate ? `\nПредыдущая справочная оценка массы кабеля: ${FORMAT.format(estimate)} кг; не подменяет взвешивание груза.` : ''}\n${checkTransport ? `Кузов: ${transport.lengthM} × ${transport.widthM} × ${transport.heightM} м; грузоподъёмность: ${transport.payloadKg} кг\n${fit ? `Проверка массы: ${fit.fitsMass ? 'в пределах' : 'превышение'}; габаритов каждого места: ${fit.fitsDimensions ? 'в пределах' : 'превышение'}; площади пола: ${fit.fitsFloorArea ? 'в пределах' : 'превышение'}${fit.capacity !== null ? `; рядная раскладка: ${fit.capacity} мест` : '; смешанные места требуют схемы погрузки'}` : 'Параметры кузова нужно уточнить.'}` : ''}\nДополнительно: ${comment || '—'}\nПросьба уточнить стоимость и условия перевозки по тарифам выбранной ТК. Перевозка за счёт покупателя.`;
+  const report = `${shipment ? `Итого: ${shipment.count} мест; ${FORMAT.format(shipment.massKg)} кг брутто; ${FORMAT.format(shipment.volumeM3)} м³` : 'Параметры мест нужно уточнить.'}\nПодготовка самовывоза со склада: ${SITE_WAREHOUSE_ADDRESS_DISPLAY}\nПункт назначения: ${destination || 'уточнить'}\nТранспортная компания: ${carrier || 'выбор покупателя'}\n${packages.map((item, index) => `${index + 1}. ${item.label || 'Грузовое место'}: ${item.lengthM} × ${item.widthM} × ${item.heightM} м; ${item.massKg} кг брутто за место; ${item.count} шт.`).join('\n')}${estimate ? `\nПредыдущая справочная оценка массы кабеля: ${FORMAT.format(estimate)} кг; не подменяет взвешивание груза.` : ''}\n${checkTransport ? `Кузов: ${transport.lengthM} × ${transport.widthM} × ${transport.heightM} м; грузоподъёмность: ${transport.payloadKg} кг\n${fit ? `Проверка массы: ${fit.fitsMass ? 'в пределах' : 'превышение'}; габаритов каждого места: ${fit.fitsDimensions ? 'в пределах' : 'превышение'}; площади пола: ${fit.fitsFloorArea ? 'в пределах' : 'превышение'}${fit.capacity !== null ? `; рядная раскладка: ${fit.capacity} мест` : '; смешанные места требуют схемы погрузки'}` : 'Параметры кузова нужно уточнить.'}` : ''}\nДополнительно: ${comment || '—'}\nПокупатель самостоятельно заказывает и оплачивает перевозку. Просьба уточнить параметры груза для забора со склада.`;
   return (
     <ServiceLayout serviceKey="shipping">
       {estimate && (
@@ -218,7 +218,7 @@ export default function CableShippingPage() {
                   value={comment}
                   onChange={(event) => setComment(event.target.value)}
                   rows={3}
-                  placeholder="Нужна обрешётка, манипулятор, доставка до адреса…"
+                  placeholder="Требования к упаковке и погрузке…"
                 />
               </label>
             </div>
@@ -256,7 +256,7 @@ export default function CableShippingPage() {
           </div>
           <p className="service-muted">
             Стоимость определяет выбранная ТК по маршруту, упаковке и условиям
-            доставки. Услуги перевозчика оплачивает покупатель.
+            перевозки. Покупатель самостоятельно заказывает и оплачивает забор груза.
           </p>
           <div className="service-chips">
             <Link to={serviceUrl('weight')}>Оценить массу кабеля →</Link>
@@ -347,10 +347,10 @@ export default function CableShippingPage() {
         )}
       </section>
       <ReportActions
-        title="Запрос расчёта доставки"
+        title="Параметры груза для самовывоза"
         text={report}
         disabled={!shipment}
-        requestLabel="Запросить расчёт доставки"
+        requestLabel="Уточнить параметры груза"
       />
     </ServiceLayout>
   );

@@ -25,6 +25,8 @@ import {
 } from '../../lib/canonicalPaths.js';
 import {
   SITE_EMAIL,
+  SITE_TELEGRAM_URL,
+  SITE_WHATSAPP_URL,
   SITE_EMAIL_HREF,
   SITE_OFFICE_ADDRESS_DISPLAY,
   SITE_PHONE_DISPLAY,
@@ -76,9 +78,9 @@ function HeaderCartLink({ totalCount, mobile = false }) {
         <circle cx="20" cy="21" r="1" />
         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
       </svg>
-      {mobile ? (
-        <span className="site-header__cart-label">Список КП</span>
-      ) : null}
+      <span className="site-header__cart-label">
+        {mobile ? 'Список КП' : 'Корзина'}
+      </span>
       {totalCount > 0 ? <span className="cart-badge">{totalCount}</span> : null}
     </Link>
   );
@@ -98,7 +100,11 @@ export default function MainLayout() {
   const [quoteModalOptions, setQuoteModalOptions] = useState({});
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const mobileMenuButtonRef = useRef(null);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      (window.scrollY > 48 || window.history.state?.marksReturn?.top > 48)
+  );
   const [storageWarning, setStorageWarning] = useState(null);
 
   useEffect(() => {
@@ -187,6 +193,9 @@ export default function MainLayout() {
 
   return (
     <div>
+      <a className="skip-link" href="#main-content">
+        Перейти к содержимому
+      </a>
       <header
         className={`site-header${isScrolled ? ' site-header--scrolled' : ''}`}
       >
@@ -294,21 +303,52 @@ export default function MainLayout() {
                   source="Заказ звонка: шапка сайта"
                 />
 
-                <button
-                  type="button"
-                  className="header-quote-btn"
-                  onClick={() =>
-                    openLeadModal({
-                      title: 'Запросить КП',
-                      subtitle:
-                        'Оставьте телефон и список нужных позиций — подготовим коммерческое предложение.',
-                      submitLabel: 'Запросить КП',
-                      source: 'Кнопка КП в шапке',
-                    })
-                  }
+                <div
+                  className="header-messengers"
+                  aria-label="Связаться в мессенджерах"
                 >
-                  Запросить КП
-                </button>
+                  <a
+                    href={SITE_TELEGRAM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="header-messenger"
+                    aria-label="Написать в Telegram"
+                    title="Telegram"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="22"
+                      height="22"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M21.4 3.7 18.1 20c-.2 1-1 1.2-1.8.6l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.3L5.5 13.1.6 11.6c-1-.3-1-1 .2-1.5L20 2.7c.9-.3 1.7.2 1.4 1Z" />
+                    </svg>
+                  </a>
+                  <a
+                    href={SITE_WHATSAPP_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="header-messenger"
+                    aria-label="Написать в WhatsApp"
+                    title="WhatsApp"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="23"
+                      height="23"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7A8.5 8.5 0 1 1 20.5 11.7Z" />
+                      <path d="m8.4 7.3 1.5 2.6-1 1.1c.9 1.8 2.1 2.9 3.9 3.7l1-1.1 2.7 1.4c-.3 1.4-1.2 2.1-2.6 1.8-4.1-.9-7-3.8-7.5-7.1-.2-1.2.5-2.1 2-2.4Z" />
+                    </svg>
+                  </a>
+                </div>
 
                 <a
                   href={SITE_PHONE_HREF}
@@ -376,7 +416,7 @@ export default function MainLayout() {
                     `nav-link${isActive ? ' nav-link--active' : ''}`
                   }
                 >
-                  Доставка
+                  Получение заказа
                 </NavLink>
                 <NavLink
                   to={PAYMENT_CANONICAL_PATH}
@@ -454,7 +494,7 @@ export default function MainLayout() {
         </Suspense>
       ) : null}
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Suspense
           fallback={
             <div

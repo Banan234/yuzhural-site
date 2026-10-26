@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useLayoutEffect, useState } from 'react';
+import { Link, useLocation, useNavigationType } from 'react-router-dom';
 import Container from '../components/ui/Container';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { useSEO } from '../hooks/useSEO';
@@ -8,13 +8,41 @@ import { catalogMarkUrl } from '../lib/cableServices';
 import { russianCountNoun } from '../lib/russianCount';
 import '../styles/pages/marks.css';
 
+function readReturnSnapshot() {
+  if (typeof window === 'undefined') return null;
+  const snapshot = window.history.state?.marksReturn;
+  return snapshot &&
+    Array.isArray(snapshot.groups) &&
+    Number.isFinite(snapshot.top)
+    ? snapshot
+    : null;
+}
+
 export default function MarksPage() {
+  const location = useLocation();
+  const navigationType = useNavigationType();
   const prerenderData = usePrerenderData();
-  const [groups, setGroups] = useState(() =>
-    Array.isArray(prerenderData.marks) ? prerenderData.marks : []
+  const [returnSnapshot] = useState(readReturnSnapshot);
+  const [groups, setGroups] = useState(
+    () =>
+      returnSnapshot?.groups ??
+      (Array.isArray(prerenderData.marks) ? prerenderData.marks : [])
   );
-  const [loading, setLoading] = useState(!Array.isArray(prerenderData.marks));
+  const [loading, setLoading] = useState(
+    !returnSnapshot && !Array.isArray(prerenderData.marks)
+  );
   const [error, setError] = useState(false);
+
+  useLayoutEffect(() => {
+    if (loading || navigationType !== 'POP') return;
+    if (returnSnapshot && Math.abs(window.scrollY - returnSnapshot.top) > 1) {
+      window.scrollTo({
+        top: returnSnapshot.top,
+        left: 0,
+        behavior: 'instant',
+      });
+    }
+  }, [loading, location.key, navigationType, returnSnapshot]);
 
   useSEO({
     title: 'Алфавитный перечень марок кабеля',
@@ -24,6 +52,9 @@ export default function MarksPage() {
   });
 
   useEffect(() => {
+    // Returning to a history entry must not start another load or replace the
+    // list while Safari is completing its swipe-back animation.
+    if (returnSnapshot && navigationType === 'POP') return;
     const controller = new AbortController();
     async function loadMarks() {
       try {
@@ -32,6 +63,7 @@ export default function MarksPage() {
         });
         if (!response.ok) throw new Error('Не удалось загрузить марки');
         const data = await response.json();
+        if (controller.signal.aborted) return;
         if (!data.ok || !Array.isArray(data.groups))
           throw new Error('Неверный ответ');
         setGroups(data.groups);
@@ -44,7 +76,7 @@ export default function MarksPage() {
     }
     loadMarks();
     return () => controller.abort();
-  }, []);
+  }, [returnSnapshot, navigationType]);
 
   const total = groups.reduce((sum, group) => sum + group.marks.length, 0);
 
@@ -103,6 +135,20 @@ export default function MarksPage() {
                   <li key={mark}>
                     <Link
                       to={catalogMarkUrl(mark)}
+                      onClick={() => {
+                        // Restore this exact list without a new request on Back.
+                        try {
+                          window.history.replaceState(
+                            {
+                              ...window.history.state,
+                              marksReturn: { groups, top: window.scrollY },
+                            },
+                            ''
+                          );
+                        } catch {
+                          // Navigation still works if the browser rejects history storage.
+                        }
+                      }}
                       title={`В каталоге: ${count} ${russianCountNoun(count, {
                         one: 'позиция',
                         few: 'позиции',

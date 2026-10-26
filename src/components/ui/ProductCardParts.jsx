@@ -1,5 +1,6 @@
 // Файл содержит мелкие части товарной карточки: бейджи, цена, действия и подписи характеристик.
 
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export function ProductBadges({ badges }) {
@@ -31,9 +32,6 @@ export function ProductMeta({ brand, product, isInStock, statusLabel }) {
         </div>
       </div>
       <div className="product-card__category">{product.category}</div>
-      {brand && (
-        <div className="product-card__manufacturer">Производитель: {brand}</div>
-      )}
     </>
   );
 }
@@ -132,10 +130,24 @@ function CartIconButton({ addedToCart, onClick }) {
 
 export function CartQuantityControl({
   quantity,
+  maxQuantity = Infinity,
   title,
   onIncrease,
   onDecrease,
+  onQuantityChange,
 }) {
+  const [draft, setDraft] = useState(String(quantity).replace('.', ','));
+  useEffect(() => setDraft(String(quantity).replace('.', ',')), [quantity]);
+  function commitQuantity() {
+    const parsed = Number(draft.trim().replace(',', '.'));
+    if (!draft.trim() || !Number.isFinite(parsed) || parsed <= 0) {
+      setDraft(String(quantity).replace('.', ','));
+      return;
+    }
+    const next = Math.min(maxQuantity, parsed);
+    setDraft(String(next).replace('.', ','));
+    onQuantityChange?.(next);
+  }
   return (
     <div
       className="product-card__quantity"
@@ -149,12 +161,29 @@ export function CartQuantityControl({
       >
         −
       </button>
-      <output aria-live="polite" aria-atomic="true">
-        {quantity.toLocaleString('ru-RU')}
-      </output>
+      <input
+        type="text"
+        inputMode="decimal"
+        aria-label={`Количество ${title}`}
+        value={draft}
+        maxLength={16}
+        onFocus={(event) => event.currentTarget.select()}
+        onChange={(event) => setDraft(event.target.value)}
+        onBlur={commitQuantity}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            event.currentTarget.blur();
+          }
+        }}
+      />
       <button
         type="button"
         onClick={onIncrease}
+        disabled={quantity >= maxQuantity}
+        title={
+          quantity >= maxQuantity ? 'Достигнут доступный остаток' : undefined
+        }
         aria-label={`Увеличить количество ${title}`}
       >
         +
@@ -166,18 +195,22 @@ export function CartQuantityControl({
 export function CardActions({
   isStockVariant,
   quantity = 0,
+  maxQuantity = Infinity,
   title,
   onDecrease,
   onAddToCart,
+  onQuantityChange,
   onOpenQuote,
 }) {
   const cartAction =
     quantity > 0 ? (
       <CartQuantityControl
         quantity={quantity}
+        maxQuantity={maxQuantity}
         title={title}
         onIncrease={onAddToCart}
         onDecrease={onDecrease}
+        onQuantityChange={onQuantityChange}
       />
     ) : (
       <button

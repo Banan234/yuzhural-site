@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 // Файл рендерит страницу оплаты: единый сценарий сделки, условия для B2B/физлиц, документы и CTA.
 
 import Container from '../components/ui/Container';
@@ -9,8 +10,6 @@ import {
   SITE_EMAIL_HREF,
   SITE_PHONE,
   SITE_PHONE_DISPLAY,
-  SITE_PUBLIC_DOCUMENTS,
-  SITE_REQUISITES,
 } from '../lib/siteConfig';
 import {
   buildStaticPageJsonLd,
@@ -18,76 +17,57 @@ import {
 } from '../lib/staticPageJsonLd';
 import { STATIC_PAGE_SEO } from '../lib/staticSeo';
 import '../styles/pages/content.css';
+import '../styles/pages/payment.css';
 
 const PAYMENT_JSON_LD_ID = getStaticPageJsonLdId(STATIC_PAGE_SEO.payment.path);
 const PAYMENT_JSON_LD = buildStaticPageJsonLd(STATIC_PAGE_SEO.payment.path);
 
-const PAYMENT_BADGES = [
-  'Сайт-каталог без онлайн-оплаты',
-  'Подтверждаем цену и наличие до счёта',
-  'Один порядок работы для компаний и физлиц',
-  'Отгрузка после поступления оплаты',
-];
-
 const PAYMENT_MODES = [
   {
-    title: 'Для юридических лиц и ИП',
-    label: 'Безналичный расчёт',
+    title: 'Для компаний и ИП',
+    label: 'Счёт по реквизитам',
     description:
-      'Счёт выставляем после проверки номенклатуры, объёма и условий поставки. При необходимости оформляем договор поставки, спецификацию и комплект закрывающих документов.',
+      'Подтвердите покупку и передайте менеджеру реквизиты для выставления счёта.',
     points: [
-      'До оплаты направляем счёт, реквизиты, договор и дополнительные файлы для проверки.',
-      'Для объектных и регулярных закупок отдельно фиксируем сроки, резерв и особые условия поставки.',
-      'Отгрузка производится после поступления оплаты, если иной порядок не согласован сторонами отдельно.',
+      'До оплаты согласуем состав заказа, количество и цену.',
+      'Оплатите счёт полностью в течение 3 дней.',
+      'Цены включают НДС.',
     ],
   },
   {
     title: 'Для физических лиц',
-    label: 'По индивидуально согласованному счёту',
+    label: 'Счёт на физическое лицо',
     description:
-      'Продажа физическим лицам осуществляется после подтверждения наличия, цены, способа получения и иных условий поставки. Сайт не оформляет покупку автоматически: менеджер сначала согласует условия, затем направляет счёт или договор.',
+      'Для выставления счёта физическому лицу достаточно сообщить менеджеру ФИО.',
     points: [
-      'До оплаты подтверждаем состав заказа, итоговую цену и срок готовности к отгрузке.',
-      'Оплата производится по выставленному счёту, после поступления денег согласуем выдачу или отправку товара.',
-      'По физическим лицам отдельно сообщаем порядок возврата, обмена и рассмотрения претензий.',
+      'Состав заказа и итоговую стоимость с НДС подтверждаем до оплаты.',
+      'Срок оплаты счёта — 3 дня.',
+      'Работаем по 100% предоплате.',
     ],
   },
 ];
 
 const PAYMENT_STEPS = [
   {
-    title: 'Получаем заявку',
-    text: 'Вы присылаете перечень марок кабеля, объём, город доставки и контактные данные для оформления счёта или договора.',
+    title: 'Выберите кабель',
+    text: 'Пришлите марки и необходимый метраж. Менеджер подтвердит наличие и цену.',
   },
   {
-    title: 'Подтверждаем условия',
-    text: 'Менеджер проверяет наличие, цену, срок готовности к отгрузке, способ получения и комплект документов по сделке.',
+    title: 'При необходимости оформите резерв',
+    text: 'По запросу резервируем кабель максимум на 3 дня, пока вы принимаете решение о покупке.',
   },
   {
-    title: 'Направляем документы',
-    text: 'Отправляем счёт, реквизиты, типовой договор и иные документы, которые нужны для согласования и оплаты.',
+    title: 'Подтвердите покупку и получите счёт',
+    text: 'Сообщите менеджеру о решении купить. Выставим счёт на физическое лицо или по реквизитам компании.',
   },
   {
-    title: 'Подтверждаем оплату',
-    text: 'После поступления средств подтверждаем дату выдачи или передачи груза в транспортную компанию.',
+    title: 'Оплатите счёт',
+    text: 'Оплатите счёт полностью в течение 3 дней. На этот период кабель находится в резерве.',
   },
-  {
-    title: 'Отгружаем заказ',
-    text: 'Комплектуем заказ и передаём его на самовывоз или перевозчику по согласованному сценарию получения.',
-  },
-];
-
-const PAYMENT_CONFIRMATION_POINTS = [
-  'перечень и количество товара',
-  'итоговая цена по счёту или договору',
-  'срок готовности заказа к отгрузке',
-  'способ получения: самовывоз или транспортная компания',
-  'комплект документов по сделке',
-  'стоимость доставки, если она включается отдельно',
 ];
 
 const PAYMENT_LEGAL_NOTES = [
-  'Информация на сайте носит справочный характер и не является публичной офертой.',
+  'Для розничных покупок действуют условия опубликованной оферты и согласованного заказа.',
   'Окончательная цена товара определяется в счёте, договоре или ином согласованном документе после подтверждения наличия и условий поставки.',
   'Порядок и момент заключения договора фиксируются в счёте, договоре и иных документах по конкретной сделке.',
   'При продаже физическим лицам условия оплаты, получения товара и рассмотрения претензий сообщаются до внесения оплаты.',
@@ -118,22 +98,19 @@ export default function PaymentPage() {
 
   return (
     <>
-      <section className="section">
+      <section className="section payment-page">
         <Container>
           <Breadcrumbs current="Оплата" />
           <div className="payment-page__hero">
             <div className="payment-page__intro">
-              <h1 className="page-title">Оплата и оформление поставки</h1>
-              <p className="page-subtitle">
-                Поставка кабельно-проводниковой продукции осуществляется после
-                подтверждения наличия, согласования условий и выставления счёта.
+              <h1 className="page-title">Оплата заказа</h1>
+              <p className="content-lead">
+                <Link to="/oferta/">Публичная оферта: условия покупки →</Link>
               </p>
-
-              <div className="payment-page__badges" aria-label="Условия оплаты">
-                {PAYMENT_BADGES.map((badge) => (
-                  <span key={badge}>{badge}</span>
-                ))}
-              </div>
+              <p className="page-subtitle">
+                Подтвердите покупку и получите счёт на физическое лицо или
+                компанию. Работаем по 100% предоплате. Цены включают НДС.
+              </p>
 
               <div className="content-actions payment-page__hero-actions">
                 <button
@@ -151,17 +128,17 @@ export default function PaymentPage() {
 
             <aside className="payment-summary">
               <h2 className="payment-summary__title">
-                Один сценарий сделки, но без автоматической покупки на сайте
+                Резерв кабеля — до 3 дней
               </h2>
               <p className="payment-summary__text">
-                Сайт носит информационный характер. Окончательные условия
-                поставки, стоимость, сроки отгрузки, способ доставки и комплект
-                документов согласуются менеджером после получения заявки.
+                По запросу резервируем кабель максимум на 3 дня. Выставленный
+                счёт нужно оплатить в течение 3 дней — на этот же период
+                предоставляется резерв.
               </p>
               <ul className="payment-summary__list">
-                <li>подтверждаем цену и наличие до оплаты</li>
-                <li>направляем счёт, договор и реквизиты на согласование</li>
-                <li>отгружаем только после подтверждения оплаты</li>
+                <li>подтверждаем цену с НДС и наличие до оплаты</li>
+                <li>выставляем счёт после подтверждения покупки</li>
+                <li>принимаем полную оплату по счёту</li>
               </ul>
               <div className="payment-summary__contacts">
                 <a
@@ -182,7 +159,7 @@ export default function PaymentPage() {
         </Container>
       </section>
 
-      <section className="section section--soft">
+      <section className="section section--soft payment-page">
         <Container>
           <div className="section-head">
             <h2 className="section-title section-title--left">
@@ -207,17 +184,16 @@ export default function PaymentPage() {
         </Container>
       </section>
 
-      <section className="section">
+      <section className="section payment-page">
         <Container>
-          <div className="content-columns">
+          <div className="content-columns payment-process">
             <div>
               <h2 className="section-title section-title--left">
-                Как проходит оформление
+                Как оформить и оплатить заказ
               </h2>
               <p className="content-lead">
-                Процесс один и тот же для компаний и физических лиц: сначала
-                проверяем фактические условия поставки, потом направляем
-                документы на оплату и только после этого подтверждаем отгрузку.
+                Согласуйте состав заказа с менеджером, получите счёт и оплатите
+                его в течение срока действия.
               </p>
             </div>
 
@@ -231,84 +207,19 @@ export default function PaymentPage() {
             </ol>
           </div>
 
-          <div className="content-columns content-columns--spaced">
-            <div>
-              <h2 className="section-title section-title--left">
-                Что фиксируем до оплаты
-              </h2>
-              <p className="content-lead">
-                До выставления счёта или подписания договора заранее
-                согласовываем все ключевые условия, чтобы оплата не уходила
-                вслепую и не требовала пересогласования после поступления денег.
-              </p>
-            </div>
-
-            <ul className="info-list">
-              {PAYMENT_CONFIRMATION_POINTS.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="content-columns content-columns--spaced">
-            <div>
-              <h2 className="section-title section-title--left">
-                Документы и реквизиты
-              </h2>
-              <p className="content-lead">
-                Счёт выставляется от {SITE_REQUISITES.fullLegalName}. Основные
-                юридические данные, типовой договор и открытые файлы доступны
-                заранее, чтобы юрлицо, ИП или физическое лицо могли проверить
-                контрагента и пакет документов до оплаты.
-              </p>
-            </div>
-
-            <div className="proof-panel">
-              <dl className="proof-details">
-                <div>
-                  <dt>Организация</dt>
-                  <dd>{SITE_REQUISITES.fullLegalName}</dd>
-                </div>
-                <div>
-                  <dt>ИНН / ОГРН</dt>
-                  <dd>
-                    {SITE_REQUISITES.taxId} /{' '}
-                    {SITE_REQUISITES.registrationNumber}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Формат оплаты</dt>
-                  <dd>Безналичный расчёт по счёту или договору</dd>
-                </div>
-                <div>
-                  <dt>Отгрузка</dt>
-                  <dd>После поступления оплаты</dd>
-                </div>
-              </dl>
-
-              <div className="proof-documents proof-documents--compact">
-                {SITE_PUBLIC_DOCUMENTS.map((doc) => (
-                  <a key={doc.href} href={doc.href} className="proof-document">
-                    <span className="proof-document__type">{doc.type}</span>
-                    <span>
-                      <strong>{doc.title}</strong>
-                      <small>{doc.description}</small>
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
+          <p className="content-lead payment-process__link">
+            <Link to="/delivery/">
+              Подготовка, документы и получение заказа →
+            </Link>
+          </p>
           <div className="content-columns content-columns--spaced">
             <div>
               <h2 className="section-title section-title--left">
                 Важные условия
               </h2>
               <p className="content-lead">
-                Эти правила помогают одинаково понятно пройти путь от заявки до
-                отгрузки и не подменять согласование сделки автоматически
-                опубликованной ценой на сайте.
+                Окончательные условия покупки фиксируем в документах по вашему
+                заказу.
               </p>
             </div>
 
@@ -321,17 +232,14 @@ export default function PaymentPage() {
         </Container>
       </section>
 
-      <section className="section">
+      <section className="section payment-page">
         <Container>
           <div className="payment-cta">
             <div>
-              <h2 className="payment-cta__title">
-                Нужен счёт или согласование условий поставки
-              </h2>
+              <h2 className="payment-cta__title">Нужен счёт на оплату?</h2>
               <p className="payment-cta__text">
                 Отправьте список позиций и контакты. Подготовим счёт, проверим
-                наличие и заранее согласуем цену, документы и способ получения
-                заказа.
+                наличие и заранее согласуем цену и платёжные документы.
               </p>
               <p className="payment-cta__text">
                 <a href={`tel:${SITE_PHONE}`}>

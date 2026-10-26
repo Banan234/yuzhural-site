@@ -12,17 +12,20 @@
 
 .delivery-page__tabs {
   display: flex;
-  gap: 40px;
-  margin: 28px 0 32px;
+  gap: 30px;
+  width: 100%;
+  margin: 24px 0 32px;
+  border-bottom: 1px solid var(--line);
 }
 
 .delivery-page__tabs [role='tab'] {
-  padding: 0 0 12px;
+  padding: 14px 0;
   border: 0;
   border-bottom: 2px solid transparent;
+  border-radius: 0;
   background: transparent;
   color: var(--muted);
-  font-size: 18px;
+  font-size: 14px;
   font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
@@ -32,7 +35,7 @@
 }
 
 .delivery-page__tabs [aria-selected='true'] {
-  border-bottom-color: var(--primary-dark);
+  border-bottom-color: var(--primary);
   color: var(--primary-dark);
 }
 
@@ -128,12 +131,13 @@
 
 .delivery-page .delivery-steps li {
   min-height: 0;
-  padding-left: 30px;
+  padding-inline-start: 30px;
 }
 
 .delivery-page .delivery-steps li::before {
   top: 0;
-  left: 0;
+  left: auto;
+  inset-inline-start: 0;
   width: auto;
   height: auto;
   border-radius: 0;
@@ -152,7 +156,7 @@
   display: grid;
   gap: 12px;
   margin: 0;
-  padding-left: 18px;
+  padding-inline-start: 18px;
   list-style: disc;
   color: #475569;
 }
@@ -191,4 +195,336 @@
   .delivery-page .delivery-manager-card {
     margin-top: 36px;
   }
+}
+
+/* Общая плотность и спокойные поверхности коммерческих страниц. */
+.delivery-page {
+  padding-bottom: 56px;
+}
+.delivery-page .page-title {
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.delivery-page .page-subtitle {
+  margin: 0;
+  font-size: 16px;
+  color: var(--muted);
+}
+.delivery-page__panel {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
+  gap: 36px;
+  align-items: start;
+  padding: 28px;
+  background: var(--bg-soft);
+  border-radius: 8px;
+}
+
+.delivery-page__panel::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--bg-soft);
+  box-shadow: 0 0 0 100vmax var(--bg-soft);
+  clip-path: inset(0 -100vmax);
+}
+.delivery-page .delivery-option__title,
+.delivery-page .delivery-section-title,
+.delivery-page .delivery-manager-card__title {
+  margin-bottom: 14px;
+  font-size: clamp(22px, 2vw, 28px);
+  color: var(--text);
+  line-height: 1.25;
+}
+.delivery-page__address {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.delivery-page__address span {
+  color: var(--muted);
+  font-size: 13px;
+}
+.delivery-page__address a {
+  color: var(--primary-dark);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+}
+.delivery-page .delivery-option p,
+.delivery-page .content-lead,
+.delivery-page .delivery-manager-card__text,
+.delivery-page .delivery-page__shipping-note {
+  color: var(--muted);
+  font-size: 15px;
+}
+.delivery-page .delivery-route-map {
+  margin-top: 0;
+  min-width: 0;
+}
+.delivery-page .contacts-map-card__title {
+  margin-bottom: 12px;
+  font-size: 17px;
+  color: var(--text);
+}
+.delivery-page .contacts-map-frame {
+  height: 400px;
+  min-height: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.delivery-page .contacts-map-frame iframe {
+  height: 100%;
+  min-height: 0;
+}
+.delivery-page .contacts-map-card__footer {
+  gap: 8px;
+  padding-top: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.delivery-page .delivery-page__shipping-note {
+  margin: 0;
+  padding: 20px;
+  border-inline-start: 2px solid var(--primary);
+  background: var(--surface);
+}
+.delivery-page .content-columns--spaced {
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 36px;
+}
+.delivery-page .delivery-steps {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.delivery-page .delivery-steps strong {
+  font-size: 15px;
+}
+.delivery-page .delivery-steps span,
+.delivery-page .info-list {
+  font-size: 14px;
+  color: var(--muted);
+}
+.delivery-page .delivery-manager-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 36px;
+  align-items: center;
+  max-width: none;
+  margin-top: 36px;
+  padding: 28px;
+  border-radius: 8px;
+  background: var(--bg-soft);
+}
+.delivery-page .delivery-manager-card__title {
+  grid-column: 1;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+.delivery-page .delivery-manager-card__text {
+  grid-column: 1;
+  max-width: 780px;
+}
+.delivery-page .delivery-manager-card__actions {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .delivery-page__panel,
+  .delivery-page .content-columns--spaced {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .delivery-page .delivery-manager-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .delivery-page .delivery-manager-card__actions {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+@media (max-width: 600px) {
+  .delivery-page__panel,
+  .delivery-page .delivery-manager-card {
+    padding: 20px 16px;
+  }
+  .delivery-page .delivery-steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .delivery-page .contacts-map-frame {
+    height: 320px;
+  }
+  .delivery-page .content-columns--spaced {
+    margin-top: 28px;
+    padding-top: 24px;
+  }
+}
+
+.delivery-pickup-details {
+  display: grid;
+  gap: 16px;
+  margin: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.delivery-pickup-details dt {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.delivery-pickup-details dd {
+  margin: 0;
+  color: var(--text);
+}
+.delivery-pickup-details a {
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+.delivery-pickup-details .delivery-pickup-details__note {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.delivery-pickup-list {
+  display: grid;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.delivery-pickup-list h3 {
+  margin: 0 0 6px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+}
+.delivery-pickup-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Памятка самовывоза: сроки, последовательность и условия получения. */
+.delivery-pickup-guide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+.delivery-page .delivery-pickup-guide .content-columns--spaced {
+  display: block;
+  margin: 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.delivery-page .delivery-pickup-guide .pickup-reserve,
+.delivery-page .delivery-pickup-guide .pickup-before {
+  grid-column: 1 / -1;
+}
+.delivery-page .delivery-pickup-guide .pickup-reserve {
+  padding: 0;
+  border: 0;
+}
+.delivery-pickup-guide .content-lead {
+  max-width: 760px;
+}
+.delivery-pickup-guide .delivery-section-title {
+  font-size: clamp(22px, 2vw, 28px);
+}
+.pickup-reserve .delivery-pickup-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.pickup-reserve .delivery-pickup-list li {
+  padding: 24px;
+  border-radius: 8px;
+  background: var(--bg-soft);
+}
+.pickup-reserve .pickup-fact {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--primary-dark);
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.2;
+  font-weight: var(--font-weight-medium);
+}
+.pickup-reserve .pickup-fact--text {
+  font-size: clamp(22px, 1.8vw, 26px);
+}
+.delivery-page .pickup-before .delivery-steps {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+.delivery-page .pickup-before .delivery-steps li {
+  padding: 44px 0 0;
+}
+.delivery-page .pickup-before .delivery-steps li::before {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  color: var(--primary-dark);
+  font-weight: var(--font-weight-medium);
+  content: counter(delivery-steps);
+}
+.pickup-documents .delivery-pickup-list,
+.pickup-loading .delivery-pickup-list {
+  margin-top: 24px;
+}
+@media (max-width: 1000px) {
+  .delivery-page .pickup-before .delivery-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pickup-reserve .delivery-pickup-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 650px) {
+  .delivery-pickup-guide {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    margin-top: 28px;
+  }
+  .delivery-page .delivery-pickup-guide .content-columns--spaced {
+    padding: 20px;
+  }
+  .delivery-page .delivery-pickup-guide .pickup-reserve {
+    padding: 0;
+  }
+  .pickup-reserve .delivery-pickup-list li {
+    padding: 20px;
+  }
+  .delivery-page .pickup-before .delivery-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Фон блока склада совпадает с секцией поставок на главной. */
+.delivery-page__panel--pickup,
+.delivery-page__panel--pickup::before {
+  background: #f8f8f8;
+}
+.delivery-page__panel--pickup::before {
+  box-shadow: 0 0 0 100vmax #f8f8f8;
+}
+
+.delivery-page__panel--shipping {
+  margin-top: 40px;
 }

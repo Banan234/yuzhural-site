@@ -1,6 +1,7 @@
 // Проверки нормализованных товаров и единый формат замечаний импорта.
 
 import { buildStableKey } from './productRegistry.js';
+import { auditProductTitles } from '../../shared/productTitleAudit.js';
 
 const VALID_UNITS = new Set(['м', 'шт', 'кг', 'тн', 'км', 'упак', 'бухта']);
 
@@ -36,6 +37,13 @@ export function validateNormalizedProducts(
           'Не заполнено нормализованное наименование.'
         )
       );
+    }
+    if (String(product?.name || '').trim()) {
+      for (const issue of auditProductTitles([product])) {
+        errors.push(
+          productDiagnostic(product, issue.code, 'error', issue.message)
+        );
+      }
     }
     if (
       !Number.isFinite(Number(product?.price)) ||

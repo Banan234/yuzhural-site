@@ -58,6 +58,11 @@ function bindConsentListener() {
       initAnalytics();
     } else {
       pendingHits.length = 0;
+      if (isReady && window.ym) {
+        window.ym(counterIdNumber(), 'destruct');
+      }
+      isReady = false;
+      initPromise = null;
       clearYandexCookies();
     }
   };

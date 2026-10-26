@@ -24,3 +24,17 @@ README.md
 .nvmrc
 .prettierrc*
 .editorconfig
+
+# Рабочие материалы и локальные архивы не нужны для сборки или запуска образов.
+outputs/
+data/backups/
+data/import-reports/
+data/import-mail-outbox/
+data/import-report.json
+data/import-report.html
+data/import-status.json
+data/.price-import.lock
+data/.price-source-state.json
+data/.import-notification-state.json
+data/.import-maintenance.json
+data/.import-maintenance.json.lock

@@ -1,3 +1,4 @@
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 // Файл показывает баннер, сохраняет выбор категорий и позволяет изменить его позже.
 
 import { useEffect, useState } from 'react';
@@ -13,6 +14,7 @@ import '../../styles/layout/cookie-consent.css';
 export default function CookieConsent() {
   const [consent, setConsent] = useState(undefined);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const dialogRef = useDialogFocus(isSettingsOpen);
   const [analytics, setAnalytics] = useState(false);
   const [externalServices, setExternalServices] = useState(false);
 
@@ -73,13 +75,9 @@ export default function CookieConsent() {
         <aside className="cookie-consent" aria-label="Настройки cookie">
           <p className="cookie-consent__message">
             Используем cookie для работы сайта и удобства.{' '}
-            <button
-              type="button"
-              className="cookie-consent__text-button"
-              onClick={() => setIsSettingsOpen(true)}
-            >
+            <a className="cookie-consent__text-button" href="/privacy#cookies">
               Подробнее
-            </button>
+            </a>
           </p>
           <div className="cookie-consent__actions">
             <button
@@ -111,6 +109,8 @@ export default function CookieConsent() {
         >
           <section
             className="cookie-settings"
+            ref={dialogRef}
+            tabIndex={-1}
             role="dialog"
             aria-modal="true"
             aria-labelledby="cookie-settings-title"
@@ -128,7 +128,10 @@ export default function CookieConsent() {
               Обязательные данные нужны для работы сайта и сохраняют, например,
               содержимое корзины. Аналитика и внешние карты включаются только по
               вашему выбору. Решение можно изменить в любое время в футере.{' '}
-              <a href="/privacy" onClick={() => setIsSettingsOpen(false)}>
+              <a
+                href="/privacy#cookies"
+                onClick={() => setIsSettingsOpen(false)}
+              >
                 Политика конфиденциальности
               </a>
             </p>
@@ -165,7 +168,8 @@ export default function CookieConsent() {
                 <span>
                   <strong>Внешние сервисы</strong>
                   <small>
-                    Встроенные карты Яндекса на страницах контактов и доставки
+                    Встроенные карты Яндекса на страницах контактов и получения
+                    заказа
                   </small>
                 </span>
               </label>

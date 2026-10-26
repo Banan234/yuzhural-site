@@ -7,8 +7,9 @@ import {
 } from 'react';
 
 const AUTO_DELAY_MS = 4000;
-const INITIAL_AUTO_DELAY_MS = 2000;
+const INITIAL_AUTO_DELAY_MS = 1000;
 const SECOND_AUTO_DELAY_MS = 3000;
+const HOVER_RESUME_DELAY_MS = 1000;
 const SLIDE_DURATION_MS = 420;
 const useBrowserLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect;
@@ -20,6 +21,7 @@ export default function useProductCarousel(products, enabled) {
   const orderRef = useRef(products);
   const busyRef = useRef(false);
   const nextAutoDelayRef = useRef(INITIAL_AUTO_DELAY_MS);
+  const initialAutoPendingRef = useRef(true);
   const gestureRef = useRef(null);
   const suppressClickRef = useRef(false);
   const [order, setOrder] = useState(products);
@@ -120,9 +122,10 @@ export default function useProductCarousel(products, enabled) {
       if (current.length < 2) return false;
       busyRef.current = true;
       nextAutoDelayRef.current =
-        automatic && nextAutoDelayRef.current === INITIAL_AUTO_DELAY_MS
+        automatic && initialAutoPendingRef.current
           ? SECOND_AUTO_DELAY_MS
           : AUTO_DELAY_MS;
+      initialAutoPendingRef.current = false;
       const next =
         direction > 0
           ? [...current.slice(1), current[0]]
@@ -191,9 +194,11 @@ export default function useProductCarousel(products, enabled) {
 
   useEffect(() => {
     if (!pageVisible || reading || touching) {
+      initialAutoPendingRef.current = false;
       nextAutoDelayRef.current = AUTO_DELAY_MS;
     } else if (hovered) {
-      nextAutoDelayRef.current = SECOND_AUTO_DELAY_MS;
+      initialAutoPendingRef.current = false;
+      nextAutoDelayRef.current = HOVER_RESUME_DELAY_MS;
     }
     if (
       !enabled ||
@@ -207,11 +212,8 @@ export default function useProductCarousel(products, enabled) {
       motion
     )
       return;
-    // При первом появлении: 2, 3, затем 4 секунды. После ухода курсора — 3.
-    const timer = setTimeout(
-      () => move(1, true),
-      nextAutoDelayRef.current
-    );
+    // При первом появлении: 1, 3, затем 4 секунды. После ухода курсора — 1.
+    const timer = setTimeout(() => move(1, true), nextAutoDelayRef.current);
     return () => clearTimeout(timer);
   }, [
     enabled,
