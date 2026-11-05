@@ -1,7 +1,11 @@
+import SiteSelect from '../ui/SiteSelect';
+import { DEFAULT_CATALOG_PAGE_SIZE as PAGE_SIZE } from '../../../shared/catalogPagination.js';
 // Файл рендерит список товаров каталога, состояния загрузки, пустые результаты и управление выдачей.
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import CatalogFacet from './CatalogFacet';
+import CatalogSort from './CatalogSort';
 import ProductCard from '../ui/ProductCard';
 import { formatVoltage } from '../../lib/catalogFilters';
 import {
@@ -15,9 +19,9 @@ import {
   useCatalogFilters,
 } from '../../hooks/useCatalogFilters';
 
-const PAGE_SIZE = 24;
 const PRICE_MIN_ID = 'price-min';
 const PRICE_MAX_ID = 'price-max';
+const VIEW_MODE_STORAGE_KEY = 'yuzhural:catalog-view-mode';
 
 function getPageNumbers(currentPage, totalPages) {
   if (totalPages <= 7) {
@@ -66,6 +70,7 @@ export default function ProductListingView({
   products,
   isLoading,
   error,
+  onRetry,
   extraFilters = {},
   scopeKey,
   pagination = null,
@@ -113,6 +118,67 @@ export default function ProductListingView({
   const [localPage, setLocalPage] = useState(1);
   const [filtersExpanded, setFiltersExpanded] = useState(false);
   const [viewMode, setViewMode] = useState('tiles');
+  const filtersSidebarRef = useRef(null);
+
+  useEffect(() => {
+    const sidebar = filtersSidebarRef.current;
+    const header = document.querySelector('.site-header');
+    if (!sidebar || !header) return;
+    const measureSpace = () => {
+      const headerHeight = header.getBoundingClientRect().height;
+      const top = Math.max(
+        headerHeight + 16,
+        sidebar.getBoundingClientRect().top
+      );
+      sidebar.style.setProperty('--catalog-header-height', `${headerHeight}px`);
+      sidebar.style.setProperty(
+        '--catalog-filters-available-height',
+        `${Math.max(0, window.innerHeight - top - 16)}px`
+      );
+    };
+    let frame = 0;
+    const scheduleMeasure = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        measureSpace();
+      });
+    };
+    measureSpace();
+    const observer =
+      typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(scheduleMeasure);
+    observer?.observe(header);
+    window.addEventListener('scroll', scheduleMeasure, { passive: true });
+    window.addEventListener('resize', scheduleMeasure);
+    return () => {
+      observer?.disconnect();
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', scheduleMeasure);
+      window.removeEventListener('resize', scheduleMeasure);
+    };
+  }, [isLoading, scopeKey]);
+
+  // Читаем после гидратации, чтобы первый рендер совпадал с SSR.
+  useEffect(() => {
+    try {
+      const savedMode = window.localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+      if (savedMode === 'tiles' || savedMode === 'list') setViewMode(savedMode);
+    } catch {
+      // Переключатель работает и при недоступном хранилище браузера.
+    }
+  }, []);
+
+  function selectViewMode(mode) {
+    setViewMode(mode);
+    try {
+      window.localStorage.setItem(VIEW_MODE_STORAGE_KEY, mode);
+    } catch {
+      // Сохраняем выбранный вид в текущей выдаче, даже если запись запрещена.
+    }
+  }
+
   const isServerPaged = Boolean(pagination);
   const requestedPageSize = Number(searchParams.get('limit'));
   const pageSize = CATALOG_PAGE_SIZE_OPTIONS.includes(pagination?.limit)
@@ -261,21 +327,39 @@ export default function ProductListingView({
     !!priceMin ||
     !!priceMax ||
     !!search;
-  function handlePageChange(nextPage) {
-    const normalizedPage = Math.min(Math.max(nextPage, 1), totalPages);
-    if (normalizedPage === page) return;
-
-    if (isServerPaged) {
-      updateParam('page', normalizedPage > 1 ? normalizedPage : '');
-    } else {
-      setLocalPage(normalizedPage);
+  const location = useLocation();
+  function pageHref(nextPage) {
+    const params = new URLSearchParams(searchParams);
+    if (nextPage > 1) params.set('page', String(nextPage));
+    else params.delete('page');
+    const query = params.toString();
+    return location.pathname + (query ? `?${query}` : '');
+  }
+  function handlePageNavigation(event, nextPage) {
+    // Native modified clicks must retain their browser behavior.
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return;
+    if (nextPage === page) {
+      event.preventDefault();
+      return;
     }
+    if (!isServerPaged) setLocalPage(nextPage);
     requestAnimationFrame(scrollCatalogGridIntoView);
   }
 
   return (
     <div className="catalog-listing-layout">
-      <aside className="catalog-filters-sidebar" aria-label="Фильтры товаров">
+      <aside
+        ref={filtersSidebarRef}
+        className="catalog-filters-sidebar"
+        aria-label="Фильтры товаров"
+      >
         <div className="catalog-filter-panel catalog-filter-panel--sidebar">
           <div className="catalog-filter-panel__head">
             <span className="catalog-filter-panel__title">Фильтры</span>
@@ -297,6 +381,9 @@ export default function ProductListingView({
           <div
             className={`catalog-filter-panel__body${filtersExpanded ? ' catalog-filter-panel__body--expanded' : ''}`}
             id="catalog-filters-body"
+            role="region"
+            aria-label="Параметры фильтрации товаров"
+            tabIndex={0}
           >
             <form
               className="catalog-price-range"
@@ -535,45 +622,13 @@ export default function ProductListingView({
         {!error && (
           <div className="catalog-filter-summary">
             <div className="catalog-sort-row" aria-label="Сортировать товары">
-              <strong className="catalog-sort-row__label">
-                Сортировать по:
-              </strong>
-              <button
-                type="button"
-                className={`catalog-sort-row__option${sortBy === 'popular' ? ' catalog-sort-row__option--active' : ''}`}
-                aria-pressed={sortBy === 'popular'}
-                onClick={() => updateParam('sort', 'popular')}
-              >
-                <svg viewBox="0 0 18 18" aria-hidden="true">
-                  <path d="M3 14V9m4 5V5m4 9V7m4 7V3" />
-                </svg>
-                <span>Популярности</span>
-              </button>
-              <button
-                type="button"
-                className={`catalog-sort-row__option${sortBy === 'price-asc' ? ' catalog-sort-row__option--active' : ''}`}
-                aria-pressed={sortBy === 'price-asc'}
-                onClick={() => updateParam('sort', 'price-asc')}
-              >
-                <svg viewBox="0 0 18 18" aria-hidden="true">
-                  <path d="M3 5h12M5 9h8m-6 4h4" />
-                </svg>
-                <span>Цене</span>
-              </button>
-              <button
-                type="button"
-                className={`catalog-sort-row__option${sortBy === 'title-asc' ? ' catalog-sort-row__option--active' : ''}`}
-                aria-pressed={sortBy === 'title-asc'}
-                onClick={() => updateParam('sort', 'title-asc')}
-              >
-                <svg viewBox="0 0 18 18" aria-hidden="true">
-                  <path d="M4 14V4m-2 2 2-2 2 2m3 7h5m-5-4h4m-4-4h3" />
-                </svg>
-                <span>Алфавиту</span>
-              </button>
+              <CatalogSort
+                value={sortBy}
+                onChange={(value) => updateParam('sort', value)}
+              />
               <label className="catalog-page-size">
                 <span>Выводить по:</span>
-                <select
+                <SiteSelect
                   className="catalog-page-size__select"
                   aria-label="Количество товаров на странице"
                   value={pageSize}
@@ -584,7 +639,7 @@ export default function ProductListingView({
                       {size}
                     </option>
                   ))}
-                </select>
+                </SiteSelect>
               </label>
               <div
                 className="catalog-view-switch"
@@ -600,7 +655,7 @@ export default function ProductListingView({
                   aria-label="Плиточное отображение"
                   aria-pressed={viewMode === 'tiles'}
                   title="Плиточное отображение"
-                  onClick={() => setViewMode('tiles')}
+                  onClick={() => selectViewMode('tiles')}
                 >
                   <svg viewBox="0 0 20 20" aria-hidden="true">
                     <rect x="2.5" y="2.5" width="5.5" height="5.5" rx="1" />
@@ -619,7 +674,7 @@ export default function ProductListingView({
                   aria-label="Прайс-лист"
                   aria-pressed={viewMode === 'list'}
                   title="Прайс-лист"
-                  onClick={() => setViewMode('list')}
+                  onClick={() => selectViewMode('list')}
                 >
                   <svg viewBox="0 0 20 20" aria-hidden="true">
                     <path d="M7.5 4h10M7.5 10h10M7.5 16h10" />
@@ -634,7 +689,23 @@ export default function ProductListingView({
         )}
 
         {error ? (
-          <div className="catalog-empty">{error}</div>
+          <div className="catalog-empty">
+            <p role="status">
+              {isLoading ? 'Загружаем актуальные позиции из прайса...' : error}
+            </p>
+            {onRetry && (
+              <button
+                type="button"
+                className="button button--secondary"
+                onClick={() => {
+                  if (!isLoading) onRetry();
+                }}
+                aria-disabled={isLoading}
+              >
+                Повторить
+              </button>
+            )}
+          </div>
         ) : isLoading ? (
           <div className="catalog-empty">
             Подготавливаем товары из прайса...
@@ -663,15 +734,23 @@ export default function ProductListingView({
 
             {totalPages > 1 && (
               <div className="catalog-pagination">
-                <button
-                  type="button"
-                  className="catalog-pagination__btn"
-                  disabled={page === 1}
-                  onClick={() => handlePageChange(page - 1)}
-                >
-                  ← Назад
-                </button>
-
+                {page === 1 ? (
+                  <button
+                    type="button"
+                    className="catalog-pagination__btn"
+                    disabled
+                  >
+                    ← Назад
+                  </button>
+                ) : (
+                  <Link
+                    className="catalog-pagination__btn"
+                    to={pageHref(page - 1)}
+                    onClick={(event) => handlePageNavigation(event, page - 1)}
+                  >
+                    ← Назад
+                  </Link>
+                )}
                 {getPageNumbers(page, totalPages).map((p, i) =>
                   p === '...' ? (
                     <span
@@ -681,27 +760,34 @@ export default function ProductListingView({
                       …
                     </span>
                   ) : (
-                    <button
+                    <Link
                       key={p}
-                      type="button"
-                      className={`catalog-pagination__page${
-                        p === page ? ' catalog-pagination__page--active' : ''
-                      }`}
-                      onClick={() => handlePageChange(p)}
+                      to={pageHref(p)}
+                      aria-current={p === page ? 'page' : undefined}
+                      className={`catalog-pagination__page${p === page ? ' catalog-pagination__page--active' : ''}`}
+                      onClick={(event) => handlePageNavigation(event, p)}
                     >
                       {p}
-                    </button>
+                    </Link>
                   )
                 )}
-
-                <button
-                  type="button"
-                  className="catalog-pagination__btn"
-                  disabled={page === totalPages}
-                  onClick={() => handlePageChange(page + 1)}
-                >
-                  Вперёд →
-                </button>
+                {page === totalPages ? (
+                  <button
+                    type="button"
+                    className="catalog-pagination__btn"
+                    disabled
+                  >
+                    Вперёд →
+                  </button>
+                ) : (
+                  <Link
+                    className="catalog-pagination__btn"
+                    to={pageHref(page + 1)}
+                    onClick={(event) => handlePageNavigation(event, page + 1)}
+                  >
+                    Вперёд →
+                  </Link>
+                )}
               </div>
             )}
           </>

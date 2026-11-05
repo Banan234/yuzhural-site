@@ -1,3 +1,4 @@
+import SiteSelect from '../components/ui/SiteSelect';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import ServiceLayout from '../components/services/ServiceLayout';
@@ -27,6 +28,13 @@ const range = (min, max) =>
   Math.abs(min - max) < 1e-9
     ? FORMAT.format(min)
     : `${FORMAT.format(min)}–${FORMAT.format(max)}`;
+const formatMass = (value) =>
+  value > 0 && value < 0.01 ? '< 0,01' : FORMAT.format(value);
+const massRange = (min, max) =>
+  (min > 0 && max < 0.01) || Math.abs(min - max) < 1e-9
+    ? formatMass(min)
+    : `${formatMass(min)}–${formatMass(max)}`;
+
 function configurations(mark) {
   return [
     ...new Map(
@@ -160,7 +168,7 @@ export default function CableWeightPage() {
         drumsKg: shipment.drumsKg || 0,
         sources,
         drumDescription: includeDrums
-          ? `${drumMaterial === 'custom' ? 'Фактическая масса тары' : `${drumMaterial === 'wood' ? 'Деревянный' : 'Металлический'} барабан №${drumNumber}`}, ${drumCount} шт.; ${shipment.drumsKg} кг${drumMaterial !== 'custom' ? `; ${CABLE_DRUM_SOURCE.url}` : ''}`
+          ? `${drumMaterial === 'custom' ? 'Фактическая масса тары' : `${drumMaterial === 'wood' ? 'Деревянный' : 'Металлический'} барабан №${drumNumber}`}, ${drumCount} шт.; ${formatMass(shipment.drumsKg)} кг${drumMaterial !== 'custom' ? `; ${CABLE_DRUM_SOURCE.url}` : ''}`
           : 'Без тары',
       }
     : null;
@@ -176,10 +184,10 @@ export default function CableWeightPage() {
     reportItems
       .map(
         (item, index) =>
-          `${index + 1}. ${item.mark} ${item.configuration}; ${item.voltageKv === null ? 'напряжение в таблице не указано' : `${item.voltageKv} кВ`}; ${item.length} м\nКабель: ${range(item.cableMinKg, item.cableMaxKg)} кг; тара: ${item.drumsKg} кг; итого: ${range(item.minKg, item.maxKg)} кг\nДиаметр: ${item.diameter ? range(item.diameter.minMm, item.diameter.maxMm) + ' мм' : 'нет данных'}\n${item.drumDescription}\n${item.sources.join('\n')}`
+          `${index + 1}. ${item.mark} ${item.configuration}; ${item.voltageKv === null ? 'напряжение в таблице не указано' : `${item.voltageKv} кВ`}; ${item.length} м\nКабель: ${massRange(item.cableMinKg, item.cableMaxKg)} кг; тара: ${formatMass(item.drumsKg)} кг; итого: ${massRange(item.minKg, item.maxKg)} кг\nДиаметр: ${item.diameter ? range(item.diameter.minMm, item.diameter.maxMm) + ' мм' : 'нет данных'}\n${item.drumDescription}\n${item.sources.join('\n')}`
       )
       .join('\n\n') +
-    `\n\nОбщая расчётная масса: ${range(total.minKg, total.maxKg)} кг. Масса упаковки не включена. Значения из таблиц не подтверждают фактическую массу складской партии.`;
+    `\n\nОбщая расчётная масса: ${massRange(total.minKg, total.maxKg)} кг. Масса упаковки не включена. Значения из таблиц не подтверждают фактическую массу складской партии.`;
   const csv = [
     [
       'Марка',
@@ -226,6 +234,22 @@ export default function CableWeightPage() {
       setNotice('В одном расчёте можно сохранить до 30 позиций.');
       return;
     }
+    const nextTotal = items.reduce(
+      (sum, item) => ({
+        minKg: sum.minKg + item.minKg,
+        maxKg: sum.maxKg + item.maxKg,
+      }),
+      { minKg: current.minKg, maxKg: current.maxKg }
+    );
+    if (
+      !Number.isFinite(nextTotal.minKg) ||
+      !Number.isFinite(nextTotal.maxKg)
+    ) {
+      setNotice(
+        'Слишком большие значения для расчёта. Уменьшите массу или количество'
+      );
+      return;
+    }
     setItems((previous) => [
       ...previous,
       { ...current, id: crypto.randomUUID() },
@@ -250,7 +274,7 @@ export default function CableWeightPage() {
           <div className="service-fields">
             <label>
               Марка
-              <select
+              <SiteSelect
                 value={mark}
                 onChange={(event) => changeMark(event.target.value)}
               >
@@ -258,11 +282,11 @@ export default function CableWeightPage() {
                 {MARKS.map((value) => (
                   <option key={value}>{value}</option>
                 ))}
-              </select>
+              </SiteSelect>
             </label>
             <label>
               Конструкция кабеля
-              <select
+              <SiteSelect
                 value={configuration}
                 disabled={!mark}
                 onChange={(event) => changeConfiguration(event.target.value)}
@@ -273,11 +297,11 @@ export default function CableWeightPage() {
                     {value.replaceAll('.', ',')}
                   </option>
                 ))}
-              </select>
+              </SiteSelect>
             </label>
             <label>
               Напряжение
-              <select
+              <SiteSelect
                 value={voltageKv ?? ''}
                 disabled={!mark}
                 onChange={(event) => {
@@ -296,7 +320,7 @@ export default function CableWeightPage() {
                       : `${FORMAT.format(value)} кВ`}
                   </option>
                 ))}
-              </select>
+              </SiteSelect>
             </label>
             <label>
               Длина, м
@@ -311,7 +335,7 @@ export default function CableWeightPage() {
             </label>
             <label className="service-fields__wide">
               Данные изготовителя
-              <select
+              <SiteSelect
                 value={sourceId}
                 disabled={!allRows.length}
                 onChange={(event) => setSourceId(event.target.value)}
@@ -322,7 +346,7 @@ export default function CableWeightPage() {
                     {CABLE_MASS_SOURCES[id].publisher}
                   </option>
                 ))}
-              </select>
+              </SiteSelect>
             </label>
           </div>
           {!includeDrums ? (
@@ -346,7 +370,7 @@ export default function CableWeightPage() {
               <div className="service-fields">
                 <label>
                   Материал барабана
-                  <select
+                  <SiteSelect
                     value={drumMaterial}
                     onChange={(event) => {
                       setDrumMaterial(event.target.value);
@@ -357,7 +381,7 @@ export default function CableWeightPage() {
                     <option value="wood">Деревянный</option>
                     <option value="metal">Металлический</option>
                     <option value="custom">Другая тара — указать массу</option>
-                  </select>
+                  </SiteSelect>
                 </label>
                 {drumMaterial === 'custom' ? (
                   <label>
@@ -371,7 +395,7 @@ export default function CableWeightPage() {
                 ) : (
                   <label>
                     Номер барабана
-                    <select
+                    <SiteSelect
                       disabled={!drumMaterial}
                       value={drumNumber}
                       onChange={(event) => setDrumNumber(event.target.value)}
@@ -382,7 +406,7 @@ export default function CableWeightPage() {
                           №{drum.number} — {drum.massKg} кг
                         </option>
                       ))}
-                    </select>
+                    </SiteSelect>
                   </label>
                 )}
                 <label>
@@ -420,7 +444,7 @@ export default function CableWeightPage() {
               <div className="service-result-label">Масса кабеля</div>
               {mass ? (
                 <div className="service-result-number">
-                  {range(mass.minKg, mass.maxKg)} <small>кг</small>
+                  {massRange(mass.minKg, mass.maxKg)} <small>кг</small>
                 </div>
               ) : (
                 <p>Выберите марку и укажите положительную длину.</p>
@@ -431,7 +455,8 @@ export default function CableWeightPage() {
                 <div className="service-result-label">Итого с барабанами</div>
                 {shipment ? (
                   <div className="service-result-number">
-                    {range(shipment.minKg, shipment.maxKg)} <small>кг</small>
+                    {massRange(shipment.minKg, shipment.maxKg)}{' '}
+                    <small>кг</small>
                   </div>
                 ) : (
                   <p>
@@ -516,7 +541,7 @@ export default function CableWeightPage() {
                       </small>
                     </td>
                     <td>{FORMAT.format(item.length)} м</td>
-                    <td>{range(item.minKg, item.maxKg)} кг</td>
+                    <td>{massRange(item.minKg, item.maxKg)} кг</td>
                     <td>
                       <button
                         type="button"
@@ -536,7 +561,7 @@ export default function CableWeightPage() {
             </table>
           </div>
           <p className="service-result-number">
-            {range(total.minKg, total.maxKg)} <small>кг всего</small>
+            {massRange(total.minKg, total.maxKg)} <small>кг всего</small>
           </p>
           <p className="service-muted">
             Общая масса включает сохранённые позиции. Текущие параметры попадут
@@ -565,7 +590,7 @@ export default function CableWeightPage() {
       <ReportActions
         title="Расчёт веса и диаметра кабеля"
         text={report}
-        requestText={`Общая расчётная масса: ${range(total.minKg, total.maxKg)} кг; сохранённых позиций: ${reportItems.length}. Упаковка не включена.\n${reportItems.map((item, index) => `${index + 1}. ${item.mark} ${item.configuration}; ${item.voltageKv ?? '—'} кВ; ${item.length} м; ${range(item.minKg, item.maxKg)} кг с тарой ${item.drumsKg} кг.`).join('\n')}\nПолные исходные таблицы и источники сохранены в отчёте PDF/CSV. Нужна проверка параметров и фактической массы партии.`}
+        requestText={`Общая расчётная масса: ${massRange(total.minKg, total.maxKg)} кг; сохранённых позиций: ${reportItems.length}. Упаковка не включена.\n${reportItems.map((item, index) => `${index + 1}. ${item.mark} ${item.configuration}; ${item.voltageKv ?? '—'} кВ; ${item.length} м; ${massRange(item.minKg, item.maxKg)} кг с тарой ${formatMass(item.drumsKg)} кг.`).join('\n')}\nПолные исходные таблицы и источники сохранены в отчёте PDF/CSV. Нужна проверка параметров и фактической массы партии.`}
         csv={csv}
         disabled={!reportItems.length}
       />

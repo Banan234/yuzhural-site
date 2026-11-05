@@ -1,0 +1,36 @@
+@supports (background-image: image-set(url('/probe.webp') type('image/webp'))) {
+  /* Offline generated; originals remain PNG fallbacks. */
+  @media (min-width: 0px) {
+    .home-concept__quote {
+      --warehouse-image: image-set(
+        url('/responsive-images/2e3891595d235f11be24/640.webp') 1x
+          type('image/webp'),
+        url('/responsive-images/2e3891595d235f11be24/1536.webp') 2x
+          type('image/webp'),
+        url('/cable-warehouse-illustration.png') 1x type('image/png')
+      );
+    }
+  }
+  @media (min-width: 641px) {
+    .home-concept__quote {
+      --warehouse-image: image-set(
+        url('/responsive-images/2e3891595d235f11be24/960.webp') 1x
+          type('image/webp'),
+        url('/responsive-images/2e3891595d235f11be24/1536.webp') 2x
+          type('image/webp'),
+        url('/cable-warehouse-illustration.png') 1x type('image/png')
+      );
+    }
+  }
+  @media (min-width: 961px) {
+    .home-concept__quote {
+      --warehouse-image: image-set(
+        url('/responsive-images/2e3891595d235f11be24/1536.webp') 1x
+          type('image/webp'),
+        url('/responsive-images/2e3891595d235f11be24/1536.webp') 2x
+          type('image/webp'),
+        url('/cable-warehouse-illustration.png') 1x type('image/png')
+      );
+    }
+  }
+}

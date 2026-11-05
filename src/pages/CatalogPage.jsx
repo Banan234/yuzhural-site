@@ -1,7 +1,12 @@
 // Файл рендерит страницу каталога с фильтрами, поиском, категориями и списком товаров.
 
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import {
+  Link,
+  useLocation,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 import Container from '../components/ui/Container';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import ProductListingView from '../components/catalog/ProductListingView';
@@ -10,7 +15,8 @@ import { captureException } from '../lib/errorTracking';
 import { useSEO } from '../hooks/useSEO';
 import { useCatalogFilters } from '../hooks/useCatalogFilters';
 import { usePrerenderData } from '../lib/prerenderData';
-import { toCanonicalSitePath } from '../lib/canonicalPaths.js';
+import { catalogSeoPolicy } from '../../shared/catalogSeoPolicy.js';
+import { DEFAULT_CATALOG_PAGE_SIZE as CATALOG_PAGE_SIZE } from '../../shared/catalogPagination.js';
 import { russianCountNoun } from '../lib/russianCount.js';
 import { messages } from '../../shared/messages.js';
 import { NOT_FOUND_SEO, NotFoundPageContent } from './NotFoundPage.jsx';
@@ -23,7 +29,6 @@ import {
 } from '../../shared/controlCableClassification.js';
 import '../styles/sections/catalog.css';
 
-const CATALOG_PAGE_SIZE = 24;
 const CATEGORY_ROUTE_FILTERS = { showAppType: true, showSPE: true };
 const POWER_CABLE_CATEGORY_SLUG = 'silovoy-kabel';
 const CATALOG_PRERENDER_FILTER_KEYS = [
@@ -37,6 +42,8 @@ const CATALOG_PRERENDER_FILTER_KEYS = [
   'section',
   'voltage',
   'powerGroup',
+  'appType',
+  'spe',
 ];
 
 const routeEntryBySlug = {};
@@ -113,6 +120,7 @@ export function doesCatalogPrerenderDataMatchQuery({
 
 export default function CatalogPage() {
   const { slug } = useParams();
+  const location = useLocation();
   const [catalogSearchParams] = useSearchParams();
   const isCategoryRoute = Boolean(slug);
   const categoryParam = catalogSearchParams.get('category') || '';
@@ -126,16 +134,21 @@ export default function CatalogPage() {
     prerenderData.catalog?.path === expectedPrerenderPath
       ? prerenderData.catalog
       : null;
-  const { filters, productQueryOptions, searchQuery, updateParam } =
-    useCatalogFilters({
-      limit: CATALOG_PAGE_SIZE,
-      includeAdvancedFilters: shouldIncludeAdvancedFilters,
-    });
+  const { filters, productQueryOptions, updateParam } = useCatalogFilters({
+    limit: CATALOG_PAGE_SIZE,
+    includeAdvancedFilters: shouldIncludeAdvancedFilters,
+  });
   const routeCategory = isCategoryRoute ? routeEntryBySlug[slug] : null;
   const parentCategory = isCategoryRoute
     ? parentByChildSlug[slug] || null
     : null;
-  const isMissingCategoryRoute = isCategoryRoute && !routeCategory;
+  const seoPolicy = catalogSeoPolicy(
+    expectedPrerenderPath,
+    catalogSearchParams,
+    location.search
+  );
+  const isMissingCategoryRoute =
+    (isCategoryRoute && !routeCategory) || seoPolicy.invalidPage;
   const hasSubcategories =
     Boolean(routeCategory) &&
     routeCategory.routeType === 'category' &&
@@ -154,76 +167,94 @@ export default function CatalogPage() {
     ? catalogPrerenderData
     : null;
 
-  const [products, setProducts] = useState(
-    () => initialCatalogPrerenderData?.items || []
-  );
-  const [catalogSections, setCatalogSections] = useState(
-    () => initialCatalogPrerenderData?.catalogSections || []
-  );
-  const [productsMeta, setProductsMeta] = useState(
-    () => initialCatalogPrerenderData?.meta || {}
-  );
-  const [isLoading, setIsLoading] = useState(
-    () => !initialCatalogPrerenderData
-  );
-  const [error, setError] = useState('');
-  const didUseInitialPrerenderDataRef = useRef(hasMatchingPrerenderData);
+  const queryKey = JSON.stringify([
+    expectedPrerenderPath,
+    activeCategoryParam,
+    productQueryOptions,
+  ]);
+  const [retryAttempt, setRetryAttempt] = useState(0);
+  const [catalogResult, setCatalogResult] = useState(() => ({
+    queryKey,
+    products: initialCatalogPrerenderData?.items || [],
+    catalogSections: initialCatalogPrerenderData?.catalogSections || [],
+    productsMeta: initialCatalogPrerenderData?.meta || {},
+    isLoading: !initialCatalogPrerenderData,
+    error: '',
+    fromPrerender: Boolean(initialCatalogPrerenderData),
+  }));
+  // URL changes render before effects run. A result belongs only to its own URL,
+  // including the first frame of back/forward and an in-flight request race.
+  const { products, catalogSections, productsMeta, isLoading, error } =
+    catalogResult.queryKey === queryKey
+      ? catalogResult
+      : {
+          products: [],
+          catalogSections: [],
+          productsMeta: {},
+          isLoading: true,
+          error: '',
+        };
 
   useEffect(() => {
-    if (isMissingCategoryRoute) {
-      return undefined;
-    }
-
+    if (isMissingCategoryRoute) return undefined;
     const controller = new AbortController();
-    async function loadProducts({ showLoading = true, showError = true } = {}) {
+    if (hasMatchingPrerenderData) {
+      setCatalogResult((previous) =>
+        previous.queryKey === queryKey && previous.fromPrerender
+          ? previous
+          : {
+              queryKey,
+              products: catalogPrerenderData.items || [],
+              catalogSections: catalogPrerenderData.catalogSections || [],
+              productsMeta: catalogPrerenderData.meta || {},
+              isLoading: false,
+              error: '',
+              fromPrerender: true,
+            }
+      );
+      return () => controller.abort();
+    }
+    setCatalogResult((previous) => ({
+      queryKey,
+      products: [],
+      catalogSections: [],
+      productsMeta: {},
+      isLoading: true,
+      error: previous.queryKey === queryKey ? previous.error : '',
+      fromPrerender: false,
+    }));
+    async function loadProducts() {
       try {
-        if (showLoading) {
-          setIsLoading(true);
-        }
-        setError('');
-
         const result = await fetchProducts(controller.signal, {
           ...productQueryOptions,
           category: activeCategoryParam,
         });
-        setProducts(result.items);
-        setCatalogSections(result.meta?.catalogSections || []);
-        setProductsMeta(result.meta || {});
+        if (controller.signal.aborted) return;
+        setCatalogResult({
+          queryKey,
+          products: result.items,
+          catalogSections: result.meta?.catalogSections || [],
+          productsMeta: result.meta || {},
+          isLoading: false,
+          error: '',
+          fromPrerender: false,
+        });
       } catch (requestError) {
-        if (requestError.name === 'AbortError') {
+        if (controller.signal.aborted || requestError.name === 'AbortError')
           return;
-        }
-
         captureException(requestError, { source: 'CatalogPage.loadProducts' });
-        if (showError) {
-          setError(
-            requestError.message || messages.errors.productApi.catalogLoadFailed
-          );
-        }
-      } finally {
-        if (showLoading) {
-          setIsLoading(false);
-        }
+        setCatalogResult({
+          queryKey,
+          products: [],
+          catalogSections: [],
+          productsMeta: {},
+          isLoading: false,
+          error: messages.errors.productApi.catalogLoadFailed,
+          fromPrerender: false,
+        });
       }
     }
-
-    if (hasMatchingPrerenderData) {
-      if (didUseInitialPrerenderDataRef.current) {
-        return () => controller.abort();
-      }
-
-      setProducts(catalogPrerenderData.items || []);
-      setCatalogSections(catalogPrerenderData.catalogSections || []);
-      setProductsMeta(catalogPrerenderData.meta || {});
-      setIsLoading(false);
-      setError('');
-      didUseInitialPrerenderDataRef.current = true;
-      return () => controller.abort();
-    }
-
-    didUseInitialPrerenderDataRef.current = false;
-    loadProducts();
-
+    void loadProducts();
     return () => controller.abort();
   }, [
     activeCategoryParam,
@@ -231,7 +262,8 @@ export default function CatalogPage() {
     hasMatchingPrerenderData,
     isMissingCategoryRoute,
     productQueryOptions,
-    searchQuery,
+    queryKey,
+    retryAttempt,
   ]);
 
   const activeCategory = useMemo(() => {
@@ -319,14 +351,8 @@ export default function CatalogPage() {
           description: activeCategory
             ? `Купить ${activeCategory.name.toLowerCase()} оптом. Актуальный прайс и наличие на складе в Челябинске. ЮжУралЭлектроКабель.`
             : 'Каталог кабельной и некабельной продукции. Кабель, провод, арматура и электрооборудование в наличии и под заказ.',
-          canonical:
-            isCategoryRoute && slug
-              ? `/catalog/${slug}`
-              : activeCategoryParam
-                ? toCanonicalSitePath(
-                    `/catalog?category=${encodeURIComponent(activeCategoryParam)}`
-                  )
-                : toCanonicalSitePath('/catalog'),
+          canonical: seoPolicy.canonical,
+          noindex: seoPolicy.noindex,
         }
   );
 
@@ -342,28 +368,38 @@ export default function CatalogPage() {
           : 'section section--dark-soft catalog-section'
       }
     >
-      <Container>
-        <div className="catalog-page">
+      <div className="catalog-page">
+        <Container>
           <Breadcrumbs items={breadcrumbItems} />
+        </Container>
+        <div className="container catalog-page__content">
           <div className="catalog-page__header">
             <h1 className="page-title catalog-page__title">{pageTitle}</h1>
-            <p className="catalog-page__subtitle">
-              {isLoading ? (
-                'Загружаем актуальные позиции из прайса...'
-              ) : (
-                <>
-                  <span className="catalog-page__availability">В наличии</span>{' '}
-                  <strong>{visibleCount.toLocaleString('ru-RU')}</strong>{' '}
-                  {russianCountNoun(visibleCount, {
-                    one: 'позиция',
-                    few: 'позиции',
-                    many: 'позиций',
-                  })}
-                  {filters.mark && <> · Марка «{filters.mark}»</>}
-                  {' · Отгрузка со склада в Челябинске'}
-                </>
-              )}
-            </p>
+            {!error && (
+              <p className="catalog-page__subtitle">
+                {isLoading ? (
+                  'Загружаем актуальные позиции из прайса...'
+                ) : (
+                  <>
+                    <span className="catalog-page__stock-line">
+                      <span className="catalog-page__availability">
+                        В наличии
+                      </span>{' '}
+                      <strong>{visibleCount.toLocaleString('ru-RU')}</strong>{' '}
+                      {russianCountNoun(visibleCount, {
+                        one: 'позиция',
+                        few: 'позиции',
+                        many: 'позиций',
+                      })}
+                      {filters.mark && <> · Марка «{filters.mark}»</>}
+                    </span>
+                    <span className="catalog-page__shipping-line">
+                      Отгрузка со склада в Челябинске
+                    </span>
+                  </>
+                )}
+              </p>
+            )}
           </div>
 
           {!isLoading && !error && filters.search && (
@@ -446,6 +482,7 @@ export default function CatalogPage() {
                   products={products}
                   isLoading={isLoading}
                   error={error}
+                  onRetry={() => setRetryAttempt((attempt) => attempt + 1)}
                   scopeKey={activeCategoryParam || 'all'}
                   extraFilters={listingExtraFilters}
                   pagination={productsMeta.pagination}
@@ -455,7 +492,7 @@ export default function CatalogPage() {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

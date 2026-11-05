@@ -1,4 +1,12 @@
-import { getCartQuantityLimit } from '../lib/cartQuantity.js';
+import {
+  clampCartQuantity,
+  getCartQuantityLimit,
+} from '../lib/cartQuantity.js';
+import {
+  calculateQuote,
+  formatQuoteMoney,
+  getQuoteTotalDisplay,
+} from '../../shared/quoteMoney.js';
 // Файл рендерит корзину выбранных позиций, изменение количества и переход к запросу КП.
 
 import { useEffect, useRef, useState } from 'react';
@@ -22,22 +30,6 @@ function formatNumber(value) {
   return Number(value || 0).toLocaleString('ru-RU');
 }
 
-function formatCartSummaryTotal(totalPrice, hasRequestPriceItems) {
-  if (totalPrice > 0 && hasRequestPriceItems) {
-    return `${formatNumber(totalPrice)} ₽ + позиции по запросу`;
-  }
-
-  if (totalPrice > 0) {
-    return `${formatNumber(totalPrice)} ₽`;
-  }
-
-  if (hasRequestPriceItems) {
-    return 'Итог будет рассчитан в КП';
-  }
-
-  return '0 ₽';
-}
-
 export default function CartPage() {
   useSEO({
     title: 'Корзина',
@@ -45,9 +37,17 @@ export default function CartPage() {
       'Список кабельно-проводниковой продукции для запроса коммерческого предложения.',
     noindex: true,
   });
-  const { items, updateItemQuantity, removeItem, clearCart, syncWithCatalog } =
-    useCartStore();
+  const {
+    items: storedItems,
+    updateItemQuantity,
+    removeItem,
+    clearCart,
+    syncWithCatalog,
+  } = useCartStore();
+  const money = calculateQuote(storedItems);
+  const items = money.items;
   const [isPdfBuilding, setIsPdfBuilding] = useState(false);
+  const pdfBuildingRef = useRef(false);
   const [pdfError, setPdfError] = useState('');
   const [syncNotice, setSyncNotice] = useState(null);
   const syncRanRef = useRef(false);
@@ -62,7 +62,6 @@ export default function CartPage() {
       syncRanRef.current = true;
       return;
     }
-    syncRanRef.current = true;
     const controller = new AbortController();
     fetch('/api/products/lookup', {
       method: 'POST',
@@ -74,12 +73,16 @@ export default function CartPage() {
         expectOkApiJson(response, messages.errors.api.lookupFailed)
       )
       .then((data) => {
+        if (controller.signal.aborted) return;
         const summary = syncWithCatalog({
           found: data.found,
           missing: data.missing,
+          pending: data.pending,
         });
+        syncRanRef.current = true;
         if (
           summary.removed.length > 0 ||
+          summary.pending?.length > 0 ||
           summary.priceChanged.length > 0 ||
           summary.slugChanged > 0
         ) {
@@ -87,7 +90,7 @@ export default function CartPage() {
         }
       })
       .catch((error) => {
-        if (error.name === 'AbortError') return;
+        if (controller.signal.aborted || error.name === 'AbortError') return;
         captureException(error, { source: 'CartPage.syncWithCatalog' });
       });
     return () => controller.abort();
@@ -95,20 +98,16 @@ export default function CartPage() {
   }, []);
 
   async function handleDownloadPdf() {
-    if (items.length === 0) return;
+    if (items.length === 0 || pdfBuildingRef.current) return;
+    pdfBuildingRef.current = true;
     setPdfError('');
     setIsPdfBuilding(true);
     try {
       const { generateQuotePdf } = await import('../lib/quotePdf.js');
       await generateQuotePdf({ items });
-      const total = items.reduce(
-        (sum, item) =>
-          sum + Number(item.price || 0) * Number(item.quantity || 0),
-        0
-      );
       trackEvent('price-download', {
         items: items.length,
-        total: Math.round(total),
+        ...(money.complete ? { total: money.totalPrice } : {}),
         format: 'pdf',
         source: 'cart',
       });
@@ -116,6 +115,7 @@ export default function CartPage() {
       captureException(error, { source: 'CartPage.buildPdf' });
       setPdfError(error.message || messages.errors.cart.pdfBuildFailed);
     } finally {
+      pdfBuildingRef.current = false;
       setIsPdfBuilding(false);
     }
   }
@@ -128,18 +128,8 @@ export default function CartPage() {
 
     return sum + Number(item.quantity || 0);
   }, 0);
-  const totalPrice = items.reduce(
-    (sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 0),
-    0
-  );
-  const hasRequestPriceItems = items.some((item) => {
-    const price = Number(item.price);
-    return !Number.isFinite(price) || price <= 0;
-  });
-  const cartSummaryTotal = formatCartSummaryTotal(
-    totalPrice,
-    hasRequestPriceItems
-  );
+  const hasRequestPriceItems = money.unknownPriceCount > 0;
+  const cartSummaryTotal = getQuoteTotalDisplay(money);
 
   return (
     <section className="section cart-page">
@@ -229,6 +219,9 @@ export default function CartPage() {
           <div className="cart-sync-notice" role="status">
             <strong>Каталог обновился — список актуализирован.</strong>
             <ul>
+              {syncNotice.pending?.length > 0 ? (
+                <li>Данные уточняются: {syncNotice.pending.length}</li>
+              ) : null}
               {syncNotice.removed.length > 0 ? (
                 <li>
                   Сняты с поставки и удалены: {syncNotice.removed.length}
@@ -270,10 +263,10 @@ export default function CartPage() {
                   <span>Сумма</span>
                   <span />
                 </div>
-                {items.map((item) => {
+                {items.map((item, index) => {
                   const quantity = Number(item.quantity || 0);
                   const unit = item.unit || 'м';
-                  const lineTotal = Number(item.price || 0) * quantity;
+                  const lineTotalKopecks = money.rows[index].lineKopecks;
                   const itemPrice = formatProductPrice(item.price, unit, {
                     fallback: 'Цена по запросу',
                   });
@@ -322,10 +315,7 @@ export default function CartPage() {
                             onClick={() =>
                               updateItemQuantity(
                                 item.id,
-                                Math.max(
-                                  0.01,
-                                  Math.round((quantity - 1) * 100) / 100
-                                )
+                                Math.max(1, Math.ceil(quantity) - 1)
                               )
                             }
                           >
@@ -335,16 +325,16 @@ export default function CartPage() {
                             key={`${item.id}-${quantity}`}
                             aria-label={`${unit === 'м' ? 'Метраж' : 'Количество'}: ${item.title}`}
                             type="number"
-                            min="0.01"
+                            min={Math.min(1, getCartQuantityLimit(item))}
                             max={getCartQuantityLimit(item)}
-                            step={unit === 'м' ? '0.01' : '1'}
+                            step="any"
                             defaultValue={quantity}
                             onBlur={(event) => {
                               const value = Number(event.target.value);
                               if (Number.isFinite(value) && value > 0) {
                                 updateItemQuantity(item.id, value);
                                 event.target.value = String(
-                                  Math.min(value, getCartQuantityLimit(item))
+                                  clampCartQuantity(item, value)
                                 );
                               } else event.target.value = String(quantity);
                             }}
@@ -358,10 +348,7 @@ export default function CartPage() {
                             aria-label={`Увеличить количество: ${item.title}`}
                             disabled={quantity >= getCartQuantityLimit(item)}
                             onClick={() =>
-                              updateItemQuantity(
-                                item.id,
-                                Math.round((quantity + 1) * 100) / 100
-                              )
+                              updateItemQuantity(item.id, quantity + 1)
                             }
                           >
                             +
@@ -373,8 +360,8 @@ export default function CartPage() {
                         <strong
                           className={`cart-item__line-total${itemPrice.hasPrice ? '' : ' cart-item__line-total--request'}`}
                         >
-                          {itemPrice.hasPrice
-                            ? `${formatNumber(Math.round(lineTotal * 100) / 100)} ₽`
+                          {lineTotalKopecks !== null
+                            ? formatQuoteMoney(lineTotalKopecks)
                             : 'По запросу'}
                         </strong>
                         <span className="cart-item__price">
@@ -420,8 +407,8 @@ export default function CartPage() {
                   ) : null}
                 </dl>
                 <div className="cart-summary__total">
-                  <span>Предварительная сумма</span>
-                  <strong>{cartSummaryTotal}</strong>
+                  <span>{cartSummaryTotal.label}</span>
+                  <strong>{cartSummaryTotal.value}</strong>
                 </div>
                 <button
                   type="button"
@@ -441,8 +428,8 @@ export default function CartPage() {
                 </p>
                 {hasRequestPriceItems ? (
                   <p className="cart-summary__request-note">
-                    В списке есть позиции без цены. Рассчитаем их при подготовке
-                    КП.
+                    {cartSummaryTotal.detail ||
+                      'В списке есть позиции без цены. Рассчитаем их при подготовке КП.'}
                   </p>
                 ) : null}
               </aside>

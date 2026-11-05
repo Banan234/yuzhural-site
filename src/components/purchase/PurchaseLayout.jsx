@@ -8,7 +8,7 @@ import {
 import { useSEO } from '../../hooks/useSEO';
 import { PURCHASE_PAGES } from '../../../shared/purchaseContent';
 import '../../styles/pages/purchase.css';
-export default function PurchaseLayout({ pageKey, children }) {
+export default function PurchaseLayout({ pageKey, children, className = '' }) {
   const page = PURCHASE_PAGES[pageKey];
   useJsonLd(getStaticPageJsonLdId(page.path), buildStaticPageJsonLd(page.path));
   useSEO({
@@ -17,7 +17,7 @@ export default function PurchaseLayout({ pageKey, children }) {
     canonical: page.path,
   });
   return (
-    <section className="purchase-page">
+    <section className={`purchase-page ${className}`.trim()}>
       <Container>
         <Breadcrumbs current={page.title} />
         <header className="purchase-heading">

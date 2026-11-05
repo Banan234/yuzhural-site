@@ -1,3 +1,4 @@
+import { isProductPending } from '../../shared/productAvailability.js';
 // Файл строит SEO-метаданные, canonical и JSON-LD для страниц товара без React-зависимостей.
 
 // SEO-логика для карточки товара. Используется и в React (ProductPage),
@@ -13,7 +14,7 @@ import {
   absoluteUrl,
 } from './siteConfig.js';
 import { normalizeMetaDescription } from './metaDescription.js';
-import { getProductImage } from '../../shared/productImages.js';
+import { getProductImage } from '../../shared/productImagePresentation.js';
 
 const PRODUCT_META_DESCRIPTION_MIN_LENGTH = 80;
 
@@ -74,9 +75,11 @@ function formatProductSpecs(product) {
   const specs = [];
   const conductorConfiguration = normalizeText(product?.conductorConfiguration);
   const cores = Number(product?.cores);
-  const groundCores = Number(product?.groundCores);
+  const groundCores = Number(product?.groundCores ?? product?.neutralCores);
   const groupCores = Number(product?.groupCores);
-  const groundSection = formatNumber(product?.groundSection);
+  const groundSection = formatNumber(
+    product?.groundSection ?? product?.neutralSection
+  );
   const crossSection = formatNumber(product?.crossSection);
   const voltage = formatNumber(product?.voltage);
 
@@ -137,7 +140,8 @@ export function buildProductJsonLd(product) {
 
   const url = absoluteUrl(`/product/${product.slug}`);
   const price = Number(product.price);
-  const hasPrice = Number.isFinite(price) && price > 0;
+  const hasPrice =
+    !isProductPending(product) && Number.isFinite(price) && price > 0;
   const stock = Number(product.stock);
   const hasStock = Number.isFinite(stock) && stock > 0;
   const brandName =
@@ -182,6 +186,33 @@ export function buildProductJsonLd(product) {
         url: SITE_URL,
       },
     };
+    if (product.offers?.length > 1) {
+      const pricedOffers = product.offers.filter(
+        (offer) => Number(offer.price) > 0
+      );
+      data.offers = {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'RUB',
+        lowPrice: Math.min(
+          ...pricedOffers.map((offer) => Number(offer.price))
+        ).toFixed(2),
+        highPrice: Math.max(
+          ...pricedOffers.map((offer) => Number(offer.price))
+        ).toFixed(2),
+        offerCount: pricedOffers.length,
+        offers: pricedOffers.map((offer) => ({
+          '@type': 'Offer',
+          sku: offer.sku,
+          url: absoluteUrl(`/product/${offer.slug}`),
+          priceCurrency: 'RUB',
+          price: Number(offer.price).toFixed(2),
+          availability:
+            Number(offer.stock) > 0
+              ? 'https://schema.org/InStock'
+              : 'https://schema.org/PreOrder',
+        })),
+      };
+    }
   }
 
   return data;
@@ -254,6 +285,8 @@ export function buildProductBreadcrumbJsonLd(product) {
 
 export function buildProductMetaDescription(product) {
   if (!product) return '';
+  if (isProductPending(product))
+    return `${product.title || product.fullName || product.name}. Данные уточняются.`;
 
   const existingDescription = normalizeText(product.description);
   if (existingDescription.length >= PRODUCT_META_DESCRIPTION_MIN_LENGTH) {

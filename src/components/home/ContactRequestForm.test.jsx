@@ -8,6 +8,38 @@ import ContactRequestForm from './ContactRequestForm';
 afterEach(() => vi.unstubAllGlobals());
 
 describe('ContactRequestForm', () => {
+  it('keeps the attachment after failure and sends it with the contact payload', async () => {
+    const user = userEvent.setup();
+    const fetchMock = vi.fn().mockRejectedValue(new Error('Ошибка отправки'));
+    vi.stubGlobal('fetch', fetchMock);
+    render(<ContactRequestForm />);
+    const file = new File(['%PDF-1.7\n'], 'Спецификация.pdf', {
+      type: 'application/pdf',
+    });
+    await user.upload(screen.getByLabelText('Прикрепить файл'), file);
+    await user.type(screen.getByLabelText('Ваше имя'), 'Иван');
+    await user.type(screen.getByLabelText('Ваш телефон'), '+79001234567');
+    await user.click(screen.getByLabelText(/Даю согласие/));
+    await user.click(screen.getByRole('button', { name: 'Заказать звонок' }));
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      'Ошибка отправки'
+    );
+    const request = fetchMock.mock.calls[0][1];
+    expect(request.headers).toBeUndefined();
+    expect(request.body.get('specifications')).toMatchObject({
+      name: file.name,
+      size: file.size,
+      type: file.type,
+    });
+    expect(JSON.parse(request.body.get('payload'))).toMatchObject({
+      name: 'Иван',
+      contactChannel: 'phone',
+    });
+    await user.click(
+      screen.getByRole('button', { name: 'Удалить файл Спецификация.pdf' })
+    );
+    expect(screen.queryByText('Спецификация.pdf')).not.toBeInTheDocument();
+  });
   it('возвращает пример после выхода из пустого поля телефона', async () => {
     const user = userEvent.setup();
     render(<ContactRequestForm />);

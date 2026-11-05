@@ -1,0 +1,3 @@
+export const DEFAULT_CATALOG_PAGE_SIZE = 28;
+export const CATALOG_PAGE_SIZE_OPTIONS = [24, 28, 56, 112];
+export const MAX_CATALOG_PAGE_SIZE = 112;

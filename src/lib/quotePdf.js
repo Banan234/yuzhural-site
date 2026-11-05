@@ -1,3 +1,11 @@
+import { isValidOrderQuantity } from '../../shared/orderQuantity.js';
+import {
+  calculateQuote,
+  formatQuoteMoney,
+  formatQuoteUnitPrice,
+  getQuoteTotalDisplay,
+  quoteMoneyPayload,
+} from '../../shared/quoteMoney.js';
 // Файл генерирует PDF коммерческого предложения из выбранных товаров и контактных данных.
 
 // Генерация коммерческого предложения в PDF.
@@ -62,10 +70,15 @@ async function loadFontData() {
     cachedFontDataPromise = Promise.all([
       fetchFontBase64(FONT_FILES.regular),
       fetchFontBase64(FONT_FILES.bold),
-    ]).then(([robotoRegularBase64, robotoBoldBase64]) => ({
-      robotoRegularBase64,
-      robotoBoldBase64,
-    }));
+    ])
+      .then(([robotoRegularBase64, robotoBoldBase64]) => ({
+        robotoRegularBase64,
+        robotoBoldBase64,
+      }))
+      .catch((error) => {
+        cachedFontDataPromise = null;
+        throw error;
+      });
   }
 
   return cachedFontDataPromise;
@@ -88,7 +101,7 @@ function formatDate(date) {
 function formatNumber(n) {
   return Number(n || 0).toLocaleString('ru-RU', {
     minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
+    maximumFractionDigits: 20,
   });
 }
 
@@ -105,6 +118,13 @@ export async function generateQuotePdf({ items, customer = null } = {}) {
   if (!Array.isArray(items) || items.length === 0) {
     throw new Error(messages.errors.pdf.emptyItems);
   }
+
+  const money = calculateQuote(items);
+  items = money.items;
+  if (!items.length) throw new Error(messages.errors.pdf.emptyItems);
+  if (money.invalid || !items.every(isValidOrderQuantity))
+    throw new Error(messages.errors.api.invalidQuoteRequest);
+  const totalDisplay = getQuoteTotalDisplay(money);
 
   const [{ default: jsPDF }, autoTableModule] = await Promise.all([
     import('jspdf'),
@@ -178,14 +198,10 @@ export async function generateQuotePdf({ items, customer = null } = {}) {
   }
 
   // ─── Таблица позиций
-  let totalPrice = 0;
-  let totalCount = 0;
   const tableBody = items.map((item, idx) => {
     const quantity = Number(item.quantity || 0);
     const price = Number(item.price || 0);
-    const lineTotal = price * quantity;
-    totalPrice += lineTotal;
-    totalCount += quantity;
+    const amount = money.rows[idx].lineKopecks;
 
     const titleParts = [];
     if (item.title) titleParts.push(String(item.title));
@@ -196,8 +212,8 @@ export async function generateQuotePdf({ items, customer = null } = {}) {
       String(idx + 1),
       titleParts.join('\n'),
       `${formatNumber(quantity)} ${item.unit || 'м'}`,
-      price > 0 ? `${formatNumber(price)} ₽` : 'по запросу',
-      lineTotal > 0 ? `${formatNumber(lineTotal)} ₽` : '—',
+      price > 0 ? formatQuoteUnitPrice(price) : 'по запросу',
+      amount !== null ? formatQuoteMoney(amount) : '—',
     ];
   });
 
@@ -216,6 +232,7 @@ export async function generateQuotePdf({ items, customer = null } = {}) {
     },
     headStyles: {
       font: FONT_BOLD,
+      fontStyle: 'normal',
       fillColor: [16, 34, 56],
       textColor: 255,
       halign: 'left',
@@ -231,11 +248,18 @@ export async function generateQuotePdf({ items, customer = null } = {}) {
   });
 
   // ─── Итог
-  const afterTableY = doc.lastAutoTable.finalY + 6;
+  const pageHeight = doc.internal.pageSize.getHeight();
+  let afterTableY = doc.lastAutoTable.finalY + 6;
+  if (afterTableY + (totalDisplay.detail ? 40 : 34) > pageHeight - 20) {
+    doc.addPage();
+    afterTableY = 20;
+  }
   doc.setFont(FONT_BOLD, 'normal');
   doc.setFontSize(11);
   doc.text(
-    `Итого: ${formatNumber(totalPrice)} ₽`,
+    money.complete || money.rows.some((row) => row.lineKopecks !== null)
+      ? `${totalDisplay.label}: ${totalDisplay.value}`
+      : totalDisplay.value,
     pageWidth - margin,
     afterTableY,
     { align: 'right' }
@@ -243,18 +267,21 @@ export async function generateQuotePdf({ items, customer = null } = {}) {
   doc.setFont(FONT_REGULAR, 'normal');
   doc.setFontSize(9);
   doc.setTextColor(90);
-  doc.text(
-    `Позиций: ${items.length} · Общее количество: ${formatNumber(totalCount)}`,
-    pageWidth - margin,
-    afterTableY + 5,
-    { align: 'right' }
-  );
+  doc.text(`Позиций: ${items.length}`, pageWidth - margin, afterTableY + 5, {
+    align: 'right',
+  });
+
+  if (totalDisplay.detail) {
+    doc.text(totalDisplay.detail, pageWidth - margin, afterTableY + 10, {
+      align: 'right',
+    });
+  }
 
   // ─── Примечания внизу
   doc.setTextColor(20);
   doc.setFont(FONT_REGULAR, 'normal');
   doc.setFontSize(9);
-  let footerY = afterTableY + 14;
+  let footerY = afterTableY + (totalDisplay.detail ? 20 : 14);
   const notes = [
     `Предложение действительно ${QUOTE_VALIDITY_DAYS} дня — до ${formatDate(validUntil)}.`,
     'Цены указаны с НДС. Условия самовывоза согласовываются отдельно.',
@@ -267,7 +294,6 @@ export async function generateQuotePdf({ items, customer = null } = {}) {
   }
 
   // ─── Подвал
-  const pageHeight = doc.internal.pageSize.getHeight();
   doc.setDrawColor(220);
   doc.line(margin, pageHeight - 15, pageWidth - margin, pageHeight - 15);
   doc.setFontSize(8);
@@ -281,5 +307,5 @@ export async function generateQuotePdf({ items, customer = null } = {}) {
   );
 
   doc.save(`${quoteNumber}.pdf`);
-  return { quoteNumber, totalPrice, totalCount };
+  return { quoteNumber, ...quoteMoneyPayload(money) };
 }

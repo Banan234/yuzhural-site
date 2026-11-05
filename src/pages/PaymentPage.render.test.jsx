@@ -5,12 +5,7 @@ import '../test/renderTestSetup.js';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import {
-  SITE_EMAIL_HREF,
-  SITE_PHONE_HREF,
-  SITE_REQUISITES,
-  SITE_URL,
-} from '../lib/siteConfig.js';
+import { SITE_PHONE_HREF, SITE_URL } from '../lib/siteConfig.js';
 import { STATIC_PAGE_SEO } from '../lib/staticSeo.js';
 import PaymentPage from './PaymentPage.jsx';
 
@@ -38,7 +33,7 @@ describe('PaymentPage', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', {
-        name: /условия оплаты/i,
+        name: /что нужно для выставления счёта/i,
       })
     ).toBeInTheDocument();
     expect(
@@ -47,21 +42,21 @@ describe('PaymentPage', () => {
     expect(
       screen.getByRole('heading', { level: 3, name: /физическ.*лиц/i })
     ).toBeInTheDocument();
-    expect(screen.getByText(/Для розничных покупок действуют условия/)).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Резерв кабеля — до 3 дней' })).toBeInTheDocument();
     expect(
-      screen.getByRole('link', { name: 'Скачать реквизиты' })
+      screen.getByText(/Для розничных покупок действуют/)
+    ).toBeInTheDocument();
+    expect(screen.getByText(/100% предоплата/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/до 3 дней, пока вы принимаете решение/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/полную оплату в течение 3 дней/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /Скачать реквизиты/ })
     ).toHaveAttribute('href', '/documents/company-details.pdf');
     expect(
-      screen.getByRole('link', {
-        name: /связаться с менеджером/i,
-      })
-    ).toHaveAttribute('href', SITE_PHONE_HREF);
-    expect(
       document.querySelector(`a[href="${SITE_PHONE_HREF}"]`)
-    ).not.toBeNull();
-    expect(
-      document.querySelector(`a[href="${SITE_EMAIL_HREF}"]`)
     ).not.toBeNull();
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',

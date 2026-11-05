@@ -33,7 +33,7 @@
 }
 .site-footer__brand span {
   color: #cbd9e5;
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 .site-footer__brand:focus-visible {
   outline: 2px solid #b9defa;
@@ -79,7 +79,7 @@
   border-radius: 4px;
   background: #ffffff;
   color: #1b354f;
-  font-size: 16px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   box-shadow: none;
@@ -100,7 +100,7 @@
 }
 .site-footer__quick-actions-label {
   color: #cbd9e5;
-  font-size: 16px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
 }
 .site-footer__quick-links {
@@ -112,7 +112,7 @@
 }
 .site-footer__quick-link {
   color: #b9defa;
-  font-size: 16px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
   transition:
@@ -121,7 +121,7 @@
 }
 .site-footer__quick-divider {
   color: #cbd9e5;
-  font-size: 16px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
 }
 .site-footer__quick-link:hover {
@@ -130,7 +130,7 @@
 }
 .site-footer__step {
   color: #cbd9e5;
-  font-size: 14px;
+  font-size: var(--text-ui);
   display: block;
 }
 .site-footer__top {
@@ -189,7 +189,7 @@
 .site-footer__text {
   color: #cbd9e5;
   line-height: 1.7;
-  font-size: 16px;
+  font-size: var(--text-body);
 }
 .site-footer__cta {
   margin-top: 14px;
@@ -201,7 +201,7 @@
   background: var(--primary);
   color: #fff;
   font-weight: var(--font-weight-medium);
-  font-size: 16px;
+  font-size: var(--text-body);
   cursor: pointer;
   box-shadow: none;
   transition: background 0.2s ease;
@@ -219,7 +219,7 @@
 .site-footer__legal {
   padding-top: 16px;
   color: #cbd9e5;
-  font-size: 14px;
+  font-size: var(--text-ui);
   line-height: 1.7;
 }
 
@@ -265,14 +265,14 @@
     font-size: 32px;
   }
   .site-footer__cta-text {
-    font-size: 16px;
+    font-size: var(--text-body);
   }
   .site-footer__cta-side {
     align-items: stretch;
   }
   .site-footer__hero-cta {
     min-height: 62px;
-    font-size: 16px;
+    font-size: var(--text-body);
   }
   .site-footer__quick-actions {
     align-items: stretch;
@@ -305,6 +305,6 @@
     border-radius: 18px;
   }
   .site-footer__cta-phone {
-    font-size: 16px;
+    font-size: var(--text-body);
   }
 }

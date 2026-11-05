@@ -43,10 +43,7 @@ export default function ServiceLayout({ serviceKey, children }) {
         />
         <header className="services-heading">
           <h1>{service?.title || 'Сервисы для работы с кабелем'}</h1>
-          <p>
-            {service?.description ||
-              'Подберите параметры, проверьте обозначение и подготовьте данные для заказа. Результат каждого инструмента можно передать менеджеру.'}
-          </p>
+          {service && <p>{service.description}</p>}
         </header>
         {service && (
           <nav

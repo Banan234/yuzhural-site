@@ -1,8 +1,11 @@
+import { getProductReferenceSpecs } from '../../../shared/productReferenceSpecs.js';
 import { getCartQuantityLimit } from '../../lib/cartQuantity.js';
+import ResponsiveProductImage from './ResponsiveProductImage.jsx';
 import { formatManufacturerTitle } from '../../../shared/manufacturerTitle.js';
 // Файл рендерит товарную карточку каталога с ценой, статусом, действиями корзины и ссылкой на товар.
 
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useCartStore } from '../../store/useCartStore';
 import {
   CardActions,
@@ -17,7 +20,7 @@ import { formatProductPrice } from '../../lib/productPrice';
 import {
   getProductImage,
   getProductImageAlt,
-} from '../../../shared/productImages.js';
+} from '../../../shared/productImagePresentation.js';
 import '../../styles/sections/product-card.css';
 
 function formatStockLabel(product) {
@@ -26,6 +29,7 @@ function formatStockLabel(product) {
 }
 
 export default function ProductCard({ product, variant = 'default' }) {
+  const [requestedQuantity, setRequestedQuantity] = useState('1');
   const addItem = useCartStore((state) => state.addItem);
   const quantity = useCartStore(
     (state) => state.items.find((item) => item.id === product.id)?.quantity || 0
@@ -33,7 +37,16 @@ export default function ProductCard({ product, variant = 'default' }) {
   const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
   const decreaseItem = useCartStore((state) => state.decreaseItem);
   const isStockVariant = variant === 'stock';
+  const hasOffers = product.offers?.length > 1;
   const productUrl = `/product/${product.slug}`;
+  const offersLink = (
+    <Link
+      className="product-card__secondary product-card__offers-link"
+      to={`${productUrl}#product-offers`}
+    >
+      Выбрать остаток
+    </Link>
+  );
   const stockLabel = `В наличии: ${formatStockLabel(product)}`;
   const stockSubtitle = stockLabel;
   const catalogStockLabel = stockLabel;
@@ -53,13 +66,14 @@ export default function ProductCard({ product, variant = 'default' }) {
   const productPrice = formatProductPrice(product.price, product.unit, {
     context: 'request',
   });
-  const priceValue = productPrice.value;
+  const priceValue = `${product.priceVaries && productPrice.hasPrice ? 'от ' : ''}${productPrice.value}`;
   const priceUnitLabel = productPrice.unitLabel;
   const productImage = getProductImage(product);
   const productImageAlt = getProductImageAlt(product);
   const brand = product.brand || product.manufacturer || product.catalogBrand;
   const displayTitle = formatManufacturerTitle(product.title, product);
   const catalogSpecs = [
+    ...(product.referenceSpecs || getProductReferenceSpecs(product)),
     product.cores != null && {
       label: 'Количество жил',
       value: product.cores.toLocaleString('ru-RU'),
@@ -126,7 +140,9 @@ export default function ProductCard({ product, variant = 'default' }) {
     return (
       <article className="product-card product-card--catalog-list">
         <Link to={productUrl} className="product-card__list-image">
-          <img
+          <ResponsiveProductImage
+            variants={product.imageVariants}
+            sizes="110px"
             src={productImage}
             alt={productImageAlt}
             width="140"
@@ -152,7 +168,7 @@ export default function ProductCard({ product, variant = 'default' }) {
             <dl className="product-card__list-specs">
               {catalogSpecs.map(({ label, value }) => (
                 <div key={label}>
-                  <dt>{label}</dt>
+                  <dt>{label}:</dt>
                   <dd>{value}</dd>
                 </div>
               ))}
@@ -166,7 +182,9 @@ export default function ProductCard({ product, variant = 'default' }) {
             priceValue={priceValue}
             priceUnitLabel={priceUnitLabel}
           />
-          {quantity > 0 ? (
+          {hasOffers ? (
+            offersLink
+          ) : quantity > 0 ? (
             <CartQuantityControl
               quantity={quantity}
               maxQuantity={getCartQuantityLimit(product)}
@@ -182,9 +200,13 @@ export default function ProductCard({ product, variant = 'default' }) {
               type="button"
               className="product-card__list-cart"
               onClick={handleAddToCart}
-              aria-label={`Добавить ${displayTitle} в корзину`}
+              aria-label={
+                quantity > 0
+                  ? `${displayTitle} в корзине`
+                  : `Добавить ${displayTitle} в корзину`
+              }
             >
-              В корзину
+              {quantity > 0 ? 'В корзине' : 'В корзину'}
             </button>
           )}
         </div>
@@ -198,7 +220,9 @@ export default function ProductCard({ product, variant = 'default' }) {
     >
       <Link to={productUrl} className="product-card__image-link">
         {!isStockVariant && <ProductBadges badges={badges} />}
-        <img
+        <ResponsiveProductImage
+          variants={product.imageVariants}
+          sizes="(max-width: 600px) calc(100vw - 26px), (max-width: 1000px) 45vw, 320px"
           src={productImage}
           alt={productImageAlt}
           className="product-card__image"
@@ -232,16 +256,82 @@ export default function ProductCard({ product, variant = 'default' }) {
           priceValue={priceValue}
           priceUnitLabel={priceUnitLabel}
         />
-        <CardActions
-          isStockVariant={isStockVariant}
-          quantity={quantity}
-          maxQuantity={getCartQuantityLimit(product)}
-          title={displayTitle}
-          onDecrease={() => decreaseItem(product.id)}
-          onQuantityChange={(value) => updateItemQuantity(product.id, value)}
-          onAddToCart={handleAddToCart}
-          onOpenQuote={handleOpenQuote}
-        />
+        {hasOffers ? (
+          offersLink
+        ) : variant === 'catalog-tile' ? (
+          <div className="product-card__catalog-order">
+            <CartQuantityControl
+              quantity={
+                quantity || Number(requestedQuantity.replace(',', '.')) || 1
+              }
+              maxQuantity={getCartQuantityLimit(product)}
+              title={displayTitle}
+              onQuantityChange={(value) =>
+                quantity > 0
+                  ? updateItemQuantity(product.id, value)
+                  : setRequestedQuantity(String(value))
+              }
+              onIncrease={() =>
+                quantity > 0
+                  ? handleAddToCart()
+                  : setRequestedQuantity(
+                      String(
+                        Math.min(
+                          getCartQuantityLimit(product),
+                          (Number(requestedQuantity.replace(',', '.')) || 1) + 1
+                        )
+                      )
+                    )
+              }
+              onDecrease={() =>
+                quantity > 0
+                  ? decreaseItem(product.id)
+                  : setRequestedQuantity(
+                      String(
+                        Math.max(
+                          Math.min(1, getCartQuantityLimit(product)),
+                          (Number(requestedQuantity.replace(',', '.')) || 1) - 1
+                        )
+                      )
+                    )
+              }
+            />
+            <button
+              type="button"
+              className={`product-card__secondary${quantity > 0 ? ' product-card__secondary--in-cart' : ''}`}
+              disabled={quantity > 0 || getCartQuantityLimit(product) <= 0}
+              onClick={() => {
+                const parsed = Number(
+                  requestedQuantity.trim().replace(',', '.')
+                );
+                const amount = Math.min(
+                  getCartQuantityLimit(product),
+                  Number.isFinite(parsed) && parsed > 0 ? Math.ceil(parsed) : 1
+                );
+                setRequestedQuantity(String(amount).replace('.', ','));
+                addItem({ ...product, quantity: amount });
+              }}
+              aria-label={
+                quantity > 0
+                  ? `${displayTitle} в корзине`
+                  : `Добавить ${displayTitle} в корзину`
+              }
+            >
+              {quantity > 0 ? 'В корзине' : 'В корзину'}
+            </button>
+          </div>
+        ) : (
+          <CardActions
+            isStockVariant={isStockVariant}
+            quantity={quantity}
+            maxQuantity={getCartQuantityLimit(product)}
+            title={displayTitle}
+            onDecrease={() => decreaseItem(product.id)}
+            onQuantityChange={(value) => updateItemQuantity(product.id, value)}
+            onAddToCart={handleAddToCart}
+            onOpenQuote={handleOpenQuote}
+          />
+        )}
       </div>
     </article>
   );

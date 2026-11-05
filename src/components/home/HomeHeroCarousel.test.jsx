@@ -46,13 +46,21 @@ describe('HomeHeroCarousel', () => {
       'home-hero-title'
     );
     expect(
-      screen.getByRole('link', { name: /Отправить спецификацию/ })
+      screen.getByRole('link', { name: /Отправить заявку/ })
     ).toHaveAttribute('href', '/specification/');
-    fireEvent.click(screen.getByRole('button', { name: 'Предыдущий слайд' }));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Показать слайд 3: Самовывоз со склада',
+      })
+    );
     expect(
       screen.getByRole('link', { name: /Получение заказа/ })
     ).toHaveAttribute('href', '/delivery/');
-    fireEvent.click(screen.getByRole('button', { name: 'Следующий слайд' }));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Показать слайд 1: Кабель под ваш проект',
+      })
+    );
     expect(screen.getByRole('heading', { level: 1 })).toBeVisible();
   });
   it('переключается по индикатору и оставляет только текущий слайд доступным', () => {
@@ -67,7 +75,7 @@ describe('HomeHeroCarousel', () => {
       screen.getByRole('link', { name: 'Рассчитать сечение' })
     ).toHaveAttribute('href', '/calculator/section/');
     expect(
-      screen.queryByRole('link', { name: /Отправить спецификацию/ })
+      screen.queryByRole('link', { name: /Отправить заявку/ })
     ).not.toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: 'Показать слайд 2: Подбор кабеля' })
@@ -78,7 +86,9 @@ describe('HomeHeroCarousel', () => {
   });
   it('поддерживает клавиатуру без перехвата сочетаний с модификаторами', () => {
     setup();
-    const next = screen.getByRole('button', { name: 'Следующий слайд' });
+    const next = screen.getByRole('button', {
+      name: 'Показать слайд 1: Кабель под ваш проект',
+    });
     fireEvent.keyDown(next, { key: 'ArrowRight', ctrlKey: true });
     expect(screen.getByRole('heading', { level: 1 })).toBeVisible();
     fireEvent.keyDown(next, { key: 'ArrowRight' });

@@ -1,17 +1,17 @@
-/* Единый отступ под шапкой, как на странице алфавитного перечня. */
+/* Единый компактный отступ под шапкой на страницах с хлебными крошками. */
 main > :is(section, main):first-child:has(.breadcrumbs) {
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 /* У каталога есть верхняя рамка толщиной 1px. */
 main > .catalog-section:first-child:has(.breadcrumbs) {
-  padding-top: 19px;
+  padding-top: 14px;
 }
 
 .breadcrumbs {
   margin: -4px 0 4px;
   color: #92969c;
-  font-size: 12px;
+  font-size: var(--text-caption);
   font-weight: 400;
   line-height: 1.35;
 }
@@ -36,12 +36,14 @@ main > .catalog-section:first-child:has(.breadcrumbs) {
   min-width: 0;
   overflow-wrap: anywhere;
 }
-.breadcrumbs a {
-  color: inherit;
+/* Цвет навигации одинаков на всех страницах, независимо от оформления ссылок раздела. */
+:root .breadcrumbs a,
+:root .breadcrumbs [aria-current='page'] {
+  color: #92969c !important;
   text-decoration: none;
 }
-.breadcrumbs a:hover {
-  color: #626871;
+:root .breadcrumbs a:hover {
+  color: #626871 !important;
   text-decoration: none;
 }
 .breadcrumbs a:focus-visible {
@@ -57,15 +59,15 @@ main > .catalog-section:first-child:has(.breadcrumbs) {
 }
 @media (max-width: 600px) {
   main > :is(section, main):first-child:has(.breadcrumbs) {
-    padding-top: 12px;
+    padding-top: 15px;
   }
 
   main > .catalog-section:first-child:has(.breadcrumbs) {
-    padding-top: 11px;
+    padding-top: 14px;
   }
 
   .breadcrumbs {
     margin-bottom: 2px;
-    font-size: 11px;
+    font-size: var(--text-caption);
   }
 }

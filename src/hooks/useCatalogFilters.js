@@ -2,6 +2,8 @@
 
 import { useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { CATALOG_PAGE_SIZE_OPTIONS } from '../../shared/catalogPagination.js';
+export { CATALOG_PAGE_SIZE_OPTIONS } from '../../shared/catalogPagination.js';
 import {
   normalizeCatalogFilterQuery,
   parseCsvParam,
@@ -21,7 +23,6 @@ const BASE_PRODUCT_QUERY_KEYS = [
   'sort',
   'page',
 ];
-export const CATALOG_PAGE_SIZE_OPTIONS = [21, 24, 48, 96];
 const ADVANCED_PRODUCT_QUERY_KEYS = ['appType', 'spe'];
 const RESET_FILTER_KEYS = [
   'search',

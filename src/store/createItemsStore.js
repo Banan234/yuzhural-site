@@ -103,7 +103,13 @@ export function createItemsStore({
                   items: state.items
                     .map((item) =>
                       item.id === id
-                        ? { ...item, quantity: item.quantity - 1 }
+                        ? {
+                            ...item,
+                            quantity: normalizeQuantity(
+                              item,
+                              item.quantity - 1
+                            ),
+                          }
                         : item
                     )
                     .filter((item) => item.quantity > 0),

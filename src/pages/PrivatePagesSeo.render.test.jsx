@@ -102,7 +102,7 @@ describe('private pages SEO', () => {
     expect(screen.getByText('Кабель с ценой')).toBeInTheDocument();
     expect(screen.getByText('Кабель без цены')).toBeInTheDocument();
     const summary = screen.getByRole('complementary');
-    expect(summary).toHaveTextContent(/1\s*200\s*₽/);
+    expect(summary).toHaveTextContent(/1\s*200,00\s*₽/);
     expect(summary).toHaveTextContent(/по запросу|рассчитан.*КП/i);
   });
 

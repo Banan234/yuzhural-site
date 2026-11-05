@@ -1,4 +1,8 @@
 import { PERSONAL_DATA_CONSENT_VERSION } from '../../../shared/personalDataConsent';
+import {
+  calculateQuote,
+  quoteMoneyPayload,
+} from '../../../shared/quoteMoney.js';
 // Файл управляет формой запроса КП: позиции, контакты, PDF, отправка и пользовательские ошибки.
 
 import { useEffect, useRef, useState } from 'react';
@@ -45,7 +49,8 @@ export default function QuoteForm({
   compact = false,
 }) {
   const { items: cartItems, clearCart } = useCartStore();
-  const items = itemsOverride || cartItems;
+  const money = calculateQuote(itemsOverride || cartItems);
+  const items = money.items;
   const shouldClearCartOnSuccess = !itemsOverride;
 
   const [form, setForm] = useState(() => ({
@@ -76,12 +81,6 @@ export default function QuoteForm({
     comment: `${fieldIds.comment}-error`,
     consent: `${fieldIds.consent}-error`,
   };
-
-  const totalCount = items.length;
-  const totalPrice = items.reduce(
-    (sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 0),
-    0
-  );
 
   useEffect(() => {
     removeStoredValue(LEGACY_FORM_STORAGE_KEY);
@@ -152,8 +151,7 @@ export default function QuoteForm({
         unit: item.unit,
         comment: item.comment,
       })),
-      totalCount,
-      totalPrice,
+      ...quoteMoneyPayload(money),
       createdAt: new Date().toLocaleString('ru-RU'),
       rendered_at: renderedAtRef.current,
       submit_at: Date.now(),
@@ -180,16 +178,17 @@ export default function QuoteForm({
         response,
         messages.errors.quoteForm.submitRequestFailed
       );
+      const accepted = result.quoteSummary || quoteMoneyPayload(money);
 
       trackEvent('quote-submit', {
-        items: totalCount,
-        total: Math.round(totalPrice),
+        items: accepted.totalCount,
+        ...(accepted.totalComplete ? { total: accepted.totalPrice } : {}),
         channel: cleanedForm.preferredChannel,
         hasEmail: Boolean(cleanedForm.email),
       });
       setSubmittedSummary({
         files: files.map((file) => file.name),
-        positions: totalCount,
+        positions: accepted.totalCount,
         contact: cleanedForm.phone,
         comment: cleanedForm.comment,
       });

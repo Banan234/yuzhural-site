@@ -4,7 +4,7 @@
 .home-why h2 {
   margin: 0 0 48px;
   color: #102947;
-  font-size: 28px;
+  font-size: var(--text-section-title);
   font-weight: 700;
   line-height: 1.2;
   text-align: left;
@@ -12,7 +12,7 @@
 .home-why__variant {
   margin: 0 0 10px;
   color: #8a929c;
-  font-size: 12px;
+  font-size: var(--text-caption);
 }
 .home-why--numbers {
   background: #fafafa;
@@ -39,7 +39,7 @@
   overflow-wrap: anywhere;
 }
 .home-why__numbers dt small {
-  font-size: 28px;
+  font-size: var(--text-section-title);
   font-weight: inherit;
 }
 .home-why__numbers .home-why__long-value {
@@ -50,7 +50,7 @@
   max-width: 260px;
   margin: 10px auto 0;
   color: #20232a;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.5;
   text-align: center;
 }
@@ -108,7 +108,7 @@
 .home-why__icons h3 {
   margin: 0;
   color: inherit;
-  font-size: 17px;
+  font-size: var(--text-body);
   font-weight: 700;
   line-height: 1.35;
   text-transform: uppercase;
@@ -135,7 +135,7 @@
     font-size: 20px;
   }
   .home-why__numbers dd {
-    font-size: 14px;
+    font-size: var(--text-ui);
   }
   .home-why--icons {
     padding: 16px 0 28px;
@@ -144,14 +144,14 @@
     width: calc(100% - 24px);
   }
   .home-why__icon-heading h2 {
-    font-size: 22px;
+    font-size: var(--text-card-title);
   }
   .home-why__icons {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px 20px;
   }
   .home-why__icons h3 {
-    font-size: 14px;
+    font-size: var(--text-ui);
   }
 }
 
@@ -186,7 +186,7 @@
     height: 44px;
   }
   .home-why__combined-grid h3 {
-    font-size: 16px;
+    font-size: var(--text-body);
   }
 }
 

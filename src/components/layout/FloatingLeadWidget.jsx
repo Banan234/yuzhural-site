@@ -99,6 +99,9 @@ export default function FloatingLeadWidget({
   const sessionRef = useRef(session);
   const messagesEndRef = useRef(null);
   const commentFieldRef = useRef(null);
+  const panelRef = useRef(null);
+  const launcherRef = useRef(null);
+  const focusTransitionRef = useRef(false);
   const fieldIds = {
     comment: 'floating-lead-comment',
     consent: 'floating-lead-consent',
@@ -106,6 +109,14 @@ export default function FloatingLeadWidget({
   };
   const hasSession = Boolean(session);
   const isSessionRestoring = hasSession && !conversation;
+
+  useEffect(() => {
+    if (!focusTransitionRef.current) return;
+    focusTransitionRef.current = false;
+    (isOpen ? panelRef.current : launcherRef.current)?.focus({
+      preventScroll: true,
+    });
+  }, [isOpen]);
 
   useEffect(() => {
     sessionRef.current = session;
@@ -350,6 +361,7 @@ export default function FloatingLeadWidget({
   }
 
   function handleOpen() {
+    focusTransitionRef.current = true;
     setIsOpen(true);
     trackEvent('lead-widget-open', {
       source: sourceLabel,
@@ -363,6 +375,8 @@ export default function FloatingLeadWidget({
     >
       {isOpen ? (
         <section
+          ref={panelRef}
+          tabIndex={-1}
           className="floating-lead-widget__panel"
           aria-label="Чат с менеджером"
         >
@@ -372,7 +386,10 @@ export default function FloatingLeadWidget({
               type="button"
               className="floating-lead-widget__close"
               aria-label="Свернуть виджет"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                focusTransitionRef.current = true;
+                setIsOpen(false);
+              }}
             >
               ×
             </button>
@@ -523,6 +540,8 @@ export default function FloatingLeadWidget({
         <button
           type="button"
           className="floating-lead-widget__launcher"
+          ref={launcherRef}
+          aria-label="Чат с менеджером"
           onClick={handleOpen}
         >
           <span

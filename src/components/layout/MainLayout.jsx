@@ -1,7 +1,8 @@
 // Файл задаёт общий каркас страниц: шапку, меню, футер, модалки и отслеживание pageview.
 
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { Suspense, lazy, useEffect, useRef, useState } from 'react';
+import CatalogNavigationScroll from './CatalogNavigationScroll';
+import { Suspense, lazy, memo, useEffect, useRef, useState } from 'react';
 import Container from '../ui/Container';
 import Modal from '../ui/Modal';
 import HeroLeadForm from '../home/HeroLeadForm';
@@ -11,6 +12,10 @@ import HeaderCatalogMenu from './HeaderCatalogMenu';
 import HeaderServicesMenu from './HeaderServicesMenu';
 import HeaderSearch from './HeaderSearch';
 import SiteFooter from './SiteFooter';
+import {
+  PrerenderDataProvider,
+  usePrerenderData,
+} from '../../lib/prerenderData';
 import CookieConsent from './CookieConsent';
 import { openCookieSettings } from '../../lib/cookieConsent';
 import { useCartStore } from '../../store/useCartStore';
@@ -36,6 +41,7 @@ import {
 
 const MOBILE_NAV_ID = 'mobile-navigation';
 const DOCUMENTS_PATH = '/quality/';
+const EMPTY_PRERENDER_DATA = {};
 
 const LazyQuoteForm = lazy(() => import('../quote/QuoteForm'));
 const LazyMobileNav = lazy(() => import('./MobileNav'));
@@ -49,6 +55,30 @@ function ModalFormFallback() {
   );
 }
 
+// Header/overlay/scroll updates are independent of the dehydrated route.
+// Recreating Outlet children here would interrupt a still-loading lazy page.
+const RouteContent = memo(function RouteContent() {
+  const { pathname } = useLocation();
+  const isCatalog = pathname === '/catalog' || pathname.startsWith('/catalog/');
+  return (
+    <Suspense
+      fallback={
+        <div
+          className={`route-fallback route-fallback--page${isCatalog ? ' catalog-page' : ''}`}
+          aria-busy="true"
+          aria-live="polite"
+        >
+          <span className="route-fallback__spinner" aria-hidden="true" />
+          <span className="route-fallback__text">Загружаем страницу...</span>
+        </div>
+      }
+    >
+      <CatalogNavigationScroll />
+      <Outlet />
+    </Suspense>
+  );
+});
+
 function buildStorageWarningMessage(key) {
   if (key === 'yuzhural-cart') {
     return 'Список для КП изменён только на этом экране: браузер не дал сохранить корзину. Уменьшите список или очистите место в браузере.';
@@ -57,12 +87,13 @@ function buildStorageWarningMessage(key) {
   return 'Браузер не дал сохранить изменения локально. Они видны сейчас, но могут пропасть после перезагрузки страницы.';
 }
 
-function HeaderCartLink({ totalCount, mobile = false }) {
+function HeaderCartLink({ mobile = false }) {
+  // Persisted cart updates must not rerender the parent of a hydrating route.
+  const totalCount = useCartStore((state) => state.items.length);
   return (
     <Link
       to="/cart"
       className={`site-header__cart${mobile ? ' site-header__cart--mobile' : ''}`}
-      aria-label={mobile ? 'Открыть список для КП' : 'Открыть корзину'}
     >
       <svg
         className="site-header__cart-icon site-header__cart-icon--svg"
@@ -87,10 +118,14 @@ function HeaderCartLink({ totalCount, mobile = false }) {
 }
 
 export default function MainLayout() {
-  const items = useCartStore((state) => state.items);
-  const totalCount = items.length;
-
   const location = useLocation();
+  const prerenderData = usePrerenderData();
+  const [bootstrapLocation] = useState(() => location);
+  // A server 404 describes this document entry, never a later navigation (or Back).
+  const routePrerenderData =
+    prerenderData.httpStatus === 404 && location !== bootstrapLocation
+      ? EMPTY_PRERENDER_DATA
+      : prerenderData;
   const isHomePage = location.pathname === '/';
   usePageviewTracking();
 
@@ -100,14 +135,13 @@ export default function MainLayout() {
   const [quoteModalOptions, setQuoteModalOptions] = useState({});
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const mobileMenuButtonRef = useRef(null);
-  const [isScrolled, setIsScrolled] = useState(
-    () =>
-      typeof window !== 'undefined' &&
-      (window.scrollY > 48 || window.history.state?.marksReturn?.top > 48)
-  );
+  const [isScrolled, setIsScrolled] = useState(false);
   const [storageWarning, setStorageWarning] = useState(null);
 
   useEffect(() => {
+    setIsScrolled(
+      window.scrollY > 48 || window.history.state?.marksReturn?.top > 48
+    );
     function handleScroll() {
       setIsScrolled(window.scrollY > 48);
     }
@@ -388,7 +422,7 @@ export default function MainLayout() {
                 </button>
               </div>
 
-              <HeaderCartLink totalCount={totalCount} mobile />
+              <HeaderCartLink mobile />
             </div>
           </Container>
         </div>
@@ -449,7 +483,7 @@ export default function MainLayout() {
               </nav>
 
               <div className="site-header__actions">
-                <HeaderCartLink totalCount={totalCount} />
+                <HeaderCartLink />
               </div>
             </div>
           </Container>
@@ -495,22 +529,9 @@ export default function MainLayout() {
       ) : null}
 
       <main id="main-content" tabIndex={-1}>
-        <Suspense
-          fallback={
-            <div
-              className="route-fallback route-fallback--page"
-              aria-busy="true"
-              aria-live="polite"
-            >
-              <span className="route-fallback__spinner" aria-hidden="true" />
-              <span className="route-fallback__text">
-                Загружаем страницу...
-              </span>
-            </div>
-          }
-        >
-          <Outlet />
-        </Suspense>
+        <PrerenderDataProvider data={routePrerenderData}>
+          <RouteContent />
+        </PrerenderDataProvider>
       </main>
 
       <SiteFooter

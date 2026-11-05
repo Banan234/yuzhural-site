@@ -210,7 +210,7 @@ describe('ограничение количеством в наличии', () =
     store.getState().updateItemQuantity(1, 99);
     expect(store.getState().items[0].quantity).toBe(10);
     store.getState().updateItemQuantity(1, 4.25);
-    expect(store.getState().items[0].quantity).toBe(4.25);
+    expect(store.getState().items[0].quantity).toBe(5);
   });
   it('учитывает дробный остаток и его уменьшение при сверке каталога', async () => {
     const store = await freshStore();
@@ -240,4 +240,72 @@ describe('ограничение количеством в наличии', () =
       .addManualItem({ title: 'Ручная позиция', stock: 0, quantity: 100 });
     expect(store.getState().items[0].quantity).toBe(100);
   });
+});
+
+it('excludes pending products from calculation without calling them disappeared', async () => {
+  const store = await freshStore();
+  for (const id of [1, 2, 3])
+    store.getState().addItem({
+      id,
+      title: 'SYNTHETIC-' + id,
+      price: 100,
+      unit: 'м',
+      quantity: 2,
+    });
+  const summary = store.getState().syncWithCatalog({
+    found: [{ id: 1, price: 222, stock: 10, unit: 'м' }],
+    missing: [2, 3],
+    pending: [2],
+  });
+  expect(store.getState().items.map((p) => p.id)).toEqual([1]);
+  expect(summary.pending.map((p) => p.id)).toEqual([2]);
+  expect(summary.removed.map((p) => p.id)).toEqual([3]);
+});
+
+it.each(['шт', 'м', 'кг'])(
+  'integer steps reach and preserve the entire fractional balance (%s)',
+  async (unit) => {
+    const store = await freshStore();
+    store.getState().addItem({
+      id: 1,
+      title: 'Fixture',
+      unit,
+      price: 99.99,
+      stock: 5.7,
+      quantity: 4,
+    });
+    store.getState().addItem({
+      id: 2,
+      title: 'Unaffected',
+      unit: 'м',
+      price: 1,
+      quantity: 3,
+    });
+    store.getState().addItem({ id: 1, unit, stock: 5.7, quantity: 1 });
+    expect(store.getState().items[0].quantity).toBe(5);
+    store.getState().addItem({ id: 1, unit, stock: 5.7, quantity: 1 });
+    expect(store.getState().items[0].quantity).toBe(5.7);
+    store.getState().decreaseItem(1);
+    expect(store.getState().items[0].quantity).toBe(5);
+    store.getState().updateItemQuantity(1, 99);
+    expect(store.getState().items[0].quantity).toBe(5.7);
+    expect(store.getState().items[1].quantity).toBe(3);
+  }
+);
+it('normalizes a synthetic persisted draft without losing its other rows', async () => {
+  localStorage.setItem(
+    'yuzhural-cart',
+    JSON.stringify({
+      version: 1,
+      state: {
+        items: [
+          { id: 1, unit: 'шт', quantity: 0.5, stock: 8 },
+          { id: 2, unit: 'кг', quantity: 5.7, stock: 5.7 },
+          { id: 3, unit: 'м', quantity: 4, stock: 9 },
+        ],
+      },
+    })
+  );
+  const store = await freshStore();
+  expect(store.getState().items.map((p) => p.quantity)).toEqual([1, 5.7, 4]);
 });

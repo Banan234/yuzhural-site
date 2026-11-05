@@ -6,7 +6,7 @@
 .delivery-page .page-subtitle {
   max-width: 740px;
   color: #475569;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.6;
 }
 
@@ -25,7 +25,7 @@
   border-radius: 0;
   background: transparent;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
@@ -85,7 +85,7 @@
 .delivery-page .delivery-manager-card__text {
   margin: 0;
   color: #475569;
-  font-size: 16px;
+  font-size: var(--text-body);
   line-height: 1.6;
   font-weight: var(--font-weight-regular);
 }
@@ -106,7 +106,7 @@
   max-width: 850px;
   margin: 28px 0 0;
   color: #475569;
-  font-size: 16px;
+  font-size: var(--text-body);
   line-height: 1.6;
 }
 
@@ -143,7 +143,7 @@
   border-radius: 0;
   background: transparent;
   color: #92969c;
-  font-size: 16px;
+  font-size: var(--text-body);
   line-height: 1.5;
   content: counter(delivery-steps) '.';
 }
@@ -207,7 +207,7 @@
 }
 .delivery-page .page-subtitle {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--text-body);
   color: var(--muted);
 }
 .delivery-page__panel {
@@ -246,7 +246,7 @@
 }
 .delivery-page__address span {
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--text-small);
 }
 .delivery-page__address a {
   color: var(--primary-dark);
@@ -259,7 +259,7 @@
 .delivery-page .delivery-manager-card__text,
 .delivery-page .delivery-page__shipping-note {
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--text-body);
 }
 .delivery-page .delivery-route-map {
   margin-top: 0;
@@ -267,7 +267,7 @@
 }
 .delivery-page .contacts-map-card__title {
   margin-bottom: 12px;
-  font-size: 17px;
+  font-size: var(--text-body);
   color: var(--text);
 }
 .delivery-page .contacts-map-frame {
@@ -284,7 +284,7 @@
 .delivery-page .contacts-map-card__footer {
   gap: 8px;
   padding-top: 12px;
-  font-size: 12px;
+  font-size: var(--text-caption);
   line-height: 1.5;
   color: var(--muted);
 }
@@ -306,11 +306,11 @@
   gap: 24px;
 }
 .delivery-page .delivery-steps strong {
-  font-size: 15px;
+  font-size: var(--text-body);
 }
 .delivery-page .delivery-steps span,
 .delivery-page .info-list {
-  font-size: 14px;
+  font-size: var(--text-ui);
   color: var(--muted);
 }
 .delivery-page .delivery-manager-card {
@@ -326,7 +326,7 @@
 }
 .delivery-page .delivery-manager-card__title {
   grid-column: 1;
-  font-size: 22px;
+  font-size: var(--text-card-title);
   margin-bottom: 8px;
 }
 .delivery-page .delivery-manager-card__text {
@@ -375,13 +375,13 @@
   display: grid;
   gap: 16px;
   margin: 0 0 24px;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.5;
 }
 .delivery-pickup-details dt {
   margin-bottom: 4px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--text-small);
 }
 .delivery-pickup-details dd {
   margin: 0;
@@ -394,7 +394,7 @@
 .delivery-pickup-details .delivery-pickup-details__note {
   margin-top: 4px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--text-small);
 }
 .delivery-pickup-list {
   display: grid;
@@ -406,113 +406,157 @@
 .delivery-pickup-list h3 {
   margin: 0 0 6px;
   color: var(--text);
-  font-size: 15px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
 }
 .delivery-pickup-list p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--text-ui);
   line-height: 1.6;
 }
 
 /* Памятка самовывоза: сроки, последовательность и условия получения. */
-.delivery-pickup-guide {
+/* Краткая памятка и тематические условия самовывоза. */
+.pickup-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+.pickup-ready {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 32px;
+  padding: 24px;
+  border-radius: 4px;
+  background: #edf5fb;
+}
+.pickup-ready > div {
+  flex: 1;
+  min-width: 0;
+}
+.pickup-ready p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.pickup-ready .pickup-ready__title {
+  margin-bottom: 4px;
+  color: var(--primary-dark);
+  font-weight: var(--font-weight-medium);
+}
+.pickup-ready > a {
+  max-width: 270px;
+  line-height: 1.5;
+}
+.pickup-topics {
+  margin-top: 36px;
+}
+.delivery-page .pickup-topics > h2 {
+  margin-bottom: 20px;
+}
+.pickup-topics__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+  gap: 20px;
 }
-.delivery-page .delivery-pickup-guide .content-columns--spaced {
-  display: block;
-  margin: 0;
+.pickup-topic {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
   padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-}
-.delivery-page .delivery-pickup-guide .pickup-reserve,
-.delivery-page .delivery-pickup-guide .pickup-before {
-  grid-column: 1 / -1;
-}
-.delivery-page .delivery-pickup-guide .pickup-reserve {
-  padding: 0;
-  border: 0;
-}
-.delivery-pickup-guide .content-lead {
-  max-width: 760px;
-}
-.delivery-pickup-guide .delivery-section-title {
-  font-size: clamp(22px, 2vw, 28px);
-}
-.pickup-reserve .delivery-pickup-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 24px;
-}
-.pickup-reserve .delivery-pickup-list li {
-  padding: 24px;
-  border-radius: 8px;
+  border-radius: 4px;
   background: var(--bg-soft);
 }
-.pickup-reserve .pickup-fact {
-  display: block;
-  margin-bottom: 18px;
-  color: var(--primary-dark);
-  font-size: clamp(24px, 2.2vw, 32px);
-  line-height: 1.2;
+.pickup-topic > div {
+  min-width: 0;
+}
+.pickup-topic h3,
+.pickup-carrier h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.35;
+  color: var(--text);
+}
+.pickup-topic p,
+.pickup-topic li,
+.pickup-carrier p {
+  font-size: var(--text-body);
+  line-height: 1.65;
+  color: var(--muted);
+}
+.pickup-topic p,
+.pickup-carrier p {
+  margin: 0;
+}
+.pickup-topic p + p,
+.pickup-carrier p + p {
+  margin-top: 10px;
+}
+.pickup-topic ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+.pickup-topic p + ul {
+  margin-top: 12px;
+}
+.pickup-topic li + li {
+  margin-top: 8px;
+}
+.pickup-topic .pickup-topic__hours {
+  color: var(--text);
+  font-size: 18px;
   font-weight: var(--font-weight-medium);
 }
-.pickup-reserve .pickup-fact--text {
-  font-size: clamp(22px, 1.8vw, 26px);
+.pickup-topic .pickup-topic__fact {
+  color: var(--primary-dark);
 }
-.delivery-page .pickup-before .delivery-steps {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
+.pickup-carrier {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
   margin-top: 28px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
-.delivery-page .pickup-before .delivery-steps li {
-  padding: 44px 0 0;
+.delivery-page .delivery-manager-card {
+  margin-top: 0;
+  padding: 28px 0 0;
+  background: transparent;
 }
-.delivery-page .pickup-before .delivery-steps li::before {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--bg-soft);
-  color: var(--primary-dark);
-  font-weight: var(--font-weight-medium);
-  content: counter(delivery-steps);
-}
-.pickup-documents .delivery-pickup-list,
-.pickup-loading .delivery-pickup-list {
-  margin-top: 24px;
-}
-@media (max-width: 1000px) {
-  .delivery-page .pickup-before .delivery-steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .pickup-reserve .delivery-pickup-list {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-@media (max-width: 650px) {
-  .delivery-pickup-guide {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 20px;
-    margin-top: 28px;
-  }
-  .delivery-page .delivery-pickup-guide .content-columns--spaced {
+@media (max-width: 760px) {
+  .pickup-ready {
+    flex-wrap: wrap;
+    align-items: flex-start;
     padding: 20px;
+    gap: 14px;
   }
-  .delivery-page .delivery-pickup-guide .pickup-reserve {
-    padding: 0;
+  .pickup-ready > div {
+    flex-basis: calc(100% - 46px);
   }
-  .pickup-reserve .delivery-pickup-list li {
-    padding: 20px;
+  .pickup-ready > a {
+    margin-left: 46px;
+    max-width: none;
   }
-  .delivery-page .pickup-before .delivery-steps {
+  .pickup-topics__grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .pickup-topic {
+    padding: 20px;
+    gap: 16px;
+  }
+  .pickup-topic h3,
+  .pickup-carrier h2 {
+    font-size: 19px;
+  }
+  .pickup-carrier {
+    gap: 16px;
   }
 }
 
@@ -527,4 +571,84 @@
 
 .delivery-page__panel--shipping {
   margin-top: 40px;
+}
+
+.warehouse-api-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.warehouse-api-map__canvas {
+  width: 100%;
+  height: 100%;
+}
+.delivery-page .warehouse-api-map__link {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--primary-dark);
+  box-shadow: 0 2px 6px #182f4614;
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  text-decoration: none;
+}
+.delivery-page .warehouse-api-map__link:hover {
+  background: #edf5fb;
+  border-color: var(--primary);
+  text-decoration: none;
+}
+.delivery-page .warehouse-api-map__link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.warehouse-api-map__link svg {
+  flex-shrink: 0;
+}
+@media (max-width: 480px) {
+  .delivery-page .warehouse-api-map__link {
+    bottom: 30px;
+    font-size: var(--text-small);
+  }
+}
+.warehouse-api-map__error {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+}
+
+/* Служебные переходы скрыты только на схеме склада; атрибуция Яндекса остаётся. */
+.warehouse-api-map [class$='-gotoymaps'],
+.warehouse-api-map [class$='-gototaxi'],
+.warehouse-api-map [class$='-gototech'] {
+  display: none !important;
+}
+
+.pickup-acceptance {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.pickup-acceptance h2 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.35;
+}
+.pickup-acceptance p {
+  max-width: 900px;
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-body);
+  line-height: 1.65;
 }

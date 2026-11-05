@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import ServiceLayout from '../components/services/ServiceLayout';
+import ServiceArtwork from '../components/services/ServiceArtwork';
 import { CABLE_SERVICES } from '../lib/cableServices';
 
 export default function ServicesPage() {
@@ -7,12 +8,19 @@ export default function ServicesPage() {
     <ServiceLayout>
       <div className="services-grid">
         {CABLE_SERVICES.map((service) => (
-          <Link className="service-card" to={service.path} key={service.key}>
-            <span className="service-card__number">{service.number}</span>
+          <Link
+            className={`service-card service-card--${service.key}`}
+            to={service.path}
+            key={service.key}
+          >
+            <ServiceArtwork type={service.key} />
             <h2>{service.title}</h2>
             <p>{service.description}</p>
             <span className="service-card__go">
-              Открыть сервис <span aria-hidden="true">↗</span>
+              <span className="service-card__go-label">Открыть сервис</span>
+              <span className="service-card__go-arrow" aria-hidden="true">
+                ↗
+              </span>
             </span>
           </Link>
         ))}

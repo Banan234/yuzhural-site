@@ -1,3 +1,5 @@
+import { isProductPending } from '../../shared/productAvailability.js';
+import ResponsiveProductImage from '../components/ui/ResponsiveProductImage.jsx';
 import {
   clampCartQuantity,
   getCartQuantityLimit,
@@ -10,10 +12,13 @@ import { Link, useParams } from 'react-router-dom';
 import Container from '../components/ui/Container';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import ProductCard from '../components/ui/ProductCard';
+import Modal from '../components/ui/Modal';
 import ProductSupplyPanel from '../components/purchase/ProductSupplyPanel';
 import ProductServiceLinks from '../components/services/ProductServiceLinks';
 import ProductDesignation from '../components/catalog/ProductDesignation';
 import ProductVariantPicker from '../components/catalog/ProductVariantPicker';
+import ProductOffersTable from '../components/catalog/ProductOffersTable.jsx';
+import { getProductPurchaseItem } from '../../shared/productOffers.js';
 import { fetchProductBySlug, fetchRelatedProducts } from '../lib/productsApi';
 import { useCartStore } from '../store/useCartStore';
 import { useSEO } from '../hooks/useSEO';
@@ -33,7 +38,7 @@ import {
 import {
   getProductImage,
   getProductImageAlt,
-} from '../../shared/productImages.js';
+} from '../../shared/productImagePresentation.js';
 import { messages } from '../../shared/messages.js';
 import { NOT_FOUND_SEO, NotFoundPageContent } from './NotFoundPage.jsx';
 import '../styles/sections/product-detail.css';
@@ -88,6 +93,7 @@ function SupplyIcon({ type }) {
 export default function ProductPage() {
   const { slug } = useParams();
   const prerenderData = usePrerenderData();
+  const serverNotFound = prerenderData.httpStatus === 404;
   const initialProduct =
     prerenderData.product && prerenderData.product.slug === slug
       ? prerenderData.product
@@ -95,14 +101,44 @@ export default function ProductPage() {
   const addItem = useCartStore((state) => state.addItem);
   const [quantity, setQuantity] = useState(1);
   const [cartFeedback, setCartFeedback] = useState('');
+  const [selectedTab, setSelectedTab] = useState(null);
   const [product, setProduct] = useState(() => initialProduct);
+  const [selectedOfferId, setSelectedOfferId] = useState(null);
+  const [isImageOpen, setIsImageOpen] = useState(false);
   useEffect(() => {
-    if (product) setQuantity((value) => clampCartQuantity(product, value));
+    setIsImageOpen(false);
+  }, [slug]);
+  const purchaseProduct = getProductPurchaseItem(
+    product,
+    selectedOfferId ?? product?.selectedOfferId
+  );
+  useEffect(() => {
+    if (purchaseProduct)
+      setQuantity((value) => clampCartQuantity(purchaseProduct, value));
+  }, [product, selectedOfferId]);
+  useEffect(() => {
+    setSelectedOfferId(null);
+  }, [slug]);
+  useEffect(() => {
+    if (product?.offers?.length && window.location.hash === '#product-offers') {
+      document
+        .getElementById('product-offers')
+        ?.scrollIntoView?.({ block: 'start' });
+    }
   }, [product]);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(() => !initialProduct);
-  const [isNotFound, setIsNotFound] = useState(false);
+  const [isLoading, setIsLoading] = useState(
+    () => !initialProduct && !serverNotFound
+  );
+  const [isNotFound, setIsNotFound] = useState(() => serverNotFound);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const readTabFromHash = () => setSelectedTab(window.location.hash.slice(1));
+    readTabFromHash();
+    window.addEventListener('hashchange', readTabFromHash);
+    return () => window.removeEventListener('hashchange', readTabFromHash);
+  }, [slug]);
 
   useSEO(
     isNotFound
@@ -119,6 +155,14 @@ export default function ProductPage() {
 
   useEffect(() => {
     const controller = new AbortController();
+
+    if (serverNotFound) {
+      setProduct(null);
+      setIsLoading(false);
+      setIsNotFound(true);
+      setError('');
+      return () => controller.abort();
+    }
 
     if (initialProduct) {
       setQuantity(1);
@@ -186,7 +230,7 @@ export default function ProductPage() {
       }
 
       try {
-        const related = await fetchRelatedProducts(slug, 6, controller.signal);
+        const related = await fetchRelatedProducts(slug, 8, controller.signal);
         setRelatedProducts(related);
       } catch (requestError) {
         if (requestError.name === 'AbortError') {
@@ -204,7 +248,7 @@ export default function ProductPage() {
     load();
 
     return () => controller.abort();
-  }, [initialProduct, slug]);
+  }, [initialProduct, slug, serverNotFound]);
 
   const breadcrumbJsonLd = buildProductBreadcrumbJsonLd(product);
   const productJsonLd = buildProductJsonLd(product);
@@ -248,7 +292,9 @@ export default function ProductPage() {
             ]}
           />
           <h1 className="page-title">
-            {messages.errors.productApi.productNotFound}
+            {error
+              ? messages.errors.productApi.productLoadFailed
+              : messages.errors.productApi.productNotFound}
           </h1>
           <p className="page-subtitle">
             {error || messages.errors.productApi.productNotFoundDescription}
@@ -262,32 +308,38 @@ export default function ProductPage() {
   }
 
   function openProductQuoteModal() {
+    if (isProductPending(product)) return;
     window.dispatchEvent(
       new CustomEvent('open-cart-quote-modal', {
         detail: {
           title: 'Запрос КП по этой позиции',
           description:
             'Заполните форму, и мы подготовим коммерческое предложение по выбранной позиции.',
-          items: [{ ...product, quantity }],
+          items: [{ ...purchaseProduct, quantity }],
         },
       })
     );
   }
 
   const manufacturerName = String(product.manufacturer || '').trim();
+  const dataPending = isProductPending(product);
   const productTitle = getProductDisplayTitle(product);
   const productDescription =
     product.description || buildProductMetaDescription(product);
   const productImage = getProductImage(product);
   const productImageAlt = getProductImageAlt(product);
   const isProductInStock =
-    typeof product.inStock === 'boolean'
-      ? product.inStock
-      : Number(product.stock) > 0;
+    typeof purchaseProduct.inStock === 'boolean'
+      ? purchaseProduct.inStock
+      : Number(purchaseProduct.stock) > 0;
   const leadTime = product.leadTime || 'уточняем';
-  const productPrice = formatProductPrice(product.price, product.unit, {
-    context: 'request',
-  });
+  const productPrice = formatProductPrice(
+    purchaseProduct.price,
+    purchaseProduct.unit,
+    {
+      context: 'request',
+    }
+  );
 
   const specs = Object.entries(product.specs || {}).filter(
     ([, value]) => value !== null && value !== undefined && String(value).trim()
@@ -295,13 +347,59 @@ export default function ProductPage() {
   const summarySpecs = specs
     .filter(([key]) => !/остаток|ед\.\s*изм|марка/i.test(key))
     .slice(0, 5);
+  const tabs = [
+    ...(specs.length
+      ? [{ id: 'product-specifications', label: 'Характеристики' }]
+      : []),
+    { id: 'product-description', label: 'Описание' },
+    { id: 'product-marking', label: 'Расшифровка марки' },
+    ...(!dataPending
+      ? [{ id: 'product-documents', label: 'Партия и документы' }]
+      : []),
+    { id: 'product-delivery', label: 'Получение и оплата' },
+  ];
+  const activeTab = tabs.some(({ id }) => id === selectedTab)
+    ? selectedTab
+    : tabs[0].id;
+
+  function selectTab(event, id) {
+    event.preventDefault();
+    setSelectedTab(id);
+    window.history.replaceState(window.history.state, '', `#${id}`);
+  }
+
+  function handleTabKeyDown(event, index) {
+    let nextIndex;
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+    else if (event.key === 'ArrowLeft')
+      nextIndex = (index - 1 + tabs.length) % tabs.length;
+    else if (event.key === 'Home') nextIndex = 0;
+    else if (event.key === 'End') nextIndex = tabs.length - 1;
+    else if (event.key === ' ') nextIndex = index;
+    else return;
+    selectTab(event, tabs[nextIndex].id);
+    document.getElementById(`${tabs[nextIndex].id}-tab`)?.focus();
+  }
+
+  function panelProps(id) {
+    return {
+      id,
+      role: 'tabpanel',
+      'aria-labelledby': `${id}-tab`,
+      hidden: activeTab !== id,
+      tabIndex: 0,
+    };
+  }
   const unit = product.unit || 'шт';
-  const totalPrice = formatProductPrice(Number(product.price) * quantity);
+  const totalPrice = formatProductPrice(
+    Number(purchaseProduct.price) * quantity
+  );
   const formatNumber = (value) =>
     Number(value).toLocaleString('ru-RU', { maximumFractionDigits: 2 });
 
   function addProductToCart() {
-    const added = addItem({ ...product, quantity });
+    if (isProductPending(product)) return;
+    const added = addItem({ ...purchaseProduct, quantity });
     setCartFeedback(
       added === false
         ? 'В корзине достигнут лимит позиций. Отправьте текущий список на расчёт.'
@@ -316,18 +414,37 @@ export default function ProductPage() {
         <header className="product-page__heading">
           <h1 className="page-title">{productTitle}</h1>
           <div className="product-page__meta">
-            {product.sku ? <span>Артикул: {product.sku}</span> : null}
-            <span>{product.category}</span>
+            <span>{product.catalogCategory || product.category}</span>
+            {product.offers?.length ? (
+              <span>Остатков: {product.offers.length}</span>
+            ) : purchaseProduct.sku ? (
+              <span>Артикул: {purchaseProduct.sku}</span>
+            ) : null}
+            {!dataPending && Number(product.stock) > 0 ? (
+              <span>
+                Всего в наличии: {formatNumber(product.stock)} {unit}
+              </span>
+            ) : null}
             {manufacturerName ? (
               <span>Производитель: {manufacturerName}</span>
             ) : null}
           </div>
         </header>
 
-        <div className="product-page">
+        <div
+          className={`product-page${product.offers?.length ? '' : ' product-page--single'}`}
+        >
           <div className="product-page__gallery">
-            <div className="product-page__media">
-              <img
+            <button
+              type="button"
+              className="product-page__media"
+              aria-label={`Открыть изображение ${productTitle}`}
+              aria-haspopup="dialog"
+              onClick={() => setIsImageOpen(true)}
+            >
+              <ResponsiveProductImage
+                variants={product.imageVariants}
+                sizes="(max-width: 900px) calc(100vw - 48px), (max-width: 1100px) 50vw, 700px"
                 src={productImage}
                 alt={productImageAlt}
                 className="product-page__image"
@@ -336,16 +453,216 @@ export default function ProductPage() {
                 loading="eager"
                 decoding="async"
               />
-            </div>
-            <p className="product-page__image-note">
-              Изображение показывает конструкцию. Внешний вид зависит от
-              исполнения и изготовителя.
-            </p>
+              <span className="product-page__zoom" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+                <i />
+              </span>
+            </button>
+            {!dataPending && <ProductVariantPicker product={product} />}
           </div>
 
+          {dataPending ? (
+            <aside className="product-page__purchase">
+              <div className="product-page__order">
+                <p role="status">Данные уточняются</p>
+              </div>
+            </aside>
+          ) : (
+            <aside className="product-page__purchase" aria-label="Заказ товара">
+              <div className="product-page__order">
+                <div className="product-page__pricing">
+                  <div
+                    className={`product-page__availability${isProductInStock ? ' product-page__availability--in-stock' : ''}`}
+                  >
+                    {isProductInStock && (
+                      <svg
+                        className="product-page__availability-check"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="square"
+                        strokeLinejoin="miter"
+                        aria-hidden="true"
+                      >
+                        <path d="m5 12 4 4L19 6" />
+                      </svg>
+                    )}
+                    {isProductInStock
+                      ? `В наличии: ${formatNumber(purchaseProduct.stock || 0)} ${unit}`
+                      : 'Под заказ'}
+                  </div>
+                  <div className="product-page__price-label">
+                    {productPrice.hasPrice
+                      ? 'Ориентировочная цена'
+                      : 'Стоимость поставки'}
+                  </div>
+                  <div
+                    className={`product-page__price${productPrice.hasPrice ? '' : ' product-page__price--request'}`}
+                  >
+                    {productPrice.value}
+                    {productPrice.unitLabel ? (
+                      <span className="product-page__unit">
+                        {productPrice.unitLabel}
+                      </span>
+                    ) : null}
+                  </div>
+
+                  {product.offers?.length ? (
+                    <a
+                      className="product-page__offer-link"
+                      href="#product-offers"
+                    >
+                      Остаток {purchaseProduct.sku} · Все цены ↓
+                    </a>
+                  ) : null}
+                </div>
+                <div className="product-page__quantity">
+                  <label
+                    className="product-page__quantity-label"
+                    htmlFor={QUANTITY_INPUT_ID}
+                  >
+                    {unit === 'м' ? 'Нужная длина, м' : `Количество, ${unit}`}
+                  </label>
+                  <div className="product-qty">
+                    <button
+                      type="button"
+                      aria-label="Уменьшить количество товара"
+                      aria-controls={QUANTITY_INPUT_ID}
+                      onClick={() =>
+                        setQuantity((q) =>
+                          clampCartQuantity(
+                            purchaseProduct,
+                            Math.max(1, Math.ceil(q) - 1)
+                          )
+                        )
+                      }
+                    >
+                      −
+                    </button>
+                    <input
+                      id={QUANTITY_INPUT_ID}
+                      type="number"
+                      aria-label="Количество товара"
+                      value={quantity}
+                      min={Math.min(1, getCartQuantityLimit(purchaseProduct))}
+                      max={getCartQuantityLimit(purchaseProduct)}
+                      step="any"
+                      inputMode="numeric"
+                      onChange={(event) =>
+                        setQuantity(
+                          clampCartQuantity(
+                            purchaseProduct,
+                            Math.max(1, Number(event.target.value) || 1)
+                          )
+                        )
+                      }
+                    />
+                    <button
+                      type="button"
+                      aria-label="Увеличить количество товара"
+                      disabled={
+                        quantity >= getCartQuantityLimit(purchaseProduct)
+                      }
+                      aria-controls={QUANTITY_INPUT_ID}
+                      onClick={() =>
+                        setQuantity((q) =>
+                          clampCartQuantity(purchaseProduct, q + 1)
+                        )
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
+                  {productPrice.hasPrice ? (
+                    <div className="product-page__total" aria-live="polite">
+                      <span>Общая стоимость:</span>
+                      <strong>{totalPrice.value}</strong>
+                    </div>
+                  ) : null}
+                </div>
+                <div className="product-page__buttons">
+                  <button
+                    type="button"
+                    className="button-primary"
+                    onClick={addProductToCart}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 3h2l3 12h10l3-9H6M9 20h.01M18 20h.01"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Добавить в корзину
+                  </button>
+                  <button
+                    type="button"
+                    className="button-secondary"
+                    aria-label="Запросить КП по этой позиции"
+                    onClick={openProductQuoteModal}
+                  >
+                    Запросить КП
+                  </button>
+                </div>
+                <p className="product-page__order-note">
+                  Подтвердим наличие, сроки поставки и итоговую стоимость в
+                  коммерческом предложении.
+                </p>
+                {cartFeedback ? (
+                  <div className="product-page__cart-feedback" role="status">
+                    {cartFeedback} <Link to="/cart">Перейти в корзину →</Link>
+                  </div>
+                ) : null}
+              </div>
+              <section className="product-page__services">
+                <h2 className="visually-hidden">Сервисы для этого кабеля</h2>
+                <ProductServiceLinks product={product} quantity={quantity} />
+              </section>
+            </aside>
+          )}
+          {!dataPending && (
+            <ProductOffersTable
+              product={product}
+              selectedId={purchaseProduct.id}
+              onSelect={(id) => {
+                setSelectedOfferId(id);
+                setQuantity(1);
+                setCartFeedback('');
+              }}
+            />
+          )}
           <div className="product-page__parameters">
-            <ProductVariantPicker product={product} />
-            <h2>Основные характеристики</h2>
+            {!dataPending && (
+              <div className="product-page__conditions">
+                <Link to="/contacts/">
+                  <SupplyIcon type="pin" />
+                  <div>
+                    <strong>Самовывоз в Челябинске</strong>
+                    <small>После согласования заказа</small>
+                  </div>
+                </Link>
+                <a
+                  href="#product-documents"
+                  onClick={() => setSelectedTab('product-documents')}
+                >
+                  <SupplyIcon type="file" />
+                  <div>
+                    <strong>Документы к поставке</strong>
+                    <small>Счёт и договор</small>
+                  </div>
+                </a>
+              </div>
+            )}
+            <h2 className="visually-hidden">Основные характеристики</h2>
             <dl className="product-page__summary">
               {summarySpecs.length ? (
                 summarySpecs.map(([key, value]) => (
@@ -369,6 +686,13 @@ export default function ProductPage() {
             </dl>
             <a
               className="product-page__details-link"
+              onClick={() =>
+                setSelectedTab(
+                  specs.length
+                    ? 'product-specifications'
+                    : 'product-description'
+                )
+              }
               href={
                 specs.length
                   ? '#product-specifications'
@@ -378,181 +702,35 @@ export default function ProductPage() {
               Все характеристики →
             </a>
           </div>
-
-          <aside className="product-page__purchase" aria-label="Заказ товара">
-            <div className="product-page__order">
-              <div className="product-page__availability">
-                <span
-                  className="product-page__availability-dot"
-                  aria-hidden="true"
-                />
-                {isProductInStock
-                  ? `Остаток в каталоге: ${formatNumber(product.stock || 0)} ${unit}`
-                  : 'Под заказ'}
-              </div>
-              <div className="product-page__price-label">
-                {productPrice.hasPrice
-                  ? 'Ориентировочная цена'
-                  : 'Стоимость поставки'}
-              </div>
-              <div
-                className={`product-page__price${productPrice.hasPrice ? '' : ' product-page__price--request'}`}
-              >
-                {productPrice.value}
-                {productPrice.unitLabel ? (
-                  <span className="product-page__unit">
-                    {productPrice.unitLabel}
-                  </span>
-                ) : null}
-              </div>
-              <p className="product-page__price-note">
-                {productPrice.hasPrice
-                  ? 'Для предварительного расчёта'
-                  : 'Рассчитаем по вашему объёму'}
-              </p>
-              <label
-                className="product-page__quantity-label"
-                htmlFor={QUANTITY_INPUT_ID}
-              >
-                {unit === 'м' ? 'Нужная длина, м' : `Количество, ${unit}`}
-              </label>
-              <div className="product-qty">
-                <button
-                  type="button"
-                  aria-label="Уменьшить количество товара"
-                  aria-controls={QUANTITY_INPUT_ID}
-                  onClick={() =>
-                    setQuantity((q) =>
-                      clampCartQuantity(
-                        product,
-                        Math.max(0.01, Math.round((q - 1) * 100) / 100)
-                      )
-                    )
-                  }
-                >
-                  −
-                </button>
-                <input
-                  id={QUANTITY_INPUT_ID}
-                  type="number"
-                  aria-label="Количество товара"
-                  value={quantity}
-                  min="0.01"
-                  max={getCartQuantityLimit(product)}
-                  step={unit === 'м' ? '0.01' : '1'}
-                  inputMode={unit === 'м' ? 'decimal' : 'numeric'}
-                  onChange={(event) =>
-                    setQuantity(
-                      clampCartQuantity(
-                        product,
-                        Math.max(0.01, Number(event.target.value) || 1)
-                      )
-                    )
-                  }
-                />
-                <button
-                  type="button"
-                  aria-label="Увеличить количество товара"
-                  disabled={quantity >= getCartQuantityLimit(product)}
-                  aria-controls={QUANTITY_INPUT_ID}
-                  onClick={() =>
-                    setQuantity((q) =>
-                      clampCartQuantity(
-                        product,
-                        Math.round((q + 1) * 100) / 100
-                      )
-                    )
-                  }
-                >
-                  +
-                </button>
-              </div>
-              {productPrice.hasPrice ? (
-                <div className="product-page__total" aria-live="polite">
-                  <span>
-                    Сумма за {formatNumber(quantity)} {unit}
-                  </span>
-                  <strong>{totalPrice.value}</strong>
-                </div>
-              ) : null}
-              <div className="product-page__buttons">
-                <button
-                  type="button"
-                  className="button-primary"
-                  onClick={addProductToCart}
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M3 3h2l3 12h10l3-9H6M9 20h.01M18 20h.01"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  Добавить в корзину
-                </button>
-                <button
-                  type="button"
-                  className="button-secondary"
-                  aria-label="Запросить КП по этой позиции"
-                  onClick={openProductQuoteModal}
-                >
-                  Запросить КП
-                </button>
-              </div>
-              <p className="product-page__order-note">
-                Подтвердим наличие, сроки поставки и итоговую стоимость в
-                коммерческом предложении.
-              </p>
-              {cartFeedback ? (
-                <div className="product-page__cart-feedback" role="status">
-                  {cartFeedback} <Link to="/cart">Перейти в корзину →</Link>
-                </div>
-              ) : null}
-            </div>
-            <div className="product-page__conditions">
-              <Link to="/delivery/">
-                <SupplyIcon type="truck" />
-                <div>
-                  <strong>Самовывоз со склада</strong>
-                  <small>Вашим перевозчиком</small>
-                </div>
-              </Link>
-              <Link to="/contacts/">
-                <SupplyIcon type="pin" />
-                <div>
-                  <strong>Самовывоз в Челябинске</strong>
-                  <small>После согласования заказа</small>
-                </div>
-              </Link>
-              <a href="#product-documents">
-                <SupplyIcon type="file" />
-                <div>
-                  <strong>Документы к поставке</strong>
-                  <small>Счёт и договор</small>
-                </div>
-              </a>
-            </div>
-          </aside>
         </div>
 
-        <nav className="product-page__tabs" aria-label="Информация о товаре">
-          {specs.length ? (
-            <a href="#product-specifications">Характеристики</a>
-          ) : null}
-          <a href="#product-description">Описание</a>
-          <a href="#product-marking">Расшифровка марки</a>
-          <a href="#product-documents">Партия и документы</a>
-          <a href="#product-delivery">Получение и оплата</a>
+        <nav
+          className="product-page__tabs"
+          role="tablist"
+          aria-label="Информация о товаре"
+        >
+          {tabs.map(({ id, label }, index) => (
+            <a
+              key={id}
+              id={`${id}-tab`}
+              href={`#${id}`}
+              role="tab"
+              aria-selected={activeTab === id}
+              aria-controls={id}
+              tabIndex={activeTab === id ? 0 : -1}
+              onClick={(event) => selectTab(event, id)}
+              onKeyDown={(event) => handleTabKeyDown(event, index)}
+            >
+              {label}
+            </a>
+          ))}
         </nav>
 
         {specs.length > 0 ? (
-          <section id="product-specifications" className="product-details">
+          <section
+            {...panelProps('product-specifications')}
+            className="product-details"
+          >
             <h2>Технические характеристики</h2>
             <table className="product-specs-table">
               <tbody>
@@ -567,20 +745,22 @@ export default function ProductPage() {
           </section>
         ) : null}
         <section
-          id="product-description"
+          {...panelProps('product-description')}
           className="product-details product-page__description"
         >
           <h2>Описание</h2>
           <p>{productDescription}</p>
         </section>
-        <div id="product-marking">
+        <div {...panelProps('product-marking')}>
           <ProductDesignation product={product} />
         </div>
-        <div id="product-documents">
-          <ProductSupplyPanel product={product} quantity={quantity} />
-        </div>
+        {!dataPending && (
+          <div {...panelProps('product-documents')}>
+            <ProductSupplyPanel product={product} quantity={quantity} />
+          </div>
+        )}
         <section
-          id="product-delivery"
+          {...panelProps('product-delivery')}
           className="product-details product-page__delivery"
         >
           <h2>Получение и оплата</h2>
@@ -596,10 +776,6 @@ export default function ProductPage() {
             <Link to="/delivery/">Получение заказа →</Link>
             <Link to="/payment/">Способы оплаты →</Link>
           </div>
-        </section>
-        <section className="product-page__services">
-          <h2>Сервисы для этого кабеля</h2>
-          <ProductServiceLinks product={product} quantity={quantity} />
         </section>
 
         {relatedProducts.length > 0 ? (
@@ -618,6 +794,23 @@ export default function ProductPage() {
           </div>
         ) : null}
       </Container>
+      <Modal
+        isOpen={isImageOpen}
+        onClose={() => setIsImageOpen(false)}
+        windowClassName="product-image-modal"
+        ariaLabel={`Изображение ${productTitle}`}
+      >
+        <h2 className="product-image-modal__title">{productTitle}</h2>
+        <img
+          src={productImage}
+          alt={productImageAlt}
+          className="product-image-modal__image"
+          width="1200"
+          height="900"
+          loading="eager"
+          decoding="async"
+        />
+      </Modal>
     </section>
   );
 }

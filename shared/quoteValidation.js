@@ -1,3 +1,5 @@
+import { isValidOrderQuantity } from './orderQuantity.js';
+import { calculateQuote } from './quoteMoney.js';
 // Файл задаёт общие правила валидации payload заявки, телефонов, email и лимитов формы.
 
 // Серверная валидация payload заявки. Шарится между server.js и тестами.
@@ -106,11 +108,14 @@ export function getQuoteKnownTextLength({ customer, items } = {}) {
   return customerLength + itemsLength;
 }
 
-function isValidQuoteItem(item) {
+function isValidQuoteItem(item, { deferWholeQuantityCheck = false } = {}) {
   if (!item || typeof item !== 'object') return false;
 
-  const quantity = Number(item.quantity);
-  if (!Number.isFinite(quantity) || quantity <= 0) return false;
+  if (
+    (!deferWholeQuantityCheck && !isValidOrderQuantity(item)) ||
+    calculateQuote([item]).invalid
+  )
+    return false;
 
   return (
     isWithinLength(item.sku, MAX_QUOTE_ITEM_SKU_LENGTH) &&
@@ -123,7 +128,7 @@ function isValidQuoteItem(item) {
 
 export function isValidQuoteRequest(
   payload = {},
-  { allowEmptyItems = false } = {}
+  { allowEmptyItems = false, deferWholeQuantityCheck = false } = {}
 ) {
   const { customer, items } = payload;
   if (
@@ -178,7 +183,9 @@ export function isValidQuoteRequest(
     return false;
   }
 
-  if (!items.every(isValidQuoteItem)) {
+  if (
+    !items.every((item) => isValidQuoteItem(item, { deferWholeQuantityCheck }))
+  ) {
     return false;
   }
 

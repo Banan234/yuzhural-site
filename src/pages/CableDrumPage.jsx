@@ -1,3 +1,4 @@
+import SiteSelect from '../components/ui/SiteSelect';
 import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import ServiceLayout from '../components/services/ServiceLayout';
@@ -43,16 +44,23 @@ function DrumDiagram() {
         fill="none"
         stroke="#315b7e"
       />
-      <text x="15" y="175" fontSize="12" fill="#315b7e">
+      <text x="100" y="175" textAnchor="middle" fontSize="12" fill="#315b7e">
         Диаметр намотки
       </text>
-      <text x="69" y="90" fontSize="11" fill="#315b7e">
+      <text
+        x="100"
+        y="88"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontSize="11"
+        fill="#315b7e"
+      >
         Шейка
       </text>
       <path d="M265 20V145M420 20V145" stroke="#315b7e" strokeWidth="10" />
       <path d="M272 45H414V122H272Z" fill="#e3edf8" stroke="#315b7e" />
       <path d="M275 158H410M275 153V163M410 153V163" stroke="#315b7e" />
-      <text x="275" y="178" fontSize="12" fill="#315b7e">
+      <text x="342.5" y="175" textAnchor="middle" fontSize="12" fill="#315b7e">
         Рабочая ширина намотки
       </text>
     </svg>
@@ -77,7 +85,18 @@ export default function CableDrumPage() {
   const [rowIndex, setRowIndex] = useState('');
   const referenceRows = CABLE_MASS_ENTRIES.filter((row) => row.mark === mark);
   const selectedRow = rowIndex !== '' ? referenceRows[Number(rowIndex)] : null;
+  const [calculated, setCalculated] = useState(false);
   const geo = estimateWoundLength(geometry);
+  const geometryError = Object.values(geometry).some(
+    (value) => positiveNumber(value) === null
+  )
+    ? 'Заполните все четыре поля положительными числами.'
+    : Number(String(geometry.windingDiameterMm).replace(',', '.')) <=
+        Number(String(geometry.coreDiameterMm).replace(',', '.'))
+      ? 'Диаметр намотки должен быть больше диаметра шейки барабана.'
+      : !geo?.lengthM
+        ? 'Для полного слоя разница диаметров должна быть не меньше двух диаметров кабеля, а рабочая ширина — не меньше диаметра кабеля.'
+        : '';
   const grossValue = positiveNumber(gross);
   const tareValue = positiveNumber(tare, { zero: true });
   const net =
@@ -86,12 +105,17 @@ export default function CableDrumPage() {
       : null;
   const massLength = net !== null ? lengthFromNetMass(net, perKm) : null;
   const result = mode === 'geometry' ? geo?.lengthM : massLength;
-  const valid = result !== null && result !== undefined && result > 0;
+  const valid =
+    (mode !== 'geometry' || calculated) &&
+    result !== null &&
+    result !== undefined &&
+    result > 0;
   const report =
     mode === 'geometry'
       ? `Оценка по геометрии намотки\nКабель: ${params.get('mark') || 'уточнить'}\nНаружный диаметр кабеля: ${geometry.cableDiameterMm} мм\nДиаметр шейки: ${geometry.coreDiameterMm} мм\nФактический диаметр намотки: ${geometry.windingDiameterMm} мм\nРабочая ширина: ${geometry.widthMm} мм\nПолных слоёв: ${geo?.layers || 0}; витков в слое: ${geo?.turns || 0}\nОриентировочная длина: ${valid ? FORMAT.format(result) : 'нет результата'} м\nРядная плотная намотка круглого кабеля. Частичные слои, зазоры и допуски не учтены.`
       : `Оценка по массе\nМасса брутто: ${gross} кг; масса тары и упаковки: ${tare} кг\nМасса нетто: ${net === null ? 'не определена' : FORMAT.format(net)} кг\nМасса 1 км кабеля: ${perKm} кг/км\nОриентировочная длина: ${valid ? FORMAT.format(result) : 'нет результата'} м${selectedRow ? `\n${selectedRow.mark} ${selectedRow.configuration}; ${selectedRow.voltageKv ?? 'напряжение не указано'} кВ\nИсточник: ${selectedRow.sourceUrl || CABLE_MASS_SOURCES[selectedRow.sourceId].url}` : '\nУдельная масса введена пользователем.'}\nТочность зависит от фактической массы тары и удельной массы партии.`;
   function setField(key, value) {
+    setCalculated(false);
     setGeometry({ ...geometry, [key]: value });
   }
   return (
@@ -167,21 +191,18 @@ export default function CableDrumPage() {
                 </label>
               </div>
               <DrumDiagram />
-              <div className="service-chips">
+              <div className="services-actions">
                 <button
                   type="button"
-                  onClick={() =>
-                    setGeometry({
-                      cableDiameterMm: '20',
-                      coreDiameterMm: '500',
-                      windingDiameterMm: '900',
-                      widthMm: '500',
-                    })
-                  }
+                  className="button-primary"
+                  onClick={() => setCalculated(true)}
                 >
-                  Заполнить пример замеров
+                  Рассчитать
                 </button>
               </div>
+              {calculated && geometryError && (
+                <p role="alert">{geometryError}</p>
+              )}
             </>
           ) : (
             <>
@@ -206,7 +227,7 @@ export default function CableDrumPage() {
                 </label>
                 <label className="service-fields__wide">
                   Взять удельную массу из таблицы
-                  <select
+                  <SiteSelect
                     value={mark}
                     onChange={(event) => {
                       setMark(event.target.value);
@@ -218,12 +239,12 @@ export default function CableDrumPage() {
                     {MARKS.map((value) => (
                       <option key={value}>{value}</option>
                     ))}
-                  </select>
+                  </SiteSelect>
                 </label>
                 {mark && (
                   <label className="service-fields__wide">
                     Точная конструкция и изготовитель
-                    <select
+                    <SiteSelect
                       value={rowIndex}
                       onChange={(event) => {
                         setRowIndex(event.target.value);
@@ -245,7 +266,7 @@ export default function CableDrumPage() {
                           {row.massKgPerKm} кг/км
                         </option>
                       ))}
-                    </select>
+                    </SiteSelect>
                   </label>
                 )}
                 <label>
@@ -303,7 +324,9 @@ export default function CableDrumPage() {
           ) : (
             <p>
               {mode === 'geometry'
-                ? 'Введите положительные размеры. Диаметр намотки должен быть больше диаметра шейки; нужны как минимум один полный слой и один виток.'
+                ? calculated
+                  ? geometryError
+                  : 'Введите размеры барабана и кабеля и нажмите «Рассчитать».'
                 : 'Введите положительную удельную массу. Масса брутто должна быть больше массы тары.'}
             </p>
           )}

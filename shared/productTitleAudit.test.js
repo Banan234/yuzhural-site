@@ -52,8 +52,10 @@ describe('защита от названий без марки', () => {
       products: [product],
       errors: validateNormalizedProducts([product]).errors,
     });
-    expect(guard.ok).toBe(false);
-    expect(guard.issues).toEqual(
+    expect(guard.policy).toBe('partial-v1');
+    expect(guard.ok).toBe(true);
+    expect(guard.issues).toEqual([]);
+    expect(guard.warnings).toEqual(
       expect.arrayContaining([expect.objectContaining({ key: 'maxErrors' })])
     );
   });

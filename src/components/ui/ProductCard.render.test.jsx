@@ -38,6 +38,37 @@ beforeEach(() => {
 });
 
 describe('ProductCard', () => {
+  it.each(['default', 'stock', 'catalog-list', 'catalog-tile'])(
+    'opens the balance table before ordering a grouped product (%s)',
+    (variant) => {
+      render(
+        <MemoryRouter>
+          <ProductCard
+            variant={variant}
+            product={{
+              ...baseProduct,
+              price: 100,
+              priceVaries: true,
+              offers: [
+                { id: 10, stock: 5, price: 100 },
+                { id: 11, stock: 7, price: 120 },
+              ],
+            }}
+          />
+        </MemoryRouter>
+      );
+      expect(
+        screen.getByRole('link', { name: 'Выбрать остаток' })
+      ).toHaveAttribute('href', '/product/request-price-card#product-offers');
+      expect(
+        screen.queryByRole('button', {
+          name: /В корзину|Добавить .* в корзину/,
+        })
+      ).not.toBeInTheDocument();
+      expect(screen.getByRole('article').textContent).toContain('от 100 ₽');
+    }
+  );
+
   it('показывает цену по запросу при price=0', () => {
     renderCard();
 
@@ -64,21 +95,27 @@ describe('Счётчик корзины в карточке', () => {
         })
       );
       expect(
-        screen.getByRole('textbox', { name: `Количество ${baseProduct.title}` })
+        screen.getByRole('textbox', {
+          name: `Количество ${baseProduct.title}`,
+        })
       ).toHaveValue('1');
       fireEvent.click(
         screen.getByRole('button', { name: /Увеличить количество/ })
       );
       expect(useCartStore.getState().items[0].quantity).toBe(2);
       expect(
-        screen.getByRole('textbox', { name: `Количество ${baseProduct.title}` })
+        screen.getByRole('textbox', {
+          name: `Количество ${baseProduct.title}`,
+        })
       ).toHaveValue('2');
       act(() =>
         useCartStore.getState().updateItemQuantity(baseProduct.id, 11.5)
       );
       expect(
-        screen.getByRole('textbox', { name: `Количество ${baseProduct.title}` })
-      ).toHaveValue('11,5');
+        screen.getByRole('textbox', {
+          name: `Количество ${baseProduct.title}`,
+        })
+      ).toHaveValue('12');
       act(() => useCartStore.getState().updateItemQuantity(baseProduct.id, 1));
       fireEvent.click(
         screen.getByRole('button', { name: /Уменьшить количество/ })
@@ -133,7 +170,7 @@ it('позволяет вводить метраж вручную, с запят
   expect(input).toHaveValue('');
   fireEvent.change(input, { target: { value: '5,5' } });
   fireEvent.blur(input);
-  expect(useCartStore.getState().items[0].quantity).toBe(5.5);
+  expect(useCartStore.getState().items[0].quantity).toBe(6);
   fireEvent.change(input, { target: { value: '99' } });
   fireEvent.blur(input);
   expect(input).toHaveValue('10');
@@ -141,4 +178,22 @@ it('позволяет вводить метраж вручную, с запят
   fireEvent.change(input, { target: { value: 'ошибка' } });
   fireEvent.blur(input);
   expect(input).toHaveValue('10');
+});
+
+describe('Метраж в каталоге', () => {
+  it('добавляет введённый метраж с десятичной запятой', () => {
+    render(
+      <MemoryRouter>
+        <ProductCard product={baseProduct} variant="catalog-tile" />
+      </MemoryRouter>
+    );
+    fireEvent.change(screen.getByRole('textbox', { name: /Количество/ }), {
+      target: { value: '2,5' },
+    });
+    fireEvent.blur(screen.getByRole('textbox', { name: /Количество/ }));
+    fireEvent.click(
+      screen.getByRole('button', { name: /Добавить .* в корзину/ })
+    );
+    expect(useCartStore.getState().items[0].quantity).toBe(3);
+  });
 });

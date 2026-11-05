@@ -89,6 +89,9 @@ function renderListing({ initialEntry = '/catalog', viewProps = {} } = {}) {
   );
 
   return {
+    getLocationKey() {
+      return currentLocation?.key;
+    },
     getSearchParam(name) {
       return new URLSearchParams(currentLocation?.search || '').get(name);
     },
@@ -106,7 +109,38 @@ describe('ProductListingView render flow', () => {
     ).toHaveAttribute('aria-pressed', 'true');
     expect(
       screen.getByRole('combobox', { name: 'Количество товаров на странице' })
-    ).toHaveValue('24');
+    ).toHaveValue('28');
+  });
+
+  it('даёт обычные ссылки пагинации с сохранением фильтров', () => {
+    renderListing({
+      initialEntry: '/catalog/?search=ВВГ&sort=price-asc&limit=24',
+      viewProps: {
+        pagination: { page: 1, totalPages: 3, total: 60, limit: 24 },
+      },
+    });
+    expect(
+      screen.getByRole('link', { name: '2', exact: true })
+    ).toHaveAttribute(
+      'href',
+      '/catalog/?search=%D0%92%D0%92%D0%93&sort=price-asc&limit=24&page=2'
+    );
+    expect(
+      screen.getByRole('link', { name: '1', exact: true })
+    ).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('button', { name: '← Назад' })).toBeDisabled();
+  });
+
+  it('не добавляет запись истории при обычном клике на текущий лист', async () => {
+    const user = userEvent.setup();
+    const state = renderListing({
+      viewProps: {
+        pagination: { page: 1, totalPages: 2, total: 40, limit: 24 },
+      },
+    });
+    const before = state.getLocationKey();
+    await user.click(screen.getByRole('link', { name: '1', exact: true }));
+    expect(state.getLocationKey()).toBe(before);
   });
 
   it('применяет поиск из URL', () => {

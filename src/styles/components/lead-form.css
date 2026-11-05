@@ -28,7 +28,7 @@
 }
 .hero-lead-card__subtitle {
   margin: 8px 0 0;
-  font-size: 15px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   line-height: 1.4;
   color: #737a83;
@@ -48,7 +48,7 @@
   gap: 6px;
 }
 .hero-lead-form__quick-btn {
-  font-size: 13px;
+  font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition:
@@ -77,7 +77,7 @@
 .hero-lead-form__field label {
   letter-spacing: 0.01em;
   color: #343a42;
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
 }
 .hero-lead-form__optional {
@@ -98,7 +98,7 @@
   background: #fff;
   box-shadow: none;
   min-width: 0;
-  font-size: 16px;
+  font-size: var(--text-body);
 }
 .hero-lead-form__field input {
   min-height: 46px;
@@ -106,7 +106,7 @@
 .hero-lead-form__textarea {
   resize: none;
   font-family: inherit;
-  font-size: 16px;
+  font-size: var(--text-body);
   line-height: 1.5;
   min-height: 72px;
   padding: 11px 14px;
@@ -128,7 +128,7 @@
   gap: 10px;
   line-height: 1.45;
   color: #6b727b;
-  font-size: 12px;
+  font-size: var(--text-caption);
 }
 .hero-lead-form__consent input {
   margin-top: 3px;
@@ -139,7 +139,7 @@
 }
 .hero-lead-form__submit {
   width: 100%;
-  font-size: 15px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   color: #fff;
   letter-spacing: 0.015em;
@@ -163,7 +163,7 @@
   gap: 7px;
   color: #2a4a6e;
   text-decoration: none;
-  font-size: 16px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   text-align: center;
   transition: color 0.15s ease;
@@ -196,14 +196,14 @@
   border-radius: 8px;
   background: var(--primary-soft);
   color: #35556d;
-  font-size: 13px;
+  font-size: var(--text-small);
   line-height: 1.5;
 }
 .hero-lead-form__direct {
   margin: 0;
   color: #617083;
   text-align: center;
-  font-size: 13px;
+  font-size: var(--text-small);
   line-height: 1.6;
 }
 .hero-lead-form__direct a {
@@ -238,17 +238,17 @@
   border-radius: 50%;
   color: var(--success-text);
   background: var(--success-bg);
-  font-size: 28px;
+  font-size: var(--text-section-title);
 }
 .hero-lead-form__success h3 {
   margin: 0;
-  font-size: 22px;
+  font-size: var(--text-card-title);
   line-height: 1.25;
 }
 .hero-lead-form__success p {
   margin: 0;
   color: #617083;
-  font-size: 14px;
+  font-size: var(--text-ui);
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
@@ -262,6 +262,6 @@
     padding: 20px 16px;
   }
   .hero-lead-card__title {
-    font-size: 22px;
+    font-size: var(--text-card-title);
   }
 }

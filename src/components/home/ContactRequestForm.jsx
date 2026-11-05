@@ -1,3 +1,7 @@
+import {
+  SPECIFICATION_ACCEPT,
+  validateSpecificationFiles,
+} from '../../../shared/specificationFiles.js';
 import { PERSONAL_DATA_CONSENT_VERSION } from '../../../shared/personalDataConsent';
 import { useRef, useState } from 'react';
 import HoneypotField from '../forms/HoneypotField';
@@ -24,6 +28,9 @@ function formatPhone(value) {
 }
 
 export default function ContactRequestForm() {
+  const [file, setFile] = useState(null);
+  const [fileError, setFileError] = useState('');
+  const fileRef = useRef(null);
   const [channel, setChannel] = useState('phone');
   const [name, setName] = useState('');
   const [contacts, setContacts] = useState({ phone: '', email: '' });
@@ -70,26 +77,32 @@ export default function ContactRequestForm() {
     submitting.current = true;
     setPending(true);
     try {
+      const payload = {
+        name: name.trim(),
+        contactChannel: channel,
+        [channel]: contact,
+        consent,
+        consentVersion: PERSONAL_DATA_CONSENT_VERSION,
+        source: 'Главная: помощь с подбором кабеля',
+        comment: isEmail ? 'Просьба связаться по email' : 'Просьба перезвонить',
+        requestType: 'lead',
+        page: window.location.pathname,
+        rendered_at: renderedAt.current,
+        submit_at: Date.now(),
+        company_website: honeypot,
+        createdAt: new Date().toLocaleString('ru-RU'),
+      };
+      const body = new FormData();
+      body.append('payload', JSON.stringify(payload));
+      if (file) body.append('specifications', file, file.name);
       const response = await fetch('/api/lead-request', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name.trim(),
-          contactChannel: channel,
-          [channel]: contact,
-          consent,
-          consentVersion: PERSONAL_DATA_CONSENT_VERSION,
-          source: 'Главная: помощь с подбором кабеля',
-          comment: isEmail
-            ? 'Просьба связаться по email'
-            : 'Просьба перезвонить',
-          requestType: 'lead',
-          page: window.location.pathname,
-          rendered_at: renderedAt.current,
-          submit_at: Date.now(),
-          company_website: honeypot,
-          createdAt: new Date().toLocaleString('ru-RU'),
-        }),
+        ...(file
+          ? { body }
+          : {
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            }),
       });
       await expectOkApiJson(
         response,
@@ -241,6 +254,64 @@ export default function ContactRequestForm() {
             setStatus('');
           }}
         />
+        <div className="home-contact-form__attachment">
+          <input
+            ref={fileRef}
+            id="home-contact-file"
+            className="visually-hidden"
+            type="file"
+            accept={SPECIFICATION_ACCEPT}
+            disabled={pending}
+            aria-describedby="home-contact-file-hint"
+            onChange={(event) => {
+              const selected = event.target.files?.[0];
+              const error = selected
+                ? validateSpecificationFiles([selected])
+                : '';
+              setFileError(error);
+              if (selected && !error) setFile(selected);
+              event.target.value = '';
+            }}
+          />
+          <label
+            htmlFor="home-contact-file"
+            className="home-contact-form__file-label"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              aria-hidden="true"
+            >
+              <path d="m21 11-8 8a6 6 0 0 1-8-8L15 2a4 4 0 0 1 6 6L10 18a2 2 0 0 1-3-3l10-10" />
+            </svg>
+            <span>{file ? file.name : 'Прикрепить файл'}</span>
+          </label>
+          {file && (
+            <button
+              type="button"
+              className="home-contact-form__file-remove"
+              aria-label={`Удалить файл ${file.name}`}
+              disabled={pending}
+              onClick={() => {
+                setFile(null);
+                setFileError('');
+                fileRef.current?.focus();
+              }}
+            >
+              ×
+            </button>
+          )}
+          <small id="home-contact-file-hint">PDF, XLS, XLSX · до 5 МБ</small>
+        </div>
+        {fileError && (
+          <span className="field-error" role="alert">
+            {fileError}
+          </span>
+        )}
         <button className="button-primary" disabled={pending} type="submit">
           {pending
             ? 'Отправляем…'

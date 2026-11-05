@@ -17,7 +17,7 @@
   background: #fff;
   box-shadow: 0 3px 14px rgb(31 95 177 / 22%);
   color: #263445;
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 
 .cookie-consent__message {
@@ -109,7 +109,7 @@
   border: 0;
   background: transparent;
   color: #697585;
-  font-size: 28px;
+  font-size: var(--text-section-title);
   line-height: 1;
   cursor: pointer;
 }
@@ -149,7 +149,35 @@
 
 .cookie-settings__always-on {
   color: #687587;
-  font-size: 12px;
+  font-size: var(--text-caption);
+}
+
+.map-interaction-guard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map-interaction-guard[data-interactive='false'] iframe {
+  pointer-events: none;
+}
+
+.map-interaction-guard__shield {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  touch-action: pan-y pinch-zoom;
+  cursor: pointer;
+}
+
+.map-interaction-guard__shield:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: -3px;
 }
 
 .consent-gated-map {
@@ -194,7 +222,7 @@
     align-items: stretch;
     gap: 8px;
     padding: 11px;
-    font-size: 13px;
+    font-size: var(--text-small);
   }
 
   .cookie-consent__actions {
@@ -205,7 +233,7 @@
   .cookie-consent__button {
     min-height: 42px;
     padding-inline: 8px;
-    font-size: 13px;
+    font-size: var(--text-small);
   }
 
   .cookie-settings {

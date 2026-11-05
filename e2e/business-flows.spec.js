@@ -307,7 +307,10 @@ test('cart submits catalog and restored manual items and clears cart after succe
     ])
   );
   expect(quotePayload.totalCount).toBe(2);
-  expect(quotePayload.totalPrice).toBe(120);
+  expect(quotePayload.totalPrice).toBeNull();
+  expect(quotePayload.knownSubtotalKopecks).toBe(12000);
+  expect(quotePayload.unknownPriceCount).toBe(1);
+  expect(quotePayload.totalComplete).toBe(false);
   expect(quotePayload.createdAt).toEqual(expect.any(String));
   expect(quotePayload.rendered_at).toEqual(expect.any(Number));
   expect(quotePayload.submit_at).toEqual(expect.any(Number));

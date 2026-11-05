@@ -1,6 +1,6 @@
 // Общие адреса и метаданные сервисов используются в навигации, SSR и sitemap.
 import { MAX_QUOTE_CUSTOMER_COMMENT_LENGTH } from '../../shared/quoteValidation.js';
-export const CABLE_SERVICES = [
+const ALL_CABLE_SERVICES = [
   {
     key: 'application',
     path: '/services/application/',
@@ -31,20 +31,11 @@ export const CABLE_SERVICES = [
   {
     key: 'marking',
     path: '/services/marking/',
-    title: 'Расшифровка маркировки',
-    short: 'Маркировка',
+    title: 'Справочник и расшифровка кабеля',
+    short: 'Справочник',
     number: '04',
     description:
-      'Конструкция, материалы и индексы исполнения. Разбор обозначения марки и размера кабеля.',
-  },
-  {
-    key: 'reference',
-    path: '/services/reference/',
-    title: 'Справочник кабеля',
-    short: 'Справочник',
-    number: '05',
-    description:
-      'Назначение распространённых марок, технические таблицы и переход к продукции в каталоге.',
+      'Назначение марок, расшифровка обозначений и документы изготовителей.',
   },
   {
     key: 'analogs',
@@ -83,9 +74,14 @@ export const CABLE_SERVICES = [
       'Изготовители и опубликованные ими таблицы для точной марки и конструкции кабеля.',
   },
 ];
+export const CABLE_SERVICES = ALL_CABLE_SERVICES.filter(
+  (service) => !['shipping', 'manufacturers'].includes(service.key)
+);
 export const SERVICES_PATH = '/services/';
 export function getCableService(key) {
-  return CABLE_SERVICES.find((service) => service.key === key);
+  return ALL_CABLE_SERVICES.find(
+    (service) => service.key === (key === 'reference' ? 'marking' : key)
+  );
 }
 export function serviceUrl(key, params = {}) {
   const query = new URLSearchParams(

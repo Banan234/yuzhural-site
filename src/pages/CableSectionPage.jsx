@@ -1,3 +1,4 @@
+import SiteSelect from '../components/ui/SiteSelect';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ServiceLayout from '../components/services/ServiceLayout';
@@ -51,8 +52,8 @@ export default function CableSectionPage() {
       <label key={key}>
         {label}
         <input
-          type="number"
-          step="any"
+          type="text"
+          inputMode="decimal"
           value={input[key]}
           onChange={(e) => change(key, e.target.value)}
           aria-invalid={result.errors[key] ? true : undefined}
@@ -83,17 +84,17 @@ export default function CableSectionPage() {
           <div className="service-fields">
             <label>
               Сеть
-              <select
+              <SiteSelect
                 value={input.phases}
                 onChange={(e) => change('phases', e.target.value)}
               >
                 <option value="1">Однофазная, 2 нагруженные жилы</option>
                 <option value="3">Трёхфазная, 3 нагруженные жилы</option>
-              </select>
+              </SiteSelect>
             </label>
             <label>
               Нагрузка задана
-              <select
+              <SiteSelect
                 value={input.loadMode}
                 onChange={(e) => change('loadMode', e.target.value)}
               >
@@ -101,7 +102,7 @@ export default function CableSectionPage() {
                   Активной электрической мощностью, кВт
                 </option>
                 <option value="current">Током, А</option>
-              </select>
+              </SiteSelect>
             </label>
             {number(
               'load',
@@ -125,17 +126,17 @@ export default function CableSectionPage() {
             })}
             <label>
               Материал жилы
-              <select
+              <SiteSelect
                 value={input.material}
                 onChange={(e) => change('material', e.target.value)}
               >
                 <option value="copper">Медь</option>
                 <option value="aluminium">Алюминий</option>
-              </select>
+              </SiteSelect>
             </label>
             <label>
               Способ прокладки
-              <select
+              <SiteSelect
                 value={input.method}
                 onChange={(e) => change('method', e.target.value)}
               >
@@ -144,11 +145,11 @@ export default function CableSectionPage() {
                     {label}
                   </option>
                 ))}
-              </select>
+              </SiteSelect>
             </label>
             <label>
               {ground ? 'Температура грунта, °C' : 'Температура воздуха, °C'}
-              <select
+              <SiteSelect
                 value={input.temperature}
                 onChange={(e) => change('temperature', e.target.value)}
               >
@@ -157,23 +158,23 @@ export default function CableSectionPage() {
                 ).map((value) => (
                   <option key={value}>{value}</option>
                 ))}
-              </select>
+              </SiteSelect>
             </label>
             <label>
               Цепей в группе
-              <select
+              <SiteSelect
                 value={input.circuits}
                 onChange={(e) => change('circuits', e.target.value)}
               >
                 {Array.from({ length: ground ? 1 : 9 }, (_, i) => (
                   <option key={i + 1}>{i + 1}</option>
                 ))}
-              </select>
+              </SiteSelect>
             </label>
             {ground && (
               <label>
                 Тепловое сопротивление грунта, К·м/Вт
-                <select
+                <SiteSelect
                   value={input.soilResistivity}
                   onChange={(e) => change('soilResistivity', e.target.value)}
                 >
@@ -182,7 +183,7 @@ export default function CableSectionPage() {
                     .map((value) => (
                       <option key={value}>{value}</option>
                     ))}
-                </select>
+                </SiteSelect>
               </label>
             )}
             {number('maxDropPercent', 'Допустимое суммарное падение, %', {

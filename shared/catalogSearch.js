@@ -576,7 +576,7 @@ function matchesConstraints(doc, plan) {
           size[0].length === 2 &&
           size[0][0] === positive(doc.product.cores) &&
           size[0][1] === doc.section &&
-          !positive(doc.product.groundCores))
+          !positive(doc.product.groundCores ?? doc.product.neutralCores))
     )
   )
     return false;

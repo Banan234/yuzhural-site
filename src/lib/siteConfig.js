@@ -153,7 +153,7 @@ export const SITE_OFFICE_MAP_URL = `https://yandex.ru/maps/?text=${encodeURIComp
 export const SITE_OFFICE_MAP_EMBED_URL = `https://yandex.ru/map-widget/v1/?text=${encodeURIComponent(SITE_OFFICE_ADDRESS_DISPLAY)}&z=16`;
 export const SITE_WAREHOUSE_MAP_URL = 'https://yandex.com/maps/-/CPcpVKnV';
 export const SITE_WAREHOUSE_MAP_EMBED_URL =
-  'https://yandex.com/map-widget/v1/?um=constructor%3A8172d3d6be8ab83bca46d1d7c24cafb84f99a9d78676cdeed43b2a123670e103&source=constructor';
+  'https://yandex.com/map-widget/v1/?um=constructor%3A8172d3d6be8ab83bca46d1d7c24cafb84f99a9d78676cdeed43b2a123670e103&source=constructor&ll=61.356880%2C55.190450&z=17';
 export const SITE_MAP_URL = SITE_OFFICE_MAP_URL;
 export const SITE_MAP_EMBED_URL = SITE_OFFICE_MAP_EMBED_URL;
 

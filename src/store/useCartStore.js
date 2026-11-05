@@ -2,7 +2,7 @@
 
 import { createItemsStore } from './createItemsStore.js';
 import { MAX_QUOTE_ITEMS } from '../../shared/quoteValidation.js';
-import { PRODUCT_IMAGE_FALLBACKS } from '../../shared/productImages.js';
+import { PRODUCT_IMAGE_FALLBACKS } from '../../shared/productImageFallbacks.js';
 import { clampCartQuantity } from '../lib/cartQuantity.js';
 
 export const MAX_CART_ITEMS = MAX_QUOTE_ITEMS;
@@ -61,7 +61,7 @@ export const useCartStore = createItemsStore({
     // Сверяет каталожные позиции в корзине с актуальным состоянием каталога.
     // Принимает результат POST /api/products/lookup. Ручные позиции и
     // позиции без числового id (legacy) пропускаются. Возвращает сводку для UI.
-    syncWithCatalog: ({ found, missing }) => {
+    syncWithCatalog: ({ found, missing, pending }) => {
       const foundById = new Map(
         (Array.isArray(found) ? found : []).map((item) => [item.id, item])
       );
@@ -69,7 +69,13 @@ export const useCartStore = createItemsStore({
         (Array.isArray(missing) ? missing : []).map((id) => Number(id))
       );
 
-      const summary = { removed: [], priceChanged: [], slugChanged: 0 };
+      const pendingSet = new Set((pending || []).map(Number));
+      const summary = {
+        removed: [],
+        pending: [],
+        priceChanged: [],
+        slugChanged: 0,
+      };
 
       set((state) => {
         const nextItems = [];
@@ -83,6 +89,13 @@ export const useCartStore = createItemsStore({
             // Старые корзины без числовых id — оставляем как есть, пусть
             // пользователь увидит и сам решит. Не трогаем — не наш случай.
             nextItems.push(cartItem);
+            continue;
+          }
+          if (pendingSet.has(id)) {
+            summary.pending.push({
+              id,
+              title: cartItem.title || cartItem.name || cartItem.mark || '',
+            });
             continue;
           }
           if (missingSet.has(id)) {
@@ -123,7 +136,11 @@ export const useCartStore = createItemsStore({
             unit: fresh.unit || cartItem.unit,
             stock: fresh.stock,
             quantity: clampCartQuantity(
-              { ...cartItem, stock: fresh.stock },
+              {
+                ...cartItem,
+                unit: fresh.unit || cartItem.unit,
+                stock: fresh.stock,
+              },
               cartItem.quantity
             ),
             image: fresh.image || cartItem.image,

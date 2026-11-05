@@ -1,3 +1,4 @@
+import { prepareProductDetail } from '../../lib/productPresentation.js';
 // @vitest-environment jsdom
 import '../test/renderTestSetup.js';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
@@ -39,10 +40,15 @@ function setup() {
     </MemoryRouter>
   );
 }
+// API fixtures include the presentation metadata now supplied by the handler.
+function mockProductResponse(item) {
+  fetchProductBySlug.mockResolvedValue(prepareProductDetail(item));
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
   useCartStore.setState({ items: [] });
-  fetchProductBySlug.mockResolvedValue(product);
+  mockProductResponse(product);
   fetchRelatedProducts.mockResolvedValue([]);
   fetchProducts.mockResolvedValue({
     items: [],
@@ -51,7 +57,96 @@ beforeEach(() => {
 });
 
 describe('ProductPage purchase and variants', () => {
-  it('пересчитывает сумму и передаёт точный метраж в корзину и КП', async () => {
+  it.each([120.5, 150])(
+    'orders the selected balance with its own identity, price and stock (%s)',
+    async (price) => {
+      mockProductResponse({
+        ...product,
+        stock: 55,
+        offers: [
+          {
+            id: 1,
+            slug: product.slug,
+            sku: 'YU-1',
+            price: 120.5,
+            stock: 50,
+            unit: 'м',
+          },
+          {
+            id: 2,
+            slug: 'second-balance',
+            sku: 'YU-2',
+            price,
+            stock: 5,
+            unit: 'м',
+          },
+        ],
+      });
+      setup();
+      const radio = await screen.findByRole('radio', {
+        name: 'Выбрать остаток YU-2',
+      });
+      fireEvent.click(radio);
+      expect(radio).toBeChecked();
+      const quantity = screen.getByRole('spinbutton', {
+        name: 'Количество товара',
+      });
+      expect(quantity).toHaveAttribute('max', '5');
+      fireEvent.change(quantity, { target: { value: '8' } });
+      expect(quantity).toHaveValue(5);
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Добавить в корзину' })
+      );
+      expect(useCartStore.getState().items[0]).toMatchObject({
+        id: 2,
+        price,
+        stock: 5,
+        quantity: 5,
+        sku: 'YU-2',
+      });
+      expect(useCartStore.getState().items[0]).not.toHaveProperty('offers');
+      const onQuote = vi.fn();
+      window.addEventListener('open-cart-quote-modal', onQuote);
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Запросить КП по этой позиции' })
+      );
+      expect(onQuote.mock.calls[0][0].detail.items[0]).toMatchObject({
+        id: 2,
+        price,
+        quantity: 5,
+      });
+      window.removeEventListener('open-cart-quote-modal', onQuote);
+      fireEvent.click(
+        screen.getByRole('radio', { name: 'Выбрать остаток YU-1' })
+      );
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Добавить в корзину' })
+      );
+      expect(useCartStore.getState().items.map((item) => item.id)).toEqual([
+        2, 1,
+      ]);
+    }
+  );
+
+  it('preselects the source balance when an existing product URL is opened', async () => {
+    mockProductResponse({
+      ...product,
+      selectedOfferId: 2,
+      offers: [
+        { id: 1, sku: 'YU-1', stock: 50, price: 100, unit: 'м' },
+        { id: 2, sku: 'YU-2', stock: 5, price: 120, unit: 'м' },
+      ],
+    });
+    setup();
+    expect(
+      await screen.findByRole('radio', { name: 'Выбрать остаток YU-2' })
+    ).toBeChecked();
+    expect(
+      screen.getByRole('spinbutton', { name: 'Количество товара' })
+    ).toHaveAttribute('max', '5');
+  });
+
+  it('пересчитывает сумму и передаёт округлённый вверх метраж в корзину и КП', async () => {
     setup();
     const quantity = await screen.findByRole('spinbutton', {
       name: 'Количество товара',
@@ -61,11 +156,11 @@ describe('ProductPage purchase and variants', () => {
       document
         .querySelector('.product-page__total strong')
         .textContent.replace(/\s/g, '')
-    ).toBe('1506,25₽');
+    ).toBe('1566,5₽');
     fireEvent.click(screen.getByRole('button', { name: 'Добавить в корзину' }));
     expect(useCartStore.getState().items[0]).toMatchObject({
       id: 1,
-      quantity: 12.5,
+      quantity: 13,
       price: 120.5,
     });
     const onQuote = vi.fn();
@@ -74,13 +169,13 @@ describe('ProductPage purchase and variants', () => {
       screen.getByRole('button', { name: 'Запросить КП по этой позиции' })
     );
     expect(onQuote.mock.calls[0][0].detail.items[0]).toMatchObject({
-      quantity: 12.5,
+      quantity: 13,
       sku: 'YU-1',
     });
     window.removeEventListener('open-cart-quote-modal', onQuote);
   });
   it('не показывает нулевую сумму у товара без цены', async () => {
-    fetchProductBySlug.mockResolvedValue({ ...product, price: 0 });
+    mockProductResponse({ ...product, price: 0 });
     setup();
     expect(await screen.findByText('Цена по запросу')).toBeVisible();
     expect(document.querySelector('.product-page__total')).toBeNull();
@@ -103,7 +198,7 @@ describe('ProductPage purchase and variants', () => {
       })
       .mockResolvedValueOnce({ items: [other] });
     fetchProductBySlug.mockImplementation(async (slug) =>
-      slug === other.slug ? other : product
+      prepareProductDetail(slug === other.slug ? other : product)
     );
     setup();
     const link = await screen.findByRole('link', {

@@ -14,7 +14,7 @@
   margin: 0 0 14px;
 }
 .services-heading p {
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.65;
   color: #68717e;
   margin: 0;
@@ -33,7 +33,7 @@
   padding: 12px 0 14px;
   border-bottom: 2px solid transparent;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
 }
@@ -73,29 +73,41 @@
 }
 .service-card__number {
   color: var(--primary-dark);
-  font-size: 13px;
+  font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
 }
 .service-card h2 {
-  font-size: 20px;
+  font-size: 1.5rem;
   line-height: 1.25;
   margin: 16px 0 12px;
   color: var(--text);
 }
 .service-card p {
-  font-size: 14px;
+  font-size: var(--text-body);
   color: #526174;
   line-height: 1.65;
   margin: 0 0 24px;
 }
 .service-card__go {
-  display: flex;
-  justify-content: space-between;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 10px;
   margin-top: auto;
-  color: var(--primary-dark);
-  font-size: 14px;
+  color: var(--primary);
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+.service-card__go-arrow {
+  font-size: 20px;
+  line-height: 1;
+}
+.service-card:hover .service-card__go-label,
+.service-card:focus-visible .service-card__go-label {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 .service-panel {
   background: #fff;
@@ -105,12 +117,12 @@
   min-width: 0;
 }
 .service-panel h2 {
-  font-size: 22px;
+  font-size: var(--text-card-title);
   line-height: 1.3;
   margin: 0 0 20px;
 }
 .service-panel h3 {
-  font-size: 17px;
+  font-size: var(--text-body);
   margin: 0 0 12px;
 }
 .service-panel p {
@@ -130,24 +142,26 @@
   gap: 22px;
   align-items: start;
 }
-.service-two-columns > .service-panel + .service-panel {
+.service-two-columns > .service-panel + .service-panel,
+.section-calculator > .service-panel + .service-panel {
   margin: 0;
 }
 .service-fields {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+  align-items: start;
 }
 .service-fields label,
 .service-search-label {
   display: grid;
   gap: 7px;
-  font-size: 13px;
+  font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
   color: #334155;
 }
 .service-fields input,
-.service-fields select,
+.service-fields :is(select, .site-select),
 .service-search-label input,
 .service-fields textarea {
   min-width: 0;
@@ -159,10 +173,10 @@
   background: white;
   color: var(--text);
   font: inherit;
-  font-size: 16px;
+  font-size: var(--text-body);
 }
 .service-fields input:focus-visible,
-.service-fields select:focus-visible,
+.service-fields :is(select, .site-select):focus-visible,
 .service-search-label input:focus-visible,
 .service-fields textarea:focus-visible {
   outline: 2px solid var(--primary-line);
@@ -200,7 +214,7 @@
   padding: 16px 20px;
   background: var(--surface-soft);
   color: #475569;
-  font-size: 14px;
+  font-size: var(--text-ui);
   line-height: 1.65;
   margin: 24px 0 0;
   border-radius: 0 4px 4px 0;
@@ -213,7 +227,7 @@
   border-color: #ba4e3d;
 }
 .service-status {
-  font-size: 14px;
+  font-size: var(--text-ui);
   color: #b42318;
   line-height: 1.5;
   margin: 12px 0 0;
@@ -229,11 +243,11 @@
   overflow-wrap: anywhere;
 }
 .service-result-number small {
-  font-size: 16px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
 }
 .service-result-label {
-  font-size: 13px;
+  font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
   color: #526174;
   margin-bottom: 8px;
@@ -245,7 +259,7 @@
 }
 .service-muted {
   color: #64748b;
-  font-size: 13px;
+  font-size: var(--text-small);
   line-height: 1.6;
 }
 .service-table-wrap {
@@ -256,11 +270,11 @@
 .service-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 .service-table th {
   text-align: left;
-  font-size: 12px;
+  font-size: var(--text-caption);
   color: #526174;
   font-weight: var(--font-weight-medium);
   background: #f4f7fa;
@@ -281,7 +295,7 @@
 .service-table caption {
   text-align: left;
   padding-bottom: 12px;
-  font-size: 17px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
 }
 .service-table button {
@@ -315,7 +329,7 @@
   background: white;
   color: var(--primary-dark);
   font: inherit;
-  font-size: 13px;
+  font-size: var(--text-small);
   cursor: pointer;
   text-decoration: none;
 }
@@ -350,7 +364,7 @@
 }
 .service-source-list a {
   color: var(--primary-dark);
-  font-size: 14px;
+  font-size: var(--text-ui);
   overflow-wrap: anywhere;
 }
 .service-source-list small {
@@ -371,7 +385,7 @@
   background: #fff;
   color: #335c80;
   font: inherit;
-  font-size: 14px;
+  font-size: var(--text-ui);
   cursor: pointer;
 }
 .service-mode-switch button[aria-pressed='true'] {
@@ -394,7 +408,7 @@
   margin: 20px 0;
   display: grid;
   gap: 10px;
-  font-size: 14px;
+  font-size: var(--text-ui);
   line-height: 1.55;
 }
 .service-checks li {
@@ -423,14 +437,14 @@
   color: var(--primary-dark);
   cursor: pointer;
   font: inherit;
-  font-size: 13px;
+  font-size: var(--text-small);
 }
 .service-product-links {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 20px;
-  font-size: 13px;
+  font-size: var(--text-small);
 }
 .service-product-links a {
   padding: 8px 11px;
@@ -441,7 +455,7 @@
   text-decoration: none;
 }
 .service-panel > p {
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 .service-panel > p:first-of-type {
   margin-top: 0;
@@ -457,7 +471,7 @@
 .service-note .button-secondary {
   min-height: 44px;
   padding: 11px 18px;
-  font-size: 14px;
+  font-size: var(--text-ui);
   line-height: 1.5;
 }
 .service-notice {
@@ -465,7 +479,7 @@
   border-left: 2px solid var(--primary);
   background: var(--surface-soft);
   color: #526174;
-  font-size: 14px;
+  font-size: var(--text-ui);
   line-height: 1.65;
 }
 .application-layout {
@@ -500,14 +514,14 @@
 }
 .application-choices strong {
   display: block;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.45;
 }
 .application-choices span {
   display: block;
   margin-top: 7px;
   color: #68717e;
-  font-size: 13px;
+  font-size: var(--text-small);
   line-height: 1.6;
 }
 .application-full {
@@ -545,7 +559,7 @@
     padding: 20px 0 48px;
   }
   .services-heading p {
-    font-size: 15px;
+    font-size: var(--text-body);
   }
   .services-grid,
   .service-reference-grid,
@@ -622,7 +636,7 @@
 }
 .section-result-details dt {
   color: #64748b;
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 .section-result-details dd {
   margin: 6px 0 0;
@@ -632,4 +646,270 @@
   .section-calculator {
     grid-template-columns: 1fr;
   }
+}
+
+/* У каждого сервиса — собственный технический рисунок на фоне. */
+.services-grid .service-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #f4f5f6;
+}
+.service-card__art {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 230px;
+  height: 220px;
+  right: -36px;
+  top: -32px;
+  color: var(--primary);
+  opacity: 0.13;
+}
+.services-grid .service-card h2,
+.services-grid .service-card p {
+  position: relative;
+}
+.services-grid .service-card--section .service-card__art {
+  right: -34px;
+  top: -44px;
+  transform: rotate(12deg);
+}
+.services-grid .service-card--weight .service-card__art {
+  right: -25px;
+  top: -45px;
+  transform: rotate(10deg);
+}
+.services-grid .service-card--marking .service-card__art {
+  color: var(--primary);
+  right: -35px;
+  top: -42px;
+  transform: rotate(-12deg);
+}
+.services-grid .service-card--reference .service-card__art {
+  color: var(--primary);
+  right: -35px;
+  top: -45px;
+  transform: rotate(12deg);
+}
+.services-grid .service-card--analogs .service-card__art {
+  color: var(--primary);
+  top: -55px;
+}
+.services-grid .service-card--drum .service-card__art {
+  color: var(--primary);
+  top: -62px;
+  transform: rotate(-12deg);
+}
+.services-grid .service-card--shipping .service-card__art {
+  top: -52px;
+  right: -30px;
+}
+.services-grid .service-card--manufacturers .service-card__art {
+  color: var(--primary);
+  top: -60px;
+}
+.services-grid .service-card:hover {
+  border-color: var(--primary);
+}
+@media (max-width: 600px) {
+  .service-card__art {
+    width: 200px;
+    height: 190px;
+    opacity: 0.11;
+  }
+}
+
+/* Только заключительная плашка сервиса: равные внешние отступы. */
+@media screen {
+  .services-page {
+    --service-end-space: 72px;
+    padding-bottom: var(--service-end-space);
+  }
+  .services-page > .container > .service-note:last-child {
+    margin-top: var(--service-end-space);
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .services-page {
+    --service-end-space: 48px;
+  }
+}
+
+/* Нативные подсказки используют светлую схему, как само поле поиска. */
+.service-search-label input[list] {
+  color-scheme: light;
+}
+#service-known-marks,
+#service-known-marks option {
+  color: #24303c;
+  background-color: #fff;
+}
+
+.service-autocomplete {
+  position: relative;
+}
+.service-suggestions {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  margin: 6px 0 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--text);
+  box-shadow: 0 6px 18px #182f461a;
+}
+.service-suggestions [role='option'] {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: var(--text-ui);
+  line-height: 1.5;
+}
+.service-suggestions [role='option']:hover,
+.service-suggestions [aria-selected='true'] {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+}
+
+.mark-search {
+  position: relative;
+}
+.mark-search__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+  color: var(--text);
+}
+.mark-search__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.mark-search__icon {
+  position: absolute;
+  left: 14px;
+  color: var(--muted);
+  pointer-events: none;
+}
+.mark-search__control input {
+  width: 100%;
+  min-width: 0;
+  min-height: 52px;
+  padding: 12px 52px 12px 44px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: inherit;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: var(--text);
+  background: #fff;
+}
+.mark-search__control input:focus {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 1px;
+  border-color: var(--primary);
+}
+.mark-search__clear {
+  position: absolute;
+  right: 4px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.mark-search__clear:hover {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+.mark-search__clear:focus-visible {
+  outline: 2px solid var(--primary);
+}
+.mark-search .mark-search__hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+.mark-search__dropdown {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 8px 24px #182f461a;
+  overflow: hidden;
+}
+.mark-search__summary,
+.mark-search__keyboard {
+  padding: 10px 14px;
+  color: var(--muted);
+  font-size: var(--text-small);
+  line-height: 1.5;
+  background: var(--bg-soft);
+}
+.mark-search__options {
+  list-style: none;
+  padding: 4px;
+  margin: 0;
+  max-height: min(330px, 45vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.mark-search__options li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  min-height: 44px;
+  padding: 10px 12px;
+  cursor: pointer;
+  color: var(--text);
+  font-size: var(--text-ui);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.mark-search__options strong {
+  font-weight: var(--font-weight-medium);
+}
+.mark-search__options li span {
+  color: var(--muted);
+}
+.mark-search__options li:hover,
+.mark-search__options li[aria-selected='true'] {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+}
+.mark-search .mark-search__empty {
+  margin: 0;
+  padding: 12px 14px 16px;
+  font-size: var(--text-ui);
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .mark-search__keyboard {
+    display: none;
+  }
+}
+
+.mark-search__anchor {
+  position: relative;
 }

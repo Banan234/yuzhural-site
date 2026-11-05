@@ -51,6 +51,27 @@ describe('FloatingLeadWidget', () => {
     });
   });
 
+  it('переносит фокус на панель и возвращает на кнопку без выбора поля', async () => {
+    const user = userEvent.setup();
+    const fetchMock = vi.fn();
+    vi.stubGlobal('fetch', fetchMock);
+    render(<FloatingLeadWidget autoOpen={false} />);
+    await user.click(screen.getByRole('button', { name: 'Чат с менеджером' }));
+    expect(
+      screen.getByRole('region', { name: 'Чат с менеджером' })
+    ).toHaveFocus();
+    expect(screen.getByLabelText('Введите сообщение')).not.toHaveFocus();
+    await user.tab();
+    expect(
+      screen.getByRole('button', { name: 'Свернуть виджет' })
+    ).toHaveFocus();
+    await user.keyboard('{Enter}');
+    expect(
+      screen.getByRole('button', { name: 'Чат с менеджером' })
+    ).toHaveFocus();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it('не отправляет первое сообщение без согласия', async () => {
     const user = userEvent.setup();
     const fetchMock = vi.fn();
@@ -382,4 +403,110 @@ describe('FloatingLeadWidget', () => {
       await screen.findByText('Есть вопрос по заказу')
     ).toBeInTheDocument();
   });
+});
+
+it.each([429, 503, 500])(
+  'сохраняет набранный текст и согласие при отказе API %s',
+  async (status) => {
+    const user = userEvent.setup();
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: false,
+        status,
+        text: async () =>
+          JSON.stringify({
+            ok: false,
+            message: 'Не удалось отправить сообщение',
+          }),
+      })
+    );
+    window.matchMedia = vi.fn().mockReturnValue({
+      matches: true,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    });
+    render(<FloatingLeadWidget autoOpen={false} />);
+    await user.click(screen.getByRole('button', { name: 'Чат с менеджером' }));
+    await user.type(
+      screen.getByLabelText('Введите сообщение'),
+      'Синтетический несохранённый текст'
+    );
+    await user.click(screen.getByLabelText(/Даю согласие/));
+    await user.click(
+      screen.getByRole('button', { name: 'Отправить сообщение' })
+    );
+    expect(
+      await screen.findByText('Не удалось отправить сообщение')
+    ).toBeInTheDocument();
+    expect(screen.getByLabelText('Введите сообщение')).toHaveValue(
+      'Синтетический несохранённый текст'
+    );
+    expect(screen.getByLabelText(/Даю согласие/)).toBeChecked();
+    expect(
+      screen.getByRole('button', { name: 'Отправить сообщение' })
+    ).toBeEnabled();
+    expect(localStorage.getItem('yuzhural-chat-session')).toBeNull();
+  }
+);
+
+it('сохраняет текст и прежнюю авторизацию при отказе отправки в существующем диалоге', async () => {
+  const user = userEvent.setup();
+  const stored = {
+    conversationId: 'synthetic-existing',
+    customerToken: 'synthetic-token',
+  };
+  localStorage.setItem('yuzhural-chat-session', JSON.stringify(stored));
+  const fetchMock = vi.fn(async (url, options) =>
+    createJsonResponse(
+      options?.method === 'POST'
+        ? { ok: false, message: 'Не удалось отправить сообщение' }
+        : {
+            ok: true,
+            conversation: {
+              id: stored.conversationId,
+              messages: [
+                {
+                  id: 'existing',
+                  role: 'manager',
+                  text: 'Синтетическая история',
+                  createdAt: null,
+                },
+              ],
+            },
+          },
+      options?.method !== 'POST'
+    )
+  );
+  vi.stubGlobal('fetch', fetchMock);
+  window.matchMedia = vi.fn().mockReturnValue({
+    matches: true,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+  });
+  render(<FloatingLeadWidget autoOpen={false} />);
+  await user.click(screen.getByRole('button', { name: 'Чат с менеджером' }));
+  await screen.findByText('Синтетическая история');
+  await user.type(
+    screen.getByLabelText('Введите сообщение'),
+    'Синтетическое продолжение'
+  );
+  await user.click(screen.getByRole('button', { name: 'Отправить сообщение' }));
+  expect(
+    await screen.findByText('Не удалось отправить сообщение')
+  ).toBeInTheDocument();
+  expect(screen.getByLabelText('Введите сообщение')).toHaveValue(
+    'Синтетическое продолжение'
+  );
+  expect(JSON.parse(localStorage.getItem('yuzhural-chat-session'))).toEqual(
+    stored
+  );
+  expect(fetchMock).toHaveBeenCalledWith(
+    '/api/chat/conversations/synthetic-existing/messages',
+    expect.objectContaining({
+      headers: expect.objectContaining({
+        Authorization: 'Bearer synthetic-token',
+      }),
+    })
+  );
 });

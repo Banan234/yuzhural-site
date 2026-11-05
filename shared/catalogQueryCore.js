@@ -151,10 +151,12 @@ export function buildCatalogFacetsCore(items) {
     if (powerGroup) powerGroupSet.add(powerGroup);
     if (product.catalogType === 'СПЭ') hasSPE = true;
 
-    const price = Number(product.price);
-    if (Number.isFinite(price) && price > 0) {
-      if (price < minPrice) minPrice = price;
-      if (price > maxPrice) maxPrice = price;
+    for (const offer of product.offers || [product]) {
+      const price = Number(offer.price);
+      if (Number.isFinite(price) && price > 0) {
+        if (price < minPrice) minPrice = price;
+        if (price > maxPrice) maxPrice = price;
+      }
     }
   }
 
@@ -285,11 +287,16 @@ export function applyProductFiltersCore(items, query) {
   if (query.onlySPE) {
     result = result.filter((item) => item.catalogType === 'СПЭ');
   }
-  if (Number.isFinite(priceMinNumber) && priceMinNumber > 0) {
-    result = result.filter((item) => Number(item.price) >= priceMinNumber);
-  }
-  if (Number.isFinite(priceMaxNumber) && priceMaxNumber > 0) {
-    result = result.filter((item) => Number(item.price) <= priceMaxNumber);
+  const hasPriceMin = Number.isFinite(priceMinNumber) && priceMinNumber > 0;
+  const hasPriceMax = Number.isFinite(priceMaxNumber) && priceMaxNumber > 0;
+  if (hasPriceMin || hasPriceMax) {
+    result = result.filter((item) =>
+      (item.offers || [item]).some(
+        (offer) =>
+          (!hasPriceMin || Number(offer.price) >= priceMinNumber) &&
+          (!hasPriceMax || Number(offer.price) <= priceMaxNumber)
+      )
+    );
   }
 
   return result;

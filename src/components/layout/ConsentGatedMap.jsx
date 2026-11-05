@@ -8,8 +8,13 @@ import {
   openCookieSettings,
 } from '../../lib/cookieConsent';
 
-export default function ConsentGatedMap({ title, src }) {
+export default function ConsentGatedMap({ title, src, children }) {
   const [allowed, setAllowed] = useState(false);
+  const [interactive, setInteractive] = useState(false);
+
+  useEffect(() => {
+    setInteractive(false);
+  }, [src, allowed]);
 
   useEffect(() => {
     function sync() {
@@ -28,13 +33,34 @@ export default function ConsentGatedMap({ title, src }) {
   }, []);
 
   if (allowed) {
+    if (children) return children;
     return (
-      <iframe
-        title={title}
-        src={src}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      />
+      <div
+        className="map-interaction-guard"
+        data-interactive={interactive}
+        onPointerLeave={() => setInteractive(false)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) {
+            setInteractive(false);
+          }
+        }}
+      >
+        <iframe
+          title={title}
+          src={src}
+          loading="lazy"
+          tabIndex={interactive ? 0 : -1}
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+        {!interactive && (
+          <button
+            className="map-interaction-guard__shield"
+            type="button"
+            aria-label="Взаимодействовать с картой"
+            onClick={() => setInteractive(true)}
+          />
+        )}
+      </div>
     );
   }
 

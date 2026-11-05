@@ -122,7 +122,7 @@ test('chat widget restores the same session after reload and reopening the page'
   await expect(chatWidget.getByLabel(/Даю согласие/)).toBeVisible();
   await expect(
     chatWidget.getByRole('link', { name: /обработку персональных/ })
-  ).toHaveAttribute('href', '/privacy');
+  ).toHaveAttribute('href', '/personal-data-consent');
   await chatWidget.getByLabel(/Даю согласие/).check();
   await chatWidget.getByLabel('Введите сообщение').fill('Нужен ВВГ 3x2.5');
   await chatWidget.getByRole('button', { name: 'Отправить сообщение' }).click();

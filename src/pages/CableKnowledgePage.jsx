@@ -1,7 +1,9 @@
+import SiteSelect from '../components/ui/SiteSelect';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import ServiceLayout from '../components/services/ServiceLayout';
 import ReportActions from '../components/services/ReportActions';
+import MarkSearch from '../components/services/MarkSearch';
 import {
   CABLE_KNOWLEDGE,
   decodeCableDesignation,
@@ -66,16 +68,15 @@ function Sources({ sources }) {
   );
 }
 
-export default function CableKnowledgePage({ mode = 'marking' }) {
+export default function CableKnowledgePage({
+  mode: requestedMode = 'marking',
+}) {
+  const mode = requestedMode === 'reference' ? 'marking' : requestedMode;
   const [params] = useSearchParams();
   const [input, setInput] = useState(
     params.get('designation') ||
       params.get('mark') ||
-      (mode === 'marking'
-        ? 'ВВГнг(А)-LS 3х2,5'
-        : mode === 'analogs'
-          ? 'ПВ3'
-          : '')
+      (mode === 'marking' ? '' : mode === 'analogs' ? 'ПВ3' : '')
   );
   const [group, setGroup] = useState('');
   const [limit, setLimit] = useState(24);
@@ -93,7 +94,7 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
   }, [queryKey]);
   const decoded = useMemo(() => decodeCableDesignation(input), [input]);
   const comparisons = getCableComparisons(input);
-  const sources = sourceLinks(input.trim());
+  const sources = sourceLinks(decoded.mark || input.trim());
   const filtered = MARKS.filter(
     (mark) =>
       normalizeKnowledgeMark(mark).includes(normalizeKnowledgeMark(input)) &&
@@ -105,30 +106,24 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
   return (
     <ServiceLayout serviceKey={mode}>
       <section className="service-panel">
-        <label className="service-search-label">
-          {mode === 'marking'
-            ? 'Полное обозначение кабеля'
-            : mode === 'reference'
-              ? 'Найти марку в справочнике'
-              : mode === 'manufacturers'
-                ? 'Точная марка кабеля'
-                : 'Исходная марка кабеля'}
-          <input
-            maxLength={250}
-            value={input}
-            list={mode !== 'reference' ? 'service-known-marks' : undefined}
-            placeholder="Например, ВВГнг(А)-LS"
-            onChange={(event) => {
-              setInput(event.target.value);
-              setLimit(24);
-            }}
-          />
-        </label>
-        <datalist id="service-known-marks">
-          {MARKS.map((mark) => (
-            <option value={mark} key={mark} />
-          ))}
-        </datalist>
+        <MarkSearch
+          value={input}
+          marks={MARKS}
+          fullDesignation={mode === 'marking'}
+          label={
+            mode === 'marking'
+              ? 'Марка или полное обозначение кабеля'
+              : mode === 'reference'
+                ? 'Найти марку в справочнике'
+                : mode === 'manufacturers'
+                  ? 'Точная марка кабеля'
+                  : 'Исходная марка кабеля'
+          }
+          onChange={(value) => {
+            setInput(value);
+            setLimit(24);
+          }}
+        />
         <div className="service-chips">
           {(mode === 'analogs'
             ? ['ПВ1', 'ПВ3', 'H07V-K', 'ВБбШв', 'КВВГ', 'МКЭШ']
@@ -150,11 +145,11 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
             </button>
           ))}
         </div>
-        {mode === 'reference' && (
+        {mode === 'marking' && !input.trim() && (
           <div className="service-fields">
             <label>
               Назначение
-              <select
+              <SiteSelect
                 value={group}
                 onChange={(event) => {
                   setGroup(event.target.value);
@@ -167,7 +162,7 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
                     <option key={value}>{value}</option>
                   )
                 )}
-              </select>
+              </SiteSelect>
             </label>
             <p className="service-muted">
               Найдено марок: {filtered.length}. Подробное описание есть для
@@ -177,7 +172,7 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
           </div>
         )}
       </section>
-      {mode === 'marking' && (
+      {mode === 'marking' && Boolean(input.trim()) && (
         <>
           <section
             className="service-panel"
@@ -185,9 +180,18 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
             aria-live="polite"
           >
             <h2>
-              {detail ? `Что означает ${decoded.mark}` : 'Уточните обозначение'}
+              {!input.trim()
+                ? 'Введите обозначение кабеля'
+                : detail
+                  ? `Что означает ${decoded.mark}`
+                  : 'Уточните обозначение'}
             </h2>
-            {detail ? (
+            {!input.trim() ? (
+              <p>
+                Начните вводить марку или выберите пример выше. Расшифровка
+                появится автоматически.
+              </p>
+            ) : detail ? (
               <>
                 <p>{detail.description}</p>
                 <dl className="service-decode-list">
@@ -235,6 +239,12 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
                 сечение; числовые параметры не определены.
               </aside>
             )}
+            {sources.length > 0 && (
+              <div className="service-knowledge-documents">
+                <h3>Документы и таблицы изготовителей</h3>
+                <Sources sources={sources} />
+              </div>
+            )}
             {detail && (
               <div className="services-actions">
                 <Link
@@ -242,12 +252,6 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
                   to={catalogSearchUrl(decoded.mark)}
                 >
                   Посмотреть в каталоге
-                </Link>
-                <Link
-                  className="button-secondary"
-                  to={serviceUrl('weight', { designation: input })}
-                >
-                  Рассчитать вес и диаметр
                 </Link>
               </div>
             )}
@@ -265,7 +269,7 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
           </aside>
         </>
       )}
-      {mode === 'reference' && (
+      {mode === 'marking' && !input.trim() && (
         <>
           <div className="service-reference-grid">
             {filtered.slice(0, limit).map((mark) => {
@@ -288,9 +292,19 @@ export default function CableKnowledgePage({ mode = 'marking' }) {
                   )}
                   <div className="service-chips">
                     <Link to={catalogSearchUrl(mark)}>Товары</Link>
-                    <Link to={serviceUrl('marking', { mark })}>
-                      Расшифровка
-                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setInput(mark);
+                        setLimit(24);
+                        document.querySelector('.mark-search input')?.focus();
+                        document
+                          .querySelector('.mark-search')
+                          ?.scrollIntoView({ block: 'center' });
+                      }}
+                    >
+                      Описание и расшифровка →
+                    </button>
                     {refs.length > 0 && (
                       <Link to={serviceUrl('weight', { mark })}>
                         Вес и диаметр

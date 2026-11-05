@@ -30,7 +30,7 @@ const app = (
   </StrictMode>
 );
 
-if (root.hasChildNodes()) {
+if (root.hasChildNodes() && root.dataset.clientRender !== 'true') {
   ReactDOM.hydrateRoot(root, app);
 } else {
   ReactDOM.createRoot(root).render(app);

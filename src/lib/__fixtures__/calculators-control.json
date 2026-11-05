@@ -1,0 +1,3888 @@
+{
+  "method": "Primary-source tables parsed independently; Decimal50; geometry enumerated; no JS imports",
+  "tolerance": {
+    "functionRelative": 1e-11,
+    "UIabsolute2decimals": 0.005,
+    "UIabsolute3decimals": 0.0005,
+    "discreteSelection": 0
+  },
+  "ampacityCellCount": 114,
+  "sections": [
+    {
+      "id": "S01",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "B2",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 2.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 15.5,
+          "ampacity": 15.5,
+          "dropVolts": 8.12032,
+          "dropPercent": 3.530573913043478,
+          "fits": false,
+          "ampacityDisplay": "15,5",
+          "totalDropDisplay": "3,53"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 21.0,
+          "ampacity": 21.0,
+          "dropVolts": 4.88448,
+          "dropPercent": 2.1236869565217393,
+          "fits": true,
+          "ampacityDisplay": "21",
+          "totalDropDisplay": "2,12"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 28.0,
+          "ampacity": 28.0,
+          "dropVolts": 3.06432,
+          "dropPercent": 1.3323130434782608,
+          "fits": true,
+          "ampacityDisplay": "28",
+          "totalDropDisplay": "1,33"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 36.0,
+          "ampacity": 36.0,
+          "dropVolts": 2.05312,
+          "dropPercent": 0.8926608695652174,
+          "fits": true,
+          "ampacityDisplay": "36",
+          "totalDropDisplay": "0,89"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 50.0,
+          "ampacity": 50.0,
+          "dropVolts": 1.24416,
+          "dropPercent": 0.5409391304347826,
+          "fits": true,
+          "ampacityDisplay": "50",
+          "totalDropDisplay": "0,54"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 68.0,
+          "ampacity": 68.0,
+          "dropVolts": 0.78912,
+          "dropPercent": 0.343095652173913,
+          "fits": true,
+          "ampacityDisplay": "68",
+          "totalDropDisplay": "0,34"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 89.0,
+          "ampacity": 89.0,
+          "dropVolts": 0.516096,
+          "dropPercent": 0.2243895652173913,
+          "fits": true,
+          "ampacityDisplay": "89",
+          "totalDropDisplay": "0,22"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 110.0,
+          "dropVolts": 0.37741714285714284,
+          "dropPercent": 0.1640944099378882,
+          "fits": true,
+          "ampacityDisplay": "110",
+          "totalDropDisplay": "0,16"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 134.0,
+          "ampacity": 134.0,
+          "dropVolts": 0.273408,
+          "dropPercent": 0.11887304347826087,
+          "fits": true,
+          "ampacityDisplay": "134",
+          "totalDropDisplay": "0,12"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 171.0,
+          "ampacity": 171.0,
+          "dropVolts": 0.20406857142857143,
+          "dropPercent": 0.08872546583850932,
+          "fits": true,
+          "ampacityDisplay": "171",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 207.0,
+          "ampacity": 207.0,
+          "dropVolts": 0.15845052631578949,
+          "dropPercent": 0.06889153318077804,
+          "fits": true,
+          "ampacityDisplay": "207",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 239.0,
+          "ampacity": 239.0,
+          "dropVolts": 0.13184,
+          "dropPercent": 0.057321739130434785,
+          "fits": true,
+          "ampacityDisplay": "239",
+          "totalDropDisplay": "0,06"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "input": {
+        "phases": "1",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "B2",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 54.34782608695652,
+      "currentDisplay": "54,35",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 15.5,
+          "ampacity": 15.5,
+          "dropVolts": 27.582608695652173,
+          "dropPercent": 11.992438563327033,
+          "fits": false,
+          "ampacityDisplay": "15,5",
+          "totalDropDisplay": "11,99"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 21.0,
+          "ampacity": 21.0,
+          "dropVolts": 16.591304347826085,
+          "dropPercent": 7.213610586011342,
+          "fits": false,
+          "ampacityDisplay": "21",
+          "totalDropDisplay": "7,21"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 28.0,
+          "ampacity": 28.0,
+          "dropVolts": 10.408695652173913,
+          "dropPercent": 4.525519848771267,
+          "fits": false,
+          "ampacityDisplay": "28",
+          "totalDropDisplay": "4,53"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 36.0,
+          "ampacity": 36.0,
+          "dropVolts": 6.973913043478261,
+          "dropPercent": 3.0321361058601135,
+          "fits": false,
+          "ampacityDisplay": "36",
+          "totalDropDisplay": "3,03"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 50.0,
+          "ampacity": 50.0,
+          "dropVolts": 4.226086956521739,
+          "dropPercent": 1.837429111531191,
+          "fits": false,
+          "ampacityDisplay": "50",
+          "totalDropDisplay": "1,84"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 68.0,
+          "ampacity": 68.0,
+          "dropVolts": 2.6804347826086956,
+          "dropPercent": 1.165406427221172,
+          "fits": true,
+          "ampacityDisplay": "68",
+          "totalDropDisplay": "1,17"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 89.0,
+          "ampacity": 89.0,
+          "dropVolts": 1.7530434782608695,
+          "dropPercent": 0.7621928166351607,
+          "fits": true,
+          "ampacityDisplay": "89",
+          "totalDropDisplay": "0,76"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 110.0,
+          "dropVolts": 1.2819875776397516,
+          "dropPercent": 0.5573859033216311,
+          "fits": true,
+          "ampacityDisplay": "110",
+          "totalDropDisplay": "0,56"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 134.0,
+          "ampacity": 134.0,
+          "dropVolts": 0.928695652173913,
+          "dropPercent": 0.40378071833648393,
+          "fits": true,
+          "ampacityDisplay": "134",
+          "totalDropDisplay": "0,4"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 171.0,
+          "ampacity": 171.0,
+          "dropVolts": 0.6931677018633541,
+          "dropPercent": 0.3013772616797191,
+          "fits": true,
+          "ampacityDisplay": "171",
+          "totalDropDisplay": "0,3"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 207.0,
+          "ampacity": 207.0,
+          "dropVolts": 0.5382151029748283,
+          "dropPercent": 0.23400656651079493,
+          "fits": true,
+          "ampacityDisplay": "207",
+          "totalDropDisplay": "0,23"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 239.0,
+          "ampacity": 239.0,
+          "dropVolts": 0.44782608695652176,
+          "dropPercent": 0.1947069943289225,
+          "fits": true,
+          "ampacityDisplay": "239",
+          "totalDropDisplay": "0,19"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 2.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 19.5,
+          "ampacity": 19.5,
+          "dropVolts": 8.12032,
+          "dropPercent": 3.530573913043478,
+          "fits": false,
+          "ampacityDisplay": "19,5",
+          "totalDropDisplay": "3,53"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 27.0,
+          "ampacity": 27.0,
+          "dropVolts": 4.88448,
+          "dropPercent": 2.1236869565217393,
+          "fits": true,
+          "ampacityDisplay": "27",
+          "totalDropDisplay": "2,12"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 36.0,
+          "ampacity": 36.0,
+          "dropVolts": 3.06432,
+          "dropPercent": 1.3323130434782608,
+          "fits": true,
+          "ampacityDisplay": "36",
+          "totalDropDisplay": "1,33"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 46.0,
+          "ampacity": 46.0,
+          "dropVolts": 2.05312,
+          "dropPercent": 0.8926608695652174,
+          "fits": true,
+          "ampacityDisplay": "46",
+          "totalDropDisplay": "0,89"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 63.0,
+          "ampacity": 63.0,
+          "dropVolts": 1.24416,
+          "dropPercent": 0.5409391304347826,
+          "fits": true,
+          "ampacityDisplay": "63",
+          "totalDropDisplay": "0,54"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 85.0,
+          "ampacity": 85.0,
+          "dropVolts": 0.78912,
+          "dropPercent": 0.343095652173913,
+          "fits": true,
+          "ampacityDisplay": "85",
+          "totalDropDisplay": "0,34"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 110.0,
+          "dropVolts": 0.516096,
+          "dropPercent": 0.2243895652173913,
+          "fits": true,
+          "ampacityDisplay": "110",
+          "totalDropDisplay": "0,22"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 137.0,
+          "ampacity": 137.0,
+          "dropVolts": 0.37741714285714284,
+          "dropPercent": 0.1640944099378882,
+          "fits": true,
+          "ampacityDisplay": "137",
+          "totalDropDisplay": "0,16"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 167.0,
+          "ampacity": 167.0,
+          "dropVolts": 0.273408,
+          "dropPercent": 0.11887304347826087,
+          "fits": true,
+          "ampacityDisplay": "167",
+          "totalDropDisplay": "0,12"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 213.0,
+          "ampacity": 213.0,
+          "dropVolts": 0.20406857142857143,
+          "dropPercent": 0.08872546583850932,
+          "fits": true,
+          "ampacityDisplay": "213",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 258.0,
+          "ampacity": 258.0,
+          "dropVolts": 0.15845052631578949,
+          "dropPercent": 0.06889153318077804,
+          "fits": true,
+          "ampacityDisplay": "258",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 299.0,
+          "ampacity": 299.0,
+          "dropVolts": 0.13184,
+          "dropPercent": 0.057321739130434785,
+          "fits": true,
+          "ampacityDisplay": "299",
+          "totalDropDisplay": "0,06"
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "input": {
+        "phases": "1",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 54.34782608695652,
+      "currentDisplay": "54,35",
+      "factor": 1.0,
+      "selected": 10.0,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 19.5,
+          "ampacity": 19.5,
+          "dropVolts": 27.582608695652173,
+          "dropPercent": 11.992438563327033,
+          "fits": false,
+          "ampacityDisplay": "19,5",
+          "totalDropDisplay": "11,99"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 27.0,
+          "ampacity": 27.0,
+          "dropVolts": 16.591304347826085,
+          "dropPercent": 7.213610586011342,
+          "fits": false,
+          "ampacityDisplay": "27",
+          "totalDropDisplay": "7,21"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 36.0,
+          "ampacity": 36.0,
+          "dropVolts": 10.408695652173913,
+          "dropPercent": 4.525519848771267,
+          "fits": false,
+          "ampacityDisplay": "36",
+          "totalDropDisplay": "4,53"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 46.0,
+          "ampacity": 46.0,
+          "dropVolts": 6.973913043478261,
+          "dropPercent": 3.0321361058601135,
+          "fits": false,
+          "ampacityDisplay": "46",
+          "totalDropDisplay": "3,03"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 63.0,
+          "ampacity": 63.0,
+          "dropVolts": 4.226086956521739,
+          "dropPercent": 1.837429111531191,
+          "fits": true,
+          "ampacityDisplay": "63",
+          "totalDropDisplay": "1,84"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 85.0,
+          "ampacity": 85.0,
+          "dropVolts": 2.6804347826086956,
+          "dropPercent": 1.165406427221172,
+          "fits": true,
+          "ampacityDisplay": "85",
+          "totalDropDisplay": "1,17"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 110.0,
+          "dropVolts": 1.7530434782608695,
+          "dropPercent": 0.7621928166351607,
+          "fits": true,
+          "ampacityDisplay": "110",
+          "totalDropDisplay": "0,76"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 137.0,
+          "ampacity": 137.0,
+          "dropVolts": 1.2819875776397516,
+          "dropPercent": 0.5573859033216311,
+          "fits": true,
+          "ampacityDisplay": "137",
+          "totalDropDisplay": "0,56"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 167.0,
+          "ampacity": 167.0,
+          "dropVolts": 0.928695652173913,
+          "dropPercent": 0.40378071833648393,
+          "fits": true,
+          "ampacityDisplay": "167",
+          "totalDropDisplay": "0,4"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 213.0,
+          "ampacity": 213.0,
+          "dropVolts": 0.6931677018633541,
+          "dropPercent": 0.3013772616797191,
+          "fits": true,
+          "ampacityDisplay": "213",
+          "totalDropDisplay": "0,3"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 258.0,
+          "ampacity": 258.0,
+          "dropVolts": 0.5382151029748283,
+          "dropPercent": 0.23400656651079493,
+          "fits": true,
+          "ampacityDisplay": "258",
+          "totalDropDisplay": "0,23"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 299.0,
+          "ampacity": 299.0,
+          "dropVolts": 0.44782608695652176,
+          "dropPercent": 0.1947069943289225,
+          "fits": true,
+          "ampacityDisplay": "299",
+          "totalDropDisplay": "0,19"
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "D1",
+        "temperature": "20",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 2.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 22.0,
+          "ampacity": 22.0,
+          "dropVolts": 8.12032,
+          "dropPercent": 3.530573913043478,
+          "fits": false,
+          "ampacityDisplay": "22",
+          "totalDropDisplay": "3,53"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 29.0,
+          "ampacity": 29.0,
+          "dropVolts": 4.88448,
+          "dropPercent": 2.1236869565217393,
+          "fits": true,
+          "ampacityDisplay": "29",
+          "totalDropDisplay": "2,12"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 38.0,
+          "ampacity": 38.0,
+          "dropVolts": 3.06432,
+          "dropPercent": 1.3323130434782608,
+          "fits": true,
+          "ampacityDisplay": "38",
+          "totalDropDisplay": "1,33"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 47.0,
+          "ampacity": 47.0,
+          "dropVolts": 2.05312,
+          "dropPercent": 0.8926608695652174,
+          "fits": true,
+          "ampacityDisplay": "47",
+          "totalDropDisplay": "0,89"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 63.0,
+          "ampacity": 63.0,
+          "dropVolts": 1.24416,
+          "dropPercent": 0.5409391304347826,
+          "fits": true,
+          "ampacityDisplay": "63",
+          "totalDropDisplay": "0,54"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 81.0,
+          "ampacity": 81.0,
+          "dropVolts": 0.78912,
+          "dropPercent": 0.343095652173913,
+          "fits": true,
+          "ampacityDisplay": "81",
+          "totalDropDisplay": "0,34"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 104.0,
+          "ampacity": 104.0,
+          "dropVolts": 0.516096,
+          "dropPercent": 0.2243895652173913,
+          "fits": true,
+          "ampacityDisplay": "104",
+          "totalDropDisplay": "0,22"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 125.0,
+          "ampacity": 125.0,
+          "dropVolts": 0.37741714285714284,
+          "dropPercent": 0.1640944099378882,
+          "fits": true,
+          "ampacityDisplay": "125",
+          "totalDropDisplay": "0,16"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 148.0,
+          "ampacity": 148.0,
+          "dropVolts": 0.273408,
+          "dropPercent": 0.11887304347826087,
+          "fits": true,
+          "ampacityDisplay": "148",
+          "totalDropDisplay": "0,12"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 183.0,
+          "ampacity": 183.0,
+          "dropVolts": 0.20406857142857143,
+          "dropPercent": 0.08872546583850932,
+          "fits": true,
+          "ampacityDisplay": "183",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 216.0,
+          "ampacity": 216.0,
+          "dropVolts": 0.15845052631578949,
+          "dropPercent": 0.06889153318077804,
+          "fits": true,
+          "ampacityDisplay": "216",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 246.0,
+          "ampacity": 246.0,
+          "dropVolts": 0.13184,
+          "dropPercent": 0.057321739130434785,
+          "fits": true,
+          "ampacityDisplay": "246",
+          "totalDropDisplay": "0,06"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "input": {
+        "phases": "1",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "D1",
+        "temperature": "20",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 54.34782608695652,
+      "currentDisplay": "54,35",
+      "factor": 1.0,
+      "selected": 10.0,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 22.0,
+          "ampacity": 22.0,
+          "dropVolts": 27.582608695652173,
+          "dropPercent": 11.992438563327033,
+          "fits": false,
+          "ampacityDisplay": "22",
+          "totalDropDisplay": "11,99"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 29.0,
+          "ampacity": 29.0,
+          "dropVolts": 16.591304347826085,
+          "dropPercent": 7.213610586011342,
+          "fits": false,
+          "ampacityDisplay": "29",
+          "totalDropDisplay": "7,21"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 38.0,
+          "ampacity": 38.0,
+          "dropVolts": 10.408695652173913,
+          "dropPercent": 4.525519848771267,
+          "fits": false,
+          "ampacityDisplay": "38",
+          "totalDropDisplay": "4,53"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 47.0,
+          "ampacity": 47.0,
+          "dropVolts": 6.973913043478261,
+          "dropPercent": 3.0321361058601135,
+          "fits": false,
+          "ampacityDisplay": "47",
+          "totalDropDisplay": "3,03"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 63.0,
+          "ampacity": 63.0,
+          "dropVolts": 4.226086956521739,
+          "dropPercent": 1.837429111531191,
+          "fits": true,
+          "ampacityDisplay": "63",
+          "totalDropDisplay": "1,84"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 81.0,
+          "ampacity": 81.0,
+          "dropVolts": 2.6804347826086956,
+          "dropPercent": 1.165406427221172,
+          "fits": true,
+          "ampacityDisplay": "81",
+          "totalDropDisplay": "1,17"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 104.0,
+          "ampacity": 104.0,
+          "dropVolts": 1.7530434782608695,
+          "dropPercent": 0.7621928166351607,
+          "fits": true,
+          "ampacityDisplay": "104",
+          "totalDropDisplay": "0,76"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 125.0,
+          "ampacity": 125.0,
+          "dropVolts": 1.2819875776397516,
+          "dropPercent": 0.5573859033216311,
+          "fits": true,
+          "ampacityDisplay": "125",
+          "totalDropDisplay": "0,56"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 148.0,
+          "ampacity": 148.0,
+          "dropVolts": 0.928695652173913,
+          "dropPercent": 0.40378071833648393,
+          "fits": true,
+          "ampacityDisplay": "148",
+          "totalDropDisplay": "0,4"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 183.0,
+          "ampacity": 183.0,
+          "dropVolts": 0.6931677018633541,
+          "dropPercent": 0.3013772616797191,
+          "fits": true,
+          "ampacityDisplay": "183",
+          "totalDropDisplay": "0,3"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 216.0,
+          "ampacity": 216.0,
+          "dropVolts": 0.5382151029748283,
+          "dropPercent": 0.23400656651079493,
+          "fits": true,
+          "ampacityDisplay": "216",
+          "totalDropDisplay": "0,23"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 246.0,
+          "ampacity": 246.0,
+          "dropVolts": 0.44782608695652176,
+          "dropPercent": 0.1947069943289225,
+          "fits": true,
+          "ampacityDisplay": "246",
+          "totalDropDisplay": "0,19"
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "B2",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 53.0,
+          "ampacity": 53.0,
+          "dropVolts": 1.23392,
+          "dropPercent": 0.5364869565217392,
+          "fits": true,
+          "ampacityDisplay": "53",
+          "totalDropDisplay": "0,54"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 70.0,
+          "ampacity": 70.0,
+          "dropVolts": 0.800768,
+          "dropPercent": 0.34816,
+          "fits": true,
+          "ampacityDisplay": "70",
+          "totalDropDisplay": "0,35"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 86.0,
+          "ampacity": 86.0,
+          "dropVolts": 0.5807542857142857,
+          "dropPercent": 0.2525018633540373,
+          "fits": true,
+          "ampacityDisplay": "86",
+          "totalDropDisplay": "0,25"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 104.0,
+          "ampacity": 104.0,
+          "dropVolts": 0.415744,
+          "dropPercent": 0.18075826086956523,
+          "fits": true,
+          "ampacityDisplay": "104",
+          "totalDropDisplay": "0,18"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 133.0,
+          "ampacity": 133.0,
+          "dropVolts": 0.3057371428571429,
+          "dropPercent": 0.13292919254658386,
+          "fits": true,
+          "ampacityDisplay": "133",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 161.0,
+          "ampacity": 161.0,
+          "dropVolts": 0.23336421052631579,
+          "dropPercent": 0.10146270022883296,
+          "fits": true,
+          "ampacityDisplay": "161",
+          "totalDropDisplay": "0,1"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 186.0,
+          "ampacity": 186.0,
+          "dropVolts": 0.19114666666666666,
+          "dropPercent": 0.08310724637681159,
+          "fits": true,
+          "ampacityDisplay": "186",
+          "totalDropDisplay": "0,08"
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "input": {
+        "phases": "1",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "B2",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 54.34782608695652,
+      "currentDisplay": "54,35",
+      "factor": 1.0,
+      "selected": 25.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 53.0,
+          "ampacity": 53.0,
+          "dropVolts": 4.191304347826087,
+          "dropPercent": 1.8223062381852553,
+          "fits": false,
+          "ampacityDisplay": "53",
+          "totalDropDisplay": "1,82"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 70.0,
+          "ampacity": 70.0,
+          "dropVolts": 2.72,
+          "dropPercent": 1.182608695652174,
+          "fits": true,
+          "ampacityDisplay": "70",
+          "totalDropDisplay": "1,18"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 86.0,
+          "ampacity": 86.0,
+          "dropVolts": 1.972670807453416,
+          "dropPercent": 0.8576829597623549,
+          "fits": true,
+          "ampacityDisplay": "86",
+          "totalDropDisplay": "0,86"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 104.0,
+          "ampacity": 104.0,
+          "dropVolts": 1.4121739130434783,
+          "dropPercent": 0.6139886578449906,
+          "fits": true,
+          "ampacityDisplay": "104",
+          "totalDropDisplay": "0,61"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 133.0,
+          "ampacity": 133.0,
+          "dropVolts": 1.0385093167701864,
+          "dropPercent": 0.451525789900081,
+          "fits": true,
+          "ampacityDisplay": "133",
+          "totalDropDisplay": "0,45"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 161.0,
+          "ampacity": 161.0,
+          "dropVolts": 0.7926773455377575,
+          "dropPercent": 0.3446423241468511,
+          "fits": true,
+          "ampacityDisplay": "161",
+          "totalDropDisplay": "0,34"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 186.0,
+          "ampacity": 186.0,
+          "dropVolts": 0.6492753623188405,
+          "dropPercent": 0.28229363579080025,
+          "fits": true,
+          "ampacityDisplay": "186",
+          "totalDropDisplay": "0,28"
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 66.0,
+          "ampacity": 66.0,
+          "dropVolts": 1.23392,
+          "dropPercent": 0.5364869565217392,
+          "fits": true,
+          "ampacityDisplay": "66",
+          "totalDropDisplay": "0,54"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 83.0,
+          "ampacity": 83.0,
+          "dropVolts": 0.800768,
+          "dropPercent": 0.34816,
+          "fits": true,
+          "ampacityDisplay": "83",
+          "totalDropDisplay": "0,35"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 103.0,
+          "ampacity": 103.0,
+          "dropVolts": 0.5807542857142857,
+          "dropPercent": 0.2525018633540373,
+          "fits": true,
+          "ampacityDisplay": "103",
+          "totalDropDisplay": "0,25"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 125.0,
+          "ampacity": 125.0,
+          "dropVolts": 0.415744,
+          "dropPercent": 0.18075826086956523,
+          "fits": true,
+          "ampacityDisplay": "125",
+          "totalDropDisplay": "0,18"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 160.0,
+          "ampacity": 160.0,
+          "dropVolts": 0.3057371428571429,
+          "dropPercent": 0.13292919254658386,
+          "fits": true,
+          "ampacityDisplay": "160",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 195.0,
+          "ampacity": 195.0,
+          "dropVolts": 0.23336421052631579,
+          "dropPercent": 0.10146270022883296,
+          "fits": true,
+          "ampacityDisplay": "195",
+          "totalDropDisplay": "0,1"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 226.0,
+          "ampacity": 226.0,
+          "dropVolts": 0.19114666666666666,
+          "dropPercent": 0.08310724637681159,
+          "fits": true,
+          "ampacityDisplay": "226",
+          "totalDropDisplay": "0,08"
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "input": {
+        "phases": "1",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 54.34782608695652,
+      "currentDisplay": "54,35",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 66.0,
+          "ampacity": 66.0,
+          "dropVolts": 4.191304347826087,
+          "dropPercent": 1.8223062381852553,
+          "fits": true,
+          "ampacityDisplay": "66",
+          "totalDropDisplay": "1,82"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 83.0,
+          "ampacity": 83.0,
+          "dropVolts": 2.72,
+          "dropPercent": 1.182608695652174,
+          "fits": true,
+          "ampacityDisplay": "83",
+          "totalDropDisplay": "1,18"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 103.0,
+          "ampacity": 103.0,
+          "dropVolts": 1.972670807453416,
+          "dropPercent": 0.8576829597623549,
+          "fits": true,
+          "ampacityDisplay": "103",
+          "totalDropDisplay": "0,86"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 125.0,
+          "ampacity": 125.0,
+          "dropVolts": 1.4121739130434783,
+          "dropPercent": 0.6139886578449906,
+          "fits": true,
+          "ampacityDisplay": "125",
+          "totalDropDisplay": "0,61"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 160.0,
+          "ampacity": 160.0,
+          "dropVolts": 1.0385093167701864,
+          "dropPercent": 0.451525789900081,
+          "fits": true,
+          "ampacityDisplay": "160",
+          "totalDropDisplay": "0,45"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 195.0,
+          "ampacity": 195.0,
+          "dropVolts": 0.7926773455377575,
+          "dropPercent": 0.3446423241468511,
+          "fits": true,
+          "ampacityDisplay": "195",
+          "totalDropDisplay": "0,34"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 226.0,
+          "ampacity": 226.0,
+          "dropVolts": 0.6492753623188405,
+          "dropPercent": 0.28229363579080025,
+          "fits": true,
+          "ampacityDisplay": "226",
+          "totalDropDisplay": "0,28"
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "D1",
+        "temperature": "20",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 62.0,
+          "ampacity": 62.0,
+          "dropVolts": 1.23392,
+          "dropPercent": 0.5364869565217392,
+          "fits": true,
+          "ampacityDisplay": "62",
+          "totalDropDisplay": "0,54"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 80.0,
+          "ampacity": 80.0,
+          "dropVolts": 0.800768,
+          "dropPercent": 0.34816,
+          "fits": true,
+          "ampacityDisplay": "80",
+          "totalDropDisplay": "0,35"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 96.0,
+          "ampacity": 96.0,
+          "dropVolts": 0.5807542857142857,
+          "dropPercent": 0.2525018633540373,
+          "fits": true,
+          "ampacityDisplay": "96",
+          "totalDropDisplay": "0,25"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 113.0,
+          "ampacity": 113.0,
+          "dropVolts": 0.415744,
+          "dropPercent": 0.18075826086956523,
+          "fits": true,
+          "ampacityDisplay": "113",
+          "totalDropDisplay": "0,18"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 140.0,
+          "ampacity": 140.0,
+          "dropVolts": 0.3057371428571429,
+          "dropPercent": 0.13292919254658386,
+          "fits": true,
+          "ampacityDisplay": "140",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 166.0,
+          "ampacity": 166.0,
+          "dropVolts": 0.23336421052631579,
+          "dropPercent": 0.10146270022883296,
+          "fits": true,
+          "ampacityDisplay": "166",
+          "totalDropDisplay": "0,1"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 189.0,
+          "ampacity": 189.0,
+          "dropVolts": 0.19114666666666666,
+          "dropPercent": 0.08310724637681159,
+          "fits": true,
+          "ampacityDisplay": "189",
+          "totalDropDisplay": "0,08"
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "input": {
+        "phases": "1",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "230",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "D1",
+        "temperature": "20",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 54.34782608695652,
+      "currentDisplay": "54,35",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 62.0,
+          "ampacity": 62.0,
+          "dropVolts": 4.191304347826087,
+          "dropPercent": 1.8223062381852553,
+          "fits": true,
+          "ampacityDisplay": "62",
+          "totalDropDisplay": "1,82"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 80.0,
+          "ampacity": 80.0,
+          "dropVolts": 2.72,
+          "dropPercent": 1.182608695652174,
+          "fits": true,
+          "ampacityDisplay": "80",
+          "totalDropDisplay": "1,18"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 96.0,
+          "ampacity": 96.0,
+          "dropVolts": 1.972670807453416,
+          "dropPercent": 0.8576829597623549,
+          "fits": true,
+          "ampacityDisplay": "96",
+          "totalDropDisplay": "0,86"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 113.0,
+          "ampacity": 113.0,
+          "dropVolts": 1.4121739130434783,
+          "dropPercent": 0.6139886578449906,
+          "fits": true,
+          "ampacityDisplay": "113",
+          "totalDropDisplay": "0,61"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 140.0,
+          "ampacity": 140.0,
+          "dropVolts": 1.0385093167701864,
+          "dropPercent": 0.451525789900081,
+          "fits": true,
+          "ampacityDisplay": "140",
+          "totalDropDisplay": "0,45"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 166.0,
+          "ampacity": 166.0,
+          "dropVolts": 0.7926773455377575,
+          "dropPercent": 0.3446423241468511,
+          "fits": true,
+          "ampacityDisplay": "166",
+          "totalDropDisplay": "0,34"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 189.0,
+          "ampacity": 189.0,
+          "dropVolts": 0.6492753623188405,
+          "dropPercent": 0.28229363579080025,
+          "fits": true,
+          "ampacityDisplay": "189",
+          "totalDropDisplay": "0,28"
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "input": {
+        "phases": "3",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "B2",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 2.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 15.0,
+          "ampacity": 15.0,
+          "dropVolts": 7.032403406858853,
+          "dropPercent": 1.7581008517147132,
+          "fits": false,
+          "ampacityDisplay": "15",
+          "totalDropDisplay": "1,76"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 20.0,
+          "ampacity": 20.0,
+          "dropVolts": 4.230083764277015,
+          "dropPercent": 1.0575209410692537,
+          "fits": true,
+          "ampacityDisplay": "20",
+          "totalDropDisplay": "1,06"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 27.0,
+          "ampacity": 27.0,
+          "dropVolts": 2.6537789653247312,
+          "dropPercent": 0.6634447413311828,
+          "fits": true,
+          "ampacityDisplay": "27",
+          "totalDropDisplay": "0,66"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 34.0,
+          "ampacity": 34.0,
+          "dropVolts": 1.7780540770179067,
+          "dropPercent": 0.4445135192544767,
+          "fits": true,
+          "ampacityDisplay": "34",
+          "totalDropDisplay": "0,44"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 46.0,
+          "ampacity": 46.0,
+          "dropVolts": 1.0774741663724472,
+          "dropPercent": 0.2693685415931118,
+          "fits": true,
+          "ampacityDisplay": "46",
+          "totalDropDisplay": "0,27"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 62.0,
+          "ampacity": 62.0,
+          "dropVolts": 0.6833979666343762,
+          "dropPercent": 0.17084949165859406,
+          "fits": true,
+          "ampacityDisplay": "62",
+          "totalDropDisplay": "0,17"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 80.0,
+          "ampacity": 80.0,
+          "dropVolts": 0.44695224679153367,
+          "dropPercent": 0.11173806169788342,
+          "fits": true,
+          "ampacityDisplay": "80",
+          "totalDropDisplay": "0,11"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 99.0,
+          "ampacity": 99.0,
+          "dropVolts": 0.3268528335380263,
+          "dropPercent": 0.08171320838450657,
+          "fits": true,
+          "ampacityDisplay": "99",
+          "totalDropDisplay": "0,08"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 118.0,
+          "ampacity": 118.0,
+          "dropVolts": 0.2367782735978958,
+          "dropPercent": 0.05919456839947395,
+          "fits": true,
+          "ampacityDisplay": "118",
+          "totalDropDisplay": "0,06"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 149.0,
+          "ampacity": 149.0,
+          "dropVolts": 0.17672856697114214,
+          "dropPercent": 0.044182141742785536,
+          "fits": true,
+          "ampacityDisplay": "149",
+          "totalDropDisplay": "0,04"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 179.0,
+          "ampacity": 179.0,
+          "dropVolts": 0.1372221810324884,
+          "dropPercent": 0.0343055452581221,
+          "fits": true,
+          "ampacityDisplay": "179",
+          "totalDropDisplay": "0,03"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 206.0,
+          "ampacity": 206.0,
+          "dropVolts": 0.11417678923494039,
+          "dropPercent": 0.028544197308735097,
+          "fits": true,
+          "ampacityDisplay": "206",
+          "totalDropDisplay": "0,03"
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "input": {
+        "phases": "3",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "B2",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 18.042195912175806,
+      "currentDisplay": "18,04",
+      "factor": 1.0,
+      "selected": 2.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 15.0,
+          "ampacity": 15.0,
+          "dropVolts": 7.93,
+          "dropPercent": 1.9825,
+          "fits": false,
+          "ampacityDisplay": "15",
+          "totalDropDisplay": "1,98"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 20.0,
+          "ampacity": 20.0,
+          "dropVolts": 4.77,
+          "dropPercent": 1.1925,
+          "fits": true,
+          "ampacityDisplay": "20",
+          "totalDropDisplay": "1,19"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 27.0,
+          "ampacity": 27.0,
+          "dropVolts": 2.9925,
+          "dropPercent": 0.748125,
+          "fits": true,
+          "ampacityDisplay": "27",
+          "totalDropDisplay": "0,75"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 34.0,
+          "ampacity": 34.0,
+          "dropVolts": 2.005,
+          "dropPercent": 0.50125,
+          "fits": true,
+          "ampacityDisplay": "34",
+          "totalDropDisplay": "0,5"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 46.0,
+          "ampacity": 46.0,
+          "dropVolts": 1.215,
+          "dropPercent": 0.30375,
+          "fits": true,
+          "ampacityDisplay": "46",
+          "totalDropDisplay": "0,3"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 62.0,
+          "ampacity": 62.0,
+          "dropVolts": 0.770625,
+          "dropPercent": 0.19265625,
+          "fits": true,
+          "ampacityDisplay": "62",
+          "totalDropDisplay": "0,19"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 80.0,
+          "ampacity": 80.0,
+          "dropVolts": 0.504,
+          "dropPercent": 0.126,
+          "fits": true,
+          "ampacityDisplay": "80",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 99.0,
+          "ampacity": 99.0,
+          "dropVolts": 0.36857142857142855,
+          "dropPercent": 0.09214285714285714,
+          "fits": true,
+          "ampacityDisplay": "99",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 118.0,
+          "ampacity": 118.0,
+          "dropVolts": 0.267,
+          "dropPercent": 0.06675,
+          "fits": true,
+          "ampacityDisplay": "118",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 149.0,
+          "ampacity": 149.0,
+          "dropVolts": 0.1992857142857143,
+          "dropPercent": 0.04982142857142857,
+          "fits": true,
+          "ampacityDisplay": "149",
+          "totalDropDisplay": "0,05"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 179.0,
+          "ampacity": 179.0,
+          "dropVolts": 0.15473684210526314,
+          "dropPercent": 0.038684210526315786,
+          "fits": true,
+          "ampacityDisplay": "179",
+          "totalDropDisplay": "0,04"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 206.0,
+          "ampacity": 206.0,
+          "dropVolts": 0.12875,
+          "dropPercent": 0.0321875,
+          "fits": true,
+          "ampacityDisplay": "206",
+          "totalDropDisplay": "0,03"
+        }
+      ]
+    },
+    {
+      "id": "S15",
+      "input": {
+        "phases": "3",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 1.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 17.5,
+          "ampacity": 17.5,
+          "dropVolts": 7.032403406858853,
+          "dropPercent": 1.7581008517147132,
+          "fits": true,
+          "ampacityDisplay": "17,5",
+          "totalDropDisplay": "1,76"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 24.0,
+          "ampacity": 24.0,
+          "dropVolts": 4.230083764277015,
+          "dropPercent": 1.0575209410692537,
+          "fits": true,
+          "ampacityDisplay": "24",
+          "totalDropDisplay": "1,06"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 32.0,
+          "ampacity": 32.0,
+          "dropVolts": 2.6537789653247312,
+          "dropPercent": 0.6634447413311828,
+          "fits": true,
+          "ampacityDisplay": "32",
+          "totalDropDisplay": "0,66"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 41.0,
+          "ampacity": 41.0,
+          "dropVolts": 1.7780540770179067,
+          "dropPercent": 0.4445135192544767,
+          "fits": true,
+          "ampacityDisplay": "41",
+          "totalDropDisplay": "0,44"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 57.0,
+          "ampacity": 57.0,
+          "dropVolts": 1.0774741663724472,
+          "dropPercent": 0.2693685415931118,
+          "fits": true,
+          "ampacityDisplay": "57",
+          "totalDropDisplay": "0,27"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 76.0,
+          "ampacity": 76.0,
+          "dropVolts": 0.6833979666343762,
+          "dropPercent": 0.17084949165859406,
+          "fits": true,
+          "ampacityDisplay": "76",
+          "totalDropDisplay": "0,17"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 96.0,
+          "ampacity": 96.0,
+          "dropVolts": 0.44695224679153367,
+          "dropPercent": 0.11173806169788342,
+          "fits": true,
+          "ampacityDisplay": "96",
+          "totalDropDisplay": "0,11"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 119.0,
+          "ampacity": 119.0,
+          "dropVolts": 0.3268528335380263,
+          "dropPercent": 0.08171320838450657,
+          "fits": true,
+          "ampacityDisplay": "119",
+          "totalDropDisplay": "0,08"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 144.0,
+          "ampacity": 144.0,
+          "dropVolts": 0.2367782735978958,
+          "dropPercent": 0.05919456839947395,
+          "fits": true,
+          "ampacityDisplay": "144",
+          "totalDropDisplay": "0,06"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 184.0,
+          "ampacity": 184.0,
+          "dropVolts": 0.17672856697114214,
+          "dropPercent": 0.044182141742785536,
+          "fits": true,
+          "ampacityDisplay": "184",
+          "totalDropDisplay": "0,04"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 223.0,
+          "ampacity": 223.0,
+          "dropVolts": 0.1372221810324884,
+          "dropPercent": 0.0343055452581221,
+          "fits": true,
+          "ampacityDisplay": "223",
+          "totalDropDisplay": "0,03"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 259.0,
+          "ampacity": 259.0,
+          "dropVolts": 0.11417678923494039,
+          "dropPercent": 0.028544197308735097,
+          "fits": true,
+          "ampacityDisplay": "259",
+          "totalDropDisplay": "0,03"
+        }
+      ]
+    },
+    {
+      "id": "S16",
+      "input": {
+        "phases": "3",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 18.042195912175806,
+      "currentDisplay": "18,04",
+      "factor": 1.0,
+      "selected": 2.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 17.5,
+          "ampacity": 17.5,
+          "dropVolts": 7.93,
+          "dropPercent": 1.9825,
+          "fits": false,
+          "ampacityDisplay": "17,5",
+          "totalDropDisplay": "1,98"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 24.0,
+          "ampacity": 24.0,
+          "dropVolts": 4.77,
+          "dropPercent": 1.1925,
+          "fits": true,
+          "ampacityDisplay": "24",
+          "totalDropDisplay": "1,19"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 32.0,
+          "ampacity": 32.0,
+          "dropVolts": 2.9925,
+          "dropPercent": 0.748125,
+          "fits": true,
+          "ampacityDisplay": "32",
+          "totalDropDisplay": "0,75"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 41.0,
+          "ampacity": 41.0,
+          "dropVolts": 2.005,
+          "dropPercent": 0.50125,
+          "fits": true,
+          "ampacityDisplay": "41",
+          "totalDropDisplay": "0,5"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 57.0,
+          "ampacity": 57.0,
+          "dropVolts": 1.215,
+          "dropPercent": 0.30375,
+          "fits": true,
+          "ampacityDisplay": "57",
+          "totalDropDisplay": "0,3"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 76.0,
+          "ampacity": 76.0,
+          "dropVolts": 0.770625,
+          "dropPercent": 0.19265625,
+          "fits": true,
+          "ampacityDisplay": "76",
+          "totalDropDisplay": "0,19"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 96.0,
+          "ampacity": 96.0,
+          "dropVolts": 0.504,
+          "dropPercent": 0.126,
+          "fits": true,
+          "ampacityDisplay": "96",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 119.0,
+          "ampacity": 119.0,
+          "dropVolts": 0.36857142857142855,
+          "dropPercent": 0.09214285714285714,
+          "fits": true,
+          "ampacityDisplay": "119",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 144.0,
+          "ampacity": 144.0,
+          "dropVolts": 0.267,
+          "dropPercent": 0.06675,
+          "fits": true,
+          "ampacityDisplay": "144",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 184.0,
+          "ampacity": 184.0,
+          "dropVolts": 0.1992857142857143,
+          "dropPercent": 0.04982142857142857,
+          "fits": true,
+          "ampacityDisplay": "184",
+          "totalDropDisplay": "0,05"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 223.0,
+          "ampacity": 223.0,
+          "dropVolts": 0.15473684210526314,
+          "dropPercent": 0.038684210526315786,
+          "fits": true,
+          "ampacityDisplay": "223",
+          "totalDropDisplay": "0,04"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 259.0,
+          "ampacity": 259.0,
+          "dropVolts": 0.12875,
+          "dropPercent": 0.0321875,
+          "fits": true,
+          "ampacityDisplay": "259",
+          "totalDropDisplay": "0,03"
+        }
+      ]
+    },
+    {
+      "id": "S17",
+      "input": {
+        "phases": "3",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "D1",
+        "temperature": "20",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 1.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 18.0,
+          "ampacity": 18.0,
+          "dropVolts": 7.032403406858853,
+          "dropPercent": 1.7581008517147132,
+          "fits": true,
+          "ampacityDisplay": "18",
+          "totalDropDisplay": "1,76"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 24.0,
+          "ampacity": 24.0,
+          "dropVolts": 4.230083764277015,
+          "dropPercent": 1.0575209410692537,
+          "fits": true,
+          "ampacityDisplay": "24",
+          "totalDropDisplay": "1,06"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 30.0,
+          "ampacity": 30.0,
+          "dropVolts": 2.6537789653247312,
+          "dropPercent": 0.6634447413311828,
+          "fits": true,
+          "ampacityDisplay": "30",
+          "totalDropDisplay": "0,66"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 38.0,
+          "ampacity": 38.0,
+          "dropVolts": 1.7780540770179067,
+          "dropPercent": 0.4445135192544767,
+          "fits": true,
+          "ampacityDisplay": "38",
+          "totalDropDisplay": "0,44"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 50.0,
+          "ampacity": 50.0,
+          "dropVolts": 1.0774741663724472,
+          "dropPercent": 0.2693685415931118,
+          "fits": true,
+          "ampacityDisplay": "50",
+          "totalDropDisplay": "0,27"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 64.0,
+          "ampacity": 64.0,
+          "dropVolts": 0.6833979666343762,
+          "dropPercent": 0.17084949165859406,
+          "fits": true,
+          "ampacityDisplay": "64",
+          "totalDropDisplay": "0,17"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 82.0,
+          "ampacity": 82.0,
+          "dropVolts": 0.44695224679153367,
+          "dropPercent": 0.11173806169788342,
+          "fits": true,
+          "ampacityDisplay": "82",
+          "totalDropDisplay": "0,11"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 98.0,
+          "ampacity": 98.0,
+          "dropVolts": 0.3268528335380263,
+          "dropPercent": 0.08171320838450657,
+          "fits": true,
+          "ampacityDisplay": "98",
+          "totalDropDisplay": "0,08"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 116.0,
+          "ampacity": 116.0,
+          "dropVolts": 0.2367782735978958,
+          "dropPercent": 0.05919456839947395,
+          "fits": true,
+          "ampacityDisplay": "116",
+          "totalDropDisplay": "0,06"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 143.0,
+          "ampacity": 143.0,
+          "dropVolts": 0.17672856697114214,
+          "dropPercent": 0.044182141742785536,
+          "fits": true,
+          "ampacityDisplay": "143",
+          "totalDropDisplay": "0,04"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 169.0,
+          "ampacity": 169.0,
+          "dropVolts": 0.1372221810324884,
+          "dropPercent": 0.0343055452581221,
+          "fits": true,
+          "ampacityDisplay": "169",
+          "totalDropDisplay": "0,03"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 192.0,
+          "ampacity": 192.0,
+          "dropVolts": 0.11417678923494039,
+          "dropPercent": 0.028544197308735097,
+          "fits": true,
+          "ampacityDisplay": "192",
+          "totalDropDisplay": "0,03"
+        }
+      ]
+    },
+    {
+      "id": "S18",
+      "input": {
+        "phases": "3",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "copper",
+        "method": "D1",
+        "temperature": "20",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 18.042195912175806,
+      "currentDisplay": "18,04",
+      "factor": 1.0,
+      "selected": 2.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 18.0,
+          "ampacity": 18.0,
+          "dropVolts": 7.93,
+          "dropPercent": 1.9825,
+          "fits": false,
+          "ampacityDisplay": "18",
+          "totalDropDisplay": "1,98"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 24.0,
+          "ampacity": 24.0,
+          "dropVolts": 4.77,
+          "dropPercent": 1.1925,
+          "fits": true,
+          "ampacityDisplay": "24",
+          "totalDropDisplay": "1,19"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 30.0,
+          "ampacity": 30.0,
+          "dropVolts": 2.9925,
+          "dropPercent": 0.748125,
+          "fits": true,
+          "ampacityDisplay": "30",
+          "totalDropDisplay": "0,75"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 38.0,
+          "ampacity": 38.0,
+          "dropVolts": 2.005,
+          "dropPercent": 0.50125,
+          "fits": true,
+          "ampacityDisplay": "38",
+          "totalDropDisplay": "0,5"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 50.0,
+          "ampacity": 50.0,
+          "dropVolts": 1.215,
+          "dropPercent": 0.30375,
+          "fits": true,
+          "ampacityDisplay": "50",
+          "totalDropDisplay": "0,3"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 64.0,
+          "ampacity": 64.0,
+          "dropVolts": 0.770625,
+          "dropPercent": 0.19265625,
+          "fits": true,
+          "ampacityDisplay": "64",
+          "totalDropDisplay": "0,19"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 82.0,
+          "ampacity": 82.0,
+          "dropVolts": 0.504,
+          "dropPercent": 0.126,
+          "fits": true,
+          "ampacityDisplay": "82",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 98.0,
+          "ampacity": 98.0,
+          "dropVolts": 0.36857142857142855,
+          "dropPercent": 0.09214285714285714,
+          "fits": true,
+          "ampacityDisplay": "98",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 116.0,
+          "ampacity": 116.0,
+          "dropVolts": 0.267,
+          "dropPercent": 0.06675,
+          "fits": true,
+          "ampacityDisplay": "116",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 143.0,
+          "ampacity": 143.0,
+          "dropVolts": 0.1992857142857143,
+          "dropPercent": 0.04982142857142857,
+          "fits": true,
+          "ampacityDisplay": "143",
+          "totalDropDisplay": "0,05"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 169.0,
+          "ampacity": 169.0,
+          "dropVolts": 0.15473684210526314,
+          "dropPercent": 0.038684210526315786,
+          "fits": true,
+          "ampacityDisplay": "169",
+          "totalDropDisplay": "0,04"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 192.0,
+          "ampacity": 192.0,
+          "dropVolts": 0.12875,
+          "dropPercent": 0.0321875,
+          "fits": true,
+          "ampacityDisplay": "192",
+          "totalDropDisplay": "0,03"
+        }
+      ]
+    },
+    {
+      "id": "S19",
+      "input": {
+        "phases": "3",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "B2",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 48.0,
+          "ampacity": 48.0,
+          "dropVolts": 1.0686060662376946,
+          "dropPercent": 0.26715151655942365,
+          "fits": true,
+          "ampacityDisplay": "48",
+          "totalDropDisplay": "0,27"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 62.0,
+          "ampacity": 62.0,
+          "dropVolts": 0.6934854305376573,
+          "dropPercent": 0.17337135763441433,
+          "fits": true,
+          "ampacityDisplay": "62",
+          "totalDropDisplay": "0,17"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 77.0,
+          "ampacity": 77.0,
+          "dropVolts": 0.5029479647852575,
+          "dropPercent": 0.12573699119631437,
+          "fits": true,
+          "ampacityDisplay": "77",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 92.0,
+          "ampacity": 92.0,
+          "dropVolts": 0.36004486547095765,
+          "dropPercent": 0.09001121636773941,
+          "fits": true,
+          "ampacityDisplay": "92",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 116.0,
+          "ampacity": 116.0,
+          "dropVolts": 0.26477613259475774,
+          "dropPercent": 0.06619403314868944,
+          "fits": true,
+          "ampacityDisplay": "116",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 139.0,
+          "ampacity": 139.0,
+          "dropVolts": 0.20209933464988938,
+          "dropPercent": 0.050524833662472346,
+          "fits": true,
+          "ampacityDisplay": "139",
+          "totalDropDisplay": "0,05"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 160.0,
+          "ampacity": 160.0,
+          "dropVolts": 0.1655378691820495,
+          "dropPercent": 0.04138446729551237,
+          "fits": true,
+          "ampacityDisplay": "160",
+          "totalDropDisplay": "0,04"
+        }
+      ]
+    },
+    {
+      "id": "S20",
+      "input": {
+        "phases": "3",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "B2",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 18.042195912175806,
+      "currentDisplay": "18,04",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 48.0,
+          "ampacity": 48.0,
+          "dropVolts": 1.205,
+          "dropPercent": 0.30125,
+          "fits": true,
+          "ampacityDisplay": "48",
+          "totalDropDisplay": "0,3"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 62.0,
+          "ampacity": 62.0,
+          "dropVolts": 0.782,
+          "dropPercent": 0.1955,
+          "fits": true,
+          "ampacityDisplay": "62",
+          "totalDropDisplay": "0,2"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 77.0,
+          "ampacity": 77.0,
+          "dropVolts": 0.5671428571428572,
+          "dropPercent": 0.1417857142857143,
+          "fits": true,
+          "ampacityDisplay": "77",
+          "totalDropDisplay": "0,14"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 92.0,
+          "ampacity": 92.0,
+          "dropVolts": 0.406,
+          "dropPercent": 0.1015,
+          "fits": true,
+          "ampacityDisplay": "92",
+          "totalDropDisplay": "0,1"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 116.0,
+          "ampacity": 116.0,
+          "dropVolts": 0.2985714285714286,
+          "dropPercent": 0.07464285714285715,
+          "fits": true,
+          "ampacityDisplay": "116",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 139.0,
+          "ampacity": 139.0,
+          "dropVolts": 0.22789473684210526,
+          "dropPercent": 0.056973684210526315,
+          "fits": true,
+          "ampacityDisplay": "139",
+          "totalDropDisplay": "0,06"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 160.0,
+          "ampacity": 160.0,
+          "dropVolts": 0.18666666666666668,
+          "dropPercent": 0.04666666666666667,
+          "fits": true,
+          "ampacityDisplay": "160",
+          "totalDropDisplay": "0,05"
+        }
+      ]
+    },
+    {
+      "id": "S21",
+      "input": {
+        "phases": "3",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 59.0,
+          "ampacity": 59.0,
+          "dropVolts": 1.0686060662376946,
+          "dropPercent": 0.26715151655942365,
+          "fits": true,
+          "ampacityDisplay": "59",
+          "totalDropDisplay": "0,27"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 73.0,
+          "ampacity": 73.0,
+          "dropVolts": 0.6934854305376573,
+          "dropPercent": 0.17337135763441433,
+          "fits": true,
+          "ampacityDisplay": "73",
+          "totalDropDisplay": "0,17"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 90.0,
+          "ampacity": 90.0,
+          "dropVolts": 0.5029479647852575,
+          "dropPercent": 0.12573699119631437,
+          "fits": true,
+          "ampacityDisplay": "90",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 110.0,
+          "dropVolts": 0.36004486547095765,
+          "dropPercent": 0.09001121636773941,
+          "fits": true,
+          "ampacityDisplay": "110",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 140.0,
+          "ampacity": 140.0,
+          "dropVolts": 0.26477613259475774,
+          "dropPercent": 0.06619403314868944,
+          "fits": true,
+          "ampacityDisplay": "140",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 170.0,
+          "ampacity": 170.0,
+          "dropVolts": 0.20209933464988938,
+          "dropPercent": 0.050524833662472346,
+          "fits": true,
+          "ampacityDisplay": "170",
+          "totalDropDisplay": "0,05"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 197.0,
+          "ampacity": 197.0,
+          "dropVolts": 0.1655378691820495,
+          "dropPercent": 0.04138446729551237,
+          "fits": true,
+          "ampacityDisplay": "197",
+          "totalDropDisplay": "0,04"
+        }
+      ]
+    },
+    {
+      "id": "S22",
+      "input": {
+        "phases": "3",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 18.042195912175806,
+      "currentDisplay": "18,04",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 59.0,
+          "ampacity": 59.0,
+          "dropVolts": 1.205,
+          "dropPercent": 0.30125,
+          "fits": true,
+          "ampacityDisplay": "59",
+          "totalDropDisplay": "0,3"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 73.0,
+          "ampacity": 73.0,
+          "dropVolts": 0.782,
+          "dropPercent": 0.1955,
+          "fits": true,
+          "ampacityDisplay": "73",
+          "totalDropDisplay": "0,2"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 90.0,
+          "ampacity": 90.0,
+          "dropVolts": 0.5671428571428572,
+          "dropPercent": 0.1417857142857143,
+          "fits": true,
+          "ampacityDisplay": "90",
+          "totalDropDisplay": "0,14"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 110.0,
+          "dropVolts": 0.406,
+          "dropPercent": 0.1015,
+          "fits": true,
+          "ampacityDisplay": "110",
+          "totalDropDisplay": "0,1"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 140.0,
+          "ampacity": 140.0,
+          "dropVolts": 0.2985714285714286,
+          "dropPercent": 0.07464285714285715,
+          "fits": true,
+          "ampacityDisplay": "140",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 170.0,
+          "ampacity": 170.0,
+          "dropVolts": 0.22789473684210526,
+          "dropPercent": 0.056973684210526315,
+          "fits": true,
+          "ampacityDisplay": "170",
+          "totalDropDisplay": "0,06"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 197.0,
+          "ampacity": 197.0,
+          "dropVolts": 0.18666666666666668,
+          "dropPercent": 0.04666666666666667,
+          "fits": true,
+          "ampacityDisplay": "197",
+          "totalDropDisplay": "0,05"
+        }
+      ]
+    },
+    {
+      "id": "S23",
+      "input": {
+        "phases": "3",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "D1",
+        "temperature": "20",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 50.0,
+          "ampacity": 50.0,
+          "dropVolts": 1.0686060662376946,
+          "dropPercent": 0.26715151655942365,
+          "fits": true,
+          "ampacityDisplay": "50",
+          "totalDropDisplay": "0,27"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 64.0,
+          "ampacity": 64.0,
+          "dropVolts": 0.6934854305376573,
+          "dropPercent": 0.17337135763441433,
+          "fits": true,
+          "ampacityDisplay": "64",
+          "totalDropDisplay": "0,17"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 77.0,
+          "ampacity": 77.0,
+          "dropVolts": 0.5029479647852575,
+          "dropPercent": 0.12573699119631437,
+          "fits": true,
+          "ampacityDisplay": "77",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 91.0,
+          "ampacity": 91.0,
+          "dropVolts": 0.36004486547095765,
+          "dropPercent": 0.09001121636773941,
+          "fits": true,
+          "ampacityDisplay": "91",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 112.0,
+          "ampacity": 112.0,
+          "dropVolts": 0.26477613259475774,
+          "dropPercent": 0.06619403314868944,
+          "fits": true,
+          "ampacityDisplay": "112",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 132.0,
+          "ampacity": 132.0,
+          "dropVolts": 0.20209933464988938,
+          "dropPercent": 0.050524833662472346,
+          "fits": true,
+          "ampacityDisplay": "132",
+          "totalDropDisplay": "0,05"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 150.0,
+          "ampacity": 150.0,
+          "dropVolts": 0.1655378691820495,
+          "dropPercent": 0.04138446729551237,
+          "fits": true,
+          "ampacityDisplay": "150",
+          "totalDropDisplay": "0,04"
+        }
+      ]
+    },
+    {
+      "id": "S24",
+      "input": {
+        "phases": "3",
+        "loadMode": "power",
+        "load": "10",
+        "voltage": "400",
+        "cosPhi": "0.8",
+        "length": "20",
+        "material": "aluminium",
+        "method": "D1",
+        "temperature": "20",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 18.042195912175806,
+      "currentDisplay": "18,04",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 50.0,
+          "ampacity": 50.0,
+          "dropVolts": 1.205,
+          "dropPercent": 0.30125,
+          "fits": true,
+          "ampacityDisplay": "50",
+          "totalDropDisplay": "0,3"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 64.0,
+          "ampacity": 64.0,
+          "dropVolts": 0.782,
+          "dropPercent": 0.1955,
+          "fits": true,
+          "ampacityDisplay": "64",
+          "totalDropDisplay": "0,2"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 77.0,
+          "ampacity": 77.0,
+          "dropVolts": 0.5671428571428572,
+          "dropPercent": 0.1417857142857143,
+          "fits": true,
+          "ampacityDisplay": "77",
+          "totalDropDisplay": "0,14"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 91.0,
+          "ampacity": 91.0,
+          "dropVolts": 0.406,
+          "dropPercent": 0.1015,
+          "fits": true,
+          "ampacityDisplay": "91",
+          "totalDropDisplay": "0,1"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 112.0,
+          "ampacity": 112.0,
+          "dropVolts": 0.2985714285714286,
+          "dropPercent": 0.07464285714285715,
+          "fits": true,
+          "ampacityDisplay": "112",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 132.0,
+          "ampacity": 132.0,
+          "dropVolts": 0.22789473684210526,
+          "dropPercent": 0.056973684210526315,
+          "fits": true,
+          "ampacityDisplay": "132",
+          "totalDropDisplay": "0,06"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 150.0,
+          "ampacity": 150.0,
+          "dropVolts": 0.18666666666666668,
+          "dropPercent": 0.04666666666666667,
+          "fits": true,
+          "ampacityDisplay": "150",
+          "totalDropDisplay": "0,05"
+        }
+      ]
+    },
+    {
+      "id": "S25",
+      "input": {
+        "phases": "3",
+        "loadMode": "current",
+        "load": "20",
+        "voltage": "400",
+        "cosPhi": "1",
+        "length": "20",
+        "material": "copper",
+        "method": "B2",
+        "temperature": "40",
+        "circuits": "3",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": "25"
+      },
+      "current": 20.0,
+      "currentDisplay": "20",
+      "factor": 0.609,
+      "selected": 10.0,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 15.0,
+          "ampacity": 9.135,
+          "dropVolts": 10.946561103835304,
+          "dropPercent": 2.736640275958826,
+          "fits": false,
+          "ampacityDisplay": "9,14",
+          "totalDropDisplay": "2,74"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 20.0,
+          "ampacity": 12.18,
+          "dropVolts": 6.567936662301182,
+          "dropPercent": 1.6419841655752956,
+          "fits": false,
+          "ampacityDisplay": "12,18",
+          "totalDropDisplay": "1,64"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 27.0,
+          "ampacity": 16.443,
+          "dropVolts": 4.104960413938239,
+          "dropPercent": 1.0262401034845599,
+          "fits": false,
+          "ampacityDisplay": "16,44",
+          "totalDropDisplay": "1,03"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 34.0,
+          "ampacity": 20.706,
+          "dropVolts": 2.736640275958826,
+          "dropPercent": 0.6841600689897065,
+          "fits": false,
+          "ampacityDisplay": "20,71",
+          "totalDropDisplay": "0,68"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 46.0,
+          "ampacity": 28.014,
+          "dropVolts": 1.6419841655752956,
+          "dropPercent": 0.4104960413938239,
+          "fits": true,
+          "ampacityDisplay": "28,01",
+          "totalDropDisplay": "0,41"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 62.0,
+          "ampacity": 37.758,
+          "dropVolts": 1.0262401034845599,
+          "dropPercent": 0.25656002587113996,
+          "fits": true,
+          "ampacityDisplay": "37,76",
+          "totalDropDisplay": "0,26"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 80.0,
+          "ampacity": 48.72,
+          "dropVolts": 0.6567936662301183,
+          "dropPercent": 0.16419841655752956,
+          "fits": true,
+          "ampacityDisplay": "48,72",
+          "totalDropDisplay": "0,16"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 99.0,
+          "ampacity": 60.291,
+          "dropVolts": 0.46913833302151303,
+          "dropPercent": 0.11728458325537826,
+          "fits": true,
+          "ampacityDisplay": "60,29",
+          "totalDropDisplay": "0,12"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 118.0,
+          "ampacity": 71.862,
+          "dropVolts": 0.32839683311505913,
+          "dropPercent": 0.08209920827876478,
+          "fits": true,
+          "ampacityDisplay": "71,86",
+          "totalDropDisplay": "0,08"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 149.0,
+          "ampacity": 90.741,
+          "dropVolts": 0.23456916651075652,
+          "dropPercent": 0.05864229162768913,
+          "fits": true,
+          "ampacityDisplay": "90,74",
+          "totalDropDisplay": "0,06"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 179.0,
+          "ampacity": 109.011,
+          "dropVolts": 0.17284043848161007,
+          "dropPercent": 0.04321010962040252,
+          "fits": true,
+          "ampacityDisplay": "109,01",
+          "totalDropDisplay": "0,04"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 206.0,
+          "ampacity": 125.454,
+          "dropVolts": 0.1368320137979413,
+          "dropPercent": 0.034208003449485325,
+          "fits": true,
+          "ampacityDisplay": "125,45",
+          "totalDropDisplay": "0,03"
+        }
+      ]
+    },
+    {
+      "id": "S26",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "230",
+        "cosPhi": "1",
+        "length": "20",
+        "material": "copper",
+        "method": "C",
+        "temperature": "40",
+        "circuits": "3",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 0.6873,
+      "selected": 2.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 19.5,
+          "ampacity": 13.40235,
+          "dropVolts": 10.112,
+          "dropPercent": 4.396521739130435,
+          "fits": false,
+          "ampacityDisplay": "13,4",
+          "totalDropDisplay": "4,4"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 27.0,
+          "ampacity": 18.5571,
+          "dropVolts": 6.0672,
+          "dropPercent": 2.6379130434782607,
+          "fits": true,
+          "ampacityDisplay": "18,56",
+          "totalDropDisplay": "2,64"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 36.0,
+          "ampacity": 24.7428,
+          "dropVolts": 3.792,
+          "dropPercent": 1.6486956521739131,
+          "fits": true,
+          "ampacityDisplay": "24,74",
+          "totalDropDisplay": "1,65"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 46.0,
+          "ampacity": 31.6158,
+          "dropVolts": 2.528,
+          "dropPercent": 1.0991304347826087,
+          "fits": true,
+          "ampacityDisplay": "31,62",
+          "totalDropDisplay": "1,1"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 63.0,
+          "ampacity": 43.2999,
+          "dropVolts": 1.5168,
+          "dropPercent": 0.6594782608695652,
+          "fits": true,
+          "ampacityDisplay": "43,3",
+          "totalDropDisplay": "0,66"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 85.0,
+          "ampacity": 58.4205,
+          "dropVolts": 0.948,
+          "dropPercent": 0.4121739130434783,
+          "fits": true,
+          "ampacityDisplay": "58,42",
+          "totalDropDisplay": "0,41"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 75.603,
+          "dropVolts": 0.60672,
+          "dropPercent": 0.2637913043478261,
+          "fits": true,
+          "ampacityDisplay": "75,6",
+          "totalDropDisplay": "0,26"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 137.0,
+          "ampacity": 94.1601,
+          "dropVolts": 0.4333714285714286,
+          "dropPercent": 0.18842236024844722,
+          "fits": true,
+          "ampacityDisplay": "94,16",
+          "totalDropDisplay": "0,19"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 167.0,
+          "ampacity": 114.7791,
+          "dropVolts": 0.30336,
+          "dropPercent": 0.13189565217391305,
+          "fits": true,
+          "ampacityDisplay": "114,78",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 213.0,
+          "ampacity": 146.3949,
+          "dropVolts": 0.2166857142857143,
+          "dropPercent": 0.09421118012422361,
+          "fits": true,
+          "ampacityDisplay": "146,39",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 258.0,
+          "ampacity": 177.3234,
+          "dropVolts": 0.15966315789473684,
+          "dropPercent": 0.0694187643020595,
+          "fits": true,
+          "ampacityDisplay": "177,32",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 299.0,
+          "ampacity": 205.5027,
+          "dropVolts": 0.1264,
+          "dropPercent": 0.05495652173913043,
+          "fits": true,
+          "ampacityDisplay": "205,5",
+          "totalDropDisplay": "0,05"
+        }
+      ]
+    },
+    {
+      "id": "S27",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "30",
+        "voltage": "230",
+        "cosPhi": "1",
+        "length": "20",
+        "material": "aluminium",
+        "method": "D1",
+        "temperature": "40",
+        "circuits": "1",
+        "soilResistivity": "1",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 30.0,
+      "currentDisplay": "30",
+      "factor": 0.9086,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 16.0,
+          "baseAmpacity": 62.0,
+          "ampacity": 56.3332,
+          "dropVolts": 2.82,
+          "dropPercent": 1.2260869565217392,
+          "fits": true,
+          "ampacityDisplay": "56,33",
+          "totalDropDisplay": "1,23"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 80.0,
+          "ampacity": 72.688,
+          "dropVolts": 1.8048,
+          "dropPercent": 0.784695652173913,
+          "fits": true,
+          "ampacityDisplay": "72,69",
+          "totalDropDisplay": "0,78"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 96.0,
+          "ampacity": 87.2256,
+          "dropVolts": 1.2891428571428571,
+          "dropPercent": 0.5604968944099379,
+          "fits": true,
+          "ampacityDisplay": "87,23",
+          "totalDropDisplay": "0,56"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 113.0,
+          "ampacity": 102.6718,
+          "dropVolts": 0.9024,
+          "dropPercent": 0.3923478260869565,
+          "fits": true,
+          "ampacityDisplay": "102,67",
+          "totalDropDisplay": "0,39"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 140.0,
+          "ampacity": 127.204,
+          "dropVolts": 0.6445714285714286,
+          "dropPercent": 0.28024844720496894,
+          "fits": true,
+          "ampacityDisplay": "127,2",
+          "totalDropDisplay": "0,28"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 166.0,
+          "ampacity": 150.8276,
+          "dropVolts": 0.4749473684210526,
+          "dropPercent": 0.20649885583524027,
+          "fits": true,
+          "ampacityDisplay": "150,83",
+          "totalDropDisplay": "0,21"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 189.0,
+          "ampacity": 171.7254,
+          "dropVolts": 0.376,
+          "dropPercent": 0.1634782608695652,
+          "fits": true,
+          "ampacityDisplay": "171,73",
+          "totalDropDisplay": "0,16"
+        }
+      ]
+    },
+    {
+      "id": "S28",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "230",
+        "cosPhi": "1",
+        "length": "20",
+        "material": "copper",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "2.5",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 16.0,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 19.5,
+          "ampacity": 19.5,
+          "dropVolts": 10.112,
+          "dropPercent": 4.396521739130435,
+          "fits": false,
+          "ampacityDisplay": "19,5",
+          "totalDropDisplay": "6,9"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 27.0,
+          "ampacity": 27.0,
+          "dropVolts": 6.0672,
+          "dropPercent": 2.6379130434782607,
+          "fits": false,
+          "ampacityDisplay": "27",
+          "totalDropDisplay": "5,14"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 36.0,
+          "ampacity": 36.0,
+          "dropVolts": 3.792,
+          "dropPercent": 1.6486956521739131,
+          "fits": false,
+          "ampacityDisplay": "36",
+          "totalDropDisplay": "4,15"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 46.0,
+          "ampacity": 46.0,
+          "dropVolts": 2.528,
+          "dropPercent": 1.0991304347826087,
+          "fits": false,
+          "ampacityDisplay": "46",
+          "totalDropDisplay": "3,6"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 63.0,
+          "ampacity": 63.0,
+          "dropVolts": 1.5168,
+          "dropPercent": 0.6594782608695652,
+          "fits": false,
+          "ampacityDisplay": "63",
+          "totalDropDisplay": "3,16"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 85.0,
+          "ampacity": 85.0,
+          "dropVolts": 0.948,
+          "dropPercent": 0.4121739130434783,
+          "fits": true,
+          "ampacityDisplay": "85",
+          "totalDropDisplay": "2,91"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 110.0,
+          "dropVolts": 0.60672,
+          "dropPercent": 0.2637913043478261,
+          "fits": true,
+          "ampacityDisplay": "110",
+          "totalDropDisplay": "2,76"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 137.0,
+          "ampacity": 137.0,
+          "dropVolts": 0.4333714285714286,
+          "dropPercent": 0.18842236024844722,
+          "fits": true,
+          "ampacityDisplay": "137",
+          "totalDropDisplay": "2,69"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 167.0,
+          "ampacity": 167.0,
+          "dropVolts": 0.30336,
+          "dropPercent": 0.13189565217391305,
+          "fits": true,
+          "ampacityDisplay": "167",
+          "totalDropDisplay": "2,63"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 213.0,
+          "ampacity": 213.0,
+          "dropVolts": 0.2166857142857143,
+          "dropPercent": 0.09421118012422361,
+          "fits": true,
+          "ampacityDisplay": "213",
+          "totalDropDisplay": "2,59"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 258.0,
+          "ampacity": 258.0,
+          "dropVolts": 0.15966315789473684,
+          "dropPercent": 0.0694187643020595,
+          "fits": true,
+          "ampacityDisplay": "258",
+          "totalDropDisplay": "2,57"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 299.0,
+          "ampacity": 299.0,
+          "dropVolts": 0.1264,
+          "dropPercent": 0.05495652173913043,
+          "fits": true,
+          "ampacityDisplay": "299",
+          "totalDropDisplay": "2,55"
+        }
+      ]
+    },
+    {
+      "id": "S29",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "1000",
+        "voltage": "230",
+        "cosPhi": "1",
+        "length": "1000",
+        "material": "copper",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 1000.0,
+      "currentDisplay": "1000",
+      "factor": 1.0,
+      "selected": null,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 19.5,
+          "ampacity": 19.5,
+          "dropVolts": 31600.0,
+          "dropPercent": 13739.130434782608,
+          "fits": false,
+          "ampacityDisplay": "19,5",
+          "totalDropDisplay": "13739,13"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 27.0,
+          "ampacity": 27.0,
+          "dropVolts": 18960.0,
+          "dropPercent": 8243.478260869566,
+          "fits": false,
+          "ampacityDisplay": "27",
+          "totalDropDisplay": "8243,48"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 36.0,
+          "ampacity": 36.0,
+          "dropVolts": 11850.0,
+          "dropPercent": 5152.173913043478,
+          "fits": false,
+          "ampacityDisplay": "36",
+          "totalDropDisplay": "5152,17"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 46.0,
+          "ampacity": 46.0,
+          "dropVolts": 7900.0,
+          "dropPercent": 3434.782608695652,
+          "fits": false,
+          "ampacityDisplay": "46",
+          "totalDropDisplay": "3434,78"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 63.0,
+          "ampacity": 63.0,
+          "dropVolts": 4740.0,
+          "dropPercent": 2060.8695652173915,
+          "fits": false,
+          "ampacityDisplay": "63",
+          "totalDropDisplay": "2060,87"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 85.0,
+          "ampacity": 85.0,
+          "dropVolts": 2962.5,
+          "dropPercent": 1288.0434782608695,
+          "fits": false,
+          "ampacityDisplay": "85",
+          "totalDropDisplay": "1288,04"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 110.0,
+          "dropVolts": 1896.0,
+          "dropPercent": 824.3478260869565,
+          "fits": false,
+          "ampacityDisplay": "110",
+          "totalDropDisplay": "824,35"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 137.0,
+          "ampacity": 137.0,
+          "dropVolts": 1354.2857142857142,
+          "dropPercent": 588.8198757763976,
+          "fits": false,
+          "ampacityDisplay": "137",
+          "totalDropDisplay": "588,82"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 167.0,
+          "ampacity": 167.0,
+          "dropVolts": 948.0,
+          "dropPercent": 412.17391304347825,
+          "fits": false,
+          "ampacityDisplay": "167",
+          "totalDropDisplay": "412,17"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 213.0,
+          "ampacity": 213.0,
+          "dropVolts": 677.1428571428571,
+          "dropPercent": 294.4099378881988,
+          "fits": false,
+          "ampacityDisplay": "213",
+          "totalDropDisplay": "294,41"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 258.0,
+          "ampacity": 258.0,
+          "dropVolts": 498.94736842105266,
+          "dropPercent": 216.93363844393593,
+          "fits": false,
+          "ampacityDisplay": "258",
+          "totalDropDisplay": "216,93"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 299.0,
+          "ampacity": 299.0,
+          "dropVolts": 395.0,
+          "dropPercent": 171.7391304347826,
+          "fits": false,
+          "ampacityDisplay": "299",
+          "totalDropDisplay": "171,74"
+        }
+      ]
+    },
+    {
+      "id": "S30",
+      "input": {
+        "phases": "1",
+        "loadMode": "current",
+        "load": "16",
+        "voltage": "230",
+        "cosPhi": "1",
+        "length": "20",
+        "material": "copper",
+        "method": "C",
+        "temperature": "30",
+        "circuits": "1",
+        "soilResistivity": "2.5",
+        "maxDropPercent": "3",
+        "upstreamDropPercent": "0",
+        "breaker": ""
+      },
+      "current": 16.0,
+      "currentDisplay": "16",
+      "factor": 1.0,
+      "selected": 2.5,
+      "rows": [
+        {
+          "section": 1.5,
+          "baseAmpacity": 19.5,
+          "ampacity": 19.5,
+          "dropVolts": 10.112,
+          "dropPercent": 4.396521739130435,
+          "fits": false,
+          "ampacityDisplay": "19,5",
+          "totalDropDisplay": "4,4"
+        },
+        {
+          "section": 2.5,
+          "baseAmpacity": 27.0,
+          "ampacity": 27.0,
+          "dropVolts": 6.0672,
+          "dropPercent": 2.6379130434782607,
+          "fits": true,
+          "ampacityDisplay": "27",
+          "totalDropDisplay": "2,64"
+        },
+        {
+          "section": 4.0,
+          "baseAmpacity": 36.0,
+          "ampacity": 36.0,
+          "dropVolts": 3.792,
+          "dropPercent": 1.6486956521739131,
+          "fits": true,
+          "ampacityDisplay": "36",
+          "totalDropDisplay": "1,65"
+        },
+        {
+          "section": 6.0,
+          "baseAmpacity": 46.0,
+          "ampacity": 46.0,
+          "dropVolts": 2.528,
+          "dropPercent": 1.0991304347826087,
+          "fits": true,
+          "ampacityDisplay": "46",
+          "totalDropDisplay": "1,1"
+        },
+        {
+          "section": 10.0,
+          "baseAmpacity": 63.0,
+          "ampacity": 63.0,
+          "dropVolts": 1.5168,
+          "dropPercent": 0.6594782608695652,
+          "fits": true,
+          "ampacityDisplay": "63",
+          "totalDropDisplay": "0,66"
+        },
+        {
+          "section": 16.0,
+          "baseAmpacity": 85.0,
+          "ampacity": 85.0,
+          "dropVolts": 0.948,
+          "dropPercent": 0.4121739130434783,
+          "fits": true,
+          "ampacityDisplay": "85",
+          "totalDropDisplay": "0,41"
+        },
+        {
+          "section": 25.0,
+          "baseAmpacity": 110.0,
+          "ampacity": 110.0,
+          "dropVolts": 0.60672,
+          "dropPercent": 0.2637913043478261,
+          "fits": true,
+          "ampacityDisplay": "110",
+          "totalDropDisplay": "0,26"
+        },
+        {
+          "section": 35.0,
+          "baseAmpacity": 137.0,
+          "ampacity": 137.0,
+          "dropVolts": 0.4333714285714286,
+          "dropPercent": 0.18842236024844722,
+          "fits": true,
+          "ampacityDisplay": "137",
+          "totalDropDisplay": "0,19"
+        },
+        {
+          "section": 50.0,
+          "baseAmpacity": 167.0,
+          "ampacity": 167.0,
+          "dropVolts": 0.30336,
+          "dropPercent": 0.13189565217391305,
+          "fits": true,
+          "ampacityDisplay": "167",
+          "totalDropDisplay": "0,13"
+        },
+        {
+          "section": 70.0,
+          "baseAmpacity": 213.0,
+          "ampacity": 213.0,
+          "dropVolts": 0.2166857142857143,
+          "dropPercent": 0.09421118012422361,
+          "fits": true,
+          "ampacityDisplay": "213",
+          "totalDropDisplay": "0,09"
+        },
+        {
+          "section": 95.0,
+          "baseAmpacity": 258.0,
+          "ampacity": 258.0,
+          "dropVolts": 0.15966315789473684,
+          "dropPercent": 0.0694187643020595,
+          "fits": true,
+          "ampacityDisplay": "258",
+          "totalDropDisplay": "0,07"
+        },
+        {
+          "section": 120.0,
+          "baseAmpacity": 299.0,
+          "ampacity": 299.0,
+          "dropVolts": 0.1264,
+          "dropPercent": 0.05495652173913043,
+          "fits": true,
+          "ampacityDisplay": "299",
+          "totalDropDisplay": "0,05"
+        }
+      ]
+    }
+  ],
+  "geometry": [
+    {
+      "input": {
+        "cableDiameterMm": "20",
+        "coreDiameterMm": "500",
+        "windingDiameterMm": "540",
+        "widthMm": "500"
+      },
+      "lengthM": 40.840704496667314,
+      "layers": 1,
+      "turns": 25
+    },
+    {
+      "input": {
+        "cableDiameterMm": "20",
+        "coreDiameterMm": "500",
+        "windingDiameterMm": "900",
+        "widthMm": "500"
+      },
+      "lengthM": 549.7787143782139,
+      "layers": 10,
+      "turns": 25
+    },
+    {
+      "input": {
+        "cableDiameterMm": "12.5",
+        "coreDiameterMm": "300",
+        "windingDiameterMm": "375",
+        "widthMm": "125"
+      },
+      "lengthM": 31.808625617596658,
+      "layers": 3,
+      "turns": 10
+    },
+    {
+      "input": {
+        "cableDiameterMm": "20",
+        "coreDiameterMm": "500",
+        "windingDiameterMm": "539",
+        "widthMm": "500"
+      },
+      "lengthM": 0.0,
+      "layers": 0,
+      "turns": 25
+    },
+    {
+      "input": {
+        "cableDiameterMm": "20",
+        "coreDiameterMm": "500",
+        "windingDiameterMm": "540",
+        "widthMm": "519"
+      },
+      "lengthM": 40.840704496667314,
+      "layers": 1,
+      "turns": 25
+    }
+  ],
+  "mass": {
+    "sample": "ВВГнг(А)-LS 1х1.5ок 0.66kV",
+    "sourceValuesKgPerKm": [
+      48,
+      51
+    ],
+    "diameterMm": [
+      5.3,
+      5.5
+    ],
+    "lengthM": 125.5,
+    "minKg": 6.024,
+    "maxKg": 6.4005,
+    "customTareKg": 12.5,
+    "count": 2,
+    "grossMinKg": 31.024,
+    "grossMaxKg": 31.4005,
+    "referenceWood14Kg": 217,
+    "referenceMetal10Kg": 79
+  },
+  "netMass": {
+    "grossKg": 62.5,
+    "tareKg": 12.5,
+    "massKgPerKm": 500,
+    "lengthM": 100
+  },
+  "shipping": {
+    "decimalSquare": {
+      "lengthM": "0.4",
+      "widthM": "0.4",
+      "heightM": "0.4",
+      "massKg": "1",
+      "count": "6"
+    },
+    "transport": {
+      "lengthM": "1.2",
+      "widthM": "0.8",
+      "heightM": "1",
+      "payloadKg": "20"
+    },
+    "massKg": 6,
+    "volumeM3": 0.384,
+    "floorArea": 0.96,
+    "capacity": 6,
+    "columns": 2,
+    "rows": 3
+  },
+  "factorTables": {
+    "air": {
+      "10": 1.22,
+      "15": 1.17,
+      "20": 1.12,
+      "25": 1.06,
+      "30": 1.0,
+      "35": 0.94,
+      "40": 0.87,
+      "45": 0.79,
+      "50": 0.71,
+      "55": 0.61,
+      "60": 0.5
+    },
+    "ground": {
+      "10": 1.1,
+      "15": 1.05,
+      "20": 1.0,
+      "25": 0.95,
+      "30": 0.89,
+      "35": 0.84,
+      "40": 0.77,
+      "45": 0.71,
+      "50": 0.63,
+      "55": 0.55,
+      "60": 0.45
+    },
+    "soil": {
+      "0.5": 1.28,
+      "0.7": 1.2,
+      "1": 1.18,
+      "1.5": 1.1,
+      "2": 1.05,
+      "2.5": 1.0,
+      "3": 0.96
+    },
+    "groups": {
+      "B2": [
+        1.0,
+        0.8,
+        0.7,
+        0.65,
+        0.6,
+        0.57,
+        0.54,
+        0.52,
+        0.5
+      ],
+      "C": [
+        1.0,
+        0.85,
+        0.79,
+        0.75,
+        0.73,
+        0.72,
+        0.72,
+        0.71,
+        0.7
+      ]
+    }
+  },
+  "sources": {
+    "ampacity3": "Schneider G20/B.52.4",
+    "ampacity2": "Schneider G21/C.52.1 (B2,C) and G23 (D1)",
+    "corrections": "Schneider G12-G16",
+    "drop": "Schneider G29",
+    "power": "ABB Electrical installation handbook, Annex E printed264",
+    "mass": "Energokab exact technical row; HKA physical26/printed27 sha25f730...",
+    "geometry": "Nexans REEL Talk printed11 dimensions; independent circle-turn derivation with mm/m conversion, not a certified reel capacity",
+    "units": "BIPM SI Brochure prefixes",
+    "drumTare": "seller reference origin verified separately; not manufacturer evidence"
+  }
+}

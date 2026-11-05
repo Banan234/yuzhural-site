@@ -144,7 +144,7 @@ export function CartQuantityControl({
       setDraft(String(quantity).replace('.', ','));
       return;
     }
-    const next = Math.min(maxQuantity, parsed);
+    const next = Math.min(maxQuantity, Math.ceil(parsed));
     setDraft(String(next).replace('.', ','));
     onQuantityChange?.(next);
   }
@@ -163,7 +163,7 @@ export function CartQuantityControl({
       </button>
       <input
         type="text"
-        inputMode="decimal"
+        inputMode="numeric"
         aria-label={`Количество ${title}`}
         value={draft}
         maxLength={16}

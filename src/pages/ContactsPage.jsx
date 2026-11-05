@@ -25,6 +25,7 @@ import {
 } from '../lib/siteConfig';
 import { toCanonicalSitePath } from '../lib/canonicalPaths.js';
 import '../styles/pages/content.css';
+import '../styles/pages/contacts.css';
 
 const CONTACTS_CANONICAL_PATH = toCanonicalSitePath('/contacts');
 
@@ -36,7 +37,7 @@ export default function ContactsPage() {
   });
 
   return (
-    <>
+    <div className="contacts-page">
       <section className="section">
         <Container>
           <Breadcrumbs current="Контакты" />
@@ -248,6 +249,6 @@ export default function ContactsPage() {
           </div>
         </Container>
       </section>
-    </>
+    </div>
   );
 }

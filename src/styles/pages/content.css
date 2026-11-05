@@ -26,7 +26,7 @@
 }
 
 .contacts-page__hero-label {
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
   color: var(--muted);
 }
@@ -47,7 +47,7 @@
   flex-direction: column;
   gap: 8px;
   color: #475569;
-  font-size: 15px;
+  font-size: var(--text-body);
 }
 
 .contacts-page__hero-mail {
@@ -68,7 +68,7 @@
 }
 
 .contact-card__title {
-  font-size: 22px;
+  font-size: var(--text-card-title);
   font-weight: var(--font-weight-medium);
   margin-bottom: 12px;
 }
@@ -90,7 +90,7 @@
 
 .contact-card__meta {
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--text-ui);
   margin-top: 10px;
 }
 
@@ -161,13 +161,13 @@
 .contacts-map-placeholder__address {
   margin-bottom: 6px;
   color: #0a1628;
-  font-size: 16px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
 }
 
 .contacts-map-placeholder__hours {
   color: #5a6f87;
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 
 .contacts-map-frame {
@@ -190,7 +190,7 @@
   gap: 16px;
   margin-top: 16px;
   color: #475569;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.5;
 }
 
@@ -228,7 +228,7 @@
   border-radius: 999px;
   background: #f7fafc;
   color: #35556d;
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
 }
 
@@ -256,7 +256,7 @@
 .about-page__summary-text {
   margin: 16px 0 0;
   color: #475569;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.65;
 }
 
@@ -296,7 +296,7 @@
 
 .about-page__summary-contact {
   color: var(--text);
-  font-size: 22px;
+  font-size: var(--text-card-title);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
   overflow-wrap: anywhere;
@@ -304,7 +304,7 @@
 
 .about-page__summary-contact--muted {
   color: var(--primary-dark);
-  font-size: 16px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
 }
 
@@ -374,7 +374,7 @@
   border-radius: 999px;
   background: #f7fafc;
   color: #35556d;
-  font-size: 13px;
+  font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
 }
 
@@ -382,7 +382,7 @@
 .about-advantage__title {
   margin: 18px 0 0;
   color: var(--text);
-  font-size: 28px;
+  font-size: var(--text-section-title);
   line-height: 1.15;
   font-weight: var(--font-weight-medium);
 }
@@ -391,7 +391,7 @@
 .about-advantage p {
   margin: 16px 0 0;
   color: #475569;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.6;
 }
 
@@ -406,7 +406,7 @@
 
 .about-advantage__title {
   margin-top: 0;
-  font-size: 22px;
+  font-size: var(--text-card-title);
 }
 
 .about-cta {
@@ -437,7 +437,7 @@
   max-width: 760px;
   margin: 14px 0 0;
   color: #475569;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.65;
 }
 
@@ -473,7 +473,7 @@
   border-radius: 999px;
   background: #f7fafc;
   color: #35556d;
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
 }
 
@@ -482,7 +482,7 @@
   padding: 26px 28px;
   border-radius: 24px;
   box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.65;
 }
 
@@ -490,7 +490,7 @@
   display: block;
   margin-bottom: 10px;
   color: var(--text);
-  font-size: 22px;
+  font-size: var(--text-card-title);
   line-height: 1.2;
   font-weight: var(--font-weight-medium);
 }
@@ -520,7 +520,7 @@
 .delivery-option__title {
   margin: 0;
   color: var(--text);
-  font-size: 28px;
+  font-size: var(--text-section-title);
   line-height: 1.18;
   font-weight: var(--font-weight-medium);
 }
@@ -528,7 +528,7 @@
 .delivery-option p {
   margin: 18px 0 0;
   color: #475569;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.65;
 }
 
@@ -554,7 +554,7 @@
 .delivery-manager-card__title {
   margin: 0;
   color: var(--text);
-  font-size: 28px;
+  font-size: var(--text-section-title);
   line-height: 1.18;
   font-weight: var(--font-weight-medium);
 }
@@ -563,7 +563,7 @@
   max-width: 520px;
   margin: 18px 0 0;
   color: #6b7280;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.55;
   font-weight: var(--font-weight-medium);
 }
@@ -613,7 +613,7 @@
   border-radius: 50%;
   background: var(--primary);
   color: #fff;
-  font-size: 15px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   line-height: 34px;
   text-align: center;
@@ -623,7 +623,7 @@
 .delivery-steps strong {
   display: block;
   color: var(--text);
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.35;
 }
 
@@ -675,7 +675,7 @@
 .proof-details dt {
   margin: 0 0 6px;
   color: #64748b;
-  font-size: 13px;
+  font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -732,7 +732,7 @@
   border-radius: 999px;
   background: #eef5fb;
   color: #325372;
-  font-size: 12px;
+  font-size: var(--text-caption);
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -745,14 +745,14 @@
 
 .proof-document strong {
   color: var(--text);
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.35;
 }
 
 .proof-document small {
   display: block;
   color: #64748b;
-  font-size: 14px;
+  font-size: var(--text-ui);
   line-height: 1.5;
 }
 
@@ -768,7 +768,7 @@
   position: relative;
   padding-left: 28px;
   color: #334155;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.6;
 }
 
@@ -797,7 +797,7 @@
   height: 20px;
   border-radius: 50%;
   color: #fff;
-  font-size: 12px;
+  font-size: var(--text-caption);
   line-height: 20px;
   text-align: center;
   content: counter(info-list);
@@ -818,7 +818,7 @@
 }
 .info-card__title {
   margin: 0 0 12px;
-  font-size: 22px;
+  font-size: var(--text-card-title);
   font-weight: var(--font-weight-medium);
 }
 .info-card p {
@@ -832,7 +832,7 @@
   background: var(--primary-soft);
   border: 1px solid var(--primary-line);
   border-radius: 16px;
-  font-size: 16px;
+  font-size: var(--text-body);
   line-height: 1.55;
   color: #1e3a5f;
 }
@@ -866,7 +866,7 @@
   border-radius: 999px;
   background: #f7fafc;
   color: #35556d;
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
 }
 
@@ -898,7 +898,7 @@
 .payment-summary__text {
   margin: 16px 0 0;
   color: #475569;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.65;
 }
 
@@ -938,7 +938,7 @@
 
 .payment-summary__contact {
   color: var(--text);
-  font-size: 22px;
+  font-size: var(--text-card-title);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
   overflow-wrap: anywhere;
@@ -946,7 +946,7 @@
 
 .payment-summary__contact--muted {
   color: var(--primary-dark);
-  font-size: 16px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
 }
 
@@ -969,7 +969,7 @@
 
 .payment-mode__title {
   margin: 18px 0 0;
-  font-size: 28px;
+  font-size: var(--text-section-title);
   line-height: 1.15;
   font-weight: var(--font-weight-medium);
 }
@@ -977,7 +977,7 @@
 .payment-mode__description {
   margin: 16px 0 0;
   color: #475569;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.6;
 }
 
@@ -1035,7 +1035,7 @@
   border-radius: 50%;
   background: var(--primary);
   color: #fff;
-  font-size: 15px;
+  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   line-height: 36px;
   text-align: center;
@@ -1045,7 +1045,7 @@
 .payment-steps strong {
   display: block;
   color: var(--text);
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.35;
 }
 
@@ -1105,7 +1105,7 @@
   max-width: 760px;
   margin: 14px 0 0;
   color: #475569;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.65;
 }
 
@@ -1146,7 +1146,7 @@
 .privacy-doc__meta p,
 .privacy-doc__contacts p {
   margin: 0;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.7;
   color: #465666;
 }
@@ -1183,7 +1183,7 @@
 .privacy-doc__paragraph {
   max-width: 980px;
   margin: 18px 0 0;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.7;
   color: #536171;
 }
@@ -1199,7 +1199,7 @@
 .privacy-doc__clause {
   max-width: none;
   min-width: 0;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.7;
   color: #536171;
 }
@@ -1275,7 +1275,7 @@
   }
 
   .contacts-page__hero-phone {
-    font-size: 28px;
+    font-size: var(--text-section-title);
   }
 
   .contacts-info-row {
@@ -1328,13 +1328,13 @@
   .delivery-option__title,
   .delivery-section-title,
   .delivery-manager-card__title {
-    font-size: 28px;
+    font-size: var(--text-section-title);
   }
 
   .delivery-page__hero-note {
     padding: 22px;
     border-radius: 18px;
-    font-size: 16px;
+    font-size: var(--text-body);
   }
 
   .delivery-page__hero-note-title {
@@ -1385,7 +1385,7 @@
   .privacy-doc__clause,
   .privacy-doc__meta p,
   .privacy-doc__contacts p {
-    font-size: 16px;
+    font-size: var(--text-body);
   }
 
   .privacy-doc__section {
@@ -1426,7 +1426,7 @@
 .privacy-doc__purpose dt,
 .privacy-doc__purpose dd {
   margin: 0;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.7;
 }
 .privacy-doc__purpose dt {
@@ -1444,7 +1444,7 @@
   }
   .privacy-doc__purpose dt,
   .privacy-doc__purpose dd {
-    font-size: 16px;
+    font-size: var(--text-body);
   }
 }
 .privacy-doc__title {
@@ -1461,7 +1461,7 @@
 .privacy-cookie-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.6;
   color: #536171;
 }

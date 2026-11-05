@@ -2,8 +2,14 @@
 // Файл проверяет рендер страницы каталога, фильтры, состояния загрузки и SEO-элементы.
 
 import '../test/renderTestSetup.js';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import {
+  MemoryRouter,
+  Route,
+  Routes,
+  createMemoryRouter,
+  RouterProvider,
+} from 'react-router-dom';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchProducts } from '../lib/productsApi.js';
 import { SITE_URL } from '../lib/siteConfig.js';
@@ -146,7 +152,7 @@ describe('CatalogPage', () => {
       ],
       meta: {
         total: 1,
-        pagination: { page: 1, limit: 24, total: 1, totalPages: 1 },
+        pagination: { page: 1, limit: 28, total: 1, totalPages: 1 },
         catalogSections: [],
       },
     });
@@ -196,7 +202,7 @@ describe('CatalogPage', () => {
       ],
       meta: {
         total: 1,
-        pagination: { page: 1, limit: 24, total: 1, totalPages: 1 },
+        pagination: { page: 1, limit: 28, total: 1, totalPages: 1 },
         catalogSections: [
           {
             slug: 'kabel-i-provod',
@@ -233,7 +239,7 @@ describe('CatalogPage', () => {
       ],
       meta: {
         total: 1,
-        pagination: { page: 1, limit: 24, total: 1, totalPages: 1 },
+        pagination: { page: 1, limit: 28, total: 1, totalPages: 1 },
         catalogSections: [
           {
             slug: 'kabel-i-provod',
@@ -315,7 +321,7 @@ describe('CatalogPage', () => {
         meta: {
           total: 1,
           catalogCount: 1,
-          pagination: { page: 1, limit: 24, total: 1, totalPages: 1 },
+          pagination: { page: 1, limit: 28, total: 1, totalPages: 1 },
         },
       },
     };
@@ -345,7 +351,7 @@ describe('CatalogPage', () => {
         meta: {
           total: 1,
           catalogCount: 1,
-          pagination: { page: 1, limit: 24, total: 1, totalPages: 1 },
+          pagination: { page: 1, limit: 28, total: 1, totalPages: 1 },
         },
       },
     };
@@ -363,7 +369,7 @@ describe('CatalogPage', () => {
     const prerenderData = {
       path: '/catalog',
       meta: {
-        pagination: { page: 1, limit: 24 },
+        pagination: { page: 1, limit: 28 },
       },
     };
 
@@ -371,28 +377,28 @@ describe('CatalogPage', () => {
       doesCatalogPrerenderDataMatchQuery({
         activeCategoryParam: '',
         prerenderData,
-        productQueryOptions: { limit: 24 },
+        productQueryOptions: { limit: 28 },
       })
     ).toBe(true);
     expect(
       doesCatalogPrerenderDataMatchQuery({
         activeCategoryParam: '',
         prerenderData,
-        productQueryOptions: { limit: 24, page: 2 },
+        productQueryOptions: { limit: 28, page: 2 },
       })
     ).toBe(false);
     expect(
       doesCatalogPrerenderDataMatchQuery({
         activeCategoryParam: '',
         prerenderData,
-        productQueryOptions: { limit: 24, search: 'ввг' },
+        productQueryOptions: { limit: 28, search: 'ввг' },
       })
     ).toBe(false);
     expect(
       doesCatalogPrerenderDataMatchQuery({
         activeCategoryParam: '',
         prerenderData,
-        productQueryOptions: { limit: 24, mark: 'ВВГ' },
+        productQueryOptions: { limit: 28, mark: 'ВВГ' },
       })
     ).toBe(false);
   });
@@ -444,4 +450,71 @@ describe('CatalogPage', () => {
       expect.objectContaining({ category: 'kabel-i-provod' })
     );
   });
+});
+
+it.each(['appType', 'spe'])(
+  'does not reuse unfiltered category data for %s',
+  async (key) => {
+    fetchProducts.mockReturnValue(new Promise(() => {}));
+    renderCatalogPage(`/catalog/silovoy-kabel?${key}=1`, {
+      catalog: {
+        path: '/catalog/silovoy-kabel',
+        items: [
+          {
+            id: 1,
+            slug: 'wrong',
+            title: 'Wrong old row',
+            price: 100,
+            stock: 1,
+          },
+        ],
+        meta: { pagination: { page: 1, limit: 28 } },
+      },
+    });
+    expect(screen.queryByText('Wrong old row')).not.toBeInTheDocument();
+    expect(
+      screen.getByText('Подготавливаем товары из прайса...')
+    ).toBeInTheDocument();
+    await waitFor(() => expect(fetchProducts).toHaveBeenCalled());
+    expect(fetchProducts.mock.calls[0][1][key]).toBe('1');
+  }
+);
+
+it('binds each result to its URL and ignores a late response even if transport ignores abort', async () => {
+  const pending = new Map();
+  fetchProducts.mockImplementation(
+    (_signal, options) =>
+      new Promise((resolve) => pending.set(options.search, resolve))
+  );
+  const router = createMemoryRouter(
+    [{ path: '/catalog', element: <CatalogPage /> }],
+    { initialEntries: ['/catalog?search=seed'] }
+  );
+  render(<RouterProvider router={router} />);
+  const result = (title) => ({
+    items: [{ id: 1, slug: title, title, mark: title, price: 100, stock: 3 }],
+    meta: { pagination: { page: 1, limit: 28, total: 1, totalPages: 1 } },
+  });
+  try {
+    await waitFor(() => expect(pending.has('seed')).toBe(true));
+    await act(async () => pending.get('seed')(result('Seed')));
+    expect(screen.getByText('Seed')).toBeInTheDocument();
+    await act(async () => {
+      await router.navigate('/catalog?search=slow');
+    });
+    expect(screen.queryByText('Seed')).not.toBeInTheDocument();
+    expect(
+      screen.getByText('Подготавливаем товары из прайса...')
+    ).toBeInTheDocument();
+    await act(async () => {
+      await router.navigate('/catalog?search=latest');
+    });
+    await act(async () => pending.get('latest')(result('Latest')));
+    expect(screen.getByText('Latest')).toBeInTheDocument();
+    await act(async () => pending.get('slow')(result('WrongLate')));
+    expect(screen.queryByText('WrongLate')).not.toBeInTheDocument();
+    expect(screen.getByText('Latest')).toBeInTheDocument();
+  } finally {
+    router.dispose();
+  }
 });

@@ -26,6 +26,7 @@ import {
   SITE_WORKING_HOURS_DISPLAY,
 } from '../lib/siteConfig';
 import '../styles/pages/content.css';
+import '../styles/pages/about.css';
 
 const ABOUT_JSON_LD_ID = getStaticPageJsonLdId(STATIC_PAGE_SEO.about.path);
 const ABOUT_JSON_LD = buildStaticPageJsonLd(STATIC_PAGE_SEO.about.path);
@@ -123,7 +124,7 @@ export default function AboutPage() {
   useJsonLd(ABOUT_JSON_LD_ID, ABOUT_JSON_LD);
 
   return (
-    <>
+    <div className="about-page">
       <section className="section">
         <Container>
           <Breadcrumbs current="О компании" />
@@ -339,6 +340,6 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
-    </>
+    </div>
   );
 }

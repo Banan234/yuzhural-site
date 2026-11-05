@@ -1,3 +1,4 @@
+import { CABLE_MASS_SOURCES } from '../lib/cableMass';
 // @vitest-environment jsdom
 import '../test/renderTestSetup';
 import { MemoryRouter } from 'react-router-dom';
@@ -18,9 +19,10 @@ describe('complete service flows', () => {
     fireEvent.change(screen.getByLabelText(/^Длина, м/), {
       target: { value: '200' },
     });
-    fireEvent.change(screen.getByLabelText('Данные изготовителя'), {
-      target: { value: 'hka' },
-    });
+    fireEvent.click(screen.getByLabelText('Данные изготовителя'));
+    fireEvent.click(
+      screen.getByRole('option', { name: CABLE_MASS_SOURCES.hka.publisher })
+    );
     fireEvent.click(
       screen.getByRole('button', { name: 'Добавить позицию в расчёт' })
     );
@@ -75,10 +77,37 @@ describe('complete service flows', () => {
     expect(
       screen.getByText(/10 пар.*2 жилы.*диаметр.*0[,.]5 мм/)
     ).toBeInTheDocument();
-    fireEvent.change(screen.getByLabelText('Полное обозначение кабеля'), {
-      target: { value: 'ВВГ-XYZ 3х2,5' },
-    });
+    fireEvent.change(
+      screen.getByLabelText('Марка или полное обозначение кабеля'),
+      {
+        target: { value: 'ВВГ-XYZ 3х2,5' },
+      }
+    );
     expect(screen.getByText('-XYZ')).toBeInTheDocument();
+  });
+  it('combines browsing and decoding on the old reference page', () => {
+    mount(<CableKnowledgePage mode="reference" />, '/services/reference/');
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Справочник и расшифровка кабеля',
+      })
+    ).toBeInTheDocument();
+    expect(screen.getByLabelText('Назначение')).toBeInTheDocument();
+    expect(
+      screen.getAllByRole('button', { name: 'Описание и расшифровка →' }).length
+    ).toBeGreaterThan(0);
+    fireEvent.change(
+      screen.getByLabelText('Марка или полное обозначение кабеля'),
+      { target: { value: 'ВВГ 3х2,5' } }
+    );
+    expect(
+      screen.getByRole('heading', { name: 'Что означает ВВГ' })
+    ).toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Очистить обозначение кабеля' })
+    );
+    expect(screen.getByLabelText('Назначение')).toBeInTheDocument();
   });
   it('prepares carrier totals without inventing a delivery tariff', () => {
     mount(<CableShippingPage />, '/services/shipping/');

@@ -1,3 +1,5 @@
+import { isValidOrderQuantity } from '../../../shared/orderQuantity.js';
+import { calculateQuote } from '../../../shared/quoteMoney.js';
 // Файл валидирует клиентские поля формы КП и возвращает сообщения ошибок по именам полей.
 
 // Клиентская валидация формы КП. Возвращает { fieldName: 'сообщение' }.
@@ -73,6 +75,13 @@ export function validateForm(form, items, { hasSpecification = false } = {}) {
       max: MAX_QUOTE_ITEM_COMMENT_LENGTH,
     });
   }
+
+  if (
+    Array.isArray(items) &&
+    (calculateQuote(items).invalid ||
+      !calculateQuote(items).items.every(isValidOrderQuantity))
+  )
+    errors.cart = messages.errors.api.invalidQuoteRequest;
 
   return errors;
 }

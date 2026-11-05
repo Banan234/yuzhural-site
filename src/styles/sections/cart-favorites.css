@@ -10,7 +10,7 @@
 }
 .cart-page .page-subtitle {
   max-width: 780px;
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.6;
 }
 .cart-page__head {
@@ -27,7 +27,7 @@
 .cart-page .page-subtitle {
   margin-bottom: 0;
   max-width: 740px;
-  font-size: 15px;
+  font-size: var(--text-body);
 }
 .cart-toolbar {
   display: flex;
@@ -42,7 +42,7 @@
   align-items: center;
   gap: 10px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--text-ui);
   text-decoration: none;
 }
 .cart-page__back:hover {
@@ -61,7 +61,7 @@
   background: transparent;
   color: #68717e;
   font: inherit;
-  font-size: 13px;
+  font-size: var(--text-small);
   cursor: pointer;
 }
 .cart-toolbar__actions button:hover {
@@ -94,11 +94,11 @@
   padding: 19px 24px;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-caption);
 }
 .cart-list__head > span:first-child {
   color: var(--text);
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 .cart-list__head > span:nth-child(3) {
   text-align: right;
@@ -128,13 +128,13 @@
 }
 .cart-item__sku {
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--text-caption);
   line-height: 1.5;
   margin-bottom: 6px;
 }
 .cart-item__title {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--text-body);
   line-height: 1.45;
 }
 .cart-item__title-link {
@@ -147,7 +147,7 @@
 .cart-item__category {
   margin: 7px 0 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-caption);
 }
 .cart-item__quantity {
   display: grid;
@@ -192,7 +192,7 @@
   background: transparent;
   color: var(--text);
   font: inherit;
-  font-size: 14px;
+  font-size: var(--text-ui);
   text-align: center;
   appearance: textfield;
   -moz-appearance: textfield;
@@ -204,7 +204,7 @@
 }
 .cart-item__unit {
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-caption);
 }
 .cart-item__mobile-label {
   display: none;
@@ -221,11 +221,11 @@
   font-variant-numeric: tabular-nums;
 }
 .cart-item__line-total--request {
-  font-size: 15px;
+  font-size: var(--text-body);
 }
 .cart-item__price {
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-caption);
 }
 .cart-item__remove {
   align-self: start;
@@ -270,13 +270,13 @@
 .cart-empty__text {
   margin: 0 0 16px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.6;
 }
 .cart-empty__link {
   padding: 8px 0;
   color: var(--primary-dark);
-  font-size: 16px;
+  font-size: var(--text-body);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -314,7 +314,7 @@
   border: 0;
   background: transparent;
   color: inherit;
-  font-size: 22px;
+  font-size: var(--text-card-title);
   line-height: 1;
   cursor: pointer;
 }
@@ -336,7 +336,7 @@
   display: grid;
   gap: 12px;
   margin: 0;
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 .cart-summary__counts > div {
   display: flex;
@@ -357,7 +357,7 @@
 }
 .cart-summary__total > span {
   color: #68717e;
-  font-size: 13px;
+  font-size: var(--text-small);
 }
 .cart-summary__total strong {
   color: #102947;
@@ -374,7 +374,7 @@
   min-height: 50px;
   padding: 12px 20px;
   border-radius: 4px;
-  font-size: 15px;
+  font-size: var(--text-body);
 }
 .cart-summary__quote span {
   font-size: 20px;
@@ -383,7 +383,7 @@
 .cart-summary__request-note {
   margin: -6px 0 0;
   color: #68717e;
-  font-size: 12px;
+  font-size: var(--text-caption);
   line-height: 1.65;
 }
 .cart-summary__request-note {
@@ -414,10 +414,10 @@
     padding-inline: 18px;
   }
   .cart-item__title {
-    font-size: 14px;
+    font-size: var(--text-ui);
   }
   .cart-item__line-total {
-    font-size: 16px;
+    font-size: var(--text-body);
   }
   .cart-summary {
     padding: 22px;
@@ -485,10 +485,10 @@
     padding-right: 22px;
   }
   .cart-item__title {
-    font-size: 14px;
+    font-size: var(--text-ui);
   }
   .cart-item__sku {
-    font-size: 10px;
+    font-size: var(--text-caption);
   }
   .cart-item__quantity {
     grid-column: 1 / 2;
@@ -504,7 +504,7 @@
   .cart-item__mobile-label {
     display: block;
     color: var(--muted);
-    font-size: 11px;
+    font-size: var(--text-caption);
   }
   .cart-item__price-row {
     grid-column: 2 / 3;
@@ -512,7 +512,7 @@
     padding-left: 50px;
   }
   .cart-item__price {
-    font-size: 11px;
+    font-size: var(--text-caption);
   }
   .cart-item__remove {
     position: absolute;

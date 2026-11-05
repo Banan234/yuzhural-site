@@ -5,12 +5,7 @@ import Container from '../components/ui/Container';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { useJsonLd } from '../hooks/useJsonLd';
 import { useSEO } from '../hooks/useSEO';
-import {
-  SITE_EMAIL,
-  SITE_EMAIL_HREF,
-  SITE_PHONE,
-  SITE_PHONE_DISPLAY,
-} from '../lib/siteConfig';
+import { SITE_PHONE, SITE_PHONE_DISPLAY } from '../lib/siteConfig';
 import {
   buildStaticPageJsonLd,
   getStaticPageJsonLdId,
@@ -22,56 +17,50 @@ import '../styles/pages/payment.css';
 const PAYMENT_JSON_LD_ID = getStaticPageJsonLdId(STATIC_PAGE_SEO.payment.path);
 const PAYMENT_JSON_LD = buildStaticPageJsonLd(STATIC_PAGE_SEO.payment.path);
 
-const PAYMENT_MODES = [
-  {
-    title: 'Для компаний и ИП',
-    label: 'Счёт по реквизитам',
-    description:
-      'Подтвердите покупку и передайте менеджеру реквизиты для выставления счёта.',
-    points: [
-      'До оплаты согласуем состав заказа, количество и цену.',
-      'Оплатите счёт полностью в течение 3 дней.',
-      'Цены включают НДС.',
-    ],
-  },
-  {
-    title: 'Для физических лиц',
-    label: 'Счёт на физическое лицо',
-    description:
-      'Для выставления счёта физическому лицу достаточно сообщить менеджеру ФИО.',
-    points: [
-      'Состав заказа и итоговую стоимость с НДС подтверждаем до оплаты.',
-      'Срок оплаты счёта — 3 дня.',
-      'Работаем по 100% предоплате.',
-    ],
-  },
-];
-
 const PAYMENT_STEPS = [
   {
     title: 'Выберите кабель',
-    text: 'Пришлите марки и необходимый метраж. Менеджер подтвердит наличие и цену.',
+    text: 'Пришлите марки и метраж. Подтвердим наличие, количество и цену.',
   },
   {
     title: 'При необходимости оформите резерв',
-    text: 'По запросу резервируем кабель максимум на 3 дня, пока вы принимаете решение о покупке.',
+    text: 'По запросу резервируем кабель до 3 дней, пока вы принимаете решение.',
   },
   {
-    title: 'Подтвердите покупку и получите счёт',
-    text: 'Сообщите менеджеру о решении купить. Выставим счёт на физическое лицо или по реквизитам компании.',
+    title: 'Получите счёт',
+    text: 'Подтвердите покупку и передайте ФИО или реквизиты компании.',
   },
   {
-    title: 'Оплатите счёт',
-    text: 'Оплатите счёт полностью в течение 3 дней. На этот период кабель находится в резерве.',
+    title: 'Оплатите заказ',
+    text: 'Внесите полную оплату в течение 3 дней. На этот срок кабель в резерве.',
   },
 ];
 
-const PAYMENT_LEGAL_NOTES = [
-  'Для розничных покупок действуют условия опубликованной оферты и согласованного заказа.',
-  'Окончательная цена товара определяется в счёте, договоре или ином согласованном документе после подтверждения наличия и условий поставки.',
-  'Порядок и момент заключения договора фиксируются в счёте, договоре и иных документах по конкретной сделке.',
-  'При продаже физическим лицам условия оплаты, получения товара и рассмотрения претензий сообщаются до внесения оплаты.',
-];
+function PaymentIcon({ company = false }) {
+  return (
+    <svg
+      className="payment-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {company ? (
+        <>
+          <path d="M4 22V3h12v19M16 10h4v12M2 22h20M8 7h4M8 11h4M8 15h4M9 22v-3h3v3" />
+        </>
+      ) : (
+        <>
+          <circle cx="12" cy="7" r="4" />
+          <path d="M4 22v-3a8 8 0 0 1 16 0v3" />
+        </>
+      )}
+    </svg>
+  );
+}
 
 export default function PaymentPage() {
   function handleOpenPaymentLead() {
@@ -97,174 +86,118 @@ export default function PaymentPage() {
   useJsonLd(PAYMENT_JSON_LD_ID, PAYMENT_JSON_LD);
 
   return (
-    <>
-      <section className="section payment-page">
-        <Container>
-          <Breadcrumbs current="Оплата" />
-          <div className="payment-page__hero">
-            <div className="payment-page__intro">
-              <h1 className="page-title">Оплата заказа</h1>
-              <p className="content-lead">
-                <Link to="/oferta/">Публичная оферта: условия покупки →</Link>
-              </p>
-              <p className="page-subtitle">
-                Подтвердите покупку и получите счёт на физическое лицо или
-                компанию. Работаем по 100% предоплате. Цены включают НДС.
-              </p>
-
-              <div className="content-actions payment-page__hero-actions">
-                <button
-                  type="button"
-                  className="button-primary"
-                  onClick={handleOpenPaymentLead}
-                >
-                  Запросить счёт
-                </button>
-                <a href={`tel:${SITE_PHONE}`} className="button-secondary">
-                  Уточнить условия по телефону
-                </a>
-              </div>
-            </div>
-
-            <aside className="payment-summary">
-              <h2 className="payment-summary__title">
-                Резерв кабеля — до 3 дней
-              </h2>
-              <p className="payment-summary__text">
-                По запросу резервируем кабель максимум на 3 дня. Выставленный
-                счёт нужно оплатить в течение 3 дней — на этот же период
-                предоставляется резерв.
-              </p>
-              <ul className="payment-summary__list">
-                <li>подтверждаем цену с НДС и наличие до оплаты</li>
-                <li>выставляем счёт после подтверждения покупки</li>
-                <li>принимаем полную оплату по счёту</li>
-              </ul>
-              <div className="payment-summary__contacts">
-                <a
-                  href={`tel:${SITE_PHONE}`}
-                  className="payment-summary__contact"
-                >
-                  {SITE_PHONE_DISPLAY}
-                </a>
-                <a
-                  href={SITE_EMAIL_HREF}
-                  className="payment-summary__contact payment-summary__contact--muted"
-                >
-                  {SITE_EMAIL}
-                </a>
-              </div>
-            </aside>
-          </div>
-        </Container>
-      </section>
-
-      <section className="section section--soft payment-page">
-        <Container>
-          <div className="section-head">
-            <h2 className="section-title section-title--left">
-              Условия оплаты для компаний и физических лиц
-            </h2>
-          </div>
-
-          <div className="payment-modes">
-            {PAYMENT_MODES.map((mode) => (
-              <article key={mode.title} className="payment-mode">
-                <span className="payment-mode__label">{mode.label}</span>
-                <h3 className="payment-mode__title">{mode.title}</h3>
-                <p className="payment-mode__description">{mode.description}</p>
-                <ul className="payment-mode__list">
-                  {mode.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="section payment-page">
-        <Container>
-          <div className="content-columns payment-process">
-            <div>
-              <h2 className="section-title section-title--left">
-                Как оформить и оплатить заказ
-              </h2>
-              <p className="content-lead">
-                Согласуйте состав заказа с менеджером, получите счёт и оплатите
-                его в течение срока действия.
-              </p>
-            </div>
-
-            <ol className="payment-steps">
-              {PAYMENT_STEPS.map((step) => (
-                <li key={step.title}>
-                  <strong>{step.title}</strong>
-                  <span>{step.text}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <p className="content-lead payment-process__link">
-            <Link to="/delivery/">
-              Подготовка, документы и получение заказа →
-            </Link>
+    <section className="section payment-page">
+      <Container>
+        <Breadcrumbs current="Оплата" />
+        <header className="payment-intro">
+          <h1 className="page-title">Оплата заказа</h1>
+          <p className="page-subtitle">
+            Оплатите заказ по счёту на компанию или физическое лицо. Цену и
+            наличие подтвердит менеджер.
           </p>
-          <div className="content-columns content-columns--spaced">
-            <div>
-              <h2 className="section-title section-title--left">
-                Важные условия
-              </h2>
-              <p className="content-lead">
-                Окончательные условия покупки фиксируем в документах по вашему
-                заказу.
-              </p>
-            </div>
+        </header>
 
-            <ul className="info-list">
-              {PAYMENT_LEGAL_NOTES.map((note) => (
-                <li key={note}>{note}</li>
-              ))}
-            </ul>
+        <aside className="payment-notice">
+          <svg
+            className="payment-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 11v6M12 7h.01" />
+          </svg>
+          <div>
+            <p className="payment-notice__title">
+              100% предоплата · Срок оплаты — 3 дня · Цены с НДС
+            </p>
+            <p>На время оплаты кабель находится в резерве.</p>
           </div>
-        </Container>
-      </section>
+          <Link to="/oferta/">Условия покупки →</Link>
+        </aside>
 
-      <section className="section payment-page">
-        <Container>
-          <div className="payment-cta">
-            <div>
-              <h2 className="payment-cta__title">Нужен счёт на оплату?</h2>
-              <p className="payment-cta__text">
-                Отправьте список позиций и контакты. Подготовим счёт, проверим
-                наличие и заранее согласуем цену и платёжные документы.
-              </p>
-              <p className="payment-cta__text">
-                <a href={`tel:${SITE_PHONE}`}>
-                  Остались вопросы? Связаться с менеджером
-                </a>
-              </p>
-            </div>
-            <div className="content-actions payment-cta__actions">
-              <button
-                type="button"
-                className="button-primary"
-                onClick={handleOpenPaymentLead}
-              >
-                Запросить счёт
-              </button>
-              <a
-                href="/documents/company-details.pdf"
-                className="button-secondary"
-              >
-                Скачать реквизиты
-              </a>
-            </div>
+        <section
+          className="payment-buyers"
+          aria-labelledby="payment-buyers-title"
+        >
+          <h2 id="payment-buyers-title">Что нужно для выставления счёта</h2>
+          <div className="payment-buyers__grid">
+            <article className="payment-buyer">
+              <PaymentIcon company />
+              <div>
+                <h3>Для компаний и ИП</h3>
+                <p>
+                  Передайте менеджеру реквизиты компании и подтвердите состав
+                  заказа.
+                </p>
+              </div>
+            </article>
+            <article className="payment-buyer">
+              <PaymentIcon />
+              <div>
+                <h3>Для физических лиц</h3>
+                <p>Для выставления счёта достаточно сообщить менеджеру ФИО.</p>
+              </div>
+            </article>
           </div>
-        </Container>
-      </section>
-    </>
+        </section>
+
+        <section
+          className="payment-order"
+          aria-labelledby="payment-order-title"
+        >
+          <h2 id="payment-order-title">Как оформить и оплатить заказ</h2>
+          <ol className="payment-order__steps">
+            {PAYMENT_STEPS.map((step) => (
+              <li key={step.title}>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+          <Link className="payment-order__delivery" to="/delivery/">
+            Подготовка и получение заказа →
+          </Link>
+        </section>
+
+        <section
+          className="payment-terms"
+          aria-labelledby="payment-terms-title"
+        >
+          <h2 id="payment-terms-title">Условия покупки</h2>
+          <p>
+            Окончательную цену и порядок заключения договора фиксируем в счёте,
+            договоре или другом согласованном документе. Условия оплаты,
+            получения и рассмотрения претензий сообщаем до оплаты.
+          </p>
+          <p>
+            Для розничных покупок действуют{' '}
+            <Link to="/oferta/">публичная оферта</Link> и согласованные условия
+            заказа.
+          </p>
+        </section>
+
+        <div className="payment-contact">
+          <div>
+            <h2>Нужен счёт на оплату?</h2>
+            <p>Пришлите список позиций и контакты менеджеру.</p>
+            <a href={`tel:${SITE_PHONE}`}>{SITE_PHONE_DISPLAY}</a>
+          </div>
+          <div className="payment-contact__actions">
+            <button
+              type="button"
+              className="button-primary"
+              onClick={handleOpenPaymentLead}
+            >
+              Запросить счёт
+            </button>
+            <a href="/documents/company-details.pdf">Скачать реквизиты ↓</a>
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 }

@@ -1,12 +1,15 @@
 // Главная страница: каталог и заявка по спецификации.
 import { useEffect, useRef, useState } from 'react';
 import Container from '../components/ui/Container';
+import ResponsiveProductImage from '../components/ui/ResponsiveProductImage.jsx';
+import homeImageVariants from '../../shared/homeImageVariants.json';
 import ContactRequestForm from '../components/home/ContactRequestForm';
 import HomeWhyUsVariants from '../components/home/HomeWhyUsVariants';
 import OrderStepsVariants from '../components/home/OrderStepsVariants';
 import CategoryShowcase from '../components/home/CategoryShowcase';
 import StockProductsGrid from '../components/home/StockProductsGrid';
 import HomeHeroCarousel from '../components/home/HomeHeroCarousel';
+import HomeContacts from '../components/home/HomeContacts';
 import { HomeFaq } from '../components/home/HomeDetailsSections';
 import { fetchFeaturedProducts } from '../lib/productsApi';
 import { captureException } from '../lib/errorTracking';
@@ -26,6 +29,7 @@ import {
   buildOrganizationJsonLd,
 } from '../lib/siteConfig';
 import '../styles/sections/home-concept.css';
+import '../styles/sections/responsive-warehouse.css';
 
 const ORGANIZATION_JSON_LD = {
   '@context': 'https://schema.org',
@@ -158,7 +162,9 @@ export default function HomePage() {
                 минут в рабочее время.
               </p>
               <div className="home-concept__quote-visual" aria-hidden="true">
-                <img
+                <ResponsiveProductImage
+                  variants={homeImageVariants}
+                  sizes="(max-width: 600px) calc(100vw - 48px), 560px"
                   src="/product-images/generated/pvs__3core__jacket-black-pvc.png"
                   alt=""
                   loading="lazy"
@@ -218,6 +224,7 @@ export default function HomePage() {
           </ul>
         </Container>
       </section>
+      <HomeContacts />
       <HomeFaq />
     </div>
   );

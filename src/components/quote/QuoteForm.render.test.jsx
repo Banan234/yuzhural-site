@@ -25,6 +25,44 @@ async function fillRequiredFields(user) {
 }
 
 describe('QuoteForm render flow', () => {
+  it('sends the shared partial subtotal in kopecks and excludes pending rows', async () => {
+    const user = userEvent.setup();
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ ok: true, message: 'Заявка принята' }),
+    });
+    vi.stubGlobal('fetch', fetchMock);
+    render(
+      <QuoteForm
+        itemsOverride={[
+          { ...quoteItem, id: 1, price: 0.005, quantity: 1 },
+          { ...quoteItem, id: 2, price: 0.005, quantity: 1 },
+          { ...quoteItem, id: 3, price: 99.99, quantity: 1, unit: 'кг' },
+          { ...quoteItem, id: 'manual-1', price: null, quantity: 2 },
+          {
+            ...quoteItem,
+            id: 58,
+            price: 999,
+            quantity: 100,
+            dataStatus: 'pending',
+          },
+        ]}
+      />
+    );
+    await fillRequiredFields(user);
+    await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    const payload = JSON.parse(fetchMock.mock.calls[0][1].body);
+    expect(payload).toMatchObject({
+      totalCount: 4,
+      totalPrice: null,
+      totalKopecks: null,
+      knownSubtotalKopecks: 10001,
+      unknownPriceCount: 1,
+      totalComplete: false,
+    });
+    expect(payload.items.map((p) => p.id)).toEqual([1, 2, 3, 'manual-1']);
+  });
   it('рендерит checkbox согласия и ссылку на политику', () => {
     render(<QuoteForm itemsOverride={[quoteItem]} />);
 

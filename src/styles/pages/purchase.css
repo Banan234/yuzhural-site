@@ -8,7 +8,7 @@
   flex-wrap: wrap;
   gap: 9px;
   margin-bottom: 28px;
-  font-size: 13px;
+  font-size: var(--text-small);
   color: #64748b;
 }
 .purchase-heading {
@@ -21,7 +21,7 @@
   margin: 0 0 16px;
 }
 .purchase-heading p {
-  font-size: 17px;
+  font-size: var(--text-body);
   line-height: 1.65;
   color: #475569;
 }
@@ -75,7 +75,7 @@
   font-weight: var(--font-weight-medium);
 }
 .purchase-fields input,
-.purchase-fields select,
+.purchase-fields :is(select, .site-select),
 .purchase-fields textarea {
   width: 100%;
   min-width: 0;
@@ -132,13 +132,13 @@
 }
 .specification-files p {
   margin: 8px 0 14px;
-  font-size: 14px;
+  font-size: var(--text-ui);
   color: #475569;
 }
 .specification-files input {
   max-width: 100%;
   font: inherit;
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 .specification-files__list {
   list-style: none;
@@ -184,7 +184,7 @@
   overflow-wrap: anywhere;
 }
 .evidence-documents span {
-  font-size: 14px;
+  font-size: var(--text-ui);
   color: #64748b;
 }
 .evidence-grid {
@@ -204,7 +204,7 @@
   gap: 14px 24px;
 }
 .product-supply dt {
-  font-size: 14px;
+  font-size: var(--text-ui);
   color: #64748b;
   margin-bottom: 6px;
 }
@@ -214,7 +214,7 @@
   line-height: 1.5;
 }
 .product-supply__date {
-  font-size: 13px;
+  font-size: var(--text-small);
 }
 .product-supply .purchase-actions {
   margin-bottom: 10px;
@@ -248,7 +248,7 @@
 }
 .application-choices span {
   margin-top: 8px;
-  font-size: 14px;
+  font-size: var(--text-ui);
   color: #475569;
   line-height: 1.5;
 }
@@ -305,7 +305,7 @@
 }
 .quote-empty-note {
   color: #475569;
-  font-size: 14px;
+  font-size: var(--text-ui);
   line-height: 1.5;
   margin-bottom: 16px;
 }

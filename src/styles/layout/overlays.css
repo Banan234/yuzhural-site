@@ -28,7 +28,7 @@
   grid-column: 1 / -1;
 }
 .quote-field label {
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
 }
 .quote-field input,
@@ -42,7 +42,7 @@
 .field-error,
 .form-error {
   color: var(--danger-text);
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 .form-success {
   margin-bottom: 16px;
@@ -59,7 +59,7 @@
   margin-top: 6px;
 }
 .char-counter {
-  font-size: 12px;
+  font-size: var(--text-caption);
   color: var(--muted);
   white-space: nowrap;
 }
@@ -67,11 +67,11 @@
 .quote-field__optional {
   font-weight: var(--font-weight-regular);
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--text-small);
   margin-left: 4px;
 }
 .quote-field__hint {
-  font-size: 12px;
+  font-size: var(--text-caption);
   color: var(--muted);
 }
 
@@ -81,7 +81,7 @@
   gap: 10px;
   color: var(--muted);
   line-height: 1.45;
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
 }
 
@@ -106,7 +106,7 @@
   border-radius: 999px;
   border: 1px solid #d7e3ef;
   background: #fff;
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
   color: #35556d;
   cursor: pointer;
@@ -189,7 +189,7 @@
 
 .modal-window--lead .hero-lead-card__title {
   padding-right: 8px;
-  font-size: 28px;
+  font-size: var(--text-section-title);
   line-height: 1.15;
 }
 
@@ -214,6 +214,11 @@
   position: fixed;
   right: 40px;
   z-index: 160;
+  --contact-accent: #b4e653;
+  --contact-accent-hover: #a3d63e;
+  --contact-on-accent: #20320f;
+  --contact-link: #42651b;
+  --contact-message-surface: #edf7d9;
   --floating-lead-widget-panel-width: 336px;
   --floating-lead-widget-panel-height: 496px;
   --floating-lead-widget-launcher-width: 300px;
@@ -246,14 +251,14 @@
   gap: 12px;
   min-height: 70px;
   padding: 0 14px 0 16px;
-  color: #f0f1f1;
-  background: linear-gradient(135deg, #102947 0%, var(--primary-dark) 100%);
+  color: var(--contact-on-accent);
+  background: var(--contact-accent);
   position: relative;
 }
 
 .floating-lead-widget__title {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 18px;
   font-weight: var(--font-weight-regular);
   position: relative;
@@ -268,7 +273,7 @@
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: rgba(240, 241, 241, 0.95);
+  color: var(--contact-on-accent);
   font-size: 18px;
   line-height: 1;
   cursor: pointer;
@@ -317,7 +322,7 @@
 }
 
 .floating-lead-widget__loading {
-  font-size: 13px;
+  font-size: var(--text-small);
   color: #607384;
   text-align: center;
   padding: 8px 0;
@@ -338,13 +343,13 @@
   border-radius: 12px;
   background: #f0f3f4;
   color: #222d38;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 19.6px;
 }
 
 .floating-lead-widget__bubble--customer {
-  background: #dceaf7;
-  color: #16324a;
+  background: var(--contact-message-surface);
+  color: var(--contact-on-accent);
 }
 
 .floating-lead-widget__bubble-text {
@@ -353,7 +358,7 @@
 
 .floating-lead-widget__bubble-time {
   margin-top: 6px;
-  font-size: 11px;
+  font-size: var(--text-caption);
   line-height: 1.2;
   color: #6a7f92;
   text-align: right;
@@ -376,7 +381,7 @@
 
 .floating-lead-widget__capture-label {
   color: #607384;
-  font-size: 13px;
+  font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
 }
 
@@ -404,7 +409,7 @@
   align-items: flex-start;
   gap: 10px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-caption);
   line-height: 1.35;
 }
 
@@ -412,15 +417,15 @@
   margin-top: 2px;
   width: 16px;
   height: 16px;
-  accent-color: var(--primary);
+  accent-color: var(--contact-link);
 }
 
 .floating-lead-widget__consent a {
-  color: var(--primary-dark);
+  color: var(--contact-link);
 }
 
 .floating-lead-widget__consent-error {
-  font-size: 12px;
+  font-size: var(--text-caption);
   line-height: 1.35;
 }
 
@@ -445,7 +450,7 @@
   background: transparent;
   padding: 18px 0 0;
   color: #222d38;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 20px;
   font-family: inherit;
   overflow-y: auto;
@@ -464,8 +469,8 @@
   height: 32px;
   border: 0;
   border-radius: 999px;
-  background: var(--primary);
-  color: #fff;
+  background: var(--contact-accent);
+  color: var(--contact-on-accent);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -473,7 +478,7 @@
 }
 
 .floating-lead-widget__send:hover:not(:disabled) {
-  background: #246fd3;
+  background: var(--contact-accent-hover);
 }
 
 .floating-lead-widget__send svg {
@@ -482,8 +487,8 @@
 }
 
 .floating-lead-widget__phone-link {
-  color: var(--primary-dark);
-  font-size: 13px;
+  color: var(--contact-link);
+  font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
   white-space: nowrap;
@@ -499,9 +504,9 @@
   padding: 0 16px;
   border: 0;
   border-radius: 8px 34px 0 0;
-  background: linear-gradient(135deg, #102947 0%, var(--primary-dark) 100%);
-  color: #f0f1f1;
-  font-size: 15px;
+  background: var(--contact-accent);
+  color: var(--contact-on-accent);
+  font-size: var(--text-body);
   font-weight: var(--font-weight-regular);
   text-align: left;
   cursor: pointer;
@@ -518,7 +523,7 @@
   justify-content: center;
   border-radius: 0;
   border: 0;
-  color: #fff;
+  color: var(--contact-on-accent);
 }
 
 .floating-lead-widget__launcher-icon svg {
@@ -599,7 +604,7 @@
 
   .floating-lead-widget__bubble {
     max-width: 224px;
-    font-size: 14px;
+    font-size: var(--text-ui);
     line-height: 18px;
   }
 
@@ -619,7 +624,7 @@
     height: 54px;
     min-height: 54px;
     padding-top: 16px;
-    font-size: 14px;
+    font-size: var(--text-ui);
   }
 
   .floating-lead-widget__launcher {

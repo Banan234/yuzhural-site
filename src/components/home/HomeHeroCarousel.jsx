@@ -4,9 +4,9 @@ import Container from '../ui/Container';
 import { CATALOG_CANONICAL_PATH } from '../../lib/canonicalPaths.js';
 
 const quickFacts = [
-  { icon: 'truck', title: 'Самовывоз', detail: 'со склада' },
+  { icon: 'truck', title: 'Самовывоз', detail: 'со склада в Челябинске' },
   { icon: 'shield', title: 'Работа с НДС', detail: 'документы к поставке' },
-  { icon: 'box', title: 'Самовывоз', detail: 'в Челябинске' },
+  { icon: 'box', title: 'Комплектация', detail: 'по вашей заявке' },
 ];
 
 function FactIcon({ name }) {
@@ -37,11 +37,11 @@ const slides = [
     label: 'Кабель под ваш проект',
     title: ['Кабель и провод', 'для вашего проекта'],
     description:
-      'Пришлите спецификацию или список позиций — подберём кабель, уточним наличие и рассчитаем стоимость поставки.',
-    image: '/home-warehouse-concept.jpg',
-    mobileImage: '/mobile-hero-cable.webp',
-    primary: { label: 'Отправить спецификацию', to: '/specification/' },
-    secondary: { label: 'Перейти в каталог', to: CATALOG_CANONICAL_PATH },
+      'Подберём кабель по спецификации, уточним наличие и подготовим КП.',
+    image: '/home-hero-panoramic-v1.jpg',
+    mobileImage: '/home-hero-panoramic-v1.jpg',
+    primary: { label: 'Отправить заявку', to: '/specification/' },
+    secondary: { label: 'Каталог', to: CATALOG_CANONICAL_PATH },
   },
   {
     id: 'selection',
@@ -141,7 +141,7 @@ export default function HomeHeroCarousel() {
   }
   return (
     <section
-      className="home-concept__hero home-concept__hero--carousel"
+      className={`home-concept__hero home-concept__hero--carousel home-concept__hero--technical home-concept__hero--panoramic${available && !hovered && !focused && !touching ? ' is-playing' : ''}`}
       aria-label="Кабель, подбор и самовывоз"
       aria-roledescription="карусель"
       onMouseEnter={() => setHovered(true)}
@@ -213,6 +213,9 @@ export default function HomeHeroCarousel() {
                   aria-hidden={index !== active}
                   {...(index !== active ? { inert: '' } : {})}
                 >
+                  <p className="home-concept__hero-eyebrow">
+                    ЮжУралЭлектроКабель · Челябинск
+                  </p>
                   <Heading
                     className="home-concept__hero-title"
                     id={index === 0 ? 'home-hero-title' : undefined}
@@ -256,7 +259,7 @@ export default function HomeHeroCarousel() {
             className="home-concept__hero-navigation"
             aria-label="Управление слайдами"
           >
-            <div className="home-concept__hero-dots">
+            <div className="home-concept__hero-tabs">
               {slides.map((slide, index) => (
                 <button
                   key={slide.id}
@@ -266,36 +269,29 @@ export default function HomeHeroCarousel() {
                   aria-controls="home-hero-slides"
                   onClick={() => setActive(index)}
                 >
-                  <span />
+                  <span className="home-concept__hero-tab-track">
+                    <span />
+                  </span>
+                  <span className="home-concept__hero-tab-caption">
+                    <small>{String(index + 1).padStart(2, '0')}</small>
+                    {
+                      [
+                        'Кабель и провод',
+                        'Подбор под задачу',
+                        'Получение заказа',
+                      ][index]
+                    }
+                  </span>
                 </button>
               ))}
             </div>
-            <span className="home-concept__hero-counter" aria-hidden="true">
+            <span
+              className="home-concept__hero-counter visually-hidden"
+              aria-hidden="true"
+            >
               {String(active + 1).padStart(2, '0')} /{' '}
               {String(slides.length).padStart(2, '0')}
             </span>
-            <div className="home-concept__hero-arrows">
-              <button
-                type="button"
-                aria-label="Предыдущий слайд"
-                aria-controls="home-hero-slides"
-                onClick={() => move(-1)}
-              >
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="m14 6-6 6 6 6" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                aria-label="Следующий слайд"
-                aria-controls="home-hero-slides"
-                onClick={() => move(1)}
-              >
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="m10 6 6 6-6 6" />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
       </Container>

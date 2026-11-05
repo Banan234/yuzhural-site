@@ -82,6 +82,51 @@ export function calculateShipment(packages) {
   }
   return { massKg, volumeM3, count, places };
 }
+// Compare entered decimal dimensions exactly. Binary division can turn
+// 1.2 / 0.4 into 2.9999999999999996 and incorrectly discard an entire row.
+function dimensionParts(value) {
+  const [base, exponent = '0'] = String(value).toLowerCase().split('e');
+  const [whole, fraction = ''] = base.split('.');
+  let digits = BigInt(whole + fraction);
+  let scale = fraction.length - Number(exponent);
+  if (scale < 0) {
+    digits *= 10n ** BigInt(-scale);
+    scale = 0;
+  }
+  return { digits, scale };
+}
+
+function completePlaces(span, size) {
+  const a = dimensionParts(span),
+    b = dimensionParts(size);
+  return Number(
+    (a.digits * 10n ** BigInt(b.scale)) / (b.digits * 10n ** BigInt(a.scale))
+  );
+}
+
+function fitsExactFloorArea(places, length, width) {
+  function area(a, b, count = 1) {
+    const x = dimensionParts(a),
+      y = dimensionParts(b);
+    return {
+      digits: x.digits * y.digits * BigInt(count),
+      scale: x.scale + y.scale,
+    };
+  }
+  const required = places.map((item) =>
+    area(item.lengthM, item.widthM, item.count)
+  );
+  const available = area(length, width);
+  const scale = Math.max(
+    available.scale,
+    ...required.map((item) => item.scale)
+  );
+  const scaled = (item) => item.digits * 10n ** BigInt(scale - item.scale);
+  return (
+    required.reduce((sum, item) => sum + scaled(item), 0n) <= scaled(available)
+  );
+}
+
 export function estimateTransportFit(shipment, transport) {
   const [length, width, height, payload] = [
     transport.lengthM,
@@ -108,7 +153,7 @@ export function estimateTransportFit(shipment, transport) {
     0
   );
   const fitsMass = shipment.massKg <= payload;
-  const fitsFloorArea = floorArea <= length * width;
+  const fitsFloorArea = fitsExactFloorArea(shipment.places, length, width);
   // Рядная раскладка рассчитывается только для одинаковых грузовых мест.
   const first = shipment.places[0];
   const homogeneous = shipment.places.every(
@@ -118,9 +163,9 @@ export function estimateTransportFit(shipment, transport) {
       item.heightM === first.heightM
   );
   const straight =
-    Math.floor(length / first.lengthM) * Math.floor(width / first.widthM);
+    completePlaces(length, first.lengthM) * completePlaces(width, first.widthM);
   const rotated =
-    Math.floor(length / first.widthM) * Math.floor(width / first.lengthM);
+    completePlaces(length, first.widthM) * completePlaces(width, first.lengthM);
   if (!Number.isSafeInteger(straight) || !Number.isSafeInteger(rotated))
     return null;
   const capacity =
@@ -133,11 +178,13 @@ export function estimateTransportFit(shipment, transport) {
     capacity,
     fitsGrid: capacity === null ? null : shipment.count <= capacity,
     orientation: rotated > straight ? 'rotated' : 'straight',
-    columns: Math.floor(
-      width / (rotated > straight ? first.lengthM : first.widthM)
+    columns: completePlaces(
+      width,
+      rotated > straight ? first.lengthM : first.widthM
     ),
-    rows: Math.floor(
-      length / (rotated > straight ? first.widthM : first.lengthM)
+    rows: completePlaces(
+      length,
+      rotated > straight ? first.widthM : first.lengthM
     ),
   };
 }
