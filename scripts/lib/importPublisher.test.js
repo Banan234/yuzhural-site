@@ -1,3 +1,4 @@
+import { writeCatalogRendererFixture } from '../test/catalogRendererFixture.js';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -37,6 +38,9 @@ describe('mapSeoSummaryToPublishedPaths', () => {
     const summary = mapSeoSummaryToPublishedPaths(
       {
         indexPath: '/tmp/public-stage/sitemap.xml',
+        pagesPath: '/tmp/public-stage/sitemap-pages.xml',
+        categoriesPath: '/tmp/public-stage/sitemap-categories.xml',
+        productsPath: '/tmp/public-stage/sitemap-products.xml',
         robotsPath: '/tmp/public-stage/robots.txt',
         productSitemapPaths: [
           '/tmp/public-stage/sitemap-products-1.xml',
@@ -50,6 +54,9 @@ describe('mapSeoSummaryToPublishedPaths', () => {
 
     expect(summary).toEqual({
       indexPath: '/srv/site/public/sitemap.xml',
+      pagesPath: '/srv/site/public/sitemap-pages.xml',
+      categoriesPath: '/srv/site/public/sitemap-categories.xml',
+      productsPath: '/srv/site/public/sitemap-products.xml',
       robotsPath: '/srv/site/public/robots.txt',
       productSitemapPaths: [
         '/srv/site/public/sitemap-products-1.xml',
@@ -105,6 +112,12 @@ describe('publishImportArtifacts', () => {
       suspiciousPriceStats: {},
     };
 
+    await fs.mkdir(path.join(projectRoot, 'dist'));
+    await writeCatalogRendererFixture(path.join(projectRoot, 'dist'));
+    await fs.writeFile(
+      path.join(projectRoot, 'dist/index.html'),
+      '<!doctype html><html><head><title>fixture</title></head><body><div id="root"></div></body></html>'
+    );
     const publishOptions = {
       projectRoot,
       catalogDir,
@@ -170,7 +183,7 @@ describe('publishImportArtifacts', () => {
     expect(await fs.readFile(paths.reportHtmlFile, 'utf-8')).toContain(
       'Отчёт импорта'
     );
-    expect(result.runtimeProductPrerenderCount).toBeNull();
+    expect(result.runtimeProductPrerenderCount).toBe(0);
 
     // A later price introduces previously unseen SKUs. Stale imported metadata
     // cannot bypass the current database at the publication boundary.
@@ -212,6 +225,28 @@ describe('publishImportArtifacts', () => {
     });
     expect(saved[1].designationDecoded.family).toBeNull();
     expect(saved[1].designationDecoded.status).toBe('unresolved');
+    const savedHtml = await fs.readFile(
+      path.join(publicDir, 'product/new-99.html'),
+      'utf8'
+    );
+    expect(savedHtml).toContain('"price":123.45');
+    expect(savedHtml).toContain('"stock":56');
+    const oldPointer = await fs.readlink(catalogDir);
+    await expect(
+      publishImportArtifacts({
+        ...publishOptions,
+        products: [{ ...newProducts[0], price: 999 }],
+        runtimePrerenderTemplateDir: path.join(projectRoot, 'missing-template'),
+      })
+    ).rejects.toThrow(/шаблон/);
+    expect(await fs.readlink(catalogDir)).toBe(oldPointer);
+    expect(
+      await fs.readFile(path.join(publicDir, 'product/new-99.html'), 'utf8')
+    ).toBe(savedHtml);
+    expect(
+      JSON.parse(await fs.readFile(paths.outputFile, 'utf8'))[0].price
+    ).toBe(123.45);
+
     const coverage = JSON.parse(
       await fs.readFile(
         path.join(catalogDir, 'designation-coverage.json'),
@@ -228,5 +263,36 @@ describe('publishImportArtifacts', () => {
       JSON.parse(await fs.readFile(paths.reportFile, 'utf8'))
         .designationDecoding
     ).toEqual(coverage);
+    const updated = [
+      { ...newProducts[0], price: 321.09, stock: 1 },
+      {
+        ...newProducts[1],
+        id: 101,
+        sku: 'NEW-101',
+        slug: 'new-101',
+        price: 87.65,
+        stock: 99,
+      },
+    ];
+    await publishImportArtifacts({
+      ...publishOptions,
+      products: updated,
+      sourcePriceBuffer: Buffer.from('synthetic next workbook'),
+    });
+    expect(
+      await fs.readFile(path.join(publicDir, 'product/new-99.html'), 'utf8')
+    ).toContain('"price":321.09');
+    expect(
+      await fs.readFile(path.join(publicDir, 'product/new-99.html'), 'utf8')
+    ).toContain('"stock":1');
+    await expect(
+      fs.access(path.join(publicDir, 'product/new-100.html'))
+    ).rejects.toMatchObject({ code: 'ENOENT' });
+    expect(
+      await fs.readFile(path.join(publicDir, 'product/new-101.html'), 'utf8')
+    ).toContain('"stock":99');
+    expect(await fs.readFile(paths.publicPriceFile, 'utf8')).toBe(
+      'synthetic next workbook'
+    );
   });
 });

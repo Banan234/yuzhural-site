@@ -71,8 +71,19 @@ export function parseCableImageProduct(product, config, colorRules) {
   }
   const primaryCores = Number(parsed.cores ?? product.cores);
   const section = Number(parsed.crossSection ?? product.crossSection);
-  const groundCores = Number(parsed.groundCores ?? product.groundCores ?? 0);
-  const groundSection = parsed.groundSection ?? product.groundSection ?? null;
+  const groundCores = Number(
+    parsed.groundCores ??
+      parsed.neutralCores ??
+      product.groundCores ??
+      product.neutralCores ??
+      0
+  );
+  const groundSection =
+    parsed.groundSection ??
+    parsed.neutralSection ??
+    product.groundSection ??
+    product.neutralSection ??
+    null;
   const cores = primaryCores + groundCores;
   if (
     !Number.isInteger(primaryCores) ||

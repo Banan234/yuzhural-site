@@ -13,6 +13,9 @@ function productDiagnostic(product, code, severity, message) {
     rowIndex: Number.isInteger(product?.sourceRowIndex)
       ? product.sourceRowIndex
       : null,
+    sourceCells: product?.sourceCells,
+    sourceColumnIndex: product?.sourceColumnIndex,
+    sourceSheet: product?.sourceSheet,
     product: String(product?.name || product?.sourceName || ''),
     category: String(product?.sourceCategory || ''),
   };
@@ -28,6 +31,28 @@ export function validateNormalizedProducts(
   const stableKeyGroups = new Map();
 
   for (const product of products) {
+    if (
+      product.importDisposition === 'review' &&
+      product.priceOverrideApplied
+    ) {
+      errors.push({
+        ...productDiagnostic(
+          product,
+          'review_price_override',
+          'error',
+          'Классификационный review сопровождается ручным изменением исходной цены; требуется подтверждение коммерческих данных.'
+        ),
+        field: 'price',
+        sourceValue: product.priceOverrideApplied.sourcePrice,
+        correctedPrice: product.priceOverrideApplied.correctedPrice,
+      });
+    }
+    for (const issue of product.numberIssues || [])
+      errors.push({
+        ...productDiagnostic(product, issue.code, 'error', issue.message),
+        field: issue.field,
+        sourceValue: issue.value,
+      });
     if (!String(product?.name || '').trim()) {
       errors.push(
         productDiagnostic(

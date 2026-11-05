@@ -1,3 +1,4 @@
+import { normalizeSip2Neutral } from '../../shared/sip2Neutral.js';
 import { formatManufacturerTitle } from '../../shared/manufacturerTitle.js';
 // Файл парсит строки XLS-прайса, извлекает марки, характеристики, единицы измерения и цены.
 import { readFileSync } from 'fs';
@@ -293,6 +294,8 @@ export function createEmptyImportResult() {
     excludedNonCable: 0,
     reviewRows: [],
     skippedRows: [],
+    suspiciousStockRows: [],
+    sourceObservations: [],
   };
 }
 
@@ -318,20 +321,27 @@ export function normalizeImportedProduct(product) {
   const normalizedUnit = normalizeUnit(product.unit);
   const normalizedPrice = normalizeNumber(product.price);
   const normalizedStock = normalizeNumber(product.stock);
-  const inferredUnit = inferMissingUnit({
-    unit: normalizedUnit,
-    price: normalizedPrice,
-    stock: normalizedStock,
-    parsedName,
-  });
   const normalizedCommercial = normalizeCommercialFields({
-    unit: inferredUnit,
+    unit: normalizedUnit,
     price: normalizedPrice,
     stock: normalizedStock,
   });
 
   return {
     sourceName,
+    numberIssues: ['price', 'stock']
+      .filter(
+        (field) =>
+          !Number.isFinite(
+            field === 'price' ? normalizedPrice : normalizedStock
+          )
+      )
+      .map((field) => ({
+        field,
+        value: String(product.sourceNumberValues?.[field] ?? product[field]),
+        code: 'number_format',
+        message: `Неоднозначный или недопустимый числовой формат ${field}: ${String(product.sourceNumberValues?.[field] ?? product[field])}`,
+      })),
     name: normalizedName,
     fullName: normalizedName,
     mark: formatManufacturerTitle(
@@ -357,6 +367,12 @@ export function normalizeImportedProduct(product) {
     hasGroundCore: parsedName.hasGroundCore,
     groundCores: parsedName.groundCores,
     groundSection: parsedName.groundSection,
+    ...(parsedName.neutralCores != null
+      ? {
+          neutralCores: parsedName.neutralCores,
+          neutralSection: parsedName.neutralSection,
+        }
+      : {}),
     voltage: parsedName.voltage,
     attributes: parsedName.attributes,
     unit: normalizedCommercial.unit,
@@ -404,6 +420,14 @@ export function parseCombinedCell(value) {
     unit,
     price,
     stock,
+    ...(!Number.isFinite(price) || !Number.isFinite(stock)
+      ? {
+          sourceNumberValues: {
+            price: tailMatch[2].trim(),
+            stock: tailMatch[3].trim(),
+          },
+        }
+      : {}),
   };
 }
 
@@ -427,33 +451,6 @@ function normalizeUnit(unit) {
   }
 
   return value;
-}
-
-// Если единица измерения в прайсе отсутствует, но позиция выглядит как кабель
-// (есть спецификация жил/сечения), цена высокая, а остаток дробный — это
-// почти наверняка километры. Такое встречается у КМТВэВ и других «редких»
-// марок, где поставщик не заполнил колонку «ед. изм.».
-function inferMissingUnit({ unit, price, stock, parsedName }) {
-  if (unit) {
-    return unit;
-  }
-
-  const looksLikeCable = Boolean(
-    (parsedName?.cores && parsedName?.crossSection) ||
-    parsedName?.conductorConfiguration
-  );
-  if (!looksLikeCable) {
-    return unit;
-  }
-
-  // Цена > 5000 за «штуку» для кабеля с сечением и дробный остаток (< 10)
-  // — надёжный признак, что цена указана за км, а остаток в км.
-  const fractionalStock = stock > 0 && stock < 10;
-  if (price >= 5000 && fractionalStock) {
-    return 'км';
-  }
-
-  return unit;
 }
 
 function normalizeCommercialFields({ unit, price, stock }) {
@@ -601,33 +598,36 @@ export function parseProductName(value) {
     parsingWarnings.push('unrecognized_specification');
   }
 
-  return {
-    mark,
-    markFamily,
-    manufacturer,
-    manufacturerMatch: {
-      matchedAlias: extractedManufacturer.matchedAlias,
-      position: extractedManufacturer.position,
-      confidence: extractedManufacturer.confidence,
-      ambiguous: extractedManufacturer.ambiguous,
-      candidates: extractedManufacturer.candidates,
-      nameWithoutManufacturer: extractedManufacturer.nameWithoutManufacturer,
+  return normalizeSip2Neutral(
+    {
+      mark,
+      markFamily,
+      manufacturer,
+      manufacturerMatch: {
+        matchedAlias: extractedManufacturer.matchedAlias,
+        position: extractedManufacturer.position,
+        confidence: extractedManufacturer.confidence,
+        ambiguous: extractedManufacturer.ambiguous,
+        candidates: extractedManufacturer.candidates,
+        nameWithoutManufacturer: extractedManufacturer.nameWithoutManufacturer,
+      },
+      cores,
+      crossSection,
+      groupCores,
+      conductorConfiguration,
+      ...getSlashSpecificationFields(mark, conductorConfiguration),
+      parsingWarnings,
+      hasGroundCore: Boolean(groundCores && groundSection),
+      groundCores,
+      groundSection,
+      voltage: voltageMatch
+        ? Number((voltageMatch[2] || voltageMatch[1]).replace(',', '.'))
+        : null,
+      attributes,
+      isImplicitSingleCore,
     },
-    cores,
-    crossSection,
-    groupCores,
-    conductorConfiguration,
-    ...getSlashSpecificationFields(mark, conductorConfiguration),
-    parsingWarnings,
-    hasGroundCore: Boolean(groundCores && groundSection),
-    groundCores,
-    groundSection,
-    voltage: voltageMatch
-      ? Number((voltageMatch[2] || voltageMatch[1]).replace(',', '.'))
-      : null,
-    attributes,
-    isImplicitSingleCore,
-  };
+    source
+  );
 }
 
 export function resolveCategory(product, categoryByFamily = new Map()) {
@@ -706,35 +706,34 @@ export function buildCategoryMap(products) {
 }
 
 function normalizeNumber(value) {
-  if (typeof value === 'number' && Number.isFinite(value)) {
-    return value;
+  if (typeof value === 'number') {
+    return Number.isFinite(value) ? value : NaN;
   }
 
-  const raw = String(value || '')
-    .replace(/\s+/g, '')
-    .trim();
+  const text = String(value ?? '').trim();
+  if (
+    /\s/.test(text) &&
+    !/^[+-]?\d{1,3}(?:[ \u00a0\u202f]\d{3})+(?:[.,]\d+)?$/.test(text)
+  )
+    return NaN;
+  const raw = text.replace(/[ \u00a0\u202f]/g, '');
 
   if (!raw) {
     return 0;
   }
 
-  let normalized = raw;
-
-  if (normalized.includes(',') && normalized.includes('.')) {
-    normalized = normalized.replace(/,/g, '');
-  } else if (normalized.includes(',')) {
-    const parts = normalized.split(',');
-
-    if (parts.length === 2 && parts[1].length !== 3) {
-      normalized = `${parts[0]}.${parts[1]}`;
-    } else {
-      normalized = parts.join('');
-    }
-  }
-
+  // Source contract: decimal dot or comma; comma groups of three are thousands.
+  // Mixed separators are accepted only in explicit US grouping (1,234.56).
+  // European mixed grouping (1.234,56), malformed groups and symbols are rejected.
+  let normalized;
+  if (/^[+-]?\d+(?:\.\d+)?$/.test(raw)) normalized = raw;
+  else if (/^[+-]?\d{1,3}(?:,\d{3})+(?:\.\d+)?$/.test(raw))
+    normalized = raw.replace(/,/g, '');
+  else if (/^[+-]?\d+,\d+$/.test(raw) && raw.split(',')[1].length !== 3)
+    normalized = raw.replace(',', '.');
+  else return NaN;
   const parsed = Number(normalized);
-
-  return Number.isFinite(parsed) ? parsed : 0;
+  return Number.isFinite(parsed) ? parsed : NaN;
 }
 
 function roundTo(value, precision) {

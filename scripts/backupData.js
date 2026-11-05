@@ -5,6 +5,9 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 
+import { commitArtifactBatch } from './lib/artifactTransaction.js';
+import { acquirePriceImportLock } from './lib/importLock.js';
+
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDir, '..');
 const DEFAULT_BACKUP_RELATIVE_DIR = path.join('data', 'backups');
@@ -50,10 +53,11 @@ function isSafeRelativePath(value) {
 
 async function exists(target) {
   try {
-    await fs.access(target);
+    await fs.lstat(target);
     return true;
-  } catch {
-    return false;
+  } catch (error) {
+    if (error.code === 'ENOENT') return false;
+    throw error;
   }
 }
 
@@ -63,7 +67,10 @@ async function hashFile(filePath) {
 }
 
 async function collectFiles(source, relative = '') {
-  const stat = await fs.stat(source);
+  const stat = await fs.lstat(source);
+  if (stat.isSymbolicLink() || (!stat.isFile() && !stat.isDirectory())) {
+    throw new Error(`Недопустимый тип файла backup: ${source}`);
+  }
   if (stat.isFile()) {
     return [{ source, relative }];
   }
@@ -82,7 +89,10 @@ async function collectFiles(source, relative = '') {
 }
 
 async function copyEntry(source, target) {
-  const stat = await fs.stat(source);
+  const stat = await fs.lstat(source);
+  if (stat.isSymbolicLink() || (!stat.isFile() && !stat.isDirectory())) {
+    throw new Error(`Недопустимый тип файла backup: ${source}`);
+  }
   if (stat.isDirectory()) {
     await fs.mkdir(target, { recursive: true });
     const entries = await fs.readdir(source, { withFileTypes: true });
@@ -123,7 +133,23 @@ export function getBackupConfig({
   };
 }
 
-export async function createBackup({
+export async function createBackup(options = {}) {
+  const projectPath = options.projectPath || projectRoot;
+  const release = options.lockAlreadyHeld
+    ? null
+    : await acquirePriceImportLock(
+        path.join(projectPath, 'data', '.price-import.lock')
+      );
+  if (!options.lockAlreadyHeld && !release)
+    throw new Error('Импорт/backup/restore уже выполняется.');
+  try {
+    return await createBackupUnlocked(options);
+  } finally {
+    if (release) await release();
+  }
+}
+
+async function createBackupUnlocked({
   env = process.env,
   projectPath = projectRoot,
   now = new Date(),
@@ -136,27 +162,44 @@ export async function createBackup({
       .toISOString()
       .replace(/[-:]/g, '')
       .replace(/\.\d{3}Z$/, '')}-${process.pid}`;
+  if (!/^[a-zA-Z0-9_-]+$/.test(id)) throw new Error('Некорректный id backup.');
   const backupPath = path.join(config.backupDir, id);
   if (await exists(backupPath)) {
     throw new Error(`Резервная копия уже существует: ${backupPath}`);
   }
 
   const manifest = {
-    version: 1,
+    version: 2,
     id,
     createdAt: now.toISOString(),
     files: [],
     missing: [],
   };
 
-  await fs.mkdir(backupPath, { recursive: true });
+  await fs.mkdir(backupPath, { recursive: true, mode: 0o700 });
   try {
     const filesToBackup = config.includePublicArtifacts
       ? BACKUP_FILES
       : BACKUP_FILES.filter((relative) => relative !== BACKUP_PUBLIC_ARTIFACTS);
 
-    for (const relative of filesToBackup) {
-      const source = path.join(projectPath, 'data', relative);
+    const sources = filesToBackup.map((relative) => ({
+      relative,
+      source: path.join(projectPath, 'data', relative),
+    }));
+    const active = path.join(projectPath, 'data', 'catalog-current');
+    const activeStat = await fs.lstat(active).catch((error) => {
+      if (error.code === 'ENOENT') return null;
+      throw error;
+    });
+    if (activeStat) {
+      // Resolve once: the release is immutable and protected against importer pruning by the shared lock.
+      sources.push({
+        relative: 'catalog-release',
+        source: await fs.realpath(active),
+      });
+      manifest.catalogRelease = 'catalog-release';
+    }
+    for (const { relative, source } of sources) {
       if (!(await exists(source))) {
         manifest.missing.push(relative);
         continue;
@@ -168,8 +211,8 @@ export async function createBackup({
         await copyEntry(entry.source, target);
         manifest.files.push({
           path: entry.relative,
-          bytes: (await fs.stat(entry.source)).size,
-          sha256: await hashFile(entry.source),
+          bytes: (await fs.stat(target)).size,
+          sha256: await hashFile(target),
         });
       }
     }
@@ -177,6 +220,8 @@ export async function createBackup({
     manifest.files.sort((left, right) => left.path.localeCompare(right.path));
     manifest.missing.sort();
     await writeJson(path.join(backupPath, 'manifest.json'), manifest);
+    const verification = await verifyBackup(backupPath);
+    if (!verification.ok) throw new Error(verification.errors.join('\n'));
     await pruneBackups(config.backupDir, config.retention, { keep: id });
     return { ...manifest, backupPath };
   } catch (error) {
@@ -188,14 +233,38 @@ export async function createBackup({
 export async function readBackupManifest(backupPath) {
   const raw = await fs.readFile(path.join(backupPath, 'manifest.json'), 'utf8');
   const manifest = JSON.parse(raw);
-  if (!manifest || manifest.version !== 1 || !Array.isArray(manifest.files)) {
+  if (
+    !manifest ||
+    ![1, 2].includes(manifest.version) ||
+    !Array.isArray(manifest.files)
+  ) {
     throw new Error(`Некорректный manifest резервной копии: ${backupPath}`);
   }
+  const seen = new Set();
+  if (
+    manifest.catalogRelease != null &&
+    (manifest.version !== 2 || manifest.catalogRelease !== 'catalog-release')
+  )
+    throw new Error('Некорректный catalogRelease.');
   for (const entry of manifest.files) {
-    if (!entry || !isSafeRelativePath(entry.path)) {
+    const root = String(entry?.path || '').split(path.sep)[0];
+    if (
+      !entry ||
+      !isSafeRelativePath(entry.path) ||
+      path.normalize(entry.path) !== entry.path ||
+      entry.path.split(path.sep).includes('..') ||
+      seen.has(entry.path) ||
+      !(
+        BACKUP_FILES.includes(root) ||
+        (root === 'catalog-release' && manifest.catalogRelease)
+      )
+    ) {
       throw new Error(`Опасный путь в manifest резервной копии: ${backupPath}`);
     }
+    seen.add(entry.path);
   }
+  if (manifest.catalogRelease && !seen.has('catalog-release/products.json'))
+    throw new Error('В backup отсутствует products.json активного выпуска.');
   return manifest;
 }
 
@@ -205,7 +274,11 @@ export async function verifyBackup(backupPath) {
   for (const entry of manifest.files) {
     const filePath = path.join(backupPath, entry.path);
     try {
-      const stat = await fs.stat(filePath);
+      const real = await fs.realpath(filePath);
+      const root = await fs.realpath(backupPath);
+      if (!real.startsWith(root + path.sep)) throw new Error('Путь вне backup');
+      const stat = await fs.lstat(filePath);
+      if (!stat.isFile()) throw new Error('Необычный файл');
       if (stat.size !== entry.bytes) {
         errors.push(`${entry.path}: размер изменился`);
         continue;
@@ -219,6 +292,23 @@ export async function verifyBackup(backupPath) {
     }
   }
 
+  if (manifest.catalogRelease && errors.length === 0) {
+    try {
+      if (
+        !Array.isArray(
+          JSON.parse(
+            await fs.readFile(
+              path.join(backupPath, 'catalog-release/products.json'),
+              'utf8'
+            )
+          )
+        )
+      )
+        throw new Error();
+    } catch {
+      errors.push('catalog-release/products.json: требуется JSON-массив');
+    }
+  }
   return {
     ok: errors.length === 0,
     backupPath,
@@ -232,26 +322,85 @@ export async function restoreBackup(
   backupPath,
   { projectPath = projectRoot, apply = false } = {}
 ) {
-  const verification = await verifyBackup(backupPath);
-  if (!verification.ok) {
-    throw new Error(
-      `Резервная копия повреждена:\n${verification.errors.join('\n')}`
+  const data = path.join(projectPath, 'data');
+  const release = apply
+    ? await acquirePriceImportLock(path.join(data, '.price-import.lock'))
+    : null;
+  if (apply && !release)
+    throw new Error('Импорт/backup/restore уже выполняется.');
+  let stage;
+  try {
+    const verification = await verifyBackup(backupPath);
+    if (!verification.ok)
+      throw new Error(
+        `Резервная копия повреждена:\n${verification.errors.join('\n')}`
+      );
+    const manifest = await readBackupManifest(backupPath);
+    const active = path.join(data, 'catalog-current');
+    const current = await fs.lstat(active).catch((error) => {
+      if (error.code === 'ENOENT') return null;
+      throw error;
+    });
+    if (current && !manifest.catalogRelease)
+      throw new Error(
+        'Legacy backup не содержит активный выпуск: restore запрещён.'
+      );
+    if (manifest.catalogRelease && current && !current.isSymbolicLink())
+      throw new Error(
+        'catalog-current должен отсутствовать или быть symlink; остановите сервис и перенесите прежний каталог вручную.'
+      );
+    if (!apply) return { ...verification, applied: false };
+    stage = await fs.mkdtemp(path.join(data, '.restore-'));
+    // Only listed, verified files are copied; no unlisted payload is installed.
+    for (const entry of manifest.files) {
+      const target = path.join(stage, entry.path);
+      await copyEntry(path.join(backupPath, entry.path), target);
+      if (
+        (await fs.stat(target)).size !== entry.bytes ||
+        (await hashFile(target)) !== entry.sha256
+      )
+        throw new Error(`Backup изменился: ${entry.path}`);
+    }
+    if (manifest.catalogRelease) {
+      for (const [source, target] of [
+        ['products.json', 'products.json'],
+        ['productRegistry.json', 'productRegistry.json'],
+        ['public/price.xls', 'price.xls'],
+      ]) {
+        const from = path.join(stage, 'catalog-release', source);
+        if (await exists(from)) {
+          await fs.rm(path.join(stage, target), { force: true });
+          await copyEntry(from, path.join(stage, target));
+        }
+      }
+    }
+    const roots = (await fs.readdir(stage)).filter(
+      (name) => name !== 'catalog-release'
     );
+    const artifacts = roots.map((name) => ({
+      stagedPath: path.join(stage, name),
+      targetPath: path.join(data, name),
+    }));
+    if (manifest.catalogRelease)
+      artifacts.push({
+        stagedPath: path.join(stage, 'catalog-release'),
+        targetPath: active,
+        atomicDirectory: true,
+      });
+    await commitArtifactBatch(artifacts);
+    return {
+      ...verification,
+      applied: true,
+      catalogRestored: Boolean(manifest.catalogRelease),
+      restored: manifest.files.map((entry) => entry.path),
+    };
+  } finally {
+    try {
+      if (stage) await fs.rm(stage, { recursive: true, force: true });
+    } finally {
+      if (release) await release();
+    }
   }
-  if (!apply) {
-    return { ...verification, applied: false };
-  }
-
-  const restored = [];
-  for (const entry of (await readBackupManifest(backupPath)).files) {
-    const source = path.join(backupPath, entry.path);
-    const target = path.join(projectPath, 'data', entry.path);
-    await fs.mkdir(path.dirname(target), { recursive: true });
-    await fs.copyFile(source, target);
-    restored.push(entry.path);
-  }
-
-  return { ...verification, applied: true, restored };
 }
 
 export async function listBackups({

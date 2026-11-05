@@ -1,3 +1,4 @@
+import { isProductPending } from '../../shared/productAvailability.js';
 // Подготовка файлов импорта, SEO/prerender и транзакционная установка.
 
 import fs from 'node:fs/promises';
@@ -6,6 +7,7 @@ import { randomUUID } from 'node:crypto';
 import {
   loadTemplate as loadPrerenderTemplate,
   prerenderProducts,
+  prerenderCatalogRelease,
   validatePrerenderProducts,
 } from '../prerender.js';
 import { assertProductPrerenderCoverage } from './productPrerenderAudit.js';
@@ -99,14 +101,13 @@ async function refreshCompatibilityFile(sourcePath, targetPath) {
 }
 
 async function writeRuntimeProductPrerender({
-  enabled,
   products,
   seoSummary,
   outputDir,
   templateDir,
   sourceFile,
+  categoriesData,
 }) {
-  if (!enabled) return null;
   if (!seoSummary) {
     throw new Error(
       'Runtime product-prerender требует свежий sitemap из writeSeoArtifacts.'
@@ -128,6 +129,11 @@ async function writeRuntimeProductPrerender({
     log: null,
     validate: false,
   });
+  await prerenderCatalogRelease(template, products, {
+    outputDir,
+    templateDir,
+    categoriesData,
+  });
   const productDir = path.join(outputDir, 'product');
   const writtenCount = await countHtmlFiles(productDir);
   const coverage = await assertProductPrerenderCoverage({
@@ -138,7 +144,7 @@ async function writeRuntimeProductPrerender({
   });
   if (writtenCount !== coverage.htmlCount) {
     throw new Error(
-      `Runtime prerender записал ${writtenCount} HTML, но product sitemap содержит ${coverage.htmlCount} URL.`
+      `Runtime prerender записал ${writtenCount} HTML, но полный набор карточек требует ${coverage.htmlCount} HTML.`
     );
   }
   return writtenCount;
@@ -174,12 +180,11 @@ export function mapSeoSummaryToPublishedPaths(
     path.join(publicDir, path.relative(stagedPublicDir, filePath));
   return {
     ...seoSummary,
-    ...(seoSummary.indexPath
-      ? { indexPath: mapPath(seoSummary.indexPath) }
-      : {}),
-    ...(seoSummary.robotsPath
-      ? { robotsPath: mapPath(seoSummary.robotsPath) }
-      : {}),
+    ...Object.fromEntries(
+      ['indexPath', 'pagesPath', 'categoriesPath', 'productsPath', 'robotsPath']
+        .filter((key) => seoSummary[key])
+        .map((key) => [key, mapPath(seoSummary[key])])
+    ),
     ...(seoSummary.productSitemapPaths
       ? {
           productSitemapPaths: seoSummary.productSitemapPaths.map(mapPath),
@@ -203,7 +208,6 @@ export async function publishImportArtifacts({
   inputFile,
   categoriesFile,
   runtimePrerenderTemplateDir,
-  runtimePrerenderEnabled,
   siteUrl,
   products,
   registry,
@@ -216,6 +220,26 @@ export async function publishImportArtifacts({
   generatedAt,
   source,
 }) {
+  for (const product of products) {
+    if (isProductPending(product)) {
+      if (
+        product.price !== null ||
+        product.stock !== null ||
+        product.unit !== null ||
+        product.description !== 'Данные уточняются'
+      )
+        throw new Error(
+          'Небезопасные коммерческие значения в изолированной карточке.'
+        );
+    } else if (
+      !Number.isFinite(product.price) ||
+      product.price <= 0 ||
+      !Number.isFinite(product.stock) ||
+      product.stock <= 0 ||
+      !['м', 'кг', 'шт', 'упак', 'бухта'].includes(product.unit)
+    )
+      throw new Error('Неизолированная ошибочная строка в выпуске.');
+  }
   const designationBatch = enrichPriceDesignations(products, { generatedAt });
   products = designationBatch.products;
   report.designationDecoding = designationBatch.report;
@@ -310,12 +334,12 @@ export async function publishImportArtifacts({
       categoriesData,
     });
     const runtimeProductPrerenderCount = await writeRuntimeProductPrerender({
-      enabled: runtimePrerenderEnabled,
       products,
       seoSummary,
       outputDir: stagedPublicDir,
       templateDir: runtimePrerenderTemplateDir,
       sourceFile: outputFile,
+      categoriesData,
     });
     report.seo = seoSummary.counts;
     report.runtimeProductPrerenderCount = runtimeProductPrerenderCount;

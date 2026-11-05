@@ -1,3 +1,4 @@
+import { isProductPending } from '../../shared/productAvailability.js';
 // Сравнение каталога и статистика истории цен для контроля импорта.
 
 export const PRICE_JUMP_ALERT_PERCENT = 50;
@@ -95,7 +96,11 @@ export function buildDiff(previous, current) {
       continue;
     }
 
-    if (Number(prev.price) !== Number(product.price)) {
+    if (
+      !isProductPending(prev) &&
+      !isProductPending(product) &&
+      Number(prev.price) !== Number(product.price)
+    ) {
       const deltaPercent = prev.price
         ? Number((((product.price - prev.price) / prev.price) * 100).toFixed(2))
         : null;
@@ -118,7 +123,11 @@ export function buildDiff(previous, current) {
       }
     }
 
-    if (Number(prev.stock) !== Number(product.stock)) {
+    if (
+      !isProductPending(prev) &&
+      !isProductPending(product) &&
+      Number(prev.stock) !== Number(product.stock)
+    ) {
       stockChanged.push({
         name: product.name,
         category: product.category,
@@ -237,6 +246,7 @@ export function buildHistorySnapshot(
   const unitPrices = {};
 
   for (const product of products) {
+    if (isProductPending(product)) continue;
     const unit = String(product.unit || '').trim();
     const price = Number(product.price);
 

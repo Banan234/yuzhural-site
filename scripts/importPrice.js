@@ -1,3 +1,11 @@
+import {
+  indexSourceIdentities,
+  resolveSourcePresence,
+  finishPartialImport,
+  sourcePosition,
+} from './lib/partialPriceImport.js';
+import { isProductPending } from '../shared/productAvailability.js';
+import { readPriceWorksheetRows } from './lib/priceWorkbookRows.js';
 import { quarantineInvalidProducts } from './lib/quarantineProducts.js';
 import { updateImportStatus } from './lib/importStatus.js';
 import { runImportProcess } from './lib/importProcess.js';
@@ -291,7 +299,19 @@ function applyPriceOverride(product) {
   ) {
     newPrice = product.price * override.priceMultiply;
   }
-  return { ...product, price: Math.round(newPrice * 1000) / 1000 };
+  return {
+    ...product,
+    price: Math.round(newPrice * 1000) / 1000,
+    ...(newPrice !== product.price
+      ? {
+          priceOverrideApplied: {
+            sourcePrice: product.price,
+            correctedPrice: newPrice,
+            reason: override.reason || '',
+          },
+        }
+      : {}),
+  };
 }
 
 async function loadImportConfig() {
@@ -354,7 +374,7 @@ export function assertWorksheetWithinRowLimit(
   }
 }
 
-async function loadWorkbookRows({ sourceBuffer = null } = {}) {
+export async function loadWorkbookRows({ sourceBuffer = null } = {}) {
   try {
     const workbookBuffer =
       sourceBuffer || (await readLocalPriceFile(inputFile));
@@ -373,12 +393,7 @@ async function loadWorkbookRows({ sourceBuffer = null } = {}) {
     const worksheet = workbook.Sheets[firstSheetName];
     assertWorksheetWithinRowLimit(worksheet, xlsx);
 
-    return xlsx.utils.sheet_to_json(worksheet, {
-      header: 1,
-      blankrows: false,
-      defval: '',
-      raw: false,
-    });
+    return readPriceWorksheetRows(worksheet, xlsx, firstSheetName);
   } catch (error) {
     if (error.code === 'ERR_MODULE_NOT_FOUND') {
       throw new Error(
@@ -636,6 +651,8 @@ function buildClassificationReport(products, config) {
     return {
       id: product.id,
       sourceRowIndex: product.sourceRowIndex,
+      sourceCells: product.sourceCells,
+      sourceSheet: product.sourceSheet,
       name: product.name,
       sourceCategory: product.sourceCategory || '',
       catalogSectionSlug: product.catalogSectionSlug || '',
@@ -684,9 +701,15 @@ function stripClassificationDiagnostics(product) {
     catalogClassificationMatch,
     manufacturerMatch,
     sourceRowIndex,
+    sourceIdentityRowIndex,
+    sourceColumnIndex,
+    sourceCells,
+    sourceSheet,
+    numberIssues,
     importDisposition,
     dispositionReason,
     dispositionEvidence,
+    priceOverrideApplied,
     ...publicProduct
   } = product;
 
@@ -844,13 +867,26 @@ async function main() {
 
   const importResult = extractProducts(rows, { applyPriceOverride });
   const manufacturerSummary = summarizeManufacturers(importResult.products);
-  let classifiedProducts = classifyEligibleProducts(
-    importResult.products,
-    importResult
-  );
+  let classifiedProducts = classifyEligibleProducts(importResult.products, {
+    ...importResult,
+    previousProducts,
+    registry,
+  });
   importResult.excludedNonCable = importResult.skippedRows.filter(
     (row) => row.expectedExclusion
   ).length;
+  const sourceIdentities = indexSourceIdentities(classifiedProducts, registry);
+  const sourcePresence = resolveSourcePresence(
+    previousProducts,
+    importResult.sourceObservations,
+    sourceIdentities
+  );
+  const sourceProductCount = new Set([
+    ...importResult.sourceObservations
+      .filter((row) => ['product', 'skip', 'invalid'].includes(row.type))
+      .map(sourcePosition),
+    ...[...sourcePresence.matched.values()].flat().map(sourcePosition),
+  ]).size;
   const quarantined = importResult.products.filter(
     (product) => product.importDisposition === 'review'
   );
@@ -865,28 +901,17 @@ async function main() {
   );
   quarantined.push(...validation.quarantined);
   classifiedProducts = validation.eligible;
-  // Для отложенных строк сохраняем прежние цены и остатки, если товар уже был в каталоге.
-  const quarantinedKeys = new Set(quarantined.map(buildStableKey));
-  const importedKeys = new Set(classifiedProducts.map(buildStableKey));
-  for (const previous of previousProducts) {
-    const key = buildStableKey(previous);
-    if (
-      quarantinedKeys.has(key) &&
-      !importedKeys.has(key) &&
-      isCableCatalogProduct(previous)
-    ) {
-      classifiedProducts.push(previous);
-      importedKeys.add(key);
-    }
-  }
   const previousCableProducts = previousProducts.filter(isCableCatalogProduct);
 
   // Pre-pass: считаем стабильные ключи всех текущих позиций, чтобы
   // отличить осиротевшие записи (исчезли из импорта) от просто новых.
   // Только осиротевшие — кандидаты на rename по spec-ключу.
-  const currentStableKeys = new Set(
-    classifiedProducts.map((product) => buildStableKey(product))
-  );
+  const currentStableKeys = new Set([
+    ...classifiedProducts.map((product) => buildStableKey(product)),
+    ...previousProducts
+      .filter((p) => sourcePresence.matched.has(p.id))
+      .map(buildStableKey),
+  ]);
   const keyMigrationPlan = buildRegistryKeyMigrations(
     previousProducts,
     currentStableKeys,
@@ -898,22 +923,19 @@ async function main() {
   );
   const orphanIndex = buildOrphanSpecIndex(registry, currentStableKeys);
 
-  const stableKeyCounts = new Map();
-  for (const product of classifiedProducts) {
-    const stableKey = buildStableKey(product);
-    stableKeyCounts.set(stableKey, (stableKeyCounts.get(stableKey) || 0) + 1);
-  }
   const stableKeyOccurrences = new Map();
 
   const productsWithIdentity = classifiedProducts.map((product) => {
     const stableKey = buildStableKey(product);
-    const occurrence = stableKeyOccurrences.get(stableKey) || 0;
+    const sourceIdentity = sourceIdentities.get(sourcePosition(product));
+    const occurrence =
+      sourceIdentity?.occurrence ?? (stableKeyOccurrences.get(stableKey) || 0);
     stableKeyOccurrences.set(stableKey, occurrence + 1);
     const identity = assignStableIdentity(registry, product, generatedAt, {
       ...(occurrence === 0 ? { orphanIndex } : {}),
-      ...(stableKeyCounts.get(stableKey) > 1 && occurrence > 0
+      ...(occurrence > 0
         ? {
-            identityDiscriminator: `row-${product.sourceRowIndex ?? 'unknown'}-occurrence-${occurrence}`,
+            identityDiscriminator: `row-${product.sourceIdentityRowIndex ?? product.sourceRowIndex ?? 'unknown'}-occurrence-${occurrence}`,
           }
         : {}),
     });
@@ -927,11 +949,18 @@ async function main() {
 
   const slugRedirects = buildSlugRedirects(registry);
 
-  const { products, report: designationDecoding } = enrichPriceDesignations(
-    productsWithIdentity.map(stripClassificationDiagnostics),
-    { generatedAt }
-  );
+  const { products: activeProducts, report: designationDecoding } =
+    enrichPriceDesignations(
+      productsWithIdentity.map(stripClassificationDiagnostics),
+      { generatedAt }
+    );
 
+  const partial = finishPartialImport(
+    previousProducts,
+    activeProducts,
+    sourcePresence
+  );
+  const products = partial.products;
   const diff = buildDiff(previousProducts, products);
   const skipsByReason = summarizeSkips(importResult.skippedRows);
   const byCategory = summarizeByCategory(products);
@@ -950,7 +979,7 @@ async function main() {
       ),
     }
   );
-  const suspicious = detectSuspicious(products, suspiciousPriceStats);
+  const suspicious = detectSuspicious(activeProducts, suspiciousPriceStats);
   const classification = buildClassificationReport(
     productsWithIdentity,
     importConfig
@@ -974,7 +1003,19 @@ async function main() {
     ),
     reviewRows: importResult.reviewRows,
     newReviewRows,
-    errors: [],
+    sourceErrors:
+      sourcePresence.unresolvedIdentity.length &&
+      !sourcePresence.matched.size &&
+      !sourceIdentities.size
+        ? [
+            {
+              message:
+                'Ни одна исходная позиция не идентифицирована; структура источника недостоверна.',
+            },
+          ]
+        : [],
+    rowErrors: diagnostics.errors,
+    sourceProductCount,
     totalRows: importResult.totalRows,
     fallbackToOther: classification.fallbackToOther.count,
     otherProducts: products.filter(
@@ -993,6 +1034,7 @@ async function main() {
     dryRun: isDryRun,
     designationDecoding,
     schema,
+    sourceDisposition: partial.report,
     registryFile: path.relative(projectRoot, registryFile),
     registryEntries: Object.keys(registry.entries).length,
     registryNextId: registry.nextId,
@@ -1004,8 +1046,11 @@ async function main() {
     priceAlertPercent: PRICE_JUMP_ALERT_PERCENT,
     summary: {
       totalRowsInSheet: importResult.totalRows,
+      physicalRowsInSheet: importResult.physicalRows,
       categoriesDetected: importResult.categoriesSeen.size,
       productsImported: products.length,
+      activeProducts: activeProducts.length,
+      pendingProducts: partial.pendingProducts.length,
       productsPrevious: previousProducts.length,
       excludedNonCable: importResult.excludedNonCable,
       reviewRows: importResult.reviewRows.length,
@@ -1015,6 +1060,7 @@ async function main() {
       duplicateGroups: diagnostics.summary.duplicateGroups,
       manufacturers: manufacturerSummary,
       skippedRows: importResult.skippedRows.length,
+      suspiciousStockRows: importResult.suspiciousStockRows.length,
       suspicious: suspicious.length,
       added: diff.added.length,
       removed: diff.removed.length,
@@ -1030,6 +1076,7 @@ async function main() {
     manufacturers: manufacturerSummary,
     productsByCategory: byCategory,
     skippedRows: importResult.skippedRows,
+    suspiciousStockRows: importResult.suspiciousStockRows,
     reviewRows: importResult.reviewRows,
     diagnostics,
     suspicious,
@@ -1051,7 +1098,13 @@ async function main() {
 
   currentAttemptReport = report;
 
-  if (!publishGuard.ok && !isPublishGuardOverride) {
+  if (
+    !publishGuard.ok &&
+    (!isPublishGuardOverride ||
+      publishGuard.issues.some((issue) =>
+        ['sourceErrors', 'emptyRelease'].includes(issue.key)
+      ))
+  ) {
     const validationDetails = diagnostics.errors.length
       ? [
           `Ошибки диагностики (${diagnostics.errors.length}):`,
@@ -1093,7 +1146,8 @@ async function main() {
       .trim()
       .toLowerCase() !== 'false'
   ) {
-    backup = await createBackup();
+    // main() already owns the shared import/backup/restore lock.
+    backup = await createBackup({ lockAlreadyHeld: true });
     report.backup = {
       id: backup.id,
       path: path.relative(projectRoot, backup.backupPath),
@@ -1121,7 +1175,6 @@ async function main() {
         inputFile,
         categoriesFile: catalogCategoriesFile,
         runtimePrerenderTemplateDir,
-        runtimePrerenderEnabled: Boolean(process.env.PUBLIC_ARTIFACTS_DIR),
         siteUrl: process.env.SITE_URL || process.env.VITE_SITE_URL,
         products,
         registry,
@@ -1155,7 +1208,9 @@ async function main() {
 
   console.log('');
   console.log('=== Импорт завершён ===');
-  console.log(`  Товаров импортировано: ${products.length}`);
+  console.log(
+    `  Товаров импортировано: ${products.length}; корректных: ${activeProducts.length}; данные уточняются: ${partial.pendingProducts.length}`
+  );
   console.log(
     `  База расшифровок ${designationDecoding.knowledgeRevision}: ` +
       `${designationDecoding.counts.familyIdentified} семейств найдено, ` +

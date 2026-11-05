@@ -1,6 +1,7 @@
 // Файл проверяет CLI-preflight env readiness для SMTP, VK callback и internal metrics.
 
 import { describe, expect, it, vi } from 'vitest';
+import { fileURLToPath } from 'node:url';
 import {
   evaluateEnvReadiness,
   formatEnvReadinessReport,
@@ -37,7 +38,7 @@ describe('loadCheckEnvDotenv', () => {
     loadCheckEnvDotenv({}, { config });
 
     expect(config).toHaveBeenCalledWith({
-      path: expect.stringMatching(/[\\/]yuzhural-site[\\/]\.env$/),
+      path: fileURLToPath(new URL('../.env', import.meta.url)),
       override: true,
     });
   });

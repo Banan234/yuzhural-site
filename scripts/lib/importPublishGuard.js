@@ -89,14 +89,10 @@ function percentage(part, whole) {
   return (numerator / denominator) * 100;
 }
 
-function rounded(value) {
-  return Number(value.toFixed(2));
-}
-
 function createIssue({ key, actual, limit, message }) {
   return {
     key,
-    actual: rounded(actual),
+    actual,
     limit,
     message,
   };
@@ -112,6 +108,9 @@ export function evaluatePublishGuard({
   reviewRows = [],
   newReviewRows = reviewRows,
   errors = [],
+  rowErrors = errors,
+  sourceErrors = [],
+  sourceProductCount,
   totalRows = 0,
   fallbackToOther = 0,
   otherProducts = 0,
@@ -119,7 +118,10 @@ export function evaluatePublishGuard({
   const normalizedConfig = normalizePublishGuardConfig(config);
   const metrics = {
     products: products.length,
-    errors: Array.isArray(errors) ? errors.length : 0,
+    sourceProducts: sourceProductCount ?? products.length,
+    rowErrors: rowErrors.length,
+    errors: rowErrors.length,
+    sourceErrors: sourceErrors.length,
     previousProducts: previousProducts.length,
     removed: Array.isArray(diff.removed) ? diff.removed.length : 0,
     skipped: Array.isArray(skippedRows) ? skippedRows.length : 0,
@@ -135,56 +137,74 @@ export function evaluatePublishGuard({
       : 0,
   };
 
-  metrics.removedPercent = rounded(
-    percentage(metrics.removed, metrics.previousProducts)
+  metrics.removedPercent = percentage(
+    metrics.removed,
+    metrics.previousProducts
   );
-  metrics.skippedPercent = rounded(
-    percentage(metrics.skipped, metrics.totalRows)
+  metrics.skippedPercent = percentage(metrics.skipped, metrics.totalRows);
+  metrics.suspiciousPercent = percentage(metrics.suspicious, metrics.products);
+  metrics.fallbackPercent = percentage(
+    metrics.fallbackToOther,
+    metrics.products
   );
-  metrics.suspiciousPercent = rounded(
-    percentage(metrics.suspicious, metrics.products)
-  );
-  metrics.fallbackPercent = rounded(
-    percentage(metrics.fallbackToOther, metrics.products)
-  );
-  metrics.otherPercent = rounded(
-    percentage(metrics.otherProducts, metrics.products)
-  );
-  metrics.categoryChangedPercent = rounded(
-    percentage(metrics.categoryChanged, metrics.products)
+  metrics.otherPercent = percentage(metrics.otherProducts, metrics.products);
+  metrics.categoryChangedPercent = percentage(
+    metrics.categoryChanged,
+    metrics.products
   );
 
+  const fatalIssues = [];
+  if (metrics.sourceErrors)
+    fatalIssues.push(
+      createIssue({
+        key: 'sourceErrors',
+        actual: metrics.sourceErrors,
+        limit: 0,
+        message: `Ошибки источника/структуры: ${sourceErrors.map((error) => error.message || String(error)).join('; ')}`,
+      })
+    );
+  if (!metrics.products)
+    fatalIssues.push(
+      createIssue({
+        key: 'emptyRelease',
+        actual: 0,
+        limit: 1,
+        message:
+          'Нет ни корректных, ни известных изолированных карточек; пустой выпуск не устанавливается.',
+      })
+    );
   if (!normalizedConfig.enabled) {
     return {
-      ok: true,
+      ok: fatalIssues.length === 0,
       enabled: false,
       config: normalizedConfig,
       metrics,
-      issues: [],
+      issues: fatalIssues,
+      warnings: [],
+      policy: 'partial-v1',
     };
   }
 
-  const issues = [];
+  const issues = [...fatalIssues];
   const warnings = [];
-
-  if (metrics.products < normalizedConfig.minProducts) {
+  if (metrics.sourceProducts < normalizedConfig.minProducts) {
     issues.push(
       createIssue({
         key: 'minProducts',
-        actual: metrics.products,
+        actual: metrics.sourceProducts,
         limit: normalizedConfig.minProducts,
-        message: `Импортировано ${metrics.products} товаров, минимум ${normalizedConfig.minProducts}.`,
+        message: `Импортировано ${metrics.sourceProducts} исходных позиций, минимум ${normalizedConfig.minProducts}.`,
       })
     );
   }
 
-  if (metrics.errors > normalizedConfig.maxErrors) {
-    issues.push(
+  if (metrics.rowErrors > normalizedConfig.maxErrors) {
+    warnings.push(
       createIssue({
         key: 'maxErrors',
-        actual: metrics.errors,
+        actual: metrics.rowErrors,
         limit: normalizedConfig.maxErrors,
-        message: `Ошибок проверки нормализованных товаров: ${metrics.errors}, допустимо не более ${normalizedConfig.maxErrors}.`,
+        message: `Ошибок в изолированных строках: ${metrics.rowErrors}, порог предупреждения ${normalizedConfig.maxErrors}. Корректные позиции допускаются независимо.`,
       })
     );
   }
@@ -201,57 +221,57 @@ export function evaluatePublishGuard({
   }
 
   if (metrics.skippedPercent > normalizedConfig.maxSkippedPercent) {
-    issues.push(
+    warnings.push(
       createIssue({
         key: 'maxSkippedPercent',
         actual: metrics.skippedPercent,
         limit: normalizedConfig.maxSkippedPercent,
-        message: `Пропущено ${metrics.skippedPercent}% строк прайса, допустимо не более ${normalizedConfig.maxSkippedPercent}%.`,
+        message: `Пропущено ${metrics.skippedPercent}% строк прайса, порог предупреждения ${normalizedConfig.maxSkippedPercent}%.`,
       })
     );
   }
 
   if (metrics.suspiciousPercent > normalizedConfig.maxSuspiciousPercent) {
-    issues.push(
+    warnings.push(
       createIssue({
         key: 'maxSuspiciousPercent',
         actual: metrics.suspiciousPercent,
         limit: normalizedConfig.maxSuspiciousPercent,
-        message: `Подозрительные позиции составляют ${metrics.suspiciousPercent}% каталога, допустимо не более ${normalizedConfig.maxSuspiciousPercent}%.`,
+        message: `Подозрительные позиции составляют ${metrics.suspiciousPercent}% каталога, порог предупреждения ${normalizedConfig.maxSuspiciousPercent}%.`,
       })
     );
   }
 
   if (metrics.fallbackPercent > normalizedConfig.maxFallbackPercent) {
-    issues.push(
+    warnings.push(
       createIssue({
         key: 'maxFallbackPercent',
         actual: metrics.fallbackPercent,
         limit: normalizedConfig.maxFallbackPercent,
-        message: `В fallback «Прочее» попало ${metrics.fallbackPercent}% каталога, допустимо не более ${normalizedConfig.maxFallbackPercent}%.`,
+        message: `В fallback «Прочее» попало ${metrics.fallbackPercent}% каталога, порог предупреждения ${normalizedConfig.maxFallbackPercent}%.`,
       })
     );
   }
 
   if (metrics.otherPercent > normalizedConfig.maxOtherPercent) {
-    issues.push(
+    warnings.push(
       createIssue({
         key: 'maxOtherPercent',
         actual: metrics.otherPercent,
         limit: normalizedConfig.maxOtherPercent,
-        message: `В «Прочее» попало ${metrics.otherPercent}% каталога, допустимо не более ${normalizedConfig.maxOtherPercent}%.`,
+        message: `В «Прочее» попало ${metrics.otherPercent}% каталога, порог предупреждения ${normalizedConfig.maxOtherPercent}%.`,
       })
     );
   }
 
   const reviewPercent = percentage(metrics.review, metrics.totalRows);
   if (reviewPercent > normalizedConfig.maxSkippedPercent) {
-    issues.push(
+    warnings.push(
       createIssue({
         key: 'maxReviewPercent',
         actual: reviewPercent,
         limit: normalizedConfig.maxSkippedPercent,
-        message: `На проверку отложено ${rounded(reviewPercent)}% строк прайса, допустимо не более ${normalizedConfig.maxSkippedPercent}%.`,
+        message: `На проверку отложено ${reviewPercent}% строк прайса, порог предупреждения ${normalizedConfig.maxSkippedPercent}%.`,
       })
     );
   }
@@ -262,18 +282,18 @@ export function evaluatePublishGuard({
         key: 'maxNewReviewRows',
         actual: metrics.newReview,
         limit: normalizedConfig.maxNewReviewRows,
-        message: `Новых непроверенных строк: ${metrics.newReview}, допустимо не более ${normalizedConfig.maxNewReviewRows}.`,
+        message: `Новых непроверенных строк: ${metrics.newReview}, порог предупреждения ${normalizedConfig.maxNewReviewRows}.`,
       })
     );
   }
 
   if (metrics.priceAlerts > normalizedConfig.maxPriceAlerts) {
-    issues.push(
+    warnings.push(
       createIssue({
         key: 'maxPriceAlerts',
         actual: metrics.priceAlerts,
         limit: normalizedConfig.maxPriceAlerts,
-        message: `Резких изменений цен: ${metrics.priceAlerts}, допустимо не более ${normalizedConfig.maxPriceAlerts}.`,
+        message: `Резких изменений цен: ${metrics.priceAlerts}, порог предупреждения ${normalizedConfig.maxPriceAlerts}.`,
       })
     );
   }
@@ -286,12 +306,13 @@ export function evaluatePublishGuard({
         key: 'maxCategoryChangedPercent',
         actual: metrics.categoryChangedPercent,
         limit: normalizedConfig.maxCategoryChangedPercent,
-        message: `Категория изменилась у ${metrics.categoryChangedPercent}% каталога, допустимо не более ${normalizedConfig.maxCategoryChangedPercent}%.`,
+        message: `Категория изменилась у ${metrics.categoryChangedPercent}% каталога, порог предупреждения ${normalizedConfig.maxCategoryChangedPercent}%.`,
       })
     );
   }
 
   return {
+    policy: 'partial-v1',
     ok: issues.length === 0,
     enabled: true,
     config: normalizedConfig,

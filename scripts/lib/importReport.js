@@ -73,6 +73,15 @@ function formatReportDate(value) {
   return `${reportDateFormatter.format(date)} (Екатеринбург)`;
 }
 
+function formatSourceRow(row) {
+  if (!Number.isInteger(row.rowIndex)) return '—';
+  const cells = [...new Set(Object.values(row.sourceCells || {}))];
+  return (
+    formatNumber(row.rowIndex + 1) +
+    (cells.length ? ` (${escapeHtml(cells.join(', '))})` : '')
+  );
+}
+
 function deltaClass(value) {
   const number = Number(value);
   if (!Number.isFinite(number) || number === 0) {
@@ -581,10 +590,7 @@ export function buildReportHtml(
             [
               {
                 label: 'Строка',
-                render: (row) =>
-                  Number.isInteger(row.rowIndex)
-                    ? formatNumber(row.rowIndex + 1)
-                    : '—',
+                render: (row) => formatSourceRow(row),
               },
               { key: 'product', label: 'Позиция' },
               { key: 'category', label: 'Категория' },
@@ -601,17 +607,42 @@ export function buildReportHtml(
         <p>${escapeHtml(report.message || (report.blocked ? 'Публикация остановлена' : ''))}</p>
         <h2>Предупреждения публикации</h2>
         ${renderTable(report.publishGuard?.warnings || [], [{ key: 'message', label: 'Причина' }], 'Предупреждений нет.')}
+        <h2>Данные уточняются</h2>
+        ${renderTable(
+          (report.sourceDisposition?.pending || []).flatMap((item) =>
+            (item.sourceRows || []).map((row) => ({
+              ...row,
+              sku: item.sku,
+              product: item.name || item.slug,
+              evidence: item.evidence,
+            }))
+          ),
+          [
+            { key: 'sku', label: 'Артикул' },
+            { key: 'product', label: 'Позиция' },
+            { label: 'Строка / ячейки', render: (row) => formatSourceRow(row) },
+            { key: 'evidence', label: 'Основание' },
+          ],
+          'Изолированных прежних карточек нет.'
+        )}
+        <h2>Не найдены в источнике</h2>
+        ${renderTable(
+          report.sourceDisposition?.absent || [],
+          [
+            { key: 'sku', label: 'Артикул' },
+            { key: 'name', label: 'Позиция' },
+            { key: 'slug', label: 'URL' },
+          ],
+          'Подтверждённых исчезновений нет.'
+        )}
         <h2>Строки на проверке</h2>
-        <p class="panel-note">Причина в каждой строке показывает, сохранена ли позиция или отложено её обновление. При отложенном обновлении известного товара сохраняются прежние данные; новый товар ожидает проверки.</p>
+        <p class="panel-note">Ошибочная строка изолируется. У ранее известной позиции отображается «Данные уточняются» без цены и покупки; новая позиция ожидает проверки. Исчезнувшие из источника позиции не сохраняются.</p>
         ${renderTable(
           reviewRows,
           [
             {
               label: 'Строка',
-              render: (row) =>
-                Number.isInteger(row.rowIndex)
-                  ? formatNumber(row.rowIndex + 1)
-                  : '—',
+              render: (row) => formatSourceRow(row),
             },
             { key: 'product', label: 'Позиция' },
             { key: 'category', label: 'Категория источника' },
@@ -622,7 +653,7 @@ export function buildReportHtml(
       </article>
       <article class="panel">
         <h2>Диагностика товара</h2>
-        <p class="panel-note">Ошибки блокируют публикацию; предупреждения и информация сохраняются для разбора.</p>
+        <p class="panel-note">Ошибки строк изолируют соответствующие позиции. Ошибки источника, структуры и безопасной подготовки выпуска останавливают публикацию.</p>
         ${renderTable(
           diagnosticRows,
           [
@@ -631,7 +662,7 @@ export function buildReportHtml(
               label: 'Строка',
               render: (row) =>
                 Number.isInteger(row.rowIndex)
-                  ? formatNumber(row.rowIndex + 1)
+                  ? formatSourceRow(row)
                   : Array.isArray(row.rows)
                     ? row.rows
                         .map((index) => formatNumber(index + 1))

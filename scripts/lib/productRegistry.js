@@ -71,8 +71,8 @@ export function buildStableKey(product) {
     product.cores ?? '',
     product.crossSection ?? '',
     product.voltage ?? '',
-    product.groundCores ?? '',
-    product.groundSection ?? '',
+    product.groundCores ?? product.neutralCores ?? '',
+    product.groundSection ?? product.neutralSection ?? '',
     String(product.manufacturer || '')
       .toLowerCase()
       .trim(),

@@ -14,6 +14,7 @@ import {
 } from './catalogClassifier.js';
 import { buildProductDesignation } from '../../shared/productDesignation.js';
 import { resolveProductDisposition } from './importDisposition.js';
+import { buildStableKey } from './productRegistry.js';
 
 const REQUIRED_HEADER_TOKENS = ['наименование', 'ед.изм', 'цена', 'остаток'];
 const PAGE_COLUMNS = {
@@ -60,7 +61,10 @@ export function extractProducts(
   { applyPriceOverride = (product) => product } = {}
 ) {
   const result = createEmptyImportResult();
-  result.totalRows = rows.length;
+  result.physicalRows = rows.length;
+  result.totalRows = rows.filter((row) =>
+    row.some((cell) => cell !== '' && cell != null)
+  ).length;
   result.categoriesSeen = new Set();
 
   const orderedPages = buildBookReadingOrder(splitRowsIntoBlocks(rows));
@@ -79,6 +83,62 @@ export function extractProducts(
         continue;
       }
 
+      const columns = PAGE_COLUMNS[page.side];
+      const filled = columns.filter(
+        (index) => row[index] !== '' && row[index] != null
+      );
+      const sourceCells = Object.fromEntries(
+        ['name', 'unit', 'price', 'stock'].map((field, index) => [
+          field,
+          `${String.fromCharCode(65 + (filled.length === 1 ? filled[0] : columns[index]))}${rowIndex + 1}`,
+        ])
+      );
+      const context = {
+        sourceCells,
+        sourceSheet: row.sheetName || null,
+        sourceColumnIndex: filled.length === 1 ? filled[0] : columns[0],
+      };
+      if (record.value && typeof record.value === 'object') {
+        if (record.type === 'product')
+          Object.assign(record.value, context, {
+            sourceIdentityRowIndex: row.identityRowIndex ?? rowIndex,
+          });
+        else Object.assign(record.value, context);
+      }
+      if (record.review) Object.assign(record.review, context);
+      if (!['header', 'service'].includes(record.type))
+        result.sourceObservations.push({
+          ...context,
+          rowIndex,
+          type: record.type,
+          combined: filled.length === 1,
+          normalizedName: record.value?.name || record.value?.product || '',
+          sourceName:
+            record.value?.sourceName ||
+            (filled.length === 1
+              ? String(row[filled[0]] || '')
+              : String(pageCells[0] || '')),
+        });
+
+      if (
+        record.type === 'product' &&
+        record.value.numberIssues?.length &&
+        record.value.stock <= 0
+      ) {
+        result.suspiciousStockRows.push({
+          ...context,
+          rowIndex,
+          row,
+          category: currentCategory,
+          product: record.value.name,
+          price: record.value.price,
+          stock: record.value.stock,
+          code: 'non_positive_stock',
+          suspicious: true,
+          reason: 'Подозрительная строка: нулевой или отрицательный остаток',
+        });
+      }
+
       if (record.type === 'category') {
         currentCategory = record.value;
         result.categoriesSeen.add(currentCategory);
@@ -91,6 +151,8 @@ export function extractProducts(
 
       if (record.type === 'skip' || record.type === 'invalid') {
         result.skippedRows.push(record.value);
+        if (record.value.code === 'non_positive_stock')
+          result.suspiciousStockRows.push(record.value);
         continue;
       }
 
@@ -179,7 +241,11 @@ export function buildBookReadingOrder(blocks) {
 export function pickPageCells(row, side) {
   const indexes = PAGE_COLUMNS[side];
 
-  return indexes.map((columnIndex) => String(row?.[columnIndex] ?? '').trim());
+  return indexes.map((columnIndex, index) =>
+    index >= 2 && typeof row?.[columnIndex] === 'number'
+      ? row[columnIndex]
+      : String(row?.[columnIndex] ?? '').trim()
+  );
 }
 
 export function parsePageRow(
@@ -331,6 +397,9 @@ export function createProductRecord(
     };
   }
 
+  if (normalized.numberIssues?.length)
+    return { type: 'product', value: normalized };
+
   if (normalized.stock <= 0) {
     return {
       type: 'skip',
@@ -338,7 +407,9 @@ export function createProductRecord(
         rowIndex,
         row: sourceRow,
         category,
-        reason: 'Нулевой или отрицательный остаток',
+        code: 'non_positive_stock',
+        suspicious: true,
+        reason: 'Подозрительная строка: нулевой или отрицательный остаток',
         product: normalized.name,
         price: normalized.price,
         stock: normalized.stock,
@@ -391,8 +462,13 @@ export function createProductRecord(
 
 export function classifyEligibleProducts(
   products,
-  { reviewRows = [], skippedRows = [] } = {}
+  { reviewRows = [], skippedRows = [], previousProducts = [], registry } = {}
 ) {
+  const nameKey = (value) =>
+    String(value || '')
+      .trim()
+      .replace(/\s+/gu, ' ')
+      .toLowerCase();
   const categoryByFamily = buildCategoryMap(products);
   const classifiedProducts = products.map((product) => {
     const resolved = {
@@ -414,6 +490,9 @@ export function classifyEligibleProducts(
   return classifiedProducts.filter((product) => {
     const row = {
       rowIndex: product.sourceRowIndex,
+      sourceCells: product.sourceCells,
+      sourceColumnIndex: product.sourceColumnIndex,
+      sourceSheet: product.sourceSheet,
       product: product.name,
       sourceName: product.sourceName,
       category: product.sourceCategory,
@@ -427,15 +506,50 @@ export function classifyEligibleProducts(
       return false;
     }
     if (product.importDisposition === 'review') {
+      const previousMatches = previousProducts.filter(
+        (item) =>
+          nameKey(item.sourceName || item.name) === nameKey(product.sourceName)
+      );
+      const sourceMatches = products.filter(
+        (item) => nameKey(item.sourceName) === nameKey(product.sourceName)
+      );
+      const previous = previousMatches[0];
+      const knownIdentity =
+        previousMatches.length === 1 &&
+        sourceMatches.length === 1 &&
+        buildStableKey(previous) === buildStableKey(product) &&
+        registry?.entries?.[buildStableKey(product)]?.id === previous.id;
       const review = reviewRows.find(
         (item) =>
           item.rowIndex === product.sourceRowIndex &&
           item.product === product.name
       );
-      const reason =
-        'Кабельное назначение не подтверждено; обновление позиции отложено';
+      const reason = knownIdentity
+        ? 'Классификация требует проверки; коммерческие данные известного товара проходят отдельную строгую проверку'
+        : 'Кабельное назначение или идентификация не подтверждены; обновление позиции отложено';
       if (review) review.reason = reason;
       else reviewRows.push({ ...row, reason });
+      if (knownIdentity) {
+        // Keep the existing public taxonomy; this does not confirm cable construction.
+        for (const field of [
+          'name',
+          'fullName',
+          'title',
+          'catalogSection',
+          'catalogSectionSlug',
+          'catalogCategory',
+          'catalogCategorySlug',
+          'catalogSubcategory',
+          'catalogSubcategorySlug',
+        ])
+          if (previous[field] !== undefined) product[field] = previous[field];
+        product.classificationReview = {
+          reason: product.dispositionReason,
+          previousId: previous.id,
+          sourceCells: product.sourceCells,
+        };
+        return true; // Value errors are quarantined by the normal diagnostics below.
+      }
       return false;
     }
     return true;

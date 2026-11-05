@@ -412,8 +412,13 @@ export function classifyCableVisualProduct(product, context) {
       `Название и структурированная марка расходятся: ${baseFamily} / ${structuredMark}`
     );
   const checkNumber = (field, sourceField = field) => {
-    const a = number(parsed[sourceField]),
-      b = number(product[sourceField]);
+    // Geometry includes a documented neutral without treating it as PE.
+    const neutralField = {
+      groundCores: 'neutralCores',
+      groundSection: 'neutralSection',
+    }[sourceField];
+    const a = number(parsed[sourceField] ?? parsed[neutralField]),
+      b = number(product[sourceField] ?? product[neutralField]);
     if (a && b && a !== b)
       add(
         'structured_conflict',

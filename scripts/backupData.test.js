@@ -1,8 +1,11 @@
 // Файл проверяет создание, контроль целостности и безопасное восстановление backup.
 
 import { describe, expect, it } from 'vitest';
-import { mkdir, mkdtemp, readFile, rm, writeFile } from 'fs/promises';
+import { mkdir, mkdtemp, readFile, rm, writeFile, symlink } from 'fs/promises';
+import { createCatalogStore } from '../lib/catalog.js';
 import os from 'os';
+import { execFileSync } from 'node:child_process';
+import { chmod } from 'node:fs/promises';
 import path from 'path';
 import {
   createBackup,
@@ -98,5 +101,227 @@ describe('backupData', () => {
       /Опасный путь/
     );
     await rm(projectPath, { recursive: true, force: true });
+  });
+});
+
+describe('active catalog backup', () => {
+  it('restores the release actually read by an already running catalog consumer', async () => {
+    const projectPath = await mkdtemp(
+      path.join(os.tmpdir(), 'catalog-backup-')
+    );
+    try {
+      const data = path.join(projectPath, 'data');
+      const product = (price) => [
+        {
+          id: 1,
+          name: 'ВВГ 3х2.5',
+          sku: 'TEST-1',
+          slug: 'test-cable',
+          price,
+          stock: 10,
+          unit: 'м',
+          category: 'Силовой кабель',
+          catalogSection: 'Кабель и провод',
+        },
+      ];
+      for (const [name, price] of [
+        ['a', 100],
+        ['b', 200],
+      ]) {
+        const release = path.join(data, 'releases', name);
+        await mkdir(path.join(release, 'public', 'product'), {
+          recursive: true,
+        });
+        await writeFile(
+          path.join(release, 'products.json'),
+          JSON.stringify(product(price))
+        );
+        await writeFile(
+          path.join(release, 'productRegistry.json'),
+          JSON.stringify({ release: name })
+        );
+        await writeFile(
+          path.join(release, 'public', 'price.xls'),
+          `synthetic-price-${name}`
+        );
+        await writeFile(
+          path.join(release, 'public', 'sitemap-products.xml'),
+          `synthetic-sitemap-${name}`
+        );
+        await writeFile(
+          path.join(release, 'public', 'product', 'test-cable.html'),
+          `synthetic-html-${name}`
+        );
+      }
+      await symlink('releases/a', path.join(data, 'catalog-current'));
+      // Legacy data can lag behind the authoritative release.
+      await writeFile(
+        path.join(data, 'products.json'),
+        JSON.stringify(product(999))
+      );
+      await chmod(path.join(data, 'products.json'), 0o444);
+      const backup = await createBackup({
+        projectPath,
+        env: {},
+        backupId: 'active-a',
+      });
+      await rm(path.join(data, 'catalog-current'));
+      await symlink('releases/b', path.join(data, 'catalog-current'));
+      const store = createCatalogStore({
+        productsFile: path.join(data, 'catalog-current/products.json'),
+        overridesFile: path.join(data, 'absent-overrides.json'),
+        catalogOverridesFile: path.join(data, 'absent-catalog-overrides.json'),
+      });
+      expect((await store.loadCatalogProducts())[0].price).toBe(200);
+      await restoreBackup(backup.backupPath, { projectPath });
+      expect((await store.loadCatalogProducts())[0].price).toBe(200);
+      await restoreBackup(backup.backupPath, { projectPath, apply: true });
+      expect((await store.loadCatalogProducts())[0].price).toBe(100);
+      const restartedPrice = execFileSync(
+        process.execPath,
+        [
+          '--input-type=module',
+          '-e',
+          `
+        import { createCatalogStore } from ${JSON.stringify(new URL('../lib/catalog.js', import.meta.url).href)};
+        const data = process.argv[1];
+        const store = createCatalogStore({ productsFile: data + '/catalog-current/products.json', overridesFile: data + '/absent-overrides.json', catalogOverridesFile: data + '/absent-catalog-overrides.json' });
+        console.log((await store.loadCatalogProducts())[0].price);
+      `,
+          data,
+        ],
+        { encoding: 'utf8', env: {} }
+      );
+      expect(restartedPrice.trim()).toBe('100');
+
+      expect(
+        JSON.parse(await readFile(path.join(data, 'products.json'), 'utf8'))[0]
+          .price
+      ).toBe(100);
+      for (const [relative, expected] of [
+        ['price.xls', 'synthetic-price-a'],
+        ['sitemap-products.xml', 'synthetic-sitemap-a'],
+        ['product/test-cable.html', 'synthetic-html-a'],
+      ]) {
+        expect(
+          await readFile(
+            path.join(data, 'catalog-current/public', relative),
+            'utf8'
+          )
+        ).toBe(expected);
+      }
+      expect((await verifyBackup(backup.backupPath)).ok).toBe(true);
+    } finally {
+      await rm(projectPath, { recursive: true, force: true });
+    }
+  });
+});
+
+describe('restore safety', () => {
+  it('rejects legacy restore onto active catalog and refuses a concurrent importer', async () => {
+    const projectPath = await mkdtemp(
+      path.join(os.tmpdir(), 'yuzhural-restore-')
+    );
+    try {
+      const data = path.join(projectPath, 'data');
+      await mkdir(data);
+      await writeFile(path.join(data, 'products.json'), 'legacy-original');
+      const backup = await createBackup({
+        projectPath,
+        env: {},
+        backupId: 'legacy',
+      });
+      // Existing v1 copies remain readable.
+      const manifestFile = path.join(backup.backupPath, 'manifest.json');
+      const manifest = JSON.parse(await readFile(manifestFile, 'utf8'));
+      manifest.version = 1;
+      await writeFile(manifestFile, JSON.stringify(manifest));
+      await restoreBackup(backup.backupPath, { projectPath, apply: true });
+      await mkdir(path.join(data, 'release'));
+      await writeFile(path.join(data, 'release/products.json'), '[]');
+      await symlink('release', path.join(data, 'catalog-current'));
+      await writeFile(path.join(data, 'products.json'), 'unchanged');
+      await expect(
+        restoreBackup(backup.backupPath, { projectPath, apply: true })
+      ).rejects.toThrow(/Legacy backup/);
+      await writeFile(
+        path.join(data, '.price-import.lock'),
+        JSON.stringify({ pid: process.pid })
+      );
+      await expect(
+        restoreBackup(backup.backupPath, { projectPath, apply: true })
+      ).rejects.toThrow(/уже выполняется/);
+      await expect(createBackup({ projectPath, env: {} })).rejects.toThrow(
+        /уже выполняется/
+      );
+      const importerBackup = await createBackup({
+        projectPath,
+        env: {},
+        backupId: 'under-lock',
+        lockAlreadyHeld: true,
+      });
+      expect((await verifyBackup(importerBackup.backupPath)).ok).toBe(true);
+      expect(
+        JSON.parse(
+          await readFile(path.join(data, '.price-import.lock'), 'utf8')
+        ).pid
+      ).toBe(process.pid);
+      expect(await readFile(path.join(data, 'products.json'), 'utf8')).toBe(
+        'unchanged'
+      );
+    } finally {
+      await rm(projectPath, { recursive: true, force: true });
+    }
+  });
+
+  it('restores onto a fresh host, rejects corrupted release and physical-directory targets before mutation', async () => {
+    const projectPath = await mkdtemp(
+      path.join(os.tmpdir(), 'yuzhural-restore-')
+    );
+    const target = await mkdtemp(path.join(os.tmpdir(), 'yuzhural-target-'));
+    try {
+      const active = path.join(projectPath, 'data/catalog-current');
+      await mkdir(path.join(active, 'public'), { recursive: true });
+      await writeFile(path.join(active, 'products.json'), '[]');
+      await writeFile(path.join(active, 'public/price.xls'), 'synthetic');
+      const backup = await createBackup({
+        projectPath,
+        env: {},
+        backupId: 'release',
+      });
+      await expect(
+        restoreBackup(backup.backupPath, { projectPath, apply: true })
+      ).rejects.toThrow(/symlink/);
+      const result = await restoreBackup(backup.backupPath, {
+        projectPath: target,
+        apply: true,
+      });
+      expect(result.catalogRestored).toBe(true);
+      expect(
+        await readFile(
+          path.join(target, 'data/catalog-current/public/price.xls'),
+          'utf8'
+        )
+      ).toBe('synthetic');
+      expect(
+        await readFile(path.join(target, 'data/products.json'), 'utf8')
+      ).toBe('[]');
+      await writeFile(
+        path.join(backup.backupPath, 'catalog-release/products.json'),
+        'tampered'
+      );
+      await expect(
+        restoreBackup(backup.backupPath, { projectPath: target, apply: true })
+      ).rejects.toThrow(/повреждена/);
+      expect(
+        await readFile(
+          path.join(target, 'data/catalog-current/products.json'),
+          'utf8'
+        )
+      ).toBe('[]');
+    } finally {
+      await rm(projectPath, { recursive: true, force: true });
+      await rm(target, { recursive: true, force: true });
+    }
   });
 });

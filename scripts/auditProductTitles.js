@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { readPriceWorksheetRows } from './lib/priceWorkbookRows.js';
 import { auditProductTitles } from '../shared/productTitleAudit.js';
 import * as xlsx from '@e965/xlsx';
 import { extractProducts } from './lib/priceCatalogPreparation.js';
@@ -17,14 +18,10 @@ for (const file of files) {
       type: 'buffer',
       cellDates: false,
     });
-    const rows = xlsx.utils.sheet_to_json(
+    const rows = readPriceWorksheetRows(
       workbook.Sheets[workbook.SheetNames[0]],
-      {
-        header: 1,
-        blankrows: false,
-        defval: '',
-        raw: false,
-      }
+      xlsx,
+      workbook.SheetNames[0]
     );
     products = extractProducts(rows).products;
   } else {

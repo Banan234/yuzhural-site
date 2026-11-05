@@ -1,5 +1,6 @@
 // Read-only audit of source cells and the complete import pipeline.
 import fs from 'node:fs/promises';
+import { readPriceWorksheetRows } from './lib/priceWorkbookRows.js';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import XLSX from '@e965/xlsx';
@@ -10,10 +11,11 @@ import { parseProductName } from './lib/priceParser.js';
 export async function auditPriceParsing(input, output) {
   const workbook = XLSX.read(await fs.readFile(input), { type: 'buffer' });
   const sheetName = workbook.SheetNames[0];
-  const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
-    header: 1,
-    defval: '',
-  });
+  const rows = readPriceWorksheetRows(
+    workbook.Sheets[sheetName],
+    XLSX,
+    sheetName
+  );
   const locations = new Map();
   rows.forEach((row, index) => {
     row.forEach((value, column) => {
