@@ -9,8 +9,10 @@ const escape = (value) =>
         character
       ]
   );
-export function buildProductDesignationHtml(product) {
-  const decoded = buildProductDesignation(product);
+export function buildProductDesignationHtml(
+  product,
+  { decoded = buildProductDesignation(product) } = {}
+) {
   const tokens = decoded.tokens
     .map(
       ({ code, text }) =>

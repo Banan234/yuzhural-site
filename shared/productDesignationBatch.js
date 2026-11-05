@@ -65,6 +65,7 @@ export function enrichPriceDesignations(
         family: d.family,
         unknown: d.unknown,
         warnings: d.warnings,
+        constructionEvidence: d.constructionEvidence,
         reason:
           d.status === 'reviewed'
             ? 'Нет полной связи с полученной документацией изготовителя.'

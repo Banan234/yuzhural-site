@@ -8,6 +8,8 @@ const decode = (mark, sourceName, attributes = []) =>
 const wording = (d) =>
   [d.description, ...d.tokens.map((t) => t.text)].join(' ');
 
+// Full proof now requires the separately reviewed construction registry (R-019).
+// Decoding assertions below remain; a legacy family rule alone grants no full status.
 describe('additional manufacturer constructions and import boundaries', () => {
   it('decodes literal coaxial codes with impedance and insulation diameter, preserving their construction code', () => {
     const d = decode('РК 50-2-13', 'РК 50-2-13');
@@ -31,7 +33,12 @@ describe('additional manufacturer constructions and import boundaries', () => {
   });
 
   it('accepts only the screened core counts and sections in the factory table', () => {
-    expect(decode('КУПВ', 'КУПВ 27эх0.5').officialComplete).toBe(true);
+    const screened = decode('КУПВ', 'КУПВ 27эх0.5');
+    expect(screened.officialComplete).toBe(true);
+    expect(screened.constructionEvidence.evidence).toMatchObject({
+      documentId: 'podolsk-7',
+      pages: [16],
+    });
     expect(decode('КУПВ', 'КУПВ 8эх0.5').officialComplete).toBe(false);
     expect(decode('КУПВ', 'КУПВ 27эх0.75').officialComplete).toBe(false);
   });
@@ -60,7 +67,7 @@ describe('additional manufacturer constructions and import boundaries', () => {
     expect(
       decode('HABIA Cable E2419', 'HABIA Cable E2419 1х0.24 желт', ['желт'])
         .officialComplete
-    ).toBe(true);
+    ).toBe(false);
     expect(
       decode('HABIA Cable E2419', 'HABIA Cable E2419 0.35').officialComplete
     ).toBe(false);

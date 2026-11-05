@@ -1,8 +1,7 @@
-import { buildProductDesignation } from '../../../shared/productDesignation.js';
 import '../../styles/sections/product-designation.css';
 
 export default function ProductDesignation({ product }) {
-  const decoded = buildProductDesignation(product);
+  const decoded = product.designationDecoded;
   return (
     <section
       className="product-designation"

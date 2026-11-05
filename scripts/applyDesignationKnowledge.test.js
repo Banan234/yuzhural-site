@@ -1,4 +1,7 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+import { spawn } from 'node:child_process';
+import { once } from 'node:events';
+import { verifyBackup } from './backupData.js';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -61,8 +64,126 @@ describe('documentation database application', () => {
           'utf8'
         )
       );
-      await fs.access(path.join(report.backup.backupPath, 'products.json'));
+      expect((await verifyBackup(report.backup.backupPath)).ok).toBe(true);
+      expect(
+        await fs.readFile(
+          path.join(report.backup.backupPath, 'catalog-release/products.json'),
+          'utf8'
+        )
+      ).toBe(originalText);
+      expect(
+        await fs.readFile(
+          path.join(
+            report.backup.backupPath,
+            'catalog-release/public/retained.txt'
+          ),
+          'utf8'
+        )
+      ).toBe('other artifact');
+      expect(
+        await fs.readFile(
+          path.join(report.backup.backupPath, 'products.json'),
+          'utf8'
+        )
+      ).toBe(originalText);
     } finally {
+      await fs.rm(root, { recursive: true, force: true });
+    }
+  });
+  it('rejects a concurrent process holding the real price lock without changing active', async () => {
+    const root = await createApplyFixture();
+    let child;
+    try {
+      const lockModule = new URL('./lib/importLock.js', import.meta.url).href;
+      child = spawn(
+        process.execPath,
+        [
+          '--input-type=module',
+          '-e',
+          `
+        import { acquirePriceImportLock } from ${JSON.stringify(lockModule)};
+        const release = await acquirePriceImportLock(process.argv[1]);
+        if (!release) process.exit(2);
+        process.send('locked');
+        process.on('message', async () => { await release(); process.exit(0); });
+      `,
+          path.join(root, 'data/.price-import.lock'),
+        ],
+        { stdio: ['ignore', 'pipe', 'pipe', 'ipc'] }
+      );
+      const ready = await Promise.race([
+        once(child, 'message').then(([message]) => message),
+        once(child, 'exit').then(([code]) => {
+          throw new Error(`lock holder exited: ${code}`);
+        }),
+      ]);
+      expect(ready).toBe('locked');
+      await expect(
+        applyDesignationKnowledge({ root, apply: true })
+      ).rejects.toThrow(/другим процессом/);
+      expect(await fs.readlink(path.join(root, 'data/catalog-current'))).toBe(
+        '.catalog-current-releases/source'
+      );
+      expect(
+        JSON.parse(
+          await fs.readFile(
+            path.join(root, 'data/catalog-current/products.json'),
+            'utf8'
+          )
+        )[0].price
+      ).toBe(100);
+      expect(
+        JSON.parse(
+          await fs.readFile(path.join(root, 'data/.price-import.lock'), 'utf8')
+        ).pid
+      ).toBe(child.pid);
+      const exited = once(child, 'exit');
+      child.send('release');
+      expect((await exited)[0]).toBe(0);
+      const report = await applyDesignationKnowledge({ root, apply: true });
+      expect(report.applied).toBe(true);
+    } finally {
+      if (child && child.exitCode === null) {
+        child.kill();
+        await once(child, 'exit');
+      }
+      await fs.rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it('rolls active back if a later artifact install fails and releases its lock', async () => {
+    const root = await createApplyFixture();
+    const rename = fs.rename.bind(fs);
+    const spy = vi.spyOn(fs, 'rename').mockImplementation(async (from, to) => {
+      if (from === path.join(root, 'data/.designation-products-stage.json'))
+        throw new Error('synthetic compatibility install failure');
+      return rename(from, to);
+    });
+    try {
+      await expect(
+        applyDesignationKnowledge({ root, apply: true })
+      ).rejects.toThrow('synthetic compatibility install failure');
+      expect(await fs.readlink(path.join(root, 'data/catalog-current'))).toBe(
+        '.catalog-current-releases/source'
+      );
+      const original = await fs.readFile(
+        path.join(root, 'data/.catalog-current-releases/source/products.json'),
+        'utf8'
+      );
+      expect(
+        await fs.readFile(
+          path.join(root, 'data/catalog-current/products.json'),
+          'utf8'
+        )
+      ).toBe(original);
+      expect(
+        await fs.readFile(path.join(root, 'data/products.json'), 'utf8')
+      ).toBe(original);
+      await expect(
+        fs.access(path.join(root, 'data/.price-import.lock'))
+      ).rejects.toMatchObject({ code: 'ENOENT' });
+    } finally {
+      spy.mockRestore();
       await fs.rm(root, { recursive: true, force: true });
     }
   });
@@ -159,3 +280,27 @@ describe('documentation database application', () => {
     }
   });
 });
+
+async function createApplyFixture() {
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), 'designation-lock-test-')
+  );
+  const release = path.join(root, 'data/.catalog-current-releases/source');
+  await fs.mkdir(release, { recursive: true });
+  const text = JSON.stringify([
+    {
+      sku: 'synthetic',
+      mark: 'КСБ',
+      sourceName: 'КСБ 1х2х0,8',
+      price: 100,
+      stock: 42,
+    },
+  ]);
+  await fs.writeFile(path.join(release, 'products.json'), text);
+  await fs.writeFile(path.join(root, 'data/products.json'), text);
+  await fs.symlink(
+    '.catalog-current-releases/source',
+    path.join(root, 'data/catalog-current')
+  );
+  return root;
+}

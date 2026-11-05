@@ -4,10 +4,16 @@ import { buildProductDesignation } from './productDesignation.js';
 const decode = (mark, sourceName, attributes = []) =>
   buildProductDesignation({ mark, sourceName, attributes });
 
+// Full proof now requires the separately reviewed construction registry (R-019).
+// Decoding assertions below remain; a legacy family rule alone grants no full status.
 describe('manufacturer model and execution boundaries', () => {
   it('keeps screened signal cable diameter rows within the actual factory table', () => {
     const d = decode('СБЗПу', 'СБЗПуЭ 24х2х0.9', ['Э']);
     expect(d.officialComplete).toBe(true);
+    expect(d.constructionEvidence.evidence).toMatchObject({
+      documentId: 'rezh-f196-full',
+      pages: [15, 16, 17],
+    });
     expect(d.tokens.some((t) => t.text.includes('диаметр жилы 0,9 мм'))).toBe(
       true
     );
@@ -19,7 +25,7 @@ describe('manufacturer model and execution boundaries', () => {
       false
     );
     expect(decode('ПУНП', 'ПУНП 3х2.5 бел', ['бел']).officialComplete).toBe(
-      true
+      false
     );
     expect(decode('ПУНП', 'ПУНП 4х2.5').officialComplete).toBe(false);
   });
@@ -35,9 +41,12 @@ describe('manufacturer model and execution boundaries', () => {
       true
     );
     expect(decode('RG-316D', 'RG-316D 2х1').officialComplete).toBe(false);
-    expect(
-      decode('Cable LI6YC6Y-J', 'Cable LI6YC6Y-J 7x0.75').officialComplete
-    ).toBe(true);
+    const tk = decode('Cable LI6YC6Y-J', 'Cable LI6YC6Y-J 7x0.75');
+    expect(tk.officialComplete).toBe(true);
+    expect(tk.constructionEvidence.evidence).toMatchObject({
+      documentId: 'tk-kabel-full2024',
+      pages: [91],
+    });
     expect(
       decode('Cable LI6YC6Y-J', 'Cable LI6YC6Y-J 6x0.75').officialComplete
     ).toBe(false);
@@ -53,7 +62,7 @@ describe('manufacturer model and execution boundaries', () => {
       '08У',
       '2,7кН',
     ]);
-    expect(d.officialComplete).toBe(true);
+    expect(d.officialComplete).toBe(false);
     expect(d.tokens.some((t) => t.text.includes('G.657.A1'))).toBe(true);
     expect(
       d.tokens.some((t) => t.text.includes('растягивающая нагрузка 2,7 кН'))
@@ -104,7 +113,13 @@ describe('manufacturer model and execution boundaries', () => {
     expect(decode('OPVC-JZ', 'OPVC-JZ 36х2.5').officialComplete).toBe(false);
     expect(decode('СКЛОН Р6', 'СКЛОН Р6 24х0,35').officialComplete).toBe(true);
     expect(decode('СКЛОН Р6', 'СКЛОН Р6 24х6').officialComplete).toBe(false);
-    expect(decode('НУД', 'НУД 3х1.5').officialComplete).toBe(false);
+    const nud = decode('НУД', 'НУД 3х1.5');
+    expect(nud.officialComplete).toBe(true);
+    expect(nud.constructionEvidence.evidence).toMatchObject({
+      documentId: 'sst-industry-current',
+      pages: [152],
+    });
+    expect(decode('НУД', 'НУД 3х0.75').officialComplete).toBe(false);
   });
   it('keeps the RG letter variant, impedance and dielectric diameter tied to the exact factory row', () => {
     const rg = decode('RG- 62 au', 'RG- 62 au');
@@ -143,10 +158,14 @@ describe('manufacturer model and execution boundaries', () => {
   });
 
   it('recovers the exact OneKeyElectro fire suffix across the original price spacing', () => {
-    expect(
-      decode('ONEKEYELECTRO-КС-ТТ', 'ONEKEYELECTRO-КС-ТТнг (А) 3х16', ['нг(А)'])
-        .officialComplete
-    ).toBe(true);
+    const tt = decode('ONEKEYELECTRO-КС-ТТ', 'ONEKEYELECTRO-КС-ТТнг (А) 3х16', [
+      'нг(А)',
+    ]);
+    expect(tt.officialComplete).toBe(true);
+    expect(tt.constructionEvidence.evidence).toMatchObject({
+      documentId: 'sst-onekey-current',
+      pages: [13, 14, 15, 17],
+    });
     expect(
       decode('ONEKEYELECTRO-КС-ТТ', 'ONEKEYELECTRO-КС-ТТнг (А) 3х16 XYZ', [
         'нг(А)',
@@ -209,6 +228,10 @@ describe('manufacturer model and execution boundaries', () => {
   it('keeps the documented TСP diameter and pair counts separate from area', () => {
     const decoded = decode('ТЦПВ', 'ТЦПВ 2х2х0.52');
     expect(decoded.officialComplete).toBe(true);
+    expect(decoded.constructionEvidence.evidence).toMatchObject({
+      documentId: 'inform-presentation',
+      pages: [5, 23, 30],
+    });
     expect(
       decoded.tokens.some((t) => t.text.includes('диаметр жилы 0,52 мм'))
     ).toBe(true);
@@ -240,7 +263,7 @@ describe('manufacturer model and execution boundaries', () => {
     const fire = ['нг(А)-FRHF'];
     expect(
       decode('КПКЭП', 'КПКЭП 37х2х1 нг(А)FRHF', fire).officialComplete
-    ).toBe(true);
+    ).toBe(false);
     expect(
       decode('КПКЭП', 'КПКЭП 38х2х1 нг(А)FRHF', fire).officialComplete
     ).toBe(false);
@@ -255,8 +278,8 @@ describe('manufacturer model and execution boundaries', () => {
   it('distinguishes HF telephone insulation from the NDG sheath execution', () => {
     const hf = decode('ТПП', 'ТПП 10х2х0.5 нг(А)HF', ['нг(А)-HF']);
     const ndg = decode('ТППэп', 'ТППэп 10х2х0.5 (А)ндг', ['(А)ндг']);
-    expect(hf.officialComplete).toBe(true);
-    expect(ndg.officialComplete).toBe(true);
+    expect(hf.officialComplete).toBe(false);
+    expect(ndg.officialComplete).toBe(false);
     expect(hf.tokens.find((t) => t.code === 'Изоляция').text).toContain(
       'не содержащая галогенов'
     );
@@ -272,7 +295,7 @@ describe('manufacturer model and execution boundaries', () => {
     expect(
       decode('JE-Y(ST)Y', 'JE-Y(ST)Y 12х2х0.8 Bd ROHS', ['Bd', 'ROHS'])
         .officialComplete
-    ).toBe(true);
+    ).toBe(false);
     expect(
       decode('JE-Y(ST)Y', 'JE-Y(ST)Y 32х2х0.8 Bd', ['Bd']).officialComplete
     ).toBe(false);
@@ -280,7 +303,7 @@ describe('manufacturer model and execution boundaries', () => {
 
   it('keeps archived category C coax construction separate from category A', () => {
     const d = decode('РК 75-7-320ф-С', 'РК75-7-320ф-Снг(С)HF', ['нг(С)-HF']);
-    expect(d.officialComplete).toBe(true);
+    expect(d.officialComplete).toBe(false);
     expect(d.evidence.documentId).toBe('spec-main-2019-copy');
     expect(
       d.tokens.find((t) => t.code === 'Внутренний проводник').text
@@ -294,7 +317,7 @@ describe('manufacturer model and execution boundaries', () => {
   it('requires the factory diameter and fire execution for KIPE constructions', () => {
     expect(
       decode('КИП', 'КИПэ 2х2х0.6 нг(А)HF', ['Э', 'нг(А)-HF']).officialComplete
-    ).toBe(true);
+    ).toBe(false);
     expect(
       decode('КИП', 'КИПэ 2х2х0.5 нг(А)HF', ['Э', 'нг(А)-HF']).officialComplete
     ).toBe(false);
@@ -364,7 +387,7 @@ describe('manufacturer model and execution boundaries', () => {
     ).toBe(false);
     expect(
       decode('UNITRONIC BUS CAN', 'UNITRONIC BUS CAN 2х2х0.34').officialComplete
-    ).toBe(true);
+    ).toBe(false);
     expect(
       decode('UNITRONIC BUS CAN', 'UNITRONIC BUS CAN 3х2х0.34').officialComplete
     ).toBe(false);

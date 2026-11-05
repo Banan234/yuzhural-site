@@ -10,12 +10,14 @@ const product = (mark, sourceName, attributes = []) => ({
 });
 const text = (d) => [d.description, ...d.tokens.map((t) => t.text)].join(' ');
 
+// Full proof now requires the separately reviewed construction registry (R-019).
+// Decoding assertions below remain; a legacy family rule alone grants no full status.
 describe('official manufacturer decoding', () => {
   it('keeps the low-voltage ПвПГ separate from the sealed medium-voltage ПвПг, including attached fire suffixes', () => {
-    for (const p of [
-      product('ПвПГ', 'ПвПГ 3х1,5 нг(А)HF', ['нг(А)HF']),
-      product('ПвПГнг(А)-HF', 'ПвПГнг(А)-HF 3х2,5'),
-      product('ПвПГнг(А)-FRHF', 'ПвПГнг(А)-FRHF 3х2,5'),
+    for (const [p, confirmed] of [
+      [product('ПвПГ', 'ПвПГ 3х1,5 нг(А)HF', ['нг(А)HF']), true],
+      [product('ПвПГнг(А)-HF', 'ПвПГнг(А)-HF 3х2,5'), true],
+      [product('ПвПГнг(А)-FRHF', 'ПвПГнг(А)-FRHF 3х2,5'), false],
     ]) {
       const d = buildProductDesignation(p);
       expect(d.family).toBe('ПвПГ');
@@ -25,7 +27,11 @@ describe('official manufacturer decoding', () => {
       );
       expect(text(d)).not.toContain('герметизация');
       expect(text(d)).not.toContain('Полиэтиленовая оболочка');
-      expect(d.officialComplete).toBe(true);
+      expect(d.officialComplete).toBe(confirmed);
+      if (confirmed) {
+        expect(d.constructionEvidence.evidence.documentId).toBe('hka');
+        expect(d.constructionEvidence.evidence.pages).toContain(69);
+      }
     }
     expect(
       text(buildProductDesignation(product('ПвПг', 'ПвПг 1х95/16-10')))
@@ -43,7 +49,7 @@ describe('official manufacturer decoding', () => {
     ]) {
       const d = buildProductDesignation(product('КВИП', `КВИП 1х2х${size}`));
       expect(text(d)).toContain(quantity);
-      expect(d.officialComplete).toBe(true);
+      expect(d.officialComplete).toBe(false);
     }
     const unknown = buildProductDesignation(product('КВИП', 'КВИП 1х2х0,6'));
     expect(unknown.status).toBe('partial');
@@ -70,7 +76,7 @@ describe('official manufacturer decoding', () => {
     ).toBe(false);
     expect(
       buildProductDesignation(product('КСВВ', 'КСВВ 1х2х0,5')).officialComplete
-    ).toBe(true);
+    ).toBe(false);
     expect(
       text(buildProductDesignation(product('КСРВ', 'КСРВ 1х2х0,8')))
     ).toContain('диаметр жилы 0,8 мм');
@@ -107,6 +113,7 @@ describe('official manufacturer decoding', () => {
     expect(d.evidence.documentId).toBe('tkd-elitronic');
     expect(d.sources[0].url).toContain('tkd-kabel.de');
     expect(d.officialComplete).toBe(true);
+    expect(d.constructionEvidence.evidence.pages).toEqual([1, 2, 3]);
   });
 
   it('persists the scope of family cross-checks without presenting it as full product verification', () => {
@@ -130,7 +137,7 @@ describe('official manufacturer decoding', () => {
       expect(d.family).toBe('КГтп');
       expect(text(d)).toContain('термоэластопласта');
       expect(text(d)).not.toContain('резин');
-      expect(d.officialComplete).toBe(true);
+      expect(d.officialComplete).toBe(false);
     }
   });
 
@@ -160,8 +167,8 @@ describe('official manufacturer decoding', () => {
     const unknown = buildProductDesignation(product('КПЭТИ', 'КПЭТИ 2х2х0,52'));
     expect(text(area)).toContain('сечение каждой жилы 0,35 мм²');
     expect(text(diameter)).toContain('диаметр жилы 0,7 мм');
-    expect(area.officialComplete).toBe(true);
-    expect(diameter.officialComplete).toBe(true);
+    expect(area.officialComplete).toBe(false);
+    expect(diameter.officialComplete).toBe(false);
     expect(unknown.officialComplete).toBe(false);
   });
 
@@ -169,7 +176,7 @@ describe('official manufacturer decoding', () => {
     const d = buildProductDesignation(
       product('КУИН', 'КУИН 3х2х1 ВЭК-хл', ['ВЭК-хл'])
     );
-    expect(d.officialComplete).toBe(true);
+    expect(d.officialComplete).toBe(false);
     expect(text(d)).toContain('Изоляция и оболочка из ПВХ');
     expect(text(d)).toContain('Общий экран');
     expect(text(d)).toContain('Броня');
@@ -187,7 +194,7 @@ describe('official manufacturer decoding', () => {
     const d = buildProductDesignation(
       product('ТППэп', 'ТППэп 10х2х0,5-200 нг(А)HF', ['200', 'нг(А)-HF'])
     );
-    expect(d.officialComplete).toBe(true);
+    expect(d.officialComplete).toBe(false);
     expect(d.evidence.documentId).toBe('samara-catalog');
     expect(text(d)).toContain('Сплошная полиэтиленовая изоляция');
     expect(text(d)).toContain('Полимерная композиция без галогенов');
@@ -199,10 +206,12 @@ describe('official manufacturer decoding', () => {
   });
 
   it('allows scoped numerical voltages without treating arbitrary attributes as voltages', () => {
-    expect(
-      buildProductDesignation(product('АПвПу2г', 'АПвПу2г 1х95/16-10', ['10']))
-        .officialComplete
-    ).toBe(true);
+    const screened = buildProductDesignation(
+      product('АПвПу2г', 'АПвПу2г 1х95/16-10', ['10'])
+    );
+    expect(screened.officialComplete).toBe(true);
+    expect(screened.constructionEvidence.evidence.pages).toContain(175);
+    expect(screened.constructionEvidence.configuration.screenSection).toBe(16);
     expect(
       buildProductDesignation(product('КГ', 'КГ 3х1 10', ['10'])).unknown
     ).toContain('10');
@@ -212,7 +221,7 @@ describe('official manufacturer decoding', () => {
     expect(
       buildProductDesignation({ mark: 'ПВКВ', sourceName: 'ПВКВ 1х2,5' })
         .officialComplete
-    ).toBe(true);
+    ).toBe(false);
     expect(
       buildProductDesignation({ mark: 'ПвКВ', sourceName: 'ПвКВ 1х95' }).family
     ).toBeNull();
@@ -235,7 +244,12 @@ describe('official manufacturer decoding', () => {
       ...product('30', 'Лоутокс 30 нг(А)FRLSLTx 2х2х0,52', ['нг(А)-FRLS-LTx']),
       brand: 'ЛОУТОКС',
     };
-    expect(buildProductDesignation(p).officialComplete).toBe(true);
+    const decoded = buildProductDesignation(p);
+    expect(decoded.officialComplete).toBe(true);
+    expect(decoded.constructionEvidence.evidence).toMatchObject({
+      documentId: 'spec-lowtox30',
+      format: 'html',
+    });
     expect(
       buildProductDesignation(product('30', '30 2х2х0,52')).officialComplete
     ).toBe(false);
@@ -278,6 +292,8 @@ describe('official manufacturer decoding', () => {
   it('separates aluminium and steel areas in AS wire without interpreting the steel as a screen', () => {
     const d = buildProductDesignation(product('АС 70/11', 'АС 70/11'));
     expect(d.officialComplete).toBe(true);
+    expect(d.constructionEvidence.evidence.documentId).toBe('hka');
+    expect(d.constructionEvidence.evidence.pages).toEqual([522]);
     expect(text(d)).toContain('алюминиевой части 70 мм²');
     expect(text(d)).toContain('стального сердечника 11 мм²');
     expect(text(d)).not.toContain('сечение экрана');
@@ -291,7 +307,7 @@ describe('official manufacturer decoding', () => {
     const valid = buildProductDesignation(
       product('ПАВ 1х16 желт-зел (АПВ)', 'ПАВ 1х16 желт-зел (АПВ)')
     );
-    expect(valid.officialComplete).toBe(true);
+    expect(valid.officialComplete).toBe(false);
     expect(text(valid)).toContain('Одна жила; номинальное сечение 16 мм²');
     expect(
       buildProductDesignation(product('ПАВ 2х4', 'ПАВ 2х4')).officialComplete
@@ -307,7 +323,7 @@ describe('official manufacturer decoding', () => {
     const d = buildProductDesignation(
       product('СИП-2', 'СИП-2 3х70+1х54.6+2х16 0,6/1', ['0,6/1'])
     );
-    expect(d.officialComplete).toBe(true);
+    expect(d.officialComplete).toBe(false);
     expect(text(d)).toContain('Фазные жилы: 3 × 70 мм²');
     expect(text(d)).toContain('нулевая несущая жила: 1 × 54,6 мм²');
     expect(text(d)).toContain('Дополнительные жилы: 2 × 16 мм²');
@@ -321,7 +337,7 @@ describe('official manufacturer decoding', () => {
     const pur = buildProductDesignation(
       product('Topflex 611-PUR', 'HELUKABEL Topflex 611-PUR 4х2.5')
     );
-    expect(pur.officialComplete).toBe(true);
+    expect(pur.officialComplete).toBe(false);
     expect(text(pur)).toContain('Полипропилен');
     expect(text(pur)).toContain('полиуретана');
     const wrongBrand = buildProductDesignation(
@@ -329,21 +345,21 @@ describe('official manufacturer decoding', () => {
     );
     expect(wrongBrand.officialComplete).toBe(false);
     const ktf = buildProductDesignation(product('КТФ', 'КТФЭ 5х1.5', ['Э']));
-    expect(ktf.officialComplete).toBe(true);
+    expect(ktf.officialComplete).toBe(false);
     expect(
       buildProductDesignation(product('КТФ', 'КТФ 5х1.5')).officialComplete
     ).toBe(false);
     const km = buildProductDesignation(
       product('КМПВ', 'КМПВ 2х0.5-500', ['500'])
     );
-    expect(km.officialComplete).toBe(true);
+    expect(km.officialComplete).toBe(false);
     expect(text(km)).toContain('Номинальное напряжение 500 В');
     expect(text(km)).not.toContain('500 кВ');
   });
 
   it('uses the NIKI light-resistance index and checks both grouped size spellings', () => {
     const d = buildProductDesignation(product('КУВШ', 'КУВШ 2х(2х1) С', ['С']));
-    expect(d.officialComplete).toBe(true);
+    expect(d.officialComplete).toBe(false);
     expect(text(d)).toContain('светостойкость');
     expect(text(d)).not.toContain('слюд');
     for (const size of ['5х(4х1)', '5х4х1', '2х(4х2.5)', '2х4х2.5']) {
@@ -356,7 +372,7 @@ describe('official manufacturer decoding', () => {
 
   it('checks the thermocouple alloy size combination and consumes the complete compound size', () => {
     const d = buildProductDesignation(product('ПТВО-М', 'ПТВО-М 1х1+1х2.5'));
-    expect(d.officialComplete).toBe(true);
+    expect(d.officialComplete).toBe(false);
     expect(text(d)).toContain('ПВХ-оболочка');
     expect(text(d)).not.toContain('полиэфир');
     expect(text(d)).toContain(
@@ -391,6 +407,8 @@ describe('official manufacturer decoding', () => {
       product('КИПэБ', 'КИПэБ 2х2х0.6 нг(А)HF')
     );
     expect(d.officialComplete).toBe(true);
+    expect(d.constructionEvidence.evidence.documentId).toBe('spec-automation');
+    expect(d.constructionEvidence.evidence.pages).toEqual([58]);
     expect(text(d)).toContain('диаметр жилы 0,6 мм');
     expect(text(d)).not.toContain('сечение каждой жилы');
     expect(
@@ -424,7 +442,7 @@ describe('official manufacturer decoding', () => {
   it('reports strict coverage over all rows and preserves commercial fields', () => {
     const input = [
       {
-        ...product('КГ', 'КГ 3х1 тп', ['тп']),
+        ...product('ВВГ', 'ВВГ 3х2.5'),
         sku: 'future-1',
         price: 123.45,
         stock: 87,

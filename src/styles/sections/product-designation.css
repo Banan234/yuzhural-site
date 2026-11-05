@@ -39,7 +39,7 @@
   color: #62451c;
 }
 .product-designation__sources {
-  font-size: 13px;
+  font-size: var(--text-small);
   color: var(--muted);
 }
 .product-designation__sources ul {
@@ -74,7 +74,7 @@
 }
 .product-designation__manufacturer-texts a {
   color: #145da0;
-  font-size: 13px;
+  font-size: var(--text-small);
 }
 @media (max-width: 600px) {
   .product-designation {

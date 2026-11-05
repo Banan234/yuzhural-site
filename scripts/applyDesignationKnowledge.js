@@ -35,7 +35,10 @@ export async function applyDesignationKnowledge({
     const { products, report } = enrichPriceDesignations(input);
     report.applied = apply;
     if (!apply) return report;
-    const backup = await createBackup({ projectPath: root });
+    const backup = await createBackup({
+      projectPath: root,
+      lockAlreadyHeld: true,
+    });
     report.backup = { id: backup.id, backupPath: backup.backupPath };
     stage = await fs.mkdtemp(path.join(root, 'data/.designation-stage-'));
     await fs.cp(await fs.realpath(catalogDir), stage, { recursive: true });

@@ -1,3 +1,4 @@
+import { checkDesignationConstruction } from './designationConstructionEvidence.js';
 import { findCableSpecification } from '../scripts/lib/cableSpecification.js';
 import { selectManufacturerTexts } from './manufacturerTexts.js';
 import {
@@ -786,6 +787,60 @@ function sizeTokens(product, family, designation) {
       });
     return { rows, warnings: [] };
   }
+  if (family?.mark === 'СКАБ 250' && !product.parsingWarnings?.length) {
+    const proof = checkDesignationConstruction({
+      product,
+      designation,
+      family,
+      documents: DESIGNATION_DOCUMENTS,
+    });
+    const configuration = proof.configuration;
+    if (
+      proof.status === 'confirmed' &&
+      proof.ruleId === 'scope-family-0531-spec-skab-q52-screen-triple' &&
+      configuration.cores === 2 &&
+      configuration.group === 3 &&
+      configuration.section === 0.75 &&
+      configuration.screen &&
+      configuration.execution === 'НГ(А)HFХЛ'
+    ) {
+      return {
+        rows: [
+          {
+            code:
+              product.conductorConfiguration ||
+              findCableSpecification(designation)?.configuration,
+            text: '2 индивидуально экранированные тройки по 3 жилы; сечение каждой жилы 0,75 мм². Всего 6 жил',
+          },
+        ],
+        warnings: [],
+      };
+    }
+  }
+  // Only the complete manufacturer-documented Samara configuration is decoded.
+  // The construction checker also rejects contradictory structured source fields.
+  if (
+    /^МКПпА(?:БПШП|БП|ШП)\s+7\s*[хx×]\s*4\s*[хx×]\s*1[.,]05\s*\+\s*5\s*[хx×]\s*2\s*[хx×]\s*0[.,]7\s*\+\s*1\s*[хx×]\s*0[.,]7$/iu.test(
+      designation
+    ) &&
+    checkDesignationConstruction({
+      product,
+      designation,
+      family,
+      documents: DESIGNATION_DOCUMENTS,
+    }).status === 'confirmed' &&
+    !product.parsingWarnings?.length
+  ) {
+    return {
+      rows: [
+        {
+          code: designation.replace(/^\S+\s+/u, ''),
+          text: '7 четвёрок (4 высокочастотные и 3 низкочастотные), диаметр жил 1,05 мм; 5 вспомогательных пар и 1 вспомогательная жила, диаметр 0,7 мм. Всего 39 жил',
+        },
+      ],
+      warnings: [],
+    };
+  }
   const spec = findCableSpecification(designation);
   const rows = [];
   const warnings = [];
@@ -996,6 +1051,15 @@ export function buildProductDesignation(product = {}) {
         indexes: { ...resolvedFamily.indexes, ...execution.overrides.indexes },
       }
     : resolvedFamily;
+  const constructionEvidence = checkDesignationConstruction({
+    product,
+    designation,
+    family,
+    documents: DESIGNATION_DOCUMENTS,
+  });
+  const confirmedNycY =
+    constructionEvidence.status === 'confirmed' &&
+    constructionEvidence.ruleId === 'scope-family-0529-prysmian-lv-q52';
   const source = sourceFor(family);
   const tokens = (family?.tokens || []).map(([code, text]) => ({ code, text }));
   const sources = new Map(source ? [[source.url, source]] : []);
@@ -1007,6 +1071,14 @@ export function buildProductDesignation(product = {}) {
     )
       sources.set(item.url, item);
   };
+  if (confirmedNycY)
+    tokens.push(
+      { code: 'RE', text: 'Круглые однопроволочные жилы' },
+      {
+        code: '/6',
+        text: 'Сечение концентрического медного проводника — 6 мм²',
+      }
+    );
   const unknown = [];
   if (!family) unknown.push(clean(product.mark) || designation);
   if (partial) unknown.push(partial);
@@ -1030,6 +1102,7 @@ export function buildProductDesignation(product = {}) {
   ];
   for (const attribute of indexes) {
     if (consumedAttribute === normalize(attribute)) continue;
+    if (confirmedNycY && normalize(attribute) === 'RE/6') continue;
     // The factory optical grammar accounts for the entire original designation.
     // Ignore only importer fragments that are literally present in that match.
     if (
@@ -1112,7 +1185,15 @@ export function buildProductDesignation(product = {}) {
       }
     : family;
   const size = sizeTokens(product, sizeFamily, designation);
-  if (family?.applicationOnly)
+  if (
+    family?.applicationOnly &&
+    !(
+      family.mark === 'НУД' &&
+      constructionEvidence.status === 'confirmed' &&
+      constructionEvidence.ruleId ===
+        'scope-family-1032-sst-industry-current-q52'
+    )
+  )
     size.warnings.push(
       'По заводскому источнику подтверждено назначение семейства; полная конструкция и размерная запись ещё требуют проверки.'
     );
@@ -1182,6 +1263,7 @@ export function buildProductDesignation(product = {}) {
       d.publisherType === 'manufacturer'
   );
   const officialComplete =
+    constructionEvidence.status === 'confirmed' &&
     status === 'reviewed' &&
     family?.evidence?.kind === 'manufacturer-documentation' &&
     Boolean(officialDocument) &&
@@ -1222,6 +1304,7 @@ export function buildProductDesignation(product = {}) {
       : null,
     status,
     officialComplete,
+    constructionEvidence,
     family: family?.mark || null,
     description,
     tokens,
