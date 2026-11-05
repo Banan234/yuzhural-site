@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PurchaseLayout from '../components/purchase/PurchaseLayout';
 import {
@@ -6,27 +5,37 @@ import {
   SITE_REQUISITES,
   SITE_REQUEST_DOCUMENTS,
 } from '../lib/siteConfig';
-import { requestServiceHelp, serviceUrl } from '../lib/cableServices';
+import { serviceUrl } from '../lib/cableServices';
 import evidence from '../../data/companyEvidence.json';
+import '../styles/pages/quality.css';
+function DocumentIcon() {
+  return (
+    <svg
+      className="quality-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M14 2H5v20h14V7zM14 2v6h5M8 12h8M8 16h8" />
+    </svg>
+  );
+}
+
 export default function QualityPage() {
-  const [mark, setMark] = useState('');
-  const [manufacturer, setManufacturer] = useState('');
-  const [documentType, setDocumentType] = useState(SITE_REQUEST_DOCUMENTS[0]);
-  const [requirements, setRequirements] = useState('');
   const approved = (key) =>
     evidence[key].filter((item) => item.approved === true);
-  function request(event) {
-    event.preventDefault();
-    requestServiceHelp(
-      'Запрос документов по кабелю',
-      `Марка: ${mark.trim()}; изготовитель: ${manufacturer.trim() || 'уточнить для складской партии'}; документ: ${documentType}.\nТребования: ${requirements.trim() || 'для согласования поставки'}`
-    );
-  }
   return (
-    <PurchaseLayout pageKey="quality">
-      <div className="purchase-columns">
+    <PurchaseLayout pageKey="quality" className="quality-page">
+      <div className="quality-topics">
         <section className="purchase-panel">
-          <h2>Проверка компании перед оплатой</h2>
+          <h2>
+            <DocumentIcon />
+            Проверка компании
+          </h2>
           <p>
             <strong>{SITE_REQUISITES.fullLegalName}</strong>
           </p>
@@ -41,17 +50,34 @@ export default function QualityPage() {
                 <span>
                   {doc.type} · {doc.description}
                 </span>
+                <svg
+                  className="quality-download"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" />
+                </svg>
               </a>
             ))}
           </div>
           <Link to="/contacts/">Офис, склад и контакты →</Link>
         </section>
         <section className="purchase-panel">
-          <h2>Документы к конкретной позиции</h2>
+          <h2>
+            <DocumentIcon />
+            Документы на кабель
+          </h2>
           <p>
-            Для проверки укажите полное обозначение и изготовителя. Сертификат
-            на другую марку или таблица из каталога завода не подтверждают
-            документы выбранной складской партии.
+            Укажите полную марку и изготовителя. Подберём документы для
+            выбранной позиции и складской партии. Сертификат на другую марку или
+            каталог завода их не заменяет.
           </p>
           <ul>
             {SITE_REQUEST_DOCUMENTS.map((text) => (
@@ -79,54 +105,6 @@ export default function QualityPage() {
           </div>
         </section>
       )}
-      <section className="purchase-panel">
-        <h2>Запросить сертификат или паспорт качества</h2>
-        <form className="purchase-form" onSubmit={request}>
-          <div className="purchase-fields">
-            <label>
-              Полная марка кабеля
-              <input
-                required
-                maxLength={200}
-                value={mark}
-                onChange={(e) => setMark(e.target.value)}
-                placeholder="Например, ВВГнг(А)-LS 3х2,5-0,66"
-              />
-            </label>
-            <label>
-              Изготовитель, если известен
-              <input
-                maxLength={100}
-                value={manufacturer}
-                onChange={(e) => setManufacturer(e.target.value)}
-              />
-            </label>
-            <label>
-              Документ
-              <select
-                value={documentType}
-                onChange={(e) => setDocumentType(e.target.value)}
-              >
-                {SITE_REQUEST_DOCUMENTS.map((text) => (
-                  <option key={text}>{text}</option>
-                ))}
-              </select>
-            </label>
-            <label>
-              Требования проекта
-              <textarea
-                maxLength={350}
-                value={requirements}
-                onChange={(e) => setRequirements(e.target.value)}
-                rows={3}
-              />
-            </label>
-          </div>
-          <button className="button-primary" type="submit">
-            Указать контакт для получения документов
-          </button>
-        </form>
-      </section>
       {approved('projects').length > 0 && (
         <section className="purchase-panel">
           <h2>Примеры поставок</h2>
