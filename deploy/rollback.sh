@@ -63,26 +63,30 @@ export VITE_SENTRY_RELEASE="${SHELL_VITE_SENTRY_RELEASE:-$DEPLOY_TAG}"
 OLD_LAST_GOOD_RELEASE_TAG="${LAST_GOOD_RELEASE_TAG:-}"
 OLD_PREVIOUS_GOOD_RELEASE_TAG="${PREVIOUS_GOOD_RELEASE_TAG:-}"
 
+CURRENT_LIVE_RELEASE_TAG=""
+RELEASE_PHASE="up"
+trap record_release_failure EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+write_release_state in_progress
+
 echo "[rollback] project_root=$PROJECT_ROOT env_file=$ENV_FILE tag=$ROLLBACK_TAG"
 compose_cmd "$PROJECT_ROOT" "$ENV_FILE" up -d --no-build
+RELEASE_PHASE="catalog"
+prepare_catalog_for_web "$PROJECT_ROOT" "$ENV_FILE"
+RELEASE_PHASE="smoke"
 smoke_args=(--project-root "$PROJECT_ROOT" --env-file "$ENV_FILE")
 if [[ "$SKIP_PUBLIC_CHECKS" == "true" ]]; then
   smoke_args+=(--skip-public-checks)
 fi
 "$PROJECT_ROOT/deploy/post-deploy-smoke.sh" "${smoke_args[@]}"
 
-NEW_PREVIOUS_GOOD_RELEASE_TAG="$OLD_LAST_GOOD_RELEASE_TAG"
-if [[ "$ROLLBACK_TAG" == "${OLD_LAST_GOOD_RELEASE_TAG:-}" ]]; then
-  NEW_PREVIOUS_GOOD_RELEASE_TAG="$OLD_PREVIOUS_GOOD_RELEASE_TAG"
+if [[ "$ROLLBACK_TAG" != "$OLD_LAST_GOOD_RELEASE_TAG" ]]; then
+  OLD_PREVIOUS_GOOD_RELEASE_TAG="$OLD_LAST_GOOD_RELEASE_TAG"
 fi
-
-write_state_file \
-  "$STATE_FILE" \
-  LIVE_RELEASE_TAG "$ROLLBACK_TAG" \
-  LAST_GOOD_RELEASE_TAG "$ROLLBACK_TAG" \
-  PREVIOUS_GOOD_RELEASE_TAG "$NEW_PREVIOUS_GOOD_RELEASE_TAG" \
-  LAST_DEPLOY_STATUS "success" \
-  LAST_DEPLOYED_AT "$(utc_now)" \
-  LAST_ENV_FILE "$ENV_FILE"
-
+OLD_LAST_GOOD_RELEASE_TAG="$ROLLBACK_TAG"
+CURRENT_LIVE_RELEASE_TAG="$ROLLBACK_TAG"
+RELEASE_PHASE="complete"
+write_release_state success
+trap - EXIT INT TERM
 echo "[rollback] success tag=$ROLLBACK_TAG"

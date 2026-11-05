@@ -75,15 +75,32 @@ async function precompressFile(filePath) {
 export async function precompress({
   outputDir = distDir,
   log = console.log,
+  concurrency = 2,
 } = {}) {
   const files = await collectFiles(outputDir, { outputDir });
   let written = 0;
 
-  for (const filePath of files) {
-    if (await precompressFile(filePath)) {
-      written += 1;
-    }
+  if (!Number.isInteger(concurrency) || concurrency < 1 || concurrency > 4) {
+    throw new Error('precompress concurrency must be an integer from 1 to 4');
   }
+  let nextFile = 0;
+  let failed = false;
+  // Bound encoder memory/CPU and keep the exact same compression settings.
+  const workers = await Promise.allSettled(
+    Array.from({ length: Math.min(concurrency, files.length) }, async () => {
+      while (!failed && nextFile < files.length) {
+        const filePath = files[nextFile++];
+        try {
+          if (await precompressFile(filePath)) written += 1;
+        } catch (error) {
+          failed = true;
+          throw error;
+        }
+      }
+    })
+  );
+  const failure = workers.find((worker) => worker.status === 'rejected');
+  if (failure) throw failure.reason;
 
   log?.(`[precompress] wrote .br/.gz for ${written}/${files.length} files`);
   return written;

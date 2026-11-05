@@ -38,3 +38,10 @@ data/.price-source-state.json
 data/.import-notification-state.json
 data/.import-maintenance.json
 data/.import-maintenance.json.lock
+
+# Private runtime data must only enter containers through runtime mounts.
+data/chat-store.json
+data/chat-store.json.lock
+data/.chat-store.json.*.tmp
+data/forms-outbox/
+data/consent-evidence/

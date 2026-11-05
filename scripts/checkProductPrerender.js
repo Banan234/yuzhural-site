@@ -1,6 +1,7 @@
 // Файл запускает production-проверку runtime HTML карточек товара относительно sitemap.
 
 import fs from 'fs/promises';
+import { resolveCatalogSnapshot } from './lib/catalogSnapshot.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { assertProductPrerenderCoverage } from './lib/productPrerenderAudit.js';
@@ -10,7 +11,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
 
-const productsPath = path.join(projectRoot, 'data', 'products.json');
 async function resolvePublicArtifactsDir() {
   if (process.env.PUBLIC_ARTIFACTS_DIR) {
     return path.resolve(projectRoot, process.env.PUBLIC_ARTIFACTS_DIR);
@@ -33,6 +33,7 @@ async function resolvePublicArtifactsDir() {
 }
 
 async function main() {
+  const { productsPath } = await resolveCatalogSnapshot(projectRoot);
   const publicDir = await resolvePublicArtifactsDir();
   const payload = JSON.parse(await fs.readFile(productsPath, 'utf8'));
   const products = extractProductsPayload(payload, { source: productsPath });

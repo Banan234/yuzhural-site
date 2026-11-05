@@ -84,14 +84,16 @@ write_state_file() {
   shift
 
   mkdir -p "$(dirname "$state_file")"
-  : >"$state_file"
+  local temporary_file
+  temporary_file="$(mktemp "${state_file}.tmp.XXXXXX")"
 
   while [[ "$#" -gt 0 ]]; do
     local key="$1"
     local value="$2"
     shift 2
-    printf '%s=%q\n' "$key" "$value" >>"$state_file"
+    printf '%s=%q\n' "$key" "$value" >>"$temporary_file"
   done
+  mv -f "$temporary_file" "$state_file"
 }
 
 utc_now() {
@@ -102,3 +104,40 @@ web_port_from_bind() {
   local bind_value="${1:-127.0.0.1:8080}"
   printf '%s\n' "${bind_value##*:}"
 }
+
+# Record attempts independently of the last smoke-verified release.
+write_release_state() {
+  write_state_file "$STATE_FILE" \
+    LIVE_RELEASE_TAG "$CURRENT_LIVE_RELEASE_TAG" \
+    LAST_GOOD_RELEASE_TAG "$OLD_LAST_GOOD_RELEASE_TAG" \
+    PREVIOUS_GOOD_RELEASE_TAG "$OLD_PREVIOUS_GOOD_RELEASE_TAG" \
+    ATTEMPTED_RELEASE_TAG "$DEPLOY_TAG" \
+    LAST_DEPLOY_STATUS "$1" \
+    LAST_DEPLOY_PHASE "$RELEASE_PHASE" \
+    LAST_DEPLOYED_AT "$(utc_now)" \
+    LAST_ENV_FILE "$ENV_FILE"
+}
+
+record_release_failure() {
+  local status="$?"
+  if [[ "$status" -ne 0 ]]; then
+    write_release_state failed || echo "Could not record failed release state" >&2
+  fi
+}
+
+# Copy the actual selected web image's public template, not a separately built
+# app template. A separate code-template pointer survives catalog imports.
+prepare_catalog_for_web() (
+  local project_root="$1" env_file="$2" stage
+  require_command tar
+  mkdir -p "$project_root/data"
+  stage="$(mktemp -d "$project_root/data/.web-template-stage.XXXXXX")"
+  trap 'rm -rf "$stage"' EXIT
+  chmod 755 "$stage"
+  compose_cmd "$project_root" "$env_file" exec -T web \
+    tar -cf - -C /usr/share/nginx/html index.html .vite/manifest.json server | tar -xf - -C "$stage"
+  chmod -R a+rX "$stage"
+  compose_cmd "$project_root" "$env_file" exec -T \
+    -e "CATALOG_WEB_TEMPLATE_DIR=/app/data/$(basename "$stage")" -e DEPLOY_TAG \
+    app node --input-type=module - < "$project_root/scripts/prepareCatalogWebRelease.js"
+)

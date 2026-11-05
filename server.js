@@ -1,3 +1,12 @@
+import { isValidOrderQuantity } from './shared/orderQuantity.js';
+import { prepareProductDetail } from './lib/productPresentation.js';
+import {
+  calculateQuote,
+  formatQuoteMoney,
+  formatQuoteUnitPrice,
+  getQuoteTotalDisplay,
+  quoteMoneyPayload,
+} from './shared/quoteMoney.js';
 import {
   validateConsent,
   createConsentEvidence,
@@ -22,12 +31,13 @@ import { randomUUID } from 'crypto';
 import { monitorEventLoopDelay } from 'perf_hooks';
 import { pathToFileURL } from 'url';
 import { createCatalogStore } from './lib/catalog.js';
+import { expandProductOffers } from './shared/productOffers.js';
 import { buildMarkIndex, normalizeMarkKey } from './shared/markIndex.js';
 import {
   DEFAULT_FEATURED_PRODUCTS_LIMIT,
   getFeaturedProducts,
 } from './shared/featuredProducts.js';
-import { createFileChatStore } from './lib/chatStore.js';
+import { createFileChatStore, ChatStoreError } from './lib/chatStore.js';
 import { createVkChatBridge } from './lib/vkChat.js';
 import {
   MAX_QUOTE_ITEMS,
@@ -258,7 +268,30 @@ function applyCatalogCache(res) {
   );
 }
 
-async function flushPendingManagerNotifications({
+const managerNotificationFlights = new WeakMap();
+
+async function flushPendingManagerNotifications(options) {
+  const { conversationId, chatStore, vkBridge } = options;
+  if (!conversationId || !chatStore || !vkBridge?.isConfigured?.()) return 0;
+  let flights = managerNotificationFlights.get(chatStore);
+  if (!flights) {
+    flights = new Map();
+    managerNotificationFlights.set(chatStore, flights);
+  }
+  const previous = flights.get(conversationId) || Promise.resolve();
+  const next = previous
+    .catch(() => {})
+    .then(() => flushPendingManagerNotificationsUnlocked(options));
+  flights.set(conversationId, next);
+  try {
+    return await next;
+  } finally {
+    if (flights.get(conversationId) === next) flights.delete(conversationId);
+    if (!flights.size) managerNotificationFlights.delete(chatStore);
+  }
+}
+
+async function flushPendingManagerNotificationsUnlocked({
   conversationId,
   chatStore,
   vkBridge,
@@ -1080,6 +1113,13 @@ function createErrorResponse(res, message, status = 500) {
   });
 }
 
+function createChatErrorResponse(res, message, error) {
+  if (error instanceof ChatStoreError) {
+    return res.status(503).json({ ok: false, message, code: error.code });
+  }
+  return createErrorResponse(res, message);
+}
+
 export function parseTrustedProxyIps(value = process.env.TRUSTED_PROXY_IPS) {
   const raw = String(value ?? '').trim() || DEFAULT_TRUSTED_PROXY_IPS;
   return raw.split(/[\s,]+/).filter(Boolean);
@@ -1096,20 +1136,21 @@ const QUOTE_CHANNEL_LABELS = {
   email: 'Email',
 };
 
-function createQuoteItemsHtml(items) {
-  return items
+function createQuoteItemsHtml(quote) {
+  return quote.rows
     .map(
-      (item) => `
+      ({ item, lineKopecks }) => `
           <tr>
             <td style="padding:8px;border:1px solid #ddd;">${escapeHtml(item.title)}</td>
             <td style="padding:8px;border:1px solid #ddd;">${escapeHtml(item.sku) || '—'}</td>
             <td style="padding:8px;border:1px solid #ddd;">${escapeHtml(item.category)}</td>
             <td style="padding:8px;border:1px solid #ddd;">${escapeHtml(item.quantity)} ${escapeHtml(item.unit) || ''}</td>
-            <td style="padding:8px;border:1px solid #ddd;">${Number(item.price || 0) > 0 ? `${escapeHtml(item.price)} ₽` : 'Рассчитать'}</td>
+            <td style="padding:8px;border:1px solid #ddd;">${lineKopecks !== null ? escapeHtml(formatQuoteUnitPrice(item.price)) : 'Рассчитать'}</td>
+            <td style="padding:8px;border:1px solid #ddd;">${lineKopecks !== null ? escapeHtml(formatQuoteMoney(lineKopecks)) : '—'}</td>
           </tr>
           ${
             item.comment
-              ? `<tr><td colspan="5" style="padding:8px;border:1px solid #ddd;color:#555;">Комментарий: ${escapeHtml(item.comment)}</td></tr>`
+              ? `<tr><td colspan="6" style="padding:8px;border:1px solid #ddd;color:#555;">Комментарий: ${escapeHtml(item.comment)}</td></tr>`
               : ''
           }
         `
@@ -1258,7 +1299,7 @@ export function createApp({
     windowMs: CHAT_RATE_LIMIT_WINDOW_MS,
     limit: CHAT_RATE_LIMIT,
     message: chatRateLimitMessage,
-    skip: isBotSubmission,
+    // Every write attempt counts, independent of attacker-controlled browser headers.
     ...sharedFormRateLimitOptions,
     ...chatRateLimitOptions,
   });
@@ -1526,7 +1567,11 @@ export function createApp({
       });
     } catch (error) {
       logger.error('chat.conversation.read_failed', { err: error });
-      return createErrorResponse(res, messages.errors.api.chatLoadFailed);
+      return createChatErrorResponse(
+        res,
+        messages.errors.api.chatLoadFailed,
+        error
+      );
     }
   });
 
@@ -1607,6 +1652,13 @@ export function createApp({
         });
       } catch (error) {
         logger.error('chat.conversation.create_failed', { err: error });
+        if (error instanceof ChatStoreError) {
+          return createChatErrorResponse(
+            res,
+            messages.errors.api.chatSendFailed,
+            error
+          );
+        }
         return sendFormErrorResponse(
           res,
           formResponseStartedAt,
@@ -1670,7 +1722,11 @@ export function createApp({
         });
       } catch (error) {
         logger.error('chat.message.send_failed', { err: error });
-        return createErrorResponse(res, messages.errors.api.chatSendFailed);
+        return createChatErrorResponse(
+          res,
+          messages.errors.api.chatSendFailed,
+          error
+        );
       }
     }
   );
@@ -1851,7 +1907,9 @@ export function createApp({
         const related = items
           .filter(
             (item) =>
-              item.id !== product.id && item.category === product.category
+              item.id !== product.id &&
+              !item.offers?.some((offer) => offer.slug === req.params.slug) &&
+              item.category === product.category
           )
           .slice(0, limit);
 
@@ -1887,7 +1945,7 @@ export function createApp({
 
       return res.json({
         ok: true,
-        item,
+        item: prepareProductDetail(item),
       });
     } catch (error) {
       logger.error('catalog.product.failed', {
@@ -1935,18 +1993,32 @@ export function createApp({
         }
 
         const items = await catalogStore.loadCatalogProducts();
-        const listItems = catalogStore.getCatalogProductListItems(items);
+        const listItems = catalogStore.getCatalogProductListItems(
+          expandProductOffers(items)
+        );
         const byId = new Map(listItems.map((item) => [item.id, item]));
 
         const found = [];
         const missing = [];
+        const pending = [];
+        const pendingIds = new Set(
+          (catalogStore.getPendingProducts?.() || []).map((p) => p.id)
+        );
         for (const id of requestedIds) {
           const item = byId.get(id);
           if (item) found.push(item);
-          else missing.push(id);
+          else if (pendingIds.has(id)) {
+            pending.push(id);
+            missing.push(id);
+          } else missing.push(id);
         }
 
-        return res.json({ ok: true, found, missing });
+        return res.json({
+          ok: true,
+          found,
+          missing,
+          ...(pending.length ? { pending } : {}),
+        });
       } catch (error) {
         logger.error('catalog.lookup.failed', { err: error });
         return createErrorResponse(res, messages.errors.api.lookupFailed);
@@ -1985,13 +2057,7 @@ export function createApp({
           });
         }
 
-        const {
-          customer: rawCustomer,
-          items,
-          totalCount,
-          totalPrice,
-          createdAt,
-        } = req.body;
+        const { customer: rawCustomer, items: rawItems } = req.body;
         const customer = rawCustomer
           ? {
               ...rawCustomer,
@@ -2000,11 +2066,12 @@ export function createApp({
             }
           : rawCustomer;
 
-        const quoteRequest = { ...req.body, customer, items };
+        const quoteRequest = { ...req.body, customer, items: rawItems };
 
         if (
           !isValidQuoteRequest(quoteRequest, {
             allowEmptyItems: req.specificationAttachments?.length > 0,
+            deferWholeQuantityCheck: true,
           })
         ) {
           return sendFormErrorResponse(
@@ -2015,6 +2082,90 @@ export function createApp({
             400
           );
         }
+
+        // Recalculate from rows, never from the client's declared total. Pending
+        // catalog identities remain unsaleable even if an old client sends a price.
+        const pendingIds = new Set();
+        let quantityProducts = null;
+        if (
+          catalogStore.getPendingProducts &&
+          rawItems.some((item) => Number(item.id) > 0)
+        ) {
+          quantityProducts = await catalogStore.loadCatalogProducts();
+          for (const product of catalogStore.getPendingProducts())
+            pendingIds.add(Number(product.id));
+        }
+        // A fractional terminal quantity must match real catalog stock, never a
+        // balance supplied by the client. Integers keep the existing request path.
+        const fractionalItems = rawItems.filter(
+          (item) =>
+            !pendingIds.has(Number(item.id)) &&
+            !Number.isInteger(Number(item.quantity))
+        );
+        if (fractionalItems.length || quantityProducts) {
+          const products =
+            quantityProducts || (await catalogStore.loadCatalogProducts());
+          const byId = new Map(
+            expandProductOffers(products).map((product) => [
+              Number(product.id),
+              product,
+            ])
+          );
+          const exceedsStock = rawItems.some((item) => {
+            const product = byId.get(Number(item.id));
+            return (
+              !item.manual &&
+              !pendingIds.has(Number(item.id)) &&
+              product &&
+              Number.isFinite(Number(product.stock)) &&
+              Number(item.quantity) > Number(product.stock)
+            );
+          });
+          if (
+            exceedsStock ||
+            fractionalItems.some((item) => {
+              const product = byId.get(Number(item.id));
+              return (
+                item.manual ||
+                !product ||
+                !isValidOrderQuantity({
+                  ...item,
+                  unit: product.unit,
+                  stock: product.stock,
+                })
+              );
+            })
+          ) {
+            return sendFormErrorResponse(
+              res,
+              formResponseStartedAt,
+              formResponseDelayMs,
+              messages.errors.api.invalidQuoteRequest,
+              400
+            );
+          }
+        }
+        const quote = calculateQuote(rawItems, { pendingIds });
+        const items = quote.items;
+        if (
+          quote.invalid ||
+          !isValidQuoteRequest(
+            { ...quoteRequest, items },
+            {
+              allowEmptyItems: req.specificationAttachments?.length > 0,
+              deferWholeQuantityCheck: true,
+            }
+          )
+        ) {
+          return sendFormErrorResponse(
+            res,
+            formResponseStartedAt,
+            formResponseDelayMs,
+            messages.errors.api.invalidQuoteRequest,
+            400
+          );
+        }
+        const totalDisplay = getQuoteTotalDisplay(quote);
 
         const consentError = validateConsent(customer);
         if (consentError) {
@@ -2054,15 +2205,17 @@ export function createApp({
               <th style="padding:8px;border:1px solid #ddd;">Категория</th>
               <th style="padding:8px;border:1px solid #ddd;">Метраж/объём</th>
               <th style="padding:8px;border:1px solid #ddd;">Цена</th>
+              <th style="padding:8px;border:1px solid #ddd;">Сумма</th>
             </tr>
           </thead>
           <tbody>
-            ${createQuoteItemsHtml(items)}
+            ${createQuoteItemsHtml(quote)}
           </tbody>
         </table>
 
-        <p><strong>Всего позиций:</strong> ${items.length ? escapeHtml(totalCount) : 'По файлу спецификации'}</p>
-        <p><strong>Общая сумма:</strong> ${items.length && Number(totalPrice) > 0 ? `${escapeHtml(totalPrice)} ₽` : 'По результатам расчёта'}</p>
+        <p><strong>Всего позиций:</strong> ${items.length ? items.length : 'По файлу спецификации'}</p>
+        <p><strong>${escapeHtml(totalDisplay.label)}:</strong> ${escapeHtml(totalDisplay.value)}</p>
+        ${totalDisplay.detail ? `<p>${escapeHtml(totalDisplay.detail)}</p>` : ''}
       `;
 
         const replyTo = safeReplyTo(customer.email);
@@ -2083,6 +2236,7 @@ export function createApp({
         return sendFormJson(res, formResponseStartedAt, formResponseDelayMs, {
           ok: true,
           message: messages.success.quoteSent,
+          quoteSummary: quoteMoneyPayload(quote),
         });
       } catch (error) {
         logger.error('quote.send.failed', { err: error });
@@ -2098,9 +2252,10 @@ export function createApp({
 
   app.post(
     '/api/lead-request',
-    requireJsonContentType,
-    botFormRateLimiter,
+    requireQuoteContentType,
     leadRateLimiter,
+    parseQuoteSubmission,
+    botFormRateLimiter,
     async (req, res) => {
       const formResponseStartedAt = Date.now();
       const formResponseDelayMs = pickFormResponseDelayMs(
@@ -2238,6 +2393,7 @@ export function createApp({
               ? 'Заказ обратного звонка — ЮжУралЭлектроКабель'
               : 'Новая короткая заявка — ЮжУралЭлектроКабель',
             html,
+            attachments: req.specificationAttachments || [],
           },
           { ...mailSendOptions, event: 'lead.send' }
         );

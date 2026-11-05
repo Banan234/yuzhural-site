@@ -99,13 +99,32 @@ describe('nginx product prerender routing', () => {
   it('serves flat product prerender files for pretty product URLs', () => {
     expect(config).toContain('location ~ ^/product/([A-Za-z0-9-]+)$');
     expect(config).toContain(
-      'try_files /runtime-data/catalog-current/public/product/$1.html /runtime-data/public-current/product/$1.html /runtime-data/public/product/$1.html /html/product/$1.html =404;'
+      'try_files /runtime-data/catalog-current/public/product/$catalog_product_slug.html /runtime-data/public-current/product/$catalog_product_slug.html /runtime-data/public/product/$catalog_product_slug.html /html/product/$catalog_product_slug.html =404;'
+    );
+  });
+
+  it('blocks stale product fallbacks when an active catalog exists', () => {
+    const productBlock = config.match(
+      /location ~ \^\/product\/\(\[A-Za-z0-9-\]\+\)\$ \{[\s\S]*?\n    \}/
+    )[0];
+    expect(productBlock).toContain(
+      'if (-f /usr/share/nginx/runtime-data/catalog-current/products.json)'
+    );
+    expect(productBlock).toContain(
+      'rewrite ^ /__active-catalog-product/$catalog_product_slug last;'
+    );
+    const activeBlock = config.match(
+      /location ~ \^\/__active-catalog-product\/\(\[A-Za-z0-9-\]\+\)\$ \{[\s\S]*?\n    \}/
+    )[0];
+    expect(activeBlock).toContain('internal;');
+    expect(activeBlock).toContain(
+      'try_files /runtime-data/catalog-current/public/product/$1.html =404;'
     );
   });
 
   it('redirects trailing slash product URLs to the slashless canonical path', () => {
     expect(config).toContain('location ~ ^/product/([A-Za-z0-9-]+)/+$');
-    expect(config).toContain('return 308 /product/$1;');
+    expect(config).toContain('return 308 /product/$1$is_args$args;');
   });
 });
 
@@ -160,7 +179,7 @@ describe('nginx reverse proxy canonical redirects', () => {
     );
     expect(config).toContain('return 308 /$1/;');
     expect(config).toContain('location ~ ^/catalog/([A-Za-z0-9-]+)/+$');
-    expect(config).toContain('return 308 /catalog/$1;');
+    expect(config).toContain('return 308 /catalog/$1$is_args$args;');
   });
 
   it('redirects the removed connecting cable category to Other', () => {
@@ -193,15 +212,21 @@ describe('nginx reverse proxy canonical redirects', () => {
     expect(config).toContain('location = / {');
     expect(config).toContain('try_files /index.html =404;');
     expect(config).toContain('location = /catalog/ {');
-    expect(config).toContain('try_files /catalog/index.html =404;');
+    expect(config).toContain('try_files /catalog/$catalog_entry_html =404;');
     expect(config).toContain('location = /about/ {');
     expect(config).toContain('location = /contacts/ {');
     expect(config).toContain('location = /delivery/ {');
     expect(config).toContain('location = /payment/ {');
     expect(config).toContain('location = /cart {');
+    expect(config).toContain('try_files /cart/index.html =404;');
     expect(config).toContain('location = /internal/runtime {');
-    expect(config).toContain('location ~ ^/catalog/([A-Za-z0-9-]+)$ {');
-    expect(config).toContain('try_files /catalog/$1/index.html =404;');
+    expect(config).toContain('try_files /internal/runtime/index.html =404;');
+    expect(config).toContain(
+      'location ~ ^/catalog/(?<catalog_route_slug>[A-Za-z0-9-]+)$ {'
+    );
+    expect(config).toContain(
+      'try_files /catalog/$catalog_route_slug/$catalog_entry_html =404;'
+    );
     expect(config).toContain('location / {');
     expect(config).toContain('try_files $uri =404;');
     expect(config).not.toContain('try_files $uri $uri/ /index.html;');
@@ -211,7 +236,9 @@ describe('nginx reverse proxy canonical redirects', () => {
     const runtimeBlock = getLocationBlock('= /internal/runtime');
     const rootFallbackBlock = getLocationBlock('/');
 
-    expect(runtimeBlock).toContain('try_files /index.html =404;');
+    expect(runtimeBlock).toContain(
+      'try_files /internal/runtime/index.html =404;'
+    );
     expect(rootFallbackBlock).toContain('try_files $uri =404;');
     expect(rootFallbackBlock).not.toContain('/index.html');
   });
@@ -246,4 +273,20 @@ describe('nginx runtime import artifacts', () => {
     expect(config).toContain(buildInclude);
     expect(config).not.toContain(runtimeInclude);
   });
+});
+
+it('separates finite indexable pagination from noindex query variants', () => {
+  expect(config).toContain('map $catalog_dynamic $catalog_entry_html');
+  expect(config).toContain('1 query.html;');
+  expect(config).toContain('page-$arg_page.html;');
+  expect(config).toContain('add_header X-Robots-Tag $catalog_robots always;');
+  expect(config).toContain('if ($catalog_invalid_page) { return 404; }');
+  expect(config).toContain('if ($catalog_empty_page) { return 404; }');
+  expect(config).toContain(
+    'rewrite ^ /__active-catalog-page/$catalog_route_slug/$catalog_entry_html last;'
+  );
+  expect(config).toContain(
+    'try_files /runtime-data/catalog-current/public/catalog/$catalog_category_name/$catalog_category_file.html =404;'
+  );
+  expect(config).toContain('location / {\n        try_files $uri =404;');
 });

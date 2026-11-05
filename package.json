@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "engines": {
+    "node": ">=24.22.1 <25"
+  },
   "scripts": {
     "dev": "vite",
     "server": "node server.js",
@@ -26,12 +29,13 @@
     "check:product-prerender": "node scripts/checkProductPrerender.js",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "prebuild": "node scripts/checkResponsiveImages.js",
     "build": "vite build --configLoader native",
     "prerender": "node scripts/prerender.js",
     "build:ssr": "vite build --configLoader native --ssr src/entry-server.jsx --outDir dist/server",
     "precompress": "node scripts/precompress.js",
     "sync:runtime-artifacts": "node scripts/syncRuntimeArtifacts.js",
-    "build:prod": "npm run build && npm run build:ssr && node scripts/prerender.js && npm run sync:runtime-artifacts && npm run precompress",
+    "build:prod": "node scripts/buildProduction.js",
     "preview": "vite preview",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
@@ -53,8 +57,8 @@
     "helmet": "^8.1.0",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.7",
-    "multer": "^2.4.0",
-    "nodemailer": "^10.0.16",
+    "multer": "^2.5.0",
+    "nodemailer": "^10.2.1",
     "proxy-addr": "^2.0.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -72,7 +76,7 @@
     "pngjs": "^7.0.0",
     "prettier": "^3.6.2",
     "vite": "^7.3.2",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.12"
   },
   "overrides": {
     "shell-quote": "1.12.0"

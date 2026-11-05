@@ -3,13 +3,17 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { writeSeoArtifacts } from './lib/siteSeo.js';
 import { assertProductPrerenderCoverage } from './lib/productPrerenderAudit.js';
+import { resolveCatalogSnapshot } from './lib/catalogSnapshot.js';
+import {
+  mapSeoSummaryToPublishedPaths,
+  writeFileAtomic,
+} from './lib/importPublisher.js';
 import { formatCableProductTitle } from '../shared/productTitle.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
 
-const DEFAULT_PRODUCTS_PATH = path.join(projectRoot, 'data', 'products.json');
 const DEFAULT_CATEGORIES_PATH = path.join(
   projectRoot,
   'shared',
@@ -17,17 +21,6 @@ const DEFAULT_CATEGORIES_PATH = path.join(
 );
 const DEFAULT_TEMPLATE_DIR = path.join(projectRoot, 'dist');
 const DEFAULT_RUNTIME_PUBLIC_DIR = path.join(projectRoot, 'data', 'public');
-const DEFAULT_PRICE_SOURCE = path.join(projectRoot, 'data', 'price.xls');
-const DEFAULT_REDIRECTS_JSON = path.join(
-  projectRoot,
-  'public',
-  'redirects.json'
-);
-const DEFAULT_REDIRECTS_NGINX = path.join(
-  projectRoot,
-  'public',
-  'redirects.nginx.conf'
-);
 
 async function replaceDirectory(sourceDir, targetDir, fsModule = fs) {
   const backupDir = `${targetDir}.${process.pid}.${Date.now()}.old`;
@@ -42,15 +35,22 @@ async function replaceDirectory(sourceDir, targetDir, fsModule = fs) {
 
   try {
     await moveDirectory(sourceDir, targetDir, fsModule);
-    if (hasBackup) {
-      await fsModule.rm(backupDir, { recursive: true, force: true });
-    }
   } catch (error) {
     if (hasBackup) {
-      await moveDirectory(backupDir, targetDir, fsModule).catch(() => {});
+      await moveDirectory(backupDir, targetDir, fsModule).catch(
+        (rollbackError) => {
+          throw new Error(
+            `Runtime sync failed (${error.message}); rollback failed: ${rollbackError.message}; previous output: ${backupDir}`
+          );
+        }
+      );
     }
     throw error;
   }
+  if (hasBackup)
+    await fsModule
+      .rm(backupDir, { recursive: true, force: true })
+      .catch(() => {});
 }
 
 async function moveDirectory(sourceDir, targetDir, fsModule = fs) {
@@ -80,7 +80,9 @@ async function syncOptionalFile(sourceFile, targetFile) {
   }
 
   await fs.mkdir(path.dirname(targetFile), { recursive: true });
-  await fs.copyFile(sourceFile, targetFile);
+  await writeFileAtomic(targetFile, await fs.readFile(sourceFile), {
+    mode: (await fs.stat(sourceFile)).mode & 0o777,
+  });
   return true;
 }
 
@@ -91,13 +93,13 @@ async function loadJson(filePath) {
 
 export async function syncRuntimeArtifacts({
   projectDir = projectRoot,
-  productsPath = DEFAULT_PRODUCTS_PATH,
+  productsPath,
   categoriesPath = DEFAULT_CATEGORIES_PATH,
   templateDir = DEFAULT_TEMPLATE_DIR,
   runtimePublicDir = DEFAULT_RUNTIME_PUBLIC_DIR,
-  priceSource = DEFAULT_PRICE_SOURCE,
-  redirectsJsonSource = DEFAULT_REDIRECTS_JSON,
-  redirectsNginxSource = DEFAULT_REDIRECTS_NGINX,
+  priceSource,
+  redirectsJsonSource,
+  redirectsNginxSource,
   siteUrl = process.env.SITE_URL || process.env.VITE_SITE_URL,
   log = console.log,
   fsModule = fs,
@@ -107,10 +109,34 @@ export async function syncRuntimeArtifacts({
     process.env.VITE_SITE_URL = siteUrl;
   }
 
-  const { extractProductsPayload, loadTemplate, prerenderProducts } =
-    await import('./prerender.js');
+  const {
+    extractProductsPayload,
+    loadTemplate,
+    prerenderProducts,
+    prerenderCatalogRelease,
+  } = await import('./prerender.js');
 
-  await fsModule.mkdir(runtimePublicDir, { recursive: true });
+  const snapshot = await resolveCatalogSnapshot(projectDir);
+  productsPath ||= snapshot.productsPath;
+  priceSource ||= snapshot.priceSource;
+  const redirectDir =
+    snapshot.catalogDir === path.join(projectDir, 'data')
+      ? path.join(projectDir, 'public')
+      : snapshot.publicDir;
+  redirectsJsonSource ||= path.join(redirectDir, 'redirects.json');
+  redirectsNginxSource ||= path.join(redirectDir, 'redirects.nginx.conf');
+  // Never rewrite the immutable active release via an output override.
+  const targetReal = await fs.realpath(runtimePublicDir).catch((error) => {
+    if (error.code === 'ENOENT') return path.resolve(runtimePublicDir);
+    throw error;
+  });
+  if (
+    snapshot.catalogDir !== path.join(projectDir, 'data') &&
+    (targetReal === snapshot.catalogDir ||
+      targetReal.startsWith(snapshot.catalogDir + path.sep))
+  )
+    throw new Error('runtime sync output не должен изменять активный выпуск.');
+  await fsModule.mkdir(path.dirname(runtimePublicDir), { recursive: true });
 
   const template = await loadTemplate({ outputDir: templateDir });
   const productsPayload = await loadJson(productsPath);
@@ -123,51 +149,72 @@ export async function syncRuntimeArtifacts({
     return { ...product, title, fullName: title, name: title };
   });
 
-  const seoSummary = await writeSeoArtifacts({
-    outputDir: runtimePublicDir,
-    siteUrl,
-    products,
-    categoriesData,
-  });
-
-  const tmpDir = path.join(
-    path.dirname(runtimePublicDir),
-    `${path.basename(runtimePublicDir)}.product-prerender-${process.pid}-${Date.now()}`
+  const tmpDir = await fsModule.mkdtemp(
+    path.join(path.dirname(runtimePublicDir), '.runtime-public-stage-')
   );
-
+  let seoSummary,
+    coverage,
+    copiedPrice,
+    copiedRedirectsJson,
+    copiedRedirectsNginx;
   try {
+    seoSummary = await writeSeoArtifacts({
+      outputDir: tmpDir,
+      siteUrl,
+      products,
+      categoriesData,
+    });
     await prerenderProducts(template, products, {
       outputDir: tmpDir,
       log: null,
-      validate: false,
     });
-    await replaceDirectory(
-      path.join(tmpDir, 'product'),
-      path.join(runtimePublicDir, 'product'),
-      fsModule
+    await prerenderCatalogRelease(template, products, {
+      outputDir: tmpDir,
+      templateDir,
+      categoriesData,
+    });
+    coverage = await assertProductPrerenderCoverage({
+      publicDir: tmpDir,
+      products,
+      productSitemapPaths: seoSummary.productSitemapPaths,
+    });
+    copiedPrice = await syncOptionalFile(
+      priceSource,
+      path.join(tmpDir, 'price.xls')
+    );
+    copiedRedirectsJson = await syncOptionalFile(
+      redirectsJsonSource,
+      path.join(tmpDir, 'redirects.json')
+    );
+    copiedRedirectsNginx = await syncOptionalFile(
+      redirectsNginxSource,
+      path.join(tmpDir, 'redirects.nginx.conf')
+    );
+    if (!copiedPrice)
+      throw new Error('Не найден price.xls для runtime выпуска.');
+    // Precompress runs next: its source metadata must match the runtime release,
+    // otherwise nginx could serve stale .br/.gz siblings copied from public/.
+    for (const name of await fs.readdir(tmpDir)) {
+      if (
+        /^(?:sitemap(?:-[A-Za-z0-9-]+)?\.xml|robots\.txt|price\.xls|redirects\.(?:json|nginx\.conf))$/.test(
+          name
+        )
+      ) {
+        await syncOptionalFile(
+          path.join(tmpDir, name),
+          path.join(templateDir, name)
+        );
+      }
+    }
+    await replaceDirectory(tmpDir, runtimePublicDir, fsModule);
+    seoSummary = mapSeoSummaryToPublishedPaths(
+      seoSummary,
+      tmpDir,
+      runtimePublicDir
     );
   } finally {
     await fsModule.rm(tmpDir, { recursive: true, force: true }).catch(() => {});
   }
-
-  const coverage = await assertProductPrerenderCoverage({
-    publicDir: runtimePublicDir,
-    products,
-    productSitemapPaths: seoSummary.productSitemapPaths,
-  });
-
-  const copiedPrice = await syncOptionalFile(
-    priceSource,
-    path.join(runtimePublicDir, 'price.xls')
-  );
-  const copiedRedirectsJson = await syncOptionalFile(
-    redirectsJsonSource,
-    path.join(runtimePublicDir, 'redirects.json')
-  );
-  const copiedRedirectsNginx = await syncOptionalFile(
-    redirectsNginxSource,
-    path.join(runtimePublicDir, 'redirects.nginx.conf')
-  );
 
   const result = {
     runtimePublicDir,

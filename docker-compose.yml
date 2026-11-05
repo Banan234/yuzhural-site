@@ -1,7 +1,8 @@
 # Файл описывает production-compose стек сайта: API, nginx, volumes, сети и переменные окружения.
 
 # Production-окружение: Express API + Nginx со статикой.
-# Запуск: docker compose up -d --build
+# Штатный выпуск: ./deploy/deploy-release.sh --env-file /path/to/production.env
+# Прямой compose up пропускает согласование активных HTML с assets web.
 # Перед сборкой: убедиться, что data/products.json существует
 # (npm run import:price или import:price:remote с PRICE_URL).
 
@@ -25,6 +26,7 @@ services:
       # API и Nginx читают один каталог выпуска; importPrice переключает его целиком.
       CATALOG_PRODUCTS_FILE: /app/data/catalog-current/products.json
       PUBLIC_ARTIFACTS_DIR: /app/data/catalog-current/public
+      PRERENDER_TEMPLATE_DIR: /app/data/web-template-current
     expose:
       - '3001'
     volumes:

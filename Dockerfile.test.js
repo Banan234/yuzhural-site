@@ -42,6 +42,29 @@ function parseDockerfileStages(source) {
 }
 
 describe('Dockerfile', () => {
+  it('uses the same supported Node version locally, in CI and every Node image stage', () => {
+    const version = readFileSync('.nvmrc', 'utf8').trim();
+    const major = Number(version.split('.')[0]);
+    expect(major).toBe(24);
+    const source = readFileSync('Dockerfile', 'utf8');
+    expect(source).toContain(`ARG NODE_VERSION=${version}`);
+    const nodeStages = source.match(/^FROM node:[^\n]+/gm);
+    expect(nodeStages).toHaveLength(4);
+    expect(
+      nodeStages.every((stage) => stage.includes('node:${NODE_VERSION}-slim'))
+    ).toBe(true);
+    expect(readFileSync('.github/workflows/ci.yml', 'utf8')).toContain(
+      "node-version-file: '.nvmrc'"
+    );
+    expect(JSON.parse(readFileSync('package.json', 'utf8')).engines.node).toBe(
+      `>=${version} <${major + 1}`
+    );
+    expect(
+      JSON.parse(readFileSync('package-lock.json', 'utf8')).packages[''].engines
+        .node
+    ).toBe(`>=${version} <${major + 1}`);
+  });
+
   it('runs dependency and build stage instructions as node user', () => {
     const source = readFileSync('Dockerfile', 'utf8');
     const failures = [];
@@ -124,9 +147,11 @@ describe('Dockerfile', () => {
 
   it('accepts build-time frontend environment for release-specific images', () => {
     const source = readFileSync('Dockerfile', 'utf8');
-    const buildStage = source.slice(
-      source.indexOf('FROM node:20-slim AS build')
+    const stage = parseDockerfileStages(source).find(
+      ({ name }) => name === 'build'
     );
+    expect(stage).toBeDefined();
+    const buildStage = stage.instructions.map(({ text }) => text).join('\n');
 
     for (const argName of [
       'SITE_URL',
@@ -144,10 +169,11 @@ describe('Dockerfile', () => {
 
   it('ships src/lib helpers in the runtime image for price import prerender', () => {
     const source = readFileSync('Dockerfile', 'utf8');
-    const runtimeStage = source.slice(
-      source.indexOf('FROM node:20-slim AS runtime'),
-      source.indexOf('FROM nginx:1.27-alpine AS brotli-builder')
+    const stage = parseDockerfileStages(source).find(
+      ({ name }) => name === 'runtime'
     );
+    expect(stage).toBeDefined();
+    const runtimeStage = stage.instructions.map(({ text }) => text).join('\n');
 
     expect(runtimeStage).toContain('COPY src/lib ./src/lib');
     expect(runtimeStage).toContain('COPY scripts ./scripts');

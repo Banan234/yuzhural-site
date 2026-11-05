@@ -12,6 +12,8 @@ playwright-report/
 
 # Генерируемые файлы импорта прайса
 data/chat-store.json
+data/chat-store.json.lock
+data/.chat-store.json.*.tmp
 data/forms-outbox/
 data/products.json
 data/productRegistry.json

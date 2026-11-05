@@ -1,7 +1,8 @@
 // Файл проверяет precompress-скрипт и набор файлов, которые должны получить gzip/brotli копии.
 
-import { access, mkdir, mkdtemp, rm, writeFile } from 'fs/promises';
+import { access, mkdir, mkdtemp, rm, writeFile, readFile } from 'fs/promises';
 import os from 'os';
+import { brotliDecompressSync, gunzipSync } from 'node:zlib';
 import path from 'path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { precompress } from './precompress.js';
@@ -48,5 +49,42 @@ describe('precompress', () => {
     expect(await exists(`${indexPath}.gz`)).toBe(true);
     expect(await exists(`${productPath}.br`)).toBe(false);
     expect(await exists(`${productPath}.gz`)).toBe(false);
+  });
+  it('parallel compression keeps every catalog page and produces byte-identical lossless streams', async () => {
+    const serial = await makeTempDir();
+    const parallel = await makeTempDir();
+    const files = [
+      'index.html',
+      'catalog/index.html',
+      'catalog/page-2.html',
+      'assets/app.js',
+    ];
+    for (const root of [serial, parallel]) {
+      for (const file of files) {
+        await mkdir(path.dirname(path.join(root, file)), { recursive: true });
+        await writeFile(
+          path.join(root, file),
+          `<main>${file} ${'Пример 123 '.repeat(300)}</main>`
+        );
+      }
+    }
+    expect(
+      await precompress({ outputDir: serial, concurrency: 1, log: null })
+    ).toBe(4);
+    expect(
+      await precompress({ outputDir: parallel, concurrency: 2, log: null })
+    ).toBe(4);
+    for (const file of files) {
+      const source = await readFile(path.join(serial, file));
+      for (const [suffix, decode] of [
+        ['.gz', gunzipSync],
+        ['.br', brotliDecompressSync],
+      ]) {
+        const first = await readFile(path.join(serial, file + suffix));
+        const second = await readFile(path.join(parallel, file + suffix));
+        expect(second.equals(first)).toBe(true);
+        expect(decode(second).equals(source)).toBe(true);
+      }
+    }
   });
 });

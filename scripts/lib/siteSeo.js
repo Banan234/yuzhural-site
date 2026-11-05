@@ -1,3 +1,4 @@
+import { isProductPending } from '../../shared/productAvailability.js';
 // Файл генерирует sitemap, robots.txt и SEO-файлы на основе актуального каталога и настроек сайта.
 
 // Генерация sitemap-индекса + сегментированных карт сайта и robots.txt.
@@ -243,6 +244,7 @@ function collectProductRoutes(products) {
   const seen = new Set();
   const routes = [];
   for (const product of products) {
+    if (isProductPending(product)) continue;
     const slug = product?.slug;
     if (!slug || seen.has(slug)) continue;
     seen.add(slug);
@@ -281,7 +283,9 @@ export function buildSitemapProductsXml({
   products = [],
   lastmod = null,
 } = {}) {
-  const routes = collectProductRoutes(products);
+  const routes = collectProductRoutes(
+    products.filter((p) => !isProductPending(p))
+  );
   if (routes.length > MAX_SITEMAP_URLS) {
     throw new Error(
       `sitemap-products.xml получил ${routes.length} URL при лимите ${MAX_SITEMAP_URLS}. Используйте buildSitemapProductXmlFiles().`
@@ -298,7 +302,9 @@ export function buildSitemapProductXmlFiles({
 } = {}) {
   const base = normalizeSitemapSiteUrl(siteUrl);
   const chunkSize = normalizeMaxUrlsPerSitemap(maxUrlsPerSitemap);
-  const routes = collectProductRoutes(products);
+  const routes = collectProductRoutes(
+    products.filter((p) => !isProductPending(p))
+  );
   const routeChunks = chunkRoutes(routes, chunkSize);
 
   return routeChunks.map((chunk, index) => ({

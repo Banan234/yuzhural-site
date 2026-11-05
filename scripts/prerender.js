@@ -1,3 +1,13 @@
+import { prepareProductDetail } from '../lib/productPresentation.js';
+import { groupProductOffers } from '../shared/productOffers.js';
+import { getImageVariants } from '../lib/responsiveImages.js';
+import {
+  getCatalogQueryItems,
+  getCatalogSections,
+  buildCatalogFacetsForQuery,
+} from '../lib/catalogQuery.js';
+import { CATALOG_SEO_PAGE_SIZE } from '../shared/catalogSeoPolicy.js';
+import { isProductPending } from '../shared/productAvailability.js';
 // Файл рендерит build-time HTML для статических страниц и важных карточек товаров с SEO-метаданными.
 
 // Build-time prerender для статических страниц и карточек товаров.
@@ -14,7 +24,9 @@
 // Запуск: node scripts/prerender.js
 // Зависит от: dist/index.html (из vite build), data/products.json (из импортёра).
 
+import { resolveCatalogSnapshot } from './lib/catalogSnapshot.js';
 import { PURCHASE_PAGES } from '../shared/purchaseContent.js';
+import { PERSONAL_DATA_CONSENT_PATH } from '../shared/personalDataConsent.js';
 import fs from 'fs/promises';
 import path from 'path';
 import { pathToFileURL } from 'url';
@@ -40,7 +52,10 @@ import {
   buildStaticPageJsonLd,
   getStaticPageJsonLdId,
 } from '../src/lib/staticPageJsonLd.js';
-import { getProductImage } from '../shared/productImages.js';
+import {
+  getProductImage,
+  getProductImageAlt,
+} from '../shared/productImages.js';
 import { normalizeCatalogHierarchy } from '../shared/catalogCategoryHierarchy.js';
 import {
   buildShortDescription,
@@ -62,13 +77,28 @@ const catalogCategoriesFile = path.join(
   'catalogCategories.json'
 );
 const serverEntryFile = 'entry-server.js';
-const CATALOG_PRERENDER_PAGE_SIZE = 24;
+const CATALOG_PRERENDER_PAGE_SIZE = CATALOG_SEO_PAGE_SIZE;
 const buildManifestFile = path.join(distDir, '.vite', 'manifest.json');
 const DEFAULT_PRODUCT_PRERENDER_LIMIT = 720;
 const PRODUCT_PRERENDER_LIMIT_ENV = 'PRODUCT_PRERENDER_LIMIT';
 const PRODUCT_PRERENDER_INCLUDE_ENV = 'PRODUCT_PRERENDER_INCLUDE';
 
 export const STATIC_ROUTES = [
+  {
+    path: PERSONAL_DATA_CONSENT_PATH,
+    title: `Согласие на обработку персональных данных — ${SITE_NAME}`,
+    description:
+      'Согласие на обработку данных для ответа на обращение и подготовки коммерческого предложения.',
+    h1: 'Согласие на обработку персональных данных',
+  },
+  {
+    path: '/oferta',
+    canonical: '/oferta/',
+    title: `Публичная оферта — ${SITE_NAME}`,
+    description:
+      'Условия розничной покупки кабеля: согласование заказа, оплата по счёту, самовывоз, приёмка и возврат.',
+    h1: 'Публичная оферта',
+  },
   ...Object.values(PURCHASE_PAGES).map((page) => ({
     path: page.path,
     title: `${page.title} — ${SITE_NAME}`,
@@ -223,6 +253,8 @@ const OPTIONAL_POSITIVE_NUMBER_FIELDS = [
   'conductorStrandCount',
   'groundCores',
   'groundSection',
+  'neutralCores',
+  'neutralSection',
   'voltage',
 ];
 const MAX_VALIDATION_ISSUES_IN_MESSAGE = 20;
@@ -787,7 +819,7 @@ function buildCatalogListItem(product) {
   const title = getProductDisplayName(product);
   const hierarchy = normalizeCatalogHierarchy(product);
 
-  return {
+  const item = {
     id: product.id,
     slug: product.slug,
     sku: product.sku || '',
@@ -807,6 +839,9 @@ function buildCatalogListItem(product) {
     shortDescription:
       product.shortDescription || buildShortDescription(product),
     image: getCatalogProductImage(product),
+    ...(product.offers
+      ? { offers: product.offers, priceVaries: product.priceVaries }
+      : {}),
     cores: product.cores ?? null,
     groupCores: product.groupCores ?? null,
     crossSection: product.crossSection ?? null,
@@ -820,6 +855,12 @@ function buildCatalogListItem(product) {
     conductorConfiguration: product.conductorConfiguration || null,
     groundCores: product.groundCores ?? null,
     groundSection: product.groundSection ?? null,
+    ...(product.neutralCores != null
+      ? {
+          neutralCores: product.neutralCores,
+          neutralSection: product.neutralSection,
+        }
+      : {}),
     attributes: Array.isArray(product.attributes) ? product.attributes : [],
     voltage: product.voltage ?? null,
     catalogType: product.catalogType || null,
@@ -827,6 +868,10 @@ function buildCatalogListItem(product) {
     manufacturer: product.manufacturer || null,
     catalogBrand: product.catalogBrand || null,
   };
+  item.image = getProductImage(item);
+  item.imageAlt = getProductImageAlt(item);
+  item.imageVariants = getImageVariants(item.image);
+  return item;
 }
 
 function filterCatalogProductsByRoute(products, categorySlug = '') {
@@ -844,37 +889,45 @@ function filterCatalogProductsByRoute(products, categorySlug = '') {
 
 export function buildCatalogPrerenderData(
   products,
-  { path = '/catalog', categorySlug = '' } = {}
+  { path = '/catalog', categorySlug = '', page = 1, routeProducts, facets } = {}
 ) {
-  const filteredProducts = filterCatalogProductsByRoute(products, categorySlug);
+  products = groupProductOffers(products);
+  const filteredProducts = routeProducts
+    ? groupProductOffers(routeProducts)
+    : getCatalogQueryItems(products, categorySlug);
   const items = filteredProducts
-    .slice(0, CATALOG_PRERENDER_PAGE_SIZE)
+    .slice(
+      (page - 1) * CATALOG_PRERENDER_PAGE_SIZE,
+      page * CATALOG_PRERENDER_PAGE_SIZE
+    )
     .map(buildCatalogListItem);
   const total = filteredProducts.length;
 
   return {
     path,
     items,
-    catalogSections: buildCatalogSections(products),
+    catalogSections: getCatalogSections(products),
     meta: {
       count: items.length,
       total,
       catalogCount: products.length,
       pagination: {
-        page: 1,
+        page,
         limit: CATALOG_PRERENDER_PAGE_SIZE,
         total,
         totalPages: Math.max(1, Math.ceil(total / CATALOG_PRERENDER_PAGE_SIZE)),
       },
-      filter: null,
+      facets: facets || buildCatalogFacetsForQuery(filteredProducts, {}),
+      filter: categorySlug ? { category: categorySlug } : null,
     },
   };
 }
 
-
 export function buildHomePrerenderData(products) {
   return {
-    featuredProducts: getFeaturedProducts(products).map(buildCatalogListItem),
+    featuredProducts: getFeaturedProducts(groupProductOffers(products)).map(
+      buildCatalogListItem
+    ),
   };
 }
 
@@ -937,7 +990,7 @@ export function buildCompactProductBodyShell(product) {
 
   return `<div class="prerender-only"><h1>${escapeHtml(
     heading
-  )}</h1><p>${escapeHtml(description)}</p>${buildProductDesignationHtml(product)}</div>`;
+  )}</h1><p>${escapeHtml(description)}</p>${buildProductDesignationHtml(product, { decoded: product.designationDecoded })}</div>`;
 }
 
 export function buildStaticBodyShell(route) {
@@ -967,7 +1020,7 @@ function buildCatalogRouteDescription(route) {
 
 export function injectIntoTemplate(
   template,
-  { headExtras, bodyShell, bodyEndExtras = '' }
+  { headExtras, bodyShell, bodyEndExtras = '', clientRender = false }
 ) {
   // Стираем уже существующий <title> и наши же мета-теги, чтобы повторный
   // прогон не дублировал теги (если кто-то запустит prerender на уже
@@ -977,7 +1030,7 @@ export function injectIntoTemplate(
   html = injectManagedHeadExtras(html, headExtras);
   html = html.replace(
     /<div id="root">[\s\S]*?<\/div>/,
-    `<div id="root">${bodyShell}</div>`
+    `<div id="root"${clientRender ? ' data-client-render="true"' : ''}>${bodyShell}</div>`
   );
   if (bodyEndExtras) {
     html = html.replace('</body>', `    ${bodyEndExtras}\n  </body>`);
@@ -1105,26 +1158,30 @@ function getRuntimeHeadShell(template, headExtras = '') {
 
 export function injectIntoThinTemplate(
   template,
-  { headExtras, bodyShell, bodyEndExtras = '' }
+  {
+    headExtras,
+    bodyShell,
+    bodyEndExtras = '',
+    clientRender = false,
+    hydrate = false,
+  }
 ) {
   const runtimeHeadShell = getRuntimeHeadShell(template, headExtras);
-
-  return normalizePrerenderHtml(
-    minifyPrerenderHtml(
-      [
-        '<!doctype html>',
-        '<html lang="ru">',
-        '<head>',
-        runtimeHeadShell,
-        '</head>',
-        '<body>',
-        `<div id="root">${bodyShell}</div>`,
-        bodyEndExtras,
-        '</body>',
-        '</html>',
-      ].join('')
-    )
-  );
+  const html = [
+    '<!doctype html>',
+    '<html lang="ru">',
+    '<head>',
+    runtimeHeadShell,
+    '</head>',
+    '<body>',
+    `<div id="root"${clientRender ? ' data-client-render="true"' : ''}>${bodyShell}</div>`,
+    bodyEndExtras,
+    '</body>',
+    '</html>',
+  ].join('');
+  // React's Suspense/text markers and inter-element spaces are hydration data.
+  // Only the non-hydrated compact document may discard them.
+  return normalizePrerenderHtml(hydrate ? html : minifyPrerenderHtml(html));
 }
 
 export async function loadServerRenderer({ outputDir = distDir } = {}) {
@@ -1162,12 +1219,12 @@ async function ensureDir(dir) {
 export async function writeRoute(
   routePath,
   html,
-  { outputDir = distDir } = {}
+  { outputDir = distDir, filename = 'index.html' } = {}
 ) {
   const trimmed = routePath.replace(/^\/+/, '').replace(/\/+$/, '');
   const dir = trimmed ? path.join(outputDir, trimmed) : outputDir;
   await ensureDir(dir);
-  await fs.writeFile(path.join(dir, 'index.html'), html, 'utf8');
+  await fs.writeFile(path.join(dir, filename), html, 'utf8');
 }
 
 export async function writeProductRoute(
@@ -1298,7 +1355,7 @@ export async function prerenderStatic(
   } = {}
 ) {
   for (const route of STATIC_ROUTES) {
-    const canonicalPath = toCanonicalSitePath(route.path);
+    const canonicalPath = route.canonical || toCanonicalSitePath(route.path);
     const canonical = absoluteUrl(canonicalPath);
     const staticJsonLd = buildStaticPageJsonLd(canonicalPath);
     const staticJsonLdId = getStaticPageJsonLdId(canonicalPath);
@@ -1333,12 +1390,212 @@ export async function prerenderStatic(
       bodyEndExtras: buildPrerenderDataScript(prerenderData),
     });
     await writeRoute(route.path, html, { outputDir });
+    if (route.path === '/catalog') {
+      await writeCatalogQueryPage(template, route, headExtras, {
+        outputDir,
+        renderApp,
+      });
+    }
   }
   log?.(
     `[prerender] static: ${STATIC_ROUTES.length} pages → dist/{${STATIC_ROUTES.map(
       (r) => r.path
     ).join(', ')}}`
   );
+}
+
+function buildCatalogModulePreload(manifest) {
+  const file = manifest?.['src/pages/CatalogPage.jsx']?.file;
+  return file
+    ? `<link rel="modulepreload" crossorigin href="/${escapeHtml(file)}">`
+    : '';
+}
+
+export function catalogRouteIsGroup(slug, categoriesData) {
+  const category = (categoriesData.sections || [])
+    .flatMap((s) => s.categories || [])
+    .find((c) => c.slug === slug);
+  return (
+    Boolean(category?.subcategories?.length) &&
+    ![
+      'silovoy-kabel',
+      'provoda',
+      'kabeli-nagrevatelnye',
+      'kabeli-peredachi-dannykh',
+      'kontrolnyy-kabel',
+    ].includes(slug)
+  );
+}
+
+export async function prerenderCatalogRelease(
+  template,
+  products,
+  {
+    outputDir,
+    templateDir,
+    categoriesData,
+    renderApp,
+    manifest,
+    log = null,
+  } = {}
+) {
+  categoriesData ||= await loadCatalogCategories();
+  renderApp ||= await loadServerRenderer({ outputDir: templateDir });
+  manifest ||= await loadBuildManifest({
+    manifestPath: path.join(templateDir, '.vite/manifest.json'),
+    warn: null,
+  });
+  products = groupProductOffers(products.filter((p) => !isProductPending(p)));
+  // outputDir is always a staging/build directory, never the active pointer.
+  await fs.rm(path.join(outputDir, 'catalog'), {
+    recursive: true,
+    force: true,
+  });
+  const routes = [
+    { path: '/catalog', name: 'Каталог продукции', slug: '' },
+    ...collectCatalogRouteEntries(categoriesData),
+  ];
+  const records = [];
+  for (const route of routes) {
+    const routeProducts = getCatalogQueryItems(products, route.slug);
+    const facets = buildCatalogFacetsForQuery(routeProducts, {});
+    const totalPages = catalogRouteIsGroup(route.slug, categoriesData)
+      ? 1
+      : Math.max(
+          1,
+          Math.ceil(routeProducts.length / CATALOG_PRERENDER_PAGE_SIZE)
+        );
+    for (let page = 1; page <= totalPages; page++) {
+      const url =
+        toCanonicalSitePath(route.path) + (page > 1 ? `?page=${page}` : '');
+      const catalog = buildCatalogPrerenderData(products, {
+        path: route.path,
+        categorySlug: route.slug,
+        page,
+        routeProducts,
+        facets,
+      });
+      const headExtras = [
+        buildMetaTags({
+          title: route.slug
+            ? buildCatalogRouteTitle(route)
+            : `Каталог продукции — ${SITE_NAME}`,
+          description: route.slug
+            ? buildCatalogRouteDescription(route)
+            : 'Каталог кабельной и некабельной продукции. Кабель, провод, арматура и электрооборудование в наличии и под заказ.',
+          canonical: absoluteUrl(url),
+        }),
+        buildRouteCssLinks(route.path, manifest),
+        buildCatalogModulePreload(manifest),
+      ].join('\n');
+      const bodyShell = await renderApp(url, { prerenderData: { catalog } });
+      if (
+        !bodyShell.includes('<h1') ||
+        (!catalogRouteIsGroup(route.slug, categoriesData) &&
+          catalog.items.some(
+            (p) => !bodyShell.includes(`href="/product/${p.slug}"`)
+          ))
+      ) {
+        throw new Error('Incomplete catalog SSR: ' + url);
+      }
+      const html = injectIntoThinTemplate(template, {
+        headExtras,
+        bodyShell,
+        bodyEndExtras: buildPrerenderDataScript({ catalog }),
+        hydrate: true,
+      });
+      const filename = page === 1 ? 'index.html' : `page-${page}.html`;
+      await writeRoute(route.path, html, { outputDir, filename });
+      records.push({
+        path: route.path,
+        page,
+        file: `catalog/${route.slug ? route.slug + '/' : ''}${filename}`,
+        ids: catalog.items.map((p) => p.id),
+      });
+    }
+    // Query variants are deliberately client-rendered and excluded from indexing.
+    const headExtras = [
+      buildMetaTags({
+        title: route.slug
+          ? buildCatalogRouteTitle(route)
+          : `Каталог продукции — ${SITE_NAME}`,
+        description: route.slug
+          ? buildCatalogRouteDescription(route)
+          : SITE_DESCRIPTION,
+        noindex: true,
+      }),
+      buildRouteCssLinks(route.path, manifest),
+      buildCatalogModulePreload(manifest),
+    ].join('\n');
+    const html = injectIntoThinTemplate(template, {
+      headExtras,
+      bodyShell: await renderApp(route.path, { prerenderData: {} }),
+      clientRender: true,
+    });
+    await writeRoute(route.path, html, { outputDir, filename: 'query.html' });
+  }
+  await fs.writeFile(
+    path.join(outputDir, 'catalog/pages.json'),
+    JSON.stringify(records)
+  );
+  log?.(`[catalog-pages] ${records.length} indexable HTML pages`);
+  return records;
+}
+
+// Static hosting cannot render an arbitrary query. Never serve page-one products
+// as its results: this deliberately non-hydratable page contains no product data.
+async function writeCatalogQueryPage(
+  template,
+  route,
+  headExtras,
+  { outputDir, renderApp }
+) {
+  const html = injectIntoTemplate(template, {
+    headExtras,
+    bodyShell: renderApp
+      ? await renderApp(route.path, { prerenderData: {} })
+      : buildStaticBodyShell({
+          path: route.path,
+          h1: route.h1 || route.name,
+          intro: 'Загружаем актуальные позиции из прайса...',
+        }),
+    clientRender: true,
+  });
+  await writeRoute(route.path, html, { outputDir, filename: 'query.html' });
+}
+
+// These routes require browser state/authentication. The homepage is not their
+// SSR and must never be hydrated as a cart or internal diagnostic screen.
+async function prerenderClientOnlyRoutes(template, { outputDir, log }) {
+  const routes = [
+    {
+      path: '/cart',
+      title: 'Корзина',
+      description:
+        'Список кабельно-проводниковой продукции для запроса коммерческого предложения.',
+      canonical: absoluteUrl('/cart'),
+    },
+    {
+      path: '/internal/runtime',
+      title: 'Internal Runtime',
+      description: 'Внутренняя диагностика runtime и VK callback bridge.',
+      canonical: false,
+    },
+  ];
+  for (const route of routes) {
+    const html = injectIntoTemplate(template, {
+      headExtras: buildMetaTags({
+        ...route,
+        title: `${route.title} — ${SITE_NAME}`,
+        noindex: true,
+      }),
+      bodyShell:
+        '<div class="route-fallback route-fallback--page" aria-busy="true" aria-live="polite"><span class="route-fallback__spinner" aria-hidden="true"></span><span class="route-fallback__text">Загружаем страницу...</span></div>',
+      clientRender: true,
+    });
+    await writeRoute(route.path, html, { outputDir });
+  }
+  log?.('[prerender] client-only: 2 loading pages');
 }
 
 export async function prerenderCatalogRoutes(
@@ -1382,6 +1639,10 @@ export async function prerenderCatalogRoutes(
       bodyEndExtras: buildPrerenderDataScript(prerenderData),
     });
     await writeRoute(route.path, html, { outputDir });
+    await writeCatalogQueryPage(template, route, headExtras, {
+      outputDir,
+      renderApp,
+    });
   }
 
   log?.(
@@ -1406,6 +1667,7 @@ export async function prerenderNotFoundPage(
     bodyShell: renderApp
       ? await renderApp(NOT_FOUND_ROUTE.path)
       : buildStaticBodyShell(NOT_FOUND_ROUTE),
+    bodyEndExtras: buildPrerenderDataScript({ httpStatus: 404 }),
   });
 
   await writeStatusPage('404.html', html, { outputDir });
@@ -1435,6 +1697,11 @@ export async function prerenderProducts(
   });
 
   const titleCounts = new Map();
+  const groupsBySlug = new Map();
+  for (const group of groupProductOffers(titleProducts)) {
+    for (const offer of group.offers || [group])
+      groupsBySlug.set(offer.slug, group);
+  }
   for (const product of titleProducts) {
     const title = buildProductMetaTitle(product);
     if (title) {
@@ -1444,14 +1711,24 @@ export async function prerenderProducts(
 
   let written = 0;
   for (const product of products) {
-    const productImage = getProductImage(product);
-    const productWithImage = {
-      ...product,
+    const group = groupsBySlug.get(product.slug) || product;
+    const groupedProduct = group.offers
+      ? {
+          ...group,
+          slug: product.slug,
+          sku: product.sku,
+          selectedOfferId: product.id,
+        }
+      : product;
+    const productImage = getProductImage(groupedProduct);
+    const productWithImage = prepareProductDetail({
+      ...groupedProduct,
       image: productImage,
       shortDescription:
-        product.shortDescription || buildShortDescription(product),
-      specs: product.specs || buildSpecs(product),
-    };
+        groupedProduct.shortDescription ||
+        buildShortDescription(groupedProduct),
+      specs: groupedProduct.specs || buildSpecs(groupedProduct),
+    });
     const canonical = absoluteUrl(`/product/${productWithImage.slug}`);
     const productLabel = buildProductMetaTitle(productWithImage, {
       disambiguate:
@@ -1486,6 +1763,8 @@ export async function prerenderProducts(
           })
         : buildCompactProductBodyShell(productWithImage),
       bodyEndExtras: buildPrerenderDataScript(prerenderData),
+      clientRender: !renderApp,
+      hydrate: Boolean(renderApp),
     });
     await writeProductRoute(productWithImage.slug, html, { outputDir });
     written += 1;
@@ -1497,7 +1776,7 @@ export async function prerenderProducts(
 
 export async function prerender({
   outputDir = distDir,
-  productsPath = productsFile,
+  productsPath,
   log = console.log,
   warn = console.warn,
   renderApp,
@@ -1508,14 +1787,18 @@ export async function prerender({
     process.env[PRODUCT_PRERENDER_INCLUDE_ENV]
   ),
 } = {}) {
+  const useActiveCatalog = !productsPath;
+  productsPath ||= (await resolveCatalogSnapshot(repoRoot)).productsPath;
   const template = await loadTemplate({ outputDir });
   const manifest = await loadBuildManifest({
     manifestPath: path.join(outputDir, '.vite', 'manifest.json'),
     warn,
   });
-  const products = await loadProducts({ filePath: productsPath, warn });
+  const products = (
+    await loadProducts({ filePath: productsPath, warn })
+  ).filter((p) => !isProductPending(p));
   const markProducts =
-    path.resolve(productsPath) === productsFile
+    useActiveCatalog || path.resolve(productsPath) === productsFile
       ? await loadCatalogProducts()
       : products;
   const categoriesData = await loadCatalogCategories({ warn });
@@ -1536,6 +1819,15 @@ export async function prerender({
     products,
     manifest,
   });
+  await prerenderCatalogRelease(template, products, {
+    outputDir,
+    templateDir: outputDir,
+    categoriesData,
+    renderApp: routeRenderer,
+    manifest,
+    log,
+  });
+  await prerenderClientOnlyRoutes(template, { outputDir, log });
   await prerenderNotFoundPage(template, {
     outputDir,
     log,

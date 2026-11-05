@@ -223,3 +223,118 @@ describe('monitor formatting', () => {
     });
   });
 });
+
+describe('persistent notification incident state', () => {
+  it('notifies one unchanged incident once, then recovery/new failure separately', async () => {
+    const fs = await import('node:fs/promises');
+    const os = await import('node:os');
+    const path = await import('node:path');
+    const root = await fs.mkdtemp(
+      path.join(os.tmpdir(), 'monitor-transition-')
+    );
+    const notify = vi.fn(async () => ({ ok: true }));
+    const env = {
+      MONITOR_BASE_URL: 'https://example.test',
+      MONITOR_CHECK_FORMS: 'false',
+      MONITOR_WEBHOOK_URL: 'https://hooks.example.test',
+      MONITOR_RETRIES: '0',
+      MONITOR_STATE_FILE: 'monitor.json',
+    };
+    const down = async (url) =>
+      url.endsWith('/api/health')
+        ? mockResponse(503, { ok: false })
+        : healthyFetch(url);
+    const other = async (url) =>
+      url.endsWith('/healthz') ? mockResponse(503, {}) : healthyFetch(url);
+    const run = (fetchImpl) =>
+      runHealthMonitor({ env, projectPath: root, fetchImpl, notify });
+    try {
+      for (let i = 0; i < 4; i++) await run(down);
+      expect(notify).toHaveBeenCalledTimes(1);
+      await run(healthyFetch);
+      await run(healthyFetch);
+      expect(notify).toHaveBeenCalledTimes(2);
+      await run(down);
+      expect(notify).toHaveBeenCalledTimes(3);
+      await run(other);
+      await run(other);
+      expect(notify).toHaveBeenCalledTimes(4);
+      expect(
+        JSON.parse(await fs.readFile(path.join(root, 'monitor.json'), 'utf8'))
+          .notified
+      ).toBe(true);
+    } finally {
+      await fs.rm(root, { recursive: true, force: true });
+    }
+  });
+  it('does not acknowledge failed delivery and retries both down and recovery', async () => {
+    let state = {};
+    const notify = vi
+      .fn()
+      .mockResolvedValueOnce({ ok: false })
+      .mockResolvedValueOnce({ ok: true })
+      .mockRejectedValueOnce(new Error('test send failure'))
+      .mockResolvedValue({ ok: true });
+    const env = {
+      MONITOR_BASE_URL: 'https://example.test',
+      MONITOR_CHECK_FORMS: 'false',
+      MONITOR_WEBHOOK_URL: 'https://hooks.example.test',
+      MONITOR_RETRIES: '0',
+    };
+    const down = async (url) =>
+      url.endsWith('/api/health')
+        ? mockResponse(503, { ok: false })
+        : healthyFetch(url);
+    const run = (fetchImpl) =>
+      runHealthMonitor({
+        env,
+        fetchImpl,
+        notify,
+        readState: async () => state,
+        writeState: async (_, next) => {
+          state = next;
+        },
+      });
+    await run(down);
+    expect(state.notified).toBe(false);
+    expect(state.notificationPending).toBe(true);
+    await run(down);
+    await run(down);
+    expect(notify).toHaveBeenCalledTimes(2);
+    expect(state.notified).toBe(true);
+    await run(healthyFetch);
+    expect(state.notified).toBe(false);
+    expect(state.notificationPending).toBe(true);
+    await run(healthyFetch);
+    await run(healthyFetch);
+    expect(notify).toHaveBeenCalledTimes(4);
+    expect(state.notified).toBe(true);
+    expect(state.notificationPending).toBe(false);
+  });
+  it('does not treat HTTP errors or explicit webhook ok=false as delivery', async () => {
+    const { sendMonitorNotification } = await import('./monitorHealth.js');
+    for (const response of [
+      mockResponse(500, {}),
+      mockResponse(200, { ok: false }),
+    ]) {
+      expect(
+        (
+          await sendMonitorNotification(
+            'https://hooks.example.test',
+            'synthetic',
+            { fetchImpl: async () => response }
+          )
+        ).ok
+      ).toBe(false);
+    }
+    expect(
+      (
+        await sendMonitorNotification(
+          'https://hooks.example.test',
+          'synthetic',
+          { fetchImpl: async () => mockResponse(200, { ok: true }) }
+        )
+      ).ok
+    ).toBe(true);
+  });
+});

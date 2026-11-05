@@ -226,6 +226,10 @@ if [[ -n "${INTERNAL_METRICS_TOKEN:-}" ]]; then
 fi
 
 compose_cmd "$PROJECT_ROOT" "$ENV_FILE" exec -T app npm run check:product-prerender
+# This checker is sent from the deployment tools, including on rollback to an
+# image that predates the checker file. It verifies real HTTP assets from web.
+compose_cmd "$PROJECT_ROOT" "$ENV_FILE" exec -T -e CATALOG_WEB_BASE_URL=http://web \
+  app node --input-type=module - --check < "$PROJECT_ROOT/scripts/prepareCatalogWebRelease.js"
 
 if [[ "$SKIP_PUBLIC_CHECKS" != "true" && -n "$PUBLIC_URL" ]]; then
   check_url "$PUBLIC_URL" "public homepage"

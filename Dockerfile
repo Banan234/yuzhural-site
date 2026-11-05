@@ -4,7 +4,8 @@
 # ---------- 1. Зависимости (всё, включая dev) ----------
 # Отдельный слой ускоряет повторные сборки: при правке кода без изменения
 # package*.json npm ci не перезапускается.
-FROM node:20-slim AS deps
+ARG NODE_VERSION=24.22.1
+FROM node:${NODE_VERSION}-slim AS deps
 USER node
 WORKDIR /home/node
 RUN mkdir -p app
@@ -15,9 +16,9 @@ RUN npm ci
 # ---------- 2. Сборка фронта (vite → dist/) + prerender SEO ----------
 # build:prod = vite build && scripts/prerender.js. Prerender пишет статику
 # главной/каталога/контактов и ограниченный набор product HTML для важных SKU.
-# Полный sitemap остаётся в public; длинный хвост product URL обязан пройти
-# runtime-prerender из volume после importPrice.js.
-FROM node:20-slim AS build
+# Полный согласованный fallback (HTML/sitemap/price) генерируется в data/public.
+# Runtime-импорт заменяет его приоритетным целостным выпуском из volume.
+FROM node:${NODE_VERSION}-slim AS build
 USER node
 WORKDIR /home/node
 RUN mkdir -p app
@@ -45,7 +46,7 @@ COPY --chown=node:node . .
 RUN npm run build:prod
 
 # ---------- 3. Production-зависимости (без vitest/eslint/prettier) ----------
-FROM node:20-slim AS prod-deps
+FROM node:${NODE_VERSION}-slim AS prod-deps
 USER node
 WORKDIR /home/node
 RUN mkdir -p app
@@ -55,7 +56,7 @@ RUN npm ci --omit=dev && npm cache clean --force
 
 # ---------- 4. Runtime для Express API ----------
 # Финальный образ — slim + только то, что нужно node server.js в проде.
-FROM node:20-slim AS runtime
+FROM node:${NODE_VERSION}-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production \
     PORT=3001
@@ -69,6 +70,9 @@ COPY package.json package-lock.json ./
 COPY --from=prod-deps /home/node/app/node_modules ./node_modules
 COPY server.js ./
 COPY --from=build /home/node/app/dist/index.html ./dist/index.html
+COPY --from=build /home/node/app/dist/.vite ./dist/.vite
+COPY --from=build /home/node/app/dist/server ./dist/server
+COPY --from=build /home/node/app/data/public ./data/public
 COPY lib ./lib
 COPY src/lib ./src/lib
 COPY shared ./shared
@@ -127,7 +131,11 @@ RUN { \
     } > /tmp/nginx.conf \
     && mv /tmp/nginx.conf /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Fill the long tail first, then preserve the existing SSR pages for important SKUs.
+COPY --from=build /home/node/app/data/public/product /usr/share/nginx/html/product
 COPY --from=build /home/node/app/dist /usr/share/nginx/html
+# Refresh public metadata after dist (whose public/ inputs may predate the active release).
+COPY --from=build /home/node/app/data/public/*.xml /home/node/app/data/public/robots.txt /home/node/app/data/public/price.xls /home/node/app/data/public/redirects* /usr/share/nginx/html/
 RUN mkdir -p /usr/share/nginx/runtime-data/catalog-current/public
 
 EXPOSE 80

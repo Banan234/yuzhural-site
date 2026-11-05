@@ -1,6 +1,9 @@
+import { isProductPending } from '../../shared/productAvailability.js';
+import { groupProductOffers } from '../../shared/productOffers.js';
 // Файл проверяет, что product URL из sitemap имеют runtime HTML с SEO-данными.
 
 import fs from 'fs/promises';
+import { buildProductJsonLd } from '../../src/lib/productSeo.js';
 import path from 'path';
 import { parseProductPrerenderLimit } from '../prerender.js';
 
@@ -142,7 +145,7 @@ export async function assertProductPrerenderCoverage({
   if (
     sitemapSlugs.length === 0 &&
     Array.isArray(products) &&
-    products.length > 0
+    products.some((p) => !isProductPending(p))
   ) {
     throw new ProductPrerenderCoverageError(
       'Product sitemap не содержит product URL для проверки runtime product-prerender.',
@@ -151,10 +154,62 @@ export async function assertProductPrerenderCoverage({
   }
 
   const productDir = explicitProductDir || path.join(publicDir, 'product');
+  const bySlug = new Map(
+    (products || []).map((product) => [product.slug, product])
+  );
+  const groupedBySlug = new Map();
+  for (const group of groupProductOffers(products || [])) {
+    for (const offer of group.offers || [group]) {
+      groupedBySlug.set(
+        offer.slug,
+        group.offers
+          ? {
+              ...group,
+              slug: offer.slug,
+              sku: offer.sku,
+              selectedOfferId: offer.id,
+            }
+          : group
+      );
+    }
+  }
+  if (Array.isArray(products)) {
+    const sitemapSet = new Set(sitemapSlugs);
+    const absent = products
+      .filter(
+        (product) => !isProductPending(product) && !sitemapSet.has(product.slug)
+      )
+      .map((product) => product.slug);
+    const extra = sitemapSlugs.filter(
+      (slug) => !bySlug.has(slug) || isProductPending(bySlug.get(slug))
+    );
+    const files = await fs.readdir(productDir).catch((error) => {
+      if (error.code === 'ENOENT') return [];
+      throw error;
+    });
+    const extraHtml = files.filter(
+      (name) => name.endsWith('.html') && !bySlug.has(name.slice(0, -5))
+    );
+    if (
+      absent.length ||
+      extra.length ||
+      extraHtml.length ||
+      bySlug.size !== products.length
+    ) {
+      throw new ProductPrerenderCoverageError(
+        'Наборы JSON, sitemap и HTML не совпадают.',
+        { absent, extra, extraHtml }
+      );
+    }
+  }
+  const inconsistent = [];
   const missing = [];
   const bare = [];
 
-  for (const slug of sitemapSlugs) {
+  const htmlSlugs = Array.isArray(products)
+    ? products.map((p) => p.slug)
+    : sitemapSlugs;
+  for (const slug of htmlSlugs) {
     const htmlPath = path.join(productDir, `${slug}.html`);
     let html;
     try {
@@ -169,6 +224,59 @@ export async function assertProductPrerenderCoverage({
 
     if (!hasProductSeoHtml(html, slug)) {
       bare.push(slug);
+    }
+    const product = groupedBySlug.get(slug);
+    if (product && ('price' in product || 'stock' in product)) {
+      try {
+        const scripts = [
+          ...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi),
+        ];
+        const payload = JSON.parse(
+          scripts.find((match) =>
+            /id="yuzhural-prerender-data"/.test(match[1])
+          )[2]
+        ).product;
+        const fields = [
+          'id',
+          'sku',
+          'slug',
+          'price',
+          'stock',
+          'unit',
+          'dataStatus',
+          'selectedOfferId',
+        ];
+        const schemas = scripts
+          .filter((match) => /type="application\/ld\+json"/.test(match[1]))
+          .map((match) => JSON.parse(match[2]));
+        const schema = schemas.find((item) => item['@type'] === 'Product');
+        const expected = buildProductJsonLd(product)?.offers;
+        if (
+          isProductPending(product) &&
+          (product.price !== null ||
+            product.stock !== null ||
+            product.unit !== null ||
+            schema?.offers)
+        )
+          throw new Error('Pending product contains a commercial offer');
+        if (
+          fields.some((field) => payload[field] !== product[field]) ||
+          !schema ||
+          [
+            '@type',
+            'price',
+            'priceCurrency',
+            'availability',
+            'lowPrice',
+            'highPrice',
+            'offerCount',
+          ].some((field) => schema.offers?.[field] !== expected?.[field]) ||
+          JSON.stringify(payload.offers) !== JSON.stringify(product.offers)
+        )
+          inconsistent.push(slug);
+      } catch {
+        inconsistent.push(slug);
+      }
     }
   }
 
@@ -191,10 +299,13 @@ export async function assertProductPrerenderCoverage({
     }
   }
 
-  if (missing.length > 0 || bare.length > 0) {
+  if (missing.length > 0 || bare.length > 0 || inconsistent.length > 0) {
     throw new ProductPrerenderCoverageError(
       [
         'Runtime product-prerender не покрывает product sitemap.',
+        inconsistent.length
+          ? `Коммерческие данные HTML/JSON-LD отличаются от JSON: ${inconsistent.length} (${inconsistent.slice(0, 5).join(', ')})`
+          : '',
         missing.length > 0
           ? `Нет HTML для ${missing.length} URL: ${missing.slice(0, 5).join(', ')}`
           : '',
@@ -204,13 +315,19 @@ export async function assertProductPrerenderCoverage({
       ]
         .filter(Boolean)
         .join(' '),
-      { missing, bare, longTailSlug, sitemapCount: sitemapSlugs.length }
+      {
+        missing,
+        bare,
+        inconsistent,
+        longTailSlug,
+        sitemapCount: sitemapSlugs.length,
+      }
     );
   }
 
   return {
     sitemapCount: sitemapSlugs.length,
-    htmlCount: sitemapSlugs.length,
+    htmlCount: htmlSlugs.length,
     longTailSlug,
   };
 }

@@ -216,3 +216,52 @@ describe('assertProductPrerenderCoverage', () => {
     });
   });
 });
+
+it('rejects stale commercial payload/schema, omitted catalog slugs and leftover HTML', async () => {
+  const { prerenderProducts } = await import('../prerender.js');
+  const { readFile } = await import('node:fs/promises');
+  const publicDir = await makeTempDir();
+  const product = {
+    id: 1,
+    sku: 'SYNTHETIC-1',
+    slug: 'synthetic-1',
+    name: 'ВВГ 3х2.5',
+    price: 123.456,
+    stock: 17,
+    unit: 'м',
+  };
+  const template =
+    '<!doctype html><html><head><title>fixture</title></head><body><div id="root"></div></body></html>';
+  await writeRuntimeFixture(publicDir, [product.slug]);
+  await prerenderProducts(template, [product], {
+    outputDir: publicDir,
+    log: null,
+  });
+  const htmlPath = path.join(publicDir, 'product', product.slug + '.html');
+  const original = await readFile(htmlPath, 'utf8');
+  await expect(
+    assertProductPrerenderCoverage({ publicDir, products: [product] })
+  ).resolves.toMatchObject({ htmlCount: 1 });
+  for (const [before, after] of [
+    ['"price":123.456', '"price":999'],
+    ['"stock":17', '"stock":0'],
+    ['"price":"123.46"', '"price":"888.88"'],
+  ]) {
+    expect(original).toContain(before);
+    await writeFile(htmlPath, original.replace(before, after));
+    await expect(
+      assertProductPrerenderCoverage({ publicDir, products: [product] })
+    ).rejects.toMatchObject({ details: { inconsistent: [product.slug] } });
+  }
+  await writeFile(htmlPath, original);
+  await expect(
+    assertProductPrerenderCoverage({
+      publicDir,
+      products: [product, { ...product, slug: 'missing-from-sitemap' }],
+    })
+  ).rejects.toMatchObject({ details: { absent: ['missing-from-sitemap'] } });
+  await writeFile(path.join(publicDir, 'product/removed.html'), original);
+  await expect(
+    assertProductPrerenderCoverage({ publicDir, products: [product] })
+  ).rejects.toMatchObject({ details: { extraHtml: ['removed.html'] } });
+});

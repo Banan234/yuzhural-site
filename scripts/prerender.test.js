@@ -106,7 +106,10 @@ function createRenderAppMock() {
       '<main data-ssr="true" data-url="',
       url,
       '">',
-      prerenderData.product?.title || 'SSR shell',
+      '<h1>' + (prerenderData.product?.title || 'SSR shell') + '</h1>',
+      ...(prerenderData.catalog?.items || []).map(
+        (p) => `<a href="/product/${p.slug}">${p.title}</a>`
+      ),
       '</main>',
     ].join('')
   );
@@ -207,6 +210,18 @@ describe('prerender HTML helpers', () => {
     expect(minifyPrerenderHtml('<div>\n  <span>Текст</span>\n</div>')).toBe(
       '<div><span>Текст</span></div>'
     );
+  });
+
+  it('preserves React Suspense/text markers and meaningful spaces in hydratable product HTML', () => {
+    const bodyShell =
+      '<!--$--><p><span>Цена</span> <strong>12<!-- --> ₽</strong></p><!--/$-->';
+    const html = injectIntoThinTemplate(template, {
+      headExtras: '',
+      bodyShell,
+      hydrate: true,
+    });
+    expect(html).toContain(bodyShell);
+    expect(html).not.toContain('data-client-render="true"');
   });
 
   it('нормализует React SSR-атрибуты в валидный HTML', () => {
@@ -373,9 +388,9 @@ describe('prerender HTML helpers', () => {
   it('includes legacy additional conductor sections in prerendered descriptions', () => {
     const input = { ...product, crossSection: 2.5, groundSection: 1.5 };
     const item = buildCatalogPrerenderData([input]).items[0];
-    expect(item.shortDescription).toContain('3х2,5+1х1,5 мм2');
+    expect(item.shortDescription).toContain('3х2,5+1х1,5 мм²');
     expect(buildProductBodyShell(input)).toContain(
-      '<dt>Доп. жила</dt><dd>1х1,5 мм2</dd>'
+      '<dt>Доп. жила</dt><dd>1х1,5 мм²</dd>'
     );
   });
 
@@ -416,11 +431,72 @@ describe('prerender HTML helpers', () => {
     expect(selection.missing).toEqual(['missing-sku']);
   });
 
+  it('groups catalog rows before pagination and keeps individual offers in import-generated product HTML', async () => {
+    const a = { ...product, unit: 'м', price: 100, stock: 20 };
+    const b = {
+      ...a,
+      id: 202,
+      sku: 'SKU-202',
+      slug: 'second-balance',
+      price: 120,
+      stock: 5,
+    };
+    const catalog = buildCatalogPrerenderData([a, b]);
+    expect(catalog.meta.total).toBe(1);
+    expect(catalog.items[0]).toMatchObject({
+      stock: 25,
+      price: 100,
+      priceVaries: true,
+    });
+    expect(catalog.items[0].offers.map((offer) => offer.id)).toEqual([
+      101, 202,
+    ]);
+    const outputDir = await makeTempDir();
+    await prerenderProducts(template, [a, b], { outputDir, log: null });
+    const html = await readFile(
+      path.join(outputDir, 'product', `${b.slug}.html`),
+      'utf8'
+    );
+    const payload = JSON.parse(
+      html.match(
+        /<script type="application\/json" id="yuzhural-prerender-data">([^]*?)<\/script>/
+      )[1]
+    );
+    expect(payload.product).toMatchObject({
+      slug: 'second-balance',
+      selectedOfferId: 202,
+      stock: 25,
+      price: 100,
+    });
+    expect(payload.product.offers).toHaveLength(2);
+    expect(html).toContain('"@type":"AggregateOffer"');
+  });
+
   it('готовит featured-товары для SSR главной без loading-заглушки', () => {
     const featured = buildHomePrerenderData([
-      { ...product, id: 1, slug: 'regular', stock: 500, promoted: false },
-      { ...product, id: 2, slug: 'promoted', stock: 10, promoted: true },
-      { ...product, id: 3, slug: 'stock-leader', stock: 1000 },
+      {
+        ...product,
+        id: 1,
+        title: 'ВВГ 3х1',
+        slug: 'regular',
+        stock: 500,
+        promoted: false,
+      },
+      {
+        ...product,
+        id: 2,
+        title: 'ВВГ 3х2',
+        slug: 'promoted',
+        stock: 10,
+        promoted: true,
+      },
+      {
+        ...product,
+        id: 3,
+        title: 'ВВГ 3х4',
+        slug: 'stock-leader',
+        stock: 1000,
+      },
     ]);
 
     expect(featured.featuredProducts.map((item) => item.slug)).toEqual([
@@ -430,7 +506,7 @@ describe('prerender HTML helpers', () => {
     ]);
     expect(featured.featuredProducts[0]).toMatchObject({
       id: 2,
-      title: 'ВВГнг(A)-LS 3х2,5',
+      title: 'ВВГ 3х2',
       image: '/images/vvg.png',
     });
   });
@@ -481,7 +557,29 @@ describe('prerender IO flow', () => {
       path.join(distDir, 'catalog', 'kabel-i-provod', 'index.html'),
       'utf8'
     );
+    for (const route of ['catalog', 'catalog/kabel-i-provod']) {
+      const queryHtml = await readFile(
+        path.join(distDir, route, 'query.html'),
+        'utf8'
+      );
+      expect(queryHtml).toContain('<div id="root" data-client-render="true">');
+      expect(queryHtml).not.toContain('yuzhural-prerender-data');
+      expect(queryHtml).not.toContain('rel="canonical"');
+      expect(queryHtml).toContain('noindex,follow');
+    }
+    for (const route of ['cart', 'internal/runtime']) {
+      const clientHtml = await readFile(
+        path.join(distDir, route, 'index.html'),
+        'utf8'
+      );
+      expect(clientHtml).toContain('data-client-render="true"');
+      expect(clientHtml).toContain('Загружаем страницу...');
+      expect(clientHtml).toContain('content="noindex,follow"');
+      expect(clientHtml).not.toContain('yuzhural-prerender-data');
+      expect(clientHtml).not.toContain('home-hero');
+    }
     const notFoundHtml = await readFile(path.join(distDir, '404.html'), 'utf8');
+    expect(notFoundHtml).toContain('\"httpStatus\":404');
     const productHtml = await readFile(
       path.join(distDir, 'product', `${product.slug}.html`),
       'utf8'
@@ -490,7 +588,9 @@ describe('prerender IO flow', () => {
     expect(homeHtml).toContain('<main data-ssr="true" data-url="/">');
     expect(homeHtml).toContain('data-prerender="home-hero"');
     expect(homeHtml).not.toContain('display:none');
-    expect(catalogHtml).toContain('<main data-ssr="true" data-url="/catalog">');
+    expect(catalogHtml).toContain(
+      '<main data-ssr="true" data-url="/catalog/">'
+    );
     expect(catalogHtml).toContain(
       `<link rel="canonical" href="${SITE_URL}/catalog/">`
     );
@@ -554,6 +654,18 @@ describe('prerender IO flow', () => {
     );
     expect(productHtml).not.toContain('OpenGraph / Twitter');
     expect(log).toHaveBeenCalledWith('[prerender] done.');
+  });
+
+  it('marks ordinary compact product HTML for client rendering instead of hydration', async () => {
+    const outputDir = await makeTempDir();
+    await prerenderProducts(template, [product], { outputDir, log: null });
+    const html = await readFile(
+      path.join(outputDir, 'product', product.slug + '.html'),
+      'utf8'
+    );
+    expect(html).toContain('<div id="root" data-client-render="true">');
+    expect(html).toContain('yuzhural-prerender-data');
+    expect(html).toContain('application/ld+json');
   });
 
   it('provides full specs and traceability in product hydration data without visible warnings', async () => {

@@ -27,6 +27,8 @@ done
 
 ENV_FILE="$(resolve_env_file "$PROJECT_ROOT" "$ENV_FILE")"
 require_command docker
+load_env_file "$ENV_FILE"
+export APP_ENV_FILE="$ENV_FILE"
 
 running_services="$(compose_cmd "$PROJECT_ROOT" "$ENV_FILE" ps --status running --services || true)"
 if ! grep -qx 'app' <<<"$running_services"; then
@@ -34,4 +36,14 @@ if ! grep -qx 'app' <<<"$running_services"; then
   exit 1
 fi
 
-exec compose_cmd "$PROJECT_ROOT" "$ENV_FILE" exec -T app node scripts/monitorHealth.js
+exec_env=()
+for env_name in MONITOR_BASE_URL MONITOR_WEBHOOK_URL MONITOR_ALERT_WEBHOOK_URL \
+  MONITOR_REQUIRE_FORMS MONITOR_CHECK_FORMS MONITOR_CHECK_VK MONITOR_TIMEOUT_MS \
+  MONITOR_RETRIES MONITOR_PRODUCT_PATH MONITOR_STATE_FILE SITE_URL VITE_SITE_URL \
+  INTERNAL_METRICS_TOKEN VK_SMOKE_ALLOW_DISABLED; do
+  if declare -p "$env_name" >/dev/null 2>&1; then
+    export "$env_name"
+    exec_env+=(-e "$env_name")
+  fi
+done
+compose_cmd "$PROJECT_ROOT" "$ENV_FILE" exec -T "${exec_env[@]}" app node scripts/monitorHealth.js

@@ -405,7 +405,11 @@ export async function sendMonitorNotification(
       body: JSON.stringify({ text: message }),
       signal: controller.signal,
     });
-    return { ok: responseIsSuccessful(response), status: response.status };
+    const payload = await readResponsePayload(response);
+    return {
+      ok: responseIsSuccessful(response) && payload.ok !== false,
+      status: response.status,
+    };
   } finally {
     clearTimeout(timer);
   }
@@ -446,7 +450,9 @@ export async function runHealthMonitor({
     Boolean(config.webhookUrl) &&
     ((nextStatus === 'down' &&
       (transitioned || changedFailure || previousState.notified !== true)) ||
-      (nextStatus === 'up' && previousStatus === 'down'));
+      (nextStatus === 'up' &&
+        (previousStatus === 'down' ||
+          previousState.notificationPending === true)));
 
   let notification = { ok: false, skipped: true };
   if (shouldNotify) {
@@ -462,11 +468,18 @@ export async function runHealthMonitor({
   }
 
   await writeState(config.stateFile, {
-    version: 1,
+    version: 2,
     status: nextStatus,
     signature: summary.signature,
     checkedAt: now.toISOString(),
-    notified: shouldNotify && notification.ok,
+    notified: shouldNotify
+      ? notification?.ok === true
+      : !transitioned && !changedFailure && previousState.notified === true,
+    notificationPending: shouldNotify
+      ? notification?.ok !== true
+      : !transitioned &&
+        !changedFailure &&
+        previousState.notificationPending === true,
   });
 
   return {
@@ -507,10 +520,11 @@ async function main(argv = process.argv.slice(2)) {
   }
   if (result.shouldNotify) {
     console.log(
-      `Уведомление: ${result.notification.ok ? 'отправлено' : 'ошибка отправки'}`
+      `Уведомление: ${result.notification?.ok === true ? 'отправлено' : 'ошибка отправки'}`
     );
   }
-  if (!result.ok) process.exitCode = 1;
+  if (!result.ok || (result.shouldNotify && result.notification?.ok !== true))
+    process.exitCode = 1;
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {

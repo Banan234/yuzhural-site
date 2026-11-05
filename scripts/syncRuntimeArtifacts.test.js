@@ -1,5 +1,6 @@
+import { writeCatalogRendererFixture } from './test/catalogRendererFixture.js';
 import * as fs from 'fs/promises';
-import { mkdtemp, mkdir, readFile, rm, writeFile } from 'fs/promises';
+import { mkdtemp, mkdir, readFile, rm, writeFile, chmod } from 'fs/promises';
 import os from 'os';
 import path from 'path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -39,6 +40,7 @@ describe('syncRuntimeArtifacts', () => {
     await mkdir(path.join(root, 'shared'), { recursive: true });
     await mkdir(path.join(root, 'public'), { recursive: true });
     await mkdir(path.join(distDir, 'assets'), { recursive: true });
+    await writeCatalogRendererFixture(distDir);
 
     await writeFile(
       path.join(distDir, 'index.html'),
@@ -117,6 +119,15 @@ describe('syncRuntimeArtifacts', () => {
       'utf8'
     );
 
+    await writeFile(
+      path.join(distDir, 'sitemap-products.xml'),
+      'stale build metadata'
+    );
+    await writeFile(
+      path.join(distDir, 'redirects.nginx.conf'),
+      'stale read-only build redirects'
+    );
+    await chmod(path.join(distDir, 'redirects.nginx.conf'), 0o444);
     const result = await syncRuntimeArtifacts({
       projectDir: root,
       productsPath,
@@ -166,6 +177,93 @@ describe('syncRuntimeArtifacts', () => {
     expect(runtime404).toContain('Sitemap: https://yu-uek.ru/sitemap.xml');
     expect(runtimePrice).toBe('price-binary');
     expect(runtimeRedirects).toContain('/product/old-product');
+    expect(
+      await readFile(path.join(distDir, 'sitemap-products.xml'), 'utf8')
+    ).toBe(
+      await readFile(
+        path.join(runtimePublicDir, 'sitemap-products.xml'),
+        'utf8'
+      )
+    );
+    expect(
+      await readFile(path.join(distDir, 'redirects.nginx.conf'), 'utf8')
+    ).toBe(runtimeRedirects);
+
+    await chmod(path.join(runtimePublicDir, 'redirects.nginx.conf'), 0o444);
+    await syncRuntimeArtifacts({
+      projectDir: root,
+      productsPath,
+      categoriesPath,
+      templateDir: distDir,
+      runtimePublicDir,
+      priceSource,
+      redirectsJsonSource,
+      redirectsNginxSource,
+      log: null,
+    });
+    expect(
+      await readFile(
+        path.join(runtimePublicDir, 'redirects.nginx.conf'),
+        'utf8'
+      )
+    ).toBe(runtimeRedirects);
+    const originalProducts = await readFile(productsPath, 'utf8');
+    await writeFile(
+      productsPath,
+      JSON.stringify([{ slug: '../invalid', name: 'Bad', sku: 'BAD' }])
+    );
+    await expect(
+      syncRuntimeArtifacts({
+        projectDir: root,
+        productsPath,
+        categoriesPath,
+        templateDir: distDir,
+        runtimePublicDir,
+        priceSource,
+        log: null,
+      })
+    ).rejects.toThrow();
+    expect(
+      await readFile(
+        path.join(runtimePublicDir, 'product/test-product.html'),
+        'utf8'
+      )
+    ).toBe(runtimeProductHtml);
+    await writeFile(productsPath, originalProducts);
+    await expect(
+      syncRuntimeArtifacts({
+        projectDir: root,
+        productsPath,
+        categoriesPath,
+        templateDir: distDir,
+        runtimePublicDir,
+        priceSource,
+        log: null,
+        fsModule: {
+          ...fs,
+          rename: async (source, target) => {
+            if (
+              path.basename(source).startsWith('.runtime-public-stage-') &&
+              target === runtimePublicDir
+            )
+              throw new Error('synthetic install failure');
+            return fs.rename(source, target);
+          },
+        },
+      })
+    ).rejects.toThrow(/synthetic install failure/);
+    expect(
+      await readFile(
+        path.join(runtimePublicDir, 'product/test-product.html'),
+        'utf8'
+      )
+    ).toBe(runtimeProductHtml);
+    expect(
+      await readFile(path.join(runtimePublicDir, 'sitemap-pages.xml'), 'utf8')
+    ).toBe(runtimeSitemapPages);
+    expect(
+      await readFile(path.join(runtimePublicDir, 'price.xls'), 'utf8')
+    ).toBe(runtimePrice);
   });
 
   it('falls back to copy/remove when directory rename hits EXDEV', async () => {
@@ -181,6 +279,7 @@ describe('syncRuntimeArtifacts', () => {
     });
     await mkdir(path.join(root, 'shared'), { recursive: true });
     await mkdir(path.join(distDir, 'assets'), { recursive: true });
+    await writeCatalogRendererFixture(distDir);
 
     await writeFile(
       path.join(distDir, 'index.html'),
@@ -251,13 +350,11 @@ describe('syncRuntimeArtifacts', () => {
       'utf8'
     );
 
+    await writeFile(path.join(root, 'data/price.xls'), 'synthetic workbook');
     const fsModule = {
       ...fs,
       rename: async (source, target) => {
-        if (
-          source === path.join(runtimePublicDir, 'product') ||
-          target === path.join(runtimePublicDir, 'product')
-        ) {
+        if (source === runtimePublicDir || target === runtimePublicDir) {
           const error = new Error('cross-device link not permitted');
           error.code = 'EXDEV';
           throw error;

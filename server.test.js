@@ -1,4 +1,5 @@
 import { PERSONAL_DATA_CONSENT_VERSION } from './shared/personalDataConsent.js';
+import { groupProductOffers } from './shared/productOffers.js';
 // Файл проверяет Express API, валидацию заявок, антибот-защиту, каталожные endpoints и health checks.
 
 import { promises as fs } from 'fs';
@@ -162,6 +163,11 @@ function createTestApp({
   rateLimitOptions = { limit: 1000 },
   chatStore = createInMemoryChatStore(),
   vkBridge = createMockVkBridge(),
+  // Form tests own their catalog: neither price imports nor catalog size may
+  // change an otherwise valid request or its first-request setup cost.
+  catalogStore = createFixtureCatalogStore(
+    validPayload.items.map((item) => ({ ...item, stock: 1_000 }))
+  ),
   ...options
 } = {}) {
   return createApp({
@@ -169,6 +175,7 @@ function createTestApp({
     rateLimitOptions,
     chatStore,
     vkBridge,
+    catalogStore,
     ...options,
   });
 }
@@ -370,9 +377,12 @@ const productFixtures = [
   },
 ];
 
-function createProductCatalogApp(items = productFixtures, appOptions = {}) {
-  const catalogStore = {
+function createFixtureCatalogStore(items) {
+  return {
     loadCatalogProducts: vi.fn(async () => items),
+    getPendingProducts: vi.fn(() =>
+      items.filter((item) => item.dataStatus === 'pending')
+    ),
     getCatalogProductListItems: vi.fn((value) => value),
     getCatalogProductListItemsByCategory: vi.fn((categorySlug, value) =>
       value.filter((item) => item.catalogCategorySlug === categorySlug)
@@ -384,6 +394,10 @@ function createProductCatalogApp(items = productFixtures, appOptions = {}) {
       items.find((item) => item.slug === slug)
     ),
   };
+}
+
+function createProductCatalogApp(items = productFixtures, appOptions = {}) {
+  const catalogStore = createFixtureCatalogStore(items);
   const catalogQueryStore = createCatalogQueryStore({
     getCatalogProductsByCategory: catalogStore.getCatalogProductsByCategory,
     facetCacheTtlMs: 0,
@@ -1970,6 +1984,33 @@ describe('catalog buyer search API', () => {
 });
 
 describe('POST /api/products/lookup', () => {
+  it('returns each source price and balance after product cards are grouped', async () => {
+    const original = validPayload.items[0];
+    const catalogStore = createFixtureCatalogStore(
+      groupProductOffers([
+        { ...original, slug: 'balance-a', stock: 10 },
+        {
+          ...original,
+          id: 2,
+          sku: 'YU-2',
+          slug: 'balance-b',
+          stock: 3,
+          price: 150,
+        },
+      ])
+    );
+    const app = createTestApp({ catalogStore });
+    await withTestServer(app, async (localBaseUrl) => {
+      const response = await postLookup(localBaseUrl, { ids: [1, 2] });
+      const data = await response.json();
+      expect(data.missing).toEqual([]);
+      expect(data.found).toMatchObject([
+        { id: 1, stock: 10, price: 100, slug: 'balance-a' },
+        { id: 2, stock: 3, price: 150, slug: 'balance-b' },
+      ]);
+    });
+  });
+
   async function postLookup(localBaseUrl, body, headers = {}) {
     return fetch(`${localBaseUrl}/api/products/lookup`, {
       method: 'POST',
@@ -2034,6 +2075,63 @@ describe('POST /api/products/lookup', () => {
 });
 
 describe('POST /api/quote', () => {
+  it.each([
+    { quantity: 3, status: 400 },
+    { quantity: 2, status: 200 },
+  ])(
+    'checks a selected source balance against its own stock: %j',
+    async ({ quantity, status }) => {
+      const original = validPayload.items[0];
+      const offers = [
+        { ...original, slug: 'balance-a', stock: 100 },
+        {
+          ...original,
+          id: 2,
+          sku: 'YU-2',
+          slug: 'balance-b',
+          stock: 2,
+          price: 150,
+        },
+      ];
+      const app = createTestApp({
+        catalogStore: createFixtureCatalogStore(groupProductOffers(offers)),
+      });
+      await withTestServer(app, async (localBaseUrl) => {
+        const response = await postJsonTo(localBaseUrl, '/api/quote', {
+          ...validPayload,
+          items: [{ ...offers[1], quantity }],
+        });
+        expect(response.status).toBe(status);
+        expect(sendMailMock).toHaveBeenCalledTimes(status === 200 ? 1 : 0);
+      });
+    }
+  );
+
+  it.each([
+    { stock: 4, status: 400 },
+    { stock: 5, status: 200 },
+    { stock: 5, classificationReview: { reason: 'fixture' }, status: 200 },
+    { stock: 5, dataStatus: 'pending', status: 400 },
+  ])(
+    'checks the explicitly owned catalog fixture %j',
+    async ({ status, ...commercial }) => {
+      const app = createTestApp({
+        catalogStore: createFixtureCatalogStore([
+          { ...validPayload.items[0], ...commercial },
+        ]),
+      });
+      await withTestServer(app, async (localBaseUrl) => {
+        const response = await postJsonTo(
+          localBaseUrl,
+          '/api/quote',
+          validPayload
+        );
+        expect(response.status).toBe(status);
+        expect(sendMailMock).toHaveBeenCalledTimes(status === 200 ? 1 : 0);
+      });
+    }
+  );
+
   it('503 с понятным сообщением, если формы отключены через FORMS_ENABLED=false', async () => {
     const mailTransporter = { sendMail: vi.fn() };
     const app = createTestApp({
@@ -2560,6 +2658,27 @@ describe('POST /api/lead-request', () => {
     });
 
     expect(mailTransporter.sendMail).not.toHaveBeenCalled();
+  });
+
+  it('delivers a validated lead attachment with the email', async () => {
+    const body = new FormData();
+    body.append('payload', JSON.stringify(validLeadPayload));
+    body.append(
+      'specifications',
+      new Blob(['%PDF-1.7\nfixture'], { type: 'application/pdf' }),
+      'spec.pdf'
+    );
+    const res = await fetch(`${baseUrl}/api/lead-request`, {
+      method: 'POST',
+      body,
+    });
+    expect(res.status).toBe(200);
+    expect(sendMailMock.mock.calls[0][0].attachments).toEqual([
+      expect.objectContaining({
+        filename: 'spec.pdf',
+        contentType: 'application/pdf',
+      }),
+    ]);
   });
 
   it('happy path: валидный payload отправляет письмо и возвращает ok', async () => {
