@@ -8,13 +8,29 @@ React 18 + Vite + Express. Каталог из 6 700+ позиций импор�
 
 ## Быстрый старт
 
+Пример использует nvm. При другом способе установки выберите Node24.22.1
+и проверьте `node -v` перед `npm ci`; менять системный Node автоматически не нужно.
+
 ```bash
 git clone …
 cd yuzhural-site
-npm install
+nvm install
+nvm use
+npm ci
 cp .env.example .env   # заполните по комментариям внутри файла
 npm run up             # build/prerender + API на 3001 + фронт на 5173
 ```
+
+Среда проекта — Node 24 LTS, версия в `.nvmrc` (24.22.1). CI читает этот файл;
+все Node-стадии Docker используют тот же `NODE_VERSION`. Обновление версии
+сопровождается чистой установкой, полными Vitest/Playwright и build:prod.
+Node 20 снят с поддержки 30.04.2026; переход нужен для поддерживаемого runtime,
+а не только для вспомогательного corpus-script. Node 24 поддерживается
+до 30.04.2028: [официальный график](https://github.com/nodejs/Release/blob/main/schedule.json).
+`node:sqlite` используется скриптами корпуса, не Express-процессом; на Node 24.22.1
+API имеет статус Release candidate1.2 и доступен без `--experimental-sqlite`.
+Предупреждения не отключаются. [Документация выбранной версии](https://github.com/nodejs/node/blob/v24.22.1/doc/api/sqlite.md).
+Docker-запуск нужно проверять отдельно: успешная локальная сборка его не заменяет.
 
 Полный набор команд:
 
@@ -30,7 +46,7 @@ npm run up             # build/prerender + API на 3001 + фронт на 5173
 | `npm run load:test`                               | Короткий нагрузочный прогон API; настраивается `API_BASE`, `LOAD_CONCURRENCY`                                                                                                                  |
 | `npm run load:soak`                               | Длинный soak-прогон API на 30 минут для контроля RSS/event loop                                                                                                                                |
 | `node scripts/importPrice.js [path/to/price.xls]` | Импорт прайса → отчёты и единый атомарный каталог в `data/catalog-current/`                                                                                                                    |
-| `npm run import:price:scheduled`                  | Guard-запуск для планировщика: импортирует прайс только если сегодняшний запуск после 04:30 ещё не выполнялся                                                                                  |
+| `npm run import:price:scheduled`                  | Однократная проверка источника через `--if-changed`; расписание задаёт внешний планировщик                                                                                  |
 | `npm run backup:create`                           | Снимок runtime-данных перед ручным изменением или импортом                                                                                                                                     |
 | `npm run backup:list`                             | Список доступных резервных копий                                                                                                                                                               |
 | `npm run backup:verify -- <id>`                   | Проверка SHA-256 выбранной резервной копии                                                                                                                                                     |
@@ -425,7 +441,7 @@ src/
   styles/                  # глобальные + посекционные стили
 scripts/
   importPrice.js           # чтение Excel → products.json + отчёты + SEO
-  runScheduledPriceImport.js # guard для launchd/cron: пропускает импорт до 04:30 и после успешного запуска за день
+  runScheduledPriceImport.js # один вызов importPrice --if-changed; интервалы задаёт launchd/systemd
   lib/siteSeo.js           # генератор sitemap.xml/robots.txt
 shared/
   messages.js              # общие тексты ошибок/успеха для фронта и API
@@ -444,9 +460,9 @@ server.js                  # Express + nodemailer
 ## Импорт прайса
 
 ```bash
-node scripts/importPrice.js              # data/price.xls по умолчанию
+node scripts/importPrice.js              # PRICE_URL → PRICE_PAGE_URL → data/price.xls
 node scripts/importPrice.js path.xls
-node scripts/importPrice.js --dry-run    # только отчёт, без записи
+node scripts/importPrice.js --dry-run    # проверка в консоли, без установки каталога/отчётов
 
 # Скачать свежий прайс с сайта поставщика и сразу пересобрать каталог:
 PRICE_URL=https://supplier.example/upload/price.xls npm run import:price:remote
@@ -462,14 +478,25 @@ node scripts/importPrice.js https://www.cablehome.ru/price/
 Отчёт и история импорта записываются отдельно в `data/`.
 
 Перед публикацией обычный импорт автоматически создаёт резервную копию в
-`data/backups` (или в `BACKUP_DIR`). Защитный контроль сравнивает размер
-каталога, удалённые позиции, пропущенные строки, подозрительные цены, резкие
-изменения цен, новые строки ручной проверки и долю всех товаров в «Прочее».
-Смена раздела или подкатегории также считается сменой категории. При превышении порога рабочие
-данные не заменяются, а отчёт помечается как заблокированный. Для осознанного
-ручного обхода используется `--override-publish-guard`; результат фиксируется
-в отчёте. `--dry-run` не записывает и не заменяет даже скачанный удалённый
-`price.xls`.
+`data/backups` (или в `BACKUP_DIR`). Действует контракт `partial-v1`:
+корректные строки обновляются независимо от ошибок отдельных строк. Ошибочные
+и неоднозначные коммерческие данные изолируются с физическими координатами
+XLS в отчёте; неизвестные единицы не угадываются, неверная цена не становится
+нулём. Известная проблемная карточка сохраняется как «Данные уточняются», без
+цены и покупки. Действительно исчезнувший товар получает 404. Сомнение только
+в классификации однозначно установленного прежнего товара не мешает обновить
+корректные цену/остаток/единицу: остаётся служебный `classificationReview`.
+
+Ошибки строк, новые review, подозрительные цены и изменения категорий дают
+диагностику, а не глобальную блокировку прайса. Общая остановка сохраняется
+для ошибок источника/структуры, пустого выпуска, нарушений безопасной подготовки
+HTML/JSON и блокирующих порогов `minProducts`/`maxRemovedPercent`.
+`--override-publish-guard` явно обходит агрегатные пороги с записью в отчёт,
+но не ошибки источника, пустой выпуск или инварианты безопасной установки.
+`--dry-run` не заменяет каталог, прайс, историю и отчёты и не отправляет письма;
+при этом читает/скачивает источник и временно захватывает общую import-блокировку.
+Публичный `/price.xls` остаётся исходным файлом поставщика байт в байт.
+Подробности: [контракт импорта](docs/price-import-contract.md).
 
 Резервные копии нужно дополнительно копировать за пределы сервера: локальный
 backup защищает от ошибочного импорта, но не от потери диска или самого VPS.
@@ -545,46 +572,156 @@ Production-контракт такой:
    sitemap не имеет HTML с canonical/meta/JSON-LD, или случайная карточка за
    `PRODUCT_PRERENDER_LIMIT` выглядит как голый `index.html`, импорт падает с
    ненулевым кодом.
-4. Nginx отдаёт `/product/<slug>` из
-   `./data/catalog-current/public/product/<slug>.html`, затем
-   из build-time fallback для важных SKU. До успешного runtime-импорта long-tail
-   URL могут попасть в SPA fallback, поэтому после деплоя/импорта держите
-   `npm run check:product-prerender` в smoke-check.
+4. При наличии активного каталога Nginx отдаёт `/product/<slug>` только из
+   `./data/catalog-current/public/product/<slug>.html`; отсутствующая карточка
+   получает настоящий 404. Build-time fallback используется только при запуске
+   без активного каталога. Pending-карточки сохраняют предусмотренный 200 без
+   коммерческих значений. Проверка `npm run check:product-prerender` входит
+   в smoke после подготовки выпуска.
 
 Для ручного pinning важных позиций используйте `PRODUCT_PRERENDER_INCLUDE` со
 списком SKU/slug; `PRODUCT_PRERENDER_LIMIT=all` возвращает прежний полный
 build-time prerender.
 
-### Автоматический ежедневный импорт (production)
+### Автоматическая проверка прайса каждые 30 минут
 
-`data/products.json` лежит в `.gitignore` — после `npm ci` каталог пустой,
-пока не запустится импортёр. Для production теперь есть воспроизводимый путь
-через файлы из репозитория:
+`npm run import:price:scheduled` выполняет **одну** проверку: сначала обслуживание
+служебных файлов, затем `node scripts/importPrice.js --if-changed`.
+Встроенного таймера, ежедневного окна 04:30 и лимита «один импорт в день» нет.
+Расписание задаёт отдельно установленный launchd/systemd. Обычный `npm ci`,
+`npm run server` или запуск compose не устанавливает этот price timer.
+В чистом checkout сгенерированного каталога может не быть; `npm ci` его не создаёт
+и не удаляет существующие runtime-данные.
 
-1. Подготовьте production env-файл, например `/etc/yuzhural-site/production.env`.
-2. Убедитесь, что production compose уже поднят и `app` service работает.
-3. Установите systemd timer из репозитория:
+Источник выбирается: явный путь/URL → `PRICE_URL` → `PRICE_PAGE_URL` →
+`data/price.xls`. Импортёр читает корневой `.env`, не заменяя уже заданные
+переменные процесса. После получения файла сравниваются SHA-256 и исходный
+`requestedUrl` с последним успешно опубликованным состоянием в
+`data/.price-source-state.json`.
+
+- Совпадение при `--if-changed`: статус `unchanged`, без нового каталога,
+  регенерации HTML и нового письма/архивного отчёта. Файл всё равно скачивается
+  и хешируется; это не проверка только HTTP Last-Modified/ETag. Старые письма
+  из outbox могут повторно отправляться **до** проверки совпадения.
+- Отсутствующее/повреждённое состояние не означает «уже обновлено»: источник
+  обрабатывается заново; повреждение JSON диагностируется. Ошибка доступа
+  к состоянию завершает попытку ошибкой. После неудачи новый SHA не сохраняется
+  как успешный, следующий tick снова пробует источник.
+- Сетевая загрузка XLS по умолчанию имеет 3 попытки, тайм-аут 60 секунд на
+  HTTP-операцию, паузы 30/60 секунд для повторяемых ошибок (сеть, timeout,
+  HTTP 429/5xx). Извлечение XLS-ссылки из HTML-страницы выполняется до этого
+  цикла повторов. Ошибки структуры и неповторяемые ошибки загрузки не лечатся
+  повторным разбором в той же попытке.
+- Watchdog ограничивает весь запуск 15 минутами; `PRICE_IMPORT_TIMEOUT_MS`
+  задаёт другое положительное значение. Ошибка/тайм-аут даёт ненулевой код,
+  статус/отчёт `failed` при возможности их сохранить. Удерживаемая другим
+  процессом блокировка также даёт отказ, без публикации и перезаписи его отчёта.
+- Неудачная подготовка не переключает active. Ошибка отправки отчёта не
+  откатывает уже установленный каталог: письмо остаётся в persistent outbox,
+  за один проход повторяются не более 5 писем. Успех импорта не доказывает
+  доставку письма адресату. Ошибка служебной очистки логируется и не отменяет
+  саму проверку источника.
+
+Для проверки без публикации (локальный файл или источник из окружения):
+
+```bash
+npm run check:import
+npm run import:price -- /path/to/fixture.xls --dry-run
+```
+
+`--if-changed` не сокращает `--dry-run`: он заново проверяет строки. Чтобы
+переобработать те же байты после изменения правил импорта, нужен обычный ручной
+запуск **без** `--if-changed`; scheduled сам изменение кода не обнаруживает.
+Такой запуск устанавливает данные и не обходит защитные проверки.
+
+#### Локальный macOS LaunchAgent
+
+На проверенном Mac 30.10.2026 загружен пользовательский
+`~/Library/LaunchAgents/ru.yuzhural.price-import.plist`: `StartCalendarInterval`
+с `Minute=0/30`, `RunAtLoad=false`, cwd `/Users/Shared/yuzhural-site`, запуск
+`scripts/runScheduledPriceImport.js` абсолютным путём к Node. Это существующая
+локальная установка, не переносимый installer из репозитория.
+
+Нужны доступная рабочая копия, зависимости, поддерживаемый Node 24 и настройки
+источника/доставки. LaunchAgent использует заданный абсолютный Node, а не
+автоматически `.nvmrc` интерактивного shell. Локальное восстановление применено
+30.10.2026 ([§58 отчёта](docs/reports/full-review-2026-10-26.md#58-локальное-восстановление-применено-проверены-published-и-unchanged-30102026)):
+Node24.22.1 и полный client+SSR-шаблон находятся в
+`/Users/Shared/yuzhural-local-runtime`, вне `/tmp` и Docker-контекста.
+Job указывает на постоянный Node и `PRERENDER_TEMPLATE_DIR`; источник и
+расписание сохранены. Зависимости шаблона ссылаются на существующие
+`node_modules` проекта, поэтому обновление кода/lock требует согласованной
+новой подготовки шаблона. Проверены успешный штатный tick и последующий
+`unchanged`; JSON/HTML/API/скачиваемый прайс согласованы локально.
+
+SMTP сейчас не настроен полностью: отчёты остаются в `data/import-mail-outbox`,
+реальная доставка не подтверждена и требует отдельного согласованного включения.
+[План восстановления§57](docs/reports/full-review-2026-10-26-assets/local-import-57/apply-plan.md)
+сохранён как история; последний результат находится в§58. Наличие этой локальной
+установки не подтверждает серверный timer.
+
+Пользовательский агент зависит от доступности пользовательской launchd-сессии
+и работающего Mac; сон/выключение не позволяют обещать круглосуточную проверку
+каждые 30 минут. Логи — `~/Library/Logs/yuzhural-price-import.log` и
+`yuzhural-price-import.error.log`. Для read-only проверки job:
+
+```bash
+launchctl print gui/$(id -u)/ru.yuzhural.price-import
+```
+
+Полный вывод может содержать окружение: перед передачей диагностик удаляйте
+секреты. Локальный агент не подтверждает наличие серверного timer.
+
+#### Отдельная серверная установка systemd + Docker
+
+В репозитории реализованы шаблоны и installer; их наличие **не** означает,
+что timer установлен на сервере. Нужны Linux/systemd, Docker Compose, запущенный
+`app`, env-файл, persistent `data` и подготовленные HTML/assets текущего
+веб-выпуска (`/app/data/web-template-current` в compose). На сервере должны
+сохраниться active, source state, архив отчётов и outbox между перезапусками.
+Следующие команды — инструкция установки для оператора, не выполненная проверка:
 
 ```bash
 ./deploy/install-price-import-timer.sh /opt/yuzhural-site /etc/yuzhural-site/production.env
-systemctl list-timers --all | grep yuzhural-price-import
+systemctl list-timers --all yuzhural-price-import.timer
+systemctl status yuzhural-price-import.timer yuzhural-price-import.service --no-pager
+journalctl -u yuzhural-price-import.service --since today --no-pager
 ```
 
-Что делает этот automation-контур:
+Installer через sudo устанавливает оба unit и включает timer. Он вызывает
+wrapper в `:00` и `:30` каждого часа по часам systemd-хоста. `Persistent=true`
+догоняет пропущенное календарное событие после активации timer, но не обеспечивает
+проверки на выключенном сервере и не воспроизводит все пропущенные ticks.
+`TZ=Europe/Moscow` в service задаёт окружение процесса, а не ежедневное окно
+и не часовой пояс календаря timer. Прежний текст `daily` в поле Description
+шаблона service не задаёт частоту; её определяет timer.
 
-- systemd каждые 30 минут вызывает `deploy/run-price-import.sh --scheduled`;
-- внутри контейнера `app` запускается `npm run import:price:scheduled`;
-- guard `scripts/runScheduledPriceImport.js` импортирует прайс только один раз
-  в день после окна `04:30`, а пропущенный запуск догоняется на ближайшем тике;
-  в шаблоне systemd unit из репозитория это окно считается в `TZ=Europe/Moscow`;
-- source URL (`PRICE_URL` или `PRICE_PAGE_URL`) и SEO/runtime-настройки берутся
-  из того же env-файла, что и production deploy.
+Wrapper принимает `--project-root`, `--env-file`, `--mode scheduled|force`
+(также `--scheduled`/`--force`); по умолчанию scheduled. Env выбирается:
+`--env-file` → `APP_ENV_FILE` → существующий `/etc/yuzhural-site/production.env`
+→ `<project>/.env`. Wrapper проверяет работающий сервис `app` и выполняет
+`docker compose exec -T app npm run import:price:scheduled`.
+`PRICE_URL`, `PRICE_PAGE_URL`, `PRICE_DOWNLOAD_MAX_BYTES`, `SITE_URL`,
+`VITE_SITE_URL`, `PRODUCT_PRERENDER_LIMIT`, `PRODUCT_PRERENDER_INCLUDE` и `TZ`
+передаются wrapper явно; остальные настройки должны уже быть в окружении
+контейнера. Изменение env-файла на хосте само по себе не обновляет окружение
+уже работающего контейнера.
 
-Для внепланового ручного запуска используйте:
+Ручная переобработка на сервере (с установкой данных):
 
 ```bash
-./deploy/run-price-import.sh --env-file /etc/yuzhural-site/production.env --force
+./deploy/run-price-import.sh --project-root /opt/yuzhural-site \
+  --env-file /etc/yuzhural-site/production.env --force
 ```
+
+`--force` — параметр wrapper, а не `importPrice.js`; выбирает обычный npm-импорт
+без `--if-changed`, не `--override-publish-guard`. При PRICE_URL/PRICE_PAGE_URL
+выбирается `import:price:remote`, иначе `import:price`.
+
+Серверная приёмка остаётся **T19**: нужны redacted effective units, состояние
+и следующий запуск timer, journal нескольких ticks (изменение/unchanged/сбой и
+восстановление), сохранность volume после restart и безопасное свидетельство
+доставки отчёта. На этом этапе сервер, timer и реальная доставка не проверялись.
 
 ## Docker deploy, staging и rollback
 
