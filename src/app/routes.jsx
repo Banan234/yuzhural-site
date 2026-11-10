@@ -1,3 +1,4 @@
+import { CatalogRevisionProvider } from '../lib/catalogRevision';
 import OfferPage from '../pages/OfferPage';
 import PersonalDataConsentPage from '../pages/PersonalDataConsentPage';
 // Файл собирает общие route objects, layout, SEO-хуки и scroll-поведение для всех страниц.
@@ -33,6 +34,7 @@ export function createRouteObjects({
   PrivacyPage,
   AboutPage,
   InternalRuntimePage,
+  AdminPage,
   NotFoundPage,
 }) {
   const children = [
@@ -99,9 +101,14 @@ export function createRouteObjects({
   children.push({ path: '*', element: <NotFoundPage /> });
 
   return [
+    ...(AdminPage ? [{ path: '/admin/*', element: <AdminPage /> }] : []),
     {
       path: '/',
-      element: <MainLayout />,
+      element: (
+        <CatalogRevisionProvider>
+          <MainLayout />
+        </CatalogRevisionProvider>
+      ),
       children,
     },
   ];

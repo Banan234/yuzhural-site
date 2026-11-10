@@ -71,6 +71,10 @@ export async function main(args = process.argv.slice(2)) {
     console.log(HELP);
     return;
   }
+  if (!values['dry-run'])
+    throw new Error(
+      'Legacy generation/ingest/approval disabled by CABLE_IMAGE_STYLE.md; use the protected style draft workflow.'
+    );
   if (values.force && values['missing-only'])
     throw new Error('--force and --missing-only are mutually exclusive');
   if (

@@ -28,6 +28,7 @@ export default function Modal({
   windowClassName = '',
   ariaLabel = 'Диалоговое окно',
   fallbackFocusRef,
+  closeIcon,
 }) {
   const modalRef = useRef(null);
   const onCloseRef = useRef(onClose);
@@ -130,7 +131,7 @@ export default function Modal({
           onClick={onClose}
           aria-label="Закрыть"
         >
-          ×
+          {closeIcon || '×'}
         </button>
 
         {children}

@@ -46,6 +46,9 @@ export async function main(args = process.argv.slice(2)) {
     );
     return;
   }
+  throw new Error(
+    'Legacy production generation disabled by CABLE_IMAGE_STYLE.md. Use scripts/lib/cableImageStyle.js draft-only workflow; existing manifest remains unchanged.'
+  );
   dotenv.config({ path: path.join(root, '.env'), quiet: true });
   const { config } = await loadCableImageConfig(root);
   if (

@@ -1,0 +1,29 @@
+{
+  "status": "APPROVED",
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": false,
+  "reviewer": "Пользователь",
+  "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true
+  },
+  "basis": "Пользователь одобрил все оставшиеся кандидаты A из последнего отчёта по конструкции, композиции, цветам и прилеганию слоёв и поручил применить их. Автоматическая проверка подтверждает альфа-канал и наличие пикселей на правом крае, а техническое содержание утверждено вручную.",
+  "publicationAuthorized": true,
+  "visualKey": "avvg__2c__solid__round__2core-brown-blue__p-6cf3e639a6d832c0",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-10T08:21:08.988Z"
+}

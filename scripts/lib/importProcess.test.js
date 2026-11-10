@@ -41,3 +41,39 @@ it('preserves normal child exit status', async () => {
     await fs.rm(dir, { recursive: true, force: true });
   }
 });
+
+it('keeps the download failure when the watchdog stops the import', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'import-diagnostic-'));
+  const script = path.join(dir, 'hang.cjs');
+  try {
+    await fs.writeFile(
+      script,
+      `process.stderr.write('Попытка 2/3 провалена (fetch failed (UND_ERR_CONNECT_TIMEOUT)). Ретрай через 60000 мс.\\n'); setInterval(() => {}, 1000);`
+    );
+    await expect(
+      runImportProcess(script, [], {
+        timeoutMs: 500,
+        killGraceMs: 50,
+        stdio: ['ignore', 'ignore', 'pipe'],
+      })
+    ).rejects.toMatchObject({
+      code: 'IMPORT_TIMEOUT',
+      diagnostic: expect.stringContaining('UND_ERR_CONNECT_TIMEOUT'),
+      startedAt: expect.any(String),
+      completedAt: expect.any(String),
+      timeoutMs: 500,
+    });
+  } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+it('retains structured progress across forced termination', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'import-ipc-'));
+  const script = path.join(dir, 'hang.cjs');
+  try {
+    await fs.writeFile(script, `process.send({type:'import-telemetry',telemetry:{stage:'Скачивание',capturedAt:'2026-11-09T17:46:22.000Z',lastProgressAt:new Date().toISOString(),events:[{type:'http',status:503}]}}); setInterval(() => {}, 1000);`);
+    await expect(runImportProcess(script, [], { timeoutMs: 500, killGraceMs: 50, stdio: 'ignore' }))
+      .rejects.toMatchObject({code:'IMPORT_TIMEOUT',telemetry:{stage:'Скачивание',capturedAt:'2026-11-09T17:46:22.000Z',idleMs:expect.any(Number),events:[{type:'http',status:503}]}});
+  } finally { await fs.rm(dir, { recursive:true, force:true }); }
+});

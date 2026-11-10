@@ -8,7 +8,8 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { useCartStore } from '../../store/useCartStore';
 import { trackEvent } from '../../lib/analytics';
-import { expectOkApiJson } from '../../lib/apiResponse';
+import { submitLeadRequest } from '../../lib/submitLeadRequest';
+import { formSubmission } from '../../lib/formSubmission';
 import { captureException } from '../../lib/errorTracking';
 import HoneypotField from '../forms/HoneypotField';
 import { removeStoredValue } from '../../lib/browserStorage';
@@ -67,6 +68,9 @@ export default function QuoteForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverMessage, setServerMessage] = useState('');
   const renderedAtRef = useRef(Date.now());
+  const submissionRef = useRef(null);
+  const submittingRef = useRef(false);
+  const feedbackRef = useRef(null);
   const fieldIds = {
     name: `${idPrefix}-name`,
     phone: `${idPrefix}-phone`,
@@ -85,6 +89,10 @@ export default function QuoteForm({
   useEffect(() => {
     removeStoredValue(LEGACY_FORM_STORAGE_KEY);
   }, []);
+
+  useEffect(() => {
+    if (serverMessage) feedbackRef.current?.focus();
+  }, [serverMessage]);
 
   function handleChange(event) {
     const { checked, name, type, value } = event.target;
@@ -111,13 +119,15 @@ export default function QuoteForm({
 
   async function handleSubmit(event) {
     event.preventDefault();
+    if (submittingRef.current) return;
 
     const nextErrors = validateForm(form, items, {
-      hasSpecification: files.length > 0,
+      hasSpecification: files.length > 0 || Boolean(form.comment.trim()),
     });
 
-    if (specificationOnly && files.length === 0)
-      nextErrors.cart = 'Прикрепите спецификацию для расчёта.';
+    if (items.length === 0 && files.length === 0 && !form.comment.trim())
+      nextErrors.cart =
+        'Укажите марки и метраж в комментарии или прикрепите спецификацию.';
     const attachmentError = validateSpecificationFiles(files);
     setFileError(attachmentError);
     if (attachmentError || Object.keys(nextErrors).length > 0) {
@@ -126,6 +136,7 @@ export default function QuoteForm({
       return;
     }
 
+    submittingRef.current = true;
     setIsSubmitting(true);
     setServerMessage('');
 
@@ -141,6 +152,7 @@ export default function QuoteForm({
 
     const orderPayload = {
       customer: cleanedForm,
+      page: window.location.pathname,
       items: items.map((item) => ({
         id: item.id,
         sku: item.sku,
@@ -159,25 +171,14 @@ export default function QuoteForm({
     };
 
     try {
-      const multipart = new FormData();
-      multipart.append('payload', JSON.stringify(orderPayload));
-      files.forEach((file) =>
-        multipart.append('specifications', file, file.name)
+      orderPayload.submissionId = formSubmission(
+        submissionRef,
+        orderPayload,
+        files
       );
-      const response = await fetch('/api/quote', {
-        method: 'POST',
-        ...(files.length
-          ? { body: multipart }
-          : {
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(orderPayload),
-            }),
+      const result = await submitLeadRequest(orderPayload, files, {
+        endpoint: '/api/quote',
       });
-
-      const result = await expectOkApiJson(
-        response,
-        messages.errors.quoteForm.submitRequestFailed
-      );
       const accepted = result.quoteSummary || quoteMoneyPayload(money);
 
       trackEvent('quote-submit', {
@@ -187,6 +188,8 @@ export default function QuoteForm({
         hasEmail: Boolean(cleanedForm.email),
       });
       setSubmittedSummary({
+        requestId: result.requestId,
+        receiptEmailStatus: result.receiptEmailStatus,
         files: files.map((file) => file.name),
         positions: accepted.totalCount,
         contact: cleanedForm.phone,
@@ -206,6 +209,7 @@ export default function QuoteForm({
       setIsSubmitted(false);
       setServerMessage(error.message || messages.errors.quoteForm.submitFailed);
     } finally {
+      submittingRef.current = false;
       setIsSubmitting(false);
     }
   }
@@ -221,12 +225,27 @@ export default function QuoteForm({
         </div>
       )}
 
+      {items.length > 0 && (
+        <details className="quote-request-items" open={items.length <= 3}>
+          <summary>Позиций в заявке: {items.length}</summary>
+          <ul>
+            {items.map((item) => (
+              <li key={item.id}>
+                {item.title} — {item.quantity.toLocaleString('ru-RU')}{' '}
+                {item.unit || 'м'}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+
       {!specificationOnly &&
       items.length === 0 &&
       files.length === 0 &&
       !isSubmitted ? (
         <div className="quote-empty-note">
-          Прикрепите спецификацию или добавьте позиции из{' '}
+          Укажите марки и метраж в комментарии, прикрепите файл или добавьте
+          позиции из{' '}
           <a
             href={CATALOG_CANONICAL_PATH}
             style={{
@@ -242,11 +261,29 @@ export default function QuoteForm({
       {errors.cart ? <div className="form-error">{errors.cart}</div> : null}
 
       {isSubmitted ? (
-        <div className="form-success" role="status">
+        <div
+          className="form-success"
+          role="status"
+          tabIndex={-1}
+          ref={feedbackRef}
+        >
           {serverMessage}
           {submittedSummary && (
             <div className="specification-receipt">
-              <strong>Отправлено:</strong>
+              <strong>
+                {submittedSummary.requestId
+                  ? `Заявка № ${submittedSummary.requestId}`
+                  : 'Отправлено:'}
+              </strong>
+              {submittedSummary.receiptEmailStatus === 'sent' && (
+                <p>Подтверждение отправлено на ваш email.</p>
+              )}
+              {submittedSummary.receiptEmailStatus === 'pending' && (
+                <p>
+                  Заявка принята. Подтверждение по email пока не отправлено;
+                  повторять заявку не нужно.
+                </p>
+              )}
               <p>
                 Позиций из каталога: {submittedSummary.positions}. Телефон для
                 связи: {submittedSummary.contact}.
@@ -265,7 +302,14 @@ export default function QuoteForm({
       ) : null}
 
       {!isSubmitted && serverMessage ? (
-        <div className="form-error">{serverMessage}</div>
+        <div
+          className="form-error"
+          role="alert"
+          tabIndex={-1}
+          ref={feedbackRef}
+        >
+          {serverMessage}
+        </div>
       ) : null}
 
       <form className="quote-form" onSubmit={handleSubmit} noValidate>

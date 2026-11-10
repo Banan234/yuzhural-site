@@ -7,6 +7,7 @@
     "node": ">=24.22.1 <25"
   },
   "scripts": {
+    "admin:setup": "node scripts/adminSetup.js",
     "dev": "vite",
     "server": "node server.js",
     "start": "concurrently \"npm run dev\" \"npm run server\"",
@@ -44,7 +45,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "images:cables:models": "node scripts/testCableImageModels.js",
-    "check:titles": "node scripts/auditProductTitles.js"
+    "check:titles": "node scripts/auditProductTitles.js",
+    "review:import": "node scripts/reviewImport.js",
+    "postbuild": "npm run build:ssr"
   },
   "dependencies": {
     "@e965/xlsx": "^0.20.3",

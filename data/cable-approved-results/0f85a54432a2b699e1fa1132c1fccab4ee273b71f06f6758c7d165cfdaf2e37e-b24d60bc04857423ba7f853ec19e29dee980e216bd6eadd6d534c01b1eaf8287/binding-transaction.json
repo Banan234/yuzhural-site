@@ -1,0 +1,395 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/0f85a54432a2b699e1fa1132c1fccab4ee273b71f06f6758c7d165cfdaf2e37e-b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000755",
+        "before": {
+          "image": "/product-images/generated/vvgng__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 755,
+          "sourceName": "ВВГ  1х1.5 нг",
+          "productName": "ВВГнг 1х1.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 1.5,
+          "family": "vvgng",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_7014c65cbee1f54e26c12b54ef72f504e2025a9237dd4ef7df73275195523935.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 755,
+          "sourceName": "ВВГ  1х1.5 нг",
+          "productName": "ВВГнг 1х1.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 1.5,
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.877Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000760",
+        "before": {
+          "image": "/product-images/generated/vvgng__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 760,
+          "sourceName": "ВВГ  1х2.5 нг",
+          "productName": "ВВГнг 1х2.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 2.5,
+          "family": "vvgng",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_7014c65cbee1f54e26c12b54ef72f504e2025a9237dd4ef7df73275195523935.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 760,
+          "sourceName": "ВВГ  1х2.5 нг",
+          "productName": "ВВГнг 1х2.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 2.5,
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.877Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000764",
+        "before": {
+          "image": "/product-images/generated/vvgng__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 764,
+          "sourceName": "ВВГ  1х4 нг",
+          "productName": "ВВГнг 1х4",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 4,
+          "family": "vvgng",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_7014c65cbee1f54e26c12b54ef72f504e2025a9237dd4ef7df73275195523935.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 764,
+          "sourceName": "ВВГ  1х4 нг",
+          "productName": "ВВГнг 1х4",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 4,
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.877Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000770",
+        "before": {
+          "image": "/product-images/generated/vvgng__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 770,
+          "sourceName": "ВВГ  1х6 нг",
+          "productName": "ВВГнг 1х6",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 6,
+          "family": "vvgng",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_7014c65cbee1f54e26c12b54ef72f504e2025a9237dd4ef7df73275195523935.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 770,
+          "sourceName": "ВВГ  1х6 нг",
+          "productName": "ВВГнг 1х6",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 6,
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.877Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000850",
+        "before": {
+          "image": "/product-images/generated/vvgng__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 850,
+          "sourceName": "ВВГ  1х 25 нг",
+          "productName": "ВВГнг 1х25",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 25,
+          "family": "vvgng",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_7014c65cbee1f54e26c12b54ef72f504e2025a9237dd4ef7df73275195523935.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 850,
+          "sourceName": "ВВГ  1х 25 нг",
+          "productName": "ВВГнг 1х25",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 25,
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.877Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000857",
+        "before": {
+          "image": "/product-images/generated/vvgng__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 857,
+          "sourceName": "ВВГ  1х 50 нг",
+          "productName": "ВВГнг 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "family": "vvgng",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_7014c65cbee1f54e26c12b54ef72f504e2025a9237dd4ef7df73275195523935.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 857,
+          "sourceName": "ВВГ  1х 50 нг",
+          "productName": "ВВГнг 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "visualKey": "vvgng__1c__solid__round__1core-brown__p-56fa7a683c0b33b7",
+          "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "b24d60bc04857423ba7f853ec19e29dee980e216bd6eadd6d534c01b1eaf8287",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.877Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

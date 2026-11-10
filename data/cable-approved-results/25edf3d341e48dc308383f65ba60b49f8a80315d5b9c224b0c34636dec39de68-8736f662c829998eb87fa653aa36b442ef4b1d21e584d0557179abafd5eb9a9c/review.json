@@ -1,0 +1,191 @@
+{
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "model": "gpt-image-2.5-flare",
+  "httpStatus": 200,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.49379932356257045,
+    "has_transparency": true,
+    "transparent_ratio": 0.5844561745569539,
+    "non_opaque_ratio": 0.9997540574171072,
+    "foreground_ratio": 0.41478756788841453,
+    "bounds": {
+      "minX": 154,
+      "minY": 64,
+      "maxX": 1773,
+      "maxY": 692
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "8736f662c829998eb87fa653aa36b442ef4b1d21e584d0557179abafd5eb9a9c",
+    "bytes": 1063606
+  },
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 4,
+    "expectedMetalEndCount": 4,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 4,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "technicalProfile": {
+    "version": "construction-contract-3",
+    "outerSheathGeometry": "ROUND",
+    "family": "avvg",
+    "insulatedCoreCount": 4,
+    "coreMetalEndCount": 4,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "armor": {
+      "present": false,
+      "type": null
+    },
+    "screen": {
+      "present": false,
+      "type": null
+    },
+    "screenVisualStandard": null,
+    "screenType": null,
+    "screenFunction": null,
+    "armorFunction": null,
+    "screenRendering": null,
+    "armorType": null,
+    "fireBarrierMaterial": null,
+    "fireBarrierPlacement": null,
+    "constructionSource": null,
+    "constructionBasis": null,
+    "fireBarrier": false,
+    "layers": [
+      {
+        "role": "outer-jacket",
+        "scope": "overall",
+        "appearance": "black"
+      },
+      {
+        "role": "individual-insulation",
+        "scope": "each-core"
+      }
+    ],
+    "layerRoleCount": 2,
+    "layerCountScope": "role count; each-core roles repeat on every core; not a count of manufacturing tape wraps",
+    "additionalConductors": [],
+    "cores": [
+      {
+        "id": 1,
+        "color": "brown",
+        "metalEndId": 1,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 2,
+        "color": "black",
+        "metalEndId": 2,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 3,
+        "color": "grey",
+        "metalEndId": 3,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 4,
+        "color": "yellow-green",
+        "metalEndId": 4,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "unknownInternalFillers": "not specified: do not invent visible layers",
+    "verification": {
+      "status": "NEEDS_REVIEW",
+      "pixelVerification": "NOT_AUTOMATED",
+      "insulatedCoreCount": null,
+      "coreMetalEndCount": null,
+      "additionalConductorCount": null,
+      "layerRoles": null
+    }
+  },
+  "multicoreStripping": null,
+  "geometryPilot": null,
+  "geometryRevision": null,
+  "outerSheathGeometry": "ROUND",
+  "constructionCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "insulatedCoreCount": null,
+    "coreMetalEndCount": null,
+    "additionalConductorCount": null,
+    "layerRoles": null
+  },
+  "geometryCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "status": "NEEDS_REVIEW",
+  "automaticProductionBinding": false,
+  "manualChecksRequired": [
+    "coreCount",
+    "material",
+    "colours",
+    "layers",
+    "direction",
+    "proportions",
+    "stripping",
+    "background",
+    "referenceMatch",
+    "metalEndCount",
+    "equalDiameters",
+    "relativeDiameters",
+    "coaxialStripping",
+    "geometryConsistency",
+    "noExtraCylinders"
+  ]
+}

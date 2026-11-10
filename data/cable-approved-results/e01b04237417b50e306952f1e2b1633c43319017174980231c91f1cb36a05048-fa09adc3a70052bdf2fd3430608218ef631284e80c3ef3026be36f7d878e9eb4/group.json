@@ -1,0 +1,163 @@
+{
+  "visualKey": "avvgng-a-ls__2c__solid__round__2core-brown-blue__p-24791b8c6f0432a2",
+  "profile": {
+    "family": "avvgng-a-ls",
+    "productType": "power-cable",
+    "cores": 2,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "blue"
+    ],
+    "coreColorScheme": "2core-brown-blue",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "draftKey": "4d06a70732db9c9e9a00a789230a701259c37259f976b50a022a3553feefe6c5",
+  "members": [
+    {
+      "sku": "YU-0007005",
+      "name": "АВВГнг(А)-LS 2х4",
+      "sourceName": "АВВГ  2х4 нг(А)LS",
+      "id": 7005,
+      "slug": "avvg-2h4-ng-a-ls-5el",
+      "section": 4,
+      "primaryCores": 2,
+      "visualKey": "avvgng-a-ls__2c__solid__round__2core-brown-blue__p-24791b8c6f0432a2",
+      "visualizationType": "SIMPLE",
+      "productHash": "9c9387fb99a515622e91464674634027b10810ff9542d6dd0b0dffbe8fa04dfb",
+      "oldBinding": {
+        "image": "/product-images/generated/avvgnga-ls__2core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 7005,
+        "sourceName": "АВВГ  2х4 нг(А)LS",
+        "productName": "АВВГнг(А)-LS 2х4",
+        "primaryCores": 2,
+        "cores": 2,
+        "section": 4,
+        "family": "avvgng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "visualKey": "avvgng-a-ls__2c__solid__round__2core-brown-blue__p-24791b8c6f0432a2",
+        "sha256": "fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvgnga-ls__2core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7005,
+          "sourceName": "АВВГ  2х4 нг(А)LS",
+          "productName": "АВВГнг(А)-LS 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "family": "avvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "avvgng-a-ls__2c__solid__round__2core-brown-blue__p-24791b8c6f0432a2",
+          "sha256": "fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    }
+  ],
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.25366403607666294,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 224,
+        "longestSupportedRun": 224,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.7842193833259826,
+    "non_opaque_ratio": 0.9994375731631521,
+    "foreground_ratio": 0.2148673880135084,
+    "bounds": {
+      "minX": 126,
+      "minY": 290,
+      "maxX": 1773,
+      "maxY": 655
+    },
+    "warnings": [],
+    "sha256": "fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+    "bytes": 654491
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "APPROVED_FOR_CATALOG": true,
+    "APPROVED_AS_REFERENCE": false,
+    "reviewer": "Пользователь",
+    "sha256": "fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "basis": "Пользователь одобрил все оставшиеся кандидаты A из последнего отчёта по конструкции, композиции, цветам и прилеганию слоёв и поручил применить их. Автоматическая проверка подтверждает альфа-канал и наличие пикселей на правом крае, а техническое содержание утверждено вручную.",
+    "publicationAuthorized": true,
+    "visualKey": "avvgng-a-ls__2c__solid__round__2core-brown-blue__p-24791b8c6f0432a2",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-10T08:21:09.190Z"
+  },
+  "automaticProductionBinding": false
+}

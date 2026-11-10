@@ -241,6 +241,15 @@ describe('documentation database application', () => {
     ).toBe(false);
     expect(result.products[1].designationDecoded.family).toBeNull();
     expect(result.products[2].designationDecoded.family).toBeNull();
+    expect(result.report.counts.withoutFullDecoding).toBe(3);
+    expect(result.report.counts.withoutFullDecoding).toBe(
+      result.report.counts.partial + result.report.counts.unresolved
+    );
+    expect(result.report.pending).toHaveLength(3);
+    expect(result.report.pending[0].status).toBe('partial');
+    expect(result.report.pending[0].reason).toContain('частичная');
+    expect(result.report.pending[1].status).toBe('unresolved');
+    expect(result.report.pending[1].sourceName).toBe('HELUKABEL 4х1,5');
   });
   it('recovers a truncated mark only from the longer literal original designation', () => {
     const result = enrichPriceDesignations([

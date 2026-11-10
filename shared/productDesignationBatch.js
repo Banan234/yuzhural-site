@@ -29,6 +29,7 @@ export function enrichPriceDesignations(
     reviewed: 0,
     partial: 0,
     unresolved: 0,
+    withoutFullDecoding: 0,
     familyIdentified: 0,
     officialComplete: 0,
   };
@@ -72,17 +73,25 @@ export function enrichPriceDesignations(
             : 'Обозначение разобрано не полностью.',
       });
     }
-    if (d.status !== 'reviewed')
+    if (d.status !== 'reviewed') {
+      counts.withoutFullDecoding++;
       pending.push({
+        id: product.id,
         sku: product.sku,
         slug: product.slug,
         mark: product.mark,
         sourceName: product.sourceName,
+        status: d.status,
+        reason:
+          d.status === 'unresolved'
+            ? 'Не найдено подтверждённое семейство обозначения.'
+            : 'Расшифровка частичная: остались неизвестные элементы или предупреждения.',
         family: d.family,
         unknown: d.unknown,
         warnings: d.warnings,
         sources: d.sources,
       });
+    }
   }
   return {
     products: enriched,

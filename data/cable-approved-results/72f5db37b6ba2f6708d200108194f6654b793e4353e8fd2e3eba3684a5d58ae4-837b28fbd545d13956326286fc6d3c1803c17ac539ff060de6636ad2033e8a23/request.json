@@ -1,0 +1,198 @@
+{
+  "standardVersion": "approved-cable-style-1.1.0",
+  "standardSha256": "9efe6f176dd789859814e89c2e41571c3d8c18268fabb662ab5e1893e95dfa60",
+  "reference": {
+    "path": "assets/cable-style-reference/simple.png",
+    "source": "outputs/visual-reference-v2.1/simple-round.png",
+    "sha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+  },
+  "endpoint": "images/edits",
+  "model": "gpt-image-2.5-flare",
+  "prompt": "STYLE INPUT ONLY: the attached PNG is NOT a technical drawing of this cable. It supplies camera, scale, composition, tilt, lighting and render quality ONLY. Discard its internal geometry completely and rebuild the target core assembly from the following construction contract. Do not mechanically add or remove a reference wire. Technical contract overrides reference anatomy. EXACTLY 1 insulated cores and EXACTLY 1 corresponding exposed core ends. One-to-one numbered core/end mapping; every end must be individually visible and centered in its own insulation. No extra core, hidden stub, duplicate end, cap or dummy cylinder. ABSOLUTELY NO ARMOR: no overlapping steel tapes, no steel wires, even if visible in reference. NO SCREEN and NO DRAIN wire. NO fire barrier. NO additional conductors and NO drain wire; do not copy the previous draft drain. Layer roles are explicit: do not invent bedding/filler/tape layers from the PNG. Preserve overall reference envelope and scale while rebuilding internal geometry. Construction contract: {\"version\":\"construction-contract-3\",\"outerSheathGeometry\":\"ROUND\",\"family\":\"vvgng-a\",\"insulatedCoreCount\":1,\"coreMetalEndCount\":1,\"conductorMaterial\":\"copper\",\"conductorConstruction\":\"solid\",\"armor\":{\"present\":false,\"type\":null},\"screen\":{\"present\":false,\"type\":null},\"screenVisualStandard\":null,\"screenType\":null,\"screenFunction\":null,\"armorFunction\":null,\"screenRendering\":null,\"armorType\":null,\"fireBarrierMaterial\":null,\"fireBarrierPlacement\":null,\"constructionSource\":null,\"constructionBasis\":null,\"fireBarrier\":false,\"layers\":[{\"role\":\"outer-jacket\",\"scope\":\"overall\",\"appearance\":\"black\"},{\"role\":\"individual-insulation\",\"scope\":\"each-core\"}],\"layerRoleCount\":2,\"layerCountScope\":\"role count; each-core roles repeat on every core; not a count of manufacturing tape wraps\",\"additionalConductors\":[],\"cores\":[{\"id\":1,\"color\":\"brown\",\"metalEndId\":1,\"metalEndCount\":1,\"relativeDiameter\":1}],\"unknownInternalFillers\":\"not specified: do not invent visible layers\",\"verification\":{\"status\":\"NEEDS_REVIEW\",\"pixelVerification\":\"NOT_AUTOMATED\",\"insulatedCoreCount\":null,\"coreMetalEndCount\":null,\"additionalConductorCount\":null,\"layerRoles\":null}}. Before rendering verify a bijection of all insulated cores and their metal ends; after rendering the result still requires independent pixel/manual verification.LAYER CONTACT RULE layer-contact-1.0.0: Preserve actual documented layer interfaces. Do not assume adjacent contact or invent an air gap for unspecified constructions. Do not remove or compress documented fillers, separators, screens, armour, fire barriers, spacers, tubes or intentional voids. Unknown adjacency is not evidence of direct contact. Do not infer direct contact from core count alone. Manual pixel inspection required. HTTP success and PNG alpha do not verify layer contact. Unverifiable geometry remains NEEDS_REVIEW. Use the attached USER-APPROVED SIMPLE reference as the mandatory visual standard, version approved-cable-style-1.1.0. This reference defines style, scale, composition, tilt, camera, materials appearance, lighting, detail, left margin, proportions and exposed metal/insulation lengths. Preserve these parameters; no artistic experiments. Rebuild internal geometry as required by the supplied technical contract: exact insulated core count, colours, actual conductor material, solid/stranded construction and documented layers/family details. Do not copy the reference core count when it differs from target. COPPER conductors. Each core contains one SOLID conductor. EXACTLY 1 insulated cores. Compact volumetric bundle, never flat fan. Intact body on RIGHT continues beyond right canvas edge; stripped end and bare conductor extensions on LEFT fully visible. Match reference bare-metal length with clear insulation boundary; no ferrules/lugs. Include only documented construction layers; never add screen/armour if false. True transparent PNG, no dark halos, haze, baked shadows, background residue, text or logos. Nominal section does not change overall reference scale. MANDATORY CORE GEOMETRY: 1 insulated cores and 1 separate exposed metallic ends. All metal conductors must be copies of the SAME-diameter geometry, with only natural perspective differences. Insulated core outer diameters must also match if insulation construction and wall thickness are the same. Relative metal diameter groups (count and normalized diameter): [{\"count\":1,\"relativeDiameter\":1}]. Every bare end exits the CENTRE of its corresponding insulation, with a sharp stripping boundary and constant diameter. Circular solid ends must be true cylinders, no swelling, narrowing, distortion, caps or sleeves. Keep stranded construction where specified. Material: copper. No extra stumps/cylinders. Correct all cores as a consistent geometric set, never patch one defective core in isolation. Preserve reference global scale regardless of nominal section, composition, camera, tilt, stripping lengths, transparency and lighting. Insulation rule: Equal outer diameters when insulation construction and wall thickness are equal. Target visualProfile: {\"family\":\"vvgng-a\",\"productType\":\"power-cable\",\"cores\":1,\"conductorMaterial\":\"copper\",\"conductorConstruction\":\"solid\",\"conductorShape\":\"circular\",\"geometry\":\"round\",\"hasOuterJacket\":true,\"outerJacket\":\"black\",\"armor\":false,\"armorType\":null,\"shield\":false,\"shieldType\":null,\"specialElements\":[],\"coreColors\":[\"brown\"],\"coreColorScheme\":\"1core-brown\",\"pairedGroupSize\":null,\"sectionKey\":null,\"unresolvedModifiers\":[],\"unresolvedFamilySuffix\":null,\"visualizationType\":\"SIMPLE\"}. Mandatory constraints: [\"no decorative experiments\",\"no text logos or watermark\",\"transparent PNG; no halo baked shadow or residual background\",\"no invented or missing cores/layers\",\"actual flat/twisted/non-round constructions require separate approved reference; never force round\"].    OUTER_SHEATH_GEOMETRY=ROUND. Geometry is determined by the technical profile, NEVER by the number of cores or the word flat in a title. Use a ROUND common outer sheath, even with only TWO cores; do not copy the flat SHVVP geometry.  ",
+  "profile": {
+    "family": "vvgng-a",
+    "productType": "power-cable",
+    "cores": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown"
+    ],
+    "coreColorScheme": "1core-brown",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 1,
+    "expectedMetalEndCount": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "technicalProfile": {
+    "version": "construction-contract-3",
+    "outerSheathGeometry": "ROUND",
+    "family": "vvgng-a",
+    "insulatedCoreCount": 1,
+    "coreMetalEndCount": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "armor": {
+      "present": false,
+      "type": null
+    },
+    "screen": {
+      "present": false,
+      "type": null
+    },
+    "screenVisualStandard": null,
+    "screenType": null,
+    "screenFunction": null,
+    "armorFunction": null,
+    "screenRendering": null,
+    "armorType": null,
+    "fireBarrierMaterial": null,
+    "fireBarrierPlacement": null,
+    "constructionSource": null,
+    "constructionBasis": null,
+    "fireBarrier": false,
+    "layers": [
+      {
+        "role": "outer-jacket",
+        "scope": "overall",
+        "appearance": "black"
+      },
+      {
+        "role": "individual-insulation",
+        "scope": "each-core"
+      }
+    ],
+    "layerRoleCount": 2,
+    "layerCountScope": "role count; each-core roles repeat on every core; not a count of manufacturing tape wraps",
+    "additionalConductors": [],
+    "cores": [
+      {
+        "id": 1,
+        "color": "brown",
+        "metalEndId": 1,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "unknownInternalFillers": "not specified: do not invent visible layers",
+    "verification": {
+      "status": "NEEDS_REVIEW",
+      "pixelVerification": "NOT_AUTOMATED",
+      "insulatedCoreCount": null,
+      "coreMetalEndCount": null,
+      "additionalConductorCount": null,
+      "layerRoles": null
+    }
+  },
+  "multicoreStripping": null,
+  "strippingComposition": null,
+  "layerContact": {
+    "version": "layer-contact-1.0.0",
+    "scope": "Prospective rendering and manual QA only; never change approved PNGs or visualKey",
+    "confirmedSingleCoreFamilies": [
+      "kgvvng-a-ls",
+      "vvgng-a-ls"
+    ],
+    "basis": "User-confirmed rendering requirement for the existing single-core technical profiles: common jacket tightly encloses the individually insulated core.",
+    "directContact": "For a confirmed directly adjacent jacket/insulation interface, show continuous tight contact, no visible air annulus and no free hollow tube. Preserve the distinct cut edges, order and realistic thickness of actual layers.",
+    "exceptions": "Do not remove or compress documented fillers, separators, screens, armour, fire barriers, spacers, tubes or intentional voids. Unknown adjacency is not evidence of direct contact. Do not infer direct contact from core count alone.",
+    "verification": "Manual pixel inspection required. HTTP success and PNG alpha do not verify layer contact. Unverifiable geometry remains NEEDS_REVIEW.",
+    "mode": "PRESERVE_DOCUMENTED_INTERFACES_NO_ASSUMPTION",
+    "status": "MANUAL_REVIEW_REQUIRED"
+  },
+  "editTarget": null,
+  "geometryPilot": null,
+  "geometryRevision": null,
+  "geometryReference": null,
+  "outerSheathGeometry": "ROUND",
+  "approvedStyleReference": {
+    "path": "/Users/Shared/yuzhural-site/data/cable-approved-results/f0a255321797cfeb9a7f9359605193053fe9178fbc10aceba8d484acead01c35-2eb8cdcce4757a3f929171575ba210379fcf218737c79b190794983390486ef6/image.png",
+    "sha256": "2eb8cdcce4757a3f929171575ba210379fcf218737c79b190794983390486ef6",
+    "visualKey": "vvgng-a-ls__1c__solid__round__1core-brown__p-15ca2bb68392acf7",
+    "profile": {
+      "family": "vvgng-a-ls",
+      "productType": "power-cable",
+      "cores": 1,
+      "conductorMaterial": "copper",
+      "conductorConstruction": "solid",
+      "conductorShape": "circular",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacket": "black",
+      "armor": false,
+      "armorType": null,
+      "shield": false,
+      "shieldType": null,
+      "specialElements": [],
+      "coreColors": [
+        "brown"
+      ],
+      "coreColorScheme": "1core-brown",
+      "pairedGroupSize": null,
+      "sectionKey": null,
+      "unresolvedModifiers": [],
+      "unresolvedFamilySuffix": null,
+      "visualizationType": "SIMPLE"
+    },
+    "score": 239,
+    "differences": [
+      "family"
+    ],
+    "librarySize": 21,
+    "compatibleReferenceCount": 1,
+    "ranking": [
+      {
+        "visualKey": "vvgng-a-ls__1c__solid__round__1core-brown__p-15ca2bb68392acf7",
+        "score": 239
+      }
+    ]
+  },
+  "qualityStatus": "NEEDS_REVIEW",
+  "automaticProductionBinding": false,
+  "provenance": {
+    "kind": "legacy-png-manually-approved",
+    "source": "public/product-images/generated/vvgnga__1core.png",
+    "originalGeneration": "outputs/cable-image-batch-flare-2026-10-15",
+    "note": "No generation performed. Current reference records compatibility, not historical API input."
+  }
+}

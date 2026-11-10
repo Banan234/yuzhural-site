@@ -275,7 +275,7 @@ export default function HeaderCatalogMenu() {
 
                   <div className="catalog-dropdown__columns">
                     {activeCatalogGroup.subcategories.length > 0 && (
-                      <div className="catalog-dropdown__column">
+                      <div className="catalog-dropdown__column catalog-dropdown__column--subcategories">
                         <h3>Подкатегории</h3>
                         {activeCatalogGroup.subcategories.map((link) => (
                           <Link

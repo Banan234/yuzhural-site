@@ -1,3 +1,11 @@
+import { createAdminStore } from './lib/adminStore.js';
+import { createAdminRouter } from './lib/adminRouter.js';
+import { validAdminHash } from './lib/adminAuth.js';
+import {
+  createFormDelivery,
+  formatMailTime,
+  mailPageLink,
+} from './lib/formDelivery.js';
 import { isValidOrderQuantity } from './shared/orderQuantity.js';
 import { prepareProductDetail } from './lib/productPresentation.js';
 import {
@@ -262,6 +270,7 @@ function getChatTokenFromRequest(req) {
 }
 
 function applyCatalogCache(res) {
+  if (res.locals.adminCatalog) { res.setHeader('Cache-Control', 'no-store'); return; }
   res.setHeader(
     'Cache-Control',
     `public, max-age=${CATALOG_CACHE_TTL_SECONDS}, must-revalidate`
@@ -1184,6 +1193,17 @@ export function createApp({
   warmCatalogOnStart = false,
 } = {}) {
   const app = express();
+  const adminStore = createAdminStore(env.ADMIN_DATA_DIR);
+  const deliverForm = createFormDelivery({
+    saveRequest: validAdminHash(env.ADMIN_PASSWORD_HASH) ? adminStore.saveRequest : undefined,
+    env,
+    sendMail: (mail) =>
+      sendMailWithRetry(mailTransporter || resolvedMailTransporter, mail, {
+        ...mailSendOptions,
+        maxRetries: 0,
+        event: 'forms.send',
+      }),
+  });
   app.disable('x-powered-by');
   const startupFormsDiagnostic = withFormsDeliveryStatus(
     formsDiagnostic || validateFormsEnv(env),
@@ -1376,6 +1396,17 @@ export function createApp({
         .json({ ok: false, message: messages.errors.api.payloadTooLarge });
     }
     return next(err);
+  });
+
+  app.use('/api/products', async (req, res, next) => {
+    try { const state = await adminStore.read(); res.locals.adminCatalog = Object.keys(state.products).length > 0 || Object.keys(state.customProducts).length > 0; next(); } catch (error) { next(error); }
+  });
+  app.use('/api/admin', createAdminRouter({ env, store: adminStore }));
+  app.get('/api/catalog-revision', async (req, res) => {
+    const state = await adminStore.read();
+    res.set('Cache-Control', 'no-cache').json({
+      hasManualEdits: Object.keys(state.products).length > 0 || Object.keys(state.customProducts).length > 0,
+    });
   });
 
   // Публичная liveness-проба для Nginx/Docker/k8s. Никакого I/O и никаких
@@ -2182,12 +2213,13 @@ export function createApp({
         const html = `
         <h2>Новая заявка на коммерческое предложение</h2>
 
-        <p><strong>Дата получения сервером:</strong> ${consentEvidence.receivedAt}</p>
+        <p><strong>Дата получения сервером:</strong> ${formatMailTime(consentEvidence.receivedAt)}</p>
         <p><strong>Согласие:</strong> получено; редакция ${consentEvidence.version}; /personal-data-consent</p>
 
+        <p><strong>Страница:</strong> ${mailPageLink(String(req.body.page || '').slice(0, 1000), env)}</p>
         <h3>Контакты клиента</h3>
         <p><strong>Имя:</strong> ${escapeHtml(customer.name)}</p>
-        <p><strong>Телефон:</strong> ${escapeHtml(customer.phone)}</p>
+        <p><strong>Телефон:</strong> <a href="tel:${escapeHtml(customer.phone)}">${escapeHtml(customer.phone)}</a></p>
         <p><strong>Email:</strong> ${escapeHtml(customer.email) || '—'}</p>
         <div style="margin:12px 0;padding:10px 12px;border:1px solid #f59e0b;background:#fef3c7;color:#92400e;">
           <strong>Проверка безопасности:</strong> проверьте email отправителя в теле письма перед ответом.
@@ -2220,9 +2252,15 @@ export function createApp({
 
         const replyTo = safeReplyTo(customer.email);
 
-        await sendMailWithRetry(
-          resolvedMailTransporter,
-          {
+        const delivery = await deliverForm({
+          kind: 'quote',
+          submissionId: req.body.submissionId,
+          payload: { customer, items: rawItems },
+          consent: consentEvidence,
+          attachments: req.specificationAttachments || [],
+          customerEmail: replyTo,
+          customerSummary: `<p>Имя: ${escapeHtml(customer.name)}</p><p>Комментарий: ${escapeHtml(customer.comment) || '—'}</p><h3>Состав заявки</h3><table><thead><tr><th>Товар</th><th>SKU</th><th>Категория</th><th>Количество</th><th>Цена</th><th>Сумма</th></tr></thead><tbody>${createQuoteItemsHtml(quote)}</tbody></table><p>${escapeHtml(totalDisplay.label)}: ${escapeHtml(totalDisplay.value)}</p><p>Файлы: ${(req.specificationAttachments || []).map((file) => escapeHtml(file.filename)).join(', ') || '—'}</p>`,
+          managerMail: {
             from: env.SMTP_FROM,
             to: env.QUOTE_TO_EMAIL,
             ...(replyTo ? { replyTo } : {}),
@@ -2230,13 +2268,13 @@ export function createApp({
             html,
             attachments: req.specificationAttachments || [],
           },
-          { ...mailSendOptions, event: 'quote.send' }
-        );
+        });
 
         return sendFormJson(res, formResponseStartedAt, formResponseDelayMs, {
           ok: true,
           message: messages.success.quoteSent,
           quoteSummary: quoteMoneyPayload(quote),
+          ...delivery,
         });
       } catch (error) {
         logger.error('quote.send.failed', { err: error });
@@ -2244,7 +2282,8 @@ export function createApp({
           res,
           formResponseStartedAt,
           formResponseDelayMs,
-          messages.errors.api.quoteSendFailed
+          error.status ? error.message : messages.errors.api.quoteSendFailed,
+          error.status || 500
         );
       }
     }
@@ -2292,6 +2331,8 @@ export function createApp({
           consent,
           requestType,
           page,
+          submissionId,
+          previousPhone,
         } = req.body;
         const isCallback = requestType === 'callback';
         const leadPage = String(page || '').trim();
@@ -2357,6 +2398,20 @@ export function createApp({
           );
         }
 
+        if (
+          previousPhone !== undefined &&
+          (!isCallback ||
+            !isValidRussianPhone(normalizePhoneInput(previousPhone)))
+        ) {
+          return sendFormErrorResponse(
+            res,
+            formResponseStartedAt,
+            formResponseDelayMs,
+            'Укажите корректный предыдущий номер.',
+            400
+          );
+        }
+
         const consentError = validateConsent(req.body);
         if (consentError) {
           return sendFormErrorResponse(
@@ -2370,37 +2425,60 @@ export function createApp({
         const consentEvidence = createConsentEvidence(req.body);
 
         const html = `
-        <h2>${isCallback ? 'Заказ обратного звонка' : 'Новая короткая заявка'}</h2>
-        <p><strong>Дата получения сервером:</strong> ${consentEvidence.receivedAt}</p>
+        <h2>${previousPhone ? 'Исправление номера для обратного звонка' : isCallback ? 'Заказ обратного звонка' : 'Новая короткая заявка'}</h2>
+        ${previousPhone ? `<p><strong>Предыдущий номер (не звонить):</strong> ${escapeHtml(normalizePhoneInput(previousPhone))}</p><p>Используйте новый номер ниже вместо предыдущего.</p>` : ''}
+        <p><strong>Дата получения сервером:</strong> ${formatMailTime(consentEvidence.receivedAt)}</p>
         <p><strong>Источник:</strong> ${escapeHtml(leadSource) || '—'}</p>
-        <p><strong>Страница:</strong> ${escapeHtml(leadPage) || '—'}</p>
+        <p><strong>Страница:</strong> ${mailPageLink(leadPage, env)}</p>
         <p><strong>Согласие на обработку данных:</strong> получено; редакция ${consentEvidence.version}; /personal-data-consent</p>
         <p><strong>Контактное лицо:</strong> ${escapeHtml(contactName) || 'Не указано'}</p>
         <p><strong>Способ связи:</strong> ${contactChannel === 'email' ? 'Email' : 'Телефон'}</p>
-        <p><strong>${contactChannel === 'email' ? 'Email' : 'Телефон'}:</strong> ${escapeHtml(contactChannel === 'email' ? contactEmail : normalizedPhone)}</p>
+        <p><strong>${contactChannel === 'email' ? 'Email' : 'Телефон'}:</strong> ${contactChannel === 'email' ? `<a href="mailto:${escapeHtml(contactEmail)}">${escapeHtml(contactEmail)}</a>` : `<a href="tel:${escapeHtml(normalizedPhone)}">${escapeHtml(normalizedPhone)}</a>`}</p>
         <p><strong>Комментарий:</strong> ${escapeHtml(leadComment) || '—'}</p>
       `;
 
-        await sendMailWithRetry(
-          resolvedMailTransporter,
-          {
+        const delivery = await deliverForm({
+          kind: 'lead',
+          consent: consentEvidence,
+          submissionId,
+          previousRequestId: req.body.previousRequestId,
+          payload: {
+            phone: normalizedPhone,
+            email: contactEmail,
+            contactChannel,
+            name: contactName,
+            comment: leadComment,
+            source: leadSource,
+            page: leadPage,
+            requestType,
+            previousPhone,
+            consentVersion: consentEvidence.version,
+
+          },
+          attachments: req.specificationAttachments || [],
+          customerEmail:
+            contactChannel === 'email' ? safeReplyTo(contactEmail) : undefined,
+          customerSummary: `<p>${escapeHtml(leadComment)}</p><p>Файлы: ${(req.specificationAttachments || []).map((file) => escapeHtml(file.filename)).join(', ') || '—'}</p>`,
+          managerMail: {
             from: env.SMTP_FROM,
             to: env.QUOTE_TO_EMAIL,
             ...(contactChannel === 'email' && safeReplyTo(contactEmail)
               ? { replyTo: safeReplyTo(contactEmail) }
               : {}),
-            subject: isCallback
-              ? 'Заказ обратного звонка — ЮжУралЭлектроКабель'
-              : 'Новая короткая заявка — ЮжУралЭлектроКабель',
+            subject: previousPhone
+              ? 'Исправление номера для звонка — ЮжУралЭлектроКабель'
+              : isCallback
+                ? 'Заказ обратного звонка — ЮжУралЭлектроКабель'
+                : 'Новая короткая заявка — ЮжУралЭлектроКабель',
             html,
             attachments: req.specificationAttachments || [],
           },
-          { ...mailSendOptions, event: 'lead.send' }
-        );
+        });
 
         return sendFormJson(res, formResponseStartedAt, formResponseDelayMs, {
           ok: true,
           message: messages.success.leadSentDetailed,
+          ...delivery,
         });
       } catch (error) {
         logger.error('lead.send.failed', { err: error });
@@ -2408,7 +2486,8 @@ export function createApp({
           res,
           formResponseStartedAt,
           formResponseDelayMs,
-          messages.errors.api.quoteSendFailed
+          error.status ? error.message : messages.errors.api.quoteSendFailed,
+          error.status || 500
         );
       }
     }

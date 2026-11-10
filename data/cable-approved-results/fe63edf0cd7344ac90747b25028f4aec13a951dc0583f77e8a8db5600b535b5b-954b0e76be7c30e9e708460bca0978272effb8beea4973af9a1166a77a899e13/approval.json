@@ -1,0 +1,29 @@
+{
+  "status": "APPROVED",
+  "reviewer": "Пользователь",
+  "sha256": "954b0e76be7c30e9e708460bca0978272effb8beea4973af9a1166a77a899e13",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true
+  },
+  "basis": "Пользователь визуально утвердил пять перечисленных PNG по конструкции, композиции, цветам и прилеганию слоёв и поручил применить их. Автоматическая проверка подтверждает альфа-канал и наличие пикселей на правом крае, а техническое содержание утверждено вручную.",
+  "publicationAuthorized": true,
+  "visualKey": "kg__1c__stranded__round__1core-brown__p-4752a9b76b30b302",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-10T08:06:48.138Z",
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": false
+}

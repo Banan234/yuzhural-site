@@ -1,0 +1,271 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/4cd8739660e42d827d78830a80da1054d362a980954cc67716d14773ca751df7-1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000057",
+        "before": {
+          "image": "/product-images/generated/avvg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 57,
+          "sourceName": "АВВГ  2х2.5",
+          "productName": "АВВГ 2х2.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 2.5,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "avvg__2c__solid__round__2core-brown-blue__p-6cf3e639a6d832c0",
+          "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_3296d82aa92a50bd349a3acecf7e85dd6bcab4641b7dc8d3c71655f03c0d7bcc.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 57,
+          "sourceName": "АВВГ  2х2.5",
+          "productName": "АВВГ 2х2.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 2.5,
+          "visualKey": "avvg__2c__solid__round__2core-brown-blue__p-6cf3e639a6d832c0",
+          "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.988Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000113",
+        "before": {
+          "image": "/product-images/generated/avvg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 113,
+          "sourceName": "АВВГ  2х4",
+          "productName": "АВВГ 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "avvg__2c__solid__round__2core-brown-blue__p-6cf3e639a6d832c0",
+          "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_3296d82aa92a50bd349a3acecf7e85dd6bcab4641b7dc8d3c71655f03c0d7bcc.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 113,
+          "sourceName": "АВВГ  2х4",
+          "productName": "АВВГ 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "visualKey": "avvg__2c__solid__round__2core-brown-blue__p-6cf3e639a6d832c0",
+          "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.988Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000115",
+        "before": {
+          "image": "/product-images/generated/avvg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 115,
+          "sourceName": "АВВГ  2х6",
+          "productName": "АВВГ 2х6",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 6,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "avvg__2c__solid__round__2core-brown-blue__p-6cf3e639a6d832c0",
+          "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_3296d82aa92a50bd349a3acecf7e85dd6bcab4641b7dc8d3c71655f03c0d7bcc.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 115,
+          "sourceName": "АВВГ  2х6",
+          "productName": "АВВГ 2х6",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 6,
+          "visualKey": "avvg__2c__solid__round__2core-brown-blue__p-6cf3e639a6d832c0",
+          "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.988Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000119",
+        "before": {
+          "image": "/product-images/generated/avvg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 119,
+          "sourceName": "АВВГ  2х 16",
+          "productName": "АВВГ 2х16",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 16,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "avvg__2c__solid__round__2core-brown-blue__p-6cf3e639a6d832c0",
+          "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_3296d82aa92a50bd349a3acecf7e85dd6bcab4641b7dc8d3c71655f03c0d7bcc.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 119,
+          "sourceName": "АВВГ  2х 16",
+          "productName": "АВВГ 2х16",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 16,
+          "visualKey": "avvg__2c__solid__round__2core-brown-blue__p-6cf3e639a6d832c0",
+          "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.988Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

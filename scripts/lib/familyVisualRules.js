@@ -1,3 +1,4 @@
+import { deriveOuterSheathGeometry } from './cableOuterSheathGeometry.js';
 import {
   classifyCableVisualProduct,
   makeVisualIdentity,
@@ -5,6 +6,7 @@ import {
   normalizeCableFamily,
   visualHash,
 } from './cableVisualClassification.js';
+import { withCableVisualization } from './cableVisualizationType.js';
 
 export const isVisualAutoApproved = (row) =>
   ['recognized', 'AUTO_APPROVED'].includes(row.visualClassification);
@@ -162,7 +164,7 @@ export function classifyPracticalCableVisualProduct(product, context) {
       );
   }
   // Unknown exact filler and polymer details are recorded, not drawn as extra layers.
-  const technicalProfile = strict.visualProfile;
+  const { visualizationType, ...technicalProfile } = strict.visualProfile;
   const rowColorsKnown =
     Array.isArray(p.coreColors) && p.coreColors.length === strict.cores;
   let colors = rowColorsKnown ? [...p.coreColors] : null;
@@ -341,6 +343,30 @@ export function classifyPracticalCableVisualProduct(product, context) {
       'unknown_coreColors',
       'Для этого семейства/количества жил нет согласованной палитры'
     );
+  // Nominal sections remain metadata. Mixed-size cores are a construction, not a scale.
+  let coreLayout = null;
+  if (strict.auxiliaryCores > 0) {
+    const relation =
+      strict.section && strict.auxiliarySection
+        ? strict.auxiliarySection < strict.section
+          ? 'reduced'
+          : strict.auxiliarySection === strict.section
+            ? 'equal'
+            : 'larger'
+        : 'unknown';
+    if (relation !== 'equal') {
+      coreLayout = {
+        primaryCores: strict.primaryCores,
+        auxiliaryCores: strict.auxiliaryCores,
+        auxiliarySize: relation,
+      };
+      // Never infer that the reduced core is PE/N from a parser ground* field.
+      add(
+        'mixed_core_layout_review',
+        'Разноразмерные жилы: нужно подтвердить цвет, назначение и исполнение уменьшенной/дополнительной жилы; одинаковый общий масштаб сохраняется'
+      );
+    }
+  }
   const issues = [
     ...new Map(critical.map((i) => [`${i.code}:${i.message}`, i])).values(),
   ];
@@ -350,6 +376,7 @@ export function classifyPracticalCableVisualProduct(product, context) {
     family: strict.familyId,
     productType: p.productType,
     cores: strict.cores,
+    ...(coreLayout ? { coreLayout } : {}),
     conductorMaterial: p.conductorMaterial,
     conductorConstruction: p.conductorConstruction,
     conductorShape: p.conductorShape,
@@ -381,26 +408,32 @@ export function classifyPracticalCableVisualProduct(product, context) {
       ? p.unresolvedFamilySuffix
       : null,
   };
-  return {
-    ...strict,
-    ...makeVisualIdentity(visualProfile),
-    technicalProfile,
-    construction: p.conductorConstruction,
-    geometry: p.geometry,
-    visualClassification: issues.length ? 'needs_review' : 'AUTO_APPROVED',
-    classificationConfidence: issues.length ? 'low' : 'medium',
-    issues,
-    criticalIssues: issues,
-    nonBlockingIssues,
-    appliedFamilyVisualRule: rule.id,
-    illustrationDefaults: defaults,
-    classificationMode: 'practical',
-    paletteIsCatalogueConvention: !rowColorsKnown,
-    notes: [
-      ...strict.notes,
-      'Каталоговые defaults не объявляются фактическими характеристиками конкретной складской партии.',
-    ],
-  };
+  return withCableVisualization(
+    {
+      ...strict,
+      ...makeVisualIdentity(visualProfile),
+      technicalProfile: {
+        ...technicalProfile,
+        outerSheathGeometry: deriveOuterSheathGeometry(visualProfile),
+      },
+      construction: p.conductorConstruction,
+      geometry: p.geometry,
+      visualClassification: issues.length ? 'needs_review' : 'AUTO_APPROVED',
+      classificationConfidence: issues.length ? 'low' : 'medium',
+      issues,
+      criticalIssues: issues,
+      nonBlockingIssues,
+      appliedFamilyVisualRule: rule.id,
+      illustrationDefaults: defaults,
+      classificationMode: 'practical',
+      paletteIsCatalogueConvention: !rowColorsKnown,
+      notes: [
+        ...strict.notes,
+        'Каталоговые defaults не объявляются фактическими характеристиками конкретной складской партии.',
+      ],
+    },
+    context
+  );
 }
 
 /** User-approved legacy images require agreement on visible construction, not newly invented metadata gates. */
@@ -409,6 +442,10 @@ export function comparePracticalVisualAsset(row, asset) {
     a = asset.visualProfile,
     mismatches = [],
     unknown = [];
+  const pg = deriveOuterSheathGeometry(p),
+    ag = deriveOuterSheathGeometry(a);
+  if (pg === 'UNKNOWN' || ag === 'UNKNOWN') unknown.push('outerSheathGeometry');
+  else if (pg !== ag) mismatches.push('outerSheathGeometry');
   for (const key of [
     'family',
     'cores',

@@ -1,0 +1,10 @@
+{
+  "version": "multicore-stripping-1.0.0",
+  "appliesTo": ["MULTICORE", "MULTICORE + LAYERED"],
+  "insulatedCoreExposedLengthRatio": { "min": 1.2, "max": 1.25 },
+  "bareMetalLengthRatio": 1,
+  "overallScaleRatio": 1,
+  "preserve": ["core-count", "core-diameters", "core-colors", "jacket-thickness", "bare-metal-length", "camera", "tilt", "direction", "composition", "layer-visibility"],
+  "constructionSafety": "Extend only the exposed insulated-core section. For layered cables preserve the existing length and visibility of every armor, screen, barrier and inner-sheath step; do not trade layer visibility for core length. If extension cannot be made without a construction conflict, require manual review.",
+  "approvedResults": "Prospective rule only: preserve all previously approved PNGs, statuses and bindings; never regenerate an APPROVED visualKey because of this amendment."
+}

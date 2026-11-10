@@ -224,7 +224,9 @@ describe('product designation sourced decoding', () => {
     expect(result.tokens.some((t) => t.text.includes('сечение каждой'))).toBe(
       false
     );
-    expect(result.unknown).toContain('F/UTP cat 5e');
+    expect(result.unknown).toEqual([]);
+    expect(result.status).toBe('reviewed');
+    expect(result.officialComplete).toBe(false);
   });
   it('does not equate LS with fire resistance and preserves unconfirmed indexes', () => {
     const result = buildProductDesignation({

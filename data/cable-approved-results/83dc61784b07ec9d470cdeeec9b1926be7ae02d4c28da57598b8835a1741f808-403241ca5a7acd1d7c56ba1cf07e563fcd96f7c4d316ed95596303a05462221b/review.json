@@ -1,0 +1,56 @@
+{
+  "status": "NEEDS_REVIEW",
+  "sha256": "403241ca5a7acd1d7c56ba1cf07e563fcd96f7c4d316ed95596303a05462221b",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.24013528748590757,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 212,
+        "longestSupportedRun": 212,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.8054753046955333,
+    "non_opaque_ratio": 0.999374022108141,
+    "foreground_ratio": 0.19368899893107125,
+    "bounds": {
+      "minX": 107,
+      "minY": 283,
+      "maxX": 1773,
+      "maxY": 634
+    },
+    "warnings": [],
+    "sha256": "403241ca5a7acd1d7c56ba1cf07e563fcd96f7c4d316ed95596303a05462221b",
+    "bytes": 619117
+  },
+  "compositionCheck": {
+    "rightEdge": {
+      "status": "EDGE_EVIDENCE_PRESENT",
+      "supportedPixels": 212,
+      "longestSupportedRun": 212,
+      "minimumRun": 18,
+      "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+      "automaticRegeneration": false,
+      "required": true
+    },
+    "leftTips": {
+      "status": "LEFT_MARGIN_PRESENT",
+      "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+    },
+    "automaticRegeneration": false
+  }
+}

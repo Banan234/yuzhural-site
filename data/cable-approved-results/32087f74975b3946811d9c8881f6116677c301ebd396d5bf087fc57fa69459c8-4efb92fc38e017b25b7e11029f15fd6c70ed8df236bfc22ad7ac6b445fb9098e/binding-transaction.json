@@ -1,0 +1,206 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/32087f74975b3946811d9c8881f6116677c301ebd396d5bf087fc57fa69459c8-4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e/image.png",
+    "changes": [
+      {
+        "sku": "YU-0004901",
+        "before": {
+          "image": "/product-images/generated/pvs__2core__jacket-black-pvc.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4901,
+          "sourceName": "ПВС 2х 0.75 черный",
+          "productName": "ПВС 2х0.75 черный",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 0.75,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-f5a0647bfba62676",
+          "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_515feca17ea02270e3940aa3b7e78147222f19be63cc26cc46452a3738583be7.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 4901,
+          "sourceName": "ПВС 2х 0.75 черный",
+          "productName": "ПВС 2х0.75 чёрный",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 0.75,
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-f5a0647bfba62676",
+          "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.528Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0004904",
+        "before": {
+          "image": "/product-images/generated/pvs__2core__jacket-black-pvc.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4904,
+          "sourceName": "ПВС 2х 1 (черн.)",
+          "productName": "ПВС 2х1 (черн.)",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-f5a0647bfba62676",
+          "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_515feca17ea02270e3940aa3b7e78147222f19be63cc26cc46452a3738583be7.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 4904,
+          "sourceName": "ПВС 2х 1 (черн.)",
+          "productName": "ПВС 2х1 (чёрный)",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1,
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-f5a0647bfba62676",
+          "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.528Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0004908",
+        "before": {
+          "image": "/product-images/generated/pvs__2core__jacket-black-pvc.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4908,
+          "sourceName": "ПВС 2х 1.5 (черн)",
+          "productName": "ПВС 2х1.5 (черн)",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-f5a0647bfba62676",
+          "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_515feca17ea02270e3940aa3b7e78147222f19be63cc26cc46452a3738583be7.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 4908,
+          "sourceName": "ПВС 2х 1.5 (черн)",
+          "productName": "ПВС 2х1.5 (чёрный)",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-f5a0647bfba62676",
+          "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.528Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

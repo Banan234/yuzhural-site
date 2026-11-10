@@ -1,0 +1,518 @@
+{
+  "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+  "profile": {
+    "family": "vvgng-a",
+    "productType": "power-cable",
+    "cores": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown"
+    ],
+    "coreColorScheme": "1core-brown",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "draftKey": "17b1697653f410ad424ad4fa36b7a69e7fb977eb58d942508402a18f98b52e26",
+  "members": [
+    {
+      "sku": "YU-0000766",
+      "name": "ВВГнг(А) 1х4",
+      "sourceName": "ВВГ  1х4 нг(А)",
+      "id": 766,
+      "slug": "vvg-1h4-ng-a-la",
+      "section": 4,
+      "primaryCores": 1,
+      "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+      "visualizationType": "SIMPLE",
+      "productHash": "025deaa0c765f9ab2b879fc808a58076d885a425854f6e8ae4f93dcb5f08f4e5",
+      "oldBinding": {
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 766,
+        "sourceName": "ВВГ  1х4 нг(А)",
+        "productName": "ВВГнг(А) 1х4",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 4,
+        "family": "vvgng-a",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+        "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/vvgnga__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 766,
+          "sourceName": "ВВГ  1х4 нг(А)",
+          "productName": "ВВГнг(А) 1х4",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 4,
+          "family": "vvgng-a",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+          "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000772",
+      "name": "ВВГнг(А) 1х6",
+      "sourceName": "ВВГ  1х6 нг(А)",
+      "id": 772,
+      "slug": "vvg-1h6-ng-a-lg",
+      "section": 6,
+      "primaryCores": 1,
+      "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+      "visualizationType": "SIMPLE",
+      "productHash": "c70d38897061ff0daf2a8a573da8823c7c6024a26f643a772f5acee1d5b200cc",
+      "oldBinding": {
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 772,
+        "sourceName": "ВВГ  1х6 нг(А)",
+        "productName": "ВВГнг(А) 1х6",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 6,
+        "family": "vvgng-a",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+        "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/vvgnga__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 772,
+          "sourceName": "ВВГ  1х6 нг(А)",
+          "productName": "ВВГнг(А) 1х6",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 6,
+          "family": "vvgng-a",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+          "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000843",
+      "name": "ВВГнг(А) 1х10",
+      "sourceName": "ВВГ  1х 10 нг(А)",
+      "id": 843,
+      "slug": "vvg-1h10-ng-a-nf",
+      "section": 10,
+      "primaryCores": 1,
+      "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+      "visualizationType": "SIMPLE",
+      "productHash": "3b5f001f3f0ddf24f521fd87bcde937a58573061e719ed8c26404cd24c35bb9f",
+      "oldBinding": {
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 843,
+        "sourceName": "ВВГ  1х 10 нг(А)",
+        "productName": "ВВГнг(А) 1х10",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 10,
+        "family": "vvgng-a",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+        "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/vvgnga__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 843,
+          "sourceName": "ВВГ  1х 10 нг(А)",
+          "productName": "ВВГнг(А) 1х10",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 10,
+          "family": "vvgng-a",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+          "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000846",
+      "name": "ВВГнг(А) 1х16",
+      "sourceName": "ВВГ  1х 16 нг(А)",
+      "id": 846,
+      "slug": "vvg-1h16-ng-a-ni",
+      "section": 16,
+      "primaryCores": 1,
+      "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+      "visualizationType": "SIMPLE",
+      "productHash": "91886bffbdba2b78f68e71eb0df496a387f22009f3ccd5d1765bb5495269b9d6",
+      "oldBinding": {
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 846,
+        "sourceName": "ВВГ  1х 16 нг(А)",
+        "productName": "ВВГнг(А) 1х16",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 16,
+        "family": "vvgng-a",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+        "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/vvgnga__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 846,
+          "sourceName": "ВВГ  1х 16 нг(А)",
+          "productName": "ВВГнг(А) 1х16",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 16,
+          "family": "vvgng-a",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+          "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000851",
+      "name": "ВВГнг(А) 1х25",
+      "sourceName": "ВВГ  1х 25 нг(А)",
+      "id": 851,
+      "slug": "vvg-1h25-ng-a-nn",
+      "section": 25,
+      "primaryCores": 1,
+      "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+      "visualizationType": "SIMPLE",
+      "productHash": "69242d4bb5b083bb0688e5b410642b43488440b5dcd1ab5020b1880c21d1701a",
+      "oldBinding": {
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 851,
+        "sourceName": "ВВГ  1х 25 нг(А)",
+        "productName": "ВВГнг(А) 1х25",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 25,
+        "family": "vvgng-a",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+        "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/vvgnga__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 851,
+          "sourceName": "ВВГ  1х 25 нг(А)",
+          "productName": "ВВГнг(А) 1х25",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 25,
+          "family": "vvgng-a",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+          "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000859",
+      "name": "ВВГнг(А) 1х50",
+      "sourceName": "ВВГ  1х 50 нг(А)",
+      "id": 859,
+      "slug": "vvg-1h50-ng-a-nv",
+      "section": 50,
+      "primaryCores": 1,
+      "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+      "visualizationType": "SIMPLE",
+      "productHash": "ccec5e671b598f696a4f142daf05871c018c92ff5b878af3e2e4e7ab39a52492",
+      "oldBinding": {
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 859,
+        "sourceName": "ВВГ  1х 50 нг(А)",
+        "productName": "ВВГнг(А) 1х50",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 50,
+        "family": "vvgng-a",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+        "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/vvgnga__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 859,
+          "sourceName": "ВВГ  1х 50 нг(А)",
+          "productName": "ВВГнг(А) 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "family": "vvgng-a",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+          "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0007780",
+      "name": "ВВГнг(А) 1х70",
+      "sourceName": "ВВГ  1х 70 нг(А)",
+      "id": 7780,
+      "slug": "vvg-1h70-ng-a-604",
+      "section": 70,
+      "primaryCores": 1,
+      "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+      "visualizationType": "SIMPLE",
+      "productHash": "660f58bf0b09a2e6080a75857c7a808166759567cb7520de5101f4a3e546c231",
+      "oldBinding": {
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 7780,
+        "sourceName": "ВВГ  1х 70 нг(А)",
+        "productName": "ВВГнг(А) 1х70",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 70,
+        "family": "vvgng-a",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+        "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/vvgnga__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/vvgnga__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7780,
+          "sourceName": "ВВГ  1х 70 нг(А)",
+          "productName": "ВВГнг(А) 1х70",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 70,
+          "family": "vvgng-a",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+          "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    }
+  ],
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.21307779030439683,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 187,
+        "longestSupportedRun": 187,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.8537245366810334,
+    "non_opaque_ratio": 0.9994267694838002,
+    "foreground_ratio": 0.14578929774813193,
+    "bounds": {
+      "minX": 124,
+      "minY": 246,
+      "maxX": 1773,
+      "maxY": 528
+    },
+    "warnings": [],
+    "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+    "bytes": 452131
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "reviewer": "Пользователь",
+    "sha256": "837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "basis": "Пользователь визуально утвердил пять перечисленных PNG по конструкции, композиции, цветам и прилеганию слоёв и поручил применить их. Автоматическая проверка подтверждает альфа-канал и наличие пикселей на правом крае, а техническое содержание утверждено вручную.",
+    "publicationAuthorized": true,
+    "visualKey": "vvgng-a__1c__solid__round__1core-brown__p-4991494a0af052f2",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-10T08:06:48.435Z"
+  },
+  "automaticProductionBinding": false
+}

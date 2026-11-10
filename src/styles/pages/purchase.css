@@ -140,6 +140,10 @@
   font: inherit;
   font-size: var(--text-ui);
 }
+.specification-files__choose {
+  min-height: 44px;
+  max-width: 100%;
+}
 .specification-files__list {
   list-style: none;
   margin: 14px 0 0;

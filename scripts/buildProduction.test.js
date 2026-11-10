@@ -33,7 +33,7 @@ describe('production build catalog isolation', () => {
           },
         })
       ).rejects.toThrow(/synthetic/);
-      expect(steps).toEqual(['build', 'build:ssr', 'prerender']);
+      expect(steps).toEqual(['build', 'prerender']);
       await expect(
         fs.access(path.join(projectRoot, 'data/.price-import.lock'))
       ).rejects.toMatchObject({ code: 'ENOENT' });
@@ -44,7 +44,6 @@ describe('production build catalog isolation', () => {
       });
       expect(success).toEqual([
         'build',
-        'build:ssr',
         'prerender',
         'sync:runtime-artifacts',
         'precompress',

@@ -1,3 +1,5 @@
+import QuoteAction from '../components/forms/QuoteAction';
+import AnimatedDetails from '../components/ui/AnimatedDetails';
 import { Link } from 'react-router-dom';
 import PurchaseLayout from '../components/purchase/PurchaseLayout';
 import { ORDER_FAQ } from '../../shared/purchaseContent';
@@ -32,9 +34,9 @@ export default function OrderGuidePage() {
         ))}
       </ol>
       <div className="purchase-actions">
-        <Link className="button-primary" to="/specification/">
+        <QuoteAction className="button-primary" to="/specification/">
           Отправить спецификацию
-        </Link>
+        </QuoteAction>
         <Link className="button-secondary" to="/cart">
           Список для КП
         </Link>
@@ -46,10 +48,9 @@ export default function OrderGuidePage() {
         <h2>Вопросы перед заказом</h2>
         <div className="purchase-faq">
           {ORDER_FAQ.map(([q, a]) => (
-            <details key={q}>
-              <summary>{q}</summary>
+            <AnimatedDetails key={q} title={q}>
               <p>{a}</p>
-            </details>
+            </AnimatedDetails>
           ))}
         </div>
       </section>

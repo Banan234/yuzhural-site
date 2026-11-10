@@ -62,7 +62,9 @@ ENV NODE_ENV=production \
     PORT=3001
 
 # curl нужен для HEALTHCHECK; ставим минимально и чистим apt-кэш.
-RUN apt-get update \
+# Disable retry-based package download reuse until the APT security update is installed.
+RUN apt-get -o Acquire::Retries=0 update \
+    && apt-get -o Acquire::Retries=0 install -y --no-install-recommends --only-upgrade apt libapt-pkg6.0 \
     && apt-get install -y --no-install-recommends curl \
     && rm -rf /var/lib/apt/lists/*
 
@@ -135,7 +137,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /home/node/app/data/public/product /usr/share/nginx/html/product
 COPY --from=build /home/node/app/dist /usr/share/nginx/html
 # Refresh public metadata after dist (whose public/ inputs may predate the active release).
-COPY --from=build /home/node/app/data/public/*.xml /home/node/app/data/public/robots.txt /home/node/app/data/public/price.xls /home/node/app/data/public/redirects* /usr/share/nginx/html/
+COPY --from=build /home/node/app/data/public/*.xml /home/node/app/data/public/robots.txt /home/node/app/data/public/price.xls /home/node/app/data/public/price-buyer.xlsx /home/node/app/data/public/redirects* /usr/share/nginx/html/
 RUN mkdir -p /usr/share/nginx/runtime-data/catalog-current/public
 
 EXPOSE 80

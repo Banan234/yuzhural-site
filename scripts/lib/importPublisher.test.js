@@ -126,7 +126,18 @@ describe('publishImportArtifacts', () => {
       runtimePrerenderTemplateDir: path.join(projectRoot, 'dist'),
       runtimePrerenderEnabled: false,
       siteUrl: 'https://example.test',
-      products: [],
+      products: [
+        {
+          id: 1,
+          sku: 'TEST-1',
+          slug: 'test-1',
+          name: 'ВВГ 3х2,5',
+          mark: 'ВВГ',
+          price: 100,
+          stock: 10,
+          unit: 'м',
+        },
+      ],
       registry: { version: 1, nextId: 1, entries: {} },
       report,
       sourcePriceBuffer: Buffer.from('price workbook'),
@@ -139,7 +150,9 @@ describe('publishImportArtifacts', () => {
     };
     const result = await publishImportArtifacts(publishOptions);
 
-    expect(await fs.readFile(paths.outputFile, 'utf-8')).toBe('[]');
+    expect(
+      JSON.parse(await fs.readFile(paths.outputFile, 'utf-8'))
+    ).toHaveLength(1);
     expect(await fs.readFile(paths.publicPriceFile, 'utf-8')).toBe(
       'price workbook'
     );
@@ -155,14 +168,18 @@ describe('publishImportArtifacts', () => {
     expect(await fs.realpath(paths.publicPriceFile)).toBe(
       path.join(activeRelease, 'public', 'price.xls')
     );
-    expect(await fs.readFile(paths.outputFile, 'utf-8')).toBe('[]');
+    expect(
+      JSON.parse(await fs.readFile(paths.outputFile, 'utf-8'))
+    ).toHaveLength(1);
     expect((await fs.lstat(paths.outputFile)).isSymbolicLink()).toBe(false);
     expect(
       (await fs.lstat(path.join(dataDir, 'products.json'))).isSymbolicLink()
     ).toBe(false);
     expect(
-      await fs.readFile(path.join(dataDir, 'products.json'), 'utf-8')
-    ).toBe('[]');
+      JSON.parse(
+        await fs.readFile(path.join(dataDir, 'products.json'), 'utf-8')
+      )
+    ).toHaveLength(1);
     expect(
       JSON.parse(
         await fs.readFile(path.join(dataDir, 'productRegistry.json'), 'utf-8')
@@ -183,7 +200,7 @@ describe('publishImportArtifacts', () => {
     expect(await fs.readFile(paths.reportHtmlFile, 'utf-8')).toContain(
       'Отчёт импорта'
     );
-    expect(result.runtimeProductPrerenderCount).toBe(0);
+    expect(result.runtimeProductPrerenderCount).toBe(1);
 
     // A later price introduces previously unseen SKUs. Stale imported metadata
     // cannot bypass the current database at the publication boundary.

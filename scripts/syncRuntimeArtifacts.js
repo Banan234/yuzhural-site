@@ -9,6 +9,8 @@ import {
   writeFileAtomic,
 } from './lib/importPublisher.js';
 import { formatCableProductTitle } from '../shared/productTitle.js';
+import { buildBuyerPrice } from './lib/buyerPrice.js';
+import { publicPriceContacts } from './lib/publicPriceContacts.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -182,6 +184,32 @@ export async function syncRuntimeArtifacts({
       priceSource,
       path.join(tmpDir, 'price.xls')
     );
+    if (copiedPrice) {
+      const publicPricePath = path.join(tmpDir, 'price.xls');
+      await fs.writeFile(
+        publicPricePath,
+        publicPriceContacts(await fs.readFile(publicPricePath))
+      );
+    }
+    const buyerPriceTarget = path.join(tmpDir, 'price-buyer.xlsx');
+    const copiedBuyerPrice = await syncOptionalFile(
+      path.join(snapshot.publicDir, 'price-buyer.xlsx'),
+      buyerPriceTarget
+    );
+    if (!copiedBuyerPrice) {
+      // Bootstrap an older release using its data-file timestamp, never build time.
+      await writeFileAtomic(
+        buyerPriceTarget,
+        await buildBuyerPrice(products, {
+          generatedAt:
+            productsPayload.generatedAt ||
+            (await fs.stat(productsPath)).mtime.toISOString(),
+          dateLabel: productsPayload.generatedAt
+            ? 'Дата выпуска'
+            : 'Дата файла каталога',
+        })
+      );
+    }
     copiedRedirectsJson = await syncOptionalFile(
       redirectsJsonSource,
       path.join(tmpDir, 'redirects.json')
@@ -196,7 +224,7 @@ export async function syncRuntimeArtifacts({
     // otherwise nginx could serve stale .br/.gz siblings copied from public/.
     for (const name of await fs.readdir(tmpDir)) {
       if (
-        /^(?:sitemap(?:-[A-Za-z0-9-]+)?\.xml|robots\.txt|price\.xls|redirects\.(?:json|nginx\.conf))$/.test(
+        /^(?:sitemap(?:-[A-Za-z0-9-]+)?\.xml|robots\.txt|price\.xls|price-buyer\.xlsx|redirects\.(?:json|nginx\.conf))$/.test(
           name
         )
       ) {

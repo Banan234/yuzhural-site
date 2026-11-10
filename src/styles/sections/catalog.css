@@ -2005,7 +2005,7 @@
 }
 
 .products-grid--catalog-tiles .product-card {
-  border: 1px solid #c2d2e5;
+  border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
   box-shadow: none;
@@ -2302,8 +2302,22 @@
 }
 
 .catalog-filter-panel--sidebar .catalog-filter-panel__head {
+  flex-wrap: wrap;
   padding: 14px 16px;
   border-bottom: 1px solid #edf0f4;
+  cursor: default;
+}
+
+.catalog-filter-panel--sidebar
+  .catalog-filter-panel__head
+  .catalog-filter-panel__reset {
+  margin-left: auto;
+  border-radius: 4px;
+}
+
+.catalog-filter-panel--sidebar .catalog-filter-panel__reset:disabled {
+  color: #777e88;
+  opacity: 0.5;
   cursor: default;
 }
 
@@ -2419,11 +2433,11 @@
 
 .catalog-filter-panel--sidebar .catalog-filter-tag--active::before {
   border-color: var(--primary);
-  background: var(--primary);
-  content: '✓';
-  font-size: var(--text-ui);
-  font-weight: var(--font-weight-medium);
-  line-height: 1;
+  background-color: var(--primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='m3.5 8 3 3 6-6' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
 }
 
 .catalog-filter-panel--sidebar .catalog-filter-tag:focus-visible {

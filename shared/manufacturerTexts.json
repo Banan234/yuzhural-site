@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "2026-10-26.1",
+  "revision": "2026-11-10.4",
   "policy": "Каждый заводской раздел и каждая версия сохраняются отдельной записью. Текст — краткое изложение технического назначения; полный авторский текст доступен в указанном оригинале. Базовое назначение не подтверждает все исполнения и условия монтажа. Изготовитель источника не присваивается товару как его фактический завод.",
   "records": [
     {
@@ -13841,6 +13841,3598 @@
       "sourceSha256": "4106872212b107d3176f7c2389482f5f5c0c86db69eb4fc019353e7e1ec5ced1",
       "contentHash": "98fa638713b2b237fd63cae7ad733ec1d897d7fa45d90c628ea6a3dcb2b524e6",
       "id": "manufacturer-text-98fa638713b2b237"
+    },
+    {
+      "documentId": "2m-re2xy",
+      "manufacturer": "2M Kablo",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Передача измерительных и управляющих сигналов в промышленности. Изоляция XLPE, ПВХ оболочка и общий алюмополимерный экран; конструкция жил класса 2.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1067"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "c3fcf436199ce68f9938194c57a1cfa80ce402038c2b918971536d5c01bb91de",
+      "contentHash": "84ee8cdf8309899879453222452e97c40f2d7a29c015374965545e4e2097d0b7",
+      "id": "manufacturer-text-84ee8cdf83098998"
+    },
+    {
+      "documentId": "2m-rey",
+      "manufacturer": "2M Kablo",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Промышленные цепи измерения, управления и передачи сигналов. ПВХ изоляция и оболочка, общий экран с дренажным проводником.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1068"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "061eea9d5ba0b12a271957a9c6321b415407e5f971029e536f7a4d2fa2c91627",
+      "contentHash": "49b23ab9010d290e929f1dd64dbda1b391ee0f94295956259bc3cc17fecf382a",
+      "id": "manufacturer-text-49b23ab9010d290e"
+    },
+    {
+      "documentId": "2m-re2xh",
+      "manufacturer": "2M Kablo",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Измерительные и управляющие цепи с требованиями к низкому дымовыделению и отсутствию галогенов в оболочке. Изоляция XLPE, общий алюмополимерный экран.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1069"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "6e21be638dc14d8fff202dd5b4c59cecf7bd5427d419be395de5d2066ef73bb8",
+      "contentHash": "421325f98080ceddab04140b7cab96d9bf1318eba11c837e75cd8dadc58609e8",
+      "id": "manufacturer-text-421325f98080cedd"
+    },
+    {
+      "documentId": "tk-kabel-full2024",
+      "manufacturer": "T.K. Kabel",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Стационарные соединения промышленной электроники в сухих и влажных помещениях, на штукатурке и под ней. Не предназначен для силовых установок. Однопроволочные медные жилы, ПВХ изоляция, алюмополимерный экран и оболочка PVC-FR.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1070"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        14
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "deab583236fc0162691b5ed9ab940883f5251911e430f0c02b8f5bd1b7ec8562",
+      "contentHash": "9932e7d50d5b43151ad7ba0e260978771ab098f66403ec5939cd36ba3dfc8586",
+      "id": "manufacturer-text-9932e7d50d5b4315"
+    },
+    {
+      "documentId": "tk-kabel-full2024",
+      "manufacturer": "T.K. Kabel",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Стационарные сигнальные соединения промышленной электроники; допускается ограниченная подвижность без постоянных механических нагрузок. Многопроволочные медные жилы, ПВХ изоляция и оболочка, экран из лужёной медной оплётки.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1071"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        15
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "deab583236fc0162691b5ed9ab940883f5251911e430f0c02b8f5bd1b7ec8562",
+      "contentHash": "1efbba2e688020ef77357e05f0a72a38bd2b43604b6f066b4c8033438e352ce6",
+      "id": "manufacturer-text-1efbba2e688020ef"
+    },
+    {
+      "documentId": "tk-kabel-full2024",
+      "manufacturer": "T.K. Kabel",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Стационарная передача информации и сигналов в промышленной электронике; безгалогенные изоляция и оболочка, общий алюмополимерный экран. Условия установки и ограничения приведены в заводском листе.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1072"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        18
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "deab583236fc0162691b5ed9ab940883f5251911e430f0c02b8f5bd1b7ec8562",
+      "contentHash": "b00f4a8f2ccb2be43495b420fac29ec558ec7ffb14de540db1a6c4f26ff5efbd",
+      "id": "manufacturer-text-b00f4a8f2ccb2be4"
+    },
+    {
+      "documentId": "tk-kabel-full2024",
+      "manufacturer": "T.K. Kabel",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Симметричная передача данных в промышленных сетях, в том числе RS-485. Медные однопроволочные жилы, изоляция Foam-Skin PE, фольга и медная оплётка экрана, ПВХ оболочка.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1073"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        68
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "deab583236fc0162691b5ed9ab940883f5251911e430f0c02b8f5bd1b7ec8562",
+      "contentHash": "858e904d6b7d353cdf001fe1ada0bceed2cbb8fca06b14585e12ee601997eb40",
+      "id": "manufacturer-text-858e904d6b7d353c"
+    },
+    {
+      "documentId": "tk-kabel-full2024",
+      "manufacturer": "T.K. Kabel",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Соединения измерительной, управляющей и контрольной аппаратуры; ограниченные перемещения без растягивающих нагрузок. Безгалогенные изоляция HI2 и оболочка HM2, медные жилы класса 5.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1074"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        84,
+        85
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "deab583236fc0162691b5ed9ab940883f5251911e430f0c02b8f5bd1b7ec8562",
+      "contentHash": "ec23913c8fa8059a47c982b70c70bc45ab03f29ab94ef84d0ad90e92b5ef3703",
+      "id": "manufacturer-text-ec23913c8fa8059a"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Телефонные распределительные проводки. Две медные однопроволочные жилы в ПВХ изоляции с разделительным основанием; в каталоге указан диаметр жил 0,4 или 0,5 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1075"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        362
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "contentHash": "22d3636ffddaffe40dd27c8904b387509e0df84ad1eecb5869175d7c8fbe5a2e",
+      "id": "manufacturer-text-22d3636ffddaffe4"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Удлинение электродов термопар в системах измерения температуры. Термостойкое исполнение с ПВХ изоляцией; состав термоэлектродных сплавов определяется типом термопары и цветовой маркировкой.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1076"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        500,
+        501
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "contentHash": "844e33bd8872e340f88afd1d20f739927c1e12acb65a480afc10866649c5d39a",
+      "id": "manufacturer-text-844e33bd8872e340"
+    },
+    {
+      "documentId": "lapp-verified-15",
+      "manufacturer": "LAPP",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Стационарные внутренние соединения телефонных, измерительных, управляющих и сигнальных систем; прокладка на штукатурке и под ней. Лист LAPP описывает торговый продукт, а не подтверждает завод складской партии.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1077"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "ca8329bf0e8383fc5b6ca3bfb42ff2191a53196805f7e44542a4ffa58b295e87",
+      "contentHash": "df521c743afa88bb4d63f741f815e96e8991e4a15fb6601d0696f24c47522b55",
+      "id": "manufacturer-text-df521c743afa88bb"
+    },
+    {
+      "documentId": "lapp-betatherm145",
+      "manufacturer": "LAPP / Studer",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Внутренние соединения светильников, нагревательных приборов, шкафов управления и электрических машин. Стационарная прокладка в трубах, каналах и под штукатуркой; предусмотрено применение на судах. Серия с электронно-лучевой сшивкой изоляции, лужёными жилами и температурным диапазоном −55…+145 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1078"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "33598b0e18c7687a76cd17b9614e55a1048e8037e7976cb20fd44e22bbd1920e",
+      "contentHash": "9eaaa3761e1eb439ba8079e03dc13e0d9df89ceb2bcadd96eee7ef03f1f362d7",
+      "id": "manufacturer-text-9eaaa3761e1eb439"
+    },
+    {
+      "documentId": "prysmian-sweden-2024",
+      "manufacturer": "Prysmian",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Стационарная прокладка внутри и вне помещений: в трубах, каналах, под штукатуркой, а также на несущем тросе. Безгалогенный экранированный кабель FQLQ PURE с жилами класса 2 и полиэтиленовыми изоляцией и оболочками. Условия стойкости к УФ приведены для североевропейского климата.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1079"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        40,
+        41
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "e8084083b2c31221fc525a8ae019bb1a80ed052c7b8eb625fc8ae011e2d8b6e5",
+      "contentHash": "3d6db2f98d711d933f22b552e6193a52134c9b3ee3abe69d42c39dad7285ee25",
+      "id": "manufacturer-text-3d6db2f98d711d93"
+    },
+    {
+      "documentId": "2m-nyry",
+      "manufacturer": "2M Kablo",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Силовые линии 0,6/1 кВ, преимущественно подземные участки с повышенными растягивающими нагрузками и потребностью в механической защите. Медные жилы, ПВХ изоляция и заполнение, броня из круглой оцинкованной стальной проволоки.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1080"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "c0d8e651003f2fb4e5cb030bb65daa73045d1e077be89f46784903cfc030e8e5",
+      "contentHash": "561638f04c2a96f9d831554dc8520daa174d43ef3519de31cf74809b4bf84324",
+      "id": "manufacturer-text-561638f04c2a96f9"
+    },
+    {
+      "documentId": "tk-kabel-full2024",
+      "manufacturer": "T.K. Kabel",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Передача информации в сухих и влажных производственных помещениях, на штукатурке и под ней, снаружи и в грунте при стационарной прокладке. Не предназначен для силовых установок. Дополнительный защитный экран из медных проволок и наружная ПВХ оболочка.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1081"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        24,
+        25
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "deab583236fc0162691b5ed9ab940883f5251911e430f0c02b8f5bd1b7ec8562",
+      "contentHash": "bae97543bfcdbbc0f9969bd9f302d68035fcad174437c222c24a8311cf2afb41",
+      "id": "manufacturer-text-bae97543bfcdbbc0"
+    },
+    {
+      "documentId": "prysmian-industrial-2024",
+      "manufacturer": "Prysmian / Draka",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Передача цифровых и низкоуровневых аналоговых сигналов в промышленной автоматике. Индивидуально экранированные пары с контактными проводниками и общий экран; изоляция PE. Каталог допускает оболочку PVC либо LSHF-FR: конкретный материал не выбирается по одной записи JAMAK.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1082"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        34
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "4fc0b9a1398ee38b3b17ef1ba42fa96ae60d6b5af697c971a632a8d763b674dc",
+      "contentHash": "a8d8137087dd7ffcc2d2f693f1939e17b20d76bd2271a22fe2b573ffc2e0a17e",
+      "id": "manufacturer-text-a8d8137087dd7ffc"
+    },
+    {
+      "documentId": "nestor-kjaam-hf",
+      "manufacturer": "Nestor Cables",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Стационарные внутренние цифровые и аналоговые сигнальные цепи. Лужёные медные проводники 7×0,29 мм, полиэтиленовая изоляция, контактный проводник и экран каждой пары, общий экран и серая безгалогенная оболочка.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1083"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "850069ed1f92694ff786cd2a47e43a1f059302effe740a6bccfcbf01f9559e3a",
+      "contentHash": "f6f9656a80f8a48f4d3120ac7ca5f96d387f8e325e2677713c810b064a1fa836",
+      "id": "manufacturer-text-f6f9656a80f8a48f"
+    },
+    {
+      "documentId": "agromet-pal",
+      "manufacturer": "ЗАО Агромет",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Стационарная прокладка в электрических установках и осветительных сетях, межприборные соединения машин и оборудования до 660 В, 50 Гц. Провод ПАЛ рассчитан на −50…+200 °C; изоляция сочетает асбестовую ровницу с термостойкой пропиткой и плёнку фторопласта-4. Класс медной многопроволочной жилы зависит от сечения.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1084"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "337d8e2693204c137fe1df753a382394b12819eed106a13694b7835f8bd0b20c",
+      "contentHash": "256b2e801da8646fbffa071ea3da85813e0a2448b8c57783926d2436960a2534",
+      "id": "manufacturer-text-256b2e801da8646f"
+    },
+    {
+      "documentId": "specialcavi-re2xh",
+      "manufacturer": "Specialcavi Baldassari",
+      "originalHeading": "Назначение и описание",
+      "kind": "description",
+      "text": "Кабель измерения и управления с медными жилами класса 2, изоляцией XLPE и оболочкой LSZH. Общий алюмополимерный экран и контактный проводник. Приведён собственный размерный ряд изготовителя.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1069"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "f9b92a7712e67eedb24cb6a24a25b976aa4a1bfb1ed718ccb0809b4a60e4eb79",
+      "contentHash": "0aa1274c0936e79cdf170b52c9b87f91751b9bcbc23706f36f40771f19d42660",
+      "id": "manufacturer-text-0aa1274c0936e79c"
+    },
+    {
+      "documentId": "mkm-general-2023",
+      "manufacturer": "Москабельмет",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Присоединение передвижных машин, механизмов и оборудования к электрическим сетям. Гибкий кабель с жилами из алюминиевого сплава, изоляцией и оболочкой из термоэластопласта.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1085"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        66,
+        67
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "cf91377bcabf59472ce03d2de78238bf93851e75f9f7dffaf5e731867d30d0a2",
+      "id": "manufacturer-text-a271b22438e38839",
+      "contentHash": "a271b22438e38839a7b1c261acb6d962879cb341ba44275cf1e2fbd6eb533aca"
+    },
+    {
+      "documentId": "mkm-k9rv-2026",
+      "manufacturer": "Москабельмет",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Передача и распределение электрической энергии в стационарных установках на напряжение 0,66 и 1 кВ. Алюминиевые жилы, изоляция из высокомодульной ЭПР, ленточная стальная броня, ПВХ оболочка пониженной пожарной опасности.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1086"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        3
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "6d885e8d16ba182b833d31777f05d7d9c242ac4b95c7a06fa874a94eed01b800",
+      "id": "manufacturer-text-c0b82d62e09764df",
+      "contentHash": "c0b82d62e09764dfd3b9637e740c38c7ea20d1a7dbd7ecbd65f16d7489f1e070"
+    },
+    {
+      "documentId": "segment-main-2026",
+      "manufacturer": "СегментЭНЕРГО",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Переносной и фиксированный межприборный монтаж электрических устройств до 500 В переменного либо 750 В постоянного тока. Исполнение М — медные нелужёные жилы; общий лужёный медный экран и броня из стальной оплётки.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1087"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        118
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "564546f0af3e892d49f96873d0b2a5ee40b071ee5e5a44b1b4036c24c4e0b67b",
+      "id": "manufacturer-text-dd0e101c42a3b196",
+      "contentHash": "dd0e101c42a3b196a943df2cab616d0c6f866360e955787396b46695fc749178"
+    },
+    {
+      "documentId": "mkm-montage-constructor",
+      "manufacturer": "Москабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Монтажный экранированный кабель с обязательным заполнением для придания практически круглой формы. Межприборные соединения и промышленная автоматика; параметры и материал изоляции зависят от пожарного исполнения. Правила маркировки отдельно определяют общий и индивидуальные экраны, лужение токопроводящих жил, обязательное заполнение и водоблокирующий элемент.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0763"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "68d65f15bc529f5fc4b74c1642ebc5f7c2feaaf971fb4f8c19a6275e39a5c125",
+      "id": "manufacturer-text-62b05e8836c6d48a",
+      "contentHash": "62b05e8836c6d48a681215a0f279d4f4d554e896f962a061289330624fe99c4b"
+    },
+    {
+      "documentId": "mkm-montage-constructor",
+      "manufacturer": "Москабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Монтажный экранированный кабель с обязательным заполнением для придания практически круглой формы. Межприборные соединения и промышленная автоматика; параметры и материал изоляции зависят от пожарного исполнения. Правила маркировки отдельно определяют общий и индивидуальные экраны, лужение токопроводящих жил, обязательное заполнение и водоблокирующий элемент.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0764"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "68d65f15bc529f5fc4b74c1642ebc5f7c2feaaf971fb4f8c19a6275e39a5c125",
+      "id": "manufacturer-text-f3100a96027f2865",
+      "contentHash": "f3100a96027f28650d38052b1b66386a2dd055dba75e9d0ee222332393401f9f"
+    },
+    {
+      "documentId": "mkm-montage-constructor",
+      "manufacturer": "Москабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Межприборный монтаж электрических приборов и аппаратуры промышленной автоматики. Дополнительные индексы определяют экраны, заполнение и водоблокирование; температурные и электрические параметры зависят от полного исполнения.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1088"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "68d65f15bc529f5fc4b74c1642ebc5f7c2feaaf971fb4f8c19a6275e39a5c125",
+      "id": "manufacturer-text-16830284e5b78c11",
+      "contentHash": "16830284e5b78c11417d6194d08b0f35f13fe8cb13f49a7ec6a6d68bde25daf5"
+    },
+    {
+      "documentId": "mkm-montage-constructor",
+      "manufacturer": "Москабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Межприборный монтаж электрических приборов и аппаратуры промышленной автоматики. Дополнительные индексы определяют экраны, заполнение и водоблокирование; температурные и электрические параметры зависят от полного исполнения.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1089"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "68d65f15bc529f5fc4b74c1642ebc5f7c2feaaf971fb4f8c19a6275e39a5c125",
+      "id": "manufacturer-text-1657b629cf2df1a1",
+      "contentHash": "1657b629cf2df1a1c6d35d988f291b3c8eddbff563d82653e07200976b594526"
+    },
+    {
+      "documentId": "mkm-montage-constructor",
+      "manufacturer": "Москабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Межприборный монтаж электрических приборов и аппаратуры промышленной автоматики. Дополнительные индексы определяют экраны, заполнение и водоблокирование; температурные и электрические параметры зависят от полного исполнения.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1090"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "68d65f15bc529f5fc4b74c1642ebc5f7c2feaaf971fb4f8c19a6275e39a5c125",
+      "id": "manufacturer-text-bd5c7bd31a0fb31b",
+      "contentHash": "bd5c7bd31a0fb31b5a25478d6a585ba209190b6e3f8999cac90eb3d3457b6c23"
+    },
+    {
+      "documentId": "mkm-armoured-montage-constructor",
+      "manufacturer": "Москабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Межприборный монтаж электрических приборов и аппаратуры промышленной автоматики. Дополнительные индексы определяют экраны, заполнение и водоблокирование; температурные и электрические параметры зависят от полного исполнения.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1091"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "4bf0e8bccde37c52ca6e0ddf9ddfea46283c7ab73d6b1297444b7a2eea15e96a",
+      "id": "manufacturer-text-c0bfc8c51e8a2b2b",
+      "contentHash": "c0bfc8c51e8a2b2bdbb502ae85385f49f7db09de41a63372d55db62a76ced233"
+    },
+    {
+      "documentId": "tk-kabel-full2024",
+      "manufacturer": "T.K. Kabel",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Стационарная передача информации в сухих и влажных производственных помещениях, на штукатурке и под ней, а также снаружи. Не предназначен для силовых цепей и прокладки непосредственно в грунте. Однопроволочные медные жилы диаметром 0,8 мм, ПВХ изоляция и оболочка, алюмополимерный экран.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0908"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        12,
+        13
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "deab583236fc0162691b5ed9ab940883f5251911e430f0c02b8f5bd1b7ec8562",
+      "id": "manufacturer-text-3e37e9c1e541169e",
+      "contentHash": "3e37e9c1e541169e787c0db132e98e77bc065d62276477a38bf6bf7db318b4a6"
+    },
+    {
+      "documentId": "eupen-jeysty",
+      "manufacturer": "Kabelwerk Eupen",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Передача аналоговых и цифровых сигналов внутри и вне помещений. Вариант Bd Z маркирует пучки номерной жёлтой лентой; в Bd Si (SIMATIC) используются цветные кольца на жилах.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0908"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "81e98fe54a0a3cc1de59fa336bad8f7fdb298128c6ca5323ef5f255b1c5ced63",
+      "id": "manufacturer-text-18726a071491906f",
+      "contentHash": "18726a071491906f362109398f1610956e3d7870e165bd1e1bfceae43c0c257e"
+    },
+    {
+      "documentId": "ufim-montage-u",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Фиксированный межприборный монтаж электрических устройств. Усиленное экранированное исполнение с повышенной поверхностной плотностью экранов и со стальной проволочной бронёй. Пожарное исполнение определяет материалы изоляции и оболочки.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1092"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "c8d5ac26e7e533278a52b95178f4080a79c7fcb3c2010e825c76563aae162c77",
+      "id": "manufacturer-text-2a5424a991430e48",
+      "contentHash": "2a5424a991430e4831879e41779d06463c6daab67c67b5b5a0deb15680c1e9f8"
+    },
+    {
+      "documentId": "kkz-apuv-manual",
+      "manufacturer": "Калужский кабельный завод",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Прокладка в стальных трубах, коробах и на лотках, монтаж электрических цепей. Одножильный алюминиевый провод с ПВХ изоляцией без оболочки; диапазон сечений в заводском руководстве 2,5–50 мм².",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1093"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-11-09",
+      "sourceSha256": "5fc3be1ff934e207c455f0aa90ea3718d69231174f8ed96df0845884516ebad8",
+      "id": "manufacturer-text-1d6e69eac1e4451c",
+      "contentHash": "1d6e69eac1e4451c0138538398899f87fc52359cc120176b3a8e92e49d3bd372"
+    },
+    {
+      "documentId": "helmacab-fireline750-2025",
+      "manufacturer": "Helmacab",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Огнестойкий кабель управления и измерительных цепей с общим экраном для стационарной прокладки. Температура эксплуатации от −40 до +70 °C; монтаж от −15 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1094"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "b7fa95fc76feecf71cd130d42e5c2eb99cd316ac94508c48ac7f55286ce780b4",
+      "id": "manufacturer-text-f316f71b4f21eff6",
+      "contentHash": "f316f71b4f21eff64771b827cb33ec571bb8640707c012c192b63cb624f13de7"
+    },
+    {
+      "documentId": "vekz-pgvvp",
+      "manufacturer": "ВЭКЗ",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Провод для стационарной прокладки в осветительных сетях, монтажа и присоединения приборов к сети переменного тока до 380 В, 50 Гц. Температура эксплуатации от −15 до +50 °C; срок службы не менее 20 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1095"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "d87e916d40f818b2389796af65f3eaa98790b19f2a18d961ff690b5af4604785",
+      "id": "manufacturer-text-1c3e69cc0822afc7",
+      "contentHash": "1c3e69cc0822afc7a8189fbe9c83f9e0c21db6f0d0943522ed034f953e230baa"
+    },
+    {
+      "documentId": "kkz-pbvv-manual",
+      "manufacturer": "Калужский кабельный завод",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Стационарная прокладка в осветительных сетях до 250 В и присоединение стационарных электроприёмников до 400 В, 50 Гц. Одиночная прокладка, температура эксплуатации от −30 до +50 °C; срок службы не менее 10 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1096"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "3f043c8b149fe5721123e8d7cdeae11854e69ed199ef04e992f77e450c8d9a66",
+      "id": "manufacturer-text-a039691c3d61b551",
+      "contentHash": "a039691c3d61b551b32350dc80d49432a95205c7d7fd854e80435c7c0b7885f9"
+    },
+    {
+      "documentId": "kkz-pbvv-manual",
+      "manufacturer": "Калужский кабельный завод",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Стационарная прокладка в осветительных сетях до 250 В и присоединение стационарных электроприёмников до 400 В, 50 Гц. Одиночная прокладка, температура эксплуатации от −30 до +50 °C; срок службы не менее 10 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1097"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "3f043c8b149fe5721123e8d7cdeae11854e69ed199ef04e992f77e450c8d9a66",
+      "id": "manufacturer-text-e56dc3a5fece46a1",
+      "contentHash": "e56dc3a5fece46a1d4d86b18463434f50fd82f8c3ee2e9d6d07b3afd36ee5169"
+    },
+    {
+      "documentId": "kkz-pbvv-manual",
+      "manufacturer": "Калужский кабельный завод",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Стационарная прокладка в осветительных сетях до 250 В и присоединение стационарных электроприёмников до 400 В, 50 Гц. Одиночная прокладка, температура эксплуатации от −30 до +50 °C; срок службы не менее 10 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1098"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "3f043c8b149fe5721123e8d7cdeae11854e69ed199ef04e992f77e450c8d9a66",
+      "id": "manufacturer-text-99f100d4f6e44909",
+      "contentHash": "99f100d4f6e449093b0d28315fbc91913531721056994780fc8ced24e35fac1a"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1099"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-bcfed4017085c65e",
+      "contentHash": "bcfed4017085c65e24981e2db1d2b41b7a0b73c925448fa5177bf27dc79a8847"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1100"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-42ca76567fe898a0",
+      "contentHash": "42ca76567fe898a02a77f41130822c421ad8fadef2fc0b59f13e30a933fd4625"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1101"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-ddff966df908d133",
+      "contentHash": "ddff966df908d133d0a18b679a6d3b72e4c99456abe92ca571f2730bca32a832"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1102"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-728680d0285836d6",
+      "contentHash": "728680d0285836d67f14fbe5fb216d98c648b8de025791205758219b700f94db"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1103"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-e94c14cc5c85c461",
+      "contentHash": "e94c14cc5c85c4616d9515f3173ec95b9d7c4b144ebad9c3c19396b61ef38f77"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1104"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-6814bb5e29f8fd6e",
+      "contentHash": "6814bb5e29f8fd6e2fa47123367d03ae1605edf3f6eeff1944d0df7ff146ded6"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1105"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-97e95be56366d586",
+      "contentHash": "97e95be56366d58665a3412c2a81eabe6c9a01ca7a6f60af532d75b7415fbaba"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1106"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-8bee46676a590404",
+      "contentHash": "8bee46676a590404e61469e989bde43216fc511835387508c519071bd5e12f1a"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1107"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-5bdf0ab4e31bdee5",
+      "contentHash": "5bdf0ab4e31bdee5c09c16bc42b1ce74ae480fd52f00b6b6b37ba3b4a3d4cd9f"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1108"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-400b96569d551fc3",
+      "contentHash": "400b96569d551fc361a14a67e7434b0950509bfd8cdc69f4ce6ac34eea36e1f8"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1109"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-33d55d01200bb208",
+      "contentHash": "33d55d01200bb208ce52bf639f4cc3954498072870660cc515adfba8a8a89daf"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1110"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-baf13647a34fa291",
+      "contentHash": "baf13647a34fa291c3615dafe5589e22a126224ee9e22e887669b0cd25eb6fa1"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1111"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-b0811c5ccf6c2601",
+      "contentHash": "b0811c5ccf6c2601da693977001d790671823c066498d12aa7b1272c970d5053"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1112"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-19e646462a26b198",
+      "contentHash": "19e646462a26b1982a6b441e228b97180447b677826546073ae9fabc2648dd5e"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1113"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-e884fa4ab6ab508f",
+      "contentHash": "e884fa4ab6ab508fdab6e66f6557ff397813ed5c59a4920aff805a8fd5e39796"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1114"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-61bfc1b1515c026d",
+      "contentHash": "61bfc1b1515c026d737622ef75f94970b5c1a767d5ec00c261c278ef4f944616"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1115"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-1ab3585a1eb5b1e8",
+      "contentHash": "1ab3585a1eb5b1e8874c344b4d400235af91ca88ec2b475785901fa703695b3e"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1116"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-3b329536c76d6d74",
+      "contentHash": "3b329536c76d6d746b96a00d97381246f104992e64efc969a8ff1d7d66c7c089"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1117"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-508a6e9afae08037",
+      "contentHash": "508a6e9afae08037c330bb54e77f6f017be9910c0123939bc53d9def5a5089f9"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1118"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-0b246a80e410baf7",
+      "contentHash": "0b246a80e410baf7be9db205d184c6921e041a55625c61030dcb9954bb30e519"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1119"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-f61931de5414a635",
+      "contentHash": "f61931de5414a6352290fb2a4ff512cd449383d7a624c3ae0d240c485849fe9a"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1120"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-fd6a562db2896358",
+      "contentHash": "fd6a562db28963581492b20bd2de83bbb78621b3488da36ee683ec2168cc4c8c"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1121"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-385d4df7ffaf08d3",
+      "contentHash": "385d4df7ffaf08d309f43c0fa0123c28ef954538e1709384ebb84966cfbb3a98"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1122"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-df0d99b74444dbc0",
+      "contentHash": "df0d99b74444dbc0df79cc3853553c28abd56cb46c63d83400c7f3d811fdc477"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1123"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-26e520911f63bc4d",
+      "contentHash": "26e520911f63bc4d465c6ee4c022b463fe780e4deb0bedc32f0e2ae382e4e730"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1124"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-3d77744963d04d89",
+      "contentHash": "3d77744963d04d8913bf84f957f80f5107edb02e6832391bd7c76239f75a89b6"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1125"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-3e0bc301eae5c836",
+      "contentHash": "3e0bc301eae5c83686ce254ad63cbb9a68b3db9ac24be42ef53462f31ffb8220"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1126"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-6a6299cbb1641c73",
+      "contentHash": "6a6299cbb1641c7326c8b3937cc064c5e8a92ee88d9c475748952ce9d531064f"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1127"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-2d99f4a1b025c03e",
+      "contentHash": "2d99f4a1b025c03eae8706ca2700a3e50d021ee511bc81f51e18a807f354cb13"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1128"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-65a6f1f2eb922444",
+      "contentHash": "65a6f1f2eb922444ecf642b3ab0bdb6b3e90a28d404431f10d5df339a0640e13"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1129"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-aa0dff4105203235",
+      "contentHash": "aa0dff410520323504d105b03eb153fe99f2c41b7794dc87e6870534d1b6489b"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1130"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-6b8930b1c7ff70ca",
+      "contentHash": "6b8930b1c7ff70caff3c09682cc69c4b08a8189034358bacf401d53469995238"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1131"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-7fcb9fe101bc170c",
+      "contentHash": "7fcb9fe101bc170c748cd6804bd5fca8008bfc33884f48da20b9c4092c8b4e63"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1132"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-30b4d69dea551ce6",
+      "contentHash": "30b4d69dea551ce64e364d9fecd6c0e43f8376141c981dd2cd64f907d30cefc1"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1133"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-b55b9fe0cde1a200",
+      "contentHash": "b55b9fe0cde1a20066ef6eb66d735fd522b371bcbf6a37111f860e143abb32fd"
+    },
+    {
+      "documentId": "electrograd-outforce67",
+      "manufacturer": "Электроград",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи сигналов управления, контроля и промышленной автоматики, а также межприборного монтажа. Применимость во взрывоопасной среде и условия прокладки выбирают для конкретного исполнения по заводской документации.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1134"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "7870cb555ac68534e214c610d1a6455575573bab79083e69af0610350daf2013",
+      "id": "manufacturer-text-d55e49d3ecd747ab",
+      "contentHash": "d55e49d3ecd747ab4e9cbbc2fa8509e424866f550e4c58a348f972f860c91b7b"
+    },
+    {
+      "documentId": "ufim-70",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для соединений и вводов в аппаратуре и на узлах связи. Пары скручены вокруг сердечника. Температура эксплуатации от −50 до +50 °C; срок службы не менее 15 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1135"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de3e56e877dd267b9f11dc83c826b63ac34ce5ec03a35623289bef08345a6de1",
+      "id": "manufacturer-text-be5455bd71522255",
+      "contentHash": "be5455bd715222551eb548c336641f4437ec6cec3833ce2098191fa0c60cf2b6"
+    },
+    {
+      "documentId": "ufim-61",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Провод для промышленных взрывных работ. Температура эксплуатации от −50 до +70 °C; гарантийный срок хранения один год с даты изготовления.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1136"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "0b1192e5ed66cd164763d2bdafd80c772b574e9ef21f73eacff09b6c1563b8e0",
+      "id": "manufacturer-text-1c466abb20aff1b0",
+      "contentHash": "1c466abb20aff1b0d173c625c0db72ffc03b20451d482bb46dec2c5cd89aa04c"
+    },
+    {
+      "documentId": "ufim-84",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1137"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "a8cbe23e4911870a46dd2150319bacfa690bdbc129e75cdda74fcdc9bba55cb0",
+      "id": "manufacturer-text-1775de59ccd2b54b",
+      "contentHash": "1775de59ccd2b54b47b7750c4c7f6c6e76879ceb4f44bd4027a5d43cbd88417d"
+    },
+    {
+      "documentId": "ufim-84",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1138"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "a8cbe23e4911870a46dd2150319bacfa690bdbc129e75cdda74fcdc9bba55cb0",
+      "id": "manufacturer-text-c1c7aca74a392b21",
+      "contentHash": "c1c7aca74a392b214cd6ec95bf7edfbb7ec0479872a998077e1c836a3c79d22a"
+    },
+    {
+      "documentId": "ufim-84",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1139"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "a8cbe23e4911870a46dd2150319bacfa690bdbc129e75cdda74fcdc9bba55cb0",
+      "id": "manufacturer-text-c8d49553c7b86c42",
+      "contentHash": "c8d49553c7b86c4246a87830a9c940aa4498dd84d0e22ec09633f0702f43dbe7"
+    },
+    {
+      "documentId": "ufim-84",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1140"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "a8cbe23e4911870a46dd2150319bacfa690bdbc129e75cdda74fcdc9bba55cb0",
+      "id": "manufacturer-text-0f2b833e6e6572c9",
+      "contentHash": "0f2b833e6e6572c97115f6d959ba16551d4a921100998593cc380fa15b4fb091"
+    },
+    {
+      "documentId": "ufim-92",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1141"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de0f2ee419eadd9376ee2e1720300e302e3b04a2a2e61e9c471391f5abd91505",
+      "id": "manufacturer-text-18327149725d7fc0",
+      "contentHash": "18327149725d7fc09289e4600b5faacae27c545d87176cdee51fd07bdcfb33f4"
+    },
+    {
+      "documentId": "ufim-92",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1142"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de0f2ee419eadd9376ee2e1720300e302e3b04a2a2e61e9c471391f5abd91505",
+      "id": "manufacturer-text-74120439b014ccb9",
+      "contentHash": "74120439b014ccb9f83135458456356c879508e68cce491ddab89a140088f1e3"
+    },
+    {
+      "documentId": "ufim-92",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1143"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de0f2ee419eadd9376ee2e1720300e302e3b04a2a2e61e9c471391f5abd91505",
+      "id": "manufacturer-text-bf93ca294e1d683e",
+      "contentHash": "bf93ca294e1d683e1386823565ddc43d49bf8e04ecb3eb23bc2bcd0f455450e5"
+    },
+    {
+      "documentId": "ufim-92",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1144"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de0f2ee419eadd9376ee2e1720300e302e3b04a2a2e61e9c471391f5abd91505",
+      "id": "manufacturer-text-5b357a7f70f04ba2",
+      "contentHash": "5b357a7f70f04ba2bee6658b97d919a51381f557be73e4e3579075d5365622dd"
+    },
+    {
+      "documentId": "ufim-94",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1145"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "d4c291b10532f0c436e1757ffbc9ddbb5b3cc30c5110b57495f8f00d92ac6e8c",
+      "id": "manufacturer-text-d59996c56df48aa8",
+      "contentHash": "d59996c56df48aa85b35c4ad4515382a4172f04403b3dec485bdc443fb5ac56c"
+    },
+    {
+      "documentId": "ufim-94",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1146"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "d4c291b10532f0c436e1757ffbc9ddbb5b3cc30c5110b57495f8f00d92ac6e8c",
+      "id": "manufacturer-text-009bf0a00a005d3e",
+      "contentHash": "009bf0a00a005d3eb9f40fccee1d88c1c130748e3d219ea2724511235b95f2f7"
+    },
+    {
+      "documentId": "ufim-94",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1147"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "d4c291b10532f0c436e1757ffbc9ddbb5b3cc30c5110b57495f8f00d92ac6e8c",
+      "id": "manufacturer-text-a8796393f6c4e857",
+      "contentHash": "a8796393f6c4e857af478814f823b79104adae40a06dfa61de903be6dcf3b135"
+    },
+    {
+      "documentId": "ufim-95",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1148"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "5f98eeb3736ec354f01e8c89b704632457b1a3bc09f4796cd490a524aae8e977",
+      "id": "manufacturer-text-c2cc75db3ac63b38",
+      "contentHash": "c2cc75db3ac63b38caf49d37d8713ff993feb7720e24a2d5ddb97ddc8f28c4ce"
+    },
+    {
+      "documentId": "ufim-95",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1149"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "5f98eeb3736ec354f01e8c89b704632457b1a3bc09f4796cd490a524aae8e977",
+      "id": "manufacturer-text-f4c7afd4394c8fbd",
+      "contentHash": "f4c7afd4394c8fbd4bdc42c5ba84217d44ae1035d836020d16fdd64bef7b25ce"
+    },
+    {
+      "documentId": "ufim-95",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1150"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "5f98eeb3736ec354f01e8c89b704632457b1a3bc09f4796cd490a524aae8e977",
+      "id": "manufacturer-text-8d18c668f42f1954",
+      "contentHash": "8d18c668f42f1954beefa9f43b50ec67d6723daad2b2a5184151217481e5d31a"
+    },
+    {
+      "documentId": "ufim-95",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для промышленной автоматики, пожарной и охранной сигнализации. Конкретные материалы и температурные пределы выбираются по исполнению в заводском описании.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1151"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "5f98eeb3736ec354f01e8c89b704632457b1a3bc09f4796cd490a524aae8e977",
+      "id": "manufacturer-text-75d4e515b67d0ac0",
+      "contentHash": "75d4e515b67d0ac024d8db39b4b212d53f42ca578c8e3ad597e03f2eaeb0931e"
+    },
+    {
+      "documentId": "ufim-39",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Соединение настенной розетки с телефонным аппаратом. Температура эксплуатации от −10 до +55 °C; срок службы 12 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1152"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "411234a4e5b64ba5e895ff727bd13c487dcf92b63bc2805b2ba1be711c9ff703",
+      "id": "manufacturer-text-4e780586a2e4c052",
+      "contentHash": "4e780586a2e4c052415a19294e5e4eb623a9ef5b117377ddfb396527ede9b0f4"
+    },
+    {
+      "documentId": "ufim-39",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Соединение настенной розетки с телефонным аппаратом. Температура эксплуатации от −10 до +55 °C; срок службы 12 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1153"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "411234a4e5b64ba5e895ff727bd13c487dcf92b63bc2805b2ba1be711c9ff703",
+      "id": "manufacturer-text-81bcea8310b56ad4",
+      "contentHash": "81bcea8310b56ad4926c2f845ecf90688a13d7eaf8f098cb0916acefe6b9751c"
+    },
+    {
+      "documentId": "ufim-39",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Соединение настенной розетки с телефонным аппаратом. Температура эксплуатации от −10 до +55 °C; срок службы 12 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1154"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "411234a4e5b64ba5e895ff727bd13c487dcf92b63bc2805b2ba1be711c9ff703",
+      "id": "manufacturer-text-186299228392f30d",
+      "contentHash": "186299228392f30da5bfb815826749cc61bbbbc1e52d461e141ad59dacf1b991"
+    },
+    {
+      "documentId": "ufim-39",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Соединение настенной розетки с телефонным аппаратом. Температура эксплуатации от −10 до +55 °C; срок службы 12 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1155"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "411234a4e5b64ba5e895ff727bd13c487dcf92b63bc2805b2ba1be711c9ff703",
+      "id": "manufacturer-text-73a0e75f5852c8bf",
+      "contentHash": "73a0e75f5852c8bf2faf7eb6b9cd1a123e400e50c930519b0a9c650a62433bf5"
+    },
+    {
+      "documentId": "ufim-39",
+      "manufacturer": "Уфимкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Соединение настенной розетки с телефонным аппаратом. Температура эксплуатации от −10 до +55 °C; срок службы 12 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1156"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "411234a4e5b64ba5e895ff727bd13c487dcf92b63bc2805b2ba1be711c9ff703",
+      "id": "manufacturer-text-73c3054295121f0b",
+      "contentHash": "73c3054295121f0bfa7602e09ee68f6f37361ce0d5dd38ddad2eab1fca563368"
+    },
+    {
+      "documentId": "sentek-ptv-current",
+      "manufacturer": "СЕНТЕК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для подключения термопары к измерительному прибору. Исполнение с термостойким ПВХ для эксплуатации от −40 до +105 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1157"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "c7182ee7b4930b7ce9cd17b79b761793273ae63ce1fd455f0c4e99a2f572079f",
+      "id": "manufacturer-text-e7daccd509e3fdba",
+      "contentHash": "e7daccd509e3fdba0e98eded3ec52bd5665bdb357c9959d79f166ba68d9eb02c"
+    },
+    {
+      "documentId": "sentek-ptvev",
+      "manufacturer": "СЕНТЕК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для подключения термопары к измерительному прибору. Исполнение с термостойким ПВХ для эксплуатации от −40 до +105 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1158"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "07ca2b6db16f8672fc90b43ee31486c625783ea045a17181f8530f9cf6b98efe",
+      "id": "manufacturer-text-78bd5af97f41bd1f",
+      "contentHash": "78bd5af97f41bd1f78c4c90bd1ea7b9fb63c08d79497e74fa184c814adea8e43"
+    },
+    {
+      "documentId": "bda-catalog-rg",
+      "manufacturer": "bda connectivity",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Коаксиальный кабель для радиочастотных соединений, измерительной аппаратуры и связи. В заводском каталоге есть исполнения с оболочкой из ПВХ, полиэтилена или безгалогенной композиции FRNC. Материал оболочки выбирают по артикулу.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1159"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        8
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "71b64b67714aa57967a0cd68d824d9b443357ee56b7ade9b1a9b62e156f466a3",
+      "id": "manufacturer-text-2dfa48e82542a1f3",
+      "contentHash": "2dfa48e82542a1f3c5d7c5064245b24164d065a84eaa6121be033dd1ce7e2fb7"
+    },
+    {
+      "documentId": "podolskkabel-nomenclature-2015",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для фиксированного монтажа бортовых электрических сетей, в том числе авиационной техники. Жила медная лужёная. Номинальное рабочее напряжение по каталогу 250 В, температура эксплуатации от −60 до +70 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1160"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        35
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "90acb51fe3a2e9c01abc96f89a7c6e4d3e0a5bcfc67223eb5705b2bd37245ddc",
+      "id": "manufacturer-text-c64d514f31872b8f",
+      "contentHash": "c64d514f31872b8f93cec85f91b9c6c82ad31eda0216a726b4ece0c9c93387ea"
+    },
+    {
+      "documentId": "podolskkabel-nomenclature-2015",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для фиксированного монтажа бортовых электрических сетей, в том числе авиационной техники. Жила медная лужёная. Номинальное рабочее напряжение по каталогу 250 В, температура эксплуатации от −60 до +70 °C. Провод экранирован.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1161"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        35
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "90acb51fe3a2e9c01abc96f89a7c6e4d3e0a5bcfc67223eb5705b2bd37245ddc",
+      "id": "manufacturer-text-d0d931c792af575e",
+      "contentHash": "d0d931c792af575ee5bf3b4e9c65426073be66266e4140b817e5251e9c4d5ecf"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-individual",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1162"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "e975aa21fbd72270216a1ab2de77872f9d19d6fa792d1b3d1e48ed8613a877ec",
+      "id": "manufacturer-text-44ddbe0992826f69",
+      "contentHash": "44ddbe0992826f699749613b9f582c4b58c4b3aa132baa4929ebffad8248f4df"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-general",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1163"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "0f102e20b89714f1136c2aa134e17cbb5f8545017f5b7fab74d332842f3816c7",
+      "id": "manufacturer-text-b35c6fd20a0e0107",
+      "contentHash": "b35c6fd20a0e0107977c0aa8093ed402d783f7343f4ad56d7687da1bc8705e9a"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-individual",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1164"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "e975aa21fbd72270216a1ab2de77872f9d19d6fa792d1b3d1e48ed8613a877ec",
+      "id": "manufacturer-text-e3edc18bbe1bba82",
+      "contentHash": "e3edc18bbe1bba82be3ad38370e9d052220a9182feba455954859db30af1bf66"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-general",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1165"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "0f102e20b89714f1136c2aa134e17cbb5f8545017f5b7fab74d332842f3816c7",
+      "id": "manufacturer-text-1ed0c252f13d30f2",
+      "contentHash": "1ed0c252f13d30f2d8210600b16ea473d7decc7a484292a2f5134eeb6a84e5d6"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-individual",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1166"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "e975aa21fbd72270216a1ab2de77872f9d19d6fa792d1b3d1e48ed8613a877ec",
+      "id": "manufacturer-text-3420d1fb9e975119",
+      "contentHash": "3420d1fb9e975119e6a0bab2ef43cbdbde3a109753d0464d40d39a35754f6855"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-general",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1167"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "0f102e20b89714f1136c2aa134e17cbb5f8545017f5b7fab74d332842f3816c7",
+      "id": "manufacturer-text-1a7620d48c0eb129",
+      "contentHash": "1a7620d48c0eb1296e7de987a503b0f390a7014375d699ea21b506f27f079a05"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-individual",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1168"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "e975aa21fbd72270216a1ab2de77872f9d19d6fa792d1b3d1e48ed8613a877ec",
+      "id": "manufacturer-text-ff9af95155bf1c5b",
+      "contentHash": "ff9af95155bf1c5be59b5ed7315c9c3b9690edbbd720775de54c58da788a026c"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-general",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1169"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "0f102e20b89714f1136c2aa134e17cbb5f8545017f5b7fab74d332842f3816c7",
+      "id": "manufacturer-text-a59f94bbacab72c4",
+      "contentHash": "a59f94bbacab72c4ecd0cd1e00733ee187c2f003cabc34f48227e3b5e85e7357"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-individual",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1170"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "e975aa21fbd72270216a1ab2de77872f9d19d6fa792d1b3d1e48ed8613a877ec",
+      "id": "manufacturer-text-a8b91a75174d135b",
+      "contentHash": "a8b91a75174d135ba907a82456a6367629aa2d5bec8945040f4b98e055d7f3bc"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-general",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1171"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "0f102e20b89714f1136c2aa134e17cbb5f8545017f5b7fab74d332842f3816c7",
+      "id": "manufacturer-text-98612d6d91347939",
+      "contentHash": "98612d6d91347939603a49f38a6a1bdc50fe845a2a23bf53d6cda9fc312811da"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-individual",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1172"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "e975aa21fbd72270216a1ab2de77872f9d19d6fa792d1b3d1e48ed8613a877ec",
+      "id": "manufacturer-text-ee8fef6abed71de6",
+      "contentHash": "ee8fef6abed71de6e0a1a720d754e58f757cde3c8a63c566667527cde446d1bd"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-general",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, цепей контроля, управления и сигнализации. До 500 В переменного тока частотой до 400 Гц или 750 В постоянного тока. Допустимая температура эксплуатации от −50 до +70 °C, для исполнения ХЛ до −60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1173"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "0f102e20b89714f1136c2aa134e17cbb5f8545017f5b7fab74d332842f3816c7",
+      "id": "manufacturer-text-55f06d3ba20dcb66",
+      "contentHash": "55f06d3ba20dcb662239fe3a31b8171fa3e8dc57ba33a8a3a955dd9719cf463b"
+    },
+    {
+      "documentId": "saransk-original-library",
+      "manufacturer": "Сарансккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для связи в подземных выработках шахт и на поверхности в условиях повышенной влажности.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1174"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        98
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "fd2a0cc2f5848ced55b1806c991b32e43f2b1ed55d3c15fb3fd8ffb86e10684d",
+      "id": "manufacturer-text-89ffaceeb8792e08",
+      "contentHash": "89ffaceeb8792e08c4ac3c3ee6e37564f9195dacbc47b40704dfd3b0a6ac755b"
+    },
+    {
+      "documentId": "saransk-original-library",
+      "manufacturer": "Сарансккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для связи в подземных выработках шахт и на поверхности в условиях повышенной влажности.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1175"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        98
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "fd2a0cc2f5848ced55b1806c991b32e43f2b1ed55d3c15fb3fd8ffb86e10684d",
+      "id": "manufacturer-text-9ec6e8726d333baf",
+      "contentHash": "9ec6e8726d333bafd69ac1fd90341dac9a475c0c9455295ae1168f2b47016638"
+    },
+    {
+      "documentId": "saransk-original-library",
+      "manufacturer": "Сарансккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для телефонных и телеграфных узлов, кабельных вводов, вставок в воздушные линии и соединительных линий до 552 кГц.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1176"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        103
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "fd2a0cc2f5848ced55b1806c991b32e43f2b1ed55d3c15fb3fd8ffb86e10684d",
+      "id": "manufacturer-text-2add20ccb3bb0bb6",
+      "contentHash": "2add20ccb3bb0bb6adb5b090bd5f37360efaeb80621683d8bfbbb2573bdaee82"
+    },
+    {
+      "documentId": "saransk-original-library",
+      "manufacturer": "Сарансккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для телефонных и телеграфных узлов, кабельных вводов, вставок в воздушные линии и соединительных линий до 552 кГц.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1177"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        103
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "fd2a0cc2f5848ced55b1806c991b32e43f2b1ed55d3c15fb3fd8ffb86e10684d",
+      "id": "manufacturer-text-a513c9243d55f808",
+      "contentHash": "a513c9243d55f808397a5c745759e6665fd4bd95a4e0405bb7752724dfbdf146"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи и распределения энергии в стационарных установках на 0,66 и 1 кВ, 50 Гц. Прокладка в земле и траншеях без значительных растягивающих усилий.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1178"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        47,
+        48
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-38133a34ea8ed910",
+      "contentHash": "38133a34ea8ed910a3f74908fb9c59b05bfcdb578b289235b89a445a296558c4"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи и распределения энергии в стационарных установках на 0,66 и 1 кВ, 50 Гц. Прокладка в земле и траншеях без значительных растягивающих усилий.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1179"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        47,
+        48
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-339cc74383bd52fc",
+      "contentHash": "339cc74383bd52fc2ae5c158bd91ce5d7aab430fe99ed8580c5cf4ee16c5960e"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи и распределения энергии в стационарных установках на 0,66 и 1 кВ, 50 Гц. Прокладка в каналах и туннелях без значительных растягивающих усилий.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1180"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        47,
+        48
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-3705bc9b37a921b2",
+      "contentHash": "3705bc9b37a921b2db300c7b50fab116dfdaf8d039148a6ff3d28199c1bc9627"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи и распределения энергии в стационарных установках на 0,66 и 1 кВ, 50 Гц. Прокладка в каналах и туннелях без значительных растягивающих усилий.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1181"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        47,
+        48
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-80bd510bcd4c21f6",
+      "contentHash": "80bd510bcd4c21f676a08245a66eb92e699b9b61f8f16aefe4928b49afeab0e8"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для соединений оборудования подвижного состава рельсового и городского электротранспорта, в том числе для фиксированного монтажа и соединений с ограниченным перемещением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1182"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        483,
+        484
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-9d5be2b092caf146",
+      "contentHash": "9d5be2b092caf1469d940c53c735fe9dcc03a89ecde8ccddb68f9446d4cb0d53"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для соединений оборудования подвижного состава рельсового и городского электротранспорта, в том числе для фиксированного монтажа и соединений с ограниченным перемещением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1183"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        483,
+        484
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-99fd4ba61b271bd1",
+      "contentHash": "99fd4ba61b271bd14e6d239122c1200dff59ae1e1693c0fec41f3fbc08ae8e0f"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для соединений оборудования подвижного состава рельсового и городского электротранспорта, в том числе для фиксированного монтажа и соединений с ограниченным перемещением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1184"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        483,
+        484
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-c40939e6faa0c83d",
+      "contentHash": "c40939e6faa0c83de4976c455532d4e615123fa5484b7c2ae6cc217d4375ef4e"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для соединений оборудования подвижного состава рельсового и городского электротранспорта, в том числе для фиксированного монтажа и соединений с ограниченным перемещением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1185"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        483,
+        484
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-61c96851645360be",
+      "contentHash": "61c96851645360be0fe07848a45c13ab4ae0880cb0a8ada46ac54025b790d25a"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для соединений оборудования подвижного состава рельсового и городского электротранспорта, в том числе для фиксированного монтажа и соединений с ограниченным перемещением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1186"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        483,
+        484
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-21c3e50c8492fffe",
+      "contentHash": "21c3e50c8492fffe16ef0aa7209fca1a75d453e3adf76b8e0a35f11016c9e43d"
+    },
+    {
+      "documentId": "nexans-h05z1k-orange",
+      "manufacturer": "Nexans",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Одножильный гибкий установочный провод с медной жилой 0,5 мм² и оранжевой безгалогенной изоляцией, на 300/500 В. Для внутренних соединений, в том числе в шкафах и щитах.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0868"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "27f0af8467cac18e5a926de07f12a9c22a0d111104881f85fdaa8c67d5092334",
+      "id": "manufacturer-text-100f102490e8ea5a",
+      "contentHash": "100f102490e8ea5a9952fabf03677d48a41ef0ddde6d546699896ea62e4b2831"
+    },
+    {
+      "documentId": "miguelez-h05z1k",
+      "manufacturer": "Miguélez",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для внутренних соединений в щитах и приборах, осветительной аппаратуре, цепях управления и сигнализации. Одножильный провод с медной жилой класса 5 и изоляцией из термопластичного полиолефина.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0868"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "3caf4426f05f0a155c582bb2b4fccc904f02a0795e38285170ef064aa3b1e6b6",
+      "id": "manufacturer-text-a52758dade145a2d",
+      "contentHash": "a52758dade145a2d072ff801f13226351469c04874132e037e7627172fb8f2a9"
+    },
+    {
+      "documentId": "podolsk-2",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, промышленной автоматизации и передачи цифровых и аналоговых сигналов. Для исполнения ХЛ каталог предусматривает повышенную холодостойкость.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1187"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5,
+        9,
+        26
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1481d3110ac71d0956cb0f57d25ac2f45dac361fd547ccbecfcfb9e0f2ca7d9b",
+      "id": "manufacturer-text-1ab5ba1d11707752",
+      "contentHash": "1ab5ba1d117077525c4d5b145757eadb8888d68ed8052debea3e877456479357"
+    },
+    {
+      "documentId": "podolsk-2",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, промышленной автоматизации и передачи цифровых и аналоговых сигналов. Для исполнения ХЛ каталог предусматривает повышенную холодостойкость.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1188"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5,
+        9,
+        26
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1481d3110ac71d0956cb0f57d25ac2f45dac361fd547ccbecfcfb9e0f2ca7d9b",
+      "id": "manufacturer-text-da7d7bab5d1ec98f",
+      "contentHash": "da7d7bab5d1ec98f0936159f3d8868948bafb77da93cf4c2cad7f52852fb53f7"
+    },
+    {
+      "documentId": "podolsk-2",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, промышленной автоматизации и передачи цифровых и аналоговых сигналов. Для исполнения ХЛ каталог предусматривает повышенную холодостойкость.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1189"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5,
+        9,
+        26
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1481d3110ac71d0956cb0f57d25ac2f45dac361fd547ccbecfcfb9e0f2ca7d9b",
+      "id": "manufacturer-text-17de518c7e1a331d",
+      "contentHash": "17de518c7e1a331d1fefa53871be2894d68db239eb9522e820845928ad25c477"
+    },
+    {
+      "documentId": "podolsk-2",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, промышленной автоматизации и передачи цифровых и аналоговых сигналов. Для исполнения ХЛ каталог предусматривает повышенную холодостойкость.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1190"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5,
+        9,
+        26
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1481d3110ac71d0956cb0f57d25ac2f45dac361fd547ccbecfcfb9e0f2ca7d9b",
+      "id": "manufacturer-text-aa6a88db1920db82",
+      "contentHash": "aa6a88db1920db821b67c03b53f3beb87218db553189b01b869473e28278c39b"
+    },
+    {
+      "documentId": "podolsk-2",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, промышленной автоматизации и передачи цифровых и аналоговых сигналов. Для исполнения ХЛ каталог предусматривает повышенную холодостойкость.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1191"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5,
+        9,
+        26
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1481d3110ac71d0956cb0f57d25ac2f45dac361fd547ccbecfcfb9e0f2ca7d9b",
+      "id": "manufacturer-text-cfdba28f192e72e2",
+      "contentHash": "cfdba28f192e72e2ccae3e38d8e1ae443e17a9dbf445cf869ad3f614f6fd1674"
+    },
+    {
+      "documentId": "podolsk-2",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, промышленной автоматизации и передачи цифровых и аналоговых сигналов. Для исполнения ХЛ каталог предусматривает повышенную холодостойкость.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1192"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5,
+        9,
+        26
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1481d3110ac71d0956cb0f57d25ac2f45dac361fd547ccbecfcfb9e0f2ca7d9b",
+      "id": "manufacturer-text-f92c78c3852a4b38",
+      "contentHash": "f92c78c3852a4b388a38ccfb221d6990f95bcbd01ccb4488ce79ac7285aa7b20"
+    },
+    {
+      "documentId": "podolsk-2",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, промышленной автоматизации и передачи цифровых и аналоговых сигналов. Для исполнения ХЛ каталог предусматривает повышенную холодостойкость.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1193"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5,
+        9,
+        26
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1481d3110ac71d0956cb0f57d25ac2f45dac361fd547ccbecfcfb9e0f2ca7d9b",
+      "id": "manufacturer-text-ae3588482f0ea5da",
+      "contentHash": "ae3588482f0ea5da643b2aefb63ce41b001c299894f07442cb856e401e804d9a"
+    },
+    {
+      "documentId": "podolsk-2",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа, промышленной автоматизации и передачи цифровых и аналоговых сигналов. Для исполнения ХЛ каталог предусматривает повышенную холодостойкость.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1194"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        5,
+        9,
+        26
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1481d3110ac71d0956cb0f57d25ac2f45dac361fd547ccbecfcfb9e0f2ca7d9b",
+      "id": "manufacturer-text-3f3fb1fd17739374",
+      "contentHash": "3f3fb1fd1773937440e5e820b988831098122bd3d94226ae14933548b065e153"
+    },
+    {
+      "documentId": "rkz-catalog",
+      "manufacturer": "Рыбинсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для пожарной и охранной сигнализации и линий, которым требуется сохранять работоспособность при пожаре. Проводники скручены в пары.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1195"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        85,
+        86
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "4cf4bc4b46a306844a609402a80a69ecde9096d5d184bb52ca6d41be8c08415c",
+      "id": "manufacturer-text-f0e19f252af18ac4",
+      "contentHash": "f0e19f252af18ac494d4dbfa0aea30128ebf54aadcb4ad4e0aa78770328cce99"
+    },
+    {
+      "documentId": "rkz-catalog",
+      "manufacturer": "Рыбинсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для пожарной и охранной сигнализации и линий, которым требуется сохранять работоспособность при пожаре. Проводники скручены в пары.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1196"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        85,
+        86
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "4cf4bc4b46a306844a609402a80a69ecde9096d5d184bb52ca6d41be8c08415c",
+      "id": "manufacturer-text-44b073e6d302da06",
+      "contentHash": "44b073e6d302da061ac9055f38acdcacd6fd5dee5ea38f058e159c9f674750b3"
+    },
+    {
+      "documentId": "chuvash-vol3-ru-current",
+      "manufacturer": "Чувашкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Распределительные и субмагистральные линии кабельного телевидения с разъёмами F, BNC, TNC. Наружная оболочка определяется исполнением.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1197"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        23
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "ac50683478c20f1fcb5a7c2752091bd4877d124aaaebe0aeefadac8cae587aa6",
+      "id": "manufacturer-text-c37e30eaca1caeb8",
+      "contentHash": "c37e30eaca1caeb8f8ce4e0b5f58ae99e0165a5e23a036d246d10f285140b598"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для присоединения электрических установок и монтажа радиоаппаратуры, когда требуется защита от радиопомех. Исполнение РПШЭМ допускает эксплуатацию при температуре от −50 до +60 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1198"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        552
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-da9cf2a3af9a98c6",
+      "contentHash": "da9cf2a3af9a98c6f90d076f21f619880ec52908ddcad4a4cacdab375887657d"
+    },
+    {
+      "documentId": "sentek-kmms",
+      "manufacturer": "СЕНТЕК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для подключения термометров сопротивления к средствам измерения температуры по двух-, трёх- и четырёхпроводным схемам. Температурные пределы определяются исполнением завода СЕНТЕК.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1199"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "c50c3347e5e817c32e1f004e8ae48550294352c6d0aa7eac41c23b661e8ca5bd",
+      "id": "manufacturer-text-1589fb4d3431e2dc",
+      "contentHash": "1589fb4d3431e2dcadaf0a33aee4fb3b9ce6d47fc5302e520ccdfcffbd42cb9b"
+    },
+    {
+      "documentId": "chuvash-vol3-ru-current",
+      "manufacturer": "Чувашкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для домовых распределительных сетей и систем видеонаблюдения. Температура эксплуатации от −40 до +70 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1200"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "ac50683478c20f1fcb5a7c2752091bd4877d124aaaebe0aeefadac8cae587aa6",
+      "id": "manufacturer-text-efa34e3f233ca6db",
+      "contentHash": "efa34e3f233ca6dbf44d76f4f3188592095e13083628cca10527fcf28f9f80d7"
+    },
+    {
+      "documentId": "chuvash-vol3-ru-current",
+      "manufacturer": "Чувашкабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для домовых распределительных сетей и систем видеонаблюдения. Температура эксплуатации от −40 до +70 °C.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1201"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "ac50683478c20f1fcb5a7c2752091bd4877d124aaaebe0aeefadac8cae587aa6",
+      "id": "manufacturer-text-1151c3508697ac47",
+      "contentHash": "1151c3508697ac4794abd381853b1cf1e8e1d03d2cc0c8a4b9dcb9074c1235ae"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для фиксированного монтажа и ограниченных перемещений при внутренних и наружных присоединениях оборудования подвижного состава. Огнестойкое безгалогенное исполнение.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0794"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        480,
+        481
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-01f35003cabd5e03",
+      "contentHash": "01f35003cabd5e037011e9641e1ca9a4cfabd33d3919a4bc1fd6dd20f4738216"
+    },
+    {
+      "documentId": "rkz-kupv250",
+      "manufacturer": "Рыбинсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для передачи электрических сигналов управления малой мощности: до 250 В переменного напряжения частотой до 1000 Гц или до 350 В постоянного напряжения. Эксплуатация от −50 до +70 °C; срок службы 15 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1202"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "3f1663ac4220d2e54ddb7e810ff74228a818ddba3467cac262a36def6d63e95f",
+      "id": "manufacturer-text-e5858f0e95c2b3e8",
+      "contentHash": "e5858f0e95c2b3e8a14c684cd4b0135303b1af469623a5982f1263010b4deeda"
+    },
+    {
+      "documentId": "energoprom-kpvl",
+      "manufacturer": "Энергопром",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для подвесной эксплуатации в лифтах общего типа при постоянном или переменном напряжении до 380 В, частоте до 60 Гц. Шесть медных жил по 1 мм² вокруг стального грузонесущего троса, обмотка из ПЭТФ. Рабочая температура −20…+70 °C; технический ресурс — миллион циклов подъёма и спуска.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1203"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "8f09f1007fec5602a465e84833cafc60d6a535b8388af004d4d3e4682a202795",
+      "id": "manufacturer-text-ed0edc859f61f407",
+      "contentHash": "ed0edc859f61f407739efa73df9b0573efa50d49007a1ae23ccc4aabaf0ab946"
+    },
+    {
+      "documentId": "rkz-kupevpn250",
+      "manufacturer": "Рыбинсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для сигналов управления при напряжении до 250 В частотой до 5000 Гц или постоянном напряжении до 350 В. Исполнение по ТУ 16.К02-23-2008 предназначено для закрытых помещений судов морского и речного флота, береговых и плавучих сооружений при −50…+60 °C. Стойкость к морской воде, смазочным маслам и дизельному топливу; срок службы 22 года.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1204"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "d8c90b7fed4cb9e2ff89c640911e272d9d5ee1259bba19a5ebbf7859d43f6df9",
+      "id": "manufacturer-text-955aff278fd42bd3",
+      "contentHash": "955aff278fd42bd3893a9b899ffb07a03bfa54d34feb38f7abd5bc97850369f0"
+    },
+    {
+      "documentId": "comfort-fsew",
+      "manufacturer": "Comfort Heat",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для обогрева и защиты от замерзания промышленных трубопроводов в обычных и взрывоопасных зонах. Допустимая температура до +100 °C при включённом и выключенном питании; монтаж от −40 °C, минимальный радиус изгиба 40 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1205"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "88360a534639371f3fbe3e6798bd5a41bb421e72825bde3161621bcdaaea5089",
+      "id": "manufacturer-text-c1b50c10d1495d2b",
+      "contentHash": "c1b50c10d1495d2bec23053cbb8e2762521b34e46170bf99dee10b3ad274d991"
+    },
+    {
+      "documentId": "comfort-fsew",
+      "manufacturer": "Comfort Heat",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для обогрева и защиты от замерзания промышленных трубопроводов в обычных и взрывоопасных зонах. Допустимая температура до +100 °C при включённом и выключенном питании; монтаж от −40 °C, минимальный радиус изгиба 40 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1206"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "88360a534639371f3fbe3e6798bd5a41bb421e72825bde3161621bcdaaea5089",
+      "id": "manufacturer-text-a605832c1956c2bf",
+      "contentHash": "a605832c1956c2bfe5ae67e39447ae6c2da94948a8f3a19320f05b593e177348"
+    },
+    {
+      "documentId": "comfort-fsew",
+      "manufacturer": "Comfort Heat",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для обогрева и защиты от замерзания промышленных трубопроводов в обычных и взрывоопасных зонах. Допустимая температура до +100 °C при включённом и выключенном питании; монтаж от −40 °C, минимальный радиус изгиба 40 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1207"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "88360a534639371f3fbe3e6798bd5a41bb421e72825bde3161621bcdaaea5089",
+      "id": "manufacturer-text-ccb2938c22b25dff",
+      "contentHash": "ccb2938c22b25dff2ec61a38c8b2537a06ae9aea174d58e11a40fd6ecc88e595"
+    },
+    {
+      "documentId": "enerpia-selfreg",
+      "manufacturer": "ENERPIA",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для защиты трубопроводов и оборудования от замерзания. Тепловыделение меняется с температурой трубы или ёмкости. Поддерживаемая температура до +65 °C; кратковременное воздействие до +85 °C. Размер сечения кабеля 11,0×6,5 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1208"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1a62b1ff41f2e67ad97517996e09747ed8f49495b2fbeda113962c69fc1fc834",
+      "id": "manufacturer-text-cfc2600d04549170",
+      "contentHash": "cfc2600d04549170fd3477fc9248dfdc866f3ca4fd94ecf387048806d2571bab"
+    },
+    {
+      "documentId": "enerpia-selfreg",
+      "manufacturer": "ENERPIA",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для защиты трубопроводов и оборудования от замерзания. Тепловыделение меняется с температурой трубы или ёмкости. Поддерживаемая температура до +65 °C; кратковременное воздействие до +85 °C. Размер сечения кабеля 11,0×6,5 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1209"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1a62b1ff41f2e67ad97517996e09747ed8f49495b2fbeda113962c69fc1fc834",
+      "id": "manufacturer-text-adaca2c2348d2c70",
+      "contentHash": "adaca2c2348d2c702553557622e2720425ad2ba6f34d0c816dff3219d2c0a384"
+    },
+    {
+      "documentId": "enerpia-selfreg",
+      "manufacturer": "ENERPIA",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для защиты трубопроводов и оборудования от замерзания. Тепловыделение меняется с температурой трубы или ёмкости. Поддерживаемая температура до +65 °C; кратковременное воздействие до +85 °C. Размер сечения кабеля 11,0×6,5 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1210"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "1a62b1ff41f2e67ad97517996e09747ed8f49495b2fbeda113962c69fc1fc834",
+      "id": "manufacturer-text-d1ffa5b3443186bd",
+      "contentHash": "d1ffa5b3443186bd49806926d88aa1f6f071b368b6f011b9c4f6d62759631bd4"
+    },
+    {
+      "documentId": "mkm-general-2023",
+      "manufacturer": "Москабельмет",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для стационарной передачи и распределения электроэнергии, фиксированного монтажа силовых цепей и цепей управления станков и механизмов. Исполнения с индексом LS имеют изоляцию и оболочку из ПВХ-пластиката пониженной пожарной опасности.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1211"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        321,
+        322
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "cf91377bcabf59472ce03d2de78238bf93851e75f9f7dffaf5e731867d30d0a2",
+      "id": "manufacturer-text-b098ffb56190cf9e",
+      "contentHash": "b098ffb56190cf9ec436a5581ad9c672fed30b78414d0aaff98eaf73056eace2"
+    },
+    {
+      "documentId": "alur-catalog",
+      "manufacturer": "Алюр",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для фиксированного монтажа силовых цепей, цепей управления и местного освещения станков и механизмов, работающих в средних и лёгких условиях. В исполнении «Алюр» экран из алюмофлекса расположен под оболочкой.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1211"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        21,
+        22
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "811254be15be951eadc86848fd2bdcf7f56392d734ed821768411a04cb434aa0",
+      "id": "manufacturer-text-a710332b13b611a2",
+      "contentHash": "a710332b13b611a24142b36cc615b83cd93a163cc3a79f32a1e54a213fa4a7a8"
+    },
+    {
+      "documentId": "pzsk-kruin-marking",
+      "manufacturer": "ПЗСК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Универсальные инструментальные кабели для цепей управления, контроля и промышленных интерфейсов. Применяются на ответственных производственных объектах, в нефтегазовой промышленности, энергетике, машиностроении и судостроении. Конкретный интерфейс и условия применения выбирают по исполнению и электрическим параметрам.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0772"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de106de984017b8ff8947e42fff6e55c945c0c0376e0a73a5a94280c1d88ea65",
+      "id": "manufacturer-text-eccb9f9cdcc5d3eb",
+      "contentHash": "eccb9f9cdcc5d3eb277e7ee6290872a9d98bb4bf5bd1fb864d4a9a857f0c6326"
+    },
+    {
+      "documentId": "pzsk-kruin-marking",
+      "manufacturer": "ПЗСК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Универсальные инструментальные кабели для цепей управления, контроля и промышленных интерфейсов. Применяются на ответственных производственных объектах, в нефтегазовой промышленности, энергетике, машиностроении и судостроении. Конкретный интерфейс и условия применения выбирают по исполнению и электрическим параметрам.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0773"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de106de984017b8ff8947e42fff6e55c945c0c0376e0a73a5a94280c1d88ea65",
+      "id": "manufacturer-text-beb26cff190e1f5f",
+      "contentHash": "beb26cff190e1f5f67ed406db50a655a5f529da0d7eb62b218b9eed9d5d93df6"
+    },
+    {
+      "documentId": "pzsk-kruin-marking",
+      "manufacturer": "ПЗСК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Универсальные инструментальные кабели для цепей управления, контроля и промышленных интерфейсов. Применяются на ответственных производственных объектах, в нефтегазовой промышленности, энергетике, машиностроении и судостроении. Конкретный интерфейс и условия применения выбирают по исполнению и электрическим параметрам.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0774"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de106de984017b8ff8947e42fff6e55c945c0c0376e0a73a5a94280c1d88ea65",
+      "id": "manufacturer-text-ee0c5a09e7e7d4ab",
+      "contentHash": "ee0c5a09e7e7d4abdcb036741a594e13a7fdaa3ebfe67c60c98d2f2ad57f0613"
+    },
+    {
+      "documentId": "pzsk-kruin-marking",
+      "manufacturer": "ПЗСК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Универсальные инструментальные кабели для цепей управления, контроля и промышленных интерфейсов. Применяются на ответственных производственных объектах, в нефтегазовой промышленности, энергетике, машиностроении и судостроении. Конкретный интерфейс и условия применения выбирают по исполнению и электрическим параметрам.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0775"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de106de984017b8ff8947e42fff6e55c945c0c0376e0a73a5a94280c1d88ea65",
+      "id": "manufacturer-text-8b56d469b98cd4d0",
+      "contentHash": "8b56d469b98cd4d0ac2ac8a9b2b4573ba1fc427d35a96cdecd8827db35f73e8d"
+    },
+    {
+      "documentId": "pzsk-kruin-marking",
+      "manufacturer": "ПЗСК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Универсальные инструментальные кабели для цепей управления, контроля и промышленных интерфейсов. Применяются на ответственных производственных объектах, в нефтегазовой промышленности, энергетике, машиностроении и судостроении. Конкретный интерфейс и условия применения выбирают по исполнению и электрическим параметрам.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0776"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de106de984017b8ff8947e42fff6e55c945c0c0376e0a73a5a94280c1d88ea65",
+      "id": "manufacturer-text-5bdcda842bae0746",
+      "contentHash": "5bdcda842bae0746fa9c6adb5fd17b309bdfd53009fe6975610365482b65b27a"
+    },
+    {
+      "documentId": "pzsk-kruin-marking",
+      "manufacturer": "ПЗСК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Универсальные инструментальные кабели для цепей управления, контроля и промышленных интерфейсов. Применяются на ответственных производственных объектах, в нефтегазовой промышленности, энергетике, машиностроении и судостроении. Конкретный интерфейс и условия применения выбирают по исполнению и электрическим параметрам.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0777"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de106de984017b8ff8947e42fff6e55c945c0c0376e0a73a5a94280c1d88ea65",
+      "id": "manufacturer-text-21a6892c59c58973",
+      "contentHash": "21a6892c59c589739c5e50389f09cedcb5f55c750e43ff5610fce13b14cb5fee"
+    },
+    {
+      "documentId": "pzsk-kruin-marking",
+      "manufacturer": "ПЗСК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Универсальные инструментальные кабели для цепей управления, контроля и промышленных интерфейсов. Применяются на ответственных производственных объектах, в нефтегазовой промышленности, энергетике, машиностроении и судостроении. Конкретный интерфейс и условия применения выбирают по исполнению и электрическим параметрам.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0778"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de106de984017b8ff8947e42fff6e55c945c0c0376e0a73a5a94280c1d88ea65",
+      "id": "manufacturer-text-4b924fa8b40499c1",
+      "contentHash": "4b924fa8b40499c1fddba09e57742cf7b574e26b1a13804974bf38aeed7857dc"
+    },
+    {
+      "documentId": "podolsk-kmel-armored-general",
+      "manufacturer": "Подольсккабель",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для межприборного монтажа электрических устройств до 500 В частотой до 400 Гц или до 750 В постоянного напряжения. Для огнестойких исполнений FRHF завод указывает огнестойкость не менее 180 минут; срок службы не менее 30 лет.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1212"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "0f102e20b89714f1136c2aa134e17cbb5f8545017f5b7fab74d332842f3816c7",
+      "id": "manufacturer-text-5a5808e24f6ef6fa",
+      "contentHash": "5a5808e24f6ef6fa00dde23c896da0e152e1078869004d4ea4988f9dae970da1"
+    },
+    {
+      "documentId": "pzsk-kruin-marking",
+      "manufacturer": "ПЗСК",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для цепей управления, контроля и промышленных интерфейсов на ответственных производственных объектах. Климатическое исполнение ХЛ по заводскому документу допускает эксплуатацию от −60 °C; рабочие параметры выбирают по полному исполнению.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1213"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "de106de984017b8ff8947e42fff6e55c945c0c0376e0a73a5a94280c1d88ea65",
+      "id": "manufacturer-text-284d61339a2ae004",
+      "contentHash": "284d61339a2ae0048f5a60a770b6e52ec319b094cd35739a1ab3046e0958ab3e"
+    },
+    {
+      "documentId": "devi-dhp10v2",
+      "manufacturer": "DEVI / Danfoss",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для защиты водопроводных труб от замерзания, с установкой снаружи или внутри трубы согласно инструкции производителя. Напряжение 230 В. Предельная температура +65 °C под напряжением и +85 °C без напряжения; минимальная температура монтажа −30 °C, радиус изгиба не менее 35 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1214"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "aacf777fff345c6282c95cc08eb3e20ccc162b50ca5454a2b4dcc6139ae93884",
+      "id": "manufacturer-text-c8f0f0a51f684632",
+      "contentHash": "c8f0f0a51f684632a53d9b192e90ca381201a640ded472e1b1dcf78b971bc268"
+    },
+    {
+      "documentId": "devi-dhp10v2",
+      "manufacturer": "DEVI / Danfoss",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Для защиты водопроводных труб от замерзания, с установкой снаружи или внутри трубы согласно инструкции производителя. Напряжение 230 В. Предельная температура +65 °C под напряжением и +85 °C без напряжения; минимальная температура монтажа −30 °C, радиус изгиба не менее 35 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1215"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1,
+        2
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "aacf777fff345c6282c95cc08eb3e20ccc162b50ca5454a2b4dcc6139ae93884",
+      "id": "manufacturer-text-ba3a016905479ab5",
+      "contentHash": "ba3a016905479ab58a08b5ece7d88f850b5f98042e03c4888fe3717785197fd2"
+    },
+    {
+      "documentId": "cicm-jc2xfer",
+      "manufacturer": "CICM",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Инструментальный кабель по EN 50288-7 на напряжение 300/500 В. Для фиксированной прокладки при −40…+90 °C; монтаж при −5…+50 °C. Минимальный радиус изгиба восемь диаметров кабеля. Оболочка стойка к ультрафиолету.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-1216"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "cca8b1849c02d9f50f139ac7419834fa2f341d61ed7063b9420dac51f7090d32",
+      "id": "manufacturer-text-d0507c19a4e5c020",
+      "contentHash": "d0507c19a4e5c0205fc61daa5da4df0e84513b5527ec698e6fea015b9a9b67ad"
+    },
+    {
+      "documentId": "elektrotm-etmikab-general",
+      "manufacturer": "Электротехмаш",
+      "originalHeading": "Описание и применение",
+      "kind": "description",
+      "text": "Гибкий силовой кабель без экрана с медными жилами класса 5, изоляцией и наружной оболочкой из ПВХ и бронёй из оцинкованных стальных лент. Завод указывает для исполнения ХЛ эксплуатацию от −60 до +50 °C и монтаж от −30 °C без предварительного подогрева. Таблицы для 0,66 и 1 кВ включают многожильные размеры от 1,5 мм². Указано ТУ 3500-017-52114552-2011.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "family-0779"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        38,
+        39,
+        40,
+        41
+      ],
+      "reviewedAt": "2026-11-10",
+      "sourceSha256": "57a436e57630b8b3cf88e5aaeab82f40d82fd7cf4be998d689c2c2c9a7a2756d",
+      "id": "manufacturer-text-0cb53f73e68b23b4",
+      "contentHash": "0cb53f73e68b23b4e2b29cce7d645d0ce70051d8b246c947eefb2519334960bd"
     }
   ]
 }

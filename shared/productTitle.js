@@ -1,3 +1,4 @@
+import { normalizeCableVoltageName } from './cableVoltage.js';
 // Собирает отображаемое название из марки, подтверждённых суффиксов и сечения.
 // Исходное название прайса остаётся в sourceName.
 import { formatManufacturerTitle } from './manufacturerTitle.js';
@@ -6,6 +7,29 @@ import { findCableSpecification } from '../scripts/lib/cableSpecification.js';
 const CONSTRUCTION_SUFFIX = /^(?:эф|эа|эм|ээ|э|зэл|з|хл|уф)$/iu;
 const BEFORE_FIRE_SUFFIX = /^(?:эф|эа|эм|ээ|э|зэл|з)$/iu;
 const FIRE_SUFFIX = /^нг(?:\([АБВГДСA-D]\))?(?:-|$)/iu;
+const PBVV_MARK = /(^|\s)ПБВВ(?=\s|\(|$)/iu;
+const PUGNP_ALIAS = /\(\s*ПУГНП\s*\)/iu;
+
+export function stripLegacyCableAlias(value) {
+  const mark = value.match(PBVV_MARK);
+  if (!mark) return value;
+
+  const end = mark.index + mark[0].length;
+  return (
+    value.slice(0, end) +
+    value.slice(end).replace(/\s*\(\s*ПУГНП\s*\)\s*/giu, ' ')
+  ).trimEnd();
+}
+
+export function stripLegacyCableAliasAttributes(mark, attributes) {
+  if (!/^ПБВВ$/iu.test(stripLegacyCableAlias(String(mark ?? ''))))
+    return attributes;
+
+  return attributes.filter((attribute) => {
+    const text = String(attribute).trim();
+    return text.match(PUGNP_ALIAS)?.[0] !== text;
+  });
+}
 
 const CABLE_COLORS = [
   ['белый', ['бел', 'белый']],
@@ -67,8 +91,10 @@ export function formatCableProductAttributes(product) {
   const attributes = Array.isArray(product?.attributes)
     ? product.attributes
     : [];
-  return attributes.map((attribute) =>
-    normalizeCableColorText(String(attribute))
+  return stripLegacyCableAliasAttributes(product?.mark, attributes).map((attribute) =>
+    /^п$/iu.test(String(attribute).trim())
+      ? 'плоский'
+      : normalizeCableColorText(String(attribute))
   );
 }
 
@@ -149,6 +175,16 @@ export function normalizeHeatingCableName(value) {
 
 export function formatCableProductTitle(title, product) {
   if (typeof title !== 'string') return title;
+  title = normalizeCableVoltageName(stripLegacyCableAlias(title));
+  // Только отдельный признак после сечения: П в самой марке может
+  // обозначать другой материал или конструкцию.
+  const specification = findCableSpecification(title);
+  if (specification && !specification.warnings.length) {
+    const end = specification.index + specification.length;
+    title =
+      title.slice(0, end) +
+      title.slice(end).replace(/(^|\s)п(?=\s|$)/giu, '$1плоский');
+  }
   return formatManufacturerTitle(
     normalizeHeatingCableName(
       normalizeCableColorName(

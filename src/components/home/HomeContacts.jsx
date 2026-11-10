@@ -57,11 +57,44 @@ export default function HomeContacts() {
               </a>
               <p>{SITE_WORKING_HOURS_DISPLAY}</p>
               <div className="home-contacts__messengers">
-                <a href={SITE_TELEGRAM_URL} target="_blank" rel="noreferrer">
-                  Telegram ↗
+                <a
+                  href={SITE_TELEGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Написать в Telegram"
+                  title="Telegram"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M21.4 3.7 18.1 20c-.2 1-1 1.2-1.8.6l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.3L5.5 13.1.6 11.6c-1-.3-1-1 .2-1.5L20 2.7c.9-.3 1.7.2 1.4 1Z" />
+                  </svg>
                 </a>
-                <a href={SITE_WHATSAPP_URL} target="_blank" rel="noreferrer">
-                  WhatsApp ↗
+                <a
+                  href={SITE_WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Написать в WhatsApp"
+                  title="WhatsApp"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="23"
+                    height="23"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7A8.5 8.5 0 1 1 20.5 11.7Z" />
+                    <path d="m8.4 7.3 1.5 2.6-1 1.1c.9 1.8 2.1 2.9 3.9 3.7l1-1.1 2.7 1.4c-.3 1.4-1.2 2.1-2.6 1.8-4.1-.9-7-3.8-7.5-7.1-.2-1.2.5-2.1 2-2.4Z" />
+                  </svg>
                 </a>
               </div>
             </div>

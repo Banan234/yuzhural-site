@@ -1,0 +1,76 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "4fcafc51e6eb8416182154e600766189d788027e25175330965fe5a28bf76569",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/b8eb77f6ed3ef27bbad547e8894c157903be92c1b2f2fa40814f58ad0f363ed6-4fcafc51e6eb8416182154e600766189d788027e25175330965fe5a28bf76569/image.png",
+    "changes": [
+      {
+        "sku": "YU-0004030",
+        "before": {
+          "image": "/product-images/generated/kg-hl__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4030,
+          "sourceName": "КГ хл  2х1.5",
+          "productName": "КГ хл 2х1.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "kg-hl__2c__stranded__round__2core-brown-blue__p-45444adf7808b0f7",
+          "sha256": "4fcafc51e6eb8416182154e600766189d788027e25175330965fe5a28bf76569",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_51e4402539a9ce898faade7efeda5df059ff76428718b9bc14e6a27901f932eb.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 4030,
+          "sourceName": "КГ хл  2х1.5",
+          "productName": "КГхл 2х1.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "visualKey": "kg-hl__2c__stranded__round__2core-brown-blue__p-45444adf7808b0f7",
+          "sha256": "4fcafc51e6eb8416182154e600766189d788027e25175330965fe5a28bf76569",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "4fcafc51e6eb8416182154e600766189d788027e25175330965fe5a28bf76569",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.323Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

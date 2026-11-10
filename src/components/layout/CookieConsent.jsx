@@ -1,7 +1,7 @@
 import { useDialogFocus } from '../../hooks/useDialogFocus';
 // Файл показывает баннер, сохраняет выбор категорий и позволяет изменить его позже.
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   COOKIE_CONSENT_CHANGE_EVENT,
   COOKIE_CONSENT_COOKIE,
@@ -13,6 +13,7 @@ import '../../styles/layout/cookie-consent.css';
 
 export default function CookieConsent() {
   const [consent, setConsent] = useState(undefined);
+  const bannerRef = useRef(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const dialogRef = useDialogFocus(isSettingsOpen);
   const [analytics, setAnalytics] = useState(false);
@@ -61,6 +62,31 @@ export default function CookieConsent() {
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, [isSettingsOpen]);
 
+  useEffect(() => {
+    const banner = bannerRef.current;
+    if (!banner) return undefined;
+
+    const root = document.documentElement;
+    function updateClearance() {
+      const { top } = banner.getBoundingClientRect();
+      root.style.setProperty(
+        '--cookie-consent-clearance',
+        `${Math.ceil(window.innerHeight - top + 12)}px`
+      );
+    }
+    updateClearance();
+    const observer = window.ResizeObserver
+      ? new window.ResizeObserver(updateClearance)
+      : null;
+    observer?.observe(banner);
+    window.addEventListener('resize', updateClearance);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('resize', updateClearance);
+      root.style.removeProperty('--cookie-consent-clearance');
+    };
+  }, [consent]);
+
   function save(choices) {
     const next = saveCookieConsent(choices);
     if (next) setConsent(next);
@@ -72,7 +98,11 @@ export default function CookieConsent() {
   return (
     <>
       {!consent && (
-        <aside className="cookie-consent" aria-label="Настройки cookie">
+        <aside
+          ref={bannerRef}
+          className="cookie-consent"
+          aria-label="Настройки cookie"
+        >
           <p className="cookie-consent__message">
             Используем cookie для работы сайта и удобства.{' '}
             <a className="cookie-consent__text-button" href="/privacy#cookies">

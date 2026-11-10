@@ -257,7 +257,7 @@ describe('nginx runtime import artifacts', () => {
   it('serves updated price, robots and sitemaps before build-time fallbacks', () => {
     expect(config).toContain('root /usr/share/nginx/html;');
     expect(config).toContain(
-      'location ~ ^/(robots\\.txt|sitemap(?:-[A-Za-z0-9-]+)?\\.xml|price\\.xls)$'
+      'location ~ ^/(robots\\.txt|sitemap(?:-[A-Za-z0-9-]+)?\\.xml|price\\.xls|price-buyer\\.xlsx)$'
     );
     expect(config).toContain('root /usr/share/nginx;');
     expect(config).toContain(

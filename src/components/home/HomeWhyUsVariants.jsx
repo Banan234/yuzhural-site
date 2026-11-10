@@ -1,3 +1,4 @@
+import useStaggeredReveal from '../../hooks/useStaggeredReveal';
 import Container from '../ui/Container';
 import '../../styles/sections/home-why-us.css';
 
@@ -30,6 +31,8 @@ const facts = [
 ];
 
 export default function HomeWhyUsVariants() {
+  const factsRef = useStaggeredReveal(100);
+
   return (
     <>
       <section
@@ -41,7 +44,7 @@ export default function HomeWhyUsVariants() {
           <h2 id="home-why-numbers-title">
             ЮжУралЭлектроКабель в цифрах и фактах
           </h2>
-          <dl className="home-why__numbers">
+          <dl ref={factsRef} className="home-why__numbers">
             {facts.map((fact) => (
               <div key={fact.label}>
                 <dt>{fact.value}</dt>

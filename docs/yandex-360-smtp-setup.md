@@ -3,8 +3,9 @@
 # Yandex 360 SMTP setup
 
 Этот проект уже умеет работать с обычным SMTP через `nodemailer`. Для
-production-форм самый прямой сценарий — корпоративный ящик в `Yandex 360`,
-например `sale@yourdomain.ru`, и **пароль приложения**.
+форм используется рабочий ящик `yuek.sales@yandex.com` и **пароль приложения**.
+Подключение собственного почтового домена через Yandex 360 необязательно;
+разделы о домене ниже нужны только при отдельном переходе на доменную почту.
 
 Что можно сделать в коде:
 
@@ -42,7 +43,7 @@ production-форм самый прямой сценарий — корпора�
 
 Рекомендуемый вариант:
 
-- `sale@yourdomain.ru` или `orders@yourdomain.ru`
+- `yuek.sales@yandex.com`
 
 Используйте именно отдельный рабочий ящик для заявок, а не личную почту
 сотрудника.
@@ -74,10 +75,10 @@ FORMS_DELIVERY_MODE=smtp
 SMTP_HOST=smtp.yandex.ru
 SMTP_PORT=465
 SMTP_SECURE=true
-SMTP_USER=sale@yourdomain.ru
+SMTP_USER=yuek.sales@yandex.com
 SMTP_PASS=<yandex app password>
-SMTP_FROM="ООО ЮжУралЭлектроКабель <sale@yourdomain.ru>"
-QUOTE_TO_EMAIL=sale@yourdomain.ru
+SMTP_FROM="ООО ЮжУралЭлектроКабель <yuek.sales@yandex.com>"
+QUOTE_TO_EMAIL=yuek.sales@yandex.com
 SMTP_POOL=true
 SMTP_POOL_MAX_CONNECTIONS=2
 SMTP_POOL_MAX_MESSAGES=100

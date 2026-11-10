@@ -1,0 +1,336 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/f4fc860b4fc327d163c288be60541acbe635a18aab5b1b7ba3ea2d3578024eb4-00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000866",
+        "before": {
+          "image": "/product-images/generated/vvg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 866,
+          "sourceName": "ВВГ  2х1.5",
+          "productName": "ВВГ 2х1.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "family": "vvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_82a3955e544fa0ec73daf80b5e3be39593b28ec1358817bfe93b722804a1194d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 866,
+          "sourceName": "ВВГ  2х1.5",
+          "productName": "ВВГ 2х1.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.747Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000776",
+        "before": {
+          "image": "/product-images/generated/vvg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 776,
+          "sourceName": "ВВГ  2х6",
+          "productName": "ВВГ 2х6",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 6,
+          "family": "vvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_82a3955e544fa0ec73daf80b5e3be39593b28ec1358817bfe93b722804a1194d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 776,
+          "sourceName": "ВВГ  2х6",
+          "productName": "ВВГ 2х6",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 6,
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.747Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000786",
+        "before": {
+          "image": "/product-images/generated/vvg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 786,
+          "sourceName": "ВВГ  2х 10",
+          "productName": "ВВГ 2х10",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 10,
+          "family": "vvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_82a3955e544fa0ec73daf80b5e3be39593b28ec1358817bfe93b722804a1194d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 786,
+          "sourceName": "ВВГ  2х 10",
+          "productName": "ВВГ 2х10",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 10,
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.747Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000805",
+        "before": {
+          "image": "/product-images/generated/vvg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 805,
+          "sourceName": "ВВГ  2х150",
+          "productName": "ВВГ 2х150",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 150,
+          "family": "vvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_82a3955e544fa0ec73daf80b5e3be39593b28ec1358817bfe93b722804a1194d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 805,
+          "sourceName": "ВВГ  2х150",
+          "productName": "ВВГ 2х150",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 150,
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.747Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0002700",
+        "before": {
+          "image": "/product-images/generated/vvg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2700,
+          "sourceName": "ВВГ  2х4",
+          "productName": "ВВГ 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "family": "vvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_82a3955e544fa0ec73daf80b5e3be39593b28ec1358817bfe93b722804a1194d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 2700,
+          "sourceName": "ВВГ  2х4",
+          "productName": "ВВГ 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-ca4d8984c4c32526",
+          "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.747Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

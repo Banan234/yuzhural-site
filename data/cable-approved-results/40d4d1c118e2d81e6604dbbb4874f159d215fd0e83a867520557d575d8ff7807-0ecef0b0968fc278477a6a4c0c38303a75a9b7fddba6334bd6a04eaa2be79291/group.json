@@ -1,0 +1,364 @@
+{
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "model": "gpt-image-2.5-flare",
+  "httpStatus": 200,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.4983089064261556,
+    "has_transparency": true,
+    "transparent_ratio": 0.5823577187204885,
+    "non_opaque_ratio": 0.999741982716655,
+    "foreground_ratio": 0.416846622070773,
+    "bounds": {
+      "minX": 135,
+      "minY": 65,
+      "maxX": 1773,
+      "maxY": 707
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "0ecef0b0968fc278477a6a4c0c38303a75a9b7fddba6334bd6a04eaa2be79291",
+    "bytes": 1163551
+  },
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 3,
+    "expectedMetalEndCount": 3,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 3,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "technicalProfile": {
+    "version": "construction-contract-3",
+    "outerSheathGeometry": "ROUND",
+    "family": "kg",
+    "insulatedCoreCount": 3,
+    "coreMetalEndCount": 3,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "armor": {
+      "present": false,
+      "type": null
+    },
+    "screen": {
+      "present": false,
+      "type": null
+    },
+    "screenVisualStandard": null,
+    "screenType": null,
+    "screenFunction": null,
+    "armorFunction": null,
+    "screenRendering": null,
+    "armorType": null,
+    "fireBarrierMaterial": null,
+    "fireBarrierPlacement": null,
+    "constructionSource": null,
+    "constructionBasis": null,
+    "fireBarrier": false,
+    "layers": [
+      {
+        "role": "outer-jacket",
+        "scope": "overall",
+        "appearance": "black"
+      },
+      {
+        "role": "individual-insulation",
+        "scope": "each-core"
+      }
+    ],
+    "layerRoleCount": 2,
+    "layerCountScope": "role count; each-core roles repeat on every core; not a count of manufacturing tape wraps",
+    "additionalConductors": [],
+    "cores": [
+      {
+        "id": 1,
+        "color": "brown",
+        "metalEndId": 1,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 2,
+        "color": "blue",
+        "metalEndId": 2,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 3,
+        "color": "yellow-green",
+        "metalEndId": 3,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "unknownInternalFillers": "not specified: do not invent visible layers",
+    "verification": {
+      "status": "NEEDS_REVIEW",
+      "pixelVerification": "NOT_AUTOMATED",
+      "insulatedCoreCount": null,
+      "coreMetalEndCount": null,
+      "additionalConductorCount": null,
+      "layerRoles": null
+    }
+  },
+  "multicoreStripping": null,
+  "geometryPilot": null,
+  "geometryRevision": null,
+  "outerSheathGeometry": "ROUND",
+  "constructionCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "insulatedCoreCount": null,
+    "coreMetalEndCount": null,
+    "additionalConductorCount": null,
+    "layerRoles": null
+  },
+  "geometryCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "status": "APPROVED",
+  "automaticProductionBinding": false,
+  "manualChecksRequired": [
+    "coreCount",
+    "material",
+    "colours",
+    "layers",
+    "direction",
+    "proportions",
+    "stripping",
+    "background",
+    "referenceMatch",
+    "metalEndCount",
+    "equalDiameters",
+    "relativeDiameters",
+    "coaxialStripping",
+    "geometryConsistency",
+    "noExtraCylinders"
+  ],
+  "profile": {
+    "family": "kg",
+    "productType": "flexible-cable",
+    "cores": 3,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "3core-brown-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "visualKey": "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2",
+  "members": [
+    {
+      "sku": "YU-0003905",
+      "name": "КГ 3х1"
+    },
+    {
+      "sku": "YU-0003906",
+      "name": "КГ 3х1.5"
+    },
+    {
+      "sku": "YU-0003907",
+      "name": "КГ 3х2.5"
+    },
+    {
+      "sku": "YU-0003909",
+      "name": "КГ 3х4"
+    },
+    {
+      "sku": "YU-0003911",
+      "name": "КГ 3х6"
+    },
+    {
+      "sku": "YU-0003912",
+      "name": "КГ 3х120"
+    },
+    {
+      "sku": "YU-0003913",
+      "name": "КГ 2х0.75+1х0,75"
+    },
+    {
+      "sku": "YU-0003914",
+      "name": "КГ 2х1+1х1"
+    },
+    {
+      "sku": "YU-0003915",
+      "name": "КГ 2х1.5+1х1.5"
+    }
+  ],
+  "draftKey": "29166f3a0546c5480f4fbbb96b0701521f4dfaebdaf222b2fe69371215e3615d",
+  "approvedSeriesReference": {
+    "path": "/Users/Shared/yuzhural-site/data/cable-approved-results/7cabb1821acd9b5bf9c90c7268f164fd8259097c861cc0e4a8d0cf8b63a8c26e-996238fff8bd9a589d99b87029408181cf487152d0c2178f502e2eb002506d0a/image.png",
+    "sha256": "996238fff8bd9a589d99b87029408181cf487152d0c2178f502e2eb002506d0a",
+    "visualKey": "pvs__3c__stranded__round__3core-brown-blue-yellow-green__p-f426943bb179b11b",
+    "profile": {
+      "family": "pvs",
+      "productType": "flexible-wire",
+      "cores": 3,
+      "conductorMaterial": "copper",
+      "conductorConstruction": "stranded",
+      "conductorShape": "circular",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacket": "white",
+      "armor": false,
+      "armorType": null,
+      "shield": false,
+      "shieldType": null,
+      "specialElements": [],
+      "coreColors": [
+        "brown",
+        "blue",
+        "yellow-green"
+      ],
+      "coreColorScheme": "3core-brown-blue-yellow-green",
+      "pairedGroupSize": null,
+      "sectionKey": null,
+      "unresolvedModifiers": [],
+      "unresolvedFamilySuffix": null,
+      "visualizationType": "SIMPLE"
+    },
+    "score": 144,
+    "differences": [
+      "family",
+      "productType",
+      "outerJacket"
+    ],
+    "librarySize": 11,
+    "ranking": [
+      {
+        "visualKey": "pvs__3c__stranded__round__3core-brown-blue-yellow-green__p-f426943bb179b11b",
+        "score": 144
+      },
+      {
+        "visualKey": "shvvp__2c__stranded__flat__2core-brown-blue__p-3e347be614526744",
+        "score": 124
+      },
+      {
+        "visualKey": "kvvgng-a-ls__7c__solid__round__7core-control-black__p-5ddfe9e44500c0ff",
+        "score": 118
+      },
+      {
+        "visualKey": "vvgng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-0700c23a8e1611d2",
+        "score": 118
+      },
+      {
+        "visualKey": "pugv__1c__stranded__round__1core-white__p-158003053538284a",
+        "score": 116
+      },
+      {
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "score": 106
+      },
+      {
+        "visualKey": "avvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-4b690fd988f163a5",
+        "score": 106
+      },
+      {
+        "visualKey": "kvvgeng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-948d5c297ffa969d",
+        "score": 94
+      },
+      {
+        "visualKey": "sip-4__4c__stranded__twisted-bundle__4core-black-black-black-black__p-35a9ef805227b5ad",
+        "score": 92
+      },
+      {
+        "visualKey": "vvgng-a-frls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-5696dc8c8ace7065",
+        "score": 88
+      },
+      {
+        "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+        "score": 64
+      }
+    ]
+  },
+  "manualReview": {
+    "status": "APPROVED",
+    "reviewer": "Пользователь",
+    "sha256": "0ecef0b0968fc278477a6a4c0c38303a75a9b7fddba6334bd6a04eaa2be79291",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "basis": "Explicit user manual approval of six selected current PNGs; no image processing. Not automated semantic verification.",
+    "sourceMessage": "Пользователь вручную утвердил шесть изображений: YU-0000980, YU-0000838, YU-0003196, YU-0000198, YU-0003905, YU-0004942.",
+    "publicationAuthorized": true,
+    "visualKey": "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-09T12:31:12.505Z"
+  }
+}

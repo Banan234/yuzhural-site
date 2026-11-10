@@ -1,4 +1,5 @@
 import { checkDesignationConstruction } from './designationConstructionEvidence.js';
+import { explainLanNotation } from './designationLanNotation.js';
 import { findCableSpecification } from '../scripts/lib/cableSpecification.js';
 import { selectManufacturerTexts } from './manufacturerTexts.js';
 import {
@@ -25,6 +26,7 @@ const COLORS = {
   чёрный: 'чёрный',
   син: 'синий',
   синий: 'синий',
+  сине: 'синий',
   голубой: 'голубой',
   красн: 'красный',
   красный: 'красный',
@@ -163,7 +165,23 @@ function resolveFamily(product) {
     ...clean(product.sourceName).matchAll(
       /нг\s*(?:\([АБВГДСA-D]\))?(?:-?(?:FR)?-?(?:LS|HF))?(?:-?LTx)?(?:-?ХЛ)?/giu
     ),
-  ].map((value) => normalize(Array.isArray(value) ? value[0] : value));
+  ]
+    .map((value) => normalize(Array.isArray(value) ? value[0] : value))
+    .filter(
+      (value) =>
+        !(
+          value === 'НГ' &&
+          (product.attributes || []).some((attribute) => {
+            const code = normalize(attribute).replace(/-/gu, '');
+            return (
+              /^НГ\([АA]\)HF$/u.test(code) &&
+              /нг\s+\d+\s*[xх×]\s*2\s*[xх×]\s*[\d.,]+\s+\([АA]\)\s*HF/iu.test(
+                clean(product.sourceName)
+              )
+            );
+          })
+        )
+    );
   for (const family of families) {
     if (
       family.requiredSourcePattern &&
@@ -280,15 +298,13 @@ function resolveFamily(product) {
       'SF/FTP': 'Общий экран из фольги и оплётки; пары в фольговых экранах',
     };
     const type = lan[1];
-    const category = mark.match(
-      /(?:CAT\.?|КАТ\.?|КАТЕГОРИЯ|UTP-)([3-8](?:[EAЕА])?)/u
-    );
     const tokens = [[type, shields[type]]];
-    if (category)
-      tokens.push([
-        category[0],
-        `Категория кабеля ${category[1]}; не является числом жил или сечением`,
-      ]);
+    const remainder = lexicalMark
+      .slice(lan.index + lan[0].length)
+      .replace(/^\s*-\s*([3-8](?:[EAЕА])?)(?=$|\s)/u, ' Cat$1')
+      .replace(/^\s*([3-8][EAЕА])(?=$|\s)/u, ' Cat$1');
+    const notation = explainLanNotation(remainder);
+    tokens.push(...notation.tokens.map(({ code, text }) => [code, text]));
     return {
       family: {
         mark: type,
@@ -296,10 +312,11 @@ function resolveFamily(product) {
           'Сетевой кабель витой пары. Конструкция экрана определяется обозначением до и после косой черты.',
         tokens,
         source: 'belden',
+        notationSources: notation.sources,
         dimension: 'lan',
       },
       index: '',
-      partial: mark !== type ? clean(product.mark) : '',
+      partial: notation.unknown,
     };
   }
   const coax = mark.match(/^РК(50|75)-/u);
@@ -475,11 +492,15 @@ function sizeTokens(product, family, designation) {
     const conflicting =
       (family.sourceNamePattern && !exactModel) ||
       (/\d+\s*[xх×]\s*\d/iu.test(designation) && !exactModel) ||
-      (suppliedAwg && Number(suppliedAwg[1] || suppliedAwg[2]) !== config.awg);
+      (suppliedAwg &&
+        Number(suppliedAwg[1] || suppliedAwg[2]) !== config.awg) ||
+      (config.section &&
+        product.crossSection != null &&
+        Number(product.crossSection) !== config.section);
     const complete =
       (config.pairs > 0 || config.cores > 0) &&
-      Number.isInteger(config.awg) &&
-      config.awg > 0;
+      ((Number.isInteger(config.awg) && config.awg > 0) ||
+        (Number.isFinite(config.section) && config.section > 0));
     if (!complete || conflicting)
       return {
         rows: [],
@@ -492,10 +513,15 @@ function sizeTokens(product, family, designation) {
         config.pairs
           ? { code: 'Пары', text: `Количество витых пар: ${config.pairs}` }
           : { code: 'Жилы', text: `Количество жил: ${config.cores}` },
-        {
-          code: 'AWG',
-          text: `Калибр каждого проводника ${config.awg} AWG; это не сечение в мм²`,
-        },
+        config.awg
+          ? {
+              code: 'AWG',
+              text: `Калибр каждого проводника ${config.awg} AWG; это не сечение в мм²`,
+            }
+          : {
+              code: 'Сечение',
+              text: `Номинальное сечение каждой жилы ${number(config.section)} мм² по заводской таблице`,
+            },
       ],
       warnings: [],
     };
@@ -631,6 +657,25 @@ function sizeTokens(product, family, designation) {
   const profile = family?.sourceNamePattern
     ? new RegExp(family.sourceNamePattern, 'u').exec(designation)?.groups
     : null;
+  if (family?.sourceProfile === 'pairs-with-individual-drain') {
+    const pairs = Number(profile?.pairs);
+    if (!profile || !family.documentedPairCounts.includes(pairs))
+      return {
+        rows: [],
+        warnings: [
+          'Запись пар с контактным проводником не соответствует заводской таблице.',
+        ],
+      };
+    return {
+      rows: [
+        {
+          code: `${pairs}×(2+1)×0,5`,
+          text: `${pairs} пар; в каждой паре две сигнальные жилы и один контактный проводник экрана; сечение сигнальной жилы 0,5 мм²`,
+        },
+      ],
+      warnings: [],
+    };
+  }
   if (family?.sourceProfile === 'pairs-with-common-drain') {
     const pairs = Number(profile?.pairs);
     const section = Number(profile?.section?.replace(',', '.'));
@@ -892,6 +937,18 @@ function sizeTokens(product, family, designation) {
   const group = spec?.groupCores ?? product.groupCores;
   const conductorCount = Number(cores) * Number(group || 1);
   if (
+    family.elementCountsByGroupAndSection &&
+    !family.elementCountsByGroupAndSection[group || 1]?.[
+      Number(section)
+    ]?.includes(Number(cores))
+  )
+    return {
+      rows: [],
+      warnings: [
+        'Число элементов и сечение отсутствуют в подтверждённой заводской таблице.',
+      ],
+    };
+  if (
     conductorCount > 0 &&
     ((family.coreCounts && !family.coreCounts.includes(conductorCount)) ||
       (family.maximumElementCount &&
@@ -1063,6 +1120,7 @@ export function buildProductDesignation(product = {}) {
   const source = sourceFor(family);
   const tokens = (family?.tokens || []).map(([code, text]) => ({ code, text }));
   const sources = new Map(source ? [[source.url, source]] : []);
+  for (const item of family?.notationSources || []) sources.set(item.url, item);
   const addSource = (item) => {
     if (
       ![...sources.values()].some(
@@ -1100,9 +1158,106 @@ export function buildProductDesignation(product = {}) {
         : []),
     ]),
   ];
+  // Some importers split a terminal Э/з off the mark into attributes. Consume
+  // it only when it is literally inside the recovered family and does not
+  // occur again after that full first word (where it could mean another screen).
+  const originalFirstWord = clean(designation).split(/\s+/u)[0];
+  const recoveredTail =
+    family && normalize(family.mark).startsWith(normalize(product.mark))
+      ? normalize(family.mark).slice(normalize(product.mark).length)
+      : '';
   for (const attribute of indexes) {
     if (consumedAttribute === normalize(attribute)) continue;
     if (confirmedNycY && normalize(attribute) === 'RE/6') continue;
+    if (
+      recoveredTail &&
+      /^[ЭЗ]+$/u.test(recoveredTail) &&
+      normalize(originalFirstWord).startsWith(normalize(family.mark)) &&
+      /^[ЭЗ]$/u.test(normalize(attribute)) &&
+      recoveredTail.includes(normalize(attribute)) &&
+      !new RegExp(
+        `(?:^|[\\s\\d)])${normalize(attribute)}(?=$|\\s|нг)`,
+        'iu'
+      ).test(designation.slice(originalFirstWord.length))
+    )
+      continue;
+    // Supplier provenance notes are explained as notes, never as a cable type
+    // or confirmation of the manufacturer of a warehouse batch.
+    if (
+      family?.mark === 'АПВ' &&
+      /белый\s+с\s+красной\s+полосой\s*$/iu.test(designation) &&
+      ['С', 'КРАСНОЙ', 'ПОЛОСОЙ'].includes(normalize(attribute))
+    ) {
+      if (normalize(attribute) === 'С')
+        tokens.push({
+          code: 'с красной полосой',
+          text: 'В исходном названии указан белый цвет с красной полосой',
+        });
+      continue;
+    }
+    const provenance = clean(attribute).match(
+      /^(?:(черн))?\(импорт(?:н)?\)$/iu
+    );
+    if (family && provenance) {
+      if (provenance[1])
+        tokens.push({
+          code: provenance[1],
+          text: 'Цвет в исходной записи: чёрный',
+        });
+      tokens.push({
+        code: clean(attribute).replace(/^черн/iu, ''),
+        text: 'В прайсе указано импортное происхождение; страна и изготовитель этой пометкой не установлены',
+      });
+      continue;
+    }
+    const mvTail =
+      /^(?:АПвВ|АПвПуг)$/iu.test(family?.mark || '') &&
+      (/^мк\/(\d+)-(6|10|20|35)$/iu.exec(clean(attribute)) ||
+        (/^мк\/\d+$/iu.test(clean(attribute)) &&
+          /^мк\/(\d+)-(6|10|20|35)$/iu.exec(
+            `${clean(attribute)}-${product.voltage}`
+          )));
+    if (
+      mvTail &&
+      designation.toLowerCase().includes(`мк/${mvTail[1]}-${mvTail[2]}`) &&
+      (product.screenCrossSection == null ||
+        Number(product.screenCrossSection) === Number(mvTail[1])) &&
+      (product.voltage == null || Number(product.voltage) === Number(mvTail[2]))
+    ) {
+      tokens.push(
+        { code: 'мк', text: 'Многопроволочная круглая токопроводящая жила' },
+        {
+          code: `/${mvTail[1]}`,
+          text: `Сечение металлического экрана ${mvTail[1]} мм²`,
+        },
+        {
+          code: `-${mvTail[2]}`,
+          text: `Номинальное напряжение ${mvTail[2]} кВ в исходной маркировке`,
+        }
+      );
+      continue;
+    }
+    if (
+      family?.mark === 'NYY' &&
+      /\bRM\s+Class\s+2\s*$/iu.test(designation) &&
+      ['CLASS', '2'].includes(normalize(attribute))
+    ) {
+      if (normalize(attribute) === 'CLASS')
+        tokens.push({
+          code: 'Class 2',
+          text: 'Класс 2: многопроволочная токопроводящая жила',
+        });
+      continue;
+    }
+    if (family?.dimension === 'lan') {
+      const notation = explainLanNotation(attribute);
+      if (!notation.unknown && notation.tokens.length) {
+        tokens.push(...notation.tokens);
+        for (const item of notation.sources) addSource(item);
+        addSource(DESIGNATION_SOURCES['paritet-1']);
+        continue;
+      }
+    }
     // The factory optical grammar accounts for the entire original designation.
     // Ignore only importer fragments that are literally present in that match.
     if (
@@ -1135,8 +1290,21 @@ export function buildProductDesignation(product = {}) {
       });
       continue;
     }
+    const canonicalIndex =
+      normalize(attribute) === 'ПЛОСКИЙ' &&
+      /(?:^|\s)п(?=\s|$)/iu.test(designation)
+        ? 'П'
+        : normalize(attribute).replace(/^-/u, '');
+    const splitVoltageIndex =
+      family?.mark === 'ПИРОКОР-ВКВ' &&
+      canonicalIndex === 'ГМКЛ' &&
+      product.voltage === 1 &&
+      /гмкл-1\s*$/iu.test(designation)
+        ? family.indexes?.['ГМКЛ-1']
+        : null;
     const specific =
-      family?.indexes?.[normalize(attribute).replace(/^-/u, '')] ||
+      family?.indexes?.[canonicalIndex] ||
+      splitVoltageIndex ||
       decodeConstructor(attribute, family?.attributeGrammar);
     if (specific) {
       tokens.push({ code: clean(attribute), text: specific });

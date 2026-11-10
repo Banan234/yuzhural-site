@@ -325,3 +325,31 @@ describe('restore safety', () => {
     }
   });
 });
+
+it('backs up and restores receipt deduplication journal and import notification state', async () => {
+  const projectPath = await mkdtemp(path.join(os.tmpdir(), 'receipt-backup-'));
+  try {
+    const dir = path.join(projectPath, 'data/form-receipts');
+    await mkdir(dir, { recursive: true });
+    const receipt = path.join(dir, 'receipt.json');
+    await writeFile(receipt, '{"stage":"sent"}');
+    const state = path.join(
+      projectPath,
+      'data/.import-notification-state.json'
+    );
+    await writeFile(state, '{"failureFingerprint":"test"}');
+    const backup = await createBackup({
+      projectPath,
+      env: { BACKUP_DIR: path.join(projectPath, 'backups') },
+      backupId: 'receipt-test',
+    });
+    expect((await verifyBackup(backup.backupPath)).ok).toBe(true);
+    await writeFile(receipt, '{"stage":"changed"}');
+    await writeFile(state, '{}');
+    await restoreBackup(backup.backupPath, { projectPath, apply: true });
+    expect(await readFile(receipt, 'utf8')).toBe('{"stage":"sent"}');
+    expect(await readFile(state, 'utf8')).toBe('{"failureFingerprint":"test"}');
+  } finally {
+    await rm(projectPath, { recursive: true, force: true });
+  }
+});

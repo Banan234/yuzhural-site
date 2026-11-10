@@ -1,6 +1,5 @@
 import { expect, test } from '@playwright/test';
 import { expectFieldError } from './helpers/assertions.js';
-import { SITE_WORKING_HOURS_DISPLAY } from '../src/lib/siteConfig.js';
 
 const phone = '+7 (900) 123-45-67';
 const dialogFor = (page) =>
@@ -39,9 +38,7 @@ test('callback has its own styles on direct entry and after visiting home', asyn
       form: el.closest('form').clientWidth,
     }));
     expect(Math.abs(widths.input - widths.form)).toBeLessThan(4);
-    await expect(dialog.locator('.hero-lead-card__schedule')).toContainText(
-      SITE_WORKING_HOURS_DISPLAY
-    );
+    await expect(dialog.locator('.hero-lead-card__schedule')).toHaveCount(0);
     if (path.includes('montazh')) {
       await page.screenshot({
         path: testInfo.outputPath('callback-desktop.png'),
@@ -160,7 +157,7 @@ test('footer and contact buttons open the same callback form', async ({
     const dialog = dialogFor(page);
     await dialog.getByLabel('Ваш телефон').fill(phone);
     await dialog.getByLabel(/Даю согласие/).check();
-    await dialog.getByRole('button', { name: 'Жду звонка' }).click();
+    await dialog.getByRole('button', { name: 'Заказать звонок' }).click();
     await expect(dialog.getByRole('status')).toBeVisible();
     expect(payload).toMatchObject({
       source,
@@ -194,12 +191,12 @@ for (const width of [320, 390]) {
     expect(bounds.x + bounds.width).toBeLessThanOrEqual(width);
     await expect(dialog.getByLabel('Ваш телефон')).toHaveCSS(
       'font-size',
-      '16px'
+      '20px'
     );
     await page.screenshot({
       path: testInfo.outputPath(`callback-mobile-${width}.png`),
     });
-    const submit = dialog.getByRole('button', { name: 'Жду звонка' });
+    const submit = dialog.getByRole('button', { name: 'Заказать звонок' });
     await submit.scrollIntoViewIfNeeded();
     expect(
       await submit.evaluate((el) => {
@@ -213,10 +210,10 @@ for (const width of [320, 390]) {
     ).toBe(true);
     await page.setViewportSize({ width, height: 390 });
     await dialog
-      .getByRole('button', { name: 'Жду звонка' })
+      .getByRole('button', { name: 'Заказать звонок' })
       .scrollIntoViewIfNeeded();
     await expect(
-      dialog.getByRole('button', { name: 'Жду звонка' })
+      dialog.getByRole('button', { name: 'Заказать звонок' })
     ).toBeInViewport();
     await page.keyboard.press('Escape');
     await expect(dialog).toBeHidden();
@@ -224,3 +221,50 @@ for (const width of [320, 390]) {
     expect(await page.evaluate(() => document.body.style.overflow)).toBe('');
   });
 }
+
+test('reopening during upload waits for the existing request and supports number correction', async ({
+  page,
+}) => {
+  const payloads = [];
+  let release;
+  await page.route('**/api/lead-request', async (route) => {
+    payloads.push(route.request().postDataJSON());
+    if (payloads.length === 1)
+      await new Promise((resolve) => {
+        release = resolve;
+      });
+    await route.fulfill({ json: { ok: true } });
+  });
+  const dialog = await openHeaderCallback(page);
+  await dialog.getByLabel('Ваш телефон').fill(phone);
+  await dialog.getByLabel(/Даю согласие/).check();
+  await dialog
+    .getByRole('button', { name: 'Заказать звонок', exact: true })
+    .click();
+  await expect.poll(() => Boolean(release)).toBe(true);
+  await page.keyboard.press('Escape');
+  await page
+    .locator('.site-header')
+    .getByRole('button', { name: 'Заказать звонок', exact: true })
+    .click();
+  await expect(
+    dialog.getByRole('button', { name: 'Отправка...' })
+  ).toBeDisabled();
+  expect(payloads).toHaveLength(1);
+  release();
+  await expect(dialog.getByRole('status')).toContainText(phone);
+  await dialog.getByRole('button', { name: 'Исправить номер' }).click();
+  await expect(dialog.getByLabel('Ваш телефон')).toBeFocused();
+  await dialog.getByLabel('Ваш телефон').fill('+7 (900) 999-88-77');
+  await dialog.getByLabel(/Даю согласие/).check();
+  await dialog
+    .getByRole('button', { name: 'Заказать звонок', exact: true })
+    .click();
+  await expect(dialog.getByRole('status')).toContainText('+7 (900) 999-88-77');
+  expect(payloads).toHaveLength(2);
+  expect(payloads[1]).toMatchObject({
+    previousPhone: phone,
+    phone: '+7 (900) 999-88-77',
+  });
+  expect(payloads[1].submissionId).not.toBe(payloads[0].submissionId);
+});

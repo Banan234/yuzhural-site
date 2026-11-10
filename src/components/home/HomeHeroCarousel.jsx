@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import QuoteAction from '../forms/QuoteAction';
 import Container from '../ui/Container';
 import { CATALOG_CANONICAL_PATH } from '../../lib/canonicalPaths.js';
 
@@ -226,19 +226,19 @@ export default function HomeHeroCarousel() {
                   </Heading>
                   <p className="home-concept__hero-lead">{slide.description}</p>
                   <div className="home-concept__hero-actions">
-                    <Link
+                    <QuoteAction
                       to={slide.primary.to}
                       className="home-concept__button home-concept__button--brand"
                     >
                       {slide.primary.label}
                       <span aria-hidden="true">→</span>
-                    </Link>
-                    <Link
+                    </QuoteAction>
+                    <QuoteAction
                       to={slide.secondary.to}
                       className="home-concept__button home-concept__button--outline"
                     >
                       {slide.secondary.label}
-                    </Link>
+                    </QuoteAction>
                   </div>
                 </div>
               );

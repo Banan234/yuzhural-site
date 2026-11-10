@@ -1,0 +1,206 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/7cff5315988005baa7a81328d21bbedbbaffb927246e455cafe82c1ec26c0caf-f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2/image.png",
+    "changes": [
+      {
+        "sku": "YU-0003901",
+        "before": {
+          "image": "/product-images/generated/kg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 3901,
+          "sourceName": "КГ  2х1",
+          "productName": "КГ 2х1",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1,
+          "family": "kg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "kg__2c__stranded__round__2core-brown-blue__p-4a16e78a3f2c6355",
+          "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_67876fa56c1a9f4ac0beb11a327a265ee056591d25dcfb83bd0c92897a98efd5.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 3901,
+          "sourceName": "КГ  2х1",
+          "productName": "КГ 2х1",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1,
+          "visualKey": "kg__2c__stranded__round__2core-brown-blue__p-4a16e78a3f2c6355",
+          "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.392Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0006870",
+        "before": {
+          "image": "/product-images/generated/kg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 6870,
+          "sourceName": "КГ  2х2.5",
+          "productName": "КГ 2х2.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 2.5,
+          "family": "kg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "kg__2c__stranded__round__2core-brown-blue__p-4a16e78a3f2c6355",
+          "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_67876fa56c1a9f4ac0beb11a327a265ee056591d25dcfb83bd0c92897a98efd5.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 6870,
+          "sourceName": "КГ  2х2.5",
+          "productName": "КГ 2х2.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 2.5,
+          "visualKey": "kg__2c__stranded__round__2core-brown-blue__p-4a16e78a3f2c6355",
+          "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.392Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0003904",
+        "before": {
+          "image": "/product-images/generated/kg__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 3904,
+          "sourceName": "КГ  2х4",
+          "productName": "КГ 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "family": "kg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "kg__2c__stranded__round__2core-brown-blue__p-4a16e78a3f2c6355",
+          "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_67876fa56c1a9f4ac0beb11a327a265ee056591d25dcfb83bd0c92897a98efd5.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 3904,
+          "sourceName": "КГ  2х4",
+          "productName": "КГ 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "visualKey": "kg__2c__stranded__round__2core-brown-blue__p-4a16e78a3f2c6355",
+          "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.392Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

@@ -62,7 +62,11 @@
 .home-contacts__messengers a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 44px;
   min-height: 44px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
   font-size: var(--text-ui);
 }
 .home-contacts__addresses {

@@ -39,14 +39,14 @@ Docker-запуск нужно проверять отдельно: успешн
 | `npm run up`                                      | Полный локальный подъём: `build:prod`, API на 3001 и Vite-фронт на 5173                                                                                                                        |
 | `npm run dev`                                     | Только Vite-фронт на 5173; API-запросы проксируются на уже запущенный `server`                                                                                                                 |
 | `npm run server`                                  | Только Express API на 3001                                                                                                                                                                     |
-| `npm run build`                                   | Прод-сборка в `dist/`                                                                                                                                                                          |
+| `npm run build`                                   | Клиентская и серверная сборка в `dist/` (SSR запускается автоматически)                                                                                                                                                                          |
 | `npm run preview`                                 | Локальный smoke-тест прод-сборки                                                                                                                                                               |
 | `npm test`                                        | Vitest unit/integration tests                                                                                                                                                                  |
 | `npm run e2e`                                     | Playwright E2E smoke/user-flow тесты                                                                                                                                                           |
 | `npm run load:test`                               | Короткий нагрузочный прогон API; настраивается `API_BASE`, `LOAD_CONCURRENCY`                                                                                                                  |
 | `npm run load:soak`                               | Длинный soak-прогон API на 30 минут для контроля RSS/event loop                                                                                                                                |
 | `node scripts/importPrice.js [path/to/price.xls]` | Импорт прайса → отчёты и единый атомарный каталог в `data/catalog-current/`                                                                                                                    |
-| `npm run import:price:scheduled`                  | Однократная проверка источника через `--if-changed`; расписание задаёт внешний планировщик                                                                                  |
+| `npm run import:price:scheduled`                  | Однократная проверка источника через `--if-changed`; расписание задаёт внешний планировщик                                                                                                     |
 | `npm run backup:create`                           | Снимок runtime-данных перед ручным изменением или импортом                                                                                                                                     |
 | `npm run backup:list`                             | Список доступных резервных копий                                                                                                                                                               |
 | `npm run backup:verify -- <id>`                   | Проверка SHA-256 выбранной резервной копии                                                                                                                                                     |
@@ -134,7 +134,7 @@ FORMS_LOCAL_OUTBOX_DIR=./data/forms-outbox
 заполненные `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`,
 `QUOTE_TO_EMAIL`. Если формы временно не готовы, задайте `FORMS_ENABLED=false`.
 
-1. Заведите ящик на корпоративном домене (Яндекс.360, Mail для бизнеса и т.п.).
+1. Используйте рабочий ящик `yuek.sales@yandex.com`.
 2. Включите двухфакторную аутентификацию и выпустите **app password** —
    обычный пароль почты Яндекс не пропустит, нужен именно специальный пароль
    для приложений.
@@ -144,10 +144,10 @@ FORMS_LOCAL_OUTBOX_DIR=./data/forms-outbox
    SMTP_HOST=smtp.yandex.ru
    SMTP_PORT=465
    SMTP_SECURE=true
-   SMTP_USER=sale@yourdomain.ru
+   SMTP_USER=yuek.sales@yandex.com
    SMTP_PASS=<app password>
-   SMTP_FROM="ООО ЮжУралЭлектроКабель <sale@yourdomain.ru>"
-   QUOTE_TO_EMAIL=sale@yourdomain.ru
+   SMTP_FROM="ООО ЮжУралЭлектроКабель <yuek.sales@yandex.com>"
+   QUOTE_TO_EMAIL=yuek.sales@yandex.com
    SMTP_POOL=true
    SMTP_POOL_MAX_CONNECTIONS=2
    SMTP_CONNECTION_TIMEOUT_MS=10000

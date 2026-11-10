@@ -35,7 +35,7 @@
 .site-header__topbar {
   background: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  overflow: visible;
   max-height: 62px;
   transition:
     max-height 0.28s ease,
@@ -44,6 +44,7 @@
   opacity: 1;
 }
 .site-header--scrolled .site-header__topbar {
+  overflow: hidden;
   max-height: 0;
   opacity: 0;
   border-bottom-color: transparent;
@@ -104,6 +105,40 @@
   color: #334155;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+.price-download {
+  position: relative;
+}
+.price-download__options {
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  right: 0;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  padding: 6px;
+  border: 1px solid #dce3e9;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(24 58 83 / 14%);
+}
+.price-download__options a {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 18px;
+  border-radius: 4px;
+  color: #23313d;
+  text-decoration: none;
+}
+.price-download__options a:hover,
+.price-download__options a:focus-visible {
+  background: #edf5fb;
+  color: #195d8d;
+}
+.price-download__options small {
+  color: #64748b;
+  font-size: 12px;
 }
 
 /* Main row */
@@ -664,7 +699,7 @@
   padding: 0 12px 12px;
 }
 .mobile-nav__catalog-links a,
-.mobile-nav__links a,
+.mobile-nav__links :is(a, button.quote-action),
 .mobile-nav__quick-link {
   min-height: 42px;
   padding: 11px 12px;
@@ -682,7 +717,7 @@
   display: grid;
   gap: 8px;
 }
-.mobile-nav__links a,
+.mobile-nav__links :is(a, button.quote-action),
 .mobile-nav__quick-link {
   display: flex;
   align-items: center;
@@ -903,6 +938,19 @@
 .catalog-dropdown__column {
   min-width: 0;
 }
+.catalog-dropdown__column--subcategories {
+  position: relative;
+  isolation: isolate;
+}
+.catalog-dropdown__column--subcategories::before {
+  content: '';
+  position: absolute;
+  inset: -14px -10px;
+  z-index: -1;
+  border-radius: 8px;
+  background: rgba(var(--primary-rgb), 0.045);
+  pointer-events: none;
+}
 .catalog-dropdown__column--marks {
   grid-column: span 2;
 }
@@ -1038,7 +1086,7 @@
   padding-top: 16px;
   border-top: 1px solid #dce4ed;
 }
-.mobile-nav__links a {
+.mobile-nav__links :is(a, button.quote-action) {
   min-height: 56px;
   padding: 12px;
   border: 0;

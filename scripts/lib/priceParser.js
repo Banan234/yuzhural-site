@@ -1,3 +1,4 @@
+import { normalizeCableVoltageName } from '../../shared/cableVoltage.js';
 import { normalizeSip2Neutral } from '../../shared/sip2Neutral.js';
 import { formatManufacturerTitle } from '../../shared/manufacturerTitle.js';
 // Файл парсит строки XLS-прайса, извлекает марки, характеристики, единицы измерения и цены.
@@ -7,6 +8,7 @@ import {
   formatCableProductTitle,
   normalizeHeatingCableName,
   normalizeCableColorName,
+  stripLegacyCableAlias,
 } from '../../shared/productTitle.js';
 const UNIT_ALIASES = [
   'км',
@@ -301,6 +303,9 @@ export function createEmptyImportResult() {
 
 export function normalizeImportedProduct(product) {
   const sourceName = String(product.sourceName ?? product.name ?? '').trim();
+  const cableName = normalizeHeatingCableName(sourceName);
+  const displayName =
+    product.parseCable === false ? cableName : stripLegacyCableAlias(cableName);
   const fullName = normalizeHeatingCableName(
     product.parseCable === false
       ? normalizeText(sourceName)
@@ -313,9 +318,33 @@ export function normalizeImportedProduct(product) {
           mark: fullName,
           markFamily: normalizeMarkFamily(fullName),
         }
-      : parseProductName(normalizeHeatingCableName(sourceName));
+      : parseProductName(displayName);
+  const legacyParts =
+    product.parseCable === false
+      ? parsedName
+      : parseProductName(cableName, {
+          normalizeVoltage: false,
+        });
+  const designationSourceIdentity =
+    displayName !== cableName
+      ? {
+          mark: legacyParts.mark,
+          voltage: legacyParts.voltage,
+          attributes: legacyParts.attributes,
+        }
+      : null;
+  const voltageIdentity =
+    !designationSourceIdentity &&
+    (parsedName.voltage !== legacyParts.voltage ||
+      JSON.stringify(parsedName.attributes) !==
+        JSON.stringify(legacyParts.attributes))
+      ? { voltage: legacyParts.voltage, attributes: legacyParts.attributes }
+      : null;
   const normalizedName = formatCableProductTitle(
-    buildNormalizedProductName(fullName, parsedName),
+    buildNormalizedProductName(
+      designationSourceIdentity ? stripLegacyCableAlias(fullName) : fullName,
+      parsedName
+    ),
     parsedName
   );
   const normalizedUnit = normalizeUnit(product.unit);
@@ -329,6 +358,8 @@ export function normalizeImportedProduct(product) {
 
   return {
     sourceName,
+    ...(designationSourceIdentity ? { designationSourceIdentity } : {}),
+    ...(voltageIdentity ? { voltageSourceIdentity: voltageIdentity } : {}),
     numberIssues: ['price', 'stock']
       .filter(
         (field) =>
@@ -374,7 +405,9 @@ export function normalizeImportedProduct(product) {
         }
       : {}),
     voltage: parsedName.voltage,
-    attributes: parsedName.attributes,
+    attributes: parsedName.attributes.map((attribute) =>
+      /^п$/iu.test(attribute) ? 'плоский' : attribute
+    ),
     unit: normalizedCommercial.unit,
     price: normalizedCommercial.price,
     stock: normalizedCommercial.stock,
@@ -465,13 +498,15 @@ function normalizeCommercialFields({ unit, price, stock }) {
   };
 }
 
-export function parseProductName(value) {
+export function parseProductName(value, { normalizeVoltage = true } = {}) {
   const extractedManufacturer = extractManufacturer(value);
   const stripped = normalizeProductName(
     extractedManufacturer.nameWithoutManufacturer
   );
   const manufacturer = extractedManufacturer.manufacturer;
-  const source = stripped;
+  const source = normalizeVoltage
+    ? normalizeCableVoltageName(stripped)
+    : stripped;
 
   if (!source) {
     return createEmptyNameParts();

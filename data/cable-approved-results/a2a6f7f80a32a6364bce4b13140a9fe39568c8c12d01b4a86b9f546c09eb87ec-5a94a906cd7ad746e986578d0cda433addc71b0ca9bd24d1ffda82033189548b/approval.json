@@ -1,0 +1,29 @@
+{
+  "status": "APPROVED",
+  "sha256": "5a94a906cd7ad746e986578d0cda433addc71b0ca9bd24d1ffda82033189548b",
+  "reviewer": "Пользователь",
+  "basis": "Explicit user visual approval in current chat; not automatic pixel verification",
+  "sourceMessage": "Текущий результат АВВГнг(А)-LS 4×4 считаю визуально приемлемым. Утверди его для соответствующего visualKey, но не публикуй автоматически.",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true
+  },
+  "visualKey": "avvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-4b690fd988f163a5",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-08T16:12:28.627Z",
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": true
+}

@@ -1,0 +1,30 @@
+{
+  "status": "APPROVED",
+  "reviewer": "Пользователь",
+  "sha256": "3d5be3694ad1f7f4950de556839fa5b13cb5af91be76f4dce93fa82cc98b532e",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true
+  },
+  "basis": "Explicit user manual approval of six selected current PNGs; no image processing. Not automated semantic verification.",
+  "sourceMessage": "Пользователь вручную утвердил шесть изображений: YU-0000980, YU-0000838, YU-0003196, YU-0000198, YU-0003905, YU-0004942.",
+  "publicationAuthorized": true,
+  "visualKey": "vvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-efab82e5a582c255",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-09T12:31:12.311Z",
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": true
+}

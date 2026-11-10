@@ -1,0 +1,400 @@
+{
+  "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+  "profile": {
+    "family": "kg-hl",
+    "productType": "flexible-cable",
+    "cores": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown"
+    ],
+    "coreColorScheme": "1core-brown",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "draftKey": "389bf84cae46aacf203e07c4eb65f95450e2d60cdee952586a63fbd1090f8c2d",
+  "members": [
+    {
+      "sku": "YU-0004021",
+      "name": "КГхл 1х2.5",
+      "sourceName": "КГ хл  1х2.5",
+      "id": 4021,
+      "slug": "kg-hl-1h2-5-33p",
+      "section": 2.5,
+      "primaryCores": 1,
+      "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+      "visualizationType": "SIMPLE",
+      "productHash": "2fbe0fd30ddf2fb77a6d0bb2602541609857e34d604ee4a2a2d53feb74173d0c",
+      "oldBinding": {
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4021,
+        "sourceName": "КГ хл  1х2.5",
+        "productName": "КГ хл 1х2.5",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 2.5,
+        "family": "kg-hl",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+        "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4021,
+          "sourceName": "КГ хл  1х2.5",
+          "productName": "КГ хл 1х2.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 2.5,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004023",
+      "name": "КГхл 1х25",
+      "sourceName": "КГ хл  1х 25",
+      "id": 4023,
+      "slug": "kg-hl-1h25-33r",
+      "section": 25,
+      "primaryCores": 1,
+      "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+      "visualizationType": "SIMPLE",
+      "productHash": "80dfbb2d87b3f769da6f1438f6790303092fa1627160b0bdb438227725dc9e10",
+      "oldBinding": {
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4023,
+        "sourceName": "КГ хл  1х 25",
+        "productName": "КГ хл 1х25",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 25,
+        "family": "kg-hl",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+        "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4023,
+          "sourceName": "КГ хл  1х 25",
+          "productName": "КГ хл 1х25",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 25,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004024",
+      "name": "КГхл 1х35",
+      "sourceName": "КГ хл  1х 35",
+      "id": 4024,
+      "slug": "kg-hl-1h35-33s",
+      "section": 35,
+      "primaryCores": 1,
+      "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+      "visualizationType": "SIMPLE",
+      "productHash": "fdfb3f49034f3a649edf5ba2422e961afda2def93d7a52b83bacc02289c6a76b",
+      "oldBinding": {
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4024,
+        "sourceName": "КГ хл  1х 35",
+        "productName": "КГ хл 1х35",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 35,
+        "family": "kg-hl",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+        "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4024,
+          "sourceName": "КГ хл  1х 35",
+          "productName": "КГ хл 1х35",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 35,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004026",
+      "name": "КГхл 1х50",
+      "sourceName": "КГ хл  1х 50",
+      "id": 4026,
+      "slug": "kg-hl-1h50-33u",
+      "section": 50,
+      "primaryCores": 1,
+      "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+      "visualizationType": "SIMPLE",
+      "productHash": "dda68398c2c27c6d4d006446887c5d2ce1f6178ce084b6199c10c94cbb403021",
+      "oldBinding": {
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4026,
+        "sourceName": "КГ хл  1х 50",
+        "productName": "КГ хл 1х50",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 50,
+        "family": "kg-hl",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+        "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4026,
+          "sourceName": "КГ хл  1х 50",
+          "productName": "КГ хл 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004028",
+      "name": "КГхл 1х95",
+      "sourceName": "КГ хл  1х 95",
+      "id": 4028,
+      "slug": "kg-hl-1h95-33w",
+      "section": 95,
+      "primaryCores": 1,
+      "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+      "visualizationType": "SIMPLE",
+      "productHash": "5e6280f68dd7e064001c6cc202aa9ac2886de30ea2e59a7e13bb80f034e9667f",
+      "oldBinding": {
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4028,
+        "sourceName": "КГ хл  1х 95",
+        "productName": "КГ хл 1х95",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 95,
+        "family": "kg-hl",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+        "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/kg-hl__1core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4028,
+          "sourceName": "КГ хл  1х 95",
+          "productName": "КГ хл 1х95",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 95,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    }
+  ],
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.25817361894024804,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 228,
+        "longestSupportedRun": 228,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.8136962691717645,
+    "non_opaque_ratio": 0.9993498727072369,
+    "foreground_ratio": 0.18571143499553236,
+    "bounds": {
+      "minX": 104,
+      "minY": 228,
+      "maxX": 1773,
+      "maxY": 651
+    },
+    "warnings": [],
+    "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+    "bytes": 652111
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "APPROVED_FOR_CATALOG": true,
+    "APPROVED_AS_REFERENCE": false,
+    "reviewer": "Пользователь",
+    "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "basis": "Пользователь одобрил все оставшиеся кандидаты A из последнего отчёта по конструкции, композиции, цветам и прилеганию слоёв и поручил применить их. Автоматическая проверка подтверждает альфа-канал и наличие пикселей на правом крае, а техническое содержание утверждено вручную.",
+    "publicationAuthorized": true,
+    "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-10T08:21:09.256Z"
+  },
+  "automaticProductionBinding": false
+}

@@ -52,6 +52,11 @@ function slugify(value) {
 }
 
 export function buildStableKey(product) {
+  const sourceIdentity =
+    product.designationSourceIdentity ?? product.voltageSourceIdentity;
+  if (sourceIdentity) {
+    product = { ...product, ...sourceIdentity };
+  }
   const stableAttributes = Array.isArray(product.attributes)
     ? [...product.attributes]
     : [];
@@ -60,7 +65,10 @@ export function buildStableKey(product) {
   }
   const attrs = stableAttributes.length
     ? stableAttributes
-        .map((a) => String(a).toLowerCase().trim())
+        .map((a) => {
+          const value = String(a).toLowerCase().trim();
+          return value === 'плоский' ? 'п' : value;
+        })
         .sort()
         .join(',')
     : '';

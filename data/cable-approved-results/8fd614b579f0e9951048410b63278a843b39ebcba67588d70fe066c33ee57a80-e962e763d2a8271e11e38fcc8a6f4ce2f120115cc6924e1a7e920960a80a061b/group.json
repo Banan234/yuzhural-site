@@ -1,0 +1,698 @@
+{
+  "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+  "profile": {
+    "family": "kgvvng-a-ls",
+    "productType": "flexible-cable",
+    "cores": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown"
+    ],
+    "coreColorScheme": "1core-brown",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "draftKey": "7731507c7e2b94a6d3b3e4eaeb5fd8e319cd813e5774350bb792ec9784e60b1d",
+  "members": [
+    {
+      "sku": "YU-0002954",
+      "name": "КГВВнг(А)-LS 1х150",
+      "sourceName": "КГВВ 1х150 нг(А)LS",
+      "id": 2954,
+      "slug": "kgvv-1h150-ng-a-ls-2a2",
+      "section": 150,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "595924b4ed64ab3cd38b6bdbf8d3ee15b0a5c9e53dbebe5f413babacb052879c",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 2954,
+        "sourceName": "КГВВ  1х150 нг(А)LS",
+        "productName": "КГВВнг(А)-LS 1х150",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 150,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "kgvvng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+        "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2954,
+          "sourceName": "КГВВ  1х150 нг(А)LS",
+          "productName": "КГВВнг(А)-LS 1х150",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 150,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kgvvng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0002946",
+      "name": "КГВВнг(А)-LS 1х6",
+      "sourceName": "КГВВ  1х6 нг(А)LS",
+      "id": 2946,
+      "slug": "kgvv-1h6-ng-a-ls-29u",
+      "section": 6,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "f701c7c2f255b8210b76be93364829e55c1345b12d7e1596fc29c6122e3bb04c",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 2946,
+        "sourceName": "КГВВ  1х6 нг(А)LS",
+        "productName": "КГВВнг(А)-LS 1х6",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 6,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "kgvvng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+        "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2946,
+          "sourceName": "КГВВ  1х6 нг(А)LS",
+          "productName": "КГВВнг(А)-LS 1х6",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 6,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kgvvng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0002947",
+      "name": "КГВВнг(А)-LS 1х10",
+      "sourceName": "КГВВ  1х 10 нг(А)LS",
+      "id": 2947,
+      "slug": "kgvv-1h10-ng-a-ls-29v",
+      "section": 10,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "6fe3d4f9699672bb395e471872b39fdfe54f7d47dee3ffbfa628d9836696d2a4",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 2947,
+        "sourceName": "КГВВ  1х 10 нг(А)LS",
+        "productName": "КГВВнг(А)-LS 1х10",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 10,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "kgvvng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+        "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2947,
+          "sourceName": "КГВВ  1х 10 нг(А)LS",
+          "productName": "КГВВнг(А)-LS 1х10",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 10,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kgvvng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0002949",
+      "name": "КГВВнг(А)-LS 1х35",
+      "sourceName": "КГВВ  1х 35 нг(А)LS",
+      "id": 2949,
+      "slug": "kgvv-1h35-ng-a-ls-29x",
+      "section": 35,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "97b2296f07cc4a37f83fdcb93bee1f6d08a667aabfebc94429e6a5377bc71b8d",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 2949,
+        "sourceName": "КГВВ  1х 35 нг(А)LS",
+        "productName": "КГВВнг(А)-LS 1х35",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 35,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "kgvvng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+        "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2949,
+          "sourceName": "КГВВ  1х 35 нг(А)LS",
+          "productName": "КГВВнг(А)-LS 1х35",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 35,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kgvvng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0002950",
+      "name": "КГВВнг(А)-LS 1х50",
+      "sourceName": "КГВВ  1х 50 нг(А)LS",
+      "id": 2950,
+      "slug": "kgvv-1h50-ng-a-ls-29y",
+      "section": 50,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "fa068fddc62796bb1b78309e04e7afc6e67a1940387a245708c648fbbd205244",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 2950,
+        "sourceName": "КГВВ  1х 50 нг(А)LS",
+        "productName": "КГВВнг(А)-LS 1х50",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 50,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "kgvvng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+        "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2950,
+          "sourceName": "КГВВ  1х 50 нг(А)LS",
+          "productName": "КГВВнг(А)-LS 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kgvvng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0002951",
+      "name": "КГВВнг(А)-LS 1х70",
+      "sourceName": "КГВВ  1х 70 нг(А)LS",
+      "id": 2951,
+      "slug": "kgvv-1h70-ng-a-ls-29z",
+      "section": 70,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "cf4153930513034957b4b812a485c8c0a761217631b2b37127f0b7ca800ff154",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 2951,
+        "sourceName": "КГВВ  1х 70 нг(А)LS",
+        "productName": "КГВВнг(А)-LS 1х70",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 70,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "kgvvng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+        "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2951,
+          "sourceName": "КГВВ  1х 70 нг(А)LS",
+          "productName": "КГВВнг(А)-LS 1х70",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 70,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kgvvng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0002952",
+      "name": "КГВВнг(А)-LS 1х95",
+      "sourceName": "КГВВ  1х 95 нг(А)LS",
+      "id": 2952,
+      "slug": "kgvv-1h95-ng-a-ls-2a0",
+      "section": 95,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "23df14d4eafa505a377117524b0c9d227a17ce77fbfeae1d6db2a37947e1eb18",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 2952,
+        "sourceName": "КГВВ  1х 95 нг(А)LS",
+        "productName": "КГВВнг(А)-LS 1х95",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 95,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "kgvvng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+        "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2952,
+          "sourceName": "КГВВ  1х 95 нг(А)LS",
+          "productName": "КГВВнг(А)-LS 1х95",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 95,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kgvvng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0002953",
+      "name": "КГВВнг(А)-LS 1х120",
+      "sourceName": "КГВВ  1х120 нг(А)LS",
+      "id": 2953,
+      "slug": "kgvv-1h120-ng-a-ls-2a1",
+      "section": 120,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "4fe95182fb6c84a4d35aa8a59d3a868425e745c9a1e80301af8de8116c6759a0",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 2953,
+        "sourceName": "КГВВ  1х120 нг(А)LS",
+        "productName": "КГВВнг(А)-LS 1х120",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 120,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "kgvvng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+        "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2953,
+          "sourceName": "КГВВ  1х120 нг(А)LS",
+          "productName": "КГВВнг(А)-LS 1х120",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 120,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kgvvng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0007924",
+      "name": "КГВВнг(А)-LS 1х150",
+      "sourceName": "КГВВ  1х150 нг(А)LS",
+      "id": 7924,
+      "slug": "kgvvng-a-ls-1h150-644",
+      "section": 150,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "d4fa1fa8c2607301b742d9fabb875c62e05ac55e367ac8c396c1449614695948",
+      "oldBinding": null,
+      "disposition": {
+        "protected": false,
+        "image": null,
+        "oldGenerated": null
+      },
+      "reason": null,
+      "status": "GENERATE_MISSING"
+    },
+    {
+      "sku": "YU-0002955",
+      "name": "КГВВнг(А)-LS 1х150 1кВ",
+      "sourceName": "КГВВ  1х150-1 нг(А)LS",
+      "id": 2955,
+      "slug": "kgvv-1h150-1-ng-a-ls-2a3",
+      "section": 150,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "2d14c9b2748823da738e7b5f40061ee52c29bac21bd727989f3ecc2698a17ab6",
+      "oldBinding": null,
+      "disposition": {
+        "protected": false,
+        "image": "/category-placeholders/wire.svg",
+        "oldGenerated": null
+      },
+      "reason": null,
+      "status": "GENERATE_MISSING"
+    },
+    {
+      "sku": "YU-0003978",
+      "name": "КГВВнг(А)-LS 1х185",
+      "sourceName": "КГВВ  1х185 нг(А)LS",
+      "id": 3978,
+      "slug": "kgvv-1h185-ng-a-ls-32i",
+      "section": 185,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "b88aa1f386a90d5f3c1ccb152682f6ba99d13f5e5cc4ab1f2434a9b9d8be03c5",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 3978,
+        "sourceName": "КГВВ  1х185 нг(А)LS",
+        "productName": "КГВВнг(А)-LS 1х185",
+        "primaryCores": 1,
+        "cores": 1,
+        "section": 185,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "kgvvng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown"
+        ],
+        "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+        "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 3978,
+          "sourceName": "КГВВ  1х185 нг(А)LS",
+          "productName": "КГВВнг(А)-LS 1х185",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 185,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kgvvng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "b05b7f4e2b0e775e571020cb3bc35e254ba004a2d47c598618712ca23a8f804c",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0007958",
+      "name": "КГВВнг(А)-LS 1х150",
+      "sourceName": "КГВВ  1х150 нг(А)LS",
+      "id": 7958,
+      "slug": "kgvvng-a-ls-1h150-652",
+      "section": 150,
+      "primaryCores": 1,
+      "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+      "visualizationType": "SIMPLE",
+      "productHash": "6c98ce180585bb42c89be875bbb8eab370839cfb50e66d4ce73b7223440775fa",
+      "oldBinding": null,
+      "disposition": {
+        "protected": false,
+        "image": null,
+        "oldGenerated": null
+      },
+      "reason": null,
+      "status": "GENERATE_MISSING"
+    }
+  ],
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.4689966178128523,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 415,
+        "longestSupportedRun": 415,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.6298595902990586,
+    "non_opaque_ratio": 0.9996314038809359,
+    "foreground_ratio": 0.36953794569943654,
+    "bounds": {
+      "minX": 126,
+      "minY": 74,
+      "maxX": 1773,
+      "maxY": 667
+    },
+    "warnings": [],
+    "sha256": "e962e763d2a8271e11e38fcc8a6f4ce2f120115cc6924e1a7e920960a80a061b",
+    "bytes": 1044747
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "reviewer": "Пользователь",
+    "sha256": "e962e763d2a8271e11e38fcc8a6f4ce2f120115cc6924e1a7e920960a80a061b",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "basis": "Пользователь визуально утвердил оба PNG по конструкции, композиции, цветам и прилеганию слоёв и поручил применить их. Автоматическая проверка подтверждает альфа-канал и наличие пикселей на правом крае, а техническое содержание утверждено вручную.",
+    "publicationAuthorized": true,
+    "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-10T06:28:07.664Z"
+  },
+  "automaticProductionBinding": false
+}

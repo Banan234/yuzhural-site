@@ -261,6 +261,13 @@ async function postJson(path, body, init = {}) {
 
 async function postJsonTo(targetBaseUrl, path, body, init = {}) {
   const { headers: initHeaders = {}, ...restInit } = init;
+  if (
+    body &&
+    typeof body === 'object' &&
+    ['/api/quote', '/api/lead-request'].includes(path) &&
+    !body.submissionId
+  )
+    body = { ...body, submissionId: crypto.randomUUID() };
 
   return fetch(`${targetBaseUrl}${path}`, {
     method: 'POST',
@@ -2102,7 +2109,7 @@ describe('POST /api/quote', () => {
           items: [{ ...offers[1], quantity }],
         });
         expect(response.status).toBe(status);
-        expect(sendMailMock).toHaveBeenCalledTimes(status === 200 ? 1 : 0);
+        expect(sendMailMock).toHaveBeenCalledTimes(status === 200 ? 2 : 0);
       });
     }
   );
@@ -2127,7 +2134,7 @@ describe('POST /api/quote', () => {
           validPayload
         );
         expect(response.status).toBe(status);
-        expect(sendMailMock).toHaveBeenCalledTimes(status === 200 ? 1 : 0);
+        expect(sendMailMock).toHaveBeenCalledTimes(status === 200 ? 2 : 0);
       });
     }
   );
@@ -2178,13 +2185,46 @@ describe('POST /api/quote', () => {
     expect(mailTransporter.sendMail).not.toHaveBeenCalled();
   });
 
+  it('returns the same receipt for concurrent quote retries and rejects changed data', async () => {
+    const mailTransporter = {
+      sendMail: vi.fn().mockResolvedValue({ messageId: 'accepted' }),
+    };
+    const app = createTestApp({
+      mailTransporter,
+      formResponseDelayRange: { min: 0, max: 0 },
+    });
+    await withTestServer(app, async (url) => {
+      const payload = { ...validPayload, submissionId: crypto.randomUUID() };
+      const responses = await Promise.all([
+        postJsonTo(url, '/api/quote', payload),
+        postJsonTo(url, '/api/quote', payload),
+      ]);
+      const bodies = await Promise.all(
+        responses.map((response) => response.json())
+      );
+      expect(responses.map((response) => response.status)).toEqual([200, 200]);
+      expect(bodies[0].requestId).toMatch(/^YUEK-[A-F0-9]{12}$/);
+      expect(bodies[1].requestId).toBe(bodies[0].requestId);
+      expect(bodies[0].receiptEmailStatus).toBe('sent');
+      expect(
+        mailTransporter.sendMail.mock.calls.map(([mail]) => mail.to)
+      ).toEqual(['sales@example.test', 'ivan@example.com']);
+      const changed = await postJsonTo(url, '/api/quote', {
+        ...payload,
+        customer: { ...payload.customer, comment: 'Изменено' },
+      });
+      expect(changed.status).toBe(409);
+      expect(mailTransporter.sendMail).toHaveBeenCalledTimes(2);
+    });
+  });
+
   it('happy path: валидный payload отправляет письмо и возвращает ok', async () => {
     const res = await postJson('/api/quote', validPayload);
     const data = await res.json();
 
     expect(res.status).toBe(200);
     expect(data.ok).toBe(true);
-    expect(sendMailMock).toHaveBeenCalledTimes(1);
+    expect(sendMailMock).toHaveBeenCalledTimes(2);
 
     const mailArgs = sendMailMock.mock.calls[0][0];
     expect(mailArgs.subject).toMatch(/КП/);
@@ -2208,7 +2248,7 @@ describe('POST /api/quote', () => {
 
     expect(res.status).toBe(200);
     expect(data.ok).toBe(true);
-    expect(sendMailMock).toHaveBeenCalledTimes(1);
+    expect(sendMailMock).toHaveBeenCalledTimes(2);
   });
 
   it('повторяет отправку при временной SMTP-ошибке', async () => {
@@ -2234,10 +2274,10 @@ describe('POST /api/quote', () => {
       expect(data.ok).toBe(true);
     });
 
-    expect(mailTransporter.sendMail).toHaveBeenCalledTimes(2);
+    expect(mailTransporter.sendMail).toHaveBeenCalledTimes(3);
   });
 
-  it('500 при финальной SMTP-ошибке после transport timeout', async () => {
+  it('503 с номером заявки при неопределённом результате SMTP timeout', async () => {
     const timeoutError = Object.assign(new Error('socket timeout'), {
       code: 'ETIMEDOUT',
     });
@@ -2253,9 +2293,11 @@ describe('POST /api/quote', () => {
       const res = await postJsonTo(localBaseUrl, '/api/quote', validPayload);
       const data = await res.json();
 
-      expect(res.status).toBe(500);
+      expect(res.status).toBe(503);
       expect(data.ok).toBe(false);
-      expect(data.message).toBe('Не удалось отправить заявку');
+      expect(data.message).toMatch(
+        /Доставка заявки № YUEK-[A-F0-9]{12} уточняется/
+      );
     });
 
     expect(mailTransporter.sendMail).toHaveBeenCalledTimes(1);
@@ -2388,7 +2430,7 @@ describe('POST /api/quote', () => {
       }
     });
 
-    expect(mailTransporter.sendMail).toHaveBeenCalledTimes(4);
+    expect(mailTransporter.sendMail).toHaveBeenCalledTimes(8);
   });
 
   it('honeypot и быстрый submit учитываются отдельно от нормального лимита КП', async () => {
@@ -2425,7 +2467,7 @@ describe('POST /api/quote', () => {
       ).toBe(429);
     });
 
-    expect(mailTransporter.sendMail).toHaveBeenCalledTimes(1);
+    expect(mailTransporter.sendMail).toHaveBeenCalledTimes(2);
   });
 
   it('повторяющиеся bot-сигналы ограничиваются отдельным лимитом', async () => {
@@ -2574,6 +2616,47 @@ describe('POST /api/quote', () => {
 });
 
 describe('POST /api/lead-request', () => {
+  it('не отправляет письмо повторно при повторе идентификатора и отклоняет изменение данных', async () => {
+    const payload = {
+      ...validLeadPayload,
+      requestType: 'callback',
+      submissionId: 'callback-repeat-000001',
+    };
+    const responses = await Promise.all([
+      postJson('/api/lead-request', payload),
+      postJson('/api/lead-request', payload),
+    ]);
+    expect(responses.map((response) => response.status)).toEqual([200, 200]);
+    expect(sendMailMock).toHaveBeenCalledTimes(1);
+    expect((await postJson('/api/lead-request', payload)).status).toBe(200);
+    expect(sendMailMock).toHaveBeenCalledTimes(1);
+    expect(
+      (
+        await postJson('/api/lead-request', {
+          ...payload,
+          phone: '+79009998877',
+        })
+      ).status
+    ).toBe(409);
+    expect(sendMailMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('отправляет менеджеру явное исправление номера', async () => {
+    const res = await postJson('/api/lead-request', {
+      ...validLeadPayload,
+      requestType: 'callback',
+      phone: '+79009998877',
+      previousPhone: '+79001234567',
+      submissionId: 'callback-correction-000001',
+    });
+    expect(res.status).toBe(200);
+    const mail = sendMailMock.mock.calls[0][0];
+    expect(mail.subject).toContain('Исправление номера');
+    expect(mail.html).toContain('Предыдущий номер (не звонить)');
+    expect(mail.html).toContain('+79001234567');
+    expect(mail.html).toContain('+79009998877');
+  });
+
   it('принимает email без телефона и задаёт адрес для ответа менеджера', async () => {
     const res = await postJson('/api/lead-request', {
       ...validLeadPayload,
@@ -2615,7 +2698,9 @@ describe('POST /api/lead-request', () => {
     });
     expect(res.status).toBe(200);
     const mail = sendMailMock.mock.calls[0][0];
-    expect(mail.subject).toBe('Заказ обратного звонка — ЮжУралЭлектроКабель');
+    expect(mail.subject).toMatch(
+      /^Заказ обратного звонка — ЮжУралЭлектроКабель · № YUEK-[A-F0-9]{12}$/
+    );
     expect(mail.html).toContain('/catalog/montazhnyy-kabel/');
     expect(mail.html).toContain('Заказ звонка: шапка сайта');
     expect(mail.html).toContain('получено');
@@ -2722,9 +2807,10 @@ describe('POST /api/lead-request', () => {
         const data = await res.json();
 
         expect(res.status).toBe(200);
-        expect(data).toEqual({
+        expect(data).toMatchObject({
           ok: true,
           message: 'Заявка отправлена. Мы скоро свяжемся с вами.',
+          requestId: expect.stringMatching(/^YUEK-[A-F0-9]{12}$/),
         });
 
         const files = await fs.readdir(outboxDir);
@@ -2740,7 +2826,9 @@ describe('POST /api/lead-request', () => {
             to: ['local-sales@yuzhural-site.test'],
           },
           message: {
-            subject: 'Новая короткая заявка — ЮжУралЭлектроКабель',
+            subject: expect.stringMatching(
+              /^Новая короткая заявка — ЮжУралЭлектроКабель · № YUEK-[A-F0-9]{12}$/
+            ),
             html: expect.stringContaining('ВВГ 3х2.5'),
           },
         });
@@ -2750,7 +2838,7 @@ describe('POST /api/lead-request', () => {
     }
   });
 
-  it('500 с пользовательским сообщением при SMTP-ошибке', async () => {
+  it('503 с номером для сверки при неопределённом SMTP-сбое', async () => {
     const mailTransporter = {
       sendMail: vi.fn().mockRejectedValue(new Error('535 auth failed')),
     };
@@ -2768,11 +2856,11 @@ describe('POST /api/lead-request', () => {
       );
       const data = await res.json();
 
-      expect(res.status).toBe(500);
-      expect(data).toEqual({
-        ok: false,
-        message: 'Не удалось отправить заявку',
-      });
+      expect(res.status).toBe(503);
+      expect(data.ok).toBe(false);
+      expect(data.message).toMatch(
+        /Доставка заявки № YUEK-[A-F0-9]{12} уточняется/
+      );
       expect(JSON.stringify(data)).not.toContain('535');
       expect(JSON.stringify(data)).not.toContain('auth failed');
     });

@@ -1,3 +1,4 @@
+import QuoteAction from '../forms/QuoteAction';
 // Файл формирует футер сайта с контактами, навигацией, реквизитами и сервисными ссылками.
 
 import { Link } from 'react-router-dom';
@@ -122,7 +123,9 @@ export default function SiteFooter({ onOpenQuote, onManageCookies }) {
               <h3 className="site-footer__title">Как мы работаем</h3>
               <div className="site-footer__links">
                 <Link to="/how-to-order/">Как оформить заявку</Link>
-                <Link to="/specification/">Заявка по спецификации</Link>
+                <QuoteAction to="/specification/">
+                  Заявка по спецификации
+                </QuoteAction>
                 <Link to={PAYMENT_CANONICAL_PATH}>Условия оплаты</Link>
                 <Link to={DELIVERY_CANONICAL_PATH}>Получение заказа</Link>
                 <Link to={CABLE_WEIGHT_CANONICAL_PATH}>Калькулятор веса</Link>

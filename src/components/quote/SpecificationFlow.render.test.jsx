@@ -5,6 +5,39 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import QuoteForm from './QuoteForm';
 describe('specification form', () => {
+  it('отправляет марки и метраж из комментария без файла', async () => {
+    const user = userEvent.setup();
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ ok: true, message: 'Заявка принята' }),
+    });
+    vi.stubGlobal('fetch', fetchMock);
+    render(<QuoteForm itemsOverride={[]} />);
+    await user.type(screen.getByLabelText(/Имя/), 'Иван');
+    await user.type(screen.getByLabelText(/Телефон/), '+79001234567');
+    await user.click(screen.getByLabelText(/Даю согласие/));
+    await user.click(
+      screen.getByRole('button', { name: 'Отправить запрос КП' })
+    );
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(
+      screen.getByText(
+        'Укажите марки и метраж в комментарии или прикрепите спецификацию.'
+      )
+    ).toBeInTheDocument();
+    await user.type(screen.getByLabelText(/^Комментарий/), 'АВБбШв 4х4, 10 м');
+    await user.click(
+      screen.getByRole('button', { name: 'Отправить запрос КП' })
+    );
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body)).toMatchObject({
+      items: [],
+      customer: { comment: 'АВБбШв 4х4, 10 м' },
+    });
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Заявка принята'
+    );
+  });
   it('отправляет файлы и параметры одной multipart-заявкой и показывает её состав', async () => {
     const user = userEvent.setup();
     const fetchMock = vi.fn().mockResolvedValue({

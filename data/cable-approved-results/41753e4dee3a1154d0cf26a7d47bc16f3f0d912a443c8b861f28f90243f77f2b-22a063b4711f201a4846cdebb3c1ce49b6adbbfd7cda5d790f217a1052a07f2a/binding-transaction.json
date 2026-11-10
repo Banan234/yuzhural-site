@@ -1,0 +1,139 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/41753e4dee3a1154d0cf26a7d47bc16f3f0d912a443c8b861f28f90243f77f2b-22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000055",
+        "before": {
+          "image": "/product-images/generated/avvgnga-ls__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 55,
+          "sourceName": "АВВГ  1х 70 нг(А)LS",
+          "productName": "АВВГнг(А)-LS 1х70",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 70,
+          "family": "avvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "avvgng-a-ls__1c__solid__round__1core-brown__p-2b34ca711518acdc",
+          "sha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_5f9aa6e22732412157e364f9ee29319b25df1d595c17becd6b8f57b6f72d3c89.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 55,
+          "sourceName": "АВВГ  1х 70 нг(А)LS",
+          "productName": "АВВГнг(А)-LS 1х70",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 70,
+          "visualKey": "avvgng-a-ls__1c__solid__round__1core-brown__p-2b34ca711518acdc",
+          "sha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.122Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000056",
+        "before": {
+          "image": "/product-images/generated/avvgnga-ls__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 56,
+          "sourceName": "АВВГ  1х 95 нг(А)LS",
+          "productName": "АВВГнг(А)-LS 1х95",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 95,
+          "family": "avvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "avvgng-a-ls__1c__solid__round__1core-brown__p-2b34ca711518acdc",
+          "sha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_5f9aa6e22732412157e364f9ee29319b25df1d595c17becd6b8f57b6f72d3c89.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 56,
+          "sourceName": "АВВГ  1х 95 нг(А)LS",
+          "productName": "АВВГнг(А)-LS 1х95",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 95,
+          "visualKey": "avvgng-a-ls__1c__solid__round__1core-brown__p-2b34ca711518acdc",
+          "sha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.122Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

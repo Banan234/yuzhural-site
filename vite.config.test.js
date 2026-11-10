@@ -70,3 +70,45 @@ it('отдаёт свежий прайс после смены выпуска, �
     await fs.rm(root, { recursive: true, force: true });
   }
 });
+
+it('serves the fallback buyer workbook as an Excel attachment for GET and HEAD', async () => {
+  const fs = await import('node:fs/promises');
+  const os = await import('node:os');
+  const path = await import('node:path');
+  const { runtimePriceMiddleware } = await import('./vite.config.js');
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'buyer-download-'));
+  try {
+    await fs.mkdir(path.join(root, 'public'));
+    await fs.writeFile(path.join(root, 'public/price-buyer.xlsx'), 'workbook');
+    for (const method of ['GET', 'HEAD']) {
+      const headers = {};
+      let body;
+      await runtimePriceMiddleware(root)(
+        { url: '/price-buyer.xlsx', method },
+        {
+          setHeader: (key, value) => {
+            headers[key] = value;
+          },
+          end: (value) => {
+            body = value;
+          },
+        },
+        () => {
+          throw new Error('unexpected fallback');
+        }
+      );
+      expect(headers['Content-Type']).toBe(
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      );
+      expect(headers['Content-Disposition']).toBe(
+        'attachment; filename="price-buyer.xlsx"'
+      );
+      expect(headers['Content-Length']).toBe(8);
+      expect(method === 'HEAD' ? body : body.toString()).toBe(
+        method === 'HEAD' ? undefined : 'workbook'
+      );
+    }
+  } finally {
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});

@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { setTimeout as delay } from 'node:timers/promises';
 
@@ -37,6 +38,25 @@ export function createImageProvider(
         config.imageEndpoint === 'edits' && config.referenceImage
           ? await readFile(config.referenceImage)
           : null;
+      if (
+        config.requiredReferenceSha256 &&
+        (!reference ||
+          createHash('sha256').update(reference).digest('hex') !==
+            config.requiredReferenceSha256)
+      )
+        throw new Error(
+          'Required style reference missing or changed before upload'
+        );
+      const additionalReferences = [];
+      for (const r of config.additionalReferenceImages || []) {
+        const bytes = await readFile(r.path);
+        if (
+          !r.sha256 ||
+          createHash('sha256').update(bytes).digest('hex') !== r.sha256
+        )
+          throw Error('Edit target SHA-256 mismatch');
+        additionalReferences.push(bytes);
+      }
       for (let attempt = 1; attempt <= config.retries + 1; attempt += 1) {
         await onAttempt(attempt);
         try {
@@ -60,6 +80,12 @@ export function createImageProvider(
               new Blob([reference], { type: 'image/png' }),
               'style-reference.png'
             );
+            for (const [i, bytes] of additionalReferences.entries())
+              body.append(
+                'image[]',
+                new Blob([bytes], { type: 'image/png' }),
+                `edit-target-${i + 1}.png`
+              );
           } else {
             headers['Content-Type'] = 'application/json';
             body = JSON.stringify({ ...fields, n: 1 });

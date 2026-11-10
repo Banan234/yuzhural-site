@@ -1,3 +1,5 @@
+import { explainImportRun } from './importRunExplanation.js';
+import { classifyImportFailure } from './importFailureCategory.js';
 import { readSourceState } from './importSourceState.js';
 import { createHash } from 'crypto';
 import { writeFileAtomic } from './importPublisher.js';
@@ -7,17 +9,38 @@ import nodemailer from 'nodemailer';
 import { buildReportHtml } from './importReport.js';
 
 export function buildImportEmail(report) {
-  const success = report.status === 'published';
+  const success = ['published', 'unchanged'].includes(report.status);
+  const failure = success ? null : classifyImportFailure(report);
   const date = new Intl.DateTimeFormat('ru-RU', {
     timeZone: 'Asia/Yekaterinburg',
     dateStyle: 'short',
     timeStyle: 'short',
-  }).format(new Date(report.generatedAt));
+  }).format(new Date(report.startedAt || report.telemetry?.startedAt || report.generatedAt));
   const s = report.summary || {};
   const lines = [
-    success ? 'Каталог обновлён.' : 'Импорт не выполнен. Каталог не обновлён.',
-    `Запуск: ${date} (Екатеринбург).`,
+    success
+      ? report.status === 'unchanged'
+        ? 'Проверка восстановлена. Прайс не изменился; повторная публикация не нужна.'
+        : 'Каталог обновлён.'
+      : 'Импорт не выполнен. Каталог не обновлён.',
+    ...explainImportRun(report),
+    report.lastPublishedAt
+      ? `Последняя публикация: ${new Date(report.lastPublishedAt).toLocaleString('ru-RU', { timeZone: 'Asia/Yekaterinburg' })} (Екатеринбург).`
+      : null,
+    ...(failure
+      ? [
+          `Причина сбоя: ${failure.title} [${failure.code}]`,
+          ...(report.diagnostic
+            ? [`Последняя ошибка скачивания: ${report.diagnostic}`]
+            : []),
+        ]
+      : []),
     report.message,
+    ...(report.catalogFallbacks?.length
+      ? [
+          `Предупреждение: ${report.catalogFallbacks.length} страниц каталога переведены в клиентский режим. Данные обновлены; серверный HTML требует проверки.`,
+        ]
+      : []),
     ...[
       ['Товаров в результате', 'productsImported'],
       ['Добавлено', 'added'],
@@ -35,7 +58,7 @@ export function buildImportEmail(report) {
     'Подробный отчёт этого запуска — во вложении.',
   ];
   return {
-    subject: `Прайс: ${success ? 'обновлён' : 'ОШИБКА'} — ${date}`,
+    subject: `Прайс: ${report.recovered ? 'работа восстановлена' : success ? (report.catalogFallbacks?.length ? 'обновлён с предупреждением' : 'обновлён') : `ОШИБКА: ${failure.title}`} — ${date}`,
     text: lines.filter(Boolean).join('\n'),
   };
 }
@@ -48,7 +71,10 @@ export function importFailureFingerprint(report) {
         source:
           report.source?.requestedUrl || report.sourceUrl || report.sourceFile,
         sha256: report.source?.sha256 || null,
-        message: report.message || '',
+        message:
+          classifyImportFailure(report).code === 'unknown'
+            ? report.message || ''
+            : classifyImportFailure(report).code,
       })
     )
     .digest('hex');
@@ -69,7 +95,21 @@ export async function archiveAndNotifyImport(
   );
   const fingerprint = importFailureFingerprint(report);
   const state = await readSourceState(stateFile);
-  if (fingerprint && state?.failureFingerprint === fingerprint) {
+  const sourceState = await readSourceState(
+    path.join(projectRoot, 'data', '.price-source-state.json')
+  );
+  report.lastPublishedAt ||= sourceState?.publishedAt;
+  if (['published', 'unchanged'].includes(report.status)) {
+    report.recovered = Boolean(state?.failureFingerprint);
+    if (report.status === 'unchanged' && !report.recovered)
+      return { sent: false, suppressed: true };
+  }
+
+  if (
+    fingerprint &&
+    (state?.failureFingerprint === fingerprint ||
+      state?.incidentFingerprints?.includes(fingerprint))
+  ) {
     console.log(
       '[import-email] Повтор той же ошибки: новый архив и письмо не создаются.'
     );
@@ -91,7 +131,18 @@ export async function archiveAndNotifyImport(
   // Фиксируем подавление только после сохранения письма в надёжную очередь.
   await writeFileAtomic(
     stateFile,
-    JSON.stringify({ failureFingerprint: fingerprint })
+    JSON.stringify({
+      failureFingerprint: fingerprint,
+      incidentFingerprints: fingerprint
+        ? [
+            ...new Set([
+              ...(state?.incidentFingerprints || []),
+              ...(state?.failureFingerprint ? [state.failureFingerprint] : []),
+              fingerprint,
+            ]),
+          ]
+        : [],
+    })
   );
   const result = await retryPendingImportEmails({
     projectRoot,
@@ -153,7 +204,7 @@ export async function retryPendingImportEmails({
         );
         const filename = entry.slice(0, -5);
         const result = await transport.sendMail({
-          from: env.SMTP_FROM,
+          from: env.PRICE_IMPORT_REPORT_FROM?.trim() || env.SMTP_FROM,
           to: env.PRICE_IMPORT_REPORT_TO,
           messageId: `<price-import-${createHash('sha256').update(entry).digest('hex')}@yuzhural.local>`,
           ...buildImportEmail(report),

@@ -1,0 +1,9 @@
+{
+  "version": "layer-contact-1.0.0",
+  "scope": "Prospective rendering and manual QA only; never change approved PNGs or visualKey",
+  "confirmedSingleCoreFamilies": ["kgvvng-a-ls", "vvgng-a-ls"],
+  "basis": "User-confirmed rendering requirement for the existing single-core technical profiles: common jacket tightly encloses the individually insulated core.",
+  "directContact": "For a confirmed directly adjacent jacket/insulation interface, show continuous tight contact, no visible air annulus and no free hollow tube. Preserve the distinct cut edges, order and realistic thickness of actual layers.",
+  "exceptions": "Do not remove or compress documented fillers, separators, screens, armour, fire barriers, spacers, tubes or intentional voids. Unknown adjacency is not evidence of direct contact. Do not infer direct contact from core count alone.",
+  "verification": "Manual pixel inspection required. HTTP success and PNG alpha do not verify layer contact. Unverifiable geometry remains NEEDS_REVIEW."
+}

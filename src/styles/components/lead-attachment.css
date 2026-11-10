@@ -1,0 +1,72 @@
+.home-contact-form__attachment {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  position: relative;
+}
+.home-contact-form__file-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  max-width: 100%;
+  color: var(--primary-dark);
+  font-size: 14px;
+  cursor: pointer;
+}
+.home-contact-form__file-label span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.home-contact-form__file-label svg {
+  flex-shrink: 0;
+}
+.home-contact-form__attachment small {
+  color: var(--muted);
+  font-size: 12px;
+}
+.home-contact-form__attachment:focus-within .home-contact-form__file-label {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.home-contact-form__attachment .home-contact-form__file-remove {
+  min-height: 28px;
+  width: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 22px;
+}
+
+.lead-attachment-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.lead-attachment-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+  color: var(--primary-dark);
+  font-size: var(--text-small);
+}
+.lead-attachment-list span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.lead-attachment-list small {
+  color: var(--muted);
+  white-space: nowrap;
+}
+.lead-attachment-list button {
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 22px;
+}

@@ -45,3 +45,9 @@ data/.import-maintenance.json.lock
 
 # Полные исследовательские оригиналы и поисковый SQLite-корпус
 data/designation-manufacturer-corpus/
+
+# Delivery receipts contain private operational state
+data/form-receipts/
+
+# Private admin records and edits
+data/admin/

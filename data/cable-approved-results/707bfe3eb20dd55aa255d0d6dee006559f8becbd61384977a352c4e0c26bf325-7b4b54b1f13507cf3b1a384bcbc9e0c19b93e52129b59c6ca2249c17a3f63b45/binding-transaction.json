@@ -1,0 +1,75 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "7b4b54b1f13507cf3b1a384bcbc9e0c19b93e52129b59c6ca2249c17a3f63b45",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/707bfe3eb20dd55aa255d0d6dee006559f8becbd61384977a352c4e0c26bf325-7b4b54b1f13507cf3b1a384bcbc9e0c19b93e52129b59c6ca2249c17a3f63b45/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000759",
+        "before": {
+          "image": "/product-images/generated/vvgnga-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 759,
+          "sourceName": "ВВГ  1х1.5 нг(А)хл",
+          "productName": "ВВГнг(А)-ХЛ 1х1.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 1.5,
+          "family": "vvgng-a-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-a-hl__1c__solid__round__1core-brown__p-2bff09c67c210411",
+          "sha256": "7b4b54b1f13507cf3b1a384bcbc9e0c19b93e52129b59c6ca2249c17a3f63b45",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_79932357f616405c397d8542172354fd5272abe0e0eac911660bc8fbc77b359e.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 759,
+          "sourceName": "ВВГ  1х1.5 нг(А)хл",
+          "productName": "ВВГнг(А)-ХЛ 1х1.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 1.5,
+          "visualKey": "vvgng-a-hl__1c__solid__round__1core-brown__p-2bff09c67c210411",
+          "sha256": "7b4b54b1f13507cf3b1a384bcbc9e0c19b93e52129b59c6ca2249c17a3f63b45",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "7b4b54b1f13507cf3b1a384bcbc9e0c19b93e52129b59c6ca2249c17a3f63b45",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:10.007Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

@@ -80,7 +80,7 @@ export const SITE_PHONE_HREF = `tel:${SITE_PHONE}`;
 export const SITE_EMAIL = readPublicConfigValue(
   'SITE_EMAIL',
   'VITE_SITE_EMAIL',
-  'kabelh@bk.ru'
+  'yuek.sales@yandex.com'
 );
 export const SITE_EMAIL_HREF = `mailto:${SITE_EMAIL}`;
 export const SITE_WHATSAPP_PHONE = normalizePhoneDigits(

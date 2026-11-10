@@ -1,3 +1,4 @@
+import { withCableImagePreview } from './cableImagePreview.js';
 // Файл инкапсулирует клиентские запросы к API товаров, категорий, подсказок и лид-форм.
 
 import { messages } from '../../shared/messages.js';
@@ -5,7 +6,9 @@ import { expectOkApiJson } from './apiResponse.js';
 
 async function fetchJson(url, signal, fallbackMessage) {
   const response = await fetch(url, { signal });
-  return expectOkApiJson(response, fallbackMessage);
+  return withCableImagePreview(
+    await expectOkApiJson(response, fallbackMessage)
+  );
 }
 
 export function fetchProducts(signal, options = {}) {
@@ -18,6 +21,7 @@ export function fetchProducts(signal, options = {}) {
     'priceMax',
     'material',
     'construction',
+    'flat',
     'cores',
     'section',
     'voltage',

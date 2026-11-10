@@ -12,6 +12,19 @@ import {
   POWER_CABLE_GROUPS,
 } from './powerCableGroups.js';
 
+export function isFlatCable(product) {
+  const attributes = product.attributes || [];
+  const title = String(product.title || product.fullName || product.name || '');
+  return (
+    attributes.some((value) => /^(?:п|плоский)$/iu.test(value)) ||
+    /(?:^|\s)плоский(?=\s|$)/iu.test(title) ||
+    /(?:^|\s)п(?=\s|$)/iu.test(title.slice(title.search(/\d/u))) ||
+    /^(?:А?ВВГп|АсВВГп|ШВВП|ПУНП|ПУГНП|А?ППВ)(?=нг|[\s-]|$)/iu.test(
+      product.mark || title
+    )
+  );
+}
+
 export function normalizeSearchText(value) {
   return String(value || '')
     .trim()
@@ -78,6 +91,9 @@ export function normalizeCatalogFilterQueryCore(query = {}) {
         : typeof query.sort === 'string' && query.sort.trim()
           ? query.sort
           : 'default',
+    selectedFlat: normalizeStringList(query.selectedFlat ?? query.flat).filter(
+      (value) => ['yes', 'no'].includes(value)
+    ),
     selectedMaterials: normalizeStringList(
       query.selectedMaterials ?? query.material
     ),
@@ -118,6 +134,7 @@ export function buildCatalogFacetsCore(items) {
   const appTypeSet = new Set();
   const powerGroupSet = new Set();
   const facetCounts = {
+    flat: Object.create(null),
     materials: Object.create(null),
     constructions: Object.create(null),
     cores: Object.create(null),
@@ -133,6 +150,7 @@ export function buildCatalogFacetsCore(items) {
   let maxPrice = -Infinity;
 
   for (const product of items) {
+    count('flat', isFlatCable(product) ? 'yes' : 'no');
     materialSet.add(getConductorMaterial(product));
     constructionSet.add(getWireConstruction(product));
 
@@ -162,6 +180,7 @@ export function buildCatalogFacetsCore(items) {
 
   return {
     facetCounts,
+    flat: ['yes', 'no'],
     materials: [...materialSet].sort((a, b) => a.localeCompare(b, 'ru')),
     constructions: [...constructionSet].sort((a, b) =>
       a.localeCompare(b, 'ru')
@@ -187,6 +206,7 @@ export function buildCatalogFacetsForQueryCore(items, query = {}) {
   const normalizedQuery = normalizeCatalogFilterQueryCore(query);
   const baseFacets = buildCatalogFacetsCore(items);
   const facetFilters = [
+    ['flat', 'selectedFlat'],
     ['materials', 'selectedMaterials'],
     ['constructions', 'selectedConstructions'],
     ['cores', 'selectedCores'],
@@ -211,6 +231,7 @@ export function buildCatalogFacetsForQueryCore(items, query = {}) {
   // Keep an active choice visible when a combination has no matches so the
   // user can remove it directly instead of having to reset every filter.
   const selectedFacetValues = [
+    ['flat', normalizedQuery.selectedFlat],
     ['materials', normalizedQuery.selectedMaterials],
     ['constructions', normalizedQuery.selectedConstructions],
     ['cores', normalizedQuery.selectedCores],
@@ -251,6 +272,11 @@ export function applyProductFiltersCore(items, query) {
   const priceMinNumber = query.priceMinNumber;
   const priceMaxNumber = query.priceMaxNumber;
 
+  if (query.selectedFlat?.length) {
+    result = result.filter((item) =>
+      query.selectedFlat.includes(isFlatCable(item) ? 'yes' : 'no')
+    );
+  }
   if (selectedMaterials.length > 0) {
     result = result.filter((item) =>
       selectedMaterials.includes(getConductorMaterial(item))

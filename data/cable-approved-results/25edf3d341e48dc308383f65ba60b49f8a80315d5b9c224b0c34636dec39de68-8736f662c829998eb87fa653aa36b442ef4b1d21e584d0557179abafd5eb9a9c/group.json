@@ -1,0 +1,1173 @@
+{
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "model": "gpt-image-2.5-flare",
+  "httpStatus": 200,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.49379932356257045,
+    "has_transparency": true,
+    "transparent_ratio": 0.5844561745569539,
+    "non_opaque_ratio": 0.9997540574171072,
+    "foreground_ratio": 0.41478756788841453,
+    "bounds": {
+      "minX": 154,
+      "minY": 64,
+      "maxX": 1773,
+      "maxY": 692
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "8736f662c829998eb87fa653aa36b442ef4b1d21e584d0557179abafd5eb9a9c",
+    "bytes": 1063606
+  },
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 4,
+    "expectedMetalEndCount": 4,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 4,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "technicalProfile": {
+    "version": "construction-contract-3",
+    "outerSheathGeometry": "ROUND",
+    "family": "avvg",
+    "insulatedCoreCount": 4,
+    "coreMetalEndCount": 4,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "armor": {
+      "present": false,
+      "type": null
+    },
+    "screen": {
+      "present": false,
+      "type": null
+    },
+    "screenVisualStandard": null,
+    "screenType": null,
+    "screenFunction": null,
+    "armorFunction": null,
+    "screenRendering": null,
+    "armorType": null,
+    "fireBarrierMaterial": null,
+    "fireBarrierPlacement": null,
+    "constructionSource": null,
+    "constructionBasis": null,
+    "fireBarrier": false,
+    "layers": [
+      {
+        "role": "outer-jacket",
+        "scope": "overall",
+        "appearance": "black"
+      },
+      {
+        "role": "individual-insulation",
+        "scope": "each-core"
+      }
+    ],
+    "layerRoleCount": 2,
+    "layerCountScope": "role count; each-core roles repeat on every core; not a count of manufacturing tape wraps",
+    "additionalConductors": [],
+    "cores": [
+      {
+        "id": 1,
+        "color": "brown",
+        "metalEndId": 1,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 2,
+        "color": "black",
+        "metalEndId": 2,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 3,
+        "color": "grey",
+        "metalEndId": 3,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 4,
+        "color": "yellow-green",
+        "metalEndId": 4,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "unknownInternalFillers": "not specified: do not invent visible layers",
+    "verification": {
+      "status": "NEEDS_REVIEW",
+      "pixelVerification": "NOT_AUTOMATED",
+      "insulatedCoreCount": null,
+      "coreMetalEndCount": null,
+      "additionalConductorCount": null,
+      "layerRoles": null
+    }
+  },
+  "multicoreStripping": null,
+  "geometryPilot": null,
+  "geometryRevision": null,
+  "outerSheathGeometry": "ROUND",
+  "constructionCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "insulatedCoreCount": null,
+    "coreMetalEndCount": null,
+    "additionalConductorCount": null,
+    "layerRoles": null
+  },
+  "geometryCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "status": "APPROVED",
+  "automaticProductionBinding": false,
+  "manualChecksRequired": [
+    "coreCount",
+    "material",
+    "colours",
+    "layers",
+    "direction",
+    "proportions",
+    "stripping",
+    "background",
+    "referenceMatch",
+    "metalEndCount",
+    "equalDiameters",
+    "relativeDiameters",
+    "coaxialStripping",
+    "geometryConsistency",
+    "noExtraCylinders"
+  ],
+  "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+  "profile": {
+    "family": "avvg",
+    "productType": "power-cable",
+    "cores": 4,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "black",
+      "grey",
+      "yellow-green"
+    ],
+    "coreColorScheme": "4core-brown-black-grey-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "members": [
+    {
+      "sku": "YU-0000163",
+      "name": "АВВГ 4х2.5",
+      "sourceName": "АВВГ 4х2.5",
+      "id": 163,
+      "slug": "avvg-4h2-5-4j",
+      "section": 2.5,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "a59a012776246790988f0fff8fec06e824c254eec2de2cd2fb2045a0639f9b1b",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 163,
+        "sourceName": "АВВГ 4х2.5",
+        "productName": "АВВГ 4х2.5",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 2.5,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 163,
+          "sourceName": "АВВГ 4х2.5",
+          "productName": "АВВГ 4х2.5",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 2.5,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000166",
+      "name": "АВВГ 4х4",
+      "sourceName": "АВВГ 4х4",
+      "id": 166,
+      "slug": "avvg-4h4-4m",
+      "section": 4,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "247afc9e1a045227cbe7749f64875481e637fe8910dd434a15e0bee7bcc910c7",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 166,
+        "sourceName": "АВВГ 4х4",
+        "productName": "АВВГ 4х4",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 4,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 166,
+          "sourceName": "АВВГ 4х4",
+          "productName": "АВВГ 4х4",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 4,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000169",
+      "name": "АВВГ 4х6",
+      "sourceName": "АВВГ 4х6",
+      "id": 169,
+      "slug": "avvg-4h6-4p",
+      "section": 6,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "71dd91172933b5d378521255c2abe421d152e97d00e28688bcbe97191017f1c5",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 169,
+        "sourceName": "АВВГ 4х6",
+        "productName": "АВВГ 4х6",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 6,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 169,
+          "sourceName": "АВВГ 4х6",
+          "productName": "АВВГ 4х6",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 6,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000170",
+      "name": "АВВГ 4х10",
+      "sourceName": "АВВГ 4х 10",
+      "id": 170,
+      "slug": "avvg-4h10-4q",
+      "section": 10,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "a108a7c931807600e9bca1c9867c142de7e12565d6d980c6b206b8fa384bd89e",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 170,
+        "sourceName": "АВВГ 4х 10",
+        "productName": "АВВГ 4х10",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 10,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 170,
+          "sourceName": "АВВГ 4х 10",
+          "productName": "АВВГ 4х10",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 10,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000173",
+      "name": "АВВГ 4х25",
+      "sourceName": "АВВГ 4х 25",
+      "id": 173,
+      "slug": "avvg-4h25-4t",
+      "section": 25,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "f2d7a09f7278bf44d3503d678eef177dbcae688f7d512aff9f004734e43f893c",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 173,
+        "sourceName": "АВВГ 4х 25",
+        "productName": "АВВГ 4х25",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 25,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 173,
+          "sourceName": "АВВГ 4х 25",
+          "productName": "АВВГ 4х25",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 25,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000175",
+      "name": "АВВГ 4х35",
+      "sourceName": "АВВГ 4х 35",
+      "id": 175,
+      "slug": "avvg-4h35-4v",
+      "section": 35,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "1433c72a303384a99d060bce097bfce1f24aeb60107cd9d2edc071e7ea29a238",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 175,
+        "sourceName": "АВВГ 4х 35",
+        "productName": "АВВГ 4х35",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 35,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 175,
+          "sourceName": "АВВГ 4х 35",
+          "productName": "АВВГ 4х35",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 35,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000177",
+      "name": "АВВГ 4х50",
+      "sourceName": "АВВГ 4х 50",
+      "id": 177,
+      "slug": "avvg-4h50-4x",
+      "section": 50,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "fc7b7db5e39c6b7111ec5ce9d29af64386ce6b20dc92355f3c1fc86858bdf125",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 177,
+        "sourceName": "АВВГ 4х 50",
+        "productName": "АВВГ 4х50",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 50,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 177,
+          "sourceName": "АВВГ 4х 50",
+          "productName": "АВВГ 4х50",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 50,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000180",
+      "name": "АВВГ 4х70",
+      "sourceName": "АВВГ 4х 70",
+      "id": 180,
+      "slug": "avvg-4h70-50",
+      "section": 70,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "8647e1b52b7b04060a3233a7247cdba9c94559ec69884dc740ba949c7883f7e8",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 180,
+        "sourceName": "АВВГ 4х 70",
+        "productName": "АВВГ 4х70",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 70,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 180,
+          "sourceName": "АВВГ 4х 70",
+          "productName": "АВВГ 4х70",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 70,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000185",
+      "name": "АВВГ 4х95",
+      "sourceName": "АВВГ 4х 95",
+      "id": 185,
+      "slug": "avvg-4h95-55",
+      "section": 95,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "26a611099112448674742161f8e742cb389c9354cadb3e7c4f257767fac1adca",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 185,
+        "sourceName": "АВВГ 4х 95",
+        "productName": "АВВГ 4х95",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 95,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 185,
+          "sourceName": "АВВГ 4х 95",
+          "productName": "АВВГ 4х95",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 95,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000186",
+      "name": "АВВГ 4х120",
+      "sourceName": "АВВГ 4х120",
+      "id": 186,
+      "slug": "avvg-4h120-56",
+      "section": 120,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "02b25780cc9ed9b7fa87150512d3802ae391e212d71bf9f58e43f150f7948d39",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 186,
+        "sourceName": "АВВГ 4х120",
+        "productName": "АВВГ 4х120",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 120,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 186,
+          "sourceName": "АВВГ 4х120",
+          "productName": "АВВГ 4х120",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 120,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000189",
+      "name": "АВВГ 4х150",
+      "sourceName": "АВВГ 4х150",
+      "id": 189,
+      "slug": "avvg-4h150-59",
+      "section": 150,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "5b5536ff72a28c703ae7a74ab5aad4de4d93ae447ebb15bedcf5e57208ce726c",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 189,
+        "sourceName": "АВВГ 4х150",
+        "productName": "АВВГ 4х150",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 150,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 189,
+          "sourceName": "АВВГ 4х150",
+          "productName": "АВВГ 4х150",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 150,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000193",
+      "name": "АВВГ 4х185",
+      "sourceName": "АВВГ 4х185",
+      "id": 193,
+      "slug": "avvg-4h185-5d",
+      "section": 185,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "fb9b7244bbb9432387305dc62b13e936ea836aaddc3eb70ce989fec8ef8d86fb",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 193,
+        "sourceName": "АВВГ 4х185",
+        "productName": "АВВГ 4х185",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 185,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 193,
+          "sourceName": "АВВГ 4х185",
+          "productName": "АВВГ 4х185",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 185,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0000196",
+      "name": "АВВГ 4х240",
+      "sourceName": "АВВГ 4х240",
+      "id": 196,
+      "slug": "avvg-4h240-5g",
+      "section": 240,
+      "primaryCores": 4,
+      "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+      "visualizationType": "SIMPLE",
+      "productHash": "4c19b9261eb3943db9e7101797708a1c3779f2a4ce5001dcb1031f6ff3f98a3a",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__4core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 196,
+        "sourceName": "АВВГ 4х240",
+        "productName": "АВВГ 4х240",
+        "primaryCores": 4,
+        "cores": 4,
+        "section": 240,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+        "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/avvg__4core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/avvg__4core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 196,
+          "sourceName": "АВВГ 4х240",
+          "productName": "АВВГ 4х240",
+          "primaryCores": 4,
+          "cores": 4,
+          "section": 240,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "420a70a7bef187c4a14322ecf54883575ba432dfbe005a32589259bcaea1223c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    }
+  ],
+  "draftKey": "0f8bd46632cd24891df399521d68c6a82db4b901589137adaa74175ed9b05391",
+  "approvedSeriesReference": {
+    "path": "/Users/Shared/yuzhural-site/data/cable-approved-results/a2a6f7f80a32a6364bce4b13140a9fe39568c8c12d01b4a86b9f546c09eb87ec-5a94a906cd7ad746e986578d0cda433addc71b0ca9bd24d1ffda82033189548b/image.png",
+    "sha256": "5a94a906cd7ad746e986578d0cda433addc71b0ca9bd24d1ffda82033189548b",
+    "visualKey": "avvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-4b690fd988f163a5",
+    "profile": {
+      "family": "avvgng-a-ls",
+      "productType": "power-cable",
+      "cores": 4,
+      "conductorMaterial": "aluminium",
+      "conductorConstruction": "solid",
+      "conductorShape": "circular",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacket": "black",
+      "armor": false,
+      "armorType": null,
+      "shield": false,
+      "shieldType": null,
+      "specialElements": [],
+      "coreColors": [
+        "brown",
+        "black",
+        "grey",
+        "yellow-green"
+      ],
+      "coreColorScheme": "4core-brown-black-grey-yellow-green",
+      "pairedGroupSize": null,
+      "sectionKey": null,
+      "unresolvedModifiers": [],
+      "unresolvedFamilySuffix": null,
+      "visualizationType": "SIMPLE"
+    },
+    "score": 146,
+    "differences": [
+      "family"
+    ],
+    "librarySize": 6,
+    "ranking": [
+      {
+        "visualKey": "avvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-4b690fd988f163a5",
+        "score": 146
+      },
+      {
+        "visualKey": "kvvgng-a-ls__7c__solid__round__7core-control-black__p-5ddfe9e44500c0ff",
+        "score": 124
+      },
+      {
+        "visualKey": "sip-4__4c__stranded__twisted-bundle__4core-black-black-black-black__p-35a9ef805227b5ad",
+        "score": 96
+      },
+      {
+        "visualKey": "shvvp__2c__stranded__flat__2core-brown-blue__p-3e347be614526744",
+        "score": 94
+      },
+      {
+        "visualKey": "pugv__1c__stranded__round__1core-white__p-158003053538284a",
+        "score": 86
+      },
+      {
+        "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+        "score": 70
+      }
+    ]
+  },
+  "manualReview": {
+    "status": "APPROVED",
+    "reviewer": "Пользователь",
+    "sha256": "8736f662c829998eb87fa653aa36b442ef4b1d21e584d0557179abafd5eb9a9c",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "basis": "Explicit user approval of all five exact latest PNGs; minor VVG-LS halo accepted without processing. Not automated semantic verification.",
+    "sourceMessage": "Пользователь проверил последнюю партию из пяти изображений и утвердил все пять. Для двух ВВГ использовать исправленные PNG из revisions.",
+    "publicationAuthorized": true,
+    "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-09T11:49:06.977Z"
+  }
+}

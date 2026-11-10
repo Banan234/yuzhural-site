@@ -22,6 +22,12 @@ export const BACKUP_FILES = Object.freeze([
   'import-report.html',
   'chat-store.json',
   'forms-outbox',
+  'form-receipts',
+  'admin',
+  '.price-source-state.json',
+  '.import-notification-state.json',
+  'import-mail-outbox',
+  'priceOverrides.json',
   'public',
 ]);
 

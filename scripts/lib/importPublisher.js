@@ -1,3 +1,4 @@
+import { setImportStage } from './importTelemetry.js';
 import { isProductPending } from '../../shared/productAvailability.js';
 // Подготовка файлов импорта, SEO/prerender и транзакционная установка.
 
@@ -20,6 +21,8 @@ import {
 } from './priceImportComparison.js';
 import { buildReportHtml } from './importReport.js';
 import { enrichPriceDesignations } from '../../shared/productDesignationBatch.js';
+import { buildBuyerPrice } from './buyerPrice.js';
+import { publicPriceContacts } from './publicPriceContacts.js';
 
 export async function writeFileAtomic(filePath, data, { mode } = {}) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
@@ -107,6 +110,8 @@ async function writeRuntimeProductPrerender({
   templateDir,
   sourceFile,
   categoriesData,
+  diagnosticsDir,
+  onFallback,
 }) {
   if (!seoSummary) {
     throw new Error(
@@ -133,6 +138,9 @@ async function writeRuntimeProductPrerender({
     outputDir,
     templateDir,
     categoriesData,
+    allowClientFallback: true,
+    diagnosticsDir,
+    onFallback,
   });
   const productDir = path.join(outputDir, 'product');
   const writtenCount = await countHtmlFiles(productDir);
@@ -306,7 +314,11 @@ export async function publishImportArtifacts({
     await saveProductRegistry(stagedRegistryFile, registry);
     await writeFileAtomic(
       path.join(stagedPublicDir, path.basename(publicPriceFile)),
-      sourcePriceBuffer
+      publicPriceContacts(sourcePriceBuffer)
+    );
+    await writeFileAtomic(
+      path.join(stagedPublicDir, 'price-buyer.xlsx'),
+      await buildBuyerPrice(products, { generatedAt })
     );
     if (downloadedPriceBuffer) {
       await writeFileAtomic(
@@ -327,12 +339,14 @@ export async function publishImportArtifacts({
     const categoriesData = JSON.parse(
       await fs.readFile(categoriesFile, 'utf-8')
     );
+    setImportStage('Сборка SEO');
     const seoSummary = await writeSeoArtifacts({
       outputDir: stagedPublicDir,
       siteUrl,
       products,
       categoriesData,
     });
+    setImportStage('Сборка HTML товаров');
     const runtimeProductPrerenderCount = await writeRuntimeProductPrerender({
       products,
       seoSummary,
@@ -340,6 +354,16 @@ export async function publishImportArtifacts({
       templateDir: runtimePrerenderTemplateDir,
       sourceFile: outputFile,
       categoriesData,
+      diagnosticsDir: path.join(
+        projectRoot,
+        'data',
+        'import-diagnostics',
+        generatedAt.replace(/[^a-zA-Z0-9-]/g, '-')
+      ),
+      onFallback: (diagnostic) => {
+        report.catalogFallbacks ||= [];
+        report.catalogFallbacks.push(diagnostic);
+      },
     });
     report.seo = seoSummary.counts;
     report.runtimeProductPrerenderCount = runtimeProductPrerenderCount;
@@ -383,7 +407,9 @@ export async function publishImportArtifacts({
       },
     ];
 
+    setImportStage('Публикация файлов');
     await commitArtifactBatch(artifacts);
+    setImportStage('Публикация завершена');
     const compatibilityWarnings = (
       await Promise.all([
         refreshCompatibilityFile(

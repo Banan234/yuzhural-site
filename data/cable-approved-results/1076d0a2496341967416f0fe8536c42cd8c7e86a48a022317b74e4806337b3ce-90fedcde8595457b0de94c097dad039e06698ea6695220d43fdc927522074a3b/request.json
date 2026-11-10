@@ -1,0 +1,168 @@
+{
+  "standardVersion": "approved-cable-style-1.1.0",
+  "standardSha256": "9efe6f176dd789859814e89c2e41571c3d8c18268fabb662ab5e1893e95dfa60",
+  "reference": {
+    "path": "assets/cable-style-reference/simple.png",
+    "source": "outputs/visual-reference-v2.1/simple-round.png",
+    "sha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+  },
+  "endpoint": "images/edits",
+  "model": "gpt-image-2.5-flare",
+  "prompt": "STYLE INPUT ONLY: the attached PNG is NOT a technical drawing of this cable. It supplies camera, scale, composition, tilt, lighting and render quality ONLY. Discard its internal geometry completely and rebuild the target core assembly from the following construction contract. Do not mechanically add or remove a reference wire. Technical contract overrides reference anatomy. EXACTLY 5 insulated cores and EXACTLY 5 corresponding exposed core ends. One-to-one numbered core/end mapping; every end must be individually visible and centered in its own insulation. No extra core, hidden stub, duplicate end, cap or dummy cylinder. ABSOLUTELY NO ARMOR: no overlapping steel tapes, no steel wires, even if visible in reference. NO SCREEN and NO DRAIN wire. NO fire barrier. NO additional conductors and NO drain wire; do not copy the previous draft drain. Layer roles are explicit: do not invent bedding/filler/tape layers from the PNG. Preserve overall reference envelope and scale while rebuilding internal geometry. Construction contract: {\"version\":\"construction-contract-3\",\"outerSheathGeometry\":\"ROUND\",\"family\":\"pvs\",\"insulatedCoreCount\":5,\"coreMetalEndCount\":5,\"conductorMaterial\":\"copper\",\"conductorConstruction\":\"stranded\",\"armor\":{\"present\":false,\"type\":null},\"screen\":{\"present\":false,\"type\":null},\"screenVisualStandard\":null,\"screenType\":null,\"screenFunction\":null,\"armorFunction\":null,\"screenRendering\":null,\"armorType\":null,\"fireBarrierMaterial\":null,\"fireBarrierPlacement\":null,\"constructionSource\":null,\"constructionBasis\":null,\"fireBarrier\":false,\"layers\":[{\"role\":\"outer-jacket\",\"scope\":\"overall\",\"appearance\":\"white\"},{\"role\":\"individual-insulation\",\"scope\":\"each-core\"}],\"layerRoleCount\":2,\"layerCountScope\":\"role count; each-core roles repeat on every core; not a count of manufacturing tape wraps\",\"additionalConductors\":[],\"cores\":[{\"id\":1,\"color\":\"brown\",\"metalEndId\":1,\"metalEndCount\":1,\"relativeDiameter\":1},{\"id\":2,\"color\":\"black\",\"metalEndId\":2,\"metalEndCount\":1,\"relativeDiameter\":1},{\"id\":3,\"color\":\"grey\",\"metalEndId\":3,\"metalEndCount\":1,\"relativeDiameter\":1},{\"id\":4,\"color\":\"blue\",\"metalEndId\":4,\"metalEndCount\":1,\"relativeDiameter\":1},{\"id\":5,\"color\":\"yellow-green\",\"metalEndId\":5,\"metalEndCount\":1,\"relativeDiameter\":1}],\"unknownInternalFillers\":\"not specified: do not invent visible layers\",\"verification\":{\"status\":\"NEEDS_REVIEW\",\"pixelVerification\":\"NOT_AUTOMATED\",\"insulatedCoreCount\":null,\"coreMetalEndCount\":null,\"additionalConductorCount\":null,\"layerRoles\":null}}. Before rendering verify a bijection of all insulated cores and their metal ends; after rendering the result still requires independent pixel/manual verification. Use the attached USER-APPROVED SIMPLE reference as the mandatory visual standard, version approved-cable-style-1.1.0. This reference defines style, scale, composition, tilt, camera, materials appearance, lighting, detail, left margin, proportions and exposed metal/insulation lengths. Preserve these parameters; no artistic experiments. Rebuild internal geometry as required by the supplied technical contract: exact insulated core count, colours, actual conductor material, solid/stranded construction and documented layers/family details. Do not copy the reference core count when it differs from target. COPPER conductors. Each core is STRANDED; show fine wires inside each core, not extra insulated cores. EXACTLY 5 insulated cores. Compact volumetric bundle, never flat fan. Intact body on RIGHT continues beyond right canvas edge; stripped end and bare conductor extensions on LEFT fully visible. Match reference bare-metal length with clear insulation boundary; no ferrules/lugs. Include only documented construction layers; never add screen/armour if false. True transparent PNG, no dark halos, haze, baked shadows, background residue, text or logos. Nominal section does not change overall reference scale. MANDATORY CORE GEOMETRY: 5 insulated cores and 5 separate exposed metallic ends. All metal conductors must be copies of the SAME-diameter geometry, with only natural perspective differences. Insulated core outer diameters must also match if insulation construction and wall thickness are the same. Relative metal diameter groups (count and normalized diameter): [{\"count\":5,\"relativeDiameter\":1}]. Every bare end exits the CENTRE of its corresponding insulation, with a sharp stripping boundary and constant diameter. Circular solid ends must be true cylinders, no swelling, narrowing, distortion, caps or sleeves. Keep stranded construction where specified. Material: copper. No extra stumps/cylinders. Correct all cores as a consistent geometric set, never patch one defective core in isolation. Preserve reference global scale regardless of nominal section, composition, camera, tilt, stripping lengths, transparency and lighting. Insulation rule: Equal outer diameters when insulation construction and wall thickness are equal. Target visualProfile: {\"family\":\"pvs\",\"productType\":\"flexible-wire\",\"cores\":5,\"conductorMaterial\":\"copper\",\"conductorConstruction\":\"stranded\",\"conductorShape\":\"circular\",\"geometry\":\"round\",\"hasOuterJacket\":true,\"outerJacket\":\"white\",\"armor\":false,\"armorType\":null,\"shield\":false,\"shieldType\":null,\"specialElements\":[],\"coreColors\":[\"brown\",\"black\",\"grey\",\"blue\",\"yellow-green\"],\"coreColorScheme\":\"5core-brown-black-grey-blue-yellow-green\",\"pairedGroupSize\":null,\"sectionKey\":null,\"unresolvedModifiers\":[],\"unresolvedFamilySuffix\":null,\"visualizationType\":\"SIMPLE\"}. Mandatory constraints: [\"no decorative experiments\",\"no text logos or watermark\",\"transparent PNG; no halo baked shadow or residual background\",\"no invented or missing cores/layers\",\"actual flat/twisted/non-round constructions require separate approved reference; never force round\"].    OUTER_SHEATH_GEOMETRY=ROUND. Geometry is determined by the technical profile, NEVER by the number of cores or the word flat in a title. Use a ROUND common outer sheath, even with only TWO cores; do not copy the flat SHVVP geometry.  ",
+  "profile": {
+    "family": "pvs",
+    "productType": "flexible-wire",
+    "cores": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "white",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "black",
+      "grey",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 5,
+    "expectedMetalEndCount": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 5,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "technicalProfile": {
+    "version": "construction-contract-3",
+    "outerSheathGeometry": "ROUND",
+    "family": "pvs",
+    "insulatedCoreCount": 5,
+    "coreMetalEndCount": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "armor": {
+      "present": false,
+      "type": null
+    },
+    "screen": {
+      "present": false,
+      "type": null
+    },
+    "screenVisualStandard": null,
+    "screenType": null,
+    "screenFunction": null,
+    "armorFunction": null,
+    "screenRendering": null,
+    "armorType": null,
+    "fireBarrierMaterial": null,
+    "fireBarrierPlacement": null,
+    "constructionSource": null,
+    "constructionBasis": null,
+    "fireBarrier": false,
+    "layers": [
+      {
+        "role": "outer-jacket",
+        "scope": "overall",
+        "appearance": "white"
+      },
+      {
+        "role": "individual-insulation",
+        "scope": "each-core"
+      }
+    ],
+    "layerRoleCount": 2,
+    "layerCountScope": "role count; each-core roles repeat on every core; not a count of manufacturing tape wraps",
+    "additionalConductors": [],
+    "cores": [
+      {
+        "id": 1,
+        "color": "brown",
+        "metalEndId": 1,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 2,
+        "color": "black",
+        "metalEndId": 2,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 3,
+        "color": "grey",
+        "metalEndId": 3,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 4,
+        "color": "blue",
+        "metalEndId": 4,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 5,
+        "color": "yellow-green",
+        "metalEndId": 5,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "unknownInternalFillers": "not specified: do not invent visible layers",
+    "verification": {
+      "status": "NEEDS_REVIEW",
+      "pixelVerification": "NOT_AUTOMATED",
+      "insulatedCoreCount": null,
+      "coreMetalEndCount": null,
+      "additionalConductorCount": null,
+      "layerRoles": null
+    }
+  },
+  "multicoreStripping": null,
+  "editTarget": null,
+  "geometryPilot": null,
+  "geometryRevision": null,
+  "geometryReference": null,
+  "outerSheathGeometry": "ROUND",
+  "qualityStatus": "NEEDS_REVIEW",
+  "automaticProductionBinding": false,
+  "status": "requesting"
+}

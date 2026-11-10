@@ -1,3 +1,4 @@
+import { setImportStage, telemetrySnapshot } from './lib/importTelemetry.js';
 import {
   indexSourceIdentities,
   resolveSourcePresence,
@@ -753,6 +754,7 @@ function extractUnrecognizedPrefix(product) {
 }
 
 async function saveReport(report) {
+  report.telemetry ||= telemetrySnapshot();
   await writeFileAtomic(reportFile, JSON.stringify(report, null, 2));
 }
 
@@ -803,6 +805,7 @@ async function main() {
     );
   }
 
+  setImportStage('Получение источника');
   const priceSource = await acquirePriceSource({
     remoteUrl: remoteSourceUrl,
     filePath: inputFile,
@@ -829,7 +832,21 @@ async function main() {
       source: currentSourceMetadata,
       message: 'Прайс не изменился; обновление каталога не требуется.',
     });
-    console.log('Прайс не изменился: импорт и письмо пропущены.');
+    const verifiedAt = new Date().toISOString();
+    const sourceState = await readSourceState(sourceStateFile);
+    await writeFileAtomic(
+      sourceStateFile,
+      JSON.stringify({ ...sourceState, verifiedAt })
+    );
+    await archiveAndNotifyImport(
+      {
+        generatedAt: verifiedAt,
+        status: 'unchanged',
+        message: 'Источник проверен, опубликованный прайс актуален.',
+      },
+      { projectRoot }
+    );
+    console.log('Прайс не изменился: импорт пропущен, проверка успешна.');
     return;
   }
   const sourcePriceBuffer = priceSource.buffer;
@@ -850,6 +867,7 @@ async function main() {
   const registry = await loadCurrentProductRegistry();
   await loadPriceOverrides();
 
+  setImportStage('Чтение Excel');
   const rows = await loadWorkbookRows({ sourceBuffer: sourcePriceBuffer });
   const schema = detectSchema(rows);
 
@@ -890,6 +908,7 @@ async function main() {
   const quarantined = importResult.products.filter(
     (product) => product.importDisposition === 'review'
   );
+  setImportStage('Проверка данных');
   const diagnostics = validateNormalizedProducts(classifiedProducts, {
     excludedNonCable: importResult.excludedNonCable,
     reviewRows: importResult.reviewRows,
@@ -1147,6 +1166,7 @@ async function main() {
       .toLowerCase() !== 'false'
   ) {
     // main() already owns the shared import/backup/restore lock.
+    setImportStage('Резервная копия');
     backup = await createBackup({ lockAlreadyHeld: true });
     report.backup = {
       id: backup.id,
@@ -1160,6 +1180,7 @@ async function main() {
 
   if (!isDryRun) {
     try {
+      setImportStage('Сборка и публикация');
       const published = await publishImportArtifacts({
         projectRoot,
         catalogDir,
@@ -1373,6 +1394,12 @@ if (isMainModule && process.env.PRICE_IMPORT_WATCHDOG_CHILD !== '1') {
           status: 'failed',
           blocked: true,
           message: error.message,
+          errorCode: error.code,
+          diagnostic: error.diagnostic,
+          telemetry: error.telemetry,
+          startedAt: error.startedAt,
+          completedAt: error.completedAt,
+          timeoutMs: error.timeoutMs,
         };
         try {
           await updateImportStatus(importStatusFile, 'failed', {
@@ -1426,6 +1453,7 @@ if (isMainModule && process.env.PRICE_IMPORT_WATCHDOG_CHILD !== '1') {
           status: attemptError ? 'failed' : 'published',
           completedAt: new Date().toISOString(),
           retryableDownload: Boolean(attemptError?.retryableDownload),
+          errorCode: attemptError?.code,
           blocked: Boolean(attemptError),
           message: attemptError
             ? attemptError.message

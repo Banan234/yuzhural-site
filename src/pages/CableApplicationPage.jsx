@@ -1,3 +1,4 @@
+import QuoteAction from '../components/forms/QuoteAction';
 import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import ServiceLayout from '../components/services/ServiceLayout';
@@ -92,12 +93,12 @@ export default function CableApplicationPage() {
             >
               Передать параметры менеджеру
             </button>
-            <Link
+            <QuoteAction
               className="button-secondary"
               to={`/specification/?${new URLSearchParams({ request })}`}
             >
               Приложить спецификацию
-            </Link>
+            </QuoteAction>
           </div>
         </section>
       </div>

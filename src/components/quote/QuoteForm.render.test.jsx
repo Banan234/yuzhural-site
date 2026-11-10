@@ -102,7 +102,7 @@ describe('QuoteForm render flow', () => {
     expect(localStorage.getItem('yuzhural-quote-form')).toBeNull();
   });
 
-  it('блокирует отправку при пустой корзине и не вызывает API', async () => {
+  it('блокирует отправку без позиций, файла и комментария', async () => {
     const user = userEvent.setup();
     const fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock);
@@ -113,7 +113,11 @@ describe('QuoteForm render flow', () => {
     await user.click(screen.getByRole('button', { name: /отправить.*КП/i }));
 
     expect(fetchMock).not.toHaveBeenCalled();
-    expect(screen.getByText(/корзин.*пуст/i)).toBeVisible();
+    expect(
+      screen.getByText(
+        'Укажите марки и метраж в комментарии или прикрепите спецификацию.'
+      )
+    ).toBeVisible();
     expect(screen.queryByRole('status')).not.toBeInTheDocument();
   });
 

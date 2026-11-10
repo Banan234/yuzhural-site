@@ -1,0 +1,12 @@
+{
+  "version": "common-sheath-stripping-composition-1.0.0",
+  "mode": "conditional-composition-preference",
+  "insulatedCoreExposedLengthRatio": { "min": 1.2, "max": 1.3 },
+  "bareMetalLengthRatio": 1,
+  "overallScaleRatio": 1,
+  "baseline": "current selected APPROVED reference; one extension only, never compound with multicore-stripping-1.0.0",
+  "applicability": "Confirmed common outer sheath and at least two individually insulated cores; only where the cable construction and composition permit. Do not infer a common sheath from core count.",
+  "exceptions": "Do not apply to sheathless wires, twisted sheathless bundles or single-core constructions mechanically. If constructionAllowsExtendedStripping is false, retain safe stripping geometry; never sacrifice documented layer visibility or invent bends.",
+  "preserve": ["bare-metal-length", "core-count", "core-diameters", "colors", "jacket-thickness", "overall-scale", "camera", "tilt", "direction", "composition", "documented-layer-visibility"],
+  "approvedResults": "Future requests only. Existing APPROVED pixels, statuses and bindings remain unchanged; this preference never triggers regeneration."
+}

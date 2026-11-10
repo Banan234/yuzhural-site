@@ -1,0 +1,26 @@
+{
+  "version": "approved-cable-style-1.1.0",
+  "configSha256": "9efe6f176dd789859814e89c2e41571c3d8c18268fabb662ab5e1893e95dfa60",
+  "references": {
+    "SIMPLE": {
+      "path": "assets/cable-style-reference/simple.png",
+      "source": "outputs/visual-reference-v2.1/simple-round.png",
+      "sha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+    },
+    "MULTICORE": {
+      "path": "assets/cable-style-reference/multicore.png",
+      "source": "outputs/visual-reference-v2.3/multicore-dense.png",
+      "sha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2"
+    },
+    "LAYERED": {
+      "path": "assets/cable-style-reference/layered.png",
+      "source": "outputs/visual-reference-v2.1/layered-tape-armour.png",
+      "sha256": "77faedb4e001968085053f1b01e247fa431990302bb63f286af27eb810ca100f"
+    },
+    "MULTICORE + LAYERED": {
+      "path": "assets/cable-style-reference/multicore-layered.png",
+      "source": "outputs/visual-reference-position-options/variant-C.png",
+      "sha256": "40e6c0db611b3a47756c8c2d18b4b876627210f8b2412fe6e89f4df6d327624c"
+    }
+  }
+}

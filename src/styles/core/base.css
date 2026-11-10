@@ -260,3 +260,38 @@ html {
     scroll-padding-top: 100px;
   }
 }
+
+/* Native buttons replacing former specification links keep their link styling. */
+:where(button.quote-action) {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+@keyframes feedback-appear {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .field-error,
+  .form-success,
+  .hero-lead-form__success,
+  .home-contact-form__success {
+    animation: feedback-appear 240ms ease-out;
+  }
+
+  .cart-summary__total strong {
+    animation: feedback-appear 200ms ease-out;
+  }
+}

@@ -70,3 +70,40 @@ it('ротирует лог, сохраняя открытый файл, и ог
     await fs.rm(projectRoot, { recursive: true, force: true });
   }
 });
+
+it('cleans old diagnostic files without following symlinks and retains latest diagnostics', async () => {
+  const projectRoot = await fs.mkdtemp(
+    path.join(os.tmpdir(), 'diagnostic-cleanup-')
+  );
+  try {
+    const root = path.join(projectRoot, 'data/import-diagnostics');
+    const old = path.join(root, '2026-08-01T00-00-00-000Z');
+    const latest = path.join(root, '2026-08-02T00-00-00-000Z');
+    await fs.mkdir(old, { recursive: true });
+    await fs.mkdir(latest);
+    for (const dir of [old, latest]) {
+      await fs.writeFile(path.join(dir, '1-0.html'), 'diagnostic');
+      await fs.utimes(
+        path.join(dir, '1-0.html'),
+        new Date('2026-08-01'),
+        new Date('2026-08-01')
+      );
+    }
+    const outside = path.join(projectRoot, 'keep.txt');
+    await fs.writeFile(outside, 'keep');
+    await fs.symlink(outside, path.join(old, '2-0.json'));
+    await fs.writeFile(path.join(old, 'notes.txt'), 'keep');
+    const result = await maintainImportFiles({
+      projectRoot,
+      now: Date.parse('2026-11-07T00:00:00Z'),
+    });
+    expect(result.removedDiagnostics).toBe(1);
+    expect(await fs.readFile(outside, 'utf8')).toBe('keep');
+    expect(await fs.readFile(path.join(latest, '1-0.html'), 'utf8')).toBe(
+      'diagnostic'
+    );
+    expect(await fs.readFile(path.join(old, 'notes.txt'), 'utf8')).toBe('keep');
+  } finally {
+    await fs.rm(projectRoot, { recursive: true, force: true });
+  }
+});

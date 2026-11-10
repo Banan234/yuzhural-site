@@ -1,0 +1,395 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/6e3f4009d08f54c3aa874b6f20d2e1290f672b1ca0f130d1fc890489e4b2e124-1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000049",
+        "before": {
+          "image": "/product-images/generated/avvg__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 49,
+          "sourceName": "АВВГ  1х2.5",
+          "productName": "АВВГ 1х2.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 2.5,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0122a1f0d9efabff2523269e912137ffd7b97603bcf5ec9ad4504cd29af3dad3.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 49,
+          "sourceName": "АВВГ  1х2.5",
+          "productName": "АВВГ 1х2.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 2.5,
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.919Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000050",
+        "before": {
+          "image": "/product-images/generated/avvg__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 50,
+          "sourceName": "АВВГ  1х 10",
+          "productName": "АВВГ 1х10",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 10,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0122a1f0d9efabff2523269e912137ffd7b97603bcf5ec9ad4504cd29af3dad3.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 50,
+          "sourceName": "АВВГ  1х 10",
+          "productName": "АВВГ 1х10",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 10,
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.919Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000051",
+        "before": {
+          "image": "/product-images/generated/avvg__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 51,
+          "sourceName": "АВВГ  1х 16",
+          "productName": "АВВГ 1х16",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 16,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0122a1f0d9efabff2523269e912137ffd7b97603bcf5ec9ad4504cd29af3dad3.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 51,
+          "sourceName": "АВВГ  1х 16",
+          "productName": "АВВГ 1х16",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 16,
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.919Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000052",
+        "before": {
+          "image": "/product-images/generated/avvg__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 52,
+          "sourceName": "АВВГ  1х 35",
+          "productName": "АВВГ 1х35",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 35,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0122a1f0d9efabff2523269e912137ffd7b97603bcf5ec9ad4504cd29af3dad3.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 52,
+          "sourceName": "АВВГ  1х 35",
+          "productName": "АВВГ 1х35",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 35,
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.919Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000053",
+        "before": {
+          "image": "/product-images/generated/avvg__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 53,
+          "sourceName": "АВВГ  1х 50",
+          "productName": "АВВГ 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0122a1f0d9efabff2523269e912137ffd7b97603bcf5ec9ad4504cd29af3dad3.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 53,
+          "sourceName": "АВВГ  1х 50",
+          "productName": "АВВГ 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.919Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000054",
+        "before": {
+          "image": "/product-images/generated/avvg__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 54,
+          "sourceName": "АВВГ  1х 70",
+          "productName": "АВВГ 1х70",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 70,
+          "family": "avvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0122a1f0d9efabff2523269e912137ffd7b97603bcf5ec9ad4504cd29af3dad3.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 54,
+          "sourceName": "АВВГ  1х 70",
+          "productName": "АВВГ 1х70",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 70,
+          "visualKey": "avvg__1c__solid__round__1core-brown__p-8c2e1e985bef6208",
+          "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:08.919Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

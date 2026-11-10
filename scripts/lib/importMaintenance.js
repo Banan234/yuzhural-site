@@ -50,9 +50,48 @@ export async function maintainImportFiles({
     );
     let removedReports = 0;
     let rotatedLogs = 0;
+    let removedDiagnostics = 0;
+    const diagnosticsRoot = path.join(
+      projectRoot,
+      'data',
+      'import-diagnostics'
+    );
+    const diagnosticNames = (await files(diagnosticsRoot))
+      .filter((name) =>
+        /^\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/.test(name)
+      )
+      .sort();
+    const latestDiagnostic = diagnosticNames.at(-1);
+    for (const name of diagnosticNames) {
+      if (
+        name === latestDiagnostic ||
+        [...pending].some((entry) => entry.startsWith(`import-${name}-`))
+      )
+        continue;
+      const directory = path.join(diagnosticsRoot, name);
+      const directoryStat = await fs.lstat(directory);
+      if (!directoryStat.isDirectory() || directoryStat.isSymbolicLink())
+        continue;
+      const timestamp = Date.parse(
+        name.replace(/T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z$/, 'T$1:$2:$3.$4Z')
+      );
+      if (now - timestamp <= 30 * DAY) continue;
+      for (const entry of await files(directory)) {
+        if (!/^\d+-\d+\.(html|json)$/.test(entry)) continue;
+        const file = path.join(directory, entry);
+        const stat = await regularStat(file);
+        if (stat && now - stat.mtimeMs > 30 * DAY) {
+          await fs.unlink(file);
+          removedDiagnostics++;
+        }
+      }
+      await fs.rmdir(directory).catch((error) => {
+        if (!['ENOTEMPTY', 'ENOENT'].includes(error.code)) throw error;
+      });
+    }
     for (const name of await files(archive)) {
       const match =
-        /^import-(\d{4}-\d{2}-\d{2})T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z-(published|failed)\.(html|json)$/.exec(
+        /^import-(\d{4}-\d{2}-\d{2})T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z-(published|failed|unchanged)\.(html|json)$/.exec(
           name
         );
       if (!match || pending.has(name.replace(/\.(html|json)$/, ''))) continue;
@@ -104,10 +143,11 @@ export async function maintainImportFiles({
         day: today,
         completedAt: new Date(now).toISOString(),
         removedReports,
+        removedDiagnostics,
         rotatedLogs,
       })
     );
-    return { removedReports, rotatedLogs };
+    return { removedReports, rotatedLogs, removedDiagnostics };
   } finally {
     await release();
   }

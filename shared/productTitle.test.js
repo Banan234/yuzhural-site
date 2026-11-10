@@ -193,3 +193,30 @@ describe('цвета в названиях и марках без распозн
     ).toBe('НВМ син-600');
   });
 });
+
+describe('отдельный признак плоского кабеля', () => {
+  test.each(['АВВГ 2х4 п', 'ВВГ 2х1.5 п нг(А)-LS'])('%s', (sourceName) => {
+    const product = normalizeImportedProduct({ name: sourceName, unit: 'м' });
+    expect(product.name).toBe(sourceName.replace(' п', ' плоский'));
+    expect(product.attributes).toContain('плоский');
+    expect(product.attributes).not.toContain('п');
+    expect(product.sourceName).toBe(sourceName);
+    expect(normalizeImportedProduct(product)).toEqual(product);
+    expect(buildStableKey(product)).toBe(
+      buildStableKey({
+        ...product,
+        attributes: product.attributes.map((a) => (a === 'плоский' ? 'п' : a)),
+      })
+    );
+    const legacy = { mark: product.mark, attributes: ['п'] };
+    expect(formatCableProductTitle(sourceName, legacy)).toBe(product.name);
+    expect(formatCableProductAttributes(legacy)).toEqual(['плоский']);
+  });
+
+  test.each(['ПВС 2х1.5', 'ППГ 3х2.5', 'КПСВВ 1х2х0.5', 'ВВГ 3х2.5 8П'])(
+    'сохраняет марку и другие обозначения: %s',
+    (title) => {
+      expect(formatCableProductTitle(title, {})).toBe(title);
+    }
+  );
+});

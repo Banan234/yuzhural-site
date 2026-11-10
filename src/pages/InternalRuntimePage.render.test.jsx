@@ -56,6 +56,14 @@ function jsonResponse(body, { ok = true, status = 200 } = {}) {
   };
 }
 
+function stubRuntimeFetch(fetchMock) {
+  vi.stubGlobal('fetch', (url, options) =>
+    url === '/api/catalog-revision'
+      ? Promise.resolve(jsonResponse({ hasManualEdits: false }))
+      : fetchMock(url, options)
+  );
+}
+
 async function flushMicrotasks() {
   await act(async () => {
     await Promise.resolve();
@@ -166,7 +174,7 @@ afterEach(() => {
 
 describe('InternalRuntimePage render flow', () => {
   it('остаётся noindex-страницей без canonical', async () => {
-    vi.stubGlobal('fetch', vi.fn());
+    stubRuntimeFetch(vi.fn());
 
     renderInternalRuntimeRoute();
 
@@ -182,7 +190,7 @@ describe('InternalRuntimePage render flow', () => {
   it('показывает приглашение ввести токен и не ходит в API без него', async () => {
     const user = userEvent.setup();
     const fetchMock = vi.fn();
-    vi.stubGlobal('fetch', fetchMock);
+    stubRuntimeFetch(fetchMock);
 
     renderInternalRuntimeRoute();
 
@@ -222,7 +230,7 @@ describe('InternalRuntimePage render flow', () => {
 
       throw new Error(`Unexpected request: ${String(url)}`);
     });
-    vi.stubGlobal('fetch', fetchMock);
+    stubRuntimeFetch(fetchMock);
 
     renderInternalRuntimeRoute();
 
@@ -269,7 +277,7 @@ describe('InternalRuntimePage render flow', () => {
 
       throw new Error(`Unexpected request: ${String(url)}`);
     });
-    vi.stubGlobal('fetch', fetchMock);
+    stubRuntimeFetch(fetchMock);
 
     renderInternalRuntimeRoute();
 
@@ -300,7 +308,7 @@ describe('InternalRuntimePage render flow', () => {
 
       throw new Error(`Unexpected request: ${String(url)}`);
     });
-    vi.stubGlobal('fetch', fetchMock);
+    stubRuntimeFetch(fetchMock);
 
     renderInternalRuntimeRoute();
 
@@ -342,7 +350,7 @@ describe('InternalRuntimePage render flow', () => {
 
       throw new Error(`Unexpected request: ${String(url)}`);
     });
-    vi.stubGlobal('fetch', fetchMock);
+    stubRuntimeFetch(fetchMock);
 
     renderInternalRuntimeRoute();
 
@@ -388,7 +396,7 @@ describe('InternalRuntimePage render flow', () => {
 
       throw new Error(`Unexpected request: ${String(url)}`);
     });
-    vi.stubGlobal('fetch', fetchMock);
+    stubRuntimeFetch(fetchMock);
 
     renderInternalRuntimeRoute();
 
@@ -433,7 +441,7 @@ describe('InternalRuntimePage render flow', () => {
 
         throw new Error(`Unexpected request: ${String(url)}`);
       });
-      vi.stubGlobal('fetch', fetchMock);
+      stubRuntimeFetch(fetchMock);
 
       renderInternalRuntimeRoute();
 
@@ -465,7 +473,7 @@ describe('InternalRuntimePage render flow', () => {
 
       throw new Error(`Unexpected request: ${String(url)}`);
     });
-    vi.stubGlobal('fetch', fetchMock);
+    stubRuntimeFetch(fetchMock);
 
     renderInternalRuntimeRoute();
 
@@ -508,7 +516,7 @@ describe('InternalRuntimePage render flow', () => {
 
       throw new Error(`Unexpected request: ${String(url)}`);
     });
-    vi.stubGlobal('fetch', fetchMock);
+    stubRuntimeFetch(fetchMock);
 
     renderInternalRuntimeRoute();
 

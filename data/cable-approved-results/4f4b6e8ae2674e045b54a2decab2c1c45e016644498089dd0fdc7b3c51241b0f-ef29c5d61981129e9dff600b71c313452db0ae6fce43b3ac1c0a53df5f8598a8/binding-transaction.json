@@ -1,0 +1,445 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/4f4b6e8ae2674e045b54a2decab2c1c45e016644498089dd0fdc7b3c51241b0f-ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8/image.png",
+    "changes": [
+      {
+        "sku": "YU-0007329",
+        "before": {
+          "image": "/product-images/generated/vvgng-ls__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7329,
+          "sourceName": "ВВГ  1х1.5 нг LS",
+          "productName": "ВВГнг-LS 1х1.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 1.5,
+          "family": "vvgng-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_081e82be12885e0a46d5f7a2825e67224c861c7b3bcb977c99876bfd689291b8.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7329,
+          "sourceName": "ВВГ  1х1.5 нг LS",
+          "productName": "ВВГнг-LS 1х1.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 1.5,
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:48.573Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0007330",
+        "before": {
+          "image": "/product-images/generated/vvgng-ls__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7330,
+          "sourceName": "ВВГ  1х4 нг LS",
+          "productName": "ВВГнг-LS 1х4",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 4,
+          "family": "vvgng-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_081e82be12885e0a46d5f7a2825e67224c861c7b3bcb977c99876bfd689291b8.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7330,
+          "sourceName": "ВВГ  1х4 нг LS",
+          "productName": "ВВГнг-LS 1х4",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 4,
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:48.573Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0007331",
+        "before": {
+          "image": "/product-images/generated/vvgng-ls__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7331,
+          "sourceName": "ВВГ  1х6 нг LS",
+          "productName": "ВВГнг-LS 1х6",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 6,
+          "family": "vvgng-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_081e82be12885e0a46d5f7a2825e67224c861c7b3bcb977c99876bfd689291b8.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7331,
+          "sourceName": "ВВГ  1х6 нг LS",
+          "productName": "ВВГнг-LS 1х6",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 6,
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:48.573Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0007332",
+        "before": {
+          "image": "/product-images/generated/vvgng-ls__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7332,
+          "sourceName": "ВВГ  1х 10 нг LS",
+          "productName": "ВВГнг-LS 1х10",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 10,
+          "family": "vvgng-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_081e82be12885e0a46d5f7a2825e67224c861c7b3bcb977c99876bfd689291b8.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7332,
+          "sourceName": "ВВГ  1х 10 нг LS",
+          "productName": "ВВГнг-LS 1х10",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 10,
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:48.573Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0007333",
+        "before": {
+          "image": "/product-images/generated/vvgng-ls__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7333,
+          "sourceName": "ВВГ  1х 35 нг LS",
+          "productName": "ВВГнг-LS 1х35",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 35,
+          "family": "vvgng-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_081e82be12885e0a46d5f7a2825e67224c861c7b3bcb977c99876bfd689291b8.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7333,
+          "sourceName": "ВВГ  1х 35 нг LS",
+          "productName": "ВВГнг-LS 1х35",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 35,
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:48.573Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0007334",
+        "before": {
+          "image": "/product-images/generated/vvgng-ls__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7334,
+          "sourceName": "ВВГ  1х 50 нг LS",
+          "productName": "ВВГнг-LS 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "family": "vvgng-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_081e82be12885e0a46d5f7a2825e67224c861c7b3bcb977c99876bfd689291b8.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7334,
+          "sourceName": "ВВГ  1х 50 нг LS",
+          "productName": "ВВГнг-LS 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:48.573Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0007335",
+        "before": {
+          "image": "/product-images/generated/vvgng-ls__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7335,
+          "sourceName": "ВВГ  1х 95 нг LS",
+          "productName": "ВВГнг-LS 1х95",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 95,
+          "family": "vvgng-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_081e82be12885e0a46d5f7a2825e67224c861c7b3bcb977c99876bfd689291b8.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7335,
+          "sourceName": "ВВГ  1х 95 нг LS",
+          "productName": "ВВГнг-LS 1х95",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 95,
+          "visualKey": "vvgng-ls__1c__solid__round__1core-brown__p-8056dee482d5f068",
+          "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef29c5d61981129e9dff600b71c313452db0ae6fce43b3ac1c0a53df5f8598a8",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:48.573Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

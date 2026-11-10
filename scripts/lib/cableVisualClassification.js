@@ -1,5 +1,7 @@
+import { deriveOuterSheathGeometry } from './cableOuterSheathGeometry.js';
 import { createHash } from 'node:crypto';
 import { parseProductName } from './priceParser.js';
+import { withCableVisualization } from './cableVisualizationType.js';
 
 const letters = {
   а: 'a',
@@ -282,8 +284,13 @@ export function normalizeCableFamily(product, { knowledge, rules }) {
   };
 }
 
-/** Every appearance field participates, including unknowns. Section is opt-in only. */
+/** Construction fields define identity; section is opt-in and composition is derived. */
 export function makeVisualIdentity(profile) {
+  // Derived composition policy must not invalidate approved visualKey/SKU bindings.
+  deriveOuterSheathGeometry(profile);
+  const { visualizationType, outerSheathGeometry, ...identityProfile } =
+    profile;
+  const identityHash = visualHash(identityProfile);
   const colorRole = profile.coreColorScheme || 'colors-unknown';
   const key = [
     profile.family,
@@ -291,13 +298,13 @@ export function makeVisualIdentity(profile) {
     profile.conductorConstruction || 'construction-unknown',
     profile.geometry || 'geometry-unknown',
     colorRole,
-    `p-${visualHash(profile).slice(0, 16)}`,
+    `p-${identityHash.slice(0, 16)}`,
   ]
     .map(slug)
     .join('__');
   return {
     visualProfile: profile,
-    visualProfileId: visualHash(profile),
+    visualProfileId: identityHash,
     visualKey: key,
   };
 }
@@ -808,44 +815,47 @@ export function classifyCableVisualProduct(product, context) {
         )
       ? 'medium'
       : 'high';
-  return {
-    sku: product.sku ?? null,
-    productId: product.id ?? null,
-    slug: product.slug ?? null,
-    originalName: family.originalName,
-    displayName: product.fullName || product.name || family.originalName,
-    baseFamily,
-    familyId: family.familyId,
-    familyRecognized: family.familyRecognized,
-    modification: family.modification,
-    cores,
-    primaryCores,
-    section,
-    sectionUnit:
-      family.knowledgeRecord?.dimension === 'diameter'
-        ? 'diameter-mm'
-        : family.knowledgeRecord?.dimension === 'section' || rule.productType
-          ? 'mm2'
-          : 'unknown',
-    auxiliaryCores,
-    auxiliarySection,
-    construction: values.conductorConstruction,
-    geometry: values.geometry,
-    hasPE: values.hasPE,
-    hasN: values.hasN,
-    ...makeVisualIdentity(profile),
-    visualClassification: uniqueIssues.length ? 'needs_review' : 'recognized',
-    classificationConfidence: confidence,
-    issues: uniqueIssues,
-    notes: notes.filter(Boolean),
-    evidence,
-    existingRenderingDefault: values.conductorConstruction
-      ? null
-      : 'solid (previous illustration policy only; not a classification fact)',
-    currentImage: null,
-    imageStatus: 'NEEDS_REVIEW',
-    candidateImages: [],
-  };
+  return withCableVisualization(
+    {
+      sku: product.sku ?? null,
+      productId: product.id ?? null,
+      slug: product.slug ?? null,
+      originalName: family.originalName,
+      displayName: product.fullName || product.name || family.originalName,
+      baseFamily,
+      familyId: family.familyId,
+      familyRecognized: family.familyRecognized,
+      modification: family.modification,
+      cores,
+      primaryCores,
+      section,
+      sectionUnit:
+        family.knowledgeRecord?.dimension === 'diameter'
+          ? 'diameter-mm'
+          : family.knowledgeRecord?.dimension === 'section' || rule.productType
+            ? 'mm2'
+            : 'unknown',
+      auxiliaryCores,
+      auxiliarySection,
+      construction: values.conductorConstruction,
+      geometry: values.geometry,
+      hasPE: values.hasPE,
+      hasN: values.hasN,
+      ...makeVisualIdentity(profile),
+      visualClassification: uniqueIssues.length ? 'needs_review' : 'recognized',
+      classificationConfidence: confidence,
+      issues: uniqueIssues,
+      notes: notes.filter(Boolean),
+      evidence,
+      existingRenderingDefault: values.conductorConstruction
+        ? null
+        : 'solid (previous illustration policy only; not a classification fact)',
+      currentImage: null,
+      imageStatus: 'NEEDS_REVIEW',
+      candidateImages: [],
+    },
+    context
+  );
 }
 
 /** Compare known appearance facts only; ambiguity is never an approval. */

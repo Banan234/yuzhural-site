@@ -1,0 +1,578 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/18a87eba974924e8ccc48ff590d3d9d6d40c739318419daa07a143b5b1cba1e4-f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000872",
+        "before": {
+          "image": "/product-images/generated/vvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 872,
+          "sourceName": "ВВГ  2х1.5 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х1.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "family": "vvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_adc07b06fafb78d15065d739f0c3d575258383a2589060105eb8aa7b99d9ac16.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 872,
+          "sourceName": "ВВГ  2х1.5 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х1.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:47.982Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000887",
+        "before": {
+          "image": "/product-images/generated/vvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 887,
+          "sourceName": "ВВГ  2х2.5 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х2.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 2.5,
+          "family": "vvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_adc07b06fafb78d15065d739f0c3d575258383a2589060105eb8aa7b99d9ac16.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 887,
+          "sourceName": "ВВГ  2х2.5 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х2.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 2.5,
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:47.982Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000902",
+        "before": {
+          "image": "/product-images/generated/vvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 902,
+          "sourceName": "ВВГ  2х4 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "family": "vvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_adc07b06fafb78d15065d739f0c3d575258383a2589060105eb8aa7b99d9ac16.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 902,
+          "sourceName": "ВВГ  2х4 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:47.982Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000780",
+        "before": {
+          "image": "/product-images/generated/vvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 780,
+          "sourceName": "ВВГ  2х6 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х6",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 6,
+          "family": "vvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_adc07b06fafb78d15065d739f0c3d575258383a2589060105eb8aa7b99d9ac16.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 780,
+          "sourceName": "ВВГ  2х6 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х6",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 6,
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:47.982Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000788",
+        "before": {
+          "image": "/product-images/generated/vvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 788,
+          "sourceName": "ВВГ  2х 10 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х10",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 10,
+          "family": "vvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_adc07b06fafb78d15065d739f0c3d575258383a2589060105eb8aa7b99d9ac16.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 788,
+          "sourceName": "ВВГ  2х 10 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х10",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 10,
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:47.982Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000794",
+        "before": {
+          "image": "/product-images/generated/vvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 794,
+          "sourceName": "ВВГ  2х 16 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х16",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 16,
+          "family": "vvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_adc07b06fafb78d15065d739f0c3d575258383a2589060105eb8aa7b99d9ac16.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 794,
+          "sourceName": "ВВГ  2х 16 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х16",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 16,
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:47.982Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0006784",
+        "before": {
+          "image": "/product-images/generated/vvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 6784,
+          "sourceName": "ВВГ  2х 25 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х25",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 25,
+          "family": "vvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_adc07b06fafb78d15065d739f0c3d575258383a2589060105eb8aa7b99d9ac16.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 6784,
+          "sourceName": "ВВГ  2х 25 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х25",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 25,
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:47.982Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000801",
+        "before": {
+          "image": "/product-images/generated/vvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 801,
+          "sourceName": "ВВГ  2х 50 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х50",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 50,
+          "family": "vvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_adc07b06fafb78d15065d739f0c3d575258383a2589060105eb8aa7b99d9ac16.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 801,
+          "sourceName": "ВВГ  2х 50 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х50",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 50,
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:47.982Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000802",
+        "before": {
+          "image": "/product-images/generated/vvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 802,
+          "sourceName": "ВВГ  2х 95 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х95",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 95,
+          "family": "vvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_adc07b06fafb78d15065d739f0c3d575258383a2589060105eb8aa7b99d9ac16.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 802,
+          "sourceName": "ВВГ  2х 95 нг(А)LS",
+          "productName": "ВВГнг(А)-LS 2х95",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 95,
+          "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-8ab6884f130dd3ef",
+          "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "f1ed40bac94b2c275bf7fe095b9b9f6e5368588c8ea666ff379ad9be1049d12c",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:06:47.982Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

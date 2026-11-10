@@ -1,0 +1,283 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/f3a1f91865b543ef2c6ade7872857a9c3f83fe789dc655abf4ccbc73b7fd2727-a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df/image.png",
+    "changes": [
+      {
+        "sku": "YU-0002767",
+        "before": {
+          "image": "/product-images/generated/pr1_kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2767,
+          "sourceName": "КВВГ  7х 0.75 э нг(А)FRLS",
+          "productName": "КВВГнг(А)-FRLS 7х0.75 э",
+          "primaryCores": 7,
+          "cores": 7,
+          "section": 0.75,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kvvgeng-a-frls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+          "sha256": "e55f9b035e895802b0d2cded171abe41ee0574cc37ffa504129817a75eca9d18",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0fb5abfee5448e2982258311ccac5d458d969155ed37b3c431c0a5f6f34747ae.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2767,
+          "sourceName": "КВВГ  7х 0.75 э нг(А)FRLS",
+          "productName": "КВВГэнг(А)-FRLS 7х0.75",
+          "primaryCores": 7,
+          "cores": 7,
+          "section": 0.75,
+          "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+          "sha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-08T18:40:19.913Z"
+          },
+          "referenceSha256": "40e6c0db611b3a47756c8c2d18b4b876627210f8b2412fe6e89f4df6d327624c"
+        }
+      },
+      {
+        "sku": "YU-0002784",
+        "before": {
+          "image": "/product-images/generated/pr1_kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2784,
+          "sourceName": "КВВГ  7х 1 э нг(А)FRLS",
+          "productName": "КВВГнг(А)-FRLS 7х1 э",
+          "primaryCores": 7,
+          "cores": 7,
+          "section": 1,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kvvgeng-a-frls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+          "sha256": "e55f9b035e895802b0d2cded171abe41ee0574cc37ffa504129817a75eca9d18",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0fb5abfee5448e2982258311ccac5d458d969155ed37b3c431c0a5f6f34747ae.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2784,
+          "sourceName": "КВВГ  7х 1 э нг(А)FRLS",
+          "productName": "КВВГэнг(А)-FRLS 7х1",
+          "primaryCores": 7,
+          "cores": 7,
+          "section": 1,
+          "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+          "sha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-08T18:40:19.913Z"
+          },
+          "referenceSha256": "40e6c0db611b3a47756c8c2d18b4b876627210f8b2412fe6e89f4df6d327624c"
+        }
+      },
+      {
+        "sku": "YU-0002804",
+        "before": {
+          "image": "/product-images/generated/pr1_kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2804,
+          "sourceName": "КВВГ  7х 1.5 э нг(А)FRLS",
+          "productName": "КВВГнг(А)-FRLS 7х1.5 э",
+          "primaryCores": 7,
+          "cores": 7,
+          "section": 1.5,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kvvgeng-a-frls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+          "sha256": "e55f9b035e895802b0d2cded171abe41ee0574cc37ffa504129817a75eca9d18",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0fb5abfee5448e2982258311ccac5d458d969155ed37b3c431c0a5f6f34747ae.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2804,
+          "sourceName": "КВВГ  7х 1.5 э нг(А)FRLS",
+          "productName": "КВВГэнг(А)-FRLS 7х1.5",
+          "primaryCores": 7,
+          "cores": 7,
+          "section": 1.5,
+          "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+          "sha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-08T18:40:19.913Z"
+          },
+          "referenceSha256": "40e6c0db611b3a47756c8c2d18b4b876627210f8b2412fe6e89f4df6d327624c"
+        }
+      },
+      {
+        "sku": "YU-0002817",
+        "before": {
+          "image": "/product-images/generated/pr1_kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2817,
+          "sourceName": "КВВГ  7х 2.5 э нг(А)FRLS",
+          "productName": "КВВГнг(А)-FRLS 7х2.5 э",
+          "primaryCores": 7,
+          "cores": 7,
+          "section": 2.5,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "kvvgeng-a-frls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+          "sha256": "e55f9b035e895802b0d2cded171abe41ee0574cc37ffa504129817a75eca9d18",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_0fb5abfee5448e2982258311ccac5d458d969155ed37b3c431c0a5f6f34747ae.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 2817,
+          "sourceName": "КВВГ  7х 2.5 э нг(А)FRLS",
+          "productName": "КВВГэнг(А)-FRLS 7х2.5",
+          "primaryCores": 7,
+          "cores": 7,
+          "section": 2.5,
+          "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+          "sha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-08T18:40:19.913Z"
+          },
+          "referenceSha256": "40e6c0db611b3a47756c8c2d18b4b876627210f8b2412fe6e89f4df6d327624c"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

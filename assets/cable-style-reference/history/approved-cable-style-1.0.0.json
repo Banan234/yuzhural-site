@@ -1,0 +1,65 @@
+{
+  "version": "approved-cable-style-1.0.0",
+  "approval": "User final approval, 2026-11-08",
+  "model": "gpt-image-2.5-flare",
+  "provider": "codex-sale",
+  "baseUrl": "https://codex.sale/v1",
+  "endpoint": "images/edits",
+  "references": {
+    "SIMPLE": {
+      "path": "assets/cable-style-reference/simple.png",
+      "source": "outputs/visual-reference-v2.1/simple-round.png",
+      "sha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+    },
+    "MULTICORE": {
+      "path": "assets/cable-style-reference/multicore.png",
+      "source": "outputs/visual-reference-v2.3/multicore-dense.png",
+      "sha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2"
+    },
+    "LAYERED": {
+      "path": "assets/cable-style-reference/layered.png",
+      "source": "outputs/visual-reference-v2.1/layered-tape-armour.png",
+      "sha256": "77faedb4e001968085053f1b01e247fa431990302bb63f286af27eb810ca100f"
+    },
+    "MULTICORE + LAYERED": {
+      "path": "assets/cable-style-reference/multicore-layered.png",
+      "source": "outputs/visual-reference-position-options/variant-C.png",
+      "sha256": "40e6c0db611b3a47756c8c2d18b4b876627210f8b2412fe6e89f4df6d327624c"
+    }
+  },
+  "referencePolicy": "required image input; no silent text-only fallback",
+  "composition": {
+    "direction": "intact right, stripped left",
+    "tilt": "match selected reference",
+    "scale": "match selected reference; section metadata only",
+    "bundle": "compact three-dimensional; never flat fan",
+    "rightEdge": "intact sheath continues beyond canvas",
+    "leftMargin": "match selected reference; preserve all exposed tips",
+    "stripping": "match selected reference bare-metal and insulation lengths"
+  },
+  "allowedChanges": [
+    "core count",
+    "core insulation colours",
+    "conductor material and solid/stranded construction",
+    "documented layers",
+    "documented family construction"
+  ],
+  "constraints": [
+    "no decorative experiments",
+    "no text logos or watermark",
+    "transparent PNG; no halo baked shadow or residual background",
+    "no invented or missing cores/layers",
+    "actual flat/twisted/non-round constructions require separate approved reference; never force round"
+  ],
+  "postprocessing": {
+    "resize": false,
+    "crop": false,
+    "translation": false,
+    "preserveRawOutput": true
+  },
+  "qualityGate": {
+    "initialStatus": "NEEDS_REVIEW",
+    "automaticProductionBinding": false,
+    "semanticChecks": "manual visual verification required; PNG checks do not prove core count or conformity"
+  }
+}

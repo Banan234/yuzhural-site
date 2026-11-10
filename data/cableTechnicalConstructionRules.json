@@ -1,0 +1,40 @@
+{
+  "version": "construction-contract-2",
+  "screenTypes": [
+    "copper-wire-braid",
+    "copper-tape",
+    "copper-foil",
+    "aluminium-foil",
+    "alumoflex"
+  ],
+  "families": {
+    "vvgng-a-frls": {
+      "fireBarrier": true,
+      "fireBarrierMaterial": "mica-containing-tapes",
+      "fireBarrierPlacement": "around-each-conductor-under-individual-insulation",
+      "screen": false,
+      "screenType": null,
+      "armor": false,
+      "armorType": null,
+      "innerSheath": "PVC",
+      "drainWire": false,
+      "source": "https://www.uncomtech.ru/marks/download/V13A",
+      "basis": "Manufacturer documented family construction; catalog illustration, not identification of SKU manufacturer"
+    },
+    "kvvgeng-a-frls": {
+      "fireBarrier": true,
+      "fireBarrierMaterial": "mica-containing-tapes",
+      "fireBarrierPlacement": "around-each-conductor-under-individual-insulation",
+      "screen": true,
+      "screenType": "copper-foil",
+      "armor": false,
+      "armorType": null,
+      "innerSheath": "PVC",
+      "drainWire": false,
+      "source": "https://podolskkabel.ru/catalog/kabeli-kontrolnye/kvvgeng-a-frls/kvvgeng-a-frls-61-1-0/",
+      "basis": "Manufacturer family documentation permits copper foil or tape. Copper foil selected for this illustration; not proof of supplier identity for each SKU.",
+      "screenFunction": "electromagnetic-screening",
+      "screenRendering": "paper-thin flexible copper foil with fine natural wrinkles and a small lifted/peeled edge revealing negligible thickness; wraps close against inner PVC sheath; no rigid smooth copper cylinder, thick rim, raised diagonal armor seam, steel tapes or wire mesh"
+    }
+  }
+}

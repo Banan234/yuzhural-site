@@ -27,6 +27,7 @@ services:
       CATALOG_PRODUCTS_FILE: /app/data/catalog-current/products.json
       PUBLIC_ARTIFACTS_DIR: /app/data/catalog-current/public
       PRERENDER_TEMPLATE_DIR: /app/data/web-template-current
+      FORMS_RECEIPTS_DIR: /app/data/form-receipts
     expose:
       - '3001'
     volumes:

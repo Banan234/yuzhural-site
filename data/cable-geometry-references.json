@@ -1,0 +1,59 @@
+{
+  "version": "approved-geometry-references-1",
+  "references": [
+    {
+      "id": "pugv-single-flexible-white",
+      "status": "APPROVED",
+      "visualKey": "pugv__1c__stranded__round__1core-white__p-158003053538284a",
+      "sha256": "a7eab8f177df9f4716459f75e8f0f11ee1433a264a8555ec3ee78fc98a5970a6",
+      "draftDir": "data/cable-approved-results/3b0c6f691ff9684577187650a5b209f6668632d79939551bebe6bfcc7c201be0-a7eab8f177df9f4716459f75e8f0f11ee1433a264a8555ec3ee78fc98a5970a6",
+      "outerSheathGeometry": "NO_COMMON_SHEATH",
+      "scope": {
+        "family": "pugv",
+        "cores": 1,
+        "conductorMaterial": "copper",
+        "conductorConstruction": "stranded",
+        "geometry": "round",
+        "hasOuterJacket": false,
+        "coreColorScheme": "1core-white"
+      },
+      "note": "User-approved new construction reference; does not replace original four style PNGs; other colors/families require reviewed compatibility."
+    },
+    {
+      "id": "sip4-four-core-twisted",
+      "status": "APPROVED",
+      "visualKey": "sip-4__4c__stranded__twisted-bundle__4core-black-black-black-black__p-35a9ef805227b5ad",
+      "sha256": "b72ecb7b14f18998e41cd72c9de8f67ec1f91a11bd4a341082224a0ee896e715",
+      "draftDir": "data/cable-approved-results/1e8b4dd6811f46ca167433e8d98afd4aabe65842c836fa9428bf6ba21c960587-b72ecb7b14f18998e41cd72c9de8f67ec1f91a11bd4a341082224a0ee896e715",
+      "outerSheathGeometry": "NO_COMMON_SHEATH",
+      "scope": {
+        "family": "sip-4",
+        "cores": 4,
+        "conductorMaterial": "aluminium",
+        "conductorConstruction": "stranded",
+        "geometry": "twisted-bundle",
+        "hasOuterJacket": false,
+        "coreColorScheme": "4core-black-black-black-black"
+      },
+      "note": "Four insulated stranded aluminium peers, compact stripped ends; no common sheath, not SIP-2."
+    },
+    {
+      "id": "shvvp-flat-two-core-flexible",
+      "status": "APPROVED",
+      "visualKey": "shvvp__2c__stranded__flat__2core-brown-blue__p-3e347be614526744",
+      "sha256": "aa06dcd1c84205cba42b72baed935a17eaf4b82cfa1f0227d27d7d8cf4084bea",
+      "draftDir": "data/cable-approved-results/b88ca66a736dfdb989f87546acc14b4af5915df08b17f64ec4eb0870d52bacab-aa06dcd1c84205cba42b72baed935a17eaf4b82cfa1f0227d27d7d8cf4084bea",
+      "outerSheathGeometry": "FLAT",
+      "scope": {
+        "family": "shvvp",
+        "cores": 2,
+        "conductorMaterial": "copper",
+        "conductorConstruction": "stranded",
+        "geometry": "flat",
+        "hasOuterJacket": true,
+        "coreColorScheme": "2core-brown-blue"
+      },
+      "note": "User-approved tightly fitting black flat sheath, two stranded copper cores. No transfer to other two-core families."
+    }
+  ]
+}

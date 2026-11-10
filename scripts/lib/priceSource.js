@@ -1,3 +1,4 @@
+import { recordImportEvent, safeDiagnosticUrl, setImportStage } from './importTelemetry.js';
 // Файл отвечает за выбор, загрузку и проверку источника XLS-прайса.
 
 import { createHash } from 'crypto';
@@ -154,10 +155,13 @@ async function fetchPriceSourceResponse(
   let currentUrl = normalizeRemoteUrl(url, trustedSourceUrl).href;
 
   for (let redirects = 0; ; redirects += 1) {
+    setImportStage('Подключение к источнику');
+    recordImportEvent('connect', { url: safeDiagnosticUrl(currentUrl) });
     const response = await fetchImpl(currentUrl, {
       signal,
       redirect: 'manual',
     });
+    recordImportEvent('http', { url: safeDiagnosticUrl(currentUrl), status: response.status });
     if (![301, 302, 303, 307, 308].includes(response.status)) {
       return { response, finalUrl: currentUrl };
     }
@@ -269,6 +273,7 @@ async function readResponseBodyWithLimit(response, url, maxBytes, controller) {
     return Buffer.alloc(0);
   }
 
+  setImportStage('Скачивание ответа');
   const reader = response.body.getReader();
   const chunks = [];
   let totalBytes = 0;
@@ -279,6 +284,7 @@ async function readResponseBodyWithLimit(response, url, maxBytes, controller) {
       if (done) break;
 
       totalBytes += value.byteLength;
+      recordImportEvent('download-progress', { bytes: totalBytes });
       if (totalBytes > maxBytes) {
         controller.abort(
           createPriceDownloadLimitError(url, totalBytes, maxBytes, 'скачано')
@@ -488,21 +494,34 @@ async function downloadPriceFile(
   let buffer;
   let lastError;
   for (let attempt = 1; attempt <= retries; attempt += 1) {
+    const attemptStarted = Date.now();
+    recordImportEvent('attempt-start', { attempt, retries, timeoutMs });
     try {
       const result = await fetchPriceWithTimeout(downloadUrl, timeoutMs, {
         maxBytes,
         fetchImpl,
         returnMetadata: true,
       });
+      recordImportEvent('attempt-success', { attempt, durationMs: Date.now() - attemptStarted, bytes: result.buffer.length });
       buffer = result.buffer;
       finalDownloadUrl = result.downloadUrl;
       break;
     } catch (error) {
+      const causeCode = error.cause?.code;
+      if (
+        causeCode &&
+        /^[A-Z0-9_]+$/.test(causeCode) &&
+        !error.message.includes(causeCode)
+      ) {
+        error.message += ` (${causeCode})`;
+      }
+      recordImportEvent('attempt-failure', { attempt, durationMs: Date.now() - attemptStarted, code: /^[A-Z0-9_]+$/.test(error.cause?.code || error.code || '') ? (error.cause?.code || error.code) : null, retryable: isRetryableHttpError(error) });
       lastError = error;
       if (attempt === retries || !isRetryableHttpError(error)) {
         throw error;
       }
       const backoffMs = 30_000 * 2 ** (attempt - 1);
+      recordImportEvent('retry-wait', { attempt, backoffMs });
       console.warn(
         `Попытка ${attempt}/${retries} провалена (${error.message}). Ретрай через ${backoffMs} мс.`
       );

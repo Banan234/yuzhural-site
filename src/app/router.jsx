@@ -29,6 +29,7 @@ const DeliveryPage = lazy(() => import('../pages/DeliveryPage'));
 const PaymentPage = lazy(() => import('../pages/PaymentPage'));
 const PrivacyPage = lazy(() => import('../pages/PrivacyPage'));
 const AboutPage = lazy(() => import('../pages/AboutPage'));
+const AdminPage = lazy(() => import('../pages/AdminPage'));
 const InternalRuntimePage = lazy(() => import('../pages/InternalRuntimePage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
@@ -55,6 +56,7 @@ export const router = createBrowserRouter(
     PrivacyPage,
     AboutPage,
     InternalRuntimePage,
+    AdminPage,
     NotFoundPage,
   }),
   {

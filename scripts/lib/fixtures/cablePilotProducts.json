@@ -1,0 +1,44 @@
+[
+  {
+    "sku": "YU-0005011",
+    "sourceName": "ПУГВ 2.5 белый",
+    "name": "ПУГВ 1х2.5 белый",
+    "mark": "ПУГВ",
+    "markFamily": "ПУГВ",
+    "cores": 1,
+    "crossSection": 2.5,
+    "attributes": ["белый"],
+    "hasGroundCore": false,
+    "catalogSubcategory": "Провода установочные",
+    "catalogCategory": "Провода",
+    "conductorConfiguration": null
+  },
+  {
+    "sku": "YU-0005219",
+    "sourceName": "ШВВП 2х0.75",
+    "name": "ШВВП 2х0.75",
+    "mark": "ШВВП",
+    "markFamily": "ШВВП",
+    "cores": 2,
+    "crossSection": 0.75,
+    "attributes": [],
+    "hasGroundCore": false,
+    "catalogSubcategory": "Провода соединительные",
+    "catalogCategory": "Провода",
+    "conductorConfiguration": null
+  },
+  {
+    "sku": "YU-0004818",
+    "sourceName": "СИП-4 4х 16",
+    "name": "СИП-4 4х16",
+    "mark": "СИП-4",
+    "markFamily": "СИП-4",
+    "cores": 4,
+    "crossSection": 16,
+    "attributes": [],
+    "hasGroundCore": false,
+    "catalogSubcategory": "",
+    "catalogCategory": "СИП",
+    "conductorConfiguration": null
+  }
+]

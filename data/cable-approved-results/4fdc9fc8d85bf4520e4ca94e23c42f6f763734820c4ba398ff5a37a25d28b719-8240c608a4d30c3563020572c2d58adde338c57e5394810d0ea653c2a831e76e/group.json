@@ -1,0 +1,163 @@
+{
+  "visualKey": "vvgng-a-ls-hl__2c__solid__round__2core-brown-blue__p-ac783a79915336f1",
+  "profile": {
+    "family": "vvgng-a-ls-hl",
+    "productType": "power-cable",
+    "cores": 2,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "blue"
+    ],
+    "coreColorScheme": "2core-brown-blue",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "draftKey": "af32eb21c00beb8dca990107daa3de4844c86b47dfc2807d7c4a59e0c64342ca",
+  "members": [
+    {
+      "sku": "YU-0007367",
+      "name": "ВВГнг(А)-LS-ХЛ 2х6",
+      "sourceName": "ВВГ  2х6 нг(А)LS хл",
+      "id": 7367,
+      "slug": "vvg-2h6-ng-a-ls-hl-5on",
+      "section": 6,
+      "primaryCores": 2,
+      "visualKey": "vvgng-a-ls-hl__2c__solid__round__2core-brown-blue__p-ac783a79915336f1",
+      "visualizationType": "SIMPLE",
+      "productHash": "261b8386f887bfe22a09d9240e9d90031e070df5a4de35af239e105194b35503",
+      "oldBinding": {
+        "image": "/product-images/generated/vvgnga-ls-hl__2core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 7367,
+        "sourceName": "ВВГ  2х6 нг(А)LS хл",
+        "productName": "ВВГнг(А)-LS-ХЛ 2х6",
+        "primaryCores": 2,
+        "cores": 2,
+        "section": 6,
+        "family": "vvgng-a-ls-hl",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "visualKey": "vvgng-a-ls-hl__2c__solid__round__2core-brown-blue__p-ac783a79915336f1",
+        "sha256": "8240c608a4d30c3563020572c2d58adde338c57e5394810d0ea653c2a831e76e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/vvgnga-ls-hl__2core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/vvgnga-ls-hl__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7367,
+          "sourceName": "ВВГ  2х6 нг(А)LS хл",
+          "productName": "ВВГнг(А)-LS-ХЛ 2х6",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 6,
+          "family": "vvgng-a-ls-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvgng-a-ls-hl__2c__solid__round__2core-brown-blue__p-ac783a79915336f1",
+          "sha256": "8240c608a4d30c3563020572c2d58adde338c57e5394810d0ea653c2a831e76e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    }
+  ],
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.24689966178128522,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 219,
+        "longestSupportedRun": 219,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.8042843579246259,
+    "non_opaque_ratio": 0.9992583591880209,
+    "foreground_ratio": 0.19490155306068235,
+    "bounds": {
+      "minX": 114,
+      "minY": 254,
+      "maxX": 1773,
+      "maxY": 611
+    },
+    "warnings": [],
+    "sha256": "8240c608a4d30c3563020572c2d58adde338c57e5394810d0ea653c2a831e76e",
+    "bytes": 601059
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "APPROVED_FOR_CATALOG": true,
+    "APPROVED_AS_REFERENCE": false,
+    "reviewer": "Пользователь",
+    "sha256": "8240c608a4d30c3563020572c2d58adde338c57e5394810d0ea653c2a831e76e",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "basis": "Пользователь одобрил все оставшиеся кандидаты A из последнего отчёта по конструкции, композиции, цветам и прилеганию слоёв и поручил применить их. Автоматическая проверка подтверждает альфа-канал и наличие пикселей на правом крае, а техническое содержание утверждено вручную.",
+    "publicationAuthorized": true,
+    "visualKey": "vvgng-a-ls-hl__2c__solid__round__2core-brown-blue__p-ac783a79915336f1",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-10T08:21:10.152Z"
+  },
+  "automaticProductionBinding": false
+}

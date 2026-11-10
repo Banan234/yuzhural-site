@@ -1,7 +1,5 @@
-import {
-  SPECIFICATION_ACCEPT,
-  validateSpecificationFiles,
-} from '../../../shared/specificationFiles.js';
+import { formatPhone } from '../../lib/formatPhone';
+import LeadAttachment from '../forms/LeadAttachment';
 import { PERSONAL_DATA_CONSENT_VERSION } from '../../../shared/personalDataConsent';
 import { useRef, useState } from 'react';
 import HoneypotField from '../forms/HoneypotField';
@@ -9,28 +7,13 @@ import {
   isValidEmail,
   isValidRussianPhone,
 } from '../../../shared/quoteValidation.js';
-import { expectOkApiJson } from '../../lib/apiResponse';
+import { submitLeadRequest } from '../../lib/submitLeadRequest';
+import { formSubmission } from '../../lib/formSubmission';
 import { captureException } from '../../lib/errorTracking';
 import { trackEvent } from '../../lib/analytics';
 
-function formatPhone(value) {
-  let digits = value.replace(/\D/g, '');
-  if (digits.length > 11 && /^7[78]/.test(digits)) digits = digits.slice(1);
-  if (digits.startsWith('7') || digits.startsWith('8'))
-    digits = digits.slice(1);
-  digits = digits.slice(0, 10);
-  let result = `+7 (${digits.slice(0, 3)}`;
-  if (digits.length >= 3) result += ')';
-  if (digits.length > 3) result += ` ${digits.slice(3, 6)}`;
-  if (digits.length > 6) result += `-${digits.slice(6, 8)}`;
-  if (digits.length > 8) result += `-${digits.slice(8, 10)}`;
-  return result;
-}
-
 export default function ContactRequestForm() {
   const [file, setFile] = useState(null);
-  const [fileError, setFileError] = useState('');
-  const fileRef = useRef(null);
   const [channel, setChannel] = useState('phone');
   const [name, setName] = useState('');
   const [contacts, setContacts] = useState({ phone: '', email: '' });
@@ -42,6 +25,7 @@ export default function ContactRequestForm() {
   const [success, setSuccess] = useState(false);
   const renderedAt = useRef(Date.now());
   const submitting = useRef(false);
+  const submissionRef = useRef(null);
   const nameRef = useRef(null);
   const contactRef = useRef(null);
   const consentRef = useRef(null);
@@ -92,27 +76,22 @@ export default function ContactRequestForm() {
         company_website: honeypot,
         createdAt: new Date().toLocaleString('ru-RU'),
       };
-      const body = new FormData();
-      body.append('payload', JSON.stringify(payload));
-      if (file) body.append('specifications', file, file.name);
-      const response = await fetch('/api/lead-request', {
-        method: 'POST',
-        ...(file
-          ? { body }
-          : {
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload),
-            }),
-      });
-      await expectOkApiJson(
-        response,
-        'Не удалось отправить заявку. Попробуйте ещё раз.'
+      payload.submissionId = formSubmission(
+        submissionRef,
+        payload,
+        file ? [file] : []
       );
+      const result = await submitLeadRequest(payload, file);
       setSuccess(true);
+      const receipt = result.requestId ? `Заявка № ${result.requestId}. ` : '';
       setStatus(
-        isEmail
-          ? `Заявка принята. Ответим на ${contact}.`
-          : `Заявка принята. Позвоним на ${contact}.`
+        receipt +
+          (isEmail
+            ? `Заявка принята. Ответим на ${contact}.`
+            : `Заявка принята. Позвоним на ${contact}.`) +
+          (result.receiptEmailStatus === 'pending'
+            ? ' Подтверждение по email пока не отправлено; повторять заявку не нужно.'
+            : '')
       );
       trackEvent('lead-submit', {
         source: 'Главная: помощь с подбором кабеля',
@@ -254,64 +233,12 @@ export default function ContactRequestForm() {
             setStatus('');
           }}
         />
-        <div className="home-contact-form__attachment">
-          <input
-            ref={fileRef}
-            id="home-contact-file"
-            className="visually-hidden"
-            type="file"
-            accept={SPECIFICATION_ACCEPT}
-            disabled={pending}
-            aria-describedby="home-contact-file-hint"
-            onChange={(event) => {
-              const selected = event.target.files?.[0];
-              const error = selected
-                ? validateSpecificationFiles([selected])
-                : '';
-              setFileError(error);
-              if (selected && !error) setFile(selected);
-              event.target.value = '';
-            }}
-          />
-          <label
-            htmlFor="home-contact-file"
-            className="home-contact-form__file-label"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.7"
-              aria-hidden="true"
-            >
-              <path d="m21 11-8 8a6 6 0 0 1-8-8L15 2a4 4 0 0 1 6 6L10 18a2 2 0 0 1-3-3l10-10" />
-            </svg>
-            <span>{file ? file.name : 'Прикрепить файл'}</span>
-          </label>
-          {file && (
-            <button
-              type="button"
-              className="home-contact-form__file-remove"
-              aria-label={`Удалить файл ${file.name}`}
-              disabled={pending}
-              onClick={() => {
-                setFile(null);
-                setFileError('');
-                fileRef.current?.focus();
-              }}
-            >
-              ×
-            </button>
-          )}
-          <small id="home-contact-file-hint">PDF, XLS, XLSX · до 5 МБ</small>
-        </div>
-        {fileError && (
-          <span className="field-error" role="alert">
-            {fileError}
-          </span>
-        )}
+        <LeadAttachment
+          id="home-contact-file"
+          file={file}
+          onChange={setFile}
+          disabled={pending}
+        />
         <button className="button-primary" disabled={pending} type="submit">
           {pending
             ? 'Отправляем…'

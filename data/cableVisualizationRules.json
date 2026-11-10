@@ -1,0 +1,42 @@
+{
+  "version": "visualization-strategy-v1",
+  "mode": "dry-run-only",
+  "compactFromCores": 6,
+  "note": "Six is a configurable composition threshold, not an engineering definition of multicore. Core count alone never proves a construction.",
+  "supportedProductTypes": [
+    "power-cable",
+    "control-cable",
+    "flexible-cable",
+    "flexible-wire",
+    "cord",
+    "installation-wire",
+    "sip"
+  ],
+  "supportedGeometries": ["round", "flat", "twisted-bundle"],
+  "armorTypes": ["steel-tapes", "steel-wires"],
+  "shieldTypes": ["overall-foil-with-drain", "overall-copper-tape"],
+  "separateFillerLayers": ["inner-sheath"],
+  "knownSpecialElements": [
+    "drain-wire",
+    "fire-barrier",
+    "twisted-insulated-cores"
+  ],
+  "blockingIssueCodes": [
+    "unknown_family",
+    "family_conflict",
+    "family_structure_conflict",
+    "structured_conflict",
+    "construction_conflict",
+    "parsing_warning",
+    "missing_cores",
+    "unsupported_core_range",
+    "special_configuration",
+    "special_structure",
+    "unverified_modifier",
+    "unverified_family_suffix",
+    "auxiliary_role_unknown",
+    "invalid_structured_value"
+  ],
+  "familyOverrides": {},
+  "layerCounting": "Visible structural envelopes along one radial path: core insulation, common outer jacket, armour, screen, documented inner sheath and fire barrier. Copper strands, separate cores, bare drain and exact filler diameter are not extra layers. This is not a claim about the full physical manufacturing stack."
+}

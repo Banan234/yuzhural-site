@@ -1,0 +1,331 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/e9f1b94d6ed138eac00d9eadb05b5d58c3f6aaa20c9481828e72e82482d58691-ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6/image.png",
+    "changes": [
+      {
+        "sku": "YU-0004021",
+        "before": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4021,
+          "sourceName": "КГ хл  1х2.5",
+          "productName": "КГ хл 1х2.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 2.5,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_389bf84cae46aacf203e07c4eb65f95450e2d60cdee952586a63fbd1090f8c2d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 4021,
+          "sourceName": "КГ хл  1х2.5",
+          "productName": "КГхл 1х2.5",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 2.5,
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.256Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0004023",
+        "before": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4023,
+          "sourceName": "КГ хл  1х 25",
+          "productName": "КГ хл 1х25",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 25,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_389bf84cae46aacf203e07c4eb65f95450e2d60cdee952586a63fbd1090f8c2d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 4023,
+          "sourceName": "КГ хл  1х 25",
+          "productName": "КГхл 1х25",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 25,
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.256Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0004024",
+        "before": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4024,
+          "sourceName": "КГ хл  1х 35",
+          "productName": "КГ хл 1х35",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 35,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_389bf84cae46aacf203e07c4eb65f95450e2d60cdee952586a63fbd1090f8c2d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 4024,
+          "sourceName": "КГ хл  1х 35",
+          "productName": "КГхл 1х35",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 35,
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.256Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0004026",
+        "before": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4026,
+          "sourceName": "КГ хл  1х 50",
+          "productName": "КГ хл 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_389bf84cae46aacf203e07c4eb65f95450e2d60cdee952586a63fbd1090f8c2d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 4026,
+          "sourceName": "КГ хл  1х 50",
+          "productName": "КГхл 1х50",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 50,
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.256Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0004028",
+        "before": {
+          "image": "/product-images/generated/kg-hl__1core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4028,
+          "sourceName": "КГ хл  1х 95",
+          "productName": "КГ хл 1х95",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 95,
+          "family": "kg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown"
+          ],
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_389bf84cae46aacf203e07c4eb65f95450e2d60cdee952586a63fbd1090f8c2d.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 4028,
+          "sourceName": "КГ хл  1х 95",
+          "productName": "КГхл 1х95",
+          "primaryCores": 1,
+          "cores": 1,
+          "section": 95,
+          "visualKey": "kg-hl__1c__stranded__round__1core-brown__p-ad741f97ed5c06f4",
+          "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.256Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

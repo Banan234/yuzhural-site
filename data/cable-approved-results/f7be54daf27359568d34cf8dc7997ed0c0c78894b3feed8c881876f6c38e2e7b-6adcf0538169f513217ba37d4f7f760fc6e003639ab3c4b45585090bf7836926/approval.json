@@ -1,0 +1,30 @@
+{
+  "status": "APPROVED",
+  "reviewer": "Пользователь",
+  "sha256": "6adcf0538169f513217ba37d4f7f760fc6e003639ab3c4b45585090bf7836926",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true
+  },
+  "basis": "Explicit user approval of all five exact latest PNGs; minor VVG-LS halo accepted without processing. Not automated semantic verification.",
+  "sourceMessage": "Пользователь проверил последнюю партию из пяти изображений и утвердил все пять. Для двух ВВГ использовать исправленные PNG из revisions.",
+  "publicationAuthorized": true,
+  "visualKey": "kvvgeng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-948d5c297ffa969d",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-09T11:49:07.128Z",
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": true
+}

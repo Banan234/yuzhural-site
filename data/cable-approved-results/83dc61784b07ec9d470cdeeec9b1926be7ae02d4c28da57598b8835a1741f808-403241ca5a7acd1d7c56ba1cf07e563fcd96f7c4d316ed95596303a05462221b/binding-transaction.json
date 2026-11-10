@@ -1,0 +1,76 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "403241ca5a7acd1d7c56ba1cf07e563fcd96f7c4d316ed95596303a05462221b",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/83dc61784b07ec9d470cdeeec9b1926be7ae02d4c28da57598b8835a1741f808-403241ca5a7acd1d7c56ba1cf07e563fcd96f7c4d316ed95596303a05462221b/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000790",
+        "before": {
+          "image": "/product-images/generated/vvg-hl__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 790,
+          "sourceName": "ВВГ  2х 10 хл",
+          "productName": "ВВГ 2х10 хл",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 10,
+          "family": "vvg-hl",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "vvg-hl__2c__solid__round__2core-brown-blue__p-041a9ae7ec3106a9",
+          "sha256": "403241ca5a7acd1d7c56ba1cf07e563fcd96f7c4d316ed95596303a05462221b",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_80ea941f6faeb3be42a1c36f5e394137280f8f8b8f663e1e735ec394adacee76.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 790,
+          "sourceName": "ВВГ  2х 10 хл",
+          "productName": "ВВГхл 2х10",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 10,
+          "visualKey": "vvg-hl__2c__solid__round__2core-brown-blue__p-041a9ae7ec3106a9",
+          "sha256": "403241ca5a7acd1d7c56ba1cf07e563fcd96f7c4d316ed95596303a05462221b",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "403241ca5a7acd1d7c56ba1cf07e563fcd96f7c4d316ed95596303a05462221b",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.684Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

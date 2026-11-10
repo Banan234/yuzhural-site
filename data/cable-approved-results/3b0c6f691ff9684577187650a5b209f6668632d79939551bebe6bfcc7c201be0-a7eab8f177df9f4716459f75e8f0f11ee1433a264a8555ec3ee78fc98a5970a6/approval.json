@@ -1,0 +1,30 @@
+{
+  "status": "APPROVED",
+  "reviewer": "Пользователь",
+  "sha256": "a7eab8f177df9f4716459f75e8f0f11ee1433a264a8555ec3ee78fc98a5970a6",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true
+  },
+  "basis": "Explicit user approval of the exact PuGV PNG; not automated pixel proof",
+  "sourceMessage": "ПуГВ 1×2,5 белый — APPROVED. Изображение полностью устраивает.",
+  "published": false,
+  "visualKey": "pugv__1c__stranded__round__1core-white__p-158003053538284a",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-09T07:04:49.944Z",
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": true
+}

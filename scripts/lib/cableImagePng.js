@@ -1,6 +1,45 @@
 import { PNG } from 'pngjs';
 import { hashImageData } from './cableImageSpec.js';
 
+/** Alpha evidence only: a supported segment, never proof of sheath anatomy. */
+function inspectRightEdge(png) {
+  const minimumRun = Math.max(3, Math.ceil(png.height * 0.02));
+  let run = 0,
+    longestRun = 0,
+    gaps = 0,
+    supportedPixels = 0;
+  for (let y = 0; y < png.height; y++) {
+    const edgeAlpha = png.data[(y * png.width + png.width - 1) * 4 + 3];
+    let innerAlpha = 0;
+    for (let dx = 1; dx <= Math.min(3, png.width - 1); dx++)
+      innerAlpha = Math.max(
+        innerAlpha,
+        png.data[(y * png.width + png.width - 1 - dx) * 4 + 3]
+      );
+    // An antialiased edge counts only when backed by opaque interior pixels.
+    if (edgeAlpha >= 32 && innerAlpha >= 128) {
+      supportedPixels++;
+      run++;
+      gaps = 0;
+      longestRun = Math.max(longestRun, run);
+    } else if (run && gaps < 2) {
+      gaps++;
+    } else {
+      run = 0;
+      gaps = 0;
+    }
+  }
+  return {
+    status: longestRun >= minimumRun ? 'EDGE_EVIDENCE_PRESENT' : 'NEEDS_REVIEW',
+    supportedPixels,
+    longestSupportedRun: longestRun,
+    minimumRun,
+    semanticVerification:
+      'MANUAL_REQUIRED: edge pixels must belong to intact sheath/body',
+    automaticRegeneration: false,
+  };
+}
+
 /** Decode pixels and CRCs. Requested API dimensions are advisory, never a validity gate. */
 export function validateCableImagePng(buffer, config) {
   if (
@@ -77,7 +116,12 @@ export function validateCableImagePng(buffer, config) {
       maxY >= png.height * (1 - margin))
   )
     warnings.push('PNG subject touches the frame margin; review cropping');
-  if (config.composition?.rightEdgeCrop && foreground && maxX < png.width - 1)
+  const rightEdgeCheck = inspectRightEdge(png);
+  if (
+    config.composition?.rightEdgeCrop &&
+    foreground &&
+    rightEdgeCheck.status === 'NEEDS_REVIEW'
+  )
     warnings.push(
       'Intact jacket does not reach the right edge; visual review required'
     );
@@ -92,6 +136,20 @@ export function validateCableImagePng(buffer, config) {
     has_alpha_channel: hasAlphaChannel,
     touches_right_edge: rightEdgeForeground > 0,
     right_edge_foreground_ratio: rightEdgeForeground / png.height,
+    compositionCheck: {
+      rightEdge: {
+        ...rightEdgeCheck,
+        required: !!config.composition?.rightEdgeCrop,
+      },
+      leftTips: {
+        status:
+          foreground && minX >= Math.max(1, Math.ceil(png.width * 0.005))
+            ? 'LEFT_MARGIN_PRESENT'
+            : 'NEEDS_REVIEW',
+        semanticVerification: 'MANUAL_REQUIRED: all metal tips fully visible',
+      },
+      automaticRegeneration: false,
+    },
     has_transparency: nonOpaque > 0,
     transparent_ratio: transparent / count,
     non_opaque_ratio: nonOpaque / count,

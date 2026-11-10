@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Container from '../ui/Container';
+import AnimatedDetails from '../ui/AnimatedDetails';
 import {
   SITE_WAREHOUSE_ADDRESS,
   SITE_WAREHOUSE_MAP_URL,
@@ -198,10 +199,13 @@ export function HomeFaq() {
         </h2>
         <div className="home-faq__list">
           {homeQuestions.map(([question, answer], index) => (
-            <details key={question} open={index === 0}>
-              <summary>{question}</summary>
+            <AnimatedDetails
+              key={question}
+              title={question}
+              defaultOpen={index === 0}
+            >
               <p>{answer}</p>
-            </details>
+            </AnimatedDetails>
           ))}
         </div>
       </Container>

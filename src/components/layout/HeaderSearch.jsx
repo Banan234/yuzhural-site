@@ -68,6 +68,8 @@ export default function HeaderSearch() {
     SEARCH_PLACEHOLDERS[0]
   );
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const placeholderIndexRef = useRef(0);
+  const advancePlaceholderRef = useRef(false);
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [isSearchCatalogLoading, setIsSearchCatalogLoading] = useState(false);
   const [isSearchSuggestionsOpen, setIsSearchSuggestionsOpen] = useState(false);
@@ -94,22 +96,29 @@ export default function HeaderSearch() {
     : undefined;
 
   useEffect(() => {
+    if (isSearchFocused) {
+      setSearchPlaceholder(SEARCH_PLACEHOLDERS[placeholderIndexRef.current]);
+      advancePlaceholderRef.current = true;
+      return;
+    }
     if (
       headerSearch ||
-      isSearchFocused ||
       window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
     ) {
-      setSearchPlaceholder(SEARCH_PLACEHOLDERS[0]);
       return;
     }
 
-    let index = 0;
+    if (advancePlaceholderRef.current) {
+      placeholderIndexRef.current =
+        (placeholderIndexRef.current + 1) % SEARCH_PLACEHOLDERS.length;
+      advancePlaceholderRef.current = false;
+    }
     let length = 0;
     let phase = 'typing';
     let timer;
 
     function tick() {
-      const current = SEARCH_PLACEHOLDERS[index];
+      const current = SEARCH_PLACEHOLDERS[placeholderIndexRef.current];
 
       if (phase === 'typing') {
         length += 1;
@@ -123,7 +132,8 @@ export default function HeaderSearch() {
         length -= 1;
         setSearchPlaceholder(current.slice(0, length));
         if (length === 0) {
-          index = (index + 1) % SEARCH_PLACEHOLDERS.length;
+          placeholderIndexRef.current =
+            (placeholderIndexRef.current + 1) % SEARCH_PLACEHOLDERS.length;
           phase = 'typing';
         }
         timer = window.setTimeout(tick, length === 0 ? 350 : 45);

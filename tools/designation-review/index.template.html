@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Разбор кабелей · ЮУЭК</title>
+    <style>
+      :root {
+        font:
+          15px system-ui,
+          sans-serif;
+        color: #152c38;
+        background: #f2f5f3;
+        --ink: #152c38;
+        --muted: #4f666c;
+        --line: #d9e3df;
+        --accent: #006251;
+        --soft: #e4f2eb;
+        --warning: #8a4a16;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+        color: inherit;
+      }
+      button,
+      select {
+        cursor: pointer;
+      }
+      button,
+      a,
+      input,
+      select,
+      textarea,
+      summary {
+        outline-offset: 3px;
+      }
+      a {
+        color: var(--accent);
+      }
+      button,
+      input,
+      select,
+      textarea {
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: white;
+        padding: 0.65rem 0.85rem;
+      }
+      button:hover {
+        border-color: var(--accent);
+      }
+      textarea {
+        width: 100%;
+        resize: vertical;
+        min-height: 92px;
+      }
+      input {
+        width: 100%;
+      }
+      button.primary {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+      header {
+        background: #17352f;
+        color: white;
+        padding: 26px max(24px, calc((100vw - 1440px) / 2));
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      header h1 {
+        margin: 0.25rem 0;
+        font-size: clamp(25px, 4vw, 37px);
+        letter-spacing: -0.04em;
+      }
+      header small {
+        color: #c5ded4;
+      }
+      header button {
+        background: #284a42;
+        color: white;
+        border-color: #507269;
+      }
+      header button.primary {
+        background: #e3f4ec;
+        color: #123d32;
+        border-color: #e3f4ec;
+      }
+      .eyebrow {
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.73rem;
+        font-weight: 700;
+      }
+      .toolbar {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .shell {
+        max-width: 1440px;
+        margin: auto;
+        padding: 20px 24px 44px;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .stat,
+      .panel {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+      }
+      .stat {
+        padding: 12px 16px;
+        color: var(--muted);
+      }
+      .stat strong {
+        font-size: 25px;
+        color: var(--ink);
+        display: block;
+      }
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(280px, 345px) minmax(0, 1fr);
+        gap: 16px;
+        align-items: start;
+      }
+      aside {
+        position: sticky;
+        top: 12px;
+        padding: 14px;
+      }
+      aside .toolbar {
+        margin: 8px 0;
+      }
+      .toolbar select {
+        max-width: 100%;
+        flex: 1;
+        min-width: 0;
+      }
+      .list {
+        display: grid;
+        gap: 5px;
+        max-height: min(67vh, 800px);
+        overflow: auto;
+        padding: 2px;
+      }
+      .group {
+        text-align: left;
+        width: 100%;
+        padding: 9px 10px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 4px 8px;
+        overflow-wrap: anywhere;
+      }
+      .group span:last-child {
+        grid-column: 1/-1;
+        color: var(--muted);
+        font-size: 0.81rem;
+      }
+      .group[aria-current='true'] {
+        background: var(--soft);
+        border-color: #88b9a7;
+      }
+      .tag {
+        display: inline-block;
+        border-radius: 8px;
+        background: var(--soft);
+        padding: 3px 8px;
+        color: #165144;
+        font-size: 0.78rem;
+        font-weight: 650;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .notice {
+        padding: 12px 14px;
+        background: #fff4e6;
+        color: #6c3c17;
+        border-radius: 9px;
+        margin: 0.7rem 0;
+        line-height: 1.45;
+      }
+      .block {
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+      .block:last-child {
+        border: 0;
+      }
+      .block h2,
+      .block h3 {
+        margin: 0 0 0.55rem;
+      }
+      .block h2 {
+        font-size: 28px;
+        overflow-wrap: anywhere;
+      }
+      .block p {
+        margin: 0.5rem 0;
+      }
+      .heading {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: start;
+      }
+      .fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 10px;
+      }
+      .fields label {
+        display: grid;
+        gap: 5px;
+        font-weight: 650;
+      }
+      .fields .wide {
+        grid-column: 1/-1;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 650;
+        line-height: 1.45;
+      }
+      .row {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px;
+        margin-top: 9px;
+        overflow-wrap: anywhere;
+      }
+      .row[open] summary {
+        margin-bottom: 0.6rem;
+      }
+      .row ul {
+        margin: 0.35rem 0 0.7rem;
+        padding-left: 1.2rem;
+      }
+      .row label {
+        display: grid;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .row .muted {
+        margin-left: 6px;
+      }
+      .links {
+        padding-left: 1.2rem;
+        line-height: 1.55;
+      }
+      .save {
+        min-height: 1.4em;
+        margin-top: 6px;
+        color: var(--accent);
+      }
+      .save.error {
+        color: #8a3328;
+      }
+      .hint {
+        font-size: 0.82rem;
+        margin: 0.6rem 0;
+      }
+      .count {
+        margin: 0.4rem 0;
+      }
+      .empty {
+        padding: 24px;
+        color: var(--muted);
+      }
+      @media (max-width: 850px) {
+        .workspace {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        aside {
+          position: static;
+        }
+        .list {
+          max-height: 230px;
+        }
+        .shell {
+          padding: 12px;
+        }
+        .block {
+          padding: 14px;
+        }
+        .fields {
+          grid-template-columns: 1fr;
+        }
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+        .heading {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <small class="eyebrow">ЮУЭК · рабочая очередь</small>
+        <h1>Ручной разбор маркировок</h1>
+        <small
+          >Одна общая правка на исполнение и отдельные замечания по
+          размерам</small
+        >
+      </div>
+      <div class="toolbar">
+        <button id="import">Загрузить правки</button
+        ><button class="primary" id="export">Скачать правки JSON</button
+        ><input type="file" id="file" accept=".json,application/json" hidden />
+      </div>
+    </header>
+    <main class="shell">
+      <div id="stats" class="stats"></div>
+      <p class="muted" id="message" role="status">
+        Правки сохраняются в этом браузере. JSON можно перенести на другой
+        компьютер или передать для внесения в справочник.
+      </p>
+      <div class="workspace">
+        <aside class="panel" aria-label="Очередь">
+          <label for="search"><strong>Найти позицию</strong></label
+          ><input
+            id="search"
+            type="search"
+            placeholder="Марка, артикул, суффикс"
+          />
+          <div class="toolbar">
+            <select id="status" aria-label="Статус">
+              <option value="">Все статусы</option>
+              <option value="todo">К разбору</option>
+              <option value="work">В работе</option>
+              <option value="blocked">Нужен источник</option>
+              <option value="ready">Готово к проверке</option>
+              <option value="resolved">Внесено в справочник</option>
+            </select>
+            <select id="issue" aria-label="Тип проблемы">
+              <option value="">Все проблемы</option>
+              <option value="unknown">Неизвестный индекс</option>
+              <option value="warnings">Предупреждение</option>
+            </select>
+          </div>
+          <p class="muted count" id="found"></p>
+          <nav id="list" class="list" aria-label="Исполнения"></nav>
+        </aside>
+        <article
+          class="panel"
+          id="detail"
+          aria-label="Разбор исполнения"
+        ></article>
+      </div>
+    </main>
+    <script id="catalog" type="application/json">
+      /*__DATA__*/
+    </script>
+    <script>
+      'use strict';
+      const { groups, total, resolvedCount, revision } = JSON.parse(
+        document.querySelector('#catalog').textContent
+      );
+      const $ = (id) => document.getElementById(id);
+      const labels = {
+        todo: 'К разбору',
+        work: 'В работе',
+        blocked: 'Нужен источник',
+        ready: 'Готово к проверке',
+      };
+      const resolvedLabel = 'Внесено в справочник';
+      const key = 'yuzhural.designation-review.v1';
+      let edits = {};
+      let selected = '';
+      try {
+        edits = JSON.parse(localStorage.getItem(key) || '{}') || {};
+      } catch {}
+      const esc = (value) =>
+        String(value ?? '').replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              '"': '&quot;',
+              "'": '&#39;',
+            })[c]
+        );
+      const safeUrl = (url) => {
+        try {
+          const u = new URL(url);
+          return ['http:', 'https:'].includes(u.protocol) ? u.href : '';
+        } catch {
+          return '';
+        }
+      };
+      const links = (sources) => {
+        const unique = new Map(
+          sources.map((source) => [safeUrl(source.url), source.title])
+        );
+        unique.delete('');
+        return unique.size
+          ? '<ul class="links">' +
+              [...unique]
+                .map(
+                  ([url, title]) =>
+                    '<li><a target="_blank" rel="noopener noreferrer" href="' +
+                    esc(url) +
+                    '">' +
+                    esc(title) +
+                    '</a></li>'
+                )
+                .join('') +
+              '</ul>'
+          : '<p class="muted">Ссылок нет.</p>';
+      };
+      const state = (g) =>
+        g.resolved ? 'resolved' : edits[g.id]?.status || 'todo';
+      const filtered = () => {
+        const normalizeSearch = (value) =>
+          value
+            .toLowerCase()
+            .replace(/[x×]/g, 'х')
+            .replace(/,/g, '.')
+            .replace(/\s+/g, '');
+        const query = normalizeSearch($('search').value);
+        const status = $('status').value;
+        const issue = $('issue').value;
+        return groups.filter(
+          (g) =>
+            (status ? state(g) === status : query || !g.resolved) &&
+            (!issue || g.rows.some((r) => r[issue].length)) &&
+            (!query ||
+              [
+                g.title,
+                g.execution,
+                ...g.rows.flatMap((r) => [r.name, r.sku, ...r.unknown]),
+              ].some((value) => normalizeSearch(value || '').includes(query)))
+        );
+      };
+      function refreshList() {
+        const rows = filtered();
+        const ready = groups
+          .filter((g) => state(g) === 'ready')
+          .reduce((sum, g) => sum + g.rows.length, 0);
+        $('stats').innerHTML = [
+          [total, 'Карточек в очереди'],
+          [groups.filter((g) => !g.resolved).length, 'Исполнений в очереди'],
+          [ready, 'Карточек готовы к проверке'],
+          [resolvedCount, 'Внесено в справочник'],
+        ]
+          .map(
+            ([n, title]) =>
+              '<div class="stat"><strong>' + n + '</strong>' + title + '</div>'
+          )
+          .join('');
+        $('found').textContent = 'Найдено групп: ' + rows.length;
+        $('list').innerHTML = rows
+          .map(
+            (g) =>
+              '<button class="group" type="button" data-id="' +
+              esc(g.id) +
+              '" aria-current="' +
+              (g.id === selected) +
+              '"><strong>' +
+              esc(g.execution || g.title) +
+              '</strong><small class="tag">' +
+              g.rows.length +
+              '</small><span>' +
+              (g.resolved ? resolvedLabel : labels[state(g)]) +
+              '</span></button>'
+          )
+          .join('');
+      }
+      function show(g) {
+        selected = g?.id || '';
+        refreshList();
+        if (!g) {
+          $('detail').innerHTML =
+            '<p class="empty">По этим условиям ничего не найдено.</p>';
+          return;
+        }
+        const draft = edits[g.id] || {};
+        const first = g.rows[0];
+        const options = Object.entries(labels)
+          .map(
+            ([value, label]) =>
+              '<option value="' +
+              value +
+              '"' +
+              (value === (draft.status || 'todo') ? ' selected' : '') +
+              '>' +
+              label +
+              '</option>'
+          )
+          .join('');
+        const original = g.rows
+          .map(
+            (r, index) =>
+              '<details class="row"' +
+              (index === 0 ? ' open' : '') +
+              '><summary>' +
+              esc(r.name) +
+              ' <span class="muted">' +
+              esc(r.sku) +
+              '</span></summary>' +
+              '<div class="notice"><strong>Комментарий к позиции</strong><p>' +
+              esc(r.comment) +
+              '</p></div>' +
+              (r.unknown.length
+                ? '<p><strong>Не разобрано</strong> ' +
+                  esc(r.unknown.join(', ')) +
+                  '</p>'
+                : '') +
+              (r.warnings.length
+                ? '<ul>' +
+                  r.warnings.map((w) => '<li>' + esc(w) + '</li>').join('') +
+                  '</ul>'
+                : '') +
+              '<details><summary>Что уже разобрано</summary><p>' +
+              esc(r.description) +
+              '</p><ul>' +
+              r.tokens
+                .map(
+                  (t) =>
+                    '<li><b>' + esc(t.code) + '</b> · ' + esc(t.text) + '</li>'
+                )
+                .join('') +
+              '</ul></details>' +
+              '<details><summary>Привязанные источники</summary>' +
+              links(r.sources) +
+              '</details>' +
+              '<label>Правка для этого размера<textarea data-row="' +
+              esc(r.id) +
+              '" placeholder="Уточнение только для этой строки">' +
+              esc(draft.rows?.[r.id]) +
+              '</textarea></label></details>'
+          )
+          .join('');
+        $('detail').innerHTML =
+          '<section class="block"><div class="heading"><div><div class="eyebrow muted">Семейство ' +
+          esc(g.title) +
+          '</div><h2>' +
+          esc(g.execution || g.title) +
+          '</h2><span class="tag">' +
+          g.rows.length +
+          ' поз.</span></div><button id="next">Следующее →</button></div>' +
+          '<p class="muted">' +
+          esc(
+            g.rows
+              .flatMap((r) => r.dimensions)
+              .filter((v, i, a) => a.indexOf(v) === i)
+              .join(' · ') || first.name
+          ) +
+          '</p>' +
+          (g.resolved ? '<p class="tag">Внесено в справочник</p>' : '') +
+          '</section>' +
+          '<section class="block"><h3>Позиции и комментарии</h3>' +
+          original +
+          '</section>' +
+          '<section class="block"><details><summary>Страницы из заводского корпуса (' +
+          g.candidates.length +
+          ')</summary><p class="muted">Совпадение по семейству. Проверьте конкретное исполнение на странице.</p>' +
+          links(g.candidates) +
+          '</details></section>' +
+          '<section class="block"><h3>Общая правка для исполнения</h3><div class="fields"><label>Статус<select data-field="status">' +
+          options +
+          '</select></label>' +
+          '<label>Ссылка на заводской источник<input type="url" data-field="source" placeholder="https://…" value="' +
+          esc(draft.source) +
+          '"></label>' +
+          '<label class="wide">Расшифровка / исправленное обозначение<textarea data-field="decoding" placeholder="Например: Э — общий экран из …">' +
+          esc(draft.decoding) +
+          '</textarea></label>' +
+          '<label class="wide">Описание и применение<textarea data-field="description" placeholder="Текст по документации изготовителя">' +
+          esc(draft.description) +
+          '</textarea></label>' +
+          '<label class="wide">Страница, пояснения и вопросы<textarea data-field="note" placeholder="Номер страницы, вторые источники или что уточнить">' +
+          esc(draft.note) +
+          '</textarea></label></div><div id="save" class="save" role="status"></div></section>';
+        $('next').addEventListener('click', () => {
+          const rows = filtered();
+          const index = rows.findIndex((item) => item.id === selected);
+          const next = rows[index + 1] || rows[0];
+          if (next) show(next);
+          $('detail').scrollIntoView({ block: 'start' });
+        });
+      }
+      function persist(message) {
+        try {
+          localStorage.setItem(key, JSON.stringify(edits));
+          message.textContent = 'Сохранено в браузере.';
+          message.classList.remove('error');
+        } catch {
+          message.textContent =
+            'Браузер не сохранил правки. Скачайте JSON перед закрытием.';
+          message.classList.add('error');
+        }
+      }
+      $('detail').addEventListener('input', (event) => {
+        const { field, row } = event.target.dataset;
+        if (!field && !row) return;
+        const draft = (edits[selected] ||= { rows: {} });
+        if (row) (draft.rows ||= {})[row] = event.target.value;
+        else draft[field] = event.target.value;
+        if (field !== 'status' && (!draft.status || draft.status === 'todo')) {
+          draft.status = 'work';
+          $('detail').querySelector('[data-field="status"]').value = 'work';
+        }
+        persist($('save'));
+        refreshList();
+      });
+      $('list').addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-id]');
+        if (button) show(groups.find((g) => g.id === button.dataset.id));
+      });
+      for (const id of ['search', 'status', 'issue'])
+        $(id).addEventListener('input', () => {
+          const matches = filtered();
+          if (matches.some((g) => g.id === selected)) refreshList();
+          else show(matches[0]);
+        });
+      $('export').addEventListener('click', () => {
+        const result = {
+          format: 'yuzhural-designation-review',
+          version: 1,
+          revision,
+          exportedAt: new Date().toISOString(),
+          entries: groups
+            .filter((g) => edits[g.id])
+            .map((g) => ({
+              groupId: g.id,
+              execution: g.execution,
+              variants: g.rows.map((r) => ({
+                id: r.id,
+                sku: r.sku,
+                sourceName: r.name,
+              })),
+              draft: edits[g.id],
+            })),
+        };
+        const url = URL.createObjectURL(
+          new Blob([JSON.stringify(result, null, 2)], {
+            type: 'application/json',
+          })
+        );
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'pravki-rasshifrovok.json';
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+      $('import').addEventListener('click', () => $('file').click());
+      $('file').addEventListener('change', async (event) => {
+        try {
+          const file = event.target.files[0];
+          if (!file) return;
+          const imported = JSON.parse(await file.text());
+          if (
+            imported.format !== 'yuzhural-designation-review' ||
+            imported.version !== 1 ||
+            !Array.isArray(imported.entries)
+          )
+            throw Error('Нужен JSON, скачанный с этой страницы.');
+          let loaded = 0,
+            skipped = 0;
+          for (const { groupId, draft } of imported.entries) {
+            const g = groups.find((item) => item.id === groupId);
+            if (!g || !draft || typeof draft !== 'object' || edits[g.id]) {
+              skipped++;
+              continue;
+            }
+            const clean = {
+              status: Object.hasOwn(labels, draft.status)
+                ? draft.status
+                : 'work',
+              rows: {},
+            };
+            for (const f of ['source', 'decoding', 'description', 'note'])
+              if (typeof draft[f] === 'string') clean[f] = draft[f];
+            for (const r of g.rows)
+              if (typeof draft.rows?.[r.id] === 'string')
+                clean.rows[r.id] = draft.rows[r.id];
+            edits[g.id] = clean;
+            loaded++;
+          }
+          persist($('message'));
+          $('message').textContent +=
+            ' Загружено групп: ' +
+            loaded +
+            '. Пропущено (уже есть правки или нет группы): ' +
+            skipped +
+            '.';
+          show(filtered().find((g) => g.id === selected) || filtered()[0]);
+        } catch (error) {
+          $('message').textContent = error.message;
+        } finally {
+          event.target.value = '';
+        }
+      });
+      show(filtered()[0]);
+    </script>
+  </body>
+</html>

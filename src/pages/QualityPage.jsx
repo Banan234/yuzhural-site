@@ -1,3 +1,4 @@
+import QuoteAction from '../components/forms/QuoteAction';
 import { Link } from 'react-router-dom';
 import PurchaseLayout from '../components/purchase/PurchaseLayout';
 import {
@@ -152,7 +153,7 @@ export default function QualityPage() {
       )}
       <div className="purchase-actions">
         <Link to="/how-to-order/">Порядок заказа и вопросы →</Link>
-        <Link to="/specification/">Запросить КП по файлу →</Link>
+        <QuoteAction to="/specification/">Запросить КП по файлу →</QuoteAction>
       </div>
     </PurchaseLayout>
   );

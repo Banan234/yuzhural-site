@@ -1,0 +1,535 @@
+{
+  "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+  "profile": {
+    "family": "pvs",
+    "productType": "flexible-wire",
+    "cores": 2,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "white",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "blue"
+    ],
+    "coreColorScheme": "2core-brown-blue",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "draftKey": "bb8b5e6737c15f133603af83250aee59f6a585e336b67a60f7efb15414cc19d2",
+  "members": [
+    {
+      "sku": "YU-0004899",
+      "name": "ПВС 2х0.5 (белый)",
+      "sourceName": "ПВС 2х 0.5 (бел)",
+      "id": 4899,
+      "slug": "pvs-2h0-5-bel-3s3",
+      "section": 0.5,
+      "primaryCores": 2,
+      "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+      "visualizationType": "SIMPLE",
+      "productHash": "3dc3c3056e8498a3734a319a09723aac2aee8f5e80e8eace119b60d43903e7cb",
+      "oldBinding": {
+        "image": "/product-images/generated/pvs__2core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4899,
+        "sourceName": "ПВС 2х 0.5 (бел)",
+        "productName": "ПВС 2х0.5 (бел)",
+        "primaryCores": 2,
+        "cores": 2,
+        "section": 0.5,
+        "family": "pvs",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+        "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pvs__2core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pvs__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4899,
+          "sourceName": "ПВС 2х 0.5 (бел)",
+          "productName": "ПВС 2х0.5 (бел)",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 0.5,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+          "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004900",
+      "name": "ПВС 2х0.75 (белый)",
+      "sourceName": "ПВС 2х 0.75 (бел)",
+      "id": 4900,
+      "slug": "pvs-2h0-75-bel-3s4",
+      "section": 0.75,
+      "primaryCores": 2,
+      "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+      "visualizationType": "SIMPLE",
+      "productHash": "3f741cb398e9e475b3d205c188c347fb7cf7e530951ce548e2b6944ff365a416",
+      "oldBinding": {
+        "image": "/product-images/generated/pvs__2core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4900,
+        "sourceName": "ПВС 2х 0.75 (бел)",
+        "productName": "ПВС 2х0.75 (бел)",
+        "primaryCores": 2,
+        "cores": 2,
+        "section": 0.75,
+        "family": "pvs",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+        "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pvs__2core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pvs__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4900,
+          "sourceName": "ПВС 2х 0.75 (бел)",
+          "productName": "ПВС 2х0.75 (бел)",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 0.75,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+          "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004903",
+      "name": "ПВС 2х1 (белый)",
+      "sourceName": "ПВС 2х 1 (бел)",
+      "id": 4903,
+      "slug": "pvs-2h1-bel-3s7",
+      "section": 1,
+      "primaryCores": 2,
+      "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+      "visualizationType": "SIMPLE",
+      "productHash": "e2969ea20e17b1c8ad2d5dd1c7dcb71da926763294c51e76a88152f0a21ffb92",
+      "oldBinding": {
+        "image": "/product-images/generated/pvs__2core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4903,
+        "sourceName": "ПВС 2х 1 (бел)",
+        "productName": "ПВС 2х1 (бел)",
+        "primaryCores": 2,
+        "cores": 2,
+        "section": 1,
+        "family": "pvs",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+        "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pvs__2core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pvs__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4903,
+          "sourceName": "ПВС 2х 1 (бел)",
+          "productName": "ПВС 2х1 (бел)",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+          "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004907",
+      "name": "ПВС 2х1.5 (белый)",
+      "sourceName": "ПВС 2х 1.5 (бел)",
+      "id": 4907,
+      "slug": "pvs-2h1-5-bel-3sb",
+      "section": 1.5,
+      "primaryCores": 2,
+      "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+      "visualizationType": "SIMPLE",
+      "productHash": "6bbcf522a95fa1d1b5382f284608c9e667ce7402da3629a93961c8edde190dbb",
+      "oldBinding": {
+        "image": "/product-images/generated/pvs__2core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4907,
+        "sourceName": "ПВС 2х 1.5 (бел)",
+        "productName": "ПВС 2х1.5 (бел)",
+        "primaryCores": 2,
+        "cores": 2,
+        "section": 1.5,
+        "family": "pvs",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+        "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pvs__2core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pvs__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4907,
+          "sourceName": "ПВС 2х 1.5 (бел)",
+          "productName": "ПВС 2х1.5 (бел)",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+          "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004911",
+      "name": "ПВС 2х2.5 белый",
+      "sourceName": "ПВС 2х 2.5 бел",
+      "id": 4911,
+      "slug": "pvs-2h2-5-bel-3sf",
+      "section": 2.5,
+      "primaryCores": 2,
+      "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+      "visualizationType": "SIMPLE",
+      "productHash": "194bdcb6a91513a3e24fb95554e64b7d6ec6df5edeae88ff662e0a0c7729c419",
+      "oldBinding": {
+        "image": "/product-images/generated/pvs__2core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4911,
+        "sourceName": "ПВС 2х 2.5 бел",
+        "productName": "ПВС 2х2.5 бел",
+        "primaryCores": 2,
+        "cores": 2,
+        "section": 2.5,
+        "family": "pvs",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+        "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pvs__2core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pvs__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4911,
+          "sourceName": "ПВС 2х 2.5 бел",
+          "productName": "ПВС 2х2.5 бел",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 2.5,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+          "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004913",
+      "name": "ПВС 2х4 белый",
+      "sourceName": "ПВС 2х 4 бел",
+      "id": 4913,
+      "slug": "pvs-2h4-bel-3sh",
+      "section": 4,
+      "primaryCores": 2,
+      "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+      "visualizationType": "SIMPLE",
+      "productHash": "c8ad578719116e1ecb4af534f8674c0aae2321ce699f65960d54bb2d7fbfd99d",
+      "oldBinding": {
+        "image": "/product-images/generated/pvs__2core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4913,
+        "sourceName": "ПВС 2х 4 бел",
+        "productName": "ПВС 2х4 бел",
+        "primaryCores": 2,
+        "cores": 2,
+        "section": 4,
+        "family": "pvs",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+        "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pvs__2core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pvs__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4913,
+          "sourceName": "ПВС 2х 4 бел",
+          "productName": "ПВС 2х4 бел",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+          "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0004914",
+      "name": "ПВС 2х6",
+      "sourceName": "ПВС 2х 6",
+      "id": 4914,
+      "slug": "pvs-2h6-3si",
+      "section": 6,
+      "primaryCores": 2,
+      "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+      "visualizationType": "SIMPLE",
+      "productHash": "a2fb8c3cd78e04bacaa6243972135bbabc93aa8697b277973baf3736b7a0df84",
+      "oldBinding": {
+        "image": "/product-images/generated/pvs__2core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 4914,
+        "sourceName": "ПВС 2х 6",
+        "productName": "ПВС 2х6",
+        "primaryCores": 2,
+        "cores": 2,
+        "section": 6,
+        "family": "pvs",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue"
+        ],
+        "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+        "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pvs__2core.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pvs__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 4914,
+          "sourceName": "ПВС 2х 6",
+          "productName": "ПВС 2х6",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 6,
+          "family": "pvs",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+          "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    }
+  ],
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.2277339346110485,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 200,
+        "longestSupportedRun": 200,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.7888910213798459,
+    "non_opaque_ratio": 0.9991954436435599,
+    "foreground_ratio": 0.21024277774035327,
+    "bounds": {
+      "minX": 117,
+      "minY": 246,
+      "maxX": 1773,
+      "maxY": 638
+    },
+    "warnings": [],
+    "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+    "bytes": 632026
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "APPROVED_FOR_CATALOG": true,
+    "APPROVED_AS_REFERENCE": false,
+    "reviewer": "Пользователь",
+    "sha256": "91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "basis": "Пользователь одобрил все оставшиеся кандидаты A из последнего отчёта по конструкции, композиции, цветам и прилеганию слоёв и поручил применить их. Автоматическая проверка подтверждает альфа-канал и наличие пикселей на правом крае, а техническое содержание утверждено вручную.",
+    "publicationAuthorized": true,
+    "visualKey": "pvs__2c__stranded__round__2core-brown-blue__p-6df32cf3d8fd1467",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-10T08:21:09.460Z"
+  },
+  "automaticProductionBinding": false
+}

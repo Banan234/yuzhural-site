@@ -1,3 +1,4 @@
+import QuoteAction from '../forms/QuoteAction';
 import { useDialogFocus } from '../../hooks/useDialogFocus';
 // Файл рендерит мобильную навигацию, поиск, корзину и раскрытие каталога.
 
@@ -139,9 +140,9 @@ export default function MobileNav({ id, isOpen, onClose, onOpenQuote }) {
               <Link to="/how-to-order/" onClick={onClose}>
                 Как заказать
               </Link>
-              <Link to="/specification/" onClick={onClose}>
+              <QuoteAction to="/specification/" onClick={onClose}>
                 Заявка по спецификации
-              </Link>
+              </QuoteAction>
               <Link to={DELIVERY_CANONICAL_PATH} onClick={onClose}>
                 Получение заказа
               </Link>

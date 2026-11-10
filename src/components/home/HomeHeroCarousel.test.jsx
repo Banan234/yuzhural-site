@@ -46,8 +46,8 @@ describe('HomeHeroCarousel', () => {
       'home-hero-title'
     );
     expect(
-      screen.getByRole('link', { name: /Отправить заявку/ })
-    ).toHaveAttribute('href', '/specification/');
+      screen.getByRole('button', { name: /Отправить заявку/ })
+    ).toHaveAttribute('aria-haspopup', 'dialog');
     fireEvent.click(
       screen.getByRole('button', {
         name: 'Показать слайд 3: Самовывоз со склада',
@@ -75,7 +75,7 @@ describe('HomeHeroCarousel', () => {
       screen.getByRole('link', { name: 'Рассчитать сечение' })
     ).toHaveAttribute('href', '/calculator/section/');
     expect(
-      screen.queryByRole('link', { name: /Отправить заявку/ })
+      screen.queryByRole('button', { name: /Отправить заявку/ })
     ).not.toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: 'Показать слайд 2: Подбор кабеля' })

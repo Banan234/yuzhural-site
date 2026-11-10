@@ -151,7 +151,7 @@
   flex-direction: column;
   gap: 12px;
 }
-.site-footer__links a,
+.site-footer__links :is(a, button.quote-action),
 .site-footer__link-button {
   color: #cbd9e5;
   text-decoration: none;
@@ -164,7 +164,7 @@
   text-align: left;
   cursor: pointer;
 }
-.site-footer__links a:hover,
+.site-footer__links :is(a, button.quote-action):hover,
 .site-footer__link-button:hover {
   color: #ffffff;
 }

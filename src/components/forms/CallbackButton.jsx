@@ -14,7 +14,7 @@ export default function CallbackButton({ source, className, onOpen }) {
               title: 'Заказать звонок',
               subtitle:
                 'Оставьте номер — менеджер свяжется с вами в рабочее время.',
-              submitLabel: 'Жду звонка',
+              submitLabel: 'Заказать звонок',
               source,
             },
           })

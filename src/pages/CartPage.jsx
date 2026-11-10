@@ -52,6 +52,33 @@ export default function CartPage() {
   const [syncNotice, setSyncNotice] = useState(null);
   const syncRanRef = useRef(false);
 
+  async function handleRemoveItem(event, id) {
+    const button = event.currentTarget;
+    const row = button.closest('.cart-item');
+    if (
+      !row?.animate ||
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    ) {
+      removeItem(id);
+      return;
+    }
+    button.disabled = true;
+    const animation = row.animate(
+      [
+        { opacity: 1, transform: 'translateX(0)' },
+        { opacity: 0, transform: 'translateX(12px)' },
+      ],
+      { duration: 220, easing: 'ease-out', fill: 'forwards' }
+    );
+    try {
+      await animation.finished;
+    } catch {
+      // A cancelled animation must not cancel the requested removal.
+    }
+    removeItem(id);
+    animation.cancel();
+  }
+
   useEffect(() => {
     if (syncRanRef.current) return;
     const catalogIds = items
@@ -373,7 +400,7 @@ export default function CartPage() {
                         type="button"
                         aria-label={`Удалить: ${item.title}`}
                         title="Удалить товар"
-                        onClick={() => removeItem(item.id)}
+                        onClick={(event) => handleRemoveItem(event, item.id)}
                       >
                         <svg
                           viewBox="0 0 24 24"
@@ -408,7 +435,9 @@ export default function CartPage() {
                 </dl>
                 <div className="cart-summary__total">
                   <span>{cartSummaryTotal.label}</span>
-                  <strong>{cartSummaryTotal.value}</strong>
+                  <strong key={cartSummaryTotal.value}>
+                    {cartSummaryTotal.value}
+                  </strong>
                 </div>
                 <button
                   type="button"

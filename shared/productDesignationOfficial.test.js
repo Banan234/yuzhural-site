@@ -421,16 +421,24 @@ describe('official manufacturer decoding', () => {
     ).toBe(false);
   });
 
-  it('retains official purpose text without claiming a complete construction or stock manufacturer', () => {
+  it('uses the second factory size table while retaining both manufacturers’ descriptions', () => {
     const p = product('КГВБШв', 'КГВБШв 3х1.5 нг(А)LS');
     const { products } = enrichPriceDesignations([
       { ...p, sku: 'future-purpose', price: 73 },
     ]);
     const d = products[0].designationDecoded;
-    expect(d.status).toBe('partial');
+    expect(d.status).toBe('reviewed');
     expect(d.officialComplete).toBe(false);
-    expect(d.manufacturerTexts).toHaveLength(1);
-    expect(d.manufacturerTexts[0].text).toContain('минимальное сечение 10 мм²');
+    expect(d.manufacturerTexts.map((record) => record.documentId)).toEqual([
+      'kavkaz-2024-copy',
+      'elektrotm-etmikab-general',
+    ]);
+    expect(
+      d.sources.some((s) => s.documentId === 'elektrotm-etmikab-general')
+    ).toBe(true);
+    expect(
+      buildProductDesignation(product('КГВБШв', 'КГВБШв 1х1.5 нг(А)LS')).status
+    ).toBe('partial');
     expect(products[0].manufacturer).toBeUndefined();
     const doc = knowledge.documents.find(
       (item) => item.id === d.manufacturerTexts[0].documentId

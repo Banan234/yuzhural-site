@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+import { checkImportFreshness } from './lib/importFreshness.js';
 import os from 'os';
 import { maintainImportFiles } from './lib/importMaintenance.js';
 import path from 'path';
@@ -35,6 +37,10 @@ function runImport() {
 
 async function main() {
   const now = new Date();
+  dotenv.config({ path: path.join(projectRoot, '.env') });
+  await checkImportFreshness({ projectRoot }).catch((error) =>
+    console.error('[import-freshness]', error.message)
+  );
   try {
     const logFiles =
       process.platform === 'darwin'

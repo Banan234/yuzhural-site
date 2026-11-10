@@ -41,6 +41,7 @@ import {
 } from '../../shared/productImagePresentation.js';
 import { messages } from '../../shared/messages.js';
 import { NOT_FOUND_SEO, NotFoundPageContent } from './NotFoundPage.jsx';
+import '../styles/sections/catalog.css';
 import '../styles/sections/product-detail.css';
 
 const BREADCRUMB_JSON_LD_ID = 'product-breadcrumb-json-ld';
@@ -443,6 +444,7 @@ export default function ProductPage() {
               onClick={() => setIsImageOpen(true)}
             >
               <ResponsiveProductImage
+                key={productImage}
                 variants={product.imageVariants}
                 sizes="(max-width: 900px) calc(100vw - 48px), (max-width: 1100px) 50vw, 700px"
                 src={productImage}
@@ -452,6 +454,17 @@ export default function ProductPage() {
                 height="360"
                 loading="eager"
                 decoding="async"
+                onLoad={(event) => {
+                  if (
+                    window.matchMedia?.('(prefers-reduced-motion: reduce)')
+                      .matches
+                  )
+                    return;
+                  event.currentTarget.animate?.(
+                    [{ opacity: 0 }, { opacity: 1 }],
+                    { duration: 280, easing: 'ease-out' }
+                  );
+                }}
               />
               <span className="product-page__zoom" aria-hidden="true">
                 <i />
@@ -786,9 +799,13 @@ export default function ProductPage() {
               </h2>
             </div>
 
-            <div className="products-grid">
+            <div className="products-grid products-grid--catalog products-grid--catalog-tiles">
               {relatedProducts.map((item) => (
-                <ProductCard key={item.id} product={item} />
+                <ProductCard
+                  key={item.id}
+                  product={item}
+                  variant="catalog-tile"
+                />
               ))}
             </div>
           </div>

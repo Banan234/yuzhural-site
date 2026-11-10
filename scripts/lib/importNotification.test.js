@@ -40,6 +40,8 @@ it('архивирует и прикладывает отчёт текущей �
         SMTP_USER: 'user',
         SMTP_PASS: 'secret',
         SMTP_FROM: 'from@example.test',
+        PRICE_IMPORT_REPORT_FROM:
+          'ЮУЭК — мониторинг прайса <from@example.test>',
       },
       createTransport: () => ({ sendMail, close }),
     });
@@ -47,6 +49,9 @@ it('архивирует и прикладывает отчёт текущей �
       'CURRENT_FAILURE'
     );
     expect(sendMail.mock.calls[0][0].to).toBe('user@example.test');
+    expect(sendMail.mock.calls[0][0].from).toBe(
+      'ЮУЭК — мониторинг прайса <from@example.test>'
+    );
     expect(
       await fs.readdir(path.join(projectRoot, 'data/import-reports'))
     ).toHaveLength(2);
@@ -288,4 +293,84 @@ it('не удаляет письмо из очереди, если SMTP не п�
   } finally {
     await fs.rm(projectRoot, { recursive: true, force: true });
   }
+});
+
+it('marks a published client fallback as a warning rather than an import failure', () => {
+  const mail = buildImportEmail({
+    generatedAt: '2026-11-06T12:00:00Z',
+    status: 'published',
+    catalogFallbacks: [{ url: '/catalog/' }],
+  });
+  expect(mail.subject).toContain('обновлён с предупреждением');
+  expect(mail.text).toContain('Данные обновлены');
+  expect(mail.text).not.toContain('Импорт не выполнен');
+});
+
+it('queues one recovery for an unchanged verified price, then stays quiet', async () => {
+  const projectRoot = await fs.mkdtemp(
+    path.join(os.tmpdir(), 'import-recovery-')
+  );
+  const options = { projectRoot, env: {} };
+  try {
+    await archiveAndNotifyImport(
+      {
+        status: 'failed',
+        generatedAt: '2026-11-07T00:00:00Z',
+        message: 'fetch failed',
+      },
+      options
+    );
+    await archiveAndNotifyImport(
+      {
+        status: 'unchanged',
+        generatedAt: '2026-11-07T01:00:00Z',
+        message: 'Источник проверен',
+      },
+      options
+    );
+    const names = await fs.readdir(
+      path.join(projectRoot, 'data/import-mail-outbox')
+    );
+    const recovery = JSON.parse(
+      await fs.readFile(
+        path.join(
+          projectRoot,
+          'data/import-mail-outbox',
+          names.find((n) => n.includes('unchanged'))
+        ),
+        'utf8'
+      )
+    );
+    expect(recovery.recovered).toBe(true);
+    expect(buildImportEmail(recovery).subject).toContain(
+      'работа восстановлена'
+    );
+    expect(buildImportEmail(recovery).text).not.toContain('Каталог обновлён.');
+    expect(
+      (
+        await archiveAndNotifyImport(
+          { status: 'unchanged', generatedAt: '2026-11-07T02:00:00Z' },
+          options
+        )
+      ).suppressed
+    ).toBe(true);
+  } finally {
+    await fs.rm(projectRoot, { recursive: true, force: true });
+  }
+});
+
+it('explains the download failure even when the final error is a watchdog timeout', () => {
+  const mail = buildImportEmail({
+    generatedAt: '2026-11-07T17:54:36Z',
+    status: 'failed',
+    message: 'Превышено общее время импорта (900 секунд). Процесс завершён.',
+    errorCode: 'IMPORT_TIMEOUT',
+    diagnostic:
+      'Попытка 2/3 провалена (fetch failed (UND_ERR_CONNECT_TIMEOUT)). Ретрай через 60000 мс.',
+  });
+  expect(mail.subject).toContain('Не удалось подключиться вовремя');
+  expect(mail.text).toContain('Причина сбоя: Не удалось подключиться вовремя');
+  expect(mail.text).toContain('UND_ERR_CONNECT_TIMEOUT');
+  expect(mail.text).toContain('900 секунд');
+  expect(mail.text).toContain('Каталог не обновлён');
 });

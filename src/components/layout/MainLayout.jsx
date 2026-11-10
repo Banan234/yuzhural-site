@@ -1,3 +1,4 @@
+import CableImagePreviewNotice from '../catalog/CableImagePreviewNotice.jsx';
 // Файл задаёт общий каркас страниц: шапку, меню, футер, модалки и отслеживание pageview.
 
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
@@ -11,6 +12,7 @@ import FloatingLeadWidget from './FloatingLeadWidget';
 import HeaderCatalogMenu from './HeaderCatalogMenu';
 import HeaderServicesMenu from './HeaderServicesMenu';
 import HeaderSearch from './HeaderSearch';
+import PriceDownload from './PriceDownload';
 import SiteFooter from './SiteFooter';
 import {
   PrerenderDataProvider,
@@ -43,17 +45,7 @@ const MOBILE_NAV_ID = 'mobile-navigation';
 const DOCUMENTS_PATH = '/quality/';
 const EMPTY_PRERENDER_DATA = {};
 
-const LazyQuoteForm = lazy(() => import('../quote/QuoteForm'));
 const LazyMobileNav = lazy(() => import('./MobileNav'));
-
-function ModalFormFallback() {
-  return (
-    <div className="route-fallback" aria-busy="true" aria-live="polite">
-      <span className="route-fallback__spinner" aria-hidden="true" />
-      <span className="route-fallback__text">Загружаем форму...</span>
-    </div>
-  );
-}
 
 // Header/overlay/scroll updates are independent of the dehydrated route.
 // Recreating Outlet children here would interrupt a still-loading lazy page.
@@ -119,6 +111,7 @@ function HeaderCartLink({ mobile = false }) {
 
 export default function MainLayout() {
   const location = useLocation();
+  const cartItems = useCartStore((state) => state.items);
   const prerenderData = usePrerenderData();
   const [bootstrapLocation] = useState(() => location);
   // A server 404 describes this document entry, never a later navigation (or Back).
@@ -132,6 +125,7 @@ export default function MainLayout() {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [leadModalOptions, setLeadModalOptions] = useState({});
+  const callbackDraftRef = useRef(null);
   const [quoteModalOptions, setQuoteModalOptions] = useState({});
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const mobileMenuButtonRef = useRef(null);
@@ -156,6 +150,10 @@ export default function MainLayout() {
 
   useEffect(() => {
     function handleOpenLead(event) {
+      if (event.detail?.mode !== 'callback') {
+        handleOpenQuote(event);
+        return;
+      }
       setLeadModalOptions(event.detail || {});
       setIsLeadModalOpen(true);
       trackEvent(
@@ -168,7 +166,11 @@ export default function MainLayout() {
     }
 
     function handleOpenQuote(event) {
-      setQuoteModalOptions(event.detail || {});
+      setQuoteModalOptions({
+        ...event.detail,
+        useCartItems:
+          event.type === 'open-cart-quote-modal' && !event.detail?.items,
+      });
       setIsQuoteModalOpen(true);
       trackEvent('quote-open', {
         source: event.detail?.source || event.type || 'cart',
@@ -209,6 +211,15 @@ export default function MainLayout() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!location.state?.openQuote) return;
+    setQuoteModalOptions({
+      comment: location.state.request || '',
+      source: 'Прямая ссылка на спецификацию',
+    });
+    setIsQuoteModalOpen(true);
+  }, [location.key]);
+
   function handleLogoClick(event) {
     if (location.pathname === '/' && !location.search && !location.hash) {
       event.preventDefault();
@@ -217,6 +228,15 @@ export default function MainLayout() {
   }
 
   function openLeadModal(options = {}) {
+    if (options.mode !== 'callback') {
+      setQuoteModalOptions(options);
+      setIsQuoteModalOpen(true);
+      trackEvent('quote-open', {
+        source: options.source || 'quote',
+        kind: 'quote',
+      });
+      return;
+    }
     setLeadModalOptions(options);
     setIsLeadModalOpen(true);
     trackEvent('quote-open', {
@@ -273,24 +293,7 @@ export default function MainLayout() {
                 </span>
               </div>
               <div className="site-header__topbar-right">
-                <a href="/price.xls" download className="topbar-download">
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 3v12" />
-                    <path d="m7 10 5 5 5-5" />
-                    <path d="M5 21h14" />
-                  </svg>
-                  Скачать прайс-лист
-                </a>
+                <PriceDownload />
               </div>
             </div>
           </Container>
@@ -529,6 +532,7 @@ export default function MainLayout() {
       ) : null}
 
       <main id="main-content" tabIndex={-1}>
+        <CableImagePreviewNotice />
         <PrerenderDataProvider data={routePrerenderData}>
           <RouteContent />
         </PrerenderDataProvider>
@@ -558,7 +562,23 @@ export default function MainLayout() {
         isOpen={isLeadModalOpen}
         fallbackFocusRef={mobileMenuButtonRef}
         onClose={() => setIsLeadModalOpen(false)}
-        windowClassName="modal-window--lead"
+        closeIcon={
+          leadModalOptions.mode === 'callback' ? (
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          ) : undefined
+        }
+        windowClassName={`modal-window--lead${leadModalOptions.mode === 'callback' ? ' modal-window--callback' : ''}`}
         ariaLabel={
           leadModalOptions.mode === 'callback'
             ? 'Заказать звонок'
@@ -566,6 +586,10 @@ export default function MainLayout() {
         }
       >
         <HeroLeadForm
+          key={leadModalOptions.mode || 'lead'}
+          draftRef={
+            leadModalOptions.mode === 'callback' ? callbackDraftRef : undefined
+          }
           mode={leadModalOptions.mode}
           onDone={() => setIsLeadModalOpen(false)}
           title={leadModalOptions.title || 'Получить КП или заказать звонок'}
@@ -582,21 +606,49 @@ export default function MainLayout() {
 
       <Modal
         isOpen={isQuoteModalOpen}
+        windowClassName="modal-window--lead modal-window--callback"
+        ariaLabel={quoteModalOptions.title || 'Отправить заявку'}
+        closeIcon={
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            aria-hidden="true"
+          >
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        }
         onClose={() => {
           setIsQuoteModalOpen(false);
           setQuoteModalOptions({});
         }}
       >
-        <Suspense fallback={<ModalFormFallback />}>
-          <LazyQuoteForm
-            title={
-              quoteModalOptions.title || 'Запрос коммерческого предложения'
-            }
-            description={quoteModalOptions.description}
-            itemsOverride={quoteModalOptions.items || null}
-            idPrefix="modal-quote"
-          />
-        </Suspense>
+        <HeroLeadForm
+          key={`${quoteModalOptions.source || 'quote'}:${quoteModalOptions.comment || ''}:${quoteModalOptions.items?.map((item) => item.id).join(',') || ''}`}
+          mode="callback"
+          title={quoteModalOptions.title || 'Отправить заявку'}
+          subtitle={
+            quoteModalOptions.subtitle ||
+            'Оставьте номер — менеджер свяжется с вами в рабочее время.'
+          }
+          submitLabel={quoteModalOptions.submitLabel || 'Отправить заявку'}
+          defaultComment={quoteModalOptions.comment || ''}
+          source={quoteModalOptions.source || 'Заявка'}
+          onQuoteSent={
+            quoteModalOptions.useCartItems
+              ? () => useCartStore.getState().clearCart()
+              : undefined
+          }
+          quoteItems={
+            quoteModalOptions.items ||
+            (quoteModalOptions.useCartItems ? cartItems : [])
+          }
+          onDone={() => setIsQuoteModalOpen(false)}
+          idPrefix="modal-quote"
+        />
       </Modal>
     </div>
   );

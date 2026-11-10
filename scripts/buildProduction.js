@@ -5,13 +5,8 @@ import { spawn } from 'node:child_process';
 import { acquirePriceImportLock } from './lib/importLock.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const steps = [
-  'build',
-  'build:ssr',
-  'prerender',
-  'sync:runtime-artifacts',
-  'precompress',
-];
+// npm run build also runs postbuild, which prepares the matching SSR bundle.
+const steps = ['build', 'prerender', 'sync:runtime-artifacts', 'precompress'];
 function runStep(step, projectRoot) {
   return new Promise((resolve, reject) => {
     const child = spawn(

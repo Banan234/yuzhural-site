@@ -1,0 +1,11 @@
+{
+  "version": "universal-screen-1.0.0",
+  "mode": "symbolic-catalog-illustration",
+  "appliesTo": "every profile with confirmed screen presence",
+  "materialClaim": false,
+  "visualType": "silver-mesh-foil",
+  "color": "silver-metallic",
+  "appearance": "ONE thin flexible silver-metallic screening layer combining a fine clearly visible CROSSHATCH mesh texture with the delicate continuous surface of foil; closely spaced crossing wire-like lines, not coarse mesh; subtle flexibility, negligible edge thickness; no thick spiral tapes, broad metal strips, raised armor seams or rigid metal cylinder",
+  "placement": "under outer protection and around the inner cable assembly; when armor is present show screen and armor as TWO distinct concentric structural layers, screen inside armor",
+  "technicalDisclaimer": "User-approved symbolic visual convention; neither actual screen material nor actual manufacturer construction is asserted. Retain confirmed technical data separately; never recolor the core conductors to match this symbolic screen."
+}

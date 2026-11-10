@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import {
   SPECIFICATION_ACCEPT,
   SPECIFICATION_FILE_HINT,
@@ -11,6 +12,7 @@ export default function SpecificationFiles({
   id,
   disabled,
 }) {
+  const inputRef = useRef(null);
   function select(event) {
     const added = Array.from(event.target.files || []);
     const next = [...files, ...added].filter(
@@ -35,6 +37,8 @@ export default function SpecificationFiles({
         нажатия кнопки.
       </p>
       <input
+        ref={inputRef}
+        hidden
         id={id}
         type="file"
         accept={SPECIFICATION_ACCEPT}
@@ -44,6 +48,15 @@ export default function SpecificationFiles({
         aria-invalid={error ? true : undefined}
         aria-describedby={`${id}-hint${error ? ` ${id}-error` : ''}`}
       />
+      <button
+        type="button"
+        className="button-primary specification-files__choose"
+        disabled={disabled}
+        aria-describedby={`${id}-hint${error ? ` ${id}-error` : ''}`}
+        onClick={() => inputRef.current?.click()}
+      >
+        Выбрать файл
+      </button>
       {files.length > 0 && (
         <ul
           className="specification-files__list"

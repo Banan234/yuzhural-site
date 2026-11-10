@@ -100,6 +100,7 @@ export default function ProductListingView({
     priceMaxNumber,
     sortBy,
     selectedMaterials,
+    selectedFlat,
     selectedConstructions,
     selectedCores,
     selectedSections,
@@ -119,6 +120,7 @@ export default function ProductListingView({
   const [filtersExpanded, setFiltersExpanded] = useState(false);
   const [viewMode, setViewMode] = useState('tiles');
   const filtersSidebarRef = useRef(null);
+  const resultsRef = useRef(null);
 
   useEffect(() => {
     const sidebar = filtersSidebarRef.current;
@@ -227,6 +229,7 @@ export default function ProductListingView({
   const clientFilterQuery = useMemo(() => {
     return normalizeCatalogFilterQuery({
       selectedMaterials,
+      selectedFlat,
       selectedConstructions,
       selectedCores,
       selectedSections,
@@ -240,6 +243,7 @@ export default function ProductListingView({
     });
   }, [
     selectedMaterials,
+    selectedFlat,
     selectedConstructions,
     selectedCores,
     selectedSections,
@@ -315,8 +319,29 @@ export default function ProductListingView({
     ? products
     : filteredProducts.slice((localPage - 1) * pageSize, localPage * pageSize);
 
+  const resultsKey = visibleProducts.map((product) => product.id).join(',');
+  useEffect(() => {
+    const results = resultsRef.current;
+    if (
+      isLoading ||
+      error ||
+      !results?.animate ||
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    )
+      return;
+    const animation = results.animate(
+      [
+        { opacity: 0.35, transform: 'translateY(6px)' },
+        { opacity: 1, transform: 'translateY(0)' },
+      ],
+      { duration: 240, easing: 'ease-out' }
+    );
+    return () => animation.cancel();
+  }, [resultsKey, isLoading, error, viewMode]);
+
   const hasActiveFilters =
     selectedMaterials.length > 0 ||
+    selectedFlat.length > 0 ||
     selectedConstructions.length > 0 ||
     selectedCores.length > 0 ||
     selectedSections.length > 0 ||
@@ -363,6 +388,15 @@ export default function ProductListingView({
         <div className="catalog-filter-panel catalog-filter-panel--sidebar">
           <div className="catalog-filter-panel__head">
             <span className="catalog-filter-panel__title">Фильтры</span>
+            <button
+              type="button"
+              className="catalog-filter-panel__reset"
+              onClick={resetFilters}
+              disabled={!hasActiveFilters}
+              aria-label="Сбросить фильтры"
+            >
+              Сбросить
+            </button>
             <button
               type="button"
               className="catalog-filters-toggle"
@@ -506,6 +540,13 @@ export default function ProductListingView({
                 selected: selectedConstructions,
               },
               {
+                key: 'flat',
+                param: 'flat',
+                label: 'Плоский',
+                selected: selectedFlat,
+                format: (value) => (value === 'yes' ? 'Да' : 'Нет'),
+              },
+              {
                 key: 'cores',
                 param: 'cores',
                 label: 'Кол-во жил',
@@ -602,18 +643,6 @@ export default function ProductListingView({
                 </div>
               </div>
             )}
-
-            <div className="catalog-filter-panel__footer">
-              {hasActiveFilters && (
-                <button
-                  type="button"
-                  className="catalog-filter-panel__reset"
-                  onClick={resetFilters}
-                >
-                  ✕ Сбросить фильтр
-                </button>
-              )}
-            </div>
           </div>
         </div>
       </aside>
@@ -688,114 +717,118 @@ export default function ProductListingView({
           </div>
         )}
 
-        {error ? (
-          <div className="catalog-empty">
-            <p role="status">
-              {isLoading ? 'Загружаем актуальные позиции из прайса...' : error}
-            </p>
-            {onRetry && (
-              <button
-                type="button"
-                className="button button--secondary"
-                onClick={() => {
-                  if (!isLoading) onRetry();
-                }}
-                aria-disabled={isLoading}
-              >
-                Повторить
-              </button>
-            )}
-          </div>
-        ) : isLoading ? (
-          <div className="catalog-empty">
-            Подготавливаем товары из прайса...
-          </div>
-        ) : resultCount > 0 ? (
-          <>
-            <div
-              id="catalog-grid"
-              className="catalog-grid-anchor"
-              aria-hidden="true"
-            />
-            <h2 className="visually-hidden">Товары каталога</h2>
-            <div
-              className={`products-grid products-grid--catalog products-grid--catalog-${viewMode}`}
-            >
-              {visibleProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  variant={
-                    viewMode === 'list' ? 'catalog-list' : 'catalog-tile'
-                  }
-                />
-              ))}
+        <div ref={resultsRef}>
+          {error ? (
+            <div className="catalog-empty">
+              <p role="status">
+                {isLoading
+                  ? 'Загружаем актуальные позиции из прайса...'
+                  : error}
+              </p>
+              {onRetry && (
+                <button
+                  type="button"
+                  className="button button--secondary"
+                  onClick={() => {
+                    if (!isLoading) onRetry();
+                  }}
+                  aria-disabled={isLoading}
+                >
+                  Повторить
+                </button>
+              )}
             </div>
+          ) : isLoading ? (
+            <div className="catalog-empty">
+              Подготавливаем товары из прайса...
+            </div>
+          ) : resultCount > 0 ? (
+            <>
+              <div
+                id="catalog-grid"
+                className="catalog-grid-anchor"
+                aria-hidden="true"
+              />
+              <h2 className="visually-hidden">Товары каталога</h2>
+              <div
+                className={`products-grid products-grid--catalog products-grid--catalog-${viewMode}`}
+              >
+                {visibleProducts.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    variant={
+                      viewMode === 'list' ? 'catalog-list' : 'catalog-tile'
+                    }
+                  />
+                ))}
+              </div>
 
-            {totalPages > 1 && (
-              <div className="catalog-pagination">
-                {page === 1 ? (
-                  <button
-                    type="button"
-                    className="catalog-pagination__btn"
-                    disabled
-                  >
-                    ← Назад
-                  </button>
-                ) : (
-                  <Link
-                    className="catalog-pagination__btn"
-                    to={pageHref(page - 1)}
-                    onClick={(event) => handlePageNavigation(event, page - 1)}
-                  >
-                    ← Назад
-                  </Link>
-                )}
-                {getPageNumbers(page, totalPages).map((p, i) =>
-                  p === '...' ? (
-                    <span
-                      key={`dots-${i}`}
-                      className="catalog-pagination__dots"
+              {totalPages > 1 && (
+                <div className="catalog-pagination">
+                  {page === 1 ? (
+                    <button
+                      type="button"
+                      className="catalog-pagination__btn"
+                      disabled
                     >
-                      …
-                    </span>
+                      ← Назад
+                    </button>
                   ) : (
                     <Link
-                      key={p}
-                      to={pageHref(p)}
-                      aria-current={p === page ? 'page' : undefined}
-                      className={`catalog-pagination__page${p === page ? ' catalog-pagination__page--active' : ''}`}
-                      onClick={(event) => handlePageNavigation(event, p)}
+                      className="catalog-pagination__btn"
+                      to={pageHref(page - 1)}
+                      onClick={(event) => handlePageNavigation(event, page - 1)}
                     >
-                      {p}
+                      ← Назад
                     </Link>
-                  )
-                )}
-                {page === totalPages ? (
-                  <button
-                    type="button"
-                    className="catalog-pagination__btn"
-                    disabled
-                  >
-                    Вперёд →
-                  </button>
-                ) : (
-                  <Link
-                    className="catalog-pagination__btn"
-                    to={pageHref(page + 1)}
-                    onClick={(event) => handlePageNavigation(event, page + 1)}
-                  >
-                    Вперёд →
-                  </Link>
-                )}
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="catalog-empty">
-            По вашему запросу товары не найдены.
-          </div>
-        )}
+                  )}
+                  {getPageNumbers(page, totalPages).map((p, i) =>
+                    p === '...' ? (
+                      <span
+                        key={`dots-${i}`}
+                        className="catalog-pagination__dots"
+                      >
+                        …
+                      </span>
+                    ) : (
+                      <Link
+                        key={p}
+                        to={pageHref(p)}
+                        aria-current={p === page ? 'page' : undefined}
+                        className={`catalog-pagination__page${p === page ? ' catalog-pagination__page--active' : ''}`}
+                        onClick={(event) => handlePageNavigation(event, p)}
+                      >
+                        {p}
+                      </Link>
+                    )
+                  )}
+                  {page === totalPages ? (
+                    <button
+                      type="button"
+                      className="catalog-pagination__btn"
+                      disabled
+                    >
+                      Вперёд →
+                    </button>
+                  ) : (
+                    <Link
+                      className="catalog-pagination__btn"
+                      to={pageHref(page + 1)}
+                      onClick={(event) => handlePageNavigation(event, page + 1)}
+                    >
+                      Вперёд →
+                    </Link>
+                  )}
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="catalog-empty">
+              По вашему запросу товары не найдены.
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,76 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/e01b04237417b50e306952f1e2b1633c43319017174980231c91f1cb36a05048-fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4/image.png",
+    "changes": [
+      {
+        "sku": "YU-0007005",
+        "before": {
+          "image": "/product-images/generated/avvgnga-ls__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 7005,
+          "sourceName": "АВВГ  2х4 нг(А)LS",
+          "productName": "АВВГнг(А)-LS 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "family": "avvgng-a-ls",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "avvgng-a-ls__2c__solid__round__2core-brown-blue__p-24791b8c6f0432a2",
+          "sha256": "fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_4d06a70732db9c9e9a00a789230a701259c37259f976b50a022a3553feefe6c5.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 7005,
+          "sourceName": "АВВГ  2х4 нг(А)LS",
+          "productName": "АВВГнг(А)-LS 2х4",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 4,
+          "visualKey": "avvgng-a-ls__2c__solid__round__2core-brown-blue__p-24791b8c6f0432a2",
+          "sha256": "fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.190Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

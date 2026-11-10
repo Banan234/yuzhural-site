@@ -39,7 +39,7 @@ beforeEach(() => {
 
 describe('ProductCard', () => {
   it.each(['default', 'stock', 'catalog-list', 'catalog-tile'])(
-    'opens the balance table before ordering a grouped product (%s)',
+    'adds the cheapest available source balance directly (%s)',
     (variant) => {
       render(
         <MemoryRouter>
@@ -50,21 +50,24 @@ describe('ProductCard', () => {
               price: 100,
               priceVaries: true,
               offers: [
-                { id: 10, stock: 5, price: 100 },
                 { id: 11, stock: 7, price: 120 },
+                { id: 12, stock: 0, price: 50 },
+                { id: 10, stock: 5, price: 100 },
               ],
             }}
           />
         </MemoryRouter>
       );
-      expect(
-        screen.getByRole('link', { name: 'Выбрать остаток' })
-      ).toHaveAttribute('href', '/product/request-price-card#product-offers');
-      expect(
-        screen.queryByRole('button', {
-          name: /В корзину|Добавить .* в корзину/,
-        })
-      ).not.toBeInTheDocument();
+      fireEvent.click(
+        screen.getByRole('button', { name: /В корзину|Добавить .* в корзину/ })
+      );
+      expect(useCartStore.getState().items[0]).toMatchObject({
+        id: 10,
+        price: 100,
+        stock: 5,
+        quantity: 1,
+      });
+      expect(useCartStore.getState().items[0]).not.toHaveProperty('offers');
       expect(screen.getByRole('article').textContent).toContain('от 100 ₽');
     }
   );

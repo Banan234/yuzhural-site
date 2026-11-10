@@ -56,17 +56,35 @@ function productRedirects() {
 
 export function runtimePriceMiddleware(root) {
   return async (req, res, next) => {
+    const downloadPath = (req.url || '').split('?')[0];
     if (
-      (req.url || '').split('?')[0] !== '/price.xls' ||
+      !['/price.xls', '/price-buyer.xlsx'].includes(downloadPath) ||
       !['GET', 'HEAD'].includes(req.method)
     )
       return next();
     try {
-      const buffer = await fs.promises.readFile(
-        path.join(root, 'data/catalog-current/public/price.xls')
-      );
+      let buffer;
+      try {
+        buffer = await fs.promises.readFile(
+          path.join(root, 'data/catalog-current/public', downloadPath.slice(1))
+        );
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+        buffer = await fs.promises.readFile(
+          path.join(root, 'public', downloadPath.slice(1))
+        );
+      }
       res.statusCode = 200;
-      res.setHeader('Content-Type', 'application/vnd.ms-excel');
+      res.setHeader(
+        'Content-Type',
+        downloadPath.endsWith('.xlsx')
+          ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+          : 'application/vnd.ms-excel'
+      );
+      res.setHeader(
+        'Content-Disposition',
+        `attachment; filename="${downloadPath.slice(1)}"`
+      );
       res.setHeader('Content-Length', buffer.length);
       res.setHeader('Cache-Control', 'no-store');
       res.end(req.method === 'HEAD' ? undefined : buffer);

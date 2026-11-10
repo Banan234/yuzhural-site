@@ -33,6 +33,7 @@ export async function saveSourceState(file, source) {
         sha256: source.sha256,
         requestedUrl: source.requestedUrl,
         publishedAt: new Date().toISOString(),
+        verifiedAt: new Date().toISOString(),
       },
       null,
       2

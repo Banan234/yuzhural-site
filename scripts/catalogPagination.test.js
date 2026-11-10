@@ -71,3 +71,49 @@ it('writes finite SSR pages, isolates pending/query URLs, and removes obsolete p
     await fs.rm(outputDir, { recursive: true, force: true });
   }
 });
+
+it('publishes fresh client-rendered catalog pages and diagnostics when SSR coverage fails', async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'catalog-fallback-'));
+  try {
+    const products = [
+      {
+        id: 1,
+        slug: 'fresh-product',
+        name: 'Кабель',
+        price: 123,
+        stock: 45,
+        unit: 'м',
+      },
+    ];
+    const diagnostics = [];
+    await prerenderCatalogRelease(
+      '<html><head></head><body><div id="root"></div></body></html>',
+      products,
+      {
+        outputDir: root,
+        diagnosticsDir: path.join(root, 'diagnostics'),
+        categoriesData: { sections: [] },
+        manifest: {},
+        allowClientFallback: true,
+        onFallback: (entry) => diagnostics.push(entry),
+        renderApp: () => '<main><h1>Broken SSR</h1><p>stale content</p></main>',
+      }
+    );
+    const html = await fs.readFile(
+      path.join(root, 'catalog/index.html'),
+      'utf8'
+    );
+    expect(html).toContain('data-client-render="true"');
+    expect(html).toContain('noindex,follow');
+    expect(html).toContain('fresh-product');
+    expect(html).not.toContain('stale content');
+    expect(diagnostics[0].missingProducts).toEqual([
+      { id: 1, slug: 'fresh-product' },
+    ]);
+    const files = await fs.readdir(path.join(root, 'diagnostics'));
+    expect(files.some((file) => file.endsWith('.html'))).toBe(true);
+    expect(files.some((file) => file.endsWith('.json'))).toBe(true);
+  } finally {
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});

@@ -45,3 +45,8 @@ data/chat-store.json.lock
 data/.chat-store.json.*.tmp
 data/forms-outbox/
 data/consent-evidence/
+
+data/form-receipts/
+output/mail-audit-2026-11-06/
+
+data/admin/

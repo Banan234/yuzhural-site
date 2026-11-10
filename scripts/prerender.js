@@ -1437,6 +1437,9 @@ export async function prerenderCatalogRelease(
     renderApp,
     manifest,
     log = null,
+    allowClientFallback = false,
+    diagnosticsDir,
+    onFallback = () => {},
   } = {}
 ) {
   categoriesData ||= await loadCatalogCategories();
@@ -1489,6 +1492,7 @@ export async function prerenderCatalogRelease(
         buildCatalogModulePreload(manifest),
       ].join('\n');
       const bodyShell = await renderApp(url, { prerenderData: { catalog } });
+      let clientFallback = false;
       if (
         !bodyShell.includes('<h1') ||
         (!catalogRouteIsGroup(route.slug, categoriesData) &&
@@ -1496,13 +1500,52 @@ export async function prerenderCatalogRelease(
             (p) => !bodyShell.includes(`href="/product/${p.slug}"`)
           ))
       ) {
-        throw new Error('Incomplete catalog SSR: ' + url);
+        const diagnostic = {
+          url,
+          generatedAt: new Date().toISOString(),
+          templateDir,
+          rendererBuild: templateDir
+            ? await fs
+                .stat(path.join(templateDir, 'server', serverEntryFile))
+                .then(({ mtime, size }) => ({
+                  modifiedAt: mtime.toISOString(),
+                  size,
+                }))
+                .catch(() => null)
+            : null,
+          hasHeading: bodyShell.includes('<h1'),
+          missingProducts: catalog.items
+            .filter((p) => !bodyShell.includes(`href="/product/${p.slug}"`))
+            .map(({ id, slug }) => ({ id, slug })),
+          mode: allowClientFallback ? 'client-render' : 'blocked',
+        };
+        if (diagnosticsDir) {
+          await fs.mkdir(diagnosticsDir, { recursive: true });
+          const name = `${Date.now()}-${records.length}`;
+          await fs.writeFile(
+            path.join(diagnosticsDir, `${name}.html`),
+            bodyShell
+          );
+          await fs.writeFile(
+            path.join(diagnosticsDir, `${name}.json`),
+            JSON.stringify(diagnostic, null, 2)
+          );
+        }
+        if (!allowClientFallback)
+          throw new Error('Incomplete catalog SSR: ' + url);
+        clientFallback = true;
+        await onFallback(diagnostic);
       }
       const html = injectIntoThinTemplate(template, {
-        headExtras,
-        bodyShell,
+        headExtras: clientFallback
+          ? headExtras + '<meta name="robots" content="noindex,follow">'
+          : headExtras,
+        bodyShell: clientFallback
+          ? '<main><h1>Каталог продукции</h1><p>Загрузка актуального каталога…</p></main>'
+          : bodyShell,
         bodyEndExtras: buildPrerenderDataScript({ catalog }),
-        hydrate: true,
+        hydrate: !clientFallback,
+        clientRender: clientFallback,
       });
       const filename = page === 1 ? 'index.html' : `page-${page}.html`;
       await writeRoute(route.path, html, { outputDir, filename });
@@ -1568,6 +1611,7 @@ async function writeCatalogQueryPage(
 // SSR and must never be hydrated as a cart or internal diagnostic screen.
 async function prerenderClientOnlyRoutes(template, { outputDir, log }) {
   const routes = [
+    { path: '/admin', title: 'Панель управления', description: 'Вход владельца сайта', canonical: false },
     {
       path: '/cart',
       title: 'Корзина',
@@ -1595,7 +1639,7 @@ async function prerenderClientOnlyRoutes(template, { outputDir, log }) {
     });
     await writeRoute(route.path, html, { outputDir });
   }
-  log?.('[prerender] client-only: 2 loading pages');
+  log?.('[prerender] client-only: 3 loading pages');
 }
 
 export async function prerenderCatalogRoutes(

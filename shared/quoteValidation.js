@@ -134,7 +134,9 @@ export function isValidQuoteRequest(
   if (
     !customer ||
     !Array.isArray(items) ||
-    (!allowEmptyItems && items.length === 0)
+    (!allowEmptyItems &&
+      items.length === 0 &&
+      !String(customer.comment || '').trim())
   ) {
     return false;
   }

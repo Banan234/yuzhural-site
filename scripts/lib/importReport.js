@@ -1,6 +1,7 @@
 // Формирование HTML-отчёта импорта без побочных эффектов записи.
 
 import path from 'node:path';
+import { explainImportRun } from './importRunExplanation.js';
 import {
   PRICE_JUMP_ALERT_PERCENT,
   formatThresholdSource,
@@ -531,6 +532,16 @@ export function buildReportHtml(
       </p>
     </section>
 
+    ${
+      report.status === 'failed'
+        ? `<section class="panel">
+      <h2>Почему импорт остановлен</h2>
+      ${explainImportRun(report)
+        .map((line) => `<p>${escapeHtml(line)}</p>`)
+        .join('')}
+    </section>`
+        : ''
+    }
     <section class="stats">
       ${statCards
         .map(
@@ -560,6 +571,43 @@ export function buildReportHtml(
         )}
       </details>
     </section>
+
+    ${
+      report.designationDecoding
+        ? `<section class="panel">
+      <h2>Позиции без полной расшифровки (${formatNumber(report.designationDecoding.pending?.length ?? 0)})</h2>
+      <p>Полностью без расшифровки: ${formatNumber(report.designationDecoding.counts?.unresolved ?? 0)}. Частично разобраны: ${formatNumber(report.designationDecoding.counts?.partial ?? 0)}.</p>
+      <p>Учитывается полнота разбора обозначения без неизвестных элементов и предупреждений. Строгое подтверждение конструкции считается отдельно.</p>
+      <details class="details-block">
+        <summary>Все позиции без полной расшифровки (${formatNumber(report.designationDecoding.pending?.length ?? 0)})</summary>
+        ${renderTable(
+          report.designationDecoding.pending || [],
+          [
+            { key: 'sku', label: 'Артикул' },
+            { key: 'sourceName', label: 'Исходное наименование' },
+            {
+              label: 'Статус',
+              render: (row) =>
+                row.status === 'unresolved' || !row.family
+                  ? 'Без расшифровки'
+                  : 'Частичная расшифровка',
+            },
+            { key: 'reason', label: 'Причина' },
+            {
+              label: 'Неизвестные элементы',
+              render: (row) => escapeHtml((row.unknown || []).join('; ')),
+            },
+            {
+              label: 'Предупреждения',
+              render: (row) => escapeHtml((row.warnings || []).join('; ')),
+            },
+          ],
+          'Все позиции полностью расшифрованы.'
+        )}
+      </details>
+    </section>`
+        : ''
+    }
 
     <section class="secondary-grid">
       <article class="panel">
@@ -603,6 +651,16 @@ export function buildReportHtml(
         </details>
       </article>
       <article class="panel">
+        <h2>Диагностика выполнения</h2>
+        ${
+          report.status === 'failed'
+            ? ''
+            : explainImportRun(report)
+                .map((line) => `<p>${escapeHtml(line)}</p>`)
+                .join('')
+        }
+        <details class="details-block"><summary>Технические данные выполнения</summary>
+        <pre>${escapeHtml(JSON.stringify(report.telemetry || {}, null, 2))}</pre></details>
         <h2>Результат запуска</h2>
         <p>${escapeHtml(report.message || (report.blocked ? 'Публикация остановлена' : ''))}</p>
         <h2>Предупреждения публикации</h2>

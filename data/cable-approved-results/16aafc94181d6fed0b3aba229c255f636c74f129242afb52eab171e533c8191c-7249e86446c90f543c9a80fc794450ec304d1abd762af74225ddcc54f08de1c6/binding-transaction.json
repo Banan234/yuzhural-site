@@ -1,0 +1,141 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/16aafc94181d6fed0b3aba229c255f636c74f129242afb52eab171e533c8191c-7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000122",
+        "before": {
+          "image": "/product-images/generated/avvgng__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 122,
+          "sourceName": "АВВГ  2х 70 нг",
+          "productName": "АВВГнг 2х70",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 70,
+          "family": "avvgng",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "avvgng__2c__solid__round__2core-brown-blue__p-065b8bb8a0eccf7f",
+          "sha256": "7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_330df798e37a999d5a196f21bd799726e2df096ad815422487cb93fece3e3ff0.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 122,
+          "sourceName": "АВВГ  2х 70 нг",
+          "productName": "АВВГнг 2х70",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 70,
+          "visualKey": "avvgng__2c__solid__round__2core-brown-blue__p-065b8bb8a0eccf7f",
+          "sha256": "7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.056Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      },
+      {
+        "sku": "YU-0000123",
+        "before": {
+          "image": "/product-images/generated/avvgng__2core.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 123,
+          "sourceName": "АВВГ  2х120 нг",
+          "productName": "АВВГнг 2х120",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 120,
+          "family": "avvgng",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "brown",
+            "blue"
+          ],
+          "visualKey": "avvgng__2c__solid__round__2core-brown-blue__p-065b8bb8a0eccf7f",
+          "sha256": "7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6",
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        },
+        "after": {
+          "image": "/product-images/generated/style1_330df798e37a999d5a196f21bd799726e2df096ad815422487cb93fece3e3ff0.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": false,
+          "productId": 123,
+          "sourceName": "АВВГ  2х120 нг",
+          "productName": "АВВГнг 2х120",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 120,
+          "visualKey": "avvgng__2c__solid__round__2core-brown-blue__p-065b8bb8a0eccf7f",
+          "sha256": "7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6",
+            "reviewer": "Пользователь",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true
+            },
+            "reviewedAt": "2026-11-10T08:21:09.056Z"
+          },
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  }
+}

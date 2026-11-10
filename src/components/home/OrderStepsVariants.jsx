@@ -1,3 +1,4 @@
+import useStaggeredReveal from '../../hooks/useStaggeredReveal';
 import Container from '../ui/Container';
 
 const steps = [
@@ -56,6 +57,8 @@ function StepIcon({ step }) {
 }
 
 export default function OrderStepsVariants() {
+  const stepsRef = useStaggeredReveal();
+
   return (
     <section
       className="order-process order-process--road"
@@ -64,7 +67,7 @@ export default function OrderStepsVariants() {
       <Container>
         <div className="order-process__layout">
           <h2 id="order-process-road-title">Как проходит заказ?</h2>
-          <ol className="order-process__steps">
+          <ol ref={stepsRef} className="order-process__steps">
             {steps.map((step, index) => (
               <li key={step.title}>
                 <div className="order-process__icon">
