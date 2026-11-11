@@ -179,3 +179,78 @@ it('preserves catalogue-confirmed drain wire when no manufacturer override exist
     'Exactly ONE documented thin bare screen drain'
   );
 });
+
+const sheathProfile = {
+  ...base,
+  family: 'documented-construction',
+  shield: false,
+  shieldType: null,
+  specialElements: [],
+  geometry: 'round',
+  hasOuterJacket: true,
+  outerJacket: 'black',
+};
+const documented = {
+  fireBarrier: false,
+  screen: false,
+  armor: false,
+  source: 'https://manufacturer.example/datasheet',
+};
+
+it('does not infer interstitial filling from an inner or outer sheath', () => {
+  const profile = {
+    ...sheathProfile,
+    technicalConstruction: { ...documented, innerSheath: 'PVC' },
+  };
+  const unknown = build(profile);
+  expect(unknown.innerSheath.status).toBe('present');
+  expect(unknown.outerSheath.status).toBe('present');
+  expect(unknown.interstitialFilling.status).toBe('unknown');
+  expect(unknown.layers.map(layer => layer.role)).toEqual([
+    'outer-jacket', 'inner-sheath', 'individual-insulation',
+  ]);
+  expect(technicalProfilePrompt(unknown)).toContain('Do not depict filling or assert empty cavities');
+  const absent = build({
+    ...profile,
+    technicalConstruction: {
+      ...profile.technicalConstruction,
+      interstitialFilling: { status: 'absent' },
+    },
+  });
+  expect(absent.interstitialFilling.status).toBe('absent');
+  expect(absent.layers).toEqual(unknown.layers);
+  expect(technicalProfilePrompt(absent)).toContain('with no material drawn between them');
+});
+
+it('adds only a documented interstitial filling role without adding either sheath', () => {
+  const interstitialFilling = {
+    status: 'present',
+    material: 'polymer cords',
+    placement: 'discrete cords between the insulated cores',
+  };
+  const profile = {
+    ...sheathProfile,
+    hasOuterJacket: false,
+    technicalConstruction: { ...documented, innerSheath: false, interstitialFilling },
+  };
+  const result = build(profile);
+  expect(result.outerSheath.status).toBe('absent');
+  expect(result.innerSheath.status).toBe('absent');
+  expect(result.layers.map(layer => layer.role)).toEqual(['interstitial-filling', 'individual-insulation']);
+  expect(result.interstitialFilling).toEqual(interstitialFilling);
+  expect(technicalProfilePrompt(result)).toContain('Do not draw an inner sheath.');
+  expect(technicalProfilePrompt(result)).toContain('Do not add an outer sheath.');
+  expect(() => build({
+    ...profile,
+    technicalConstruction: { ...documented, interstitialFilling: { status: 'present' } },
+  })).toThrow('NEEDS_REVIEW');
+});
+
+it.each([1, 2])('keeps filling independent for %i-core construction', cores => {
+  const profile = { ...sheathProfile, cores, coreColors: Array(cores).fill('black') };
+  const result = build(profile);
+  expect(result.innerSheath.status).toBe('unknown');
+  expect(result.interstitialFilling.status).toBe('unknown');
+  expect(result.layers.map(layer => layer.role)).toEqual(['outer-jacket', 'individual-insulation']);
+  expect(result.coreMetalEndCount).toBe(cores);
+});

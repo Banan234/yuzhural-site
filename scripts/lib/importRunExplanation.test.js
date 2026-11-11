@@ -2,6 +2,7 @@ import { expect, it } from 'vitest';
 import { explainImportRun } from './importRunExplanation.js';
 import { buildImportEmail } from './importNotification.js';
 import { buildReportHtml } from './importReport.js';
+import { analyzeImportSleep } from './importSleepEvidence.js';
 
 const report = {
   status: 'failed', errorCode: 'IMPORT_TIMEOUT', timeoutMs: 900000,
@@ -60,4 +61,34 @@ it('escapes diagnostic facts in HTML', () => {
   const html = buildReportHtml({ ...report, telemetry: { stage: '<script>alert(1)</script>' } });
   expect(html).not.toContain('<script>alert(1)</script>');
   expect(html).toContain('&lt;script&gt;alert(1)&lt;/script&gt;');
+});
+
+it('correlates the watchdog deadline with macOS sleep in email and HTML', () => {
+  const startedAt = '2026-11-10T14:43:40.990Z';
+  const watchdogAt = '2026-11-10T15:00:37.028Z';
+  const deadlineAt = '2026-11-10T14:58:40.990Z';
+  const log = [
+    "2026-11-10 19:28:17 +0500 Sleep\tEntering Sleep state due to 'Maintenance Sleep'",
+    '2026-11-10 19:43:40 +0500 DarkWake\tDarkWake from Deep Idle',
+    "2026-11-10 19:43:42 +0500 Sleep\tEntering Sleep state due to 'Maintenance Sleep'",
+    '2026-11-10 19:44:00 +0500 Wake Requests\t[process=private]',
+    '2026-11-10 20:00:37 +0500 DarkWake\tDarkWake from Deep Idle',
+  ].join('\n');
+  const sleepEvidence = analyzeImportSleep(log, startedAt, watchdogAt, deadlineAt);
+  expect(sleepEvidence).toMatchObject({
+    status: 'overlap',
+    totalOverlapMs: 1015000,
+    intervals: [{ wakeType: 'dark-wake', includedDeadline: true }],
+  });
+  const failed = { ...report, startedAt, watchdogAt, completedAt: watchdogAt, deadlineAt, sleepEvidence };
+  for (const output of [buildImportEmail(failed).text, buildReportHtml(failed)]) {
+    expect(output).toContain('Расчётный срок импорта истёк во время сна');
+    expect(output).toContain('19:58:40');
+    expect(output).toContain('20:00:37');
+    expect(output).toContain('Причину ошибки сети или DNS он не устанавливает');
+    expect(output).not.toContain('[process=private]');
+  }
+  expect(analyzeImportSleep(log, '2026-11-10T15:01:00Z', '2026-11-10T15:02:00Z').status)
+    .toBe('no-overlap-observed');
+  expect(analyzeImportSleep('', startedAt, watchdogAt).status).toBe('unavailable');
 });

@@ -1,0 +1,95 @@
+{
+  "profile": {
+    "family": "vvgng-a-ls-ltx",
+    "productType": "power-cable",
+    "cores": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "black",
+      "grey",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "MULTICORE",
+    "technicalConstruction": {
+      "fireBarrier": false,
+      "screen": false,
+      "screenType": null,
+      "armor": false,
+      "armorType": null,
+      "innerSheath": "low-toxicity PVC",
+      "drainWire": false,
+      "source": "https://www.energokab.ru/katalog/silovye-kabeli-3kv/ng-ltx/vvgnga-lsltx-vvg-pnga-lsltx-vvgenga-lsltx-vbshvnga-lsltx-avvgnga-lsltx-avvg-pnga-lsltx-avvgenga-lsltx-avbshvnga-lsltx-po-tu-16k121-018-2011/vvgnga-lsltx/",
+      "basis": "Manufacturer documented family allows round stranded copper class 2. User specifically requests round stranded 5x70. Inner and outer low-toxicity PVC sheaths. Illustration variant, not supplier identification or catalog reclassification."
+    }
+  },
+  "visualKey": "vvgng-a-ls-ltx__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-8db6b6500517f16e",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2",
+  "draftKey": "99b4db95ae023d147445040091b6486b7127a839b21e89879d735b6d2b2cd1ef",
+  "members": [
+    {
+      "sku": "YU-0007248",
+      "productHash": "0b593e9f137ddbebecae8e3b311c7aede47a38978a19a3c50a5dd39f0ec20600",
+      "oldBinding": null
+    }
+  ],
+  "previousDraft": {
+    "path": "outputs/cable-multicore-next-ten-2026-11-10/drafts/03-YU-0007248/image.png",
+    "sha256": "8ed98603e59d7efdd80d11e0d5c0c5634ffaa79ced5adacc1b8039c96f70b6b1",
+    "status": "NEEDS_REVIEW",
+    "reason": "Solid instead of stranded conductors"
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "reviewer": "User visual approval and technical review",
+    "sha256": "3df8ee1f6e752d2d8c9567951daa957440c3e138fa749143bfbc206ac6a155c8",
+    "APPROVED_FOR_CATALOG": true,
+    "APPROVED_AS_REFERENCE": false,
+    "referenceRestriction": "The grey inner layer visually resembles solid interstitial filling. User accepts it for this illustration only.",
+    "previousDraft": {
+      "path": "outputs/cable-multicore-next-ten-2026-11-10/drafts/03-YU-0007248/image.png",
+      "sha256": "8ed98603e59d7efdd80d11e0d5c0c5634ffaa79ced5adacc1b8039c96f70b6b1",
+      "status": "NEEDS_REVIEW",
+      "reason": "Solid instead of stranded conductors"
+    },
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "visualKey": "vvgng-a-ls-ltx__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-8db6b6500517f16e",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-11T09:11:16.092Z"
+  },
+  "automaticProductionBinding": false
+}

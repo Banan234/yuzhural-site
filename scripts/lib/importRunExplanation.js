@@ -1,4 +1,4 @@
-// Human-readable facts shared by the email and HTML report. No network or OS inference.
+// Human-readable facts shared by the email and HTML report.
 import { classifyImportFailure } from './importFailureCategory.js';
 
 const dateFormatter = new Intl.DateTimeFormat('ru-RU', {
@@ -20,6 +20,29 @@ function safeUrl(value) {
   } catch { return null; }
 }
 
+function explainSleep(report) {
+  const evidence = report.sleepEvidence;
+  if (!evidence || evidence.status === 'unsupported') return [];
+  if (evidence.status === 'unavailable') {
+    return ['Журнал сна macOS недоступен. Влияние сна на запуск определить не удалось.'];
+  }
+  if (evidence.status === 'no-overlap-observed') {
+    return ['В журнале macOS нет завершённых интервалов сна, пересекающихся с запуском.'];
+  }
+  if (evidence.status !== 'overlap') return [];
+
+  const deadlineInterval = evidence.intervals.find((interval) => interval.includedDeadline);
+  const interval = deadlineInterval || evidence.intervals.at(-1);
+  const sleep = deadlineInterval ? 'Сон, на который пришёлся лимит' : 'Последний интервал сна';
+  const wake = interval.wakeType === 'dark-wake' ? 'Фоновое пробуждение' : 'Пробуждение';
+  return [
+    `Журнал macOS подтвердил сон во время запуска. Суммарно — ${duration(evidence.totalOverlapMs)}.`,
+    `${sleep}: ${date(interval.sleepAt)}. ${wake}: ${date(interval.wakeAt)}.`,
+    ...(deadlineInterval ? [`Расчётный срок импорта истёк во время сна (${date(report.deadlineAt)}). Сигнал остановки отправлен после пробуждения (${date(report.watchdogAt)}).`] : []),
+    'Журнал сна показывает, когда Mac спал. Причину ошибки сети или DNS он не устанавливает.',
+  ];
+}
+
 export function explainImportRun(report) {
   const telemetry = report.telemetry || {};
   const events = telemetry.events || [];
@@ -28,6 +51,7 @@ export function explainImportRun(report) {
   const lastFailure = events.filter((event) => event.type === 'attempt-failure').at(-1);
   const connection = events.filter((event) => event.type === 'connect').at(-1);
   const http = events.filter((event) => event.type === 'http').at(-1);
+  const download = events.filter((event) => event.type === 'download-progress').at(-1);
   const start = report.startedAt || telemetry.startedAt || report.generatedAt;
   const end = report.completedAt || telemetry.capturedAt;
   const elapsed = end && Number.isFinite(Date.parse(start)) && Number.isFinite(Date.parse(end))
@@ -56,15 +80,23 @@ export function explainImportRun(report) {
   } else {
     lines.push('Данные о попытках загрузки не сохранены; их количество неизвестно.');
   }
-  if (Number.isFinite(telemetry.maxHeartbeatGapMs) && telemetry.maxHeartbeatGapMs >= 30000) {
-    lines.push(`Наблюдение: максимальный разрыв контрольных сигналов процесса — ${duration(telemetry.maxHeartbeatGapMs)}. Возможны сон компьютера, блокировка процесса или высокая нагрузка. Причина не подтверждена: события ОС не собираются.`);
+  if (Number.isFinite(download?.bytes)) {
+    lines.push(`Последний прогресс загрузки: ${download.bytes.toLocaleString('ru-RU')} байт, ${date(download.at)}.`);
   }
+  const longHeartbeatGap = telemetry.maxHeartbeatGapMs >= 30000;
+  if (longHeartbeatGap) {
+    lines.push(`Максимальный разрыв контрольных сигналов процесса — ${duration(telemetry.maxHeartbeatGapMs)}.`);
+    if (report.sleepEvidence?.status !== 'overlap') {
+      lines.push('Возможны сон компьютера, блокировка процесса или высокая нагрузка. Причина не подтверждена.');
+    }
+  }
+  lines.push(...explainSleep(report));
   if (telemetry.capturedAt) lines.push(`Последний снимок диагностики: ${date(telemetry.capturedAt)}. После него могли быть события, не попавшие в отчёт.`);
   const beforePublication = /^(Получение источника|Подключение к источнику|Скачивание)/.test(telemetry.stage || '');
   lines.push(beforePublication
     ? 'Влияние: сбой зафиксирован до публикации; этот запуск не обновил каталог.'
     : 'Влияние: обновление этим запуском не подтверждено. При прерывании публикации нужно проверить файлы каталога.');
-  lines.push(`Что проверить: ${classifyImportFailure(report).action}${telemetry.maxHeartbeatGapMs >= 30000 ? ' Дополнительно сопоставить время разрыва с журналом сна и пробуждения компьютера.' : ''}`);
+  lines.push(`Что проверить: ${classifyImportFailure(report).action}`);
   lines.push('Следующая попытка — при очередном запуске планировщика; точное время в этом отчёте не определено.');
   return lines;
 }

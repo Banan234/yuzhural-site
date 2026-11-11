@@ -197,6 +197,10 @@ async function commitAliases(entries) {
         releases,
         `release-${Date.now()}-${process.pid}-${randomUUID()}`
       );
+      if (path.basename(record.target) === 'catalog-current') {
+        // Keep the release traversable by the Nginx worker after rebinding.
+        await fs.chmod(record.staged, 0o711);
+      }
       await fs.rename(record.staged, record.release);
       await replaceLink(
         record.target,

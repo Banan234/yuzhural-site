@@ -1,0 +1,23 @@
+{
+  "YU-0007248": {
+    "productId": 7248,
+    "sourceName": "ВВГ 5х 70 нг(А)LS-Ltx",
+    "section": 70,
+    "baselineVisualKey": "vvgng-a-ls-ltx__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-36a0f6e183952c0b",
+    "profile": {
+      "conductorConstruction": "stranded",
+      "technicalConstruction": {
+        "fireBarrier": false,
+        "screen": false,
+        "screenType": null,
+        "armor": false,
+        "armorType": null,
+        "innerSheath": "low-toxicity PVC",
+        "drainWire": false,
+        "source": "https://www.energokab.ru/katalog/silovye-kabeli-3kv/ng-ltx/vvgnga-lsltx-vvg-pnga-lsltx-vvgenga-lsltx-vbshvnga-lsltx-avvgnga-lsltx-avvg-pnga-lsltx-avvgenga-lsltx-avbshvnga-lsltx-po-tu-16k121-018-2011/vvgnga-lsltx/",
+        "basis": "Manufacturer documented family allows round stranded copper class 2. User specifically requests round stranded 5x70. Inner and outer low-toxicity PVC sheaths. Illustration variant, not supplier identification or catalog reclassification."
+      },
+      "visualizationType": "MULTICORE"
+    }
+  }
+}

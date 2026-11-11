@@ -1,0 +1,34 @@
+{
+  "status": "APPROVED",
+  "reviewer": "User visual approval and technical review",
+  "sha256": "3df8ee1f6e752d2d8c9567951daa957440c3e138fa749143bfbc206ac6a155c8",
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": false,
+  "referenceRestriction": "The grey inner layer visually resembles solid interstitial filling. User accepts it for this illustration only.",
+  "previousDraft": {
+    "path": "outputs/cable-multicore-next-ten-2026-11-10/drafts/03-YU-0007248/image.png",
+    "sha256": "8ed98603e59d7efdd80d11e0d5c0c5634ffaa79ced5adacc1b8039c96f70b6b1",
+    "status": "NEEDS_REVIEW",
+    "reason": "Solid instead of stranded conductors"
+  },
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true
+  },
+  "visualKey": "vvgng-a-ls-ltx__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-8db6b6500517f16e",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-11T09:11:16.092Z"
+}

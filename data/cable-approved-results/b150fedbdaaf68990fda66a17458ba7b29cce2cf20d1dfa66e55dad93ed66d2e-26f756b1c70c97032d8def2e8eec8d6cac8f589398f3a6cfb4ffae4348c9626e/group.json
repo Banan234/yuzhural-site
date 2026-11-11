@@ -1,0 +1,307 @@
+{
+  "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+  "profile": {
+    "family": "kg",
+    "productType": "flexible-cable",
+    "cores": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "black",
+      "grey",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "members": [
+    {
+      "sku": "YU-0003944",
+      "productHash": "352e15eae50b2d06cf4866fdd7b772be1c1506c6cc6304be88487d237767a5b9",
+      "oldBinding": {
+        "image": "/product-images/generated/kg__5core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 3944,
+        "sourceName": "КГ 5х0,75",
+        "productName": "КГ 5х0,75",
+        "primaryCores": 5,
+        "cores": 5,
+        "section": 0.75,
+        "family": "kg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+        "sha256": "1487f2b591e093b3bd9d7f43cee3712d92c9c9718be3653fed427ade0bfebc5a",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0003945",
+      "productHash": "1ac1ea6b80ce1da3afdb9c18e663f28be1558570be7553a5aeb8ccacc88cebb0",
+      "oldBinding": {
+        "image": "/product-images/generated/kg__5core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 3945,
+        "sourceName": "КГ 5х1",
+        "productName": "КГ 5х1",
+        "primaryCores": 5,
+        "cores": 5,
+        "section": 1,
+        "family": "kg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+        "sha256": "1487f2b591e093b3bd9d7f43cee3712d92c9c9718be3653fed427ade0bfebc5a",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0003947",
+      "productHash": "62e00eb5ef7ca5d9acd4739a08afc908c305ee329f4fc238c985e76646bc25d1",
+      "oldBinding": {
+        "image": "/product-images/generated/kg__5core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 3947,
+        "sourceName": "КГ 5х4",
+        "productName": "КГ 5х4",
+        "primaryCores": 5,
+        "cores": 5,
+        "section": 4,
+        "family": "kg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+        "sha256": "1487f2b591e093b3bd9d7f43cee3712d92c9c9718be3653fed427ade0bfebc5a",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0003948",
+      "productHash": "96270a8b5358136826fa5cda6eb0f294488152fd66a2e1c4b0c668f8bddc9ee3",
+      "oldBinding": {
+        "image": "/product-images/generated/kg__5core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 3948,
+        "sourceName": "КГ 5х6",
+        "productName": "КГ 5х6",
+        "primaryCores": 5,
+        "cores": 5,
+        "section": 6,
+        "family": "kg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+        "sha256": "1487f2b591e093b3bd9d7f43cee3712d92c9c9718be3653fed427ade0bfebc5a",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0003949",
+      "productHash": "536ad371b31273ec733141c09f6df991005f4b7bd9e8f48c7cf6832895824eb3",
+      "oldBinding": {
+        "image": "/product-images/generated/kg__5core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 3949,
+        "sourceName": "КГ 5х 10",
+        "productName": "КГ 5х10",
+        "primaryCores": 5,
+        "cores": 5,
+        "section": 10,
+        "family": "kg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+        "sha256": "1487f2b591e093b3bd9d7f43cee3712d92c9c9718be3653fed427ade0bfebc5a",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0003951",
+      "productHash": "4f3241afc908a0689bc37c2a86bb62b8311205dee04e8d305f63dff03d96b8bc",
+      "oldBinding": {
+        "image": "/product-images/generated/kg__5core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 3951,
+        "sourceName": "КГ 5х 25",
+        "productName": "КГ 5х25",
+        "primaryCores": 5,
+        "cores": 5,
+        "section": 25,
+        "family": "kg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+        "sha256": "1487f2b591e093b3bd9d7f43cee3712d92c9c9718be3653fed427ade0bfebc5a",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0003952",
+      "productHash": "a96a9b7949a18b9379766837c2fb013803293c725ce93cc61875b45e6bc6569d",
+      "oldBinding": {
+        "image": "/product-images/generated/kg__5core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 3952,
+        "sourceName": "КГ 5х 50",
+        "productName": "КГ 5х50",
+        "primaryCores": 5,
+        "cores": 5,
+        "section": 50,
+        "family": "kg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "black",
+          "grey",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+        "sha256": "1487f2b591e093b3bd9d7f43cee3712d92c9c9718be3653fed427ade0bfebc5a",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    }
+  ],
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "draftKey": "c443ee15ce595124cc225174003017819776ee27f1823ec27bfc3b6c29b07dba",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.5140924464487034,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 455,
+        "longestSupportedRun": 455,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.5323754494648366,
+    "non_opaque_ratio": 0.9996676279822921,
+    "foreground_ratio": 0.46677105986636486,
+    "bounds": {
+      "minX": 118,
+      "minY": 52,
+      "maxX": 1773,
+      "maxY": 728
+    },
+    "warnings": [],
+    "sha256": "26f756b1c70c97032d8def2e8eec8d6cac8f589398f3a6cfb4ffae4348c9626e",
+    "bytes": 1283857
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "reviewer": "Ручная проверка PNG; пользователь условно разрешил каталог",
+    "sha256": "26f756b1c70c97032d8def2e8eec8d6cac8f589398f3a6cfb4ffae4348c9626e",
+    "basis": "Пять изолированных жил и пять соосных многопроволочных медных концов, равный визуальный диаметр, компактный пучок без лишних слоёв.",
+    "publicationAuthorized": true,
+    "APPROVED_FOR_CATALOG": true,
+    "APPROVED_AS_REFERENCE": false,
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-10T16:55:40.410Z"
+  },
+  "automaticProductionBinding": false
+}

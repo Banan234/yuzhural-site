@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-10.4",
+  "revision": "2026-11-10.5",
   "documents": 332,
   "manufacturerDocuments": 315,
   "pages": 13618,
@@ -15,7 +15,7 @@
   "priceFiltered": false,
   "automaticProductInference": false,
   "reviewedFamilies": 1216,
-  "reviewedTexts": 825,
+  "reviewedTexts": 826,
   "uniqueOriginals": 332,
   "databasePath": "data/designation-manufacturer-corpus/corpus.sqlite",
   "originalsDirectory": "data/designation-manufacturer-corpus/originals",

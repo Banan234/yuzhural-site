@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
-import { getGeneratedProductImage } from '../shared/productImages.js';
+import { getHistoricalGeneratedProductImage } from './lib/historicalGeneratedProductImage.js';
 import {
   productionSummary,
   writeProductionJson,
@@ -144,7 +144,7 @@ export async function main() {
     for (const member of group.members) {
       assert.equal(binding.bySku[member.sku]?.visualKey, group.visualKey);
       assert.equal(
-        getGeneratedProductImage(products.get(member.sku), binding),
+        getHistoricalGeneratedProductImage(products.get(member.sku), binding),
         group.image
       );
       assert.equal(binding.bySku[member.sku].section, member.section);
@@ -235,7 +235,7 @@ export async function main() {
     : 'Нет.';
   await fs.writeFile(
     path.join(out, 'summary.md'),
-    `# Production, этап 1\n\n| Показатель | Результат |\n|---|---:|\n| REUSE existing | ${summary.reuseExisting.visualKeys} visualKey / ${summary.reuseExisting.products} товаров |\n| Generated and bound after visual QA | ${summary.generated.visualKeys} visualKey / ${summary.generated.products} товаров |\n| PNG received and decoded before visual QA | ${summary.decodedNewPngReceived} |\n| Failed | ${summary.failed.length} visualKey |\n| Skipped/cache | ${summary.skippedCache} |\n| API requests | ${summary.apiRequests} |\n| Products with illustrations | ${summary.productsWithIllustrations} |\n| NEEDS_REVIEW untouched | ${summary.needsReviewUntouched} |\n| Pending | ${summary.pending} |\n\n## Проверка\n\nИсходный каталог и ${oldFiles} защищённых существующих файлов не изменились. Все 119 утверждённых PNG сохранены. Привязки всех 3831 NEEDS_REVIEW сохранены. ${bound} назначенных SKU разрешаются через штатный getGeneratedProductImage; сечения сохранены по SKU. PNG проверены декодированием, CRC, alpha и SHA-256. Проверка структуры пикселей требует визуального просмотра; программная проверка не считает жилы.\n\nПолучено ${summary.decodedNewPngReceived} PNG; из них ${Object.keys(rejections.byVisualKey).length} результатов исключены из новых привязок после визуальной проверки. Причины включают неверное число жил и невозможность достоверно проверить число из-за перекрывающихся концов. Исходные файлы сохранены, повторной генерации ради другого варианта не было. FAILED также включает ошибки API после ограниченных повторов.\n\n## FAILED\n\n${failed}\n\n## Возобновление\n\nАвторитетный manifest: data/product-image-metadata/production-v1/manifest.json. Команда: npm run images:cables:production -- --run. Успешные файлы и FAILED не генерируются заново.\n`
+    `# Production, этап 1\n\n| Показатель | Результат |\n|---|---:|\n| REUSE existing | ${summary.reuseExisting.visualKeys} visualKey / ${summary.reuseExisting.products} товаров |\n| Generated and bound after visual QA | ${summary.generated.visualKeys} visualKey / ${summary.generated.products} товаров |\n| PNG received and decoded before visual QA | ${summary.decodedNewPngReceived} |\n| Failed | ${summary.failed.length} visualKey |\n| Skipped/cache | ${summary.skippedCache} |\n| API requests | ${summary.apiRequests} |\n| Products with illustrations | ${summary.productsWithIllustrations} |\n| NEEDS_REVIEW untouched | ${summary.needsReviewUntouched} |\n| Pending | ${summary.pending} |\n\n## Проверка\n\nИсходный каталог и ${oldFiles} защищённых существующих файлов не изменились. Все 119 утверждённых PNG сохранены. Привязки всех 3831 NEEDS_REVIEW сохранены. ${bound} назначенных SKU разрешаются через штатный getHistoricalGeneratedProductImage; сечения сохранены по SKU. PNG проверены декодированием, CRC, alpha и SHA-256. Проверка структуры пикселей требует визуального просмотра; программная проверка не считает жилы.\n\nПолучено ${summary.decodedNewPngReceived} PNG; из них ${Object.keys(rejections.byVisualKey).length} результатов исключены из новых привязок после визуальной проверки. Причины включают неверное число жил и невозможность достоверно проверить число из-за перекрывающихся концов. Исходные файлы сохранены, повторной генерации ради другого варианта не было. FAILED также включает ошибки API после ограниченных повторов.\n\n## FAILED\n\n${failed}\n\n## Возобновление\n\nАвторитетный manifest: data/product-image-metadata/production-v1/manifest.json. Команда: npm run images:cables:production -- --run. Успешные файлы и FAILED не генерируются заново.\n`
   );
   console.log(
     JSON.stringify(

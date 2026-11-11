@@ -70,7 +70,7 @@ RUN apt-get -o Acquire::Retries=0 update \
 
 COPY package.json package-lock.json ./
 COPY --from=prod-deps /home/node/app/node_modules ./node_modules
-COPY server.js ./
+COPY server.js cable-image-style.json ./
 COPY --from=build /home/node/app/dist/index.html ./dist/index.html
 COPY --from=build /home/node/app/dist/.vite ./dist/.vite
 COPY --from=build /home/node/app/dist/server ./dist/server
@@ -93,7 +93,7 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
 CMD ["node", "server.js"]
 
 # ---------- 5. Brotli и headers-more модули под точную версию nginx ----------
-FROM nginx:1.27-alpine AS brotli-builder
+FROM nginx:1.30.6-alpine AS brotli-builder
 RUN apk add --no-cache --virtual .brotli-build-deps \
     build-base \
     cmake \
@@ -108,8 +108,18 @@ RUN set -eux; \
     NGINX_VERSION="$(nginx -v 2>&1 | sed -E 's#nginx version: nginx/##')"; \
     curl -fsSL -o nginx.tar.gz "https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz"; \
     tar -zxf nginx.tar.gz; \
-    git clone --recursive --depth=1 https://github.com/google/ngx_brotli.git; \
-    git clone --depth=1 https://github.com/openresty/headers-more-nginx-module.git; \
+    curl -fsSL -o ngx-brotli.tar.gz "https://codeload.github.com/google/ngx_brotli/tar.gz/53e0fb55f250f48fe80c0ddbf6c0f7103cdbaae1"; \
+    echo "27a4352dae4ba4922f9f013f3f0d02359aceeef2701872efa42849c3ba05457a  ngx-brotli.tar.gz" | sha256sum -c -; \
+    mkdir -p ngx_brotli; \
+    tar -xzf ngx-brotli.tar.gz --strip-components=1 -C ngx_brotli; \
+    curl -fsSL -o brotli.tar.gz "https://codeload.github.com/google/brotli/tar.gz/db24a98aed38a16de78cc05ca15cdd8dc2a0d92d"; \
+    echo "113b9685dfc14dd2f3360d077283266eec2fbdfb0fe3e5600f11be151da0d68e  brotli.tar.gz" | sha256sum -c -; \
+    mkdir -p ngx_brotli/deps/brotli; \
+    tar -xzf brotli.tar.gz --strip-components=1 -C ngx_brotli/deps/brotli; \
+    curl -fsSL -o headers-more.tar.gz "https://codeload.github.com/openresty/headers-more-nginx-module/tar.gz/21066f7eed72e4de4f6ec47b93e8d5f36c38b84a"; \
+    echo "52f3f4dc1b34efa887155e92398052bf477702b2753585fe3482e2dd0136ea62  headers-more.tar.gz" | sha256sum -c -; \
+    mkdir -p headers-more-nginx-module; \
+    tar -xzf headers-more.tar.gz --strip-components=1 -C headers-more-nginx-module; \
     cd /tmp/ngx_brotli/deps/brotli; \
     mkdir out; \
     cd out; \
@@ -122,8 +132,9 @@ RUN set -eux; \
     cp objs/ngx_http_brotli_filter_module.so objs/ngx_http_brotli_static_module.so objs/ngx_http_headers_more_filter_module.so /tmp/nginx-modules/
 
 # ---------- 6. Nginx со статикой и прокси на API ----------
-FROM nginx:1.27-alpine AS web
-RUN apk add --no-cache curl
+FROM nginx:1.30.6-alpine AS web
+RUN apk add --no-cache curl \
+    && apk upgrade --no-cache libxslt zlib
 COPY --from=brotli-builder /tmp/nginx-modules/ /etc/nginx/modules/
 RUN { \
       echo 'load_module modules/ngx_http_brotli_filter_module.so;'; \

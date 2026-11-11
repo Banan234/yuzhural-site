@@ -1,0 +1,183 @@
+{
+  "visualKey": "avvgng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-e442dc8e87d72633",
+  "profile": {
+    "family": "avvgng-a-ls",
+    "productType": "power-cable",
+    "cores": 3,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "3core-brown-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "members": [
+    {
+      "sku": "YU-0000130",
+      "productHash": "44363fab079ace303cfe5c2b6cf02b3d87dd148e99f991e6ea72981cc8660019",
+      "oldBinding": {
+        "image": "/product-images/generated/avvgnga-ls__3core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 130,
+        "sourceName": "АВВГ  3х4 нг(А)LS",
+        "productName": "АВВГнг(А)-LS 3х4",
+        "primaryCores": 3,
+        "cores": 3,
+        "section": 4,
+        "family": "avvgng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "avvgng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-e442dc8e87d72633",
+        "sha256": "45c02c6c7d8d4cda4cee62d2f37be33568d5299f6de97818ba2a227ea625b070",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0000137",
+      "productHash": "c5f56672efc245a1dc8b3c2e617e4767852a34d8907dc229bd28dc77466a521f",
+      "oldBinding": {
+        "image": "/product-images/generated/avvgnga-ls__3core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 137,
+        "sourceName": "АВВГ  3х 10 нг(А)LS",
+        "productName": "АВВГнг(А)-LS 3х10",
+        "primaryCores": 3,
+        "cores": 3,
+        "section": 10,
+        "family": "avvgng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "avvgng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-e442dc8e87d72633",
+        "sha256": "45c02c6c7d8d4cda4cee62d2f37be33568d5299f6de97818ba2a227ea625b070",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0000139",
+      "productHash": "3f841684240a910003689719b44fd041480bc4faacd7fc6ed5b0fd5158c84a5c",
+      "oldBinding": {
+        "image": "/product-images/generated/avvgnga-ls__3core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 139,
+        "sourceName": "АВВГ  3х 2,5 нг(А)LS",
+        "productName": "АВВГнг(А)-LS 3х2,5",
+        "primaryCores": 3,
+        "cores": 3,
+        "section": 2.5,
+        "family": "avvgng-a-ls",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "avvgng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-e442dc8e87d72633",
+        "sha256": "45c02c6c7d8d4cda4cee62d2f37be33568d5299f6de97818ba2a227ea625b070",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    }
+  ],
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "draftKey": "141337fab4d0f1e893c1c36a2957af3525e3435fff3771525d1835b646cb8153",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.496054114994363,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 440,
+        "longestSupportedRun": 440,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.5676958548188858,
+    "non_opaque_ratio": 0.999460451542956,
+    "foreground_ratio": 0.4315841117278388,
+    "bounds": {
+      "minX": 98,
+      "minY": 65,
+      "maxX": 1773,
+      "maxY": 689
+    },
+    "warnings": [],
+    "sha256": "6248d45b9a866b1010ab925e7bfef29a6dcc7b6f59ab7bde47d7d66d66720207",
+    "bytes": 1092379
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "reviewer": "Ручная проверка PNG; пользователь условно разрешил каталог",
+    "sha256": "6248d45b9a866b1010ab925e7bfef29a6dcc7b6f59ab7bde47d7d66d66720207",
+    "basis": "Три соосных цельных алюминиевых конца, равные видимые диаметры, заданные цвета. Небольшая тень у кромки, без явной отдельной полости. Допуск только для подтверждённой простой низковольтной конструкции.",
+    "publicationAuthorized": true,
+    "APPROVED_FOR_CATALOG": true,
+    "APPROVED_AS_REFERENCE": false,
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "visualKey": "avvgng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-e442dc8e87d72633",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-10T16:55:40.350Z"
+  },
+  "automaticProductionBinding": false
+}

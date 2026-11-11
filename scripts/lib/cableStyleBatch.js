@@ -13,8 +13,10 @@ import {
 import { validateCableImagePng } from './cableImagePng.js';
 import { CABLE_STYLE_REVIEW_CHECKS } from './cableCoreGeometry.js';
 import { classifyPracticalCableVisualProduct } from './familyVisualRules.js';
-import { getGeneratedProductImage } from '../../shared/productImages.js';
-import { isGenericProductImage } from '../../shared/productImageFallbacks.js';
+import { approvedCableImagePath, getCatalogPhoto, getGeneratedProductImage } from '../../shared/productImages.js';
+import { acquirePriceImportLock } from './importLock.js';
+import { commitArtifactBatch } from './artifactTransaction.js';
+import { rebuildCatalogImagePages } from './rebuildCatalogImagePages.js';
 export const digest = (value) =>
   createHash('sha256')
     .update(
@@ -52,15 +54,15 @@ export function imageDisposition(product, visible, binding, overrides = {}) {
   ].map(normalized);
   const explicit =
     Object.entries(overrides.overrides || {}).some(
-      ([name, value]) => value?.image && names.includes(normalized(name))
+      ([name, value]) => getCatalogPhoto(value?.image) && names.includes(normalized(name))
     ) ||
     (overrides.matchers || []).some(
       (m) =>
-        m.image &&
+        getCatalogPhoto(m.image) &&
         normalized(m.mark).replaceAll(' ', '').toUpperCase() ===
           normalized(product.mark).replaceAll(' ', '').toUpperCase()
     );
-  if (explicit || !isGenericProductImage(product.image))
+  if (explicit || getCatalogPhoto(product.image))
     return { protected: true, reason: 'manual/raw image override' };
   if (binding && binding.kind !== 'generated-illustration')
     return {
@@ -69,7 +71,7 @@ export function imageDisposition(product, visible, binding, overrides = {}) {
     };
   const image = visible?.image || product.image || '';
   if (
-    !isGenericProductImage(image) &&
+    getCatalogPhoto(image) &&
     !(binding?.kind === 'generated-illustration' && binding.image === image)
   )
     return {
@@ -95,6 +97,7 @@ export async function planCableStyleBatch({
     visible = new Map(visibleProducts.map((p) => [p.sku, p])),
     groups = new Map(),
     rows = [];
+  const bySku = new Map(products.map(product => [product.sku, product]));
   for (const p of products) {
     const classified = classifyPracticalCableVisualProduct(p, context),
       disposition = imageDisposition(
@@ -177,43 +180,6 @@ export async function planCableStyleBatch({
       reference: g.request?.reference.sha256,
     });
     if (g.status === 'READY') {
-      const candidates = g.members
-        .map((r) => r.oldBinding)
-        .filter(
-          (b) =>
-            b?.styleVersion === style.version &&
-            b.visualKey === g.visualKey &&
-            b.referenceSha256 === g.request.reference.sha256
-        );
-      for (const binding of candidates) {
-        if (
-          !/^\/product-images\/generated\/[a-zA-Z0-9_-]+\.png$/.test(
-            binding.image
-          )
-        )
-          continue;
-        try {
-          const png = await fs.readFile(
-            path.join(root, 'public', binding.image.slice(1))
-          );
-          validateCableImagePng(png, {
-            background: 'transparent',
-            composition: { rightEdgeCrop: false },
-          });
-          if (digest(png) === binding.sha256) {
-            g.status = 'EXISTING_STANDARD_APPROVED';
-            g.approvedImage = binding.image;
-            break;
-          }
-        } catch (e) {
-          if (e.code !== 'ENOENT')
-            g.reasons.push(
-              'Existing standard asset invalid; new draft required'
-            );
-        }
-      }
-    }
-    if (g.status === 'READY') {
       const approved = await findApprovedCableResult({
         root,
         visualKey: g.visualKey,
@@ -224,6 +190,21 @@ export async function planCableStyleBatch({
         g.status = 'APPROVED_DRAFT_NOT_PUBLISHED';
         g.approvedDraftDir = approved.absoluteDraftDir;
         g.approvedSha256 = approved.sha256;
+        const registry = { byVisualKey: { [g.visualKey]: approved } };
+        for (const member of g.members) {
+          const product = bySku.get(member.sku);
+          const image = getGeneratedProductImage(product, bindings, registry);
+          if (!image) continue;
+          const bytes = await fs.readFile(path.join(root, 'public', image.slice(1))).catch(error => {
+            if (error.code === 'ENOENT') return null;
+            throw error;
+          });
+          if (bytes && digest(bytes) === approved.sha256) {
+            g.status = 'EXISTING_STANDARD_APPROVED';
+            g.approvedImage = image;
+            break;
+          }
+        }
       }
     }
     if (g.status === 'READY' && cacheDir) {
@@ -493,13 +474,6 @@ export async function recordCableStyleReview({ root, draftDir, decision }) {
     standardVersion: group.standardVersion,
     reviewedAt: new Date().toISOString(),
   };
-  await atomic(path.join(draftDir, 'approval.json'), record);
-  await atomic(path.join(draftDir, 'group.json'), {
-    ...group,
-    status: decision.status,
-    manualReview: record,
-    automaticProductionBinding: false,
-  });
   if (record.status === 'APPROVED')
     await archiveApprovedCableResult({
       root,
@@ -507,6 +481,13 @@ export async function recordCableStyleReview({ root, draftDir, decision }) {
       group,
       approval: record,
     });
+  await atomic(path.join(draftDir, 'approval.json'), record);
+  await atomic(path.join(draftDir, 'group.json'), {
+    ...group,
+    status: decision.status,
+    manualReview: record,
+    automaticProductionBinding: false,
+  });
   return record;
 }
 /** Prepare a reviewable patch first. Does not write public files, bindings or production manifest. */
@@ -525,7 +506,7 @@ export async function prepareApprovedBindingPatch({
     png = await fs.readFile(path.join(draftDir, 'image.png'));
   if (
     approval.status !== 'APPROVED' ||
-    approval.APPROVED_FOR_CATALOG === false ||
+    approval.APPROVED_FOR_CATALOG !== true ||
     approval.visualKey !== group.visualKey ||
     approval.sha256 !== digest(png) ||
     approval.standardVersion !== style.version ||
@@ -570,10 +551,10 @@ export async function prepareApprovedBindingPatch({
       sku: p.sku,
       before: member.oldBinding,
       after: {
-        image: '/product-images/generated/style1_' + group.draftKey + '.png',
+        image: approvedCableImagePath(group),
         status: 'approved',
         kind: 'generated-illustration',
-        APPROVED_FOR_CATALOG: approval.APPROVED_FOR_CATALOG !== false,
+        APPROVED_FOR_CATALOG: true,
         APPROVED_AS_REFERENCE: approval.APPROVED_AS_REFERENCE === true,
         productId: p.id,
         sourceName: p.sourceName,
@@ -611,14 +592,19 @@ export async function applyApprovedBindingPatch(args) {
     root,
     'data/product-image-metadata/.pipeline.lock'
   );
-  const lock = await fs.open(lockFile, 'wx');
+  const release = await acquirePriceImportLock(path.join(root, 'data/.price-import.lock'));
+  if (!release) throw Error('Catalog import, restore or publication is already running');
+  let lock, registryLock, stage, stagedMapping;
   try {
-    const bindings = await read(
-      path.join(root, 'shared/generatedProductImages.json')
-    );
-    const products = await read(
-      path.join(root, 'data/catalog-current/products.json')
-    );
+    lock = await fs.open(lockFile, 'wx');
+    const bindingFile = path.join(root, 'shared/generatedProductImages.json');
+    const catalogDir = path.join(root, 'data/catalog-current');
+    const productsPath = path.join(catalogDir, 'products.json');
+    const registryDir = path.join(root, 'data/cable-approved-results');
+    registryLock = await fs.open(path.join(registryDir, '.registry.lock'), 'wx');
+    const registry = await read(path.join(registryDir, 'registry.json'));
+    const bindings = await read(bindingFile);
+    const products = await read(productsPath);
     const overrides =
       (await optional(path.join(root, 'data/priceOverrides.json'))) || {};
     const { createCatalogStore } = await import('../../lib/catalog.js');
@@ -633,11 +619,22 @@ export async function applyApprovedBindingPatch(args) {
       overrides,
       bindings,
     });
-    const destination = path.join(
-      root,
-      'public',
-      patch.changes[0].after.image.slice(1)
-    );
+    if (!patch.changes.length) return patch;
+    const group = await read(path.join(draftDir, 'group.json'));
+    const request = await prepareCableStyleRequest(root, group.profile);
+    const archived = await findApprovedCableResult({
+      root, visualKey: group.visualKey, profile: group.profile, request,
+    });
+    if (archived?.APPROVED_FOR_CATALOG !== true || archived.sha256 !== patch.pngSha256)
+      throw Error('Image is not approved for the catalog in the permanent registry');
+    const next = structuredClone(bindings);
+    const productsBySku = new Map(products.map(product => [product.sku, product]));
+    for (const { sku, after } of patch.changes) {
+      next.bySku[sku] = after;
+      if (getGeneratedProductImage(productsBySku.get(sku), next, registry) !== after.image)
+        throw Error('Catalog image approval or construction mismatch: ' + sku);
+    }
+    const destination = path.join(root, 'public', patch.changes[0].after.image.slice(1));
     const buffer = await fs.readFile(patch.sourcePng);
     validateCableImagePng(buffer, {
       background: 'transparent',
@@ -652,20 +649,47 @@ export async function applyApprovedBindingPatch(args) {
       )
         throw e;
     }
-    const next = structuredClone(bindings);
-    for (const c of patch.changes) next.bySku[c.sku] = c.after;
     await atomic(path.join(draftDir, 'binding-transaction.json'), {
       status: 'PREPARED',
       patch,
     });
-    await atomic(path.join(root, 'shared/generatedProductImages.json'), next);
+    if ((await fs.lstat(catalogDir)).isSymbolicLink()) {
+      stage = await fs.mkdtemp(path.join(root, 'data/.image-publication-'));
+      await fs.cp(await fs.realpath(catalogDir), stage, { recursive: true, preserveTimestamps: true });
+      await rebuildCatalogImagePages({
+        projectRoot: root,
+        productsPath: path.join(stage, 'products.json'),
+        publicDir: path.join(stage, 'public'),
+        policy: { manifest: next, registry },
+      });
+      stagedMapping = bindingFile + '.staged';
+      await atomic(stagedMapping, next);
+      await commitArtifactBatch([
+        { stagedPath: stagedMapping, targetPath: bindingFile },
+        { stagedPath: stage, targetPath: catalogDir, atomicDirectory: true },
+      ]);
+    } else {
+      await atomic(bindingFile, next);
+    }
     await atomic(path.join(draftDir, 'binding-transaction.json'), {
       status: 'APPLIED',
       patch,
     });
     return patch;
   } finally {
-    await lock.close();
-    await fs.unlink(lockFile);
+    try {
+      if (stage) await fs.rm(stage, { recursive: true, force: true });
+      if (stagedMapping) await fs.rm(stagedMapping, { force: true });
+      if (registryLock) {
+        await registryLock.close();
+        await fs.unlink(path.join(root, 'data/cable-approved-results/.registry.lock'));
+      }
+      if (lock) {
+        await lock.close();
+        await fs.unlink(lockFile);
+      }
+    } finally {
+      await release();
+    }
   }
 }

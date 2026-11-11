@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'url';
 
 import { commitArtifactBatch } from './lib/artifactTransaction.js';
 import { acquirePriceImportLock } from './lib/importLock.js';
+import { rebuildCatalogImagePages } from './lib/rebuildCatalogImagePages.js';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDir, '..');
@@ -380,6 +381,13 @@ export async function restoreBackup(
         }
       }
     }
+    const stagedRelease = manifest.catalogRelease ? path.join(stage, 'catalog-release') : stage;
+    await rebuildCatalogImagePages({
+      projectRoot: projectPath,
+      productsPath: path.join(stagedRelease, 'products.json'),
+      publicDir: path.join(stagedRelease, 'public'),
+      overridesPath: path.join(await exists(path.join(stage, 'priceOverrides.json')) ? stage : data, 'priceOverrides.json'),
+    });
     const roots = (await fs.readdir(stage)).filter(
       (name) => name !== 'catalog-release'
     );

@@ -23,7 +23,8 @@ import { messages } from '../../shared/messages.js';
 import {
   getProductImage,
   getProductImageAlt,
-} from '../../shared/productImages.js';
+} from '../../shared/productImagePresentation.js';
+import { isGeneratedCableImage } from '../../shared/generatedCableImagePath.js';
 import '../styles/sections/cart-favorites.css';
 
 function formatNumber(value) {
@@ -50,6 +51,7 @@ export default function CartPage() {
   const pdfBuildingRef = useRef(false);
   const [pdfError, setPdfError] = useState('');
   const [syncNotice, setSyncNotice] = useState(null);
+  const [catalogImages, setCatalogImages] = useState(new Map());
   const syncRanRef = useRef(false);
 
   async function handleRemoveItem(event, id) {
@@ -101,6 +103,9 @@ export default function CartPage() {
       )
       .then((data) => {
         if (controller.signal.aborted) return;
+        setCatalogImages(
+          new Map(data.found.map((item) => [Number(item.id), item.image]))
+        );
         const summary = syncWithCatalog({
           found: data.found,
           missing: data.missing,
@@ -300,7 +305,11 @@ export default function CartPage() {
                   return (
                     <article key={item.id} className="cart-item">
                       <img
-                        src={getProductImage(item)}
+                        src={getProductImage(
+                          !item.manual && isGeneratedCableImage(item.image)
+                            ? { ...item, image: catalogImages.get(Number(item.id)) }
+                            : item
+                        )}
                         alt={getProductImageAlt(item)}
                         className="cart-item__image"
                         width="104"

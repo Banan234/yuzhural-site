@@ -1,4 +1,5 @@
 import { setImportStage, telemetrySnapshot } from './lib/importTelemetry.js';
+import { collectImportSleepEvidence } from './lib/importSleepEvidence.js';
 import {
   indexSourceIdentities,
   resolveSourcePresence,
@@ -12,7 +13,7 @@ import { updateImportStatus } from './lib/importStatus.js';
 import { runImportProcess } from './lib/importProcess.js';
 import {
   readSourceState,
-  isUnchangedPrice,
+  isPublishedPriceUnchanged,
   saveSourceState,
 } from './lib/importSourceState.js';
 import { isRetryableHttpError } from './lib/priceSource.js';
@@ -822,10 +823,11 @@ async function main() {
   if (
     cliFlags.has('--if-changed') &&
     !isDryRun &&
-    isUnchangedPrice(
+    (await isPublishedPriceUnchanged(
       await readSourceState(sourceStateFile),
-      priceSource.metadata
-    )
+      priceSource,
+      publicPriceFile
+    ))
   ) {
     unchangedPrice = true;
     await updateImportStatus(importStatusFile, 'unchanged', {
@@ -1400,8 +1402,11 @@ if (isMainModule && process.env.PRICE_IMPORT_WATCHDOG_CHILD !== '1') {
           startedAt: error.startedAt,
           completedAt: error.completedAt,
           timeoutMs: error.timeoutMs,
+          deadlineAt: error.deadlineAt,
+          watchdogAt: error.watchdogAt,
         };
         try {
+          report.sleepEvidence = await collectImportSleepEvidence(report);
           await updateImportStatus(importStatusFile, 'failed', {
             message: error.message,
           });
@@ -1452,6 +1457,7 @@ if (isMainModule && process.env.PRICE_IMPORT_WATCHDOG_CHILD !== '1') {
           ...(currentSourceMetadata ? { source: currentSourceMetadata } : {}),
           status: attemptError ? 'failed' : 'published',
           completedAt: new Date().toISOString(),
+          ...(attemptError ? { telemetry: telemetrySnapshot() } : {}),
           retryableDownload: Boolean(attemptError?.retryableDownload),
           errorCode: attemptError?.code,
           blocked: Boolean(attemptError),
@@ -1460,6 +1466,9 @@ if (isMainModule && process.env.PRICE_IMPORT_WATCHDOG_CHILD !== '1') {
             : 'Каталог успешно обновлён.',
         };
         try {
+          if (attemptError) {
+            report.sleepEvidence = await collectImportSleepEvidence(report);
+          }
           await updateImportStatus(
             importStatusFile,
             attemptError ? 'failed' : 'published',

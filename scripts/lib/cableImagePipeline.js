@@ -13,7 +13,7 @@ import {
 } from './cableImagePng.js';
 import { createImageProvider } from './cableImageProvider.js';
 import { getCableVisualConfig } from './cableImageVisual.js';
-import { getGeneratedProductImage } from '../../shared/productImages.js';
+import { getHistoricalGeneratedProductImage } from './historicalGeneratedProductImage.js';
 
 const inside = (root, file) => {
   const resolved = path.resolve(root, file);
@@ -371,7 +371,7 @@ export async function planCableImages({
     const individual = options.existingImages?.[product.sku] ?? product.image;
     const visibleImage = isIndividualImage(individual)
       ? individual
-      : getGeneratedProductImage(product, manifest) || individual;
+      : getHistoricalGeneratedProductImage(product, manifest) || individual;
     if (!isIndividualImage(visibleImage)) withoutImages++;
     let job;
     try {

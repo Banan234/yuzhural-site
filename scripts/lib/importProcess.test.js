@@ -61,6 +61,8 @@ it('keeps the download failure when the watchdog stops the import', async () => 
       diagnostic: expect.stringContaining('UND_ERR_CONNECT_TIMEOUT'),
       startedAt: expect.any(String),
       completedAt: expect.any(String),
+      deadlineAt: expect.any(String),
+      watchdogAt: expect.any(String),
       timeoutMs: 500,
     });
   } finally {

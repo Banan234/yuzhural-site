@@ -1,0 +1,29 @@
+{
+  "status": "APPROVED",
+  "reviewer": "Ручная проверка PNG; пользователь условно разрешил каталог",
+  "sha256": "26f756b1c70c97032d8def2e8eec8d6cac8f589398f3a6cfb4ffae4348c9626e",
+  "basis": "Пять изолированных жил и пять соосных многопроволочных медных концов, равный визуальный диаметр, компактный пучок без лишних слоёв.",
+  "publicationAuthorized": true,
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": false,
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true
+  },
+  "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-10T16:55:40.410Z"
+}

@@ -227,6 +227,18 @@ describe('standard mass workflow boundaries', () => {
       );
       expect(bindings.bySku.S1.image).toBe(bindings.bySku.S2.image);
       expect(bindings.bySku.S2.section).toBe(2.5);
+      await expect(recordCableStyleReview({
+        root,
+        draftDir,
+        decision: {
+          status: 'APPROVED',
+          reviewer: 'User',
+          sha256: digest(png),
+          APPROVED_FOR_CATALOG: false,
+          checks: Object.fromEntries(CABLE_STYLE_REVIEW_CHECKS.map(k => [k, true])),
+        },
+      })).rejects.toThrow('requires a separate catalog migration');
+      expect(JSON.parse(await fs.readFile(path.join(draftDir, 'approval.json'))).APPROVED_FOR_CATALOG).toBe(true);
       await fs.rm(cacheDir, { recursive: true, force: true });
       const afterCleanup = await make(root);
       expect(afterCleanup.groups[0].status).toBe(

@@ -58,6 +58,7 @@ import {
 } from '../shared/productImages.js';
 import { normalizeCatalogHierarchy } from '../shared/catalogCategoryHierarchy.js';
 import {
+  applyCatalogPhotoOverrides,
   buildShortDescription,
   buildSpecs,
   loadCatalogProducts,
@@ -868,8 +869,7 @@ function buildCatalogListItem(product) {
     manufacturer: product.manufacturer || null,
     catalogBrand: product.catalogBrand || null,
   };
-  item.image = getProductImage(item);
-  item.imageAlt = getProductImageAlt(item);
+  item.imageAlt = getProductImageAlt(product, item.image);
   item.imageVariants = getImageVariants(item.image);
   return item;
 }
@@ -1434,6 +1434,7 @@ export async function prerenderCatalogRelease(
     outputDir,
     templateDir,
     categoriesData,
+    overridesPath,
     renderApp,
     manifest,
     log = null,
@@ -1448,7 +1449,9 @@ export async function prerenderCatalogRelease(
     manifestPath: path.join(templateDir, '.vite/manifest.json'),
     warn: null,
   });
-  products = groupProductOffers(products.filter((p) => !isProductPending(p)));
+  products = groupProductOffers(
+    (await applyCatalogPhotoOverrides(products, overridesPath)).filter(p => !isProductPending(p))
+  );
   // outputDir is always a staging/build directory, never the active pointer.
   await fs.rm(path.join(outputDir, 'catalog'), {
     recursive: true,
@@ -1725,6 +1728,7 @@ export async function prerenderProducts(
     outputDir = distDir,
     log = console.log,
     validate = true,
+    overridesPath,
     renderApp,
     manifest = null,
     titleProducts = products,
@@ -1740,6 +1744,7 @@ export async function prerenderProducts(
     force: true,
   });
 
+  products = await applyCatalogPhotoOverrides(products, overridesPath);
   const titleCounts = new Map();
   const groupsBySlug = new Map();
   for (const group of groupProductOffers(titleProducts)) {
@@ -1764,7 +1769,7 @@ export async function prerenderProducts(
           selectedOfferId: product.id,
         }
       : product;
-    const productImage = getProductImage(groupedProduct);
+    const productImage = getProductImage(product);
     const productWithImage = prepareProductDetail({
       ...groupedProduct,
       image: productImage,
@@ -1772,7 +1777,7 @@ export async function prerenderProducts(
         groupedProduct.shortDescription ||
         buildShortDescription(groupedProduct),
       specs: groupedProduct.specs || buildSpecs(groupedProduct),
-    });
+    }, productImage);
     const canonical = absoluteUrl(`/product/${productWithImage.slug}`);
     const productLabel = buildProductMetaTitle(productWithImage, {
       disambiguate:

@@ -1,6 +1,7 @@
 // Файл проверяет парсер прайса на реальных и пограничных вариантах товарных строк.
 
 import { describe, expect, test } from 'vitest';
+import { buildStableKey } from './productRegistry.js';
 import {
   buildCategoryMap,
   extractManufacturer,
@@ -576,6 +577,64 @@ describe('parseCombinedCell', () => {
 });
 
 describe('normalizeImportedProduct', () => {
+  test('отделяет пометку YSLCY-JZ от КГВЭВ и сохраняет ключ исходной строки', () => {
+    const sourceName = 'КГВЭВ 4х1.5 нг(А) (YSLCY-JZ)';
+    const result = normalizeImportedProduct({
+      sourceName,
+      unit: 'м',
+      price: 100,
+      stock: 1,
+    });
+    expect(result).toMatchObject({
+      sourceName,
+      name: 'КГВЭВнг(А) 4х1.5',
+      mark: 'КГВЭВ',
+      attributes: ['нг(А)'],
+    });
+    expect(buildStableKey(result)).toBe(
+      buildStableKey(parseProductName(sourceName, { normalizeVoltage: false }))
+    );
+  });
+
+  test.each([
+    ['ПБВВ 2х1.5 (ПУГНП)', 'ПБВВ 2х1.5', []],
+    ['ПБВВ( пугнп ) 2х1.5', 'ПБВВ 2х1.5', []],
+    ['ПБВВ 3х2.5 (ПУГНП) (бел)', 'ПБВВ 3х2.5 (белый)', ['(бел)']],
+  ])(
+    'убирает старую марку из названия и характеристик: %s',
+    (name, title, attributes) => {
+      const result = normalizeImportedProduct({
+        name,
+        unit: 'м',
+        price: 100,
+        stock: 1,
+      });
+      expect(result).toMatchObject({
+        sourceName: name,
+        name: title,
+        fullName: title,
+        mark: 'ПБВВ',
+        attributes,
+      });
+      const legacyParts = parseProductName(name, { normalizeVoltage: false });
+      expect(buildStableKey(result)).toBe(buildStableKey(legacyParts));
+    }
+  );
+
+  test.each(['ПУГНП 2х1.5', 'ПБВВГ 2х1.5 (ПУГНП)', 'YSLCY-JZ 4х1.5'])(
+    'сохраняет отдельную марку: %s',
+    (name) => {
+      const result = normalizeImportedProduct({
+        name,
+        unit: 'м',
+        price: 100,
+        stock: 1,
+      });
+      expect(result.name).toBe(name);
+      expect(result.designationSourceIdentity).toBeUndefined();
+    }
+  );
+
   test.each([
     ['ВВГ 3х2.5 нгLS', 'ВВГнг-LS 3х2.5'],
     ['ВВГ 3х2.5 нг(А)LS', 'ВВГнг(А)-LS 3х2.5'],

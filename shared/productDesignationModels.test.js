@@ -278,8 +278,16 @@ describe('manufacturer model and execution boundaries', () => {
   it('distinguishes HF telephone insulation from the NDG sheath execution', () => {
     const hf = decode('ТПП', 'ТПП 10х2х0.5 нг(А)HF', ['нг(А)-HF']);
     const ndg = decode('ТППэп', 'ТППэп 10х2х0.5 (А)ндг', ['(А)ндг']);
+    const spacedNdg = decode('ТППэп', 'ТППэп 10х2х0.5 (А) ндг', ['(А)', 'ндг']);
     expect(hf.officialComplete).toBe(false);
     expect(ndg.officialComplete).toBe(false);
+    expect(spacedNdg).toMatchObject({
+      status: 'reviewed',
+      officialComplete: ndg.officialComplete,
+      unknown: [],
+      warnings: [],
+      evidence: ndg.evidence,
+    });
     expect(hf.tokens.find((t) => t.code === 'Изоляция').text).toContain(
       'не содержащая галогенов'
     );

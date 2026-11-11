@@ -19,6 +19,10 @@ async function installAtomicDirectory(stagedPath, targetPath, transactionId) {
   );
 
   await fs.mkdir(releaseRoot, { recursive: true });
+  if (path.basename(targetPath) === 'catalog-current') {
+    // Nginx uses a different UID and needs to traverse the published release.
+    await fs.chmod(stagedPath, 0o711);
+  }
   await fs.rename(stagedPath, releasePath);
   await fs.symlink(
     path.relative(path.dirname(targetPath), releasePath),

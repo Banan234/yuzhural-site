@@ -626,7 +626,7 @@ describe('generation state, persistence and publication', () => {
       stock: 2,
       image: '/category-placeholders/power-cable.svg',
     };
-    expect(getProductImage(importedAgain, map)).toBe(map.bySku['TEST-1'].image);
+    expect(getProductImage(importedAgain, map)).toBe('/category-placeholders/power-cable.svg');
     expect(
       getGeneratedProductImage({ ...product(), name: 'ВВГ 5х10' }, map)
     ).toBe('');
@@ -858,7 +858,7 @@ describe('visual group planning and execution', () => {
         p.crossSection
       );
       expect(getProductImage(p, { schemaVersion: 1, bySku: bindings })).toBe(
-        bindings[p.sku].image
+        '/category-placeholders/power-cable.svg'
       );
     }
   });

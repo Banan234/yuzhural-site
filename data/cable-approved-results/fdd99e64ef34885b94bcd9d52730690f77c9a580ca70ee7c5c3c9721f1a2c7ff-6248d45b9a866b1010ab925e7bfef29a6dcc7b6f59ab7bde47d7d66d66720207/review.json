@@ -1,0 +1,257 @@
+{
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "model": "gpt-image-2.5-flare",
+  "httpStatus": 200,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.496054114994363,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 440,
+        "longestSupportedRun": 440,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.5676958548188858,
+    "non_opaque_ratio": 0.999460451542956,
+    "foreground_ratio": 0.4315841117278388,
+    "bounds": {
+      "minX": 98,
+      "minY": 65,
+      "maxX": 1773,
+      "maxY": 689
+    },
+    "warnings": [],
+    "sha256": "6248d45b9a866b1010ab925e7bfef29a6dcc7b6f59ab7bde47d7d66d66720207",
+    "bytes": 1092379
+  },
+  "compositionCheck": {
+    "rightEdge": {
+      "status": "EDGE_EVIDENCE_PRESENT",
+      "supportedPixels": 440,
+      "longestSupportedRun": 440,
+      "minimumRun": 18,
+      "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+      "automaticRegeneration": false,
+      "required": true
+    },
+    "leftTips": {
+      "status": "LEFT_MARGIN_PRESENT",
+      "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+    },
+    "automaticRegeneration": false
+  },
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 3,
+    "expectedMetalEndCount": 3,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 3,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "technicalProfile": {
+    "version": "construction-contract-3",
+    "outerSheathGeometry": "ROUND",
+    "family": "avvgng-a-ls",
+    "insulatedCoreCount": 3,
+    "coreMetalEndCount": 3,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "armor": {
+      "present": false,
+      "type": null
+    },
+    "screen": {
+      "present": false,
+      "type": null
+    },
+    "screenVisualStandard": null,
+    "screenType": null,
+    "screenFunction": null,
+    "armorFunction": null,
+    "screenRendering": null,
+    "armorType": null,
+    "fireBarrierMaterial": null,
+    "fireBarrierPlacement": null,
+    "constructionSource": null,
+    "constructionBasis": null,
+    "fireBarrier": false,
+    "layers": [
+      {
+        "role": "outer-jacket",
+        "scope": "overall",
+        "appearance": "black"
+      },
+      {
+        "role": "individual-insulation",
+        "scope": "each-core"
+      }
+    ],
+    "layerRoleCount": 2,
+    "layerCountScope": "role count; each-core roles repeat on every core; not a count of manufacturing tape wraps",
+    "additionalConductors": [],
+    "cores": [
+      {
+        "id": 1,
+        "color": "brown",
+        "metalEndId": 1,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 2,
+        "color": "blue",
+        "metalEndId": 2,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 3,
+        "color": "yellow-green",
+        "metalEndId": 3,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "unknownInternalFillers": "not specified: do not invent visible layers",
+    "verification": {
+      "status": "NEEDS_REVIEW",
+      "pixelVerification": "NOT_AUTOMATED",
+      "insulatedCoreCount": null,
+      "coreMetalEndCount": null,
+      "additionalConductorCount": null,
+      "layerRoles": null
+    }
+  },
+  "multicoreStripping": null,
+  "strippingComposition": {
+    "version": "common-sheath-stripping-composition-1.0.0",
+    "mode": "conditional-composition-preference",
+    "insulatedCoreExposedLengthRatio": {
+      "min": 1.2,
+      "max": 1.3
+    },
+    "bareMetalLengthRatio": 1,
+    "overallScaleRatio": 1,
+    "baseline": "current selected APPROVED reference; one extension only, never compound with multicore-stripping-1.0.0",
+    "applicability": "Confirmed common outer sheath and at least two individually insulated cores; only where the cable construction and composition permit. Do not infer a common sheath from core count.",
+    "exceptions": "Do not apply to sheathless wires, twisted sheathless bundles or single-core constructions mechanically. If constructionAllowsExtendedStripping is false, retain safe stripping geometry; never sacrifice documented layer visibility or invent bends.",
+    "preserve": [
+      "bare-metal-length",
+      "core-count",
+      "core-diameters",
+      "colors",
+      "jacket-thickness",
+      "overall-scale",
+      "camera",
+      "tilt",
+      "direction",
+      "composition",
+      "documented-layer-visibility"
+    ],
+    "approvedResults": "Future requests only. Existing APPROVED pixels, statuses and bindings remain unchanged; this preference never triggers regeneration.",
+    "status": "CONDITIONAL_PREFERENCE_NOT_PIXEL_VERIFIED",
+    "pixelVerification": "MANUAL_REQUIRED"
+  },
+  "layerContact": {
+    "version": "layer-contact-1.0.0",
+    "scope": "Prospective rendering and manual QA only; never change approved PNGs or visualKey",
+    "confirmedSingleCoreFamilies": [
+      "kgvvng-a-ls",
+      "vvgng-a-ls"
+    ],
+    "basis": "User-confirmed rendering requirement for the existing single-core technical profiles: common jacket tightly encloses the individually insulated core.",
+    "directContact": "For a confirmed directly adjacent jacket/insulation interface, show continuous tight contact, no visible air annulus and no free hollow tube. Preserve the distinct cut edges, order and realistic thickness of actual layers.",
+    "exceptions": "Do not remove or compress documented fillers, separators, screens, armour, fire barriers, spacers, tubes or intentional voids. Unknown adjacency is not evidence of direct contact. Do not infer direct contact from core count alone.",
+    "verification": "Manual pixel inspection required. HTTP success and PNG alpha do not verify layer contact. Unverifiable geometry remains NEEDS_REVIEW.",
+    "mode": "PRESERVE_DOCUMENTED_INTERFACES_NO_ASSUMPTION",
+    "status": "MANUAL_REVIEW_REQUIRED"
+  },
+  "geometryPilot": null,
+  "geometryRevision": null,
+  "outerSheathGeometry": "ROUND",
+  "constructionCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "insulatedCoreCount": null,
+    "coreMetalEndCount": null,
+    "additionalConductorCount": null,
+    "layerRoles": null
+  },
+  "geometryCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "status": "NEEDS_REVIEW",
+  "automaticProductionBinding": false,
+  "manualChecksRequired": [
+    "coreCount",
+    "material",
+    "colours",
+    "layers",
+    "direction",
+    "proportions",
+    "stripping",
+    "background",
+    "referenceMatch",
+    "metalEndCount",
+    "equalDiameters",
+    "relativeDiameters",
+    "coaxialStripping",
+    "geometryConsistency",
+    "noExtraCylinders"
+  ]
+}

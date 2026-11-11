@@ -286,6 +286,34 @@
       .count {
         margin: 0.4rem 0;
       }
+      .problem-filter {
+        display: grid;
+        gap: 6px;
+        margin: 10px 0;
+        min-width: 0;
+      }
+      .problem-filter select {
+        width: 100%;
+      }
+      .check input {
+        width: auto;
+        margin-right: 5px;
+      }
+      .problem {
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: 10px 12px;
+        margin-top: 8px;
+        overflow-wrap: anywhere;
+      }
+      .problem[data-match],
+      .row[data-match] {
+        border-color: #68a891;
+      }
+      .problem button {
+        margin: 4px 5px 4px 0;
+        padding: 4px 8px;
+      }
       .empty {
         padding: 24px;
         color: var(--muted);
@@ -357,13 +385,18 @@
               <option value="ready">Готово к проверке</option>
               <option value="resolved">Внесено в справочник</option>
             </select>
-            <select id="issue" aria-label="Тип проблемы">
-              <option value="">Все проблемы</option>
-              <option value="unknown">Неизвестный индекс</option>
-              <option value="warnings">Предупреждение</option>
-            </select>
           </div>
-          <p class="muted count" id="found"></p>
+          <div class="problem-filter">
+            <label for="issue"><strong>Проблема разбора</strong></label>
+            <select id="issue">
+              <option value="">Все проблемы</option>
+            </select>
+            <label class="check"
+              ><input type="checkbox" id="unchecked" /> Только
+              несверенные</label
+            >
+          </div>
+          <p class="muted count" id="found" aria-live="polite"></p>
           <nav id="list" class="list" aria-label="Исполнения"></nav>
         </aside>
         <article
@@ -437,7 +470,13 @@
       };
       const state = (g) =>
         g.resolved ? 'resolved' : edits[g.id]?.status || 'todo';
-      const filtered = () => {
+      const checked = (g, p) => edits[g.id]?.checks?.[p.id] === true;
+      const matchesProblem = (g, p, issue = $('issue').value) =>
+        (!issue || issue === p.id || issue === 'type:' + p.type) &&
+        (!$('unchecked').checked || !checked(g, p));
+      const matchingProblems = (g) =>
+        g.problems.filter((p) => matchesProblem(g, p));
+      const filtered = (byProblem = true) => {
         const normalizeSearch = (value) =>
           value
             .toLowerCase()
@@ -446,11 +485,12 @@
             .replace(/\s+/g, '');
         const query = normalizeSearch($('search').value);
         const status = $('status').value;
-        const issue = $('issue').value;
         return groups.filter(
           (g) =>
             (status ? state(g) === status : query || !g.resolved) &&
-            (!issue || g.rows.some((r) => r[issue].length)) &&
+            (!byProblem ||
+              (!$('issue').value && !$('unchecked').checked) ||
+              matchingProblems(g).length > 0) &&
             (!query ||
               [
                 g.title,
@@ -459,7 +499,68 @@
               ].some((value) => normalizeSearch(value || '').includes(query)))
         );
       };
+      function refreshProblemOptions() {
+        const selection = $('issue').value;
+        const categories = new Map();
+        const indexes = new Map();
+        for (const g of filtered(false)) {
+          const types = new Map();
+          for (const p of g.problems) {
+            if (!matchesProblem(g, p, '')) continue;
+            types.set(p.type, p.title);
+            if (p.id.startsWith('index:')) {
+              const entry = indexes.get(p.id) || { label: p.label, count: 0 };
+              entry.count++;
+              indexes.set(p.id, entry);
+            }
+          }
+          for (const [type, label] of types) {
+            const id = 'type:' + type;
+            const entry = categories.get(id) || { label, count: 0 };
+            entry.count++;
+            categories.set(id, entry);
+          }
+        }
+        const optionGroup = (label, entries) =>
+          '<optgroup label="' +
+          esc(label) +
+          '">' +
+          [...entries]
+            .sort(
+              (a, b) =>
+                b[1].count - a[1].count ||
+                a[1].label.localeCompare(b[1].label, 'ru')
+            )
+            .map(
+              ([id, { label, count }]) =>
+                '<option value="' +
+                esc(id) +
+                '">' +
+                esc(label) +
+                ' · ' +
+                count +
+                '</option>'
+            )
+            .join('') +
+          '</optgroup>';
+        const missing =
+          selection && !categories.has(selection) && !indexes.has(selection);
+        const previous = $('issue').selectedOptions[0]?.textContent || '';
+        $('issue').innerHTML =
+          '<option value="">Все проблемы</option>' +
+          (missing
+            ? '<option value="' +
+              esc(selection) +
+              '">' +
+              esc(previous.replace(/ · \d+$/u, '')) +
+              ' · 0</option>'
+            : '') +
+          optionGroup('Причины разбора · число групп', categories) +
+          optionGroup('Точные обозначения · число групп', indexes);
+        $('issue').value = selection;
+      }
       function refreshList() {
+        refreshProblemOptions();
         const rows = filtered();
         const ready = groups
           .filter((g) => state(g) === 'ready')
@@ -475,7 +576,15 @@
               '<div class="stat"><strong>' + n + '</strong>' + title + '</div>'
           )
           .join('');
-        $('found').textContent = 'Найдено групп: ' + rows.length;
+        const activeProblem = $('issue').value || $('unchecked').checked;
+        const rowIds = (g) =>
+          new Set(matchingProblems(g).flatMap((p) => p.rowIds));
+        const count = (g) => (activeProblem ? rowIds(g).size : g.rows.length);
+        $('found').textContent =
+          'Групп: ' +
+          rows.length +
+          ' · позиций: ' +
+          rows.reduce((sum, g) => sum + count(g), 0);
         $('list').innerHTML = rows
           .map(
             (g) =>
@@ -486,9 +595,16 @@
               '"><strong>' +
               esc(g.execution || g.title) +
               '</strong><small class="tag">' +
-              g.rows.length +
+              count(g) +
               '</small><span>' +
               (g.resolved ? resolvedLabel : labels[state(g)]) +
+              (g.problems.length
+                ? ' · ' +
+                  g.problems.filter((p) => checked(g, p)).length +
+                  '/' +
+                  g.problems.length +
+                  ' сверено'
+                : '') +
               '</span></button>'
           )
           .join('');
@@ -503,6 +619,60 @@
         }
         const draft = edits[g.id] || {};
         const first = g.rows[0];
+        const activeProblem = $('issue').value || $('unchecked').checked;
+        const matching = activeProblem ? matchingProblems(g) : [];
+        const matchedRows = new Set(matching.flatMap((p) => p.rowIds));
+        const openedRow = g.rows.find((r) => matchedRows.has(r.id)) || first;
+        const checklist = g.problems.length
+          ? '<section class="block"><h3>Что проверить в группе</h3>' +
+            '<p class="muted">Отметка «Сверено» сохраняется в черновике группы. ' +
+            'Запишите результат и источник в общей правке или в нужной позиции.</p>' +
+            [...g.problems]
+              .sort(
+                (a, b) =>
+                  Number(matching.includes(b)) - Number(matching.includes(a))
+              )
+              .map((p) => {
+                const affected = g.rows.filter((r) => p.rowIds.includes(r.id));
+                return (
+                  '<div class="problem"' +
+                  (matching.includes(p) ? ' data-match' : '') +
+                  '><strong>' +
+                  esc(p.label) +
+                  '</strong>' +
+                  (p.warning
+                    ? '<p class="muted">' + esc(p.warning) + '</p>'
+                    : '') +
+                  '<p>' +
+                  esc(p.check) +
+                  '</p>' +
+                  (p.url ? links([{ url: p.url, title: p.source }]) : '') +
+                  '<div class="muted">' +
+                  (affected.length === g.rows.length
+                    ? 'Все позиции группы'
+                    : affected.length + ' из ' + g.rows.length + ' позиций') +
+                  '</div>' +
+                  affected
+                    .map(
+                      (r) =>
+                        '<button type="button" data-open-row="' +
+                        esc(r.id) +
+                        '">' +
+                        esc(r.dimensions.join(' + ') || r.sku) +
+                        (r.dimensions.length ? ' · ' + esc(r.sku) : '') +
+                        '</button>'
+                    )
+                    .join('') +
+                  '<div><label class="check"><input type="checkbox" data-check="' +
+                  esc(p.id) +
+                  '"' +
+                  (checked(g, p) ? ' checked' : '') +
+                  ' /> Сверено</label></div></div>'
+                );
+              })
+              .join('') +
+            '</section>'
+          : '';
         const options = Object.entries(labels)
           .map(
             ([value, label]) =>
@@ -517,17 +687,22 @@
           .join('');
         const original = g.rows
           .map(
-            (r, index) =>
-              '<details class="row"' +
-              (index === 0 ? ' open' : '') +
+            (r) =>
+              '<details class="row" data-position="' +
+              esc(r.id) +
+              '"' +
+              (r.id === openedRow.id ? ' open' : '') +
+              (matchedRows.has(r.id) ? ' data-match' : '') +
               '><summary>' +
               esc(r.name) +
               ' <span class="muted">' +
               esc(r.sku) +
               '</span></summary>' +
-              '<div class="notice"><strong>Комментарий к позиции</strong><p>' +
-              esc(r.comment) +
-              '</p></div>' +
+              (r.comment
+                ? '<div class="notice"><strong>Комментарий к позиции</strong><p>' +
+                  esc(r.comment) +
+                  '</p></div>'
+                : '') +
               (r.unknown.length
                 ? '<p><strong>Не разобрано</strong> ' +
                   esc(r.unknown.join(', ')) +
@@ -576,6 +751,7 @@
           '</p>' +
           (g.resolved ? '<p class="tag">Внесено в справочник</p>' : '') +
           '</section>' +
+          checklist +
           '<section class="block"><h3>Позиции и комментарии</h3>' +
           original +
           '</section>' +
@@ -619,27 +795,46 @@
         }
       }
       $('detail').addEventListener('input', (event) => {
-        const { field, row } = event.target.dataset;
-        if (!field && !row) return;
+        const { field, row, check } = event.target.dataset;
+        if (!field && !row && !check) return;
         const draft = (edits[selected] ||= { rows: {} });
-        if (row) (draft.rows ||= {})[row] = event.target.value;
+        if (check) (draft.checks ||= {})[check] = event.target.checked;
+        else if (row) (draft.rows ||= {})[row] = event.target.value;
         else draft[field] = event.target.value;
         if (field !== 'status' && (!draft.status || draft.status === 'todo')) {
           draft.status = 'work';
           $('detail').querySelector('[data-field="status"]').value = 'work';
         }
         persist($('save'));
-        refreshList();
+        if (check && $('unchecked').checked) {
+          const matches = filtered();
+          show(matches.find((g) => g.id === selected) || matches[0]);
+          const current = [
+            ...$('detail').querySelectorAll('[data-check]'),
+          ].find((input) => input.dataset.check === check);
+          (current || $('issue')).focus({ preventScroll: true });
+        } else {
+          refreshList();
+        }
+      });
+      $('detail').addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-open-row]');
+        if (!button) return;
+        const row = $('detail').querySelector(
+          '[data-position="' + button.dataset.openRow + '"]'
+        );
+        row.open = true;
+        row.querySelector('summary').focus();
+        row.scrollIntoView({ block: 'start' });
       });
       $('list').addEventListener('click', (event) => {
         const button = event.target.closest('button[data-id]');
         if (button) show(groups.find((g) => g.id === button.dataset.id));
       });
-      for (const id of ['search', 'status', 'issue'])
+      for (const id of ['search', 'status', 'issue', 'unchecked'])
         $(id).addEventListener('input', () => {
           const matches = filtered();
-          if (matches.some((g) => g.id === selected)) refreshList();
-          else show(matches[0]);
+          show(matches.find((g) => g.id === selected) || matches[0]);
         });
       $('export').addEventListener('click', () => {
         const result = {
@@ -696,12 +891,15 @@
                 ? draft.status
                 : 'work',
               rows: {},
+              checks: {},
             };
             for (const f of ['source', 'decoding', 'description', 'note'])
               if (typeof draft[f] === 'string') clean[f] = draft[f];
             for (const r of g.rows)
               if (typeof draft.rows?.[r.id] === 'string')
                 clean.rows[r.id] = draft.rows[r.id];
+            for (const p of g.problems)
+              if (draft.checks?.[p.id] === true) clean.checks[p.id] = true;
             edits[g.id] = clean;
             loaded++;
           }

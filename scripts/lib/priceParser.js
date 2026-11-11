@@ -306,11 +306,10 @@ export function normalizeImportedProduct(product) {
   const cableName = normalizeHeatingCableName(sourceName);
   const displayName =
     product.parseCable === false ? cableName : stripLegacyCableAlias(cableName);
-  const fullName = normalizeHeatingCableName(
+  const fullName =
     product.parseCable === false
-      ? normalizeText(sourceName)
-      : normalizeProductName(sourceName)
-  );
+      ? normalizeText(displayName)
+      : normalizeProductName(displayName);
   const parsedName =
     product.parseCable === false
       ? {
@@ -325,6 +324,8 @@ export function normalizeImportedProduct(product) {
       : parseProductName(cableName, {
           normalizeVoltage: false,
         });
+  // Пометка исходной строки остаётся в стабильном ключе, чтобы сохранить
+  // SKU и отличить её от отдельной строки без этой пометки.
   const designationSourceIdentity =
     displayName !== cableName
       ? {
@@ -341,10 +342,7 @@ export function normalizeImportedProduct(product) {
       ? { voltage: legacyParts.voltage, attributes: legacyParts.attributes }
       : null;
   const normalizedName = formatCableProductTitle(
-    buildNormalizedProductName(
-      designationSourceIdentity ? stripLegacyCableAlias(fullName) : fullName,
-      parsedName
-    ),
+    buildNormalizedProductName(fullName, parsedName),
     parsedName
   );
   const normalizedUnit = normalizeUnit(product.unit);

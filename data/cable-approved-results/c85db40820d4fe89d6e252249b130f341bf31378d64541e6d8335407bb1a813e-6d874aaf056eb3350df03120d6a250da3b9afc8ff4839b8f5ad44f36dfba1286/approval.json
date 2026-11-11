@@ -1,0 +1,29 @@
+{
+  "status": "APPROVED",
+  "reviewer": "Ручная проверка PNG; пользователь условно разрешил каталог",
+  "sha256": "6d874aaf056eb3350df03120d6a250da3b9afc8ff4839b8f5ad44f36dfba1286",
+  "basis": "Три соосных цельных алюминиевых конца, равные видимые диаметры, заданные цвета. Небольшая тень у кромки. Допуск только для подтверждённой простой низковольтной конструкции.",
+  "publicationAuthorized": true,
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": false,
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true
+  },
+  "visualKey": "avvg__3c__solid__round__3core-brown-blue-yellow-green__p-40bcb5195d5cce3c",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-10T16:55:40.465Z"
+}

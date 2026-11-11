@@ -7,28 +7,35 @@ import { findCableSpecification } from '../scripts/lib/cableSpecification.js';
 const CONSTRUCTION_SUFFIX = /^(?:эф|эа|эм|ээ|э|зэл|з|хл|уф)$/iu;
 const BEFORE_FIRE_SUFFIX = /^(?:эф|эа|эм|ээ|э|зэл|з)$/iu;
 const FIRE_SUFFIX = /^нг(?:\([АБВГДСA-D]\))?(?:-|$)/iu;
-const PBVV_MARK = /(^|\s)ПБВВ(?=\s|\(|$)/iu;
-const PUGNP_ALIAS = /\(\s*ПУГНП\s*\)/iu;
+const LEGACY_ALIAS_MARK =
+  /(^|\s)(ПБВВ(?=\s|\(|$)|КГВЭВ(?=\s|\(|$|нг(?:[(-]|\s|$)))/iu;
+const LEGACY_ALIASES = {
+  ПБВВ: String.raw`\(\s*ПУГНП\s*\)`,
+  КГВЭВ: String.raw`\(\s*YSLCY-JZ\s*\)`,
+};
 
 export function stripLegacyCableAlias(value) {
-  const mark = value.match(PBVV_MARK);
+  const mark = value.match(LEGACY_ALIAS_MARK);
   if (!mark) return value;
 
   const end = mark.index + mark[0].length;
-  return (
-    value.slice(0, end) +
-    value.slice(end).replace(/\s*\(\s*ПУГНП\s*\)\s*/giu, ' ')
-  ).trimEnd();
+  const tail = value.slice(end);
+  const alias = LEGACY_ALIASES[mark[2].toUpperCase()];
+  const cleanedTail = tail.replace(new RegExp(`\\s*${alias}\\s*`, 'giu'), ' ');
+  if (cleanedTail === tail) return value;
+
+  return (value.slice(0, end) + cleanedTail).trimEnd();
 }
 
 export function stripLegacyCableAliasAttributes(mark, attributes) {
-  if (!/^ПБВВ$/iu.test(stripLegacyCableAlias(String(mark ?? ''))))
-    return attributes;
+  const alias =
+    LEGACY_ALIASES[stripLegacyCableAlias(String(mark ?? '')).toUpperCase()];
+  if (!alias) return attributes;
 
-  return attributes.filter((attribute) => {
-    const text = String(attribute).trim();
-    return text.match(PUGNP_ALIAS)?.[0] !== text;
-  });
+  const aliasAttribute = new RegExp(`^${alias}$`, 'iu');
+  return attributes.filter(
+    (attribute) => !aliasAttribute.test(String(attribute).trim())
+  );
 }
 
 const CABLE_COLORS = [
@@ -91,10 +98,11 @@ export function formatCableProductAttributes(product) {
   const attributes = Array.isArray(product?.attributes)
     ? product.attributes
     : [];
-  return stripLegacyCableAliasAttributes(product?.mark, attributes).map((attribute) =>
-    /^п$/iu.test(String(attribute).trim())
-      ? 'плоский'
-      : normalizeCableColorText(String(attribute))
+  return stripLegacyCableAliasAttributes(product?.mark, attributes).map(
+    (attribute) =>
+      /^п$/iu.test(String(attribute).trim())
+        ? 'плоский'
+        : normalizeCableColorText(String(attribute))
   );
 }
 

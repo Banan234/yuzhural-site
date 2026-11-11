@@ -1,0 +1,210 @@
+{
+  "visualKey": "avvg__3c__solid__round__3core-brown-blue-yellow-green__p-40bcb5195d5cce3c",
+  "profile": {
+    "family": "avvg",
+    "productType": "power-cable",
+    "cores": 3,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "brown",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "3core-brown-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "members": [
+    {
+      "sku": "YU-0000124",
+      "productHash": "e02c588b727a77638d4f858ed1da141c2ede77a40cd1c278b81a6aecedc56753",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__3core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 124,
+        "sourceName": "АВВГ  3х2.5",
+        "productName": "АВВГ 3х2.5",
+        "primaryCores": 3,
+        "cores": 3,
+        "section": 2.5,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__3c__solid__round__3core-brown-blue-yellow-green__p-40bcb5195d5cce3c",
+        "sha256": "3ec92f11dd1c7e71f0c394383aa760954113d3d4f4b38a00201630c9dd62736e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0000128",
+      "productHash": "47374ec347ebe4f1562a812a829f84a3186090f62673b71ce82a8228bf4cf02f",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__3core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 128,
+        "sourceName": "АВВГ  3х4",
+        "productName": "АВВГ 3х4",
+        "primaryCores": 3,
+        "cores": 3,
+        "section": 4,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__3c__solid__round__3core-brown-blue-yellow-green__p-40bcb5195d5cce3c",
+        "sha256": "3ec92f11dd1c7e71f0c394383aa760954113d3d4f4b38a00201630c9dd62736e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0000132",
+      "productHash": "033218046dc7ee10d130692ff3399c82e2e94554de7790d563a89d6974841a01",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__3core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 132,
+        "sourceName": "АВВГ  3х6",
+        "productName": "АВВГ 3х6",
+        "primaryCores": 3,
+        "cores": 3,
+        "section": 6,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__3c__solid__round__3core-brown-blue-yellow-green__p-40bcb5195d5cce3c",
+        "sha256": "3ec92f11dd1c7e71f0c394383aa760954113d3d4f4b38a00201630c9dd62736e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    },
+    {
+      "sku": "YU-0000135",
+      "productHash": "a2488d6fdef1f252f3fabbdbce8d3e72fa19bbae44e81336ba8e1a1ac95b8072",
+      "oldBinding": {
+        "image": "/product-images/generated/avvg__3core.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 135,
+        "sourceName": "АВВГ  3х 10",
+        "productName": "АВВГ 3х10",
+        "primaryCores": 3,
+        "cores": 3,
+        "section": 10,
+        "family": "avvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "brown",
+          "blue",
+          "yellow-green"
+        ],
+        "visualKey": "avvg__3c__solid__round__3core-brown-blue-yellow-green__p-40bcb5195d5cce3c",
+        "sha256": "3ec92f11dd1c7e71f0c394383aa760954113d3d4f4b38a00201630c9dd62736e",
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      }
+    }
+  ],
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "draftKey": "aaa70b43ba9dfa6dbe516699caed45db6293dc5a3012eaa4138dfa6b34d7efed",
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.5016910935738444,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 444,
+        "longestSupportedRun": 444,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.5815131251993915,
+    "non_opaque_ratio": 0.9997349921006039,
+    "foreground_ratio": 0.4177738319633844,
+    "bounds": {
+      "minX": 139,
+      "minY": 63,
+      "maxX": 1773,
+      "maxY": 698
+    },
+    "warnings": [],
+    "sha256": "6d874aaf056eb3350df03120d6a250da3b9afc8ff4839b8f5ad44f36dfba1286",
+    "bytes": 1076854
+  },
+  "status": "APPROVED",
+  "manualReview": {
+    "status": "APPROVED",
+    "reviewer": "Ручная проверка PNG; пользователь условно разрешил каталог",
+    "sha256": "6d874aaf056eb3350df03120d6a250da3b9afc8ff4839b8f5ad44f36dfba1286",
+    "basis": "Три соосных цельных алюминиевых конца, равные видимые диаметры, заданные цвета. Небольшая тень у кромки. Допуск только для подтверждённой простой низковольтной конструкции.",
+    "publicationAuthorized": true,
+    "APPROVED_FOR_CATALOG": true,
+    "APPROVED_AS_REFERENCE": false,
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true
+    },
+    "visualKey": "avvg__3c__solid__round__3core-brown-blue-yellow-green__p-40bcb5195d5cce3c",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-10T16:55:40.465Z"
+  },
+  "automaticProductionBinding": false
+}

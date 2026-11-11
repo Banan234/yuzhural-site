@@ -25,6 +25,19 @@ export function isUnchangedPrice(state, source) {
   );
 }
 
+// Restore can move the active release back while a newer source-state survives.
+export async function isPublishedPriceUnchanged(state, source, publishedFile) {
+  if (!isUnchangedPrice(state, source.metadata)) return false;
+
+  try {
+    const published = await fs.readFile(publishedFile);
+    return published.equals(source.buffer);
+  } catch (error) {
+    if (error.code === 'ENOENT') return false;
+    throw error;
+  }
+}
+
 export async function saveSourceState(file, source) {
   await writeFileAtomic(
     file,

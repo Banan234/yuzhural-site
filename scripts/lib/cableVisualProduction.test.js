@@ -10,7 +10,7 @@ import {
   runVisualProduction,
   writeProductionJson,
 } from './cableVisualProduction.js';
-import { getGeneratedProductImage } from '../../shared/productImages.js';
+import { getHistoricalGeneratedProductImage } from './historicalGeneratedProductImage.js';
 
 const profile = {
   family: 'vvg',
@@ -160,7 +160,7 @@ describe('approved production visual queue', () => {
         },
       },
     };
-    expect(getGeneratedProductImage(product, manifest)).toBe('');
+    expect(getHistoricalGeneratedProductImage(product, manifest)).toBe('');
   });
   it('generates once for multiple sections, binds only eligible SKUs and resumes with no API call', async () => {
     const f = await fixture();
@@ -183,10 +183,10 @@ describe('approved production visual queue', () => {
       expect(calls).toBe(1);
       const binding = JSON.parse(await fs.readFile(f.config.manifestFile));
       expect(binding.bySku['REVIEW-1']).toEqual({ image: '/keep.png' });
-      expect(getGeneratedProductImage(f.products[0], binding)).toBe(
+      expect(getHistoricalGeneratedProductImage(f.products[0], binding)).toBe(
         f.group.image
       );
-      expect(getGeneratedProductImage(f.products[1], binding)).toBe(
+      expect(getHistoricalGeneratedProductImage(f.products[1], binding)).toBe(
         f.group.image
       );
       expect(binding.bySku['TEST-1'].section).toBe(1);

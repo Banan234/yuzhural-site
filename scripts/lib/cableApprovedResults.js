@@ -42,6 +42,19 @@ export async function archiveApprovedCableResult({
   await fs.mkdir(base, { recursive: true });
   const lock = await fs.open(path.join(base, '.registry.lock'), 'wx');
   try {
+    const registry = (await optional(path.join(base, 'registry.json'))) || {
+      schemaVersion: 1,
+      byVisualKey: {},
+    };
+    const previous = registry.byVisualKey[group.visualKey];
+    if (previous?.APPROVED_FOR_CATALOG === true &&
+      (previous.sha256 !== approval.sha256 || approval.APPROVED_FOR_CATALOG === false)) {
+      const mapping = await optional(path.join(root, 'shared/generatedProductImages.json'));
+      const published = Object.values(mapping?.bySku || {}).some(binding =>
+        binding.visualKey === previous.visualKey && binding.sha256 === previous.sha256
+      );
+      if (published) throw Error('Published APPROVED requires a separate catalog migration before replacement or revocation');
+    }
     const dir = path.join(base, hash(group.visualKey) + '-' + approval.sha256);
     await fs.mkdir(dir, { recursive: true });
     try {
@@ -65,11 +78,6 @@ export async function archiveApprovedCableResult({
       automaticProductionBinding: false,
     });
     await atomic(path.join(dir, 'approval.json'), approval);
-    const registry = (await optional(path.join(base, 'registry.json'))) || {
-      schemaVersion: 1,
-      byVisualKey: {},
-    };
-    const previous = registry.byVisualKey[group.visualKey];
     const entry = {
       status: 'APPROVED',
       APPROVED_FOR_CATALOG: approval.APPROVED_FOR_CATALOG !== false,

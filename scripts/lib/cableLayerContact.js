@@ -1,8 +1,10 @@
 import fs from 'node:fs';
 const rule=JSON.parse(fs.readFileSync(new URL('../../data/cableLayerContactRules.json',import.meta.url)));
-export function deriveLayerContactRule(p){
+export function deriveLayerContactRule(p, technicalProfile){
  const c=p.technicalConstruction||{};
- const special=p.filler||c.filler||c.separator||c.intentionalVoid||p.shield||p.armor||p.specialElements?.length;
+ const innerSheath = technicalProfile?.innerSheath.status === 'present' || c.innerSheath;
+ const filling = (technicalProfile?.interstitialFilling ?? c.interstitialFilling)?.status === 'present';
+ const special=innerSheath||filling||p.filler||c.filler||c.separator||c.intentionalVoid||p.shield||p.armor||p.specialElements?.length;
  const confirmed=(p.cores===1&&rule.confirmedSingleCoreFamilies.includes(p.family))||c.directJacketInsulationContact===true;
  return {...rule,mode:p.hasOuterJacket===true&&!special&&confirmed?'CONFIRMED_DIRECT_CONTACT':'PRESERVE_DOCUMENTED_INTERFACES_NO_ASSUMPTION',status:'MANUAL_REVIEW_REQUIRED'};
 }

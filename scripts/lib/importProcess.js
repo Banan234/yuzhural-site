@@ -33,10 +33,11 @@ export function runImportProcess(
         }
       }
     });
-    let timedOut = false;
+    let watchdogAt;
+    const deadlineAt = new Date(Date.now() + timeoutMs).toISOString();
     let killTimer;
     const timer = setTimeout(() => {
-      timedOut = true;
+      watchdogAt = new Date().toISOString();
       child.kill('SIGTERM');
       killTimer = setTimeout(() => child.kill('SIGKILL'), killGraceMs);
     }, timeoutMs);
@@ -55,7 +56,7 @@ export function runImportProcess(
     });
     child.once('exit', (code, signal) => {
       cleanup();
-      if (timedOut) {
+      if (watchdogAt) {
         const error = new Error(
           `Превышено общее время импорта (${Math.round(timeoutMs / 1000)} секунд). Процесс завершён.`
         );
@@ -63,6 +64,8 @@ export function runImportProcess(
         error.startedAt = startedAt;
         error.completedAt = new Date().toISOString();
         error.timeoutMs = timeoutMs;
+        error.deadlineAt = deadlineAt;
+        error.watchdogAt = watchdogAt;
         error.diagnostic = lastDownloadFailure;
         error.telemetry = telemetry && { ...telemetry, idleMs: Date.now() - Date.parse(telemetry.lastProgressAt) };
         reject(error);

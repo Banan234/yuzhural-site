@@ -97,7 +97,7 @@ describe('Dockerfile', () => {
   it('uses an installed HTTP client for web healthcheck', () => {
     const source = readFileSync('Dockerfile', 'utf8');
     const webStage = source.slice(
-      source.indexOf('FROM nginx:1.27-alpine AS web')
+      source.indexOf('FROM nginx:1.30.6-alpine AS web')
     );
 
     expect(webStage).toContain('RUN apk add --no-cache curl');
@@ -110,16 +110,24 @@ describe('Dockerfile', () => {
   it('builds and loads nginx hardening and brotli dynamic modules', () => {
     const source = readFileSync('Dockerfile', 'utf8');
 
-    expect(source).toContain('FROM nginx:1.27-alpine AS brotli-builder');
+    expect(source).toContain('FROM nginx:1.30.6-alpine AS brotli-builder');
     expect(source).toContain(
       'curl -fsSL -o nginx.tar.gz "https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz"'
     );
     expect(source).toContain(
-      'git clone --recursive --depth=1 https://github.com/google/ngx_brotli.git'
+      'https://codeload.github.com/google/ngx_brotli/tar.gz/53e0fb55f250f48fe80c0ddbf6c0f7103cdbaae1'
     );
     expect(source).toContain(
-      'git clone --depth=1 https://github.com/openresty/headers-more-nginx-module.git'
+      'https://codeload.github.com/openresty/headers-more-nginx-module/tar.gz/21066f7eed72e4de4f6ec47b93e8d5f36c38b84a'
     );
+    for (const checksum of [
+      '27a4352dae4ba4922f9f013f3f0d02359aceeef2701872efa42849c3ba05457a',
+      '113b9685dfc14dd2f3360d077283266eec2fbdfb0fe3e5600f11be151da0d68e',
+      '52f3f4dc1b34efa887155e92398052bf477702b2753585fe3482e2dd0136ea62',
+    ]) expect(source).toContain(checksum);
+    expect(source).toContain('sha256sum -c -');
+    expect(source).toContain('https://codeload.github.com/google/brotli/tar.gz/db24a98aed38a16de78cc05ca15cdd8dc2a0d92d');
+    expect(source).not.toContain('git clone');
     expect(source).toContain(
       'cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF ..;'
     );

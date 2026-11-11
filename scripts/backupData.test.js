@@ -1,7 +1,7 @@
 // Файл проверяет создание, контроль целостности и безопасное восстановление backup.
 
 import { describe, expect, it } from 'vitest';
-import { mkdir, mkdtemp, readFile, rm, writeFile, symlink } from 'fs/promises';
+import { mkdir, mkdtemp, readFile, rm, writeFile, symlink, realpath as fsRealpath } from 'fs/promises';
 import { createCatalogStore } from '../lib/catalog.js';
 import os from 'os';
 import { execFileSync } from 'node:child_process';
@@ -349,6 +349,31 @@ it('backs up and restores receipt deduplication journal and import notification 
     await restoreBackup(backup.backupPath, { projectPath, apply: true });
     expect(await readFile(receipt, 'utf8')).toBe('{"stage":"sent"}');
     expect(await readFile(state, 'utf8')).toBe('{"failureFingerprint":"test"}');
+  } finally {
+    await rm(projectPath, { recursive: true, force: true });
+  }
+});
+
+it('blocks an archived catalog with legacy generated HTML if it cannot be rebuilt', async () => {
+  const projectPath = await mkdtemp(path.join(os.tmpdir(), 'yuzhural-image-restore-'));
+  try {
+    const data = path.join(projectPath, 'data');
+    const archived = path.join(data, 'release-archived');
+    await mkdir(path.join(archived, 'public/product'), { recursive: true });
+    await writeFile(path.join(archived, 'products.json'), '[]');
+    const legacy = '<img src="/product-images/generated/pr1_old.png">';
+    await writeFile(path.join(archived, 'public/product/legacy.html'), legacy);
+    await symlink('release-archived', path.join(data, 'catalog-current'));
+    const backup = await createBackup({ projectPath, env: {}, backupId: 'old-images' });
+
+    await mkdir(path.join(data, 'release-clean'));
+    await writeFile(path.join(data, 'release-clean/products.json'), '[]');
+    await rm(path.join(data, 'catalog-current'));
+    await symlink('release-clean', path.join(data, 'catalog-current'));
+    await expect(restoreBackup(backup.backupPath, { projectPath, apply: true }))
+      .rejects.toThrow('нужна актуальная сборка dist');
+    expect(await fsRealpath(path.join(data, 'catalog-current'))).toBe(await fsRealpath(path.join(data, 'release-clean')));
+    expect(await readFile(path.join(archived, 'public/product/legacy.html'), 'utf8')).toBe(legacy);
   } finally {
     await rm(projectPath, { recursive: true, force: true });
   }

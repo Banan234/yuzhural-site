@@ -55,7 +55,12 @@ export function buildStableKey(product) {
   const sourceIdentity =
     product.designationSourceIdentity ?? product.voltageSourceIdentity;
   if (sourceIdentity) {
-    product = { ...product, ...sourceIdentity };
+    product = {
+      ...product,
+      mark: sourceIdentity.mark ?? product.mark,
+      voltage: sourceIdentity.voltage,
+      attributes: sourceIdentity.attributes,
+    };
   }
   const stableAttributes = Array.isArray(product.attributes)
     ? [...product.attributes]

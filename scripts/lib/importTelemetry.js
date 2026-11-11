@@ -31,7 +31,6 @@ export function telemetrySnapshot() {
     lastProgressAt: new Date(lastProgressAt).toISOString(),
     idleMs: now - lastProgressAt,
     maxHeartbeatGapMs: Math.max(maxHeartbeatGapMs, now - heartbeatAt),
-    sleepEvidence: 'Разрыв heartbeat может означать сон, задержку event loop или нагрузку; события ОС не собираются.',
     stages: stageEvents.map((event, index, stages) => ({ stage: event.stage, startedAt: event.at, durationMs: (stages[index + 1] ? Date.parse(stages[index + 1].at) : now) - Date.parse(event.at) })),
     events: [...events],
   };

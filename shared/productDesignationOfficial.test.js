@@ -56,7 +56,7 @@ describe('official manufacturer decoding', () => {
     expect(unknown.officialComplete).toBe(false);
   });
 
-  it('does not assign diameter units to undocumented signal-cable nominals', () => {
+  it('uses documented section notation and preserves established diameter notation', () => {
     for (const [mark, size] of [
       ['КСВВ', '1'],
       ['КСРВ', '0,2'],
@@ -64,10 +64,14 @@ describe('official manufacturer decoding', () => {
       ['КСРЭВ', '0,75'],
     ]) {
       const d = buildProductDesignation(product(mark, `${mark} 1х2х${size}`));
-      expect(d.status).toBe('partial');
+      expect(d.status).toBe('reviewed');
       expect(d.officialComplete).toBe(false);
       expect(text(d)).not.toContain('диаметр жилы');
+      expect(text(d)).toContain('сечение каждой жилы');
     }
+    expect(
+      buildProductDesignation(product('КСРВ', 'КСРВ 1х2х0,22')).status
+    ).toBe('partial');
     expect(
       text(buildProductDesignation(product('КСВВ', 'КСВВ 4х0,5')))
     ).toContain('диаметр жилы 0,5 мм');

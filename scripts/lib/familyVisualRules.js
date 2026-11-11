@@ -1,3 +1,4 @@
+import reviewedProfiles from '../../data/cableReviewedIllustrationProfiles.json' with { type: 'json' };
 import { deriveOuterSheathGeometry } from './cableOuterSheathGeometry.js';
 import {
   classifyCableVisualProduct,
@@ -408,7 +409,7 @@ export function classifyPracticalCableVisualProduct(product, context) {
       ? p.unresolvedFamilySuffix
       : null,
   };
-  return withCableVisualization(
+  const result = withCableVisualization(
     {
       ...strict,
       ...makeVisualIdentity(visualProfile),
@@ -434,6 +435,35 @@ export function classifyPracticalCableVisualProduct(product, context) {
     },
     context
   );
+  const reviewed = reviewedProfiles[product.sku];
+  if (
+    !reviewed ||
+    result.visualClassification !== 'AUTO_APPROVED' ||
+    reviewed.baselineVisualKey !== result.visualKey ||
+    reviewed.productId !== product.id ||
+    reviewed.sourceName !== product.sourceName ||
+    reviewed.section !== strict.section ||
+    technicalProfile.conductorConstruction != null ||
+    product.conductorConfiguration ||
+    product.conductorStrandCount != null ||
+    product.voltage != null ||
+    product.manufacturer
+  )
+    return result;
+
+  // The reviewed illustration is scoped to this source row, without changing
+  // supplier specifications or the family defaults for other products.
+  const reviewedProfile = { ...result.visualProfile, ...reviewed.profile };
+  return {
+    ...result,
+    ...makeVisualIdentity(reviewedProfile),
+    construction: reviewedProfile.conductorConstruction,
+    visualization: {
+      ...result.visualization,
+      visualizationType: reviewedProfile.visualizationType,
+      components: reviewedProfile.visualizationType.split(' + '),
+    },
+  };
 }
 
 /** User-approved legacy images require agreement on visible construction, not newly invented metadata gates. */

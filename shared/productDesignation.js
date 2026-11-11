@@ -3,6 +3,10 @@ import { explainLanNotation } from './designationLanNotation.js';
 import { findCableSpecification } from '../scripts/lib/cableSpecification.js';
 import { selectManufacturerTexts } from './manufacturerTexts.js';
 import {
+  stripLegacyCableAlias,
+  stripLegacyCableAliasAttributes,
+} from './productTitle.js';
+import {
   PRODUCT_DESIGNATION_FAMILIES,
   DESIGNATION_SOURCES,
   DESIGNATION_KNOWLEDGE_REVISION,
@@ -78,6 +82,10 @@ const families = [...PRODUCT_DESIGNATION_FAMILIES].sort(
 );
 const firePattern =
   /^НГ(?:\(([АБВГДСA-D])\))?(?:-?(FR)?-?(LS|HF))?(?:-?LTX)?(?:-?ХЛ)?$/u;
+const priceNotation = {
+  ВВГ: { 'НГ(А)НД': ['НД', 'Низкое газовыделение'] },
+  ПВ1: { НДГ: ['НДГ', 'Пониженное дымо- и газовыделение'] },
+};
 
 function decodeIndex(value) {
   const code = normalize(value).replace(/^-/u, '');
@@ -400,12 +408,15 @@ function sizeTokens(product, family, designation) {
       !Number.isInteger(modules) ||
       modules < 1 ||
       !Number.isInteger(perModule) ||
-      perModule < 1 ||
-      modules * perModule !== fibers ||
+      perModule < (config.minimumFibersPerModule || 1) ||
+      (config.elementsIncludeFillers
+        ? fibers > modules * perModule
+        : modules * perModule !== fibers) ||
       modules > config.maximumModules ||
       perModule > config.maximumFibersPerModule ||
       (config.centralModule && modules !== 1) ||
-      !config.loads.includes(load)
+      !(config.loads?.includes(load) ||
+        (config.loadRange && load >= config.loadRange[0] && load <= config.loadRange[1]))
     )
       return {
         rows: [],
@@ -421,7 +432,9 @@ function sizeTokens(product, family, designation) {
         },
         {
           code: `${modules}×${perModule}`,
-          text: `${modules} оптических модулей, по ${perModule} волокон; это не количество медных жил и не сечение`,
+          text: config.elementsIncludeFillers
+            ? `${modules} элементов в повиве сердечника; ${perModule} волокон в оптическом модуле; часть элементов может быть заполнительными корделями`
+            : `${modules} оптических модулей, по ${perModule} волокон; это не количество медных жил и не сечение`,
         },
         {
           code: `${number(load)} кН`,
@@ -1073,13 +1086,33 @@ function sizeTokens(product, family, designation) {
 }
 
 export function buildProductDesignation(product = {}) {
-  const designation = clean(
+  const sourceDesignation = clean(
     product.sourceName ||
       product.fullName ||
       product.title ||
       product.name ||
       product.mark
   );
+  const rawMark = clean(product.mark);
+  const mark = stripLegacyCableAlias(rawMark);
+  const designation = stripLegacyCableAlias(sourceDesignation);
+  const sourceAttributes = product.attributes || [];
+  const cleanedAttributes = stripLegacyCableAliasAttributes(
+    mark,
+    sourceAttributes
+  );
+  if (
+    designation !== sourceDesignation ||
+    mark !== rawMark ||
+    cleanedAttributes.length !== sourceAttributes.length
+  ) {
+    product = {
+      ...product,
+      mark,
+      sourceName: designation,
+      attributes: cleanedAttributes,
+    };
+  }
   const {
     family: resolvedFamily,
     index,
@@ -1087,8 +1120,26 @@ export function buildProductDesignation(product = {}) {
     ratedVoltage,
     consumedAttribute,
   } = resolveFamily(product);
+  const rawAttributes = product.attributes || [];
+  const ndgExecution = /^\([АA]\)\s*-?\s*НДГ$/iu;
+  const splitNdg = rawAttributes.findIndex((value, i) =>
+    ndgExecution.test(value + ' ' + (rawAttributes[i + 1] || ''))
+  );
+  const attributes =
+    resolvedFamily?.mark === 'ТППэп' &&
+    /(?:^|\s)\([АA]\)\s*-?\s*НДГ(?=\s|$)/iu.test(designation)
+      ? rawAttributes.flatMap((value, i) => {
+          if (splitNdg >= 0 && i === splitNdg + 1) return [];
+          if (
+            i === splitNdg ||
+            (ndgExecution.test(value) && normalize(value) !== '(А)НДГ')
+          )
+            return '(А)НДГ';
+          return value;
+        })
+      : rawAttributes;
   const executionCodes = [
-    ...(product.attributes || []),
+    ...attributes,
     index || '',
     ...designation.matchAll(
       /нг\s*(?:\([АБВГДСA-D]\))?(?:-?(?:FR)?-?(?:LS|HF))?(?:-?LTx)?(?:-?ХЛ)?/giu
@@ -1142,7 +1193,7 @@ export function buildProductDesignation(product = {}) {
   if (partial) unknown.push(partial);
   const indexes = [
     ...new Set([
-      ...(product.attributes || []),
+      ...attributes,
       ...(index ? [index] : []),
       ...([
         'single-conductor-section',
@@ -1166,7 +1217,15 @@ export function buildProductDesignation(product = {}) {
     family && normalize(family.mark).startsWith(normalize(product.mark))
       ? normalize(family.mark).slice(normalize(product.mark).length)
       : '';
+  let usesPriceNotation = false;
   for (const attribute of indexes) {
+    const priceIndex = indexKey(attribute).replace('(A)', '(А)');
+    const note = priceNotation[family?.mark]?.[priceIndex];
+    if (note) {
+      usesPriceNotation = true;
+      tokens.push({ code: note[0], text: note[1] });
+      continue;
+    }
     if (consumedAttribute === normalize(attribute)) continue;
     if (confirmedNycY && normalize(attribute) === 'RE/6') continue;
     if (
@@ -1346,12 +1405,28 @@ export function buildProductDesignation(product = {}) {
   }
   const nominalSize =
     findCableSpecification(designation)?.crossSection ?? product.crossSection;
-  const sizeFamily = family?.dimensionBySize
+  let sizeFamily = family?.dimensionBySize
     ? {
         ...family,
         dimension: family.dimensionBySize[String(nominalSize)] || 'variant',
       }
     : family;
+  if (family?.sectionNotationSizes?.includes(Number(nominalSize))) {
+    sizeFamily = {
+      ...family,
+      dimension: 'section',
+      nominalSizes: family.sectionNotationSizes,
+    };
+    addSource(family.sectionNotationSource);
+  }
+  if (family?.diameterNotationSizes?.includes(Number(nominalSize))) {
+    sizeFamily = {
+      ...family,
+      dimension: 'diameter',
+      nominalSizes: family.diameterNotationSizes,
+    };
+    addSource(family.diameterNotationSource);
+  }
   const size = sizeTokens(product, sizeFamily, designation);
   if (
     family?.applicationOnly &&
@@ -1431,6 +1506,7 @@ export function buildProductDesignation(product = {}) {
       d.publisherType === 'manufacturer'
   );
   const officialComplete =
+    !usesPriceNotation &&
     constructionEvidence.status === 'confirmed' &&
     status === 'reviewed' &&
     family?.evidence?.kind === 'manufacturer-documentation' &&

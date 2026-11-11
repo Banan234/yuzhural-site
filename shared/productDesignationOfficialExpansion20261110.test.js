@@ -13,14 +13,18 @@ describe('factory manuals and constructor additions, November 10', () => {
     ['ТПП', 'ТППнг 10х2х0.5 (А)HF', ['нг(А)-HF']],
     ['ПТВТ-ХК', 'ПТВТ-ХК 2х2.5', []],
     ['ПТВэВТ-ха', 'ПТВэВТ-ха 2х1.5', []],
-  ])('explains %s from an obtained factory source', (mark, sourceName, attributes) => {
-    const result = decode({ mark, sourceName, attributes });
-    expect(result.status).toBe('reviewed');
-    expect(result.unknown).toEqual([]);
-    expect(result.warnings).toEqual([]);
-    expect(result.manufacturerTexts.length).toBeGreaterThan(0);
-    expect(result.officialComplete).toBe(false);
-  });
+    ['ПБВВ', 'ПБВВ 3х2.5 (ПУГНП)', ['(ПУГНП)']],
+  ])(
+    'explains %s from an obtained factory source',
+    (mark, sourceName, attributes) => {
+      const result = decode({ mark, sourceName, attributes });
+      expect(result.status).toBe('reviewed');
+      expect(result.unknown).toEqual([]);
+      expect(result.warnings).toEqual([]);
+      expect(result.manufacturerTexts.length).toBeGreaterThan(0);
+      expect(result.officialComplete).toBe(false);
+    }
+  );
   it.each([
     ['FireLine 750', 'FireLine 750 19х4', []],
     ['ВСЭК', 'ВСЭК 5х2х0.5', []],
@@ -30,12 +34,21 @@ describe('factory manuals and constructor additions, November 10', () => {
     ['КУПЭКШВ', 'КУПЭКШВ 37х3х1 нг(А)LS', ['нг(А)-LS']],
     ['КУПЭКШВ', 'КУПЭКШВ 2х1.5 нг(А)HF', ['нг(А)-HF']],
     ['ТПП', 'ТППнг 10х2х0.5 HF', ['нг-HF']],
-    ['ПБВВ', 'ПБВВ 3х2.5 (ПУГНП)', ['(ПУГНП)']],
-  ])('keeps conflicting or unconfirmed variants incomplete: %s', (mark, sourceName, attributes) => {
-    expect(decode({ mark, sourceName, attributes }).status).not.toBe('reviewed');
-  });
+    ['ПБВВ', 'ПБВВ 3х2.5 (ДРУГОЙ)', ['(ДРУГОЙ)']],
+  ])(
+    'keeps conflicting or unconfirmed variants incomplete: %s',
+    (mark, sourceName, attributes) => {
+      expect(decode({ mark, sourceName, attributes }).status).not.toBe(
+        'reviewed'
+      );
+    }
+  );
   it('does not substitute an AWG gauge for a factory section in a fixed cord', () => {
-    const result = decode({ mark: 'ШТЛ-2', sourceName: 'ШТЛ-2', crossSection: 2.5 });
+    const result = decode({
+      mark: 'ШТЛ-2',
+      sourceName: 'ШТЛ-2',
+      crossSection: 2.5,
+    });
     expect(result.status).not.toBe('reviewed');
   });
 });
