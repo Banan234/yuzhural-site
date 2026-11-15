@@ -178,6 +178,7 @@ export default defineConfig({
       '**/e2e/**',
       '**/test-results/**',
       '**/playwright-report/**',
+      'docs/reports/full-review-2026-10-26-assets/**',
     ],
   },
 });

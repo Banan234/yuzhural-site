@@ -1,0 +1,160 @@
+{
+  "kg__4c__stranded__round__4core-brown-black-grey-yellow-green__p-c63dc84b713bf477": {
+    "profile": {
+      "family": "kg",
+      "productType": "flexible-cable",
+      "cores": 4,
+      "conductorMaterial": "copper",
+      "conductorConstruction": "stranded",
+      "conductorShape": "circular",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacket": "black",
+      "armor": false,
+      "armorType": null,
+      "shield": false,
+      "shieldType": null,
+      "specialElements": [],
+      "coreColors": [
+        "brown",
+        "black",
+        "grey",
+        "yellow-green"
+      ],
+      "coreColorScheme": "4core-brown-black-grey-yellow-green",
+      "pairedGroupSize": null,
+      "sectionKey": null,
+      "unresolvedModifiers": [],
+      "unresolvedFamilySuffix": null,
+      "visualizationType": "MULTICORE",
+      "technicalConstruction": {
+        "fireBarrier": false,
+        "screen": false,
+        "armor": false,
+        "innerSheath": false,
+        "interstitialFilling": {
+          "status": "absent"
+        },
+        "separator": "one thin nonmetallic PET film or nonwoven separator around the assembly",
+        "source": "https://kamkabel.ru/upload/iblock/e54/3jmohqdxy89f8pqelhibxzay952tlxh2.pdf",
+        "basis": "Documented family illustration of the rubber-jacket construction with separator and without separate filling; SKU source does not identify the manufacturer."
+      }
+    },
+    "members": {
+      "YU-0003932": {
+        "id": 3932,
+        "sourceName": "КГ 4х0,75",
+        "section": 0.75
+      },
+      "YU-0003933": {
+        "id": 3933,
+        "sourceName": "КГ 4х1",
+        "section": 1
+      },
+      "YU-0003934": {
+        "id": 3934,
+        "sourceName": "КГ 4х1.5",
+        "section": 1.5
+      },
+      "YU-0003936": {
+        "id": 3936,
+        "sourceName": "КГ 4х4",
+        "section": 4
+      },
+      "YU-0003938": {
+        "id": 3938,
+        "sourceName": "КГ 4х6",
+        "section": 6
+      },
+      "YU-0003940": {
+        "id": 3940,
+        "sourceName": "КГ 4х 10",
+        "section": 10
+      },
+      "YU-0003942": {
+        "id": 3942,
+        "sourceName": "КГ 4х 16",
+        "section": 16
+      }
+    }
+  },
+  "kg-hl__4c__stranded__round__4core-brown-black-grey-yellow-green__p-4a2ab8dd8bd47f36": {
+    "profile": {
+      "family": "kg-hl",
+      "productType": "flexible-cable",
+      "cores": 4,
+      "conductorMaterial": "copper",
+      "conductorConstruction": "stranded",
+      "conductorShape": "circular",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacket": "black",
+      "armor": false,
+      "armorType": null,
+      "shield": false,
+      "shieldType": null,
+      "specialElements": [],
+      "coreColors": [
+        "brown",
+        "black",
+        "grey",
+        "yellow-green"
+      ],
+      "coreColorScheme": "4core-brown-black-grey-yellow-green",
+      "pairedGroupSize": null,
+      "sectionKey": null,
+      "unresolvedModifiers": [],
+      "unresolvedFamilySuffix": null,
+      "visualizationType": "MULTICORE",
+      "technicalConstruction": {
+        "fireBarrier": false,
+        "screen": false,
+        "armor": false,
+        "innerSheath": false,
+        "interstitialFilling": {
+          "status": "absent"
+        },
+        "separator": "one thin nonmetallic PET film or nonwoven separator around the assembly",
+        "source": "https://kamkabel.ru/upload/iblock/e54/3jmohqdxy89f8pqelhibxzay952tlxh2.pdf",
+        "basis": "Documented family illustration of the rubber-jacket construction with separator and without separate filling; SKU source does not identify the manufacturer."
+      }
+    },
+    "members": {
+      "YU-0004044": {
+        "id": 4044,
+        "sourceName": "КГ хл 3х 10+1х10",
+        "section": 10
+      },
+      "YU-0004061": {
+        "id": 4061,
+        "sourceName": "КГ хл 4х2.5",
+        "section": 2.5
+      },
+      "YU-0004063": {
+        "id": 4063,
+        "sourceName": "КГ хл 4х4",
+        "section": 4
+      },
+      "YU-0004065": {
+        "id": 4065,
+        "sourceName": "КГ хл 4х6",
+        "section": 6
+      },
+      "YU-0004068": {
+        "id": 4068,
+        "sourceName": "КГ хл 4х 16",
+        "section": 16
+      },
+      "YU-0004071": {
+        "id": 4071,
+        "sourceName": "КГ хл 4х 35",
+        "section": 35
+      },
+      "YU-0004073": {
+        "id": 4073,
+        "sourceName": "КГ хл 4х 50",
+        "section": 50
+      }
+    }
+  }
+}

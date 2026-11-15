@@ -10,7 +10,8 @@ export function normalizeCableConfiguration(value) {
     .toLowerCase()
     .replace(/[×x*]/g, 'х')
     .replace(/,(?=\d)/g, '.')
-    .replace(/\s+/g, '');
+    .replace(/\s+/g, '')
+    .replace(/(\.\d*?[1-9])0+(?!\d)|\.0+(?!\d)/g, '$1');
 }
 
 export function getCableMassRows({ mark, configuration, voltageKv }) {
@@ -42,6 +43,37 @@ export function getCableDiameterRange(rows) {
   return values.length
     ? { minMm: Math.min(...values), maxMm: Math.max(...values) }
     : null;
+}
+
+export function getCableManufacturerAverage(rows, lengthMeters) {
+  const byManufacturer = new Map();
+  const ambiguous = new Set();
+  for (const row of rows) {
+    const publisher = CABLE_MASS_SOURCES[row.sourceId]?.publisher;
+    if (!publisher) continue;
+    const previous = byManufacturer.get(publisher);
+    if (previous && (
+      previous.massKgPerKm !== row.massKgPerKm ||
+      previous.diameterMm !== row.diameterMm
+    )) ambiguous.add(publisher);
+    byManufacturer.set(publisher, row);
+  }
+
+  const comparable = [...byManufacturer.entries()]
+    .filter(([publisher]) => !ambiguous.has(publisher))
+    .map(([, row]) => row);
+  const count = comparable.length;
+  if (count < 2) return null;
+
+  const mass = calculateCableMass(comparable, lengthMeters);
+  const length = Number(String(lengthMeters).replace(',', '.'));
+  return {
+    count,
+    massKg: mass
+      ? comparable.reduce((sum, row) => sum + (row.massKgPerKm * length) / 1000 / count, 0)
+      : null,
+    diameterMm: comparable.reduce((sum, row) => sum + row.diameterMm / count, 0),
+  };
 }
 
 export function calculateMassWithDrums(cableMass, drumWeightKg, drumCount) {

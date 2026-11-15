@@ -73,6 +73,18 @@ it('sends all four exact protected PNGs and complete standards to actual multipa
   try {
     for (const profile of cases) {
       const root = sandbox;
+      const key = 'test-' + profile.visualizationType;
+      const archive = path.join(root, 'data/cable-approved-results');
+      const referenceDir = path.join(archive, key);
+      await fs.mkdir(referenceDir, { recursive: true });
+      const approvedPng = await fs.readFile(path.join(root, 'assets/cable-style-reference/simple.png'));
+      const approval = { status: 'APPROVED', visualKey: key, sha256: sha(approvedPng), APPROVED_AS_REFERENCE: true };
+      await fs.writeFile(path.join(referenceDir, 'image.png'), approvedPng);
+      await fs.writeFile(path.join(referenceDir, 'approval.json'), JSON.stringify(approval));
+      await fs.writeFile(path.join(referenceDir, 'group.json'), JSON.stringify({ profile }));
+      await fs.writeFile(path.join(archive, 'registry.json'), JSON.stringify({
+        byVisualKey: { [key]: { ...approval, draftDir: path.relative(root, referenceDir) } },
+      }));
       const request = await prepareCableStyleRequest(root, profile),
         dir = await fs.mkdtemp(path.join(root, 'outputs/request-integration-'));
       const fetchImpl = vi.fn(async (url, options) => {
@@ -87,12 +99,30 @@ it('sends all four exact protected PNGs and complete standards to actual multipa
         expect(sha(Buffer.from(await f.get('image[]').arrayBuffer()))).toBe(
           request.reference.sha256
         );
+        const images = f.getAll('image[]');
+        expect(images).toHaveLength(2);
+        expect(sha(Buffer.from(await images[1].arrayBuffer()))).toBe(approval.sha256);
+        expect(request.referenceStatus).toBe('GEOMETRY_MATCH');
         const prompt = f.get('prompt');
+        expect(prompt).toContain('INPUT 2 sets compatible spatial arrangement');
         expect(prompt).toBe(request.prompt);
         expect(prompt).toContain('approved-cable-style-1.1.0');
         expect(prompt).toContain('MANDATORY CORE GEOMETRY');
         expect(prompt).toContain(`EXACTLY ${profile.cores}`);
         expect(prompt).toContain('SAME-diameter');
+        if (profile.visualizationType.startsWith('MULTICORE')) {
+          expect(request.multicoreComposition.version).toBe('multicore-composition-1.0.0');
+          expect(prompt).toContain('descending diagonal staircase');
+          expect(prompt).toContain('projected sheath axis');
+          expect(prompt).toContain('comparable-axial-stripping');
+        } else {
+          expect(request.multicoreComposition).toBeNull();
+        }
+
+        expect(prompt).toContain('Do not depict filling or assert empty cavities');
+        expect(request.technicalProfile.interstitialFilling.status).toBe('unknown');
+        expect(request.technicalProfile.layers.map(layer => layer.role))
+          .not.toContain('interstitial-filling');
         expect(request.strippingComposition.version).toBe(
           'common-sheath-stripping-composition-1.0.0'
         );
@@ -139,6 +169,13 @@ it('sends all four exact protected PNGs and complete standards to actual multipa
         });
         expect(r.status).toBe('NEEDS_REVIEW');
         expect(r.geometryCheck.pixelVerification).toBe('NOT_AUTOMATED');
+        expect(fetchImpl).toHaveBeenCalledTimes(1);
+        await fs.writeFile(path.join(referenceDir, 'approval.json'), JSON.stringify({
+          ...approval, APPROVED_AS_REFERENCE: false,
+        }));
+        await expect(createImageProvider(request.config, {
+          env: { IMAGE_API_KEY: 'fake-test-key' }, fetchImpl,
+        }).generate({ prompt: request.prompt })).rejects.toThrow('permission changed');
         expect(fetchImpl).toHaveBeenCalledTimes(1);
       } finally {
         await fs.rm(dir, { recursive: true, force: true });
@@ -216,3 +253,45 @@ it('uploads exact previous generation as second image for targeted jacket-cut co
     }).generate({ prompt: r.prompt });
     expect(fetchImpl).toHaveBeenCalledTimes(1);
   }));
+
+it('does not send an API request for multicore without matching geometry', () =>
+  withCableStyleSandbox(async ({ root }) => {
+    const profile = { ...base, visualizationType: 'MULTICORE' };
+    const request = await prepareCableStyleRequest(root, profile);
+    expect(request.referenceStatus).toBe('NEEDS_APPROVED_GEOMETRY_REFERENCE');
+    expect(request.config.additionalReferenceImages).toEqual([]);
+    const providerFactory = vi.fn();
+    await expect(generateCableStyleDraft({
+      root, profile, outputDir: path.join(root, 'outputs/blocked'), providerFactory,
+    })).rejects.toThrow('no approved compatible multicore geometry reference');
+    expect(providerFactory).not.toHaveBeenCalled();
+  }));
+
+it.each([1, 2])('detects staircase, clipping and anatomy mismatches at scale %i', async scale => {
+  const { PNG } = await import('pngjs');
+  const { inspectMulticoreComposition } = await import('./cableMulticoreComposition.js');
+  const { validateCableImagePng } = await import('./cableImagePng.js');
+  const { buildCableTechnicalProfile } = await import('./cableTechnicalProfile.js');
+  const profile = { ...base, cores: 4, coreColors: ['brown', 'black', 'grey', 'yellow-green'], visualizationType: 'MULTICORE' };
+  const png = new PNG({ width: 200 * scale, height: 100 * scale });
+  for (let x = 0; x < png.width; x++)
+    for (let y = 30 * scale; y < 70 * scale; y++)
+      png.data[(y * png.width + x) * 4 + 3] = 255;
+  const validation = validateCableImagePng(PNG.sync.write(png), { background: 'transparent', composition: { rightEdgeCrop: true } });
+  const contract = buildCableTechnicalProfile(profile);
+  const geometry = inspectMulticoreComposition(png, validation, profile, contract, {
+    sha256: validation.sha256,
+    ends: [[20,32],[28,43],[36,55],[44,67]].map(([x,y]) => ({ x:x*scale, y:y*scale, complete:true })),
+    insulatedCoreCount: 5,
+    layerRoles: ['armor'],
+  });
+  expect(geometry.findings).toEqual(expect.arrayContaining([
+    'possible-clipped-tips', 'excessive-tip-spread', 'diagonal-tip-staircase',
+    'profile-mismatch-insulatedCoreCount', 'unexpected-layer-armor', 'layer-not-visible-individual-insulation',
+  ]));
+  expect(geometry.missing).toContain('conductorMaterial');
+  expect(geometry.status).toBe('NEEDS_REVIEW');
+  const wrongSha = inspectMulticoreComposition(png, validation, profile, contract, { sha256: 'wrong', ends: [] });
+  expect(wrongSha.missing).toContain('annotated-metal-end-centers');
+  expect(wrongSha.findings).not.toContain('wrong-metal-end-count');
+});

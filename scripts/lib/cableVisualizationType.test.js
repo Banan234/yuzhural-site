@@ -52,7 +52,7 @@ describe('visualization strategy from construction, independent of image publica
     ['UNKNOWN 7x1.5', 'NEEDS_REVIEW'],
   ])('%s → %s', (name, type) => {
     const actual = classify(name);
-    expect(actual.visualProfile.visualizationType).toBe(type);
+    expect(actual.visualProfile.visualizationType).toBe(type === 'NEEDS_REVIEW' ? null : type);
     expect(actual.visualization.visualizationType).toBe(type);
   });
   it('never treats strands as insulated cores or reduces seven-core armour to plain MULTICORE', () => {

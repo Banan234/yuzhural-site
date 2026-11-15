@@ -61,14 +61,14 @@ describe('independent document/Decimal control', () => {
       voltageKv: 0.66,
     });
     expect(rows.map((x) => x.massKgPerKm).sort((a, b) => a - b)).toEqual([
-      48, 51,
+      44, 48, 51,
     ]);
-    expect(getCableDiameterRange(rows)).toEqual({ minMm: 5.3, maxMm: 5.5 });
+    expect(getCableDiameterRange(rows)).toEqual({ minMm: 5.1, maxMm: 5.5 });
     const mass = calculateCableMass(rows, '125,5');
-    close(mass.minKg, 6.024);
+    close(mass.minKg, 5.522);
     close(mass.maxKg, 6.4005);
     const custom = calculateMassWithDrums(mass, '12,5', 2);
-    close(custom.minKg, 31.024);
+    close(custom.minKg, 30.522);
     close(custom.maxKg, 31.4005);
     expect(calculateCableMass([], 100)).toBeNull();
     expect(getCableDiameterRange([{ massKgPerKm: 1 }])).toBeNull();

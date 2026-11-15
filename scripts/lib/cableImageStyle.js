@@ -1,3 +1,5 @@
+import { PNG } from 'pngjs';
+import { deriveMulticoreComposition, multicoreCompositionPrompt, multicoreCompositionReviewChecks, inspectMulticoreComposition } from './cableMulticoreComposition.js';
 import { selectApprovedStyleReference } from './cableApprovedStyleReference.js';
 import {deriveLayerContactRule,layerContactPrompt} from './cableLayerContact.js';
 import {deriveStrippingCompositionPreference,strippingCompositionPrompt} from './cableStrippingComposition.js';
@@ -193,10 +195,22 @@ export async function prepareCableStyleRequest(
     if (error.code !== 'ENOENT' && error.message !== 'No compatible manually APPROVED reference')
       throw error;
   }
+  const requiresGeometryReference = type.startsWith('MULTICORE') && !target;
+  const referenceStatus = requiresGeometryReference && approvedStyleReference?.role !== 'GEOMETRY_MATCH'
+    ? 'NEEDS_APPROVED_GEOMETRY_REFERENCE'
+    : approvedStyleReference?.role || 'PROTECTED_STYLE_ONLY';
+  const supplementalReference = approvedStyleReference?.role === 'GEOMETRY_MATCH' ? approvedStyleReference : null;
   const strippingComposition = deriveStrippingCompositionPreference(profile);
   const layerContact = deriveLayerContactRule(profile, technicalProfile);
+  const multicoreComposition = deriveMulticoreComposition(profile, {
+    historicalTargetedEdit: Boolean(target),
+  });
   const prompt =
     technicalProfilePrompt(technicalProfile) + layerContactPrompt(layerContact) +
+    multicoreCompositionPrompt(multicoreComposition) +
+    (supplementalReference?.role === 'GEOMETRY_MATCH' && !target
+      ? ' INPUT 1 sets render style and outer frame. INPUT 2 sets compatible spatial arrangement of cores, axial stripping and layer steps. The target technical contract governs all materials, colors and layers. Do not copy any conflicting detail.'
+      : '') +
     ` Use the attached USER-APPROVED ${type} reference as the mandatory visual standard, version ${style.version}. This reference defines style, scale, composition, tilt, camera, materials appearance, lighting, detail, left margin, proportions and exposed metal/insulation lengths${multicoreStripping || strippingComposition ? ', except the applicable insulated-core exposure amendment below' : ''}. Preserve these parameters; no artistic experiments. Rebuild internal geometry as required by the supplied technical contract: exact insulated core count, colours, actual conductor material, solid/stranded construction and documented layers/family details. Do not copy the reference core count when it differs from target. ${profile.conductorMaterial === 'aluminium' ? 'ALUMINIUM conductors, silver-grey, never copper.' : 'COPPER conductors.'} ${profile.conductorConstruction === 'solid' ? 'Each core contains one SOLID conductor.' : 'Each core is STRANDED; show fine wires inside each core, not extra insulated cores.'} EXACTLY ${profile.cores} insulated cores. Compact volumetric bundle, never flat fan. Intact body on RIGHT continues beyond right canvas edge; stripped end and bare conductor extensions on LEFT fully visible. Match reference bare-metal length with clear insulation boundary; no ferrules/lugs. Include only documented construction layers; never add screen/armour if false. True transparent PNG, no dark halos, haze, baked shadows, background residue, text or logos. Nominal section does not change overall reference scale. ${coreGeometryPrompt(geometryRequirements)} Target visualProfile: ${JSON.stringify(profile)}. Mandatory constraints: ${JSON.stringify(style.constraints)}. ${strippingComposition && !target ? strippingCompositionPrompt(strippingComposition) : multicoreStrippingPrompt(multicoreStripping)} ${target && !geometryRevision ? 'TARGETED EDIT: image 1 is the immutable generic STYLE reference only. Image 2 is the PREVIOUS GENERATION of this exact 7-core cable and is the spatial edit target. Keep all seven copper ends anchored at their existing positions, same length and diameter. Move the black common jacket cut/opening to the RIGHT along the cable axis, exposing 25-30% more of each black insulated core than IMAGE 2. Do NOT move the copper ends left or scale any object. The elliptical jacket mouth moves right, the black insulation becomes visible in the newly uncovered area. Preserve jacket wall thickness, seven cores, camera, tilt, canvas and global scale of image 2. This targeted 25-30% correction overrides the default 20-25% instruction. No extra ends. Do not transfer 27-core anatomy from image 1.' : ''} ${geometryPilot ? geometryPilotPrompt(geometryPilot, profile) : ''} ${outerSheathGeometryPrompt(profile)} ${geometryReference ? 'Supplemental user-approved construction reference exists for this exact profile; preserve its image through APPROVED reuse.' : ''} ${geometryRevision ? geometryRevisionPrompt(geometryRevision) : ''}`;
   return {
     standardVersion: style.version,
@@ -209,6 +223,7 @@ export async function prepareCableStyleRequest(
     geometryRequirements,
     technicalProfile,
     multicoreStripping,
+    multicoreComposition,
     strippingComposition,
     layerContact,
     editTarget: target,
@@ -226,10 +241,15 @@ export async function prepareCableStyleRequest(
       requiredReferenceSha256: reference.sha256,
       additionalReferenceImages: [
         ...(target ? [target] : []),
-        ...(!target && approvedStyleReference ? [{
-          path: approvedStyleReference.path,
-          sha256: approvedStyleReference.sha256,
-          role: 'manually-approved-compatible-style',
+        ...(!target && supplementalReference ? [{
+          path: supplementalReference.path,
+          sha256: supplementalReference.sha256,
+          role: 'approved-compatible-geometry',
+          permission: {
+            visualKey: supplementalReference.visualKey,
+            registry: path.join(root, 'data/cable-approved-results/registry.json'),
+            approval: path.join(path.dirname(supplementalReference.path), 'approval.json'),
+          },
         }] : []),
       ],
       size: '1536x1024',
@@ -241,6 +261,15 @@ export async function prepareCableStyleRequest(
       composition: { rightEdgeCrop: true },
     },
     approvedStyleReference,
+    referenceStatus,
+    referenceInputs: [
+      { role: 'protected-style', sha256: reference.sha256 },
+      ...(target ? [{ role: 'historical-edit-target', sha256: target.sha256 }] : []),
+      ...(!target && supplementalReference ? [{
+        role: 'approved-compatible-geometry', sha256: supplementalReference.sha256,
+        visualKey: supplementalReference.visualKey,
+      }] : []),
+    ],
     qualityStatus: 'NEEDS_REVIEW',
     automaticProductionBinding: false,
   };
@@ -269,6 +298,8 @@ export async function generateCableStyleDraft({
       validation: approved.validation,
       automaticProductionBinding: false,
     };
+  if (request.referenceStatus === 'NEEDS_APPROVED_GEOMETRY_REFERENCE')
+    throw Error('NEEDS_TECHNICAL_REVIEW: no approved compatible multicore geometry reference');
   const output = path.resolve(outputDir);
   if (!output.startsWith(path.join(root, 'outputs') + path.sep))
     throw Error('Draft output must be inside outputs/');
@@ -301,9 +332,13 @@ export async function generateCableStyleDraft({
       httpStatus: result.httpStatus,
       validation,
       compositionCheck: validation.compositionCheck,
+      multicorePixelReview: request.multicoreComposition
+        ? inspectMulticoreComposition(PNG.sync.read(result.buffer), validation, profile, request.technicalProfile)
+        : null,
       geometryRequirements: request.geometryRequirements,
       technicalProfile: request.technicalProfile,
       multicoreStripping: request.multicoreStripping,
+      multicoreComposition: request.multicoreComposition,
       strippingComposition: request.strippingComposition,
       layerContact: request.layerContact,
       geometryPilot: request.geometryPilot,
@@ -317,7 +352,7 @@ export async function generateCableStyleDraft({
       },
       status: 'NEEDS_REVIEW',
       automaticProductionBinding: false,
-      manualChecksRequired: CABLE_STYLE_REVIEW_CHECKS,
+      manualChecksRequired: [...CABLE_STYLE_REVIEW_CHECKS, ...multicoreCompositionReviewChecks(request.multicoreComposition)],
     };
     await fs.writeFile(
       path.join(output, 'review.json'),

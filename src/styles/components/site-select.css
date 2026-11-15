@@ -72,3 +72,33 @@
     min-height: 44px;
   }
 }
+
+.site-select__field {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+.site-select__field > input.site-select {
+  display: block;
+  padding-inline-end: 36px;
+  text-overflow: ellipsis;
+  cursor: text;
+}
+
+.site-select__field > input.site-select::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+.site-select__field > svg {
+  position: absolute;
+  inset-inline-end: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.site-select__empty {
+  padding: 8px;
+}

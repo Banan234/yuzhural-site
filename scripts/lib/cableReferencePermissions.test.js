@@ -4,7 +4,7 @@ import path from 'node:path';
 import {it,expect} from 'vitest';
 import {selectApprovedStyleReference} from './cableApprovedStyleReference.js';
 import {digest} from './cableStyleBatch.js';
-const profile={family:'vvg',cores:1,geometry:'round',hasOuterJacket:true,conductorMaterial:'copper',conductorConstruction:'solid',shield:false,armor:false,specialElements:[]};
+const profile={family:'vvg',cores:1,coreColors:['black'],visualizationType:'SIMPLE',geometry:'round',hasOuterJacket:true,conductorMaterial:'copper',conductorConstruction:'solid',shield:false,armor:false,specialElements:[]};
 it('requires separate explicit reference approval and compatible anatomy',async()=>{
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'reference-permissions-'));
  const dir=path.join(root,'data/cable-approved-results/example');

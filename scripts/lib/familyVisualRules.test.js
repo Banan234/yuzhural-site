@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import {
   classifyPracticalCableVisualProduct,
   comparePracticalVisualAsset,
+  compareApprovedVisualConstruction,
   resolveFamilyVisualRule,
 } from './familyVisualRules.js';
 import {
@@ -271,5 +272,90 @@ describe('reuse and dry-run safety', () => {
     expect(() =>
       resolveFamilyVisualRule({ familyId: 'vvg', baseFamily: 'ВВГ' }, local)
     ).toThrow('inheritance');
+  });
+});
+
+it('uses the reviewed 5×70 illustration profile only for its source row', () => {
+  const sourceName = 'ВВГ 5х 70 нг(А)LS-Ltx';
+  const row = {
+    id: 7248,
+    sku: 'YU-0007248',
+    sourceName,
+    name: 'ВВГнг(А)-LS-LTx 5х70',
+    cores: 5,
+    crossSection: 70,
+    attributes: ['нг(А)-LS-LTx'],
+  };
+  const reviewed = classifyPracticalCableVisualProduct(row, context);
+  expect(reviewed.visualProfile).toMatchObject({
+    conductorConstruction: 'stranded',
+    visualizationType: 'MULTICORE',
+    technicalConstruction: { innerSheath: 'low-toxicity PVC' },
+  });
+  expect(reviewed.technicalProfile.conductorConstruction).toBeNull();
+  for (const override of [
+    { sku: 'TEST-2' },
+    { id: 7249 },
+    { crossSection: 25 },
+    { voltage: 6 },
+    { manufacturer: 'Указан поставщиком' },
+    { sourceName: 'ВВГ 5х 70 нг(А)LS-Ltx (ож)' },
+  ]) {
+    const other = classifyPracticalCableVisualProduct({ ...row, ...override }, context);
+    expect(other.visualKey).not.toBe(reviewed.visualKey);
+    expect(other.visualProfile.technicalConstruction).toBeUndefined();
+  }
+});
+
+describe('visual comparison with approved PNG', () => {
+  const profile = {
+    family: 'source', cores: 4, geometry: 'round', visualizationType: 'MULTICORE',
+    conductorShape: 'circular', conductorMaterial: 'copper', conductorConstruction: 'stranded',
+    hasOuterJacket: true, shield: false, armor: false, specialElements: [],
+    coreColors: ['brown','black','grey','blue'], outerJacket: 'black',
+  };
+  const layers = { inner: false, fill: false, separator: false };
+  const asset = { profile, layers, approval: { APPROVED_FOR_CATALOG: true, visualKey: 'source' } };
+  const row = { profile: { ...profile, family: 'other' }, visualKey: 'other', layers, classification: 'AUTO_APPROVED' };
+  const check = (change, extra) => compareApprovedVisualConstruction(
+    { ...row, profile: { ...row.profile, ...change }, ...extra }, asset
+  );
+  it('does not use family or visualKey as a construction requirement', () => {
+    expect(check({}).status).toBe('COMPATIBLE');
+  });
+  it.each(['NEEDS_REVIEW', 'REJECTED', 'APPROVED', null])('treats %s as an unknown strategy', value => {
+    const result = check({ visualizationType: value });
+    expect(result.status).toBe('NEEDS_REVIEW');
+    expect(result.unknown).toContain('visualizationType');
+    expect(result.mismatch).toEqual([]);
+  });
+  it.each([
+    ['cores', 3], ['geometry', 'flat'], ['conductorConstruction', 'solid'],
+    ['visualizationType', 'SIMPLE'], ['shield', true], ['armor', true],
+    ['specialElements', ['fire-barrier']],
+  ])('preserves confirmed conflicts in %s despite missing evidence', (field, value) => {
+    const result = check({ [field]: value, conductorMaterial: null });
+    expect(result.status).toBe('INCOMPATIBLE');
+    expect(result.mismatch).toContain(field);
+    expect(result.unknown).toContain('conductorMaterial');
+  });
+  it.each(['shield','armor','conductorConstruction'])('never treats unknown %s as absent or matched', field => {
+    expect(check({ [field]: null }).unknown).toContain(field);
+    expect(check({}, { disputed: [field] }).status).toBe('NEEDS_REVIEW');
+  });
+  it('checks layer evidence and explicit colors without guessing absence', () => {
+    expect(check({}, { layers: { ...layers, inner: null } }).status).toBe('NEEDS_REVIEW');
+    expect(check({}, { layers: { ...layers, fill: true } }).mismatch).toContain('fill');
+    expect(check({}, { color: { jacket:'white' } }).mismatch).toContain('outerJacket');
+    expect(check({}, { color: { cores:['white'] } }).mismatch).toContain('coreColors');
+    expect(compareApprovedVisualConstruction(row, { ...asset, layers:{ ...layers, fill:null } }).status).toBe('NEEDS_REVIEW');
+  });
+  it.each(['armor', 'shield'])('checks %s type when present on both sides', field => {
+    const type = field + 'Type';
+    const target = { ...row, profile:{ ...profile, [field]:true, [type]:'foil' } };
+    const image = { ...asset, profile:{ ...profile, [field]:true, [type]:'tape' } };
+    expect(compareApprovedVisualConstruction(target, image).mismatch).toContain(type);
+    target.profile[type] = 'NEEDS_REVIEW';
+    expect(compareApprovedVisualConstruction(target, image).status).toBe('NEEDS_REVIEW');
   });
 });

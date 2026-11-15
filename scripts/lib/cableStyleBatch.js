@@ -11,6 +11,9 @@ import {
   generateCableStyleDraft,
 } from './cableImageStyle.js';
 import { validateCableImagePng } from './cableImagePng.js';
+import { PNG } from 'pngjs';
+import { buildCableTechnicalProfile } from './cableTechnicalProfile.js';
+import { inspectMulticoreComposition, multicoreCompositionReviewChecks } from './cableMulticoreComposition.js';
 import { CABLE_STYLE_REVIEW_CHECKS } from './cableCoreGeometry.js';
 import { classifyPracticalCableVisualProduct } from './familyVisualRules.js';
 import { approvedCableImagePath, getCatalogPhoto, getGeneratedProductImage } from '../../shared/productImages.js';
@@ -110,7 +113,7 @@ export async function planCableStyleBatch({
       request = null;
     if (
       classified.visualClassification !== 'AUTO_APPROVED' ||
-      classified.visualProfile.visualizationType === 'NEEDS_REVIEW'
+      classified.visualization.visualizationType === 'NEEDS_REVIEW'
     )
       reason =
         classified.issues.map((i) => i.message).join('; ') ||
@@ -178,6 +181,7 @@ export async function planCableStyleBatch({
       standard: style.version,
       request: g.request?.prompt,
       reference: g.request?.reference.sha256,
+      referenceInputs: g.request?.referenceInputs,
     });
     if (g.status === 'READY') {
       const approved = await findApprovedCableResult({
@@ -206,6 +210,11 @@ export async function planCableStyleBatch({
           }
         }
       }
+    }
+    if (g.status === 'READY' && g.request.referenceStatus === 'NEEDS_APPROVED_GEOMETRY_REFERENCE') {
+      g.status = 'NEEDS_TECHNICAL_REVIEW';
+      g.eligibleSkus = [];
+      g.reasons.push('no-approved-compatible-multicore-geometry-reference');
     }
     if (g.status === 'READY' && cacheDir) {
       const record = await optional(
@@ -398,7 +407,8 @@ export async function runCableStyleBatch({
             root,
             g.profile
           );
-          if (currentRequest.prompt !== g.request?.prompt)
+          if (currentRequest.prompt !== g.request?.prompt ||
+              digest(currentRequest.referenceInputs) !== digest(g.request?.referenceInputs || []))
             throw Error(
               'Stale construction contract: refresh dry-run before API'
             );
@@ -450,7 +460,7 @@ export async function recordCableStyleReview({ root, draftDir, decision }) {
     background: 'transparent',
     composition: { rightEdgeCrop: false },
   });
-  const required = CABLE_STYLE_REVIEW_CHECKS;
+  const required = [...CABLE_STYLE_REVIEW_CHECKS, ...multicoreCompositionReviewChecks(group.multicoreComposition)];
   if (group.standardVersion !== style.version && decision.status === 'APPROVED')
     throw Error(
       'Draft uses an older style standard; cannot approve under current geometry rules'
@@ -466,8 +476,22 @@ export async function recordCableStyleReview({ root, draftDir, decision }) {
     !required.every((k) => decision.checks?.[k] === true)
   )
     throw Error('All manual checks must pass before approval');
+  let pixelReview;
+  if (decision.status === 'APPROVED' && multicoreCompositionReviewChecks(group.multicoreComposition).length) {
+    const validation = validateCableImagePng(image, {
+      background: 'transparent',
+      composition: { rightEdgeCrop: true },
+    });
+    pixelReview = inspectMulticoreComposition(
+      PNG.sync.read(image), validation, group.profile,
+      buildCableTechnicalProfile(group.profile), decision.observations
+    );
+    if (pixelReview.findings.length || pixelReview.missing.length)
+      throw Error('Multicore verification incomplete: ' + [...pixelReview.findings, ...pixelReview.missing].join(', '));
+  }
   const record = {
     ...decision,
+    ...(pixelReview ? { pixelReview } : {}),
     APPROVED_FOR_CATALOG: decision.APPROVED_FOR_CATALOG !== false,
     APPROVED_AS_REFERENCE: decision.APPROVED_AS_REFERENCE === true,
     visualKey: group.visualKey,
@@ -512,7 +536,7 @@ export async function prepareApprovedBindingPatch({
     approval.standardVersion !== style.version ||
     group.standardVersion !== style.version ||
     !approval.reviewer ||
-    !CABLE_STYLE_REVIEW_CHECKS.every((k) => approval.checks?.[k] === true)
+    ![...CABLE_STYLE_REVIEW_CHECKS, ...multicoreCompositionReviewChecks(group.multicoreComposition)].every((k) => approval.checks?.[k] === true)
   )
     throw Error('Image not manually approved for current standard');
   const live = new Map(products.map((p) => [p.sku, p])),

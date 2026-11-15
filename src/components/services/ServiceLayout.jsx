@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import Container from '../ui/Container';
 import Breadcrumbs from '../ui/Breadcrumbs';
@@ -12,14 +11,6 @@ import '../../styles/pages/services.css';
 
 export default function ServiceLayout({ serviceKey, children }) {
   const service = getCableService(serviceKey);
-  const navRef = useRef(null);
-  useEffect(() => {
-    const nav = navRef.current;
-    const active = nav?.querySelector('[aria-current="page"]');
-    if (nav && active) {
-      nav.scrollLeft = active.offsetLeft - nav.offsetLeft;
-    }
-  }, [serviceKey]);
   useSEO({
     title: service?.title || 'Сервисы для выбора и самовывоза кабеля',
     description:
@@ -46,11 +37,7 @@ export default function ServiceLayout({ serviceKey, children }) {
           {service && <p>{service.description}</p>}
         </header>
         {service && (
-          <nav
-            ref={navRef}
-            className="services-nav"
-            aria-label="Сервисы кабеля"
-          >
+          <nav className="services-nav" aria-label="Сервисы кабеля">
             {CABLE_SERVICES.map((item) => (
               <NavLink key={item.key} to={item.path}>
                 {item.short}

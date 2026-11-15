@@ -72,4 +72,27 @@ describe('getProductVariantOptions', () => {
       { value: 95, slug: 'current', title: current.title },
     ]);
   });
+
+  it('переключает подтверждённые парные исполнения по диаметру и числу пар', () => {
+    const pairs = {
+      mark: 'КЦППэпЗ',
+      title: 'КЦППэпЗ 10х2х0.5',
+      slug: 'ten',
+      cores: 10,
+      crossSection: 0.5,
+      conductorDiameter: 0.5,
+    };
+    const result = getProductVariantOptions(pairs, [
+      { ...pairs, title: 'КЦППэпЗ 20х2х0.5', slug: 'twenty', cores: 20 },
+      {
+        ...pairs,
+        title: 'КЦППэпЗ 30х2х0.5',
+        slug: 'unknown',
+        cores: 30,
+        conductorDiameter: undefined,
+      },
+    ]);
+    expect(result.sections.map(({ value }) => value)).toEqual([0.5]);
+    expect(result.cores.map(({ value }) => value)).toEqual([10, 20]);
+  });
 });

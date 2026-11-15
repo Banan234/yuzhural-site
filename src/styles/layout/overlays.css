@@ -382,21 +382,13 @@
   bottom: 0;
 }
 
-/* Keep both the launcher and the conversation above the cookie banner. */
-:root:has(.cookie-consent) .floating-lead-widget {
-  bottom: var(--cookie-consent-clearance, 0px);
-}
-
-:root:has(.cookie-consent) .floating-lead-widget__panel {
-  height: min(
-    var(--floating-lead-widget-panel-height),
-    calc(100dvh - var(--cookie-consent-clearance, 0px) - 12px)
-  );
-}
-
 .floating-lead-widget__panel {
   width: min(var(--floating-lead-widget-panel-width), calc(100vw - 24px));
-  height: min(var(--floating-lead-widget-panel-height), calc(100vh - 12px));
+  height: var(--floating-lead-widget-panel-height);
+  max-height: calc(100vh - 12px);
+  max-height: calc(100dvh - 12px);
+  display: flex;
+  flex-direction: column;
   border: 0;
   border-radius: 10px 33px 0 0;
   background: #fff;
@@ -407,6 +399,7 @@
 
 .floating-lead-widget__header {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
@@ -447,7 +440,8 @@
 }
 
 .floating-lead-widget__shell {
-  height: calc(100% - 70px);
+  flex: 1;
+  min-height: 0;
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
 }
@@ -474,12 +468,23 @@
 
 .floating-lead-widget__messages {
   flex: 1 1 auto;
-  min-height: 315px;
+  min-height: 0;
   overflow-y: auto;
   padding: 14px 14px 8px;
   display: grid;
   align-content: end;
+  align-content: safe end;
   gap: 10px;
+}
+
+@media (max-height: 360px) {
+  .floating-lead-widget__panel {
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+  .floating-lead-widget__shell {
+    flex: none;
+  }
 }
 
 .floating-lead-widget__loading {
@@ -747,7 +752,6 @@
 
   .floating-lead-widget__panel {
     width: min(var(--floating-lead-widget-panel-width), calc(100vw - 32px));
-    height: min(var(--floating-lead-widget-panel-height), calc(100vh - 8px));
   }
 
   .floating-lead-widget--open {

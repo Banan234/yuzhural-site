@@ -82,7 +82,7 @@ describe('manufacturer montage constructors and catalogue extensions', () => {
     for (const [mark, sourceName] of [
       ['LAPP KABEL', 'LAPP KABEL 12х1'],
       ['HELUKABEL', 'HELUKABEL 2х2х0.75'],
-      ['КУМВэаВ', 'КУМВэаВ нг(А)LS 10х2х1'],
+      ['КУМВэаВ', 'КУМВэаВ нг(А)LS 9х2х1'],
       ['ВЭОВКВ-ВП', 'ВЭОВКВ-ВП нг(А)LS 12х2х1.5'],
     ])
       expect(decode({ mark, sourceName }).status).not.toBe('reviewed');

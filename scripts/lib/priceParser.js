@@ -2,7 +2,7 @@ import { normalizeCableVoltageName } from '../../shared/cableVoltage.js';
 import { normalizeSip2Neutral } from '../../shared/sip2Neutral.js';
 import { formatManufacturerTitle } from '../../shared/manufacturerTitle.js';
 // Файл парсит строки XLS-прайса, извлекает марки, характеристики, единицы измерения и цены.
-import { readFileSync } from 'fs';
+import manufacturerSource from '../../data/catalogManufacturers.json' with { type: 'json' };
 import { findCableSpecification } from './cableSpecification.js';
 import {
   formatCableProductTitle,
@@ -28,13 +28,7 @@ const UNIT_ALIASES = [
 // Производитель извлекается один раз, непосредственно из исходного
 // названия. Справочник общий для всего импорта; классификатор это поле уже
 // не переопределяет.
-const MANUFACTURER_SOURCE = JSON.parse(
-  readFileSync(
-    new URL('../../data/catalogManufacturers.json', import.meta.url),
-    'utf8'
-  )
-);
-const MANUFACTURERS = MANUFACTURER_SOURCE.map((entry) => {
+const MANUFACTURERS = manufacturerSource.map((entry) => {
   if (typeof entry === 'string') {
     const canonical = entry.trim();
     return { canonical, aliases: [canonical] };

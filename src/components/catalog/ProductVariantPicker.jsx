@@ -7,7 +7,13 @@ export default function ProductVariantPicker({ product }) {
   const [family, setFamily] = useState({ mark: '', items: [] });
   useEffect(() => {
     const controller = new AbortController();
-    if (!product.mark || !product.cores || !product.crossSection) return;
+    if (
+      !product.mark ||
+      !product.cores ||
+      !product.crossSection ||
+      ['optical', 'awg', 'mixed-section', 'pairs'].includes(product.displayDimensions?.kind)
+    )
+      return;
     async function load() {
       try {
         const first = await fetchProducts(controller.signal, {
@@ -32,15 +38,31 @@ export default function ProductVariantPicker({ product }) {
     }
     load();
     return () => controller.abort();
-  }, [product.mark, product.cores, product.crossSection]);
+  }, [
+    product.mark,
+    product.cores,
+    product.crossSection,
+    product.displayDimensions?.kind,
+  ]);
 
   const options = getProductVariantOptions(
     product,
     family.mark === product.mark ? family.items : []
   );
+  const usesDiameter = product.conductorDiameter != null;
   const groups = [
-    { key: 'sections', label: 'Сечение жилы, мм²' },
-    { key: 'cores', label: 'Количество жил' },
+    {
+      key: 'sections',
+      label: usesDiameter ? 'Диаметр жилы, мм' : 'Сечение жилы, мм²',
+    },
+    {
+      key: 'cores',
+      label:
+        product.displayDimensions?.pairs ||
+        (!product.displayDimensions && usesDiameter)
+          ? 'Количество пар'
+          : 'Количество жил',
+    },
   ];
   return (
     <div className="product-variants">

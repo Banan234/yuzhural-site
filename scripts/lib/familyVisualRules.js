@@ -7,7 +7,7 @@ import {
   normalizeCableFamily,
   visualHash,
 } from './cableVisualClassification.js';
-import { withCableVisualization } from './cableVisualizationType.js';
+import { knownCableVisualizationType, withCableVisualization } from './cableVisualizationType.js';
 
 export const isVisualAutoApproved = (row) =>
   ['recognized', 'AUTO_APPROVED'].includes(row.visualClassification);
@@ -462,6 +462,7 @@ export function classifyPracticalCableVisualProduct(product, context) {
       ...result.visualization,
       visualizationType: reviewedProfile.visualizationType,
       components: reviewedProfile.visualizationType.split(' + '),
+      rationale: 'Композиция подтверждена для иллюстрации этой позиции.',
     },
   };
 }
@@ -523,5 +524,67 @@ export function comparePracticalVisualAsset(row, asset) {
       'primaryCores',
       'auxiliaryCores',
     ],
+  };
+}
+
+/** Compare an approved illustration with a product without authorizing a SKU binding. */
+export function compareApprovedVisualConstruction(row, asset, { exact = false } = {}) {
+  const product = row.profile ?? {};
+  const image = asset.profile ?? {};
+  const mismatch = new Set();
+  const unknown = new Set(row.uncertainties ?? []);
+  const compare = (field, left, right) => {
+    if (left == null || right == null) unknown.add(field);
+    else if (!same(left, right)) mismatch.add(field);
+  };
+  const supported = (value, options) => options.includes(value) ? value : null;
+  const fields = {
+    cores: value => Number.isInteger(value) && value > 0 ? value : null,
+    geometry: value => supported(value, ['round', 'flat', 'twisted-bundle']),
+    visualizationType: knownCableVisualizationType,
+    conductorShape: value => supported(value, ['circular', 'sector']),
+    conductorMaterial: value => supported(value, ['copper', 'aluminium']),
+    conductorConstruction: value => supported(value, ['solid', 'stranded']),
+    hasOuterJacket: value => supported(value, [true, false]),
+    shield: value => supported(value, [true, false]),
+    armor: value => supported(value, [true, false]),
+  };
+  const disputed = new Set(row.disputed ?? []);
+  for (const [field, normalize] of Object.entries(fields))
+    compare(field, disputed.has(field) ? null : normalize(product[field]), normalize(image[field]));
+  for (const field of ['shield', 'armor']) {
+    if (product[field] === true && image[field] === true && !disputed.has(field)) {
+      const type = field + 'Type';
+      const knownType = value => typeof value === 'string' && /^[a-z][a-z0-9-]*$/u.test(value) &&
+        !['unknown', 'conflict', 'unconfirmed'].includes(value) ? value : null;
+      compare(type, disputed.has(type) ? null : knownType(product[type]), knownType(image[type]));
+    }
+  }
+  const elements = value => Array.isArray(value) ? [...new Set(value)].sort() : null;
+  compare('specialElements', elements(product.specialElements), elements(image.specialElements));
+  for (const field of ['coreLayout', 'pairedGroupSize']) {
+    if (product[field] != null || image[field] != null) {
+      const uniform = value => value === undefined ? false : value;
+      compare(field, uniform(product[field]), uniform(image[field]));
+    }
+  }
+  for (const field of ['inner', 'fill', 'separator']) {
+    const target = row.layers?.[field];
+    const shown = asset.layers?.[field];
+    if (asset.hiddenLayers?.includes(field) && shown === false) continue;
+    // A previously verified exact scope can supply missing layer evidence.
+    if (!exact || (target != null && shown != null)) compare(field, target, shown);
+  }
+  if (row.color?.cores) compare('coreColors', row.color.cores.toSorted(),
+    Array.isArray(image.coreColors) ? image.coreColors.toSorted() : null);
+  if (row.color?.jacket) compare('outerJacket', row.color.jacket, image.outerJacket);
+  if (row.color?.ambiguous) unknown.add('colorRole');
+  if (asset.restriction && !exact) mismatch.add('restrictedLayerTransfer');
+  if (!exact && row.classification !== 'AUTO_APPROVED') unknown.add('constructionClassification');
+  if (asset.approval?.APPROVED_FOR_CATALOG !== true) unknown.add('catalogApproval');
+  return {
+    status: mismatch.size ? 'INCOMPATIBLE' : unknown.size ? 'NEEDS_REVIEW' : 'COMPATIBLE',
+    mismatch: [...mismatch],
+    unknown: [...unknown],
   };
 }

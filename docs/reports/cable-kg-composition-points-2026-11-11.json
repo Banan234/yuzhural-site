@@ -1,0 +1,20 @@
+[
+  {
+    "png": "outputs/cable-kg-revision-and-queue/01-YU-0003932/image.png",
+    "ends": [
+      {"color":"brown","x":277,"y":425},
+      {"color":"black","x":223,"y":554},
+      {"color":"grey","x":389,"y":631},
+      {"color":"yellow-green","x":487,"y":727}
+    ]
+  },
+  {
+    "png": "outputs/cable-kg-revision-and-queue/02-YU-0004044/image.png",
+    "ends": [
+      {"color":"brown","x":246,"y":408},
+      {"color":"black","x":296,"y":521},
+      {"color":"grey","x":347,"y":632},
+      {"color":"yellow-green","x":413,"y":742}
+    ]
+  }
+]

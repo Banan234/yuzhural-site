@@ -13,7 +13,7 @@ export function renderVisualizationTypeReport(report) {
       sku: r.sku,
       name: r.displayName,
       family: r.baseFamily,
-      type: r.visualProfile.visualizationType,
+      type: r.visualization?.visualizationType ?? r.visualProfile.visualizationType,
       cores: r.cores,
       geometry: r.visualProfile.geometry,
       layers: r.visualization.visibleLayerCount,

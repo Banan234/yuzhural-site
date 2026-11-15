@@ -16,3 +16,19 @@ it.each([
   expect(reference.librarySize).toBeGreaterThanOrEqual(11);
   expect(reference.profile).toMatchObject(expected);
 });
+
+it('keeps exact four-core geometry above a same-family three-core reference', async () => {
+  const { compareCableReferenceProfile } = await import('./cableApprovedStyleReference.js');
+  const target = {
+    ...profiles['YU-0000838'],
+    cores: 4,
+    coreColors: ['brown', 'black', 'grey', 'yellow-green'],
+    visualizationType: 'MULTICORE',
+  };
+  expect(compareCableReferenceProfile({ ...target, section: 10 }, target).role).toBe('GEOMETRY_MATCH');
+  expect(compareCableReferenceProfile({
+    ...target, cores: 3, coreColors: target.coreColors.slice(0, 3),
+  }, target).role).toBe('STYLE_ONLY');
+  expect(compareCableReferenceProfile({ ...target, visualizationType: 'SIMPLE' }, target).role).toBe('STYLE_ONLY');
+  expect(compareCableReferenceProfile({ ...target, conductorShape: 'sector' }, target).role).toBe('STYLE_ONLY');
+});

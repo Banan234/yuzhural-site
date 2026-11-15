@@ -81,6 +81,7 @@
   position: relative;
   width: min(100%, 560px);
   max-height: min(90vh, 760px);
+  max-height: min(calc(100dvh - 40px), 760px);
   overflow: auto;
   padding: 28px;
   border-radius: 14px;

@@ -129,20 +129,7 @@ export default function MainLayout() {
   const [quoteModalOptions, setQuoteModalOptions] = useState({});
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const mobileMenuButtonRef = useRef(null);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [storageWarning, setStorageWarning] = useState(null);
-
-  useEffect(() => {
-    setIsScrolled(
-      window.scrollY > 48 || window.history.state?.marksReturn?.top > 48
-    );
-    function handleScroll() {
-      setIsScrolled(window.scrollY > 48);
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsMobileNavOpen(false);
@@ -250,55 +237,53 @@ export default function MainLayout() {
       <a className="skip-link" href="#main-content">
         Перейти к содержимому
       </a>
-      <header
-        className={`site-header${isScrolled ? ' site-header--scrolled' : ''}`}
-      >
-        <div className="site-header__topbar">
-          <Container>
-            <div className="site-header__topbar-inner">
-              <div className="site-header__topbar-left">
-                <span className="topbar-item">
-                  <svg
-                    width="13"
-                    height="13"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  Офис: {SITE_OFFICE_ADDRESS_DISPLAY}
-                </span>
-                <span className="topbar-item">
-                  <svg
-                    width="13"
-                    height="13"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  {SITE_WORKING_HOURS_DISPLAY}
-                </span>
-              </div>
-              <div className="site-header__topbar-right">
-                <PriceDownload />
-              </div>
+      <div className="site-header__topbar">
+        <Container>
+          <div className="site-header__topbar-inner">
+            <div className="site-header__topbar-left">
+              <span className="topbar-item">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                Офис: {SITE_OFFICE_ADDRESS_DISPLAY}
+              </span>
+              <span className="topbar-item">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                {SITE_WORKING_HOURS_DISPLAY}
+              </span>
             </div>
-          </Container>
-        </div>
+            <div className="site-header__topbar-right">
+              <PriceDownload />
+            </div>
+          </div>
+        </Container>
+      </div>
 
+      <header className="site-header">
         <div className="site-header__main">
           <Container>
             <div className="site-header__main-inner">

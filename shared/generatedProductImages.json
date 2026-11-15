@@ -11580,6 +11580,46 @@
         "reviewedAt": "2026-11-08T19:03:36.210Z"
       },
       "referenceSha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2"
+    },
+    "YU-0007248": {
+      "image": "/product-images/generated/style1_99b4db95ae023d147445040091b6486b7127a839b21e89879d735b6d2b2cd1ef.png",
+      "status": "approved",
+      "kind": "generated-illustration",
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": false,
+      "productId": 7248,
+      "sourceName": "ВВГ 5х 70 нг(А)LS-Ltx",
+      "productName": "ВВГнг(А)-LS-LTx 5х70",
+      "primaryCores": 5,
+      "cores": 5,
+      "section": 70,
+      "visualKey": "vvgng-a-ls-ltx__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-8db6b6500517f16e",
+      "sha256": "3df8ee1f6e752d2d8c9567951daa957440c3e138fa749143bfbc206ac6a155c8",
+      "styleVersion": "approved-cable-style-1.1.0",
+      "manualReview": {
+        "status": "APPROVED",
+        "sha256": "3df8ee1f6e752d2d8c9567951daa957440c3e138fa749143bfbc206ac6a155c8",
+        "reviewer": "User visual approval and technical review",
+        "checks": {
+          "coreCount": true,
+          "material": true,
+          "colours": true,
+          "layers": true,
+          "direction": true,
+          "proportions": true,
+          "stripping": true,
+          "background": true,
+          "referenceMatch": true,
+          "metalEndCount": true,
+          "equalDiameters": true,
+          "relativeDiameters": true,
+          "coaxialStripping": true,
+          "geometryConsistency": true,
+          "noExtraCylinders": true
+        },
+        "reviewedAt": "2026-11-11T09:11:16.092Z"
+      },
+      "referenceSha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2"
     }
   }
 }

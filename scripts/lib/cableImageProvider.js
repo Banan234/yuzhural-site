@@ -55,7 +55,18 @@ export function createImageProvider(
           createHash('sha256').update(bytes).digest('hex') !== r.sha256
         )
           throw Error('Edit target SHA-256 mismatch');
-        additionalReferences.push(bytes);
+        if (r.permission) {
+          const [registry, approval] = await Promise.all([
+            readFile(r.permission.registry).then(JSON.parse),
+            readFile(r.permission.approval).then(JSON.parse),
+          ]);
+          const record = registry.byVisualKey?.[r.permission.visualKey];
+          for (const entry of [record, approval])
+            if (entry?.status !== 'APPROVED' || entry.APPROVED_AS_REFERENCE !== true ||
+                entry.visualKey !== r.permission.visualKey || entry.sha256 !== r.sha256)
+              throw Error('Supplemental reference permission changed before upload');
+        }
+        additionalReferences.push({ bytes, role: r.role });
       }
       for (let attempt = 1; attempt <= config.retries + 1; attempt += 1) {
         await onAttempt(attempt);
@@ -80,11 +91,11 @@ export function createImageProvider(
               new Blob([reference], { type: 'image/png' }),
               'style-reference.png'
             );
-            for (const [i, bytes] of additionalReferences.entries())
+            for (const [i, { bytes, role }] of additionalReferences.entries())
               body.append(
                 'image[]',
                 new Blob([bytes], { type: 'image/png' }),
-                `edit-target-${i + 1}.png`
+                `${role === 'approved-compatible-geometry' ? 'geometry-reference' : 'edit-target'}-${i + 1}.png`
               );
           } else {
             headers['Content-Type'] = 'application/json';

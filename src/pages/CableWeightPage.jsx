@@ -1,4 +1,4 @@
-import SiteSelect from '../components/ui/SiteSelect';
+import { SearchableSiteSelect as SiteSelect } from '../components/ui/SiteSelect';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import ServiceLayout from '../components/services/ServiceLayout';
@@ -10,6 +10,7 @@ import {
   calculateMassWithDrums,
   getCableMassRows,
   getCableDiameterRange,
+  getCableManufacturerAverage,
   normalizeCableConfiguration,
 } from '../lib/cableMass';
 import {
@@ -134,6 +135,7 @@ export default function CableWeightPage() {
     : allRows;
   const mass = calculateCableMass(rows, length);
   const diameter = getCableDiameterRange(rows);
+  const average = getCableManufacturerAverage(rows, length);
   const drumOptions = CABLE_DRUMS.filter(
     (drum) => drum.material === drumMaterial
   ).sort((a, b) => a.number.localeCompare(b.number, 'ru', { numeric: true }));
@@ -165,6 +167,7 @@ export default function CableWeightPage() {
         cableMinKg: mass.minKg,
         cableMaxKg: mass.maxKg,
         diameter,
+        average,
         drumsKg: shipment.drumsKg || 0,
         sources,
         drumDescription: includeDrums
@@ -184,7 +187,7 @@ export default function CableWeightPage() {
     reportItems
       .map(
         (item, index) =>
-          `${index + 1}. ${item.mark} ${item.configuration}; ${item.voltageKv === null ? 'напряжение в таблице не указано' : `${item.voltageKv} кВ`}; ${item.length} м\nКабель: ${massRange(item.cableMinKg, item.cableMaxKg)} кг; тара: ${formatMass(item.drumsKg)} кг; итого: ${massRange(item.minKg, item.maxKg)} кг\nДиаметр: ${item.diameter ? range(item.diameter.minMm, item.diameter.maxMm) + ' мм' : 'нет данных'}\n${item.drumDescription}\n${item.sources.join('\n')}`
+          `${index + 1}. ${item.mark} ${item.configuration}; ${item.voltageKv === null ? 'напряжение в таблице не указано' : `${item.voltageKv} кВ`}; ${item.length} м\nКабель: ${massRange(item.cableMinKg, item.cableMaxKg)} кг; тара: ${formatMass(item.drumsKg)} кг; итого: ${massRange(item.minKg, item.maxKg)} кг\nДиаметр: ${item.diameter ? range(item.diameter.minMm, item.diameter.maxMm) + ' мм' : 'нет данных'}\n${item.average ? `Средняя масса кабеля ${formatMass(item.average.massKg)} кг, средний диаметр ${FORMAT.format(item.average.diameterMm)} мм (изготовителей: ${item.average.count})\n` : ''}${item.drumDescription}\n${item.sources.join('\n')}`
       )
       .join('\n\n') +
     `\n\nОбщая расчётная масса: ${massRange(total.minKg, total.maxKg)} кг. Масса упаковки не включена. Значения из таблиц не подтверждают фактическую массу складской партии.`;
@@ -200,6 +203,9 @@ export default function CableWeightPage() {
       'Диаметр минимум, мм',
       'Диаметр максимум, мм',
       'Источники',
+      'Средняя масса кабеля, кг',
+      'Средний наружный диаметр, мм',
+      'Изготовителей в среднем',
     ],
     ...reportItems.map((item) => [
       item.mark,
@@ -212,6 +218,9 @@ export default function CableWeightPage() {
       item.diameter?.minMm,
       item.diameter?.maxMm,
       item.sources.join(' | '),
+      item.average?.massKg,
+      item.average?.diameterMm,
+      item.average?.count,
     ]),
   ]
     .map((row) => row.map(csvCell).join(';'))
@@ -258,6 +267,12 @@ export default function CableWeightPage() {
   }
   return (
     <ServiceLayout serviceKey="weight">
+      <aside className="service-notice">
+        <strong>Расчёт веса кабеля.</strong> Выберите марку, конструкцию и
+        напряжение, затем укажите длину. Вы узнаете расчётную массу и наружный
+        диаметр по данным изготовителей. Можно учесть массу барабанов, сложить
+        вес нескольких позиций и приложить скачанный расчёт к заявке.
+      </aside>
       {requested && (
         <aside className="service-note">
           <strong>Из карточки товара: {requested}.</strong> Выберите точное
@@ -265,10 +280,7 @@ export default function CableWeightPage() {
           должны совпадать с документацией изделия.
         </aside>
       )}
-      <div
-        className="service-two-columns"
-        style={requested ? { marginTop: 24 } : undefined}
-      >
+      <div className="service-two-columns">
         <section className="service-panel">
           <h2>Параметры кабеля</h2>
           <div className="service-fields">
@@ -340,7 +352,7 @@ export default function CableWeightPage() {
                 disabled={!allRows.length}
                 onChange={(event) => setSourceId(event.target.value)}
               >
-                <option value="">Все источники — показать диапазон</option>
+                <option value="">Все источники</option>
                 {sourceIds.map((id) => (
                   <option value={id} key={id}>
                     {CABLE_MASS_SOURCES[id].publisher}
@@ -476,6 +488,13 @@ export default function CableWeightPage() {
                 <p>Выберите точную конструкцию кабеля.</p>
               )}
             </div>
+            {average && (
+              <p className="service-muted">
+                Средние по изготовителям ({average.count}):{' '}
+                {average.massKg !== null && `${formatMass(average.massKg)} кг и `}
+                {FORMAT.format(average.diameterMm)} мм.
+              </p>
+            )}
           </div>
           <p className="service-muted">
             Диапазон отражает различия таблиц. Это справочные значения, упаковка
@@ -600,42 +619,6 @@ export default function CableWeightPage() {
             Подготовить данные для самовывоза →
           </Link>
         </div>
-      )}
-      {allRows.length > 0 && (
-        <section className="service-panel" style={{ marginTop: 24 }}>
-          <h2>Значения из каталогов</h2>
-          <div className="service-table-wrap">
-            <table className="service-table">
-              <thead>
-                <tr>
-                  <th>Изготовитель</th>
-                  <th>Масса 1 км</th>
-                  <th>Наружный диаметр</th>
-                  <th>Документ</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((row, index) => (
-                  <tr key={`${row.sourceId}-${index}`}>
-                    <td>{CABLE_MASS_SOURCES[row.sourceId].publisher}</td>
-                    <td>{FORMAT.format(row.massKgPerKm)} кг/км</td>
-                    <td>{FORMAT.format(row.diameterMm)} мм</td>
-                    <td>
-                      <a
-                        href={sourceHref(row)}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Открыть источник
-                        {row.sourcePage ? `, стр. ${row.sourcePage}` : ''}
-                      </a>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
       )}
       <aside className="service-note">
         <strong>Как устроен расчёт.</strong> Масса = длина в метрах × масса 1 км

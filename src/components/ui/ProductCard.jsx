@@ -73,16 +73,37 @@ export default function ProductCard({ product, variant = 'default' }) {
   const productImageAlt = getProductImageAlt(product);
   const brand = product.brand || product.manufacturer || product.catalogBrand;
   const displayTitle = formatManufacturerTitle(product.title, product);
+  const dimensions = product.displayDimensions;
+  const optical = dimensions?.kind === 'optical';
+  const pairs =
+    dimensions?.pairs ??
+    (!dimensions && product.conductorDiameter != null ? product.cores : null);
   const catalogSpecs = [
     ...(product.referenceSpecs || getProductReferenceSpecs(product)),
-    product.cores != null && {
-      label: 'Количество жил',
-      value: product.cores.toLocaleString('ru-RU'),
+    optical &&
+      dimensions.fibers != null && {
+        label: 'Количество оптических волокон',
+        value: String(dimensions.fibers),
+      },
+    !optical &&
+      (pairs ?? product.cores) != null && {
+        label: pairs != null ? 'Количество пар' : 'Количество жил',
+        value: (pairs ?? product.cores).toLocaleString('ru-RU'),
+      },
+    dimensions?.gauge && {
+      label: 'Калибр проводника',
+      value: `${dimensions.gauge} AWG`,
     },
-    product.crossSection != null && {
-      label: 'Сечение',
-      value: `${Number(product.crossSection).toLocaleString('ru-RU')} мм²`,
-    },
+    !optical &&
+      !dimensions?.gauge &&
+      dimensions?.kind !== 'pairs' &&
+      product.crossSection != null && {
+        label: product.conductorDiameter != null ? 'Диаметр жилы' : 'Сечение',
+        value:
+          product.conductorDiameter != null
+            ? `${Number(product.conductorDiameter).toLocaleString('ru-RU')} мм`
+            : `${Number(product.crossSection).toLocaleString('ru-RU')} мм²`,
+      },
     product.screenCrossSection != null && {
       label: 'Сечение экрана',
       value: `${Number(product.screenCrossSection).toLocaleString('ru-RU')} мм²`,
@@ -112,10 +133,11 @@ export default function ProductCard({ product, variant = 'default' }) {
       value: `${product.voltage} кВ`,
     },
     brand && { label: 'Производитель', value: brand },
-    product.conductorConfiguration && {
-      label: 'Конфигурация жил',
-      value: product.conductorConfiguration,
-    },
+    !optical &&
+      product.conductorConfiguration && {
+        label: 'Конфигурация жил',
+        value: product.conductorConfiguration,
+      },
   ].filter(Boolean);
 
   function handleOpenQuote() {

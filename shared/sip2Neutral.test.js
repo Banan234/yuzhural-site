@@ -67,8 +67,10 @@ describe('documented SIP-2 neutral role, not PE', () => {
     'СИП-2 3х16+1х35',
     'СИП-4 3х16+1х25',
   ]) {
-    it(`does not promote unsupported combination ${source}`, () => {
-      const p = { ...legacy, sourceName: source };
+    it(`requires construction evidence for ${source}`, () => {
+      const p = { ...parseProductName(source), sourceName: source };
+      expect(p.neutralCores).toBeUndefined();
+      expect(p.neutralSection).toBeUndefined();
       expect(normalizeSip2Neutral(p)).toBe(p);
       expect(buildProductDesignation(p).officialComplete).toBe(false);
     });

@@ -1,7 +1,6 @@
 import '../../styles/sections/product-designation.css';
 
-export default function ProductDesignation({ product }) {
-  const decoded = product.designationDecoded;
+export default function ProductDesignation({ decoded }) {
   return (
     <section
       className="product-designation"
@@ -14,7 +13,7 @@ export default function ProductDesignation({ product }) {
         Расшифровка обозначения
       </h2>
       <p className="product-designation__name">{decoded.designation}</p>
-      <p>{decoded.description}</p>
+      {decoded.description && <p>{decoded.description}</p>}
       {decoded.tokens.length > 0 && (
         <dl className="product-designation__tokens">
           {decoded.tokens.map(({ code, text }, index) => (

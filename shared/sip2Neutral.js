@@ -40,11 +40,15 @@ export function normalizeSip2Neutral(
     neutralCores: product.neutralCores ?? count,
     neutralSection: product.neutralSection ?? section,
   };
-  const proof = checkDesignationConstruction({
-    product: candidate,
-    designation,
-    family: knowledge.families.find((f) => f.mark === 'СИП-2'),
-    documents: knowledge.documents,
-  });
-  return proof.status === 'confirmed' ? candidate : product;
+  const confirmed = knowledge.families.some(
+    (family) =>
+      family.mark === 'СИП-2' &&
+      checkDesignationConstruction({
+        product: candidate,
+        designation,
+        family,
+        documents: knowledge.documents,
+      }).status === 'confirmed'
+  );
+  return confirmed ? candidate : product;
 }

@@ -8,6 +8,12 @@ export const VISUALIZATION_TYPES = [
   'NEEDS_REVIEW',
 ];
 
+export function knownCableVisualizationType(value) {
+  return value !== 'NEEDS_REVIEW' && VISUALIZATION_TYPES.includes(value)
+    ? value
+    : null;
+}
+
 /** Rendering strategy only: does not approve generation or change visual identity. */
 export function classifyCableVisualization(row, { rules = defaultRules } = {}) {
   const p = row.visualProfile;
@@ -194,7 +200,7 @@ export function withCableVisualization(row, context = {}) {
     ...row,
     visualProfile: {
       ...row.visualProfile,
-      visualizationType: visualization.visualizationType,
+      visualizationType: knownCableVisualizationType(visualization.visualizationType),
     },
     visualization,
   };

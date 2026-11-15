@@ -10,9 +10,6 @@
   box-shadow:
     0 3px 6px rgba(15, 23, 42, 0.1),
     0 7px 12px -5px rgba(15, 23, 42, 0.16);
-  transition:
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
 }
 .catalog-page-lock {
   position: fixed;
@@ -24,30 +21,12 @@
   background: transparent;
   cursor: default;
 }
-.site-header--scrolled {
-  box-shadow:
-    0 3px 7px rgba(15, 23, 42, 0.12),
-    0 8px 13px -5px rgba(15, 23, 42, 0.18);
-  border-bottom-color: #cbd5df;
-}
-
 /* Topbar */
 .site-header__topbar {
+  position: relative;
+  z-index: 101;
   background: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  overflow: visible;
-  max-height: 62px;
-  transition:
-    max-height 0.28s ease,
-    opacity 0.22s ease,
-    border-color 0.22s ease;
-  opacity: 1;
-}
-.site-header--scrolled .site-header__topbar {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  border-bottom-color: transparent;
 }
 .site-header__topbar-inner {
   min-height: 38px;
@@ -148,22 +127,12 @@
   transition: border-color 0.25s ease;
 }
 .site-header__main-inner {
-  min-height: 92px;
+  min-height: 80px;
   display: grid;
   grid-template-columns: auto minmax(210px, 1fr) auto;
   align-items: center;
   gap: 22px;
   min-width: 0;
-  transition: min-height 0.28s ease;
-}
-.site-header--scrolled .site-header__main-inner {
-  min-height: 68px;
-}
-.site-header--scrolled .header-phone {
-  font-size: 21px;
-}
-.site-header--scrolled .header-phone-sub {
-  display: inline;
 }
 .site-header__logo {
   display: flex;
@@ -176,13 +145,9 @@
 .site-header__logo-image {
   display: block;
   width: auto;
-  height: 80px;
+  height: 68px;
   max-width: min(100%, 560px);
   object-fit: contain;
-  transition: height 0.28s ease;
-}
-.site-header--scrolled .site-header__logo-image {
-  height: 58px;
 }
 .site-header__main-right {
   display: flex;
@@ -473,7 +438,10 @@
   left: 0;
   right: 0;
   z-index: 120;
-  overflow: hidden;
+  max-height: calc(100vh - 132px);
+  max-height: calc(100dvh - 132px);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
   border: 1px solid #d4e1f0;
   border-radius: 14px;
   background: #ffffff;
@@ -597,6 +565,7 @@
   display: flex;
   flex-direction: column;
   width: min(460px, 100%);
+  max-height: 100dvh;
   background: #ffffff;
   box-shadow: -24px 0 70px rgba(15, 23, 42, 0.25);
 }
@@ -634,7 +603,9 @@
 }
 .mobile-nav__body {
   flex: 1;
+  min-height: 0;
   overflow: auto;
+  overscroll-behavior-y: contain;
   padding: 20px;
 }
 .mobile-nav__section + .mobile-nav__section,
@@ -749,6 +720,20 @@
   border-top: 1px solid #e2eaf2;
   background: #ffffff;
 }
+@media (max-height: 480px) {
+  .mobile-nav__panel {
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+  .mobile-nav__top,
+  .mobile-nav__footer,
+  .mobile-nav__body {
+    flex: none;
+  }
+  .mobile-nav__body {
+    overflow: visible;
+  }
+}
 .mobile-nav__cta {
   min-height: 52px;
   border: 0;
@@ -842,12 +827,15 @@
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
-  width: min(1400px, calc(100vw - 90px));
+  width: min(
+    var(--site-content-max-width),
+    calc(100vw - 2 * var(--site-gutter))
+  );
   display: grid;
   grid-template-columns: 275px minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr);
+  height: min(780px, calc(100vh - 190px));
   height: min(780px, calc(100dvh - 190px));
-  min-height: 340px;
   background: #fff;
   border-radius: 0 0 12px 12px;
   border: 1px solid #e8edf3;
@@ -861,6 +849,7 @@
   padding: 16px 10px 24px 18px;
   min-height: 0;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
 }
 .catalog-dropdown__section-block + .catalog-dropdown__section-block {
   margin-top: 16px;
@@ -910,6 +899,7 @@
   background: #fff;
   min-height: 0;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
 }
 .catalog-dropdown__group-title {
   display: inline-flex;
@@ -1001,7 +991,10 @@
   position: absolute;
   top: 100%;
   left: 0;
-  width: min(1400px, calc(100vw - 90px));
+  width: min(
+    var(--site-content-max-width),
+    calc(100vw - 2 * var(--site-gutter))
+  );
   height: 5px;
   background: transparent;
   pointer-events: auto;
@@ -1170,11 +1163,4 @@
   .header-messengers {
     display: none;
   }
-}
-:root .site-header .container {
-  width: min(1424px, calc(100% - clamp(20px, 5.5vw, 80px)));
-}
-.catalog-dropdown,
-.catalog-hover-bridge {
-  width: min(1424px, calc(100vw - clamp(20px, 5.5vw, 80px)));
 }

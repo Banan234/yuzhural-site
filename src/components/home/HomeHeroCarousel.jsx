@@ -35,6 +35,7 @@ const slides = [
   {
     id: 'supply',
     label: 'Кабель под ваш проект',
+    caption: 'Кабель и провод',
     title: ['Кабель и провод', 'для вашего проекта'],
     description:
       'Подберём кабель по спецификации, уточним наличие и подготовим КП.',
@@ -46,6 +47,7 @@ const slides = [
   {
     id: 'selection',
     label: 'Подбор кабеля',
+    caption: 'Подбор под задачу',
     title: ['Подбор кабеля', 'под вашу задачу'],
     description:
       'Выберите задачу и укажите параметры — поможем подобрать кабель, проверить сечение и найти нужный раздел каталога.',
@@ -57,6 +59,7 @@ const slides = [
   {
     id: 'delivery',
     label: 'Самовывоз со склада',
+    caption: 'Получение заказа',
     title: ['Получение заказа', 'со склада'],
     description:
       'Заберите заказ самостоятельно или закажите забор своей транспортной компанией. Подготовим груз и погрузим на складе.',
@@ -65,33 +68,38 @@ const slides = [
     primary: { label: 'Получение заказа', to: '/delivery/' },
     secondary: { label: 'Запросить КП', to: '/specification/' },
   },
+  {
+    id: 'rewinding',
+    label: 'Точная отмотка кабеля',
+    caption: 'Отмотка кабеля',
+    title: ['Точная отмотка', 'кабеля'],
+    description:
+      'Отмотаем кабель по вашему метражу на современных перемоточных станках с минимальной погрешностью.',
+    image: '/home-hero-rewinding-v2.jpg',
+    primary: { label: 'Отправить заявку', to: '/specification/' },
+    secondary: { label: 'Связаться с нами', to: '/contacts/' },
+  },
 ];
 
 export default function HomeHeroCarousel() {
   const [active, setActive] = useState(0);
-  const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [touching, setTouching] = useState(false);
   const [available, setAvailable] = useState(false);
   useEffect(() => {
-    const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
-    const update = () => setAvailable(!document.hidden && !media?.matches);
+    const update = () => setAvailable(!document.hidden);
     update();
     document.addEventListener('visibilitychange', update);
-    media?.addEventListener?.('change', update);
-    return () => {
-      document.removeEventListener('visibilitychange', update);
-      media?.removeEventListener?.('change', update);
-    };
+    return () => document.removeEventListener('visibilitychange', update);
   }, []);
   useEffect(() => {
-    if (!available || hovered || focused || touching) return;
+    if (!available || focused || touching) return;
     const timer = setTimeout(
       () => setActive((value) => (value + 1) % slides.length),
       6000
     );
     return () => clearTimeout(timer);
-  }, [active, available, hovered, focused, touching]);
+  }, [active, available, focused, touching]);
   const gesture = useRef(null);
   const suppressClick = useRef(false);
   function move(direction) {
@@ -110,6 +118,7 @@ export default function HomeHeroCarousel() {
       return;
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       event.preventDefault();
+      setFocused(true);
       move(event.key === 'ArrowRight' ? 1 : -1);
     }
   }
@@ -141,12 +150,12 @@ export default function HomeHeroCarousel() {
   }
   return (
     <section
-      className={`home-concept__hero home-concept__hero--carousel home-concept__hero--technical home-concept__hero--panoramic${available && !hovered && !focused && !touching ? ' is-playing' : ''}`}
-      aria-label="Кабель, подбор и самовывоз"
+      className={`home-concept__hero home-concept__hero--carousel home-concept__hero--technical home-concept__hero--panoramic${available && !focused && !touching ? ' is-playing' : ''}`}
+      aria-label="Кабель, подбор, самовывоз и отмотка"
       aria-roledescription="карусель"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocusCapture={() => setFocused(true)}
+      onFocusCapture={(event) =>
+        setFocused(event.target.matches(':focus-visible'))
+      }
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget))
           setFocused(false);
@@ -177,11 +186,13 @@ export default function HomeHeroCarousel() {
           className={`home-concept__hero-image${index === active ? ' is-active' : ''}`}
           aria-hidden="true"
         >
-          <source
-            media="(max-width: 768px)"
-            srcSet={slide.mobileImage}
-            type="image/webp"
-          />
+          {slide.mobileImage && (
+            <source
+              media="(max-width: 768px)"
+              srcSet={slide.mobileImage}
+              type="image/webp"
+            />
+          )}
           <img
             src={slide.image}
             alt=""
@@ -273,14 +284,7 @@ export default function HomeHeroCarousel() {
                     <span />
                   </span>
                   <span className="home-concept__hero-tab-caption">
-                    <small>{String(index + 1).padStart(2, '0')}</small>
-                    {
-                      [
-                        'Кабель и провод',
-                        'Подбор под задачу',
-                        'Получение заказа',
-                      ][index]
-                    }
+                    {slide.caption}
                   </span>
                 </button>
               ))}

@@ -50,7 +50,7 @@ async function protectedSnapshot() {
 function summarize(rows) {
   const buckets = VISUALIZATION_TYPES.map((type) => {
     const items = rows.filter(
-      (r) => r.visualProfile.visualizationType === type
+      (r) => (r.visualization?.visualizationType ?? r.visualProfile.visualizationType) === type
     );
     return {
       type,
@@ -61,19 +61,19 @@ function summarize(rows) {
   const keyTypes = new Map();
   for (const r of rows) {
     const set = keyTypes.get(r.visualKey) || new Set();
-    set.add(r.visualProfile.visualizationType);
+    set.add((r.visualization?.visualizationType ?? r.visualProfile.visualizationType));
     keyTypes.set(r.visualKey, set);
   }
   const reasons = new Map();
   for (const r of rows.filter(
-    (r) => r.visualProfile.visualizationType === 'NEEDS_REVIEW'
+    (r) => (r.visualization?.visualizationType ?? r.visualProfile.visualizationType) === 'NEEDS_REVIEW'
   ))
     for (const code of new Set(r.visualization.reasons.map((i) => i.code)))
       reasons.set(code, (reasons.get(code) || 0) + 1);
   const examples = {};
   for (const type of VISUALIZATION_TYPES) {
     const candidates = rows.filter(
-        (r) => r.visualProfile.visualizationType === type
+        (r) => (r.visualization?.visualizationType ?? r.visualProfile.visualizationType) === type
       ),
       chosen = [],
       families = new Set();
@@ -239,7 +239,7 @@ function referencePlan(rows) {
   return definitions.map(([id, type, targetCores, purpose, predicate]) => {
     const candidates = rows.filter(
       (r) =>
-        r.visualProfile.visualizationType === type &&
+        (r.visualization?.visualizationType ?? r.visualProfile.visualizationType) === type &&
         ['AUTO_APPROVED', 'recognized'].includes(r.visualClassification) &&
         predicate(r.visualProfile)
     );
@@ -376,7 +376,7 @@ export async function main(args = process.argv.slice(2)) {
     );
     assert.ok(
       rows.every((r) =>
-        VISUALIZATION_TYPES.includes(r.visualProfile.visualizationType)
+        VISUALIZATION_TYPES.includes((r.visualization?.visualizationType ?? r.visualProfile.visualizationType))
       )
     );
   }
@@ -438,7 +438,7 @@ export async function main(args = process.argv.slice(2)) {
   await save(
     'needs-review.json',
     requestedRows
-      .filter((r) => r.visualProfile.visualizationType === 'NEEDS_REVIEW')
+      .filter((r) => (r.visualization?.visualizationType ?? r.visualProfile.visualizationType) === 'NEEDS_REVIEW')
       .map((r) => ({
         sku: r.sku,
         name: r.displayName,

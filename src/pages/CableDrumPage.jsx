@@ -1,4 +1,4 @@
-import SiteSelect from '../components/ui/SiteSelect';
+import { SearchableSiteSelect as SiteSelect } from '../components/ui/SiteSelect';
 import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import ServiceLayout from '../components/services/ServiceLayout';

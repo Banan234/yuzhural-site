@@ -18,8 +18,6 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urljoin
 
-from bs4 import BeautifulSoup
-from pypdf import PdfReader
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -670,22 +668,44 @@ def parse_gerda_kuin(entries: list[dict]) -> None:
                 add(entries, "gerda_kuin", page, f"{mark_prefix} ВЭК", configuration, None, number(cells[10]), number(cells[12]))
 
 
+def load_parser_dependencies() -> None:
+    global BeautifulSoup, PdfReader
+    from bs4 import BeautifulSoup
+    from pypdf import PdfReader
+
+
+def parse_verified_tables(entries: list[dict]) -> None:
+    # Transcribed from official tables with explicit columns and voltage.
+    document = json.loads(Path(__file__).with_name("cableMassVerifiedTables.json").read_text(encoding="utf-8"))
+    SOURCES.update(document["sources"])
+    for source, page, mark, configuration, voltage, diameter, mass in document["rows"]:
+        add(entries, source, page, mark, configuration, voltage, diameter, mass)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--base-reference", type=Path, help="Add verified tables to an existing reference without downloading the other sources")
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()
     entries: list[dict] = []
-    parse_hka(entries)
-    parse_hka_priority_marks(entries)
-    parse_uncomtech(entries)
-    parse_energokab(entries)
-    parse_energokab_kps_frls(entries)
-    parse_holdcable_kg(entries)
-    parse_paritet(entries)
-    parse_samaracable(entries)
-    parse_gerda_table(entries)
-    parse_gerda_kuin(entries)
-    parse_podolsk(entries)
+    if args.base_reference:
+        base = json.loads(args.base_reference.read_text(encoding="utf-8"))
+        SOURCES.update(base["sources"])
+        entries.extend(base["entries"])
+    else:
+        load_parser_dependencies()
+        parse_hka(entries)
+        parse_hka_priority_marks(entries)
+        parse_uncomtech(entries)
+        parse_energokab(entries)
+        parse_energokab_kps_frls(entries)
+        parse_holdcable_kg(entries)
+        parse_paritet(entries)
+        parse_samaracable(entries)
+        parse_gerda_table(entries)
+        parse_gerda_kuin(entries)
+        parse_podolsk(entries)
+    parse_verified_tables(entries)
 
     unique = {}
     for entry in entries:
@@ -693,7 +713,9 @@ def main() -> None:
         if key in unique and unique[key] != entry:
             raise ValueError(f"Conflicting rows within one source: {key}")
         unique[key] = entry
-    entries = sorted(unique.values(), key=lambda row: (row["mark"], row["configuration"], str(row["voltageKv"]), row["sourceId"]))
+    entries = list(unique.values())
+    if not args.base_reference:
+        entries.sort(key=lambda row: (row["mark"], row["configuration"], str(row["voltageKv"]), row["sourceId"]))
     missing_sources = set(SOURCES) - {row["sourceId"] for row in entries}
     if missing_sources or len(entries) < 4100 or len({row["mark"] for row in entries}) < 89:
         raise ValueError(f"Source table coverage unexpectedly decreased: {missing_sources=}, {len(entries)=}")

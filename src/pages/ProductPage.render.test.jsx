@@ -1,4 +1,5 @@
 import { prepareProductDetail } from '../../lib/productPresentation.js';
+import { buildDescription } from '../../lib/catalog.js';
 // @vitest-environment jsdom
 // Файл проверяет страницу товара, состояния загрузки, ошибки, SEO и пользовательские действия.
 
@@ -154,20 +155,25 @@ describe('ProductPage', () => {
     ).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
-  it('сохраняет блок для неизвестной марки и явно отмечает непроверенное обозначение', async () => {
-    mockProductResponse({
+  it('скрывает служебное описание и неподтверждённую расшифровку', async () => {
+    const unknown = {
       ...product,
       mark: 'Неизвестная',
       sourceName: 'Неизвестная 3х2,5',
+    };
+    mockProductResponse({
+      ...unknown,
+      description: buildDescription(
+        unknown, unknown.category, unknown.unit, unknown.stock
+      ),
     });
     renderProductPage();
-    fireEvent.click(
-      await screen.findByRole('tab', { name: 'Расшифровка марки' })
-    );
-    expect(await screen.findByText(/требует уточнения/i)).toBeVisible();
     expect(
-      screen.getByRole('link', { name: /Найти полное обозначение в Google/ })
-    ).toHaveAttribute('target', '_blank');
+      await screen.findByRole('heading', { level: 1, name: product.title })
+    ).toBeVisible();
+    expect(screen.queryByRole('tab', { name: 'Описание' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('tab', { name: 'Расшифровка марки' })).not.toBeInTheDocument();
+    expect(screen.queryByText(/позиция загружена/i)).not.toBeInTheDocument();
   });
   it('даёт полю количества accessible label и скрывает пустого производителя', async () => {
     renderProductPage();
@@ -280,6 +286,23 @@ it('открывает раздел по якорю и описание при �
   window.history.replaceState(null, '', '/#unknown');
   fireEvent(window, new Event('hashchange'));
   expect(screen.getByRole('tabpanel', { name: 'Описание' })).toBeVisible();
+});
+
+it('показывает заполненные покупательские блоки во вкладке описания', async () => {
+  window.history.replaceState(null, '', '/#product-description');
+  mockProductResponse({
+    ...product,
+    catalogContent: {
+      text: 'Описание исполнения',
+      construction: 'Изолированные медные жилы',
+      application: 'Подключение приборов',
+    },
+  });
+  renderProductPage();
+  expect(await screen.findByText('Описание исполнения')).toBeVisible();
+  expect(screen.getByRole('heading', { name: 'Конструкция' })).toBeVisible();
+  expect(screen.getByText('Подключение приборов')).toBeVisible();
+  expect(screen.queryByRole('heading', { name: 'Как выбрать' })).toBeNull();
 });
 
 it('shows pending source data without price, quantity or purchase actions', async () => {

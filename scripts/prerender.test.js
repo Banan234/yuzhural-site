@@ -406,6 +406,37 @@ describe('prerender HTML helpers', () => {
     expect(html).toContain('product-designation__tokens');
   });
 
+  it('выводит редакционные блоки в runtime HTML и скрывает служебный текст', () => {
+    const html = buildCompactProductBodyShell({
+      ...product,
+      description: 'Служебное описание',
+      descriptionIsFallback: true,
+      catalogContent: {
+        text: 'Описание из реестра',
+        construction: 'Подтверждённая конструкция',
+        application: 'Назначение по паспорту',
+        selection: 'Подбор по исполнению',
+      },
+    });
+    for (const text of [
+      'Описание из реестра',
+      'Подтверждённая конструкция',
+      'Назначение по паспорту',
+      'Подбор по исполнению',
+    ]) {
+      expect(html).toContain(text);
+    }
+    expect(html).not.toContain('Служебное описание');
+    const empty = buildCompactProductBodyShell({
+      mark: 'Неизвестная',
+      sourceName: 'Неизвестная 3х2,5',
+      description: 'Служебное описание',
+      descriptionIsFallback: true,
+    });
+    expect(empty).not.toContain('<section');
+    expect(empty).not.toContain('Служебное описание');
+  });
+
   it('выбирает build-time product prerender по лимиту и явным SKU/slug', () => {
     const products = [
       { ...product, slug: 'first-product', sku: 'SKU-1' },

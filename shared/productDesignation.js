@@ -387,6 +387,15 @@ function sourceFor(family) {
 }
 
 function sizeTokens(product, family, designation) {
+  if (
+    family?.sourceProfile === 'documented-configuration' &&
+    new RegExp(family.requiredSourcePattern, 'u').test(designation)
+  ) {
+    return {
+      rows: family.documentedSizeRows.map(([code, text]) => ({ code, text })),
+      warnings: [],
+    };
+  }
   if (family?.dimension === 'optical' && family.opticalConfiguration) {
     const config = family.opticalConfiguration;
     const p = new RegExp(family.sourceNamePattern, 'u').exec(
@@ -415,8 +424,12 @@ function sizeTokens(product, family, designation) {
       modules > config.maximumModules ||
       perModule > config.maximumFibersPerModule ||
       (config.centralModule && modules !== 1) ||
-      !(config.loads?.includes(load) ||
-        (config.loadRange && load >= config.loadRange[0] && load <= config.loadRange[1]))
+      !(
+        config.loads?.includes(load) ||
+        (config.loadRange &&
+          load >= config.loadRange[0] &&
+          load <= config.loadRange[1])
+      )
     )
       return {
         rows: [],
@@ -1125,7 +1138,7 @@ export function buildProductDesignation(product = {}) {
   const splitNdg = rawAttributes.findIndex((value, i) =>
     ndgExecution.test(value + ' ' + (rawAttributes[i + 1] || ''))
   );
-  const attributes =
+  const normalizedAttributes =
     resolvedFamily?.mark === 'ТППэп' &&
     /(?:^|\s)\([АA]\)\s*-?\s*НДГ(?=\s|$)/iu.test(designation)
       ? rawAttributes.flatMap((value, i) => {
@@ -1138,6 +1151,16 @@ export function buildProductDesignation(product = {}) {
           return value;
         })
       : rawAttributes;
+  const joinedFlatHF = /^пнг\([аa]\)-?hf$/iu;
+  const attributes =
+    resolvedFamily?.id === 'family-0068' &&
+    /^ППГ\s+\d+\s*[xх×]\s*\d+(?:[.,]\d+)?\s+пнг\([аa]\)-?hf$/iu.test(
+      designation
+    )
+      ? normalizedAttributes.flatMap((value) =>
+          joinedFlatHF.test(value) ? ['П', 'нг(А)-HF'] : [value]
+        )
+      : normalizedAttributes;
   const executionCodes = [
     ...attributes,
     index || '',

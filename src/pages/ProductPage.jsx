@@ -40,6 +40,10 @@ import {
   getProductImageAlt,
 } from '../../shared/productImagePresentation.js';
 import { messages } from '../../shared/messages.js';
+import {
+  getBuyerDesignation,
+  getProductDescriptionBlocks,
+} from '../../shared/productBuyerContent.js';
 import { NOT_FOUND_SEO, NotFoundPageContent } from './NotFoundPage.jsx';
 import '../styles/sections/catalog.css';
 import '../styles/sections/product-detail.css';
@@ -325,8 +329,10 @@ export default function ProductPage() {
   const manufacturerName = String(product.manufacturer || '').trim();
   const dataPending = isProductPending(product);
   const productTitle = getProductDisplayTitle(product);
-  const productDescription =
-    product.description || buildProductMetaDescription(product);
+  const { description: productDescription, sections: descriptionSections } =
+    getProductDescriptionBlocks(product);
+  const hasDescription = Boolean(productDescription || descriptionSections.length);
+  const designation = getBuyerDesignation(product.designationDecoded);
   const productImage = getProductImage(product);
   const productImageAlt = getProductImageAlt(product);
   const isProductInStock =
@@ -342,9 +348,15 @@ export default function ProductPage() {
     }
   );
 
-  const specs = Object.entries(product.specs || {}).filter(
-    ([, value]) => value !== null && value !== undefined && String(value).trim()
-  );
+  const specs = Object.entries(product.specs || {})
+    .filter(
+      ([, value]) =>
+        value !== null && value !== undefined && String(value).trim()
+    )
+    .map(([key, value]) => [
+      key,
+      key === 'Марка' ? product.catalogContent?.familyMark || value : value,
+    ]);
   const summarySpecs = specs
     .filter(([key]) => !/остаток|ед\.\s*изм|марка/i.test(key))
     .slice(0, 5);
@@ -352,8 +364,8 @@ export default function ProductPage() {
     ...(specs.length
       ? [{ id: 'product-specifications', label: 'Характеристики' }]
       : []),
-    { id: 'product-description', label: 'Описание' },
-    { id: 'product-marking', label: 'Расшифровка марки' },
+    ...(hasDescription ? [{ id: 'product-description', label: 'Описание' }] : []),
+    ...(designation ? [{ id: 'product-marking', label: 'Расшифровка марки' }] : []),
     ...(!dataPending
       ? [{ id: 'product-documents', label: 'Партия и документы' }]
       : []),
@@ -687,7 +699,11 @@ export default function ProductPage() {
               ) : (
                 <div>
                   <dt>Марка</dt>
-                  <dd>{product.mark || product.category}</dd>
+                  <dd>
+                    {product.catalogContent?.familyMark ||
+                      product.mark ||
+                      product.category}
+                  </dd>
                 </div>
               )}
               {manufacturerName ? (
@@ -697,23 +713,19 @@ export default function ProductPage() {
                 </div>
               ) : null}
             </dl>
-            <a
-              className="product-page__details-link"
-              onClick={() =>
-                setSelectedTab(
-                  specs.length
-                    ? 'product-specifications'
-                    : 'product-description'
-                )
-              }
-              href={
-                specs.length
-                  ? '#product-specifications'
-                  : '#product-description'
-              }
-            >
-              Все характеристики →
-            </a>
+            {(specs.length > 0 || hasDescription) && (
+              <a
+                className="product-page__details-link"
+                onClick={() =>
+                  setSelectedTab(
+                    specs.length ? 'product-specifications' : 'product-description'
+                  )
+                }
+                href={specs.length ? '#product-specifications' : '#product-description'}
+              >
+                Все характеристики →
+              </a>
+            )}
           </div>
         </div>
 
@@ -757,16 +769,26 @@ export default function ProductPage() {
             </table>
           </section>
         ) : null}
-        <section
-          {...panelProps('product-description')}
-          className="product-details product-page__description"
-        >
-          <h2>Описание</h2>
-          <p>{productDescription}</p>
-        </section>
-        <div {...panelProps('product-marking')}>
-          <ProductDesignation product={product} />
-        </div>
+        {hasDescription && (
+          <section
+            {...panelProps('product-description')}
+            className="product-details product-page__description"
+          >
+            <h2>Описание</h2>
+            {productDescription && <p>{productDescription}</p>}
+            {descriptionSections.map(([label, text]) => (
+              <div key={label}>
+                <h3>{label}</h3>
+                <p>{text}</p>
+              </div>
+            ))}
+          </section>
+        )}
+        {designation && (
+          <div {...panelProps('product-marking')}>
+            <ProductDesignation decoded={designation} />
+          </div>
+        )}
         {!dataPending && (
           <div {...panelProps('product-documents')}>
             <ProductSupplyPanel product={product} quantity={quantity} />

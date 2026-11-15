@@ -1,0 +1,28 @@
+{
+  "version": "multicore-composition-1.0.0",
+  "types": [
+    "MULTICORE",
+    "MULTICORE + LAYERED"
+  ],
+  "frame": "Vertically balance the entire visible silhouette around the canvas midline, with clear space above and below. Keep the protected style's slight diagonal and intact outer sheath extending beyond the right edge. Aim for 80\u201390% occupied width where this preserves the compact bundle and every complete exposed tip.",
+  "bundle": "Keep the exposed core group centered on the projected sheath axis. Preserve the real cross-sectional arrangement in depth. Avoid a descending diagonal staircase, planar fan or single-file row. For four equal round cores use a compact staggered two-by-two arrangement, with upper and lower pairs balanced around the projected axis. Offset depth only enough to expose all four metal faces without overlap.",
+  "stripping": "Assess stripping lengths along each local core axis. Keep comparable bare-metal exposure for peers in the same construction. Preserve distinct documented stripping steps and per-core coaxiality. Do not bend, independently stretch or move cores to make room.",
+  "review": [
+    "silhouette-centered-vertically",
+    "core-group-balanced-around-sheath-axis",
+    "no-diagonal-staircase",
+    "all-metal-ends-complete-and-visible",
+    "comparable-axial-stripping",
+    "real-core-geometry-and-layer-roles"
+  ],
+  "reviewLimits": {
+    "centerOffsetCanvasHeight": 0.07,
+    "minTipMarginCanvasWidth": 0.005,
+    "fourEqualRound": {
+      "maxTipSpreadSheathDiameter": 0.52,
+      "maxTipCenterOffsetSheathDiameter": 0.08,
+      "staircaseOrder": 0.8,
+      "minStaircaseDepthPerSheathDiameter": 0.12
+    }
+  }
+}

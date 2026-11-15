@@ -1,13 +1,21 @@
 // Переключаем только реально существующие исполнения с одинаковой остальной маркировкой.
 function dimensions(product) {
+  if (['optical', 'awg', 'mixed-section', 'pairs'].includes(product.displayDimensions?.kind))
+    return null;
   const title = String(product.title || product.fullName || product.name || '');
-  const match = title.match(/(\d+)\s*[xх×]\s*(\d+(?:[.,]\d+)?)/i);
+  const usesDiameter = product.conductorDiameter != null;
+  const match = title.match(
+    usesDiameter &&
+      (product.displayDimensions?.pairs || !product.displayDimensions)
+      ? /(\d+)\s*[xх×]\s*2\s*[xх×]\s*(\d+(?:[.,]\d+)?)/i
+      : /(\d+)\s*[xх×]\s*(\d+(?:[.,]\d+)?)/i
+  );
   if (!match) return null;
   const cores = Number(match[1]);
   const section = Number(match[2].replace(',', '.'));
   if (
     cores !== Number(product.cores) ||
-    section !== Number(product.crossSection)
+    section !== Number(product.conductorDiameter ?? product.crossSection)
   )
     return null;
   return {
@@ -28,6 +36,8 @@ export function getProductVariantOptions(product, products) {
     return (
       item.slug &&
       item.mark === product.mark &&
+      (item.conductorDiameter != null) ===
+        (product.conductorDiameter != null) &&
       candidate?.signature === current.signature
     );
   });

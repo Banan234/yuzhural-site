@@ -4,6 +4,7 @@ import {
   CABLE_MASS_SOURCES,
   calculateCableMass,
   calculateMassWithDrums,
+  getCableManufacturerAverage,
   getCableMassRows,
 } from './cableMass';
 import { CABLE_DRUMS, CABLE_DRUM_SOURCE, getCableDrum } from './cableDrums';
@@ -19,8 +20,9 @@ describe('cable mass reference', () => {
     expect(rows.map((row) => row.sourceId).sort()).toEqual([
       'energokab',
       'hka',
+      'kamkabel_oilgas',
     ]);
-    expect(calculateCableMass(rows, 100)).toEqual({ minKg: 4.8, maxKg: 5.1 });
+    expect(calculateCableMass(rows, 100)).toEqual({ minKg: 4.4, maxKg: 5.1 });
   });
 
   it('does not mix rows with another voltage or construction', () => {
@@ -30,8 +32,7 @@ describe('cable mass reference', () => {
       voltageKv: 1,
     });
 
-    expect(rows).toHaveLength(1);
-    expect(rows[0].massKgPerKm).toBe(54);
+    expect(rows.map((row) => row.massKgPerKm)).toEqual([54, 53]);
     expect(calculateCableMass(rows, 0)).toBeNull();
   });
 
@@ -76,8 +77,8 @@ describe('cable mass reference', () => {
   });
 
   it('has valid positive values and source references for every row', () => {
-    expect(CABLE_MASS_ENTRIES.length).toBeGreaterThan(4100);
-    expect(new Set(CABLE_MASS_ENTRIES.map((row) => row.mark)).size).toBe(89);
+    expect(CABLE_MASS_ENTRIES.length).toBeGreaterThanOrEqual(19007);
+    expect(new Set(CABLE_MASS_ENTRIES.map((row) => row.mark)).size).toBeGreaterThanOrEqual(300);
     for (const row of CABLE_MASS_ENTRIES) {
       expect(row.massKgPerKm).toBeGreaterThan(0);
       expect(row.diameterMm).toBeGreaterThan(0);
@@ -147,7 +148,10 @@ describe('cable mass reference', () => {
   it('includes exact tables for common catalog marks', () => {
     expect(
       getCableMassRows({ mark: 'КГ', configuration: '3х2,5', voltageKv: 0.66 })
-    ).toMatchObject([{ sourceId: 'holdcable_kg', massKgPerKm: 230 }]);
+    ).toEqual(expect.arrayContaining([
+      expect.objectContaining({ sourceId: 'holdcable_kg', massKgPerKm: 230 }),
+      expect.objectContaining({ sourceId: 'sevcable_flexible', massKgPerKm: 219.48 }),
+    ]));
     expect(
       getCableMassRows({
         mark: 'ПуГВ',
@@ -266,4 +270,74 @@ describe('cable mass reference', () => {
       { sourceId: 'gerda_kuin', sourcePage: 12, massKgPerKm: 827 },
     ]);
   });
+
+  it('averages matching sizes once per manufacturer, including identical values from separate manufacturers', () => {
+    const rows = getCableMassRows({
+      mark: 'КГ',
+      configuration: '3×2,50',
+      voltageKv: 0.66,
+    });
+    const average = getCableManufacturerAverage([...rows, rows[0]], '100');
+    expect(average.count).toBe(2);
+    expect(average.massKg).toBeCloseTo(22.474);
+    expect(average.diameterMm).toBeCloseTo(12.1);
+    expect(getCableManufacturerAverage([rows[0]], 100)).toBeNull();
+    expect(getCableManufacturerAverage([
+      rows[0], { ...rows[0], sourceId: rows[1].sourceId },
+    ], 100).count).toBe(2);
+  });
+
+  it('retains exact catalog editions and combines independent sources for new wire sizes', () => {
+    const fireResistantRows = getCableMassRows({
+      mark: 'ВВГнг(А)-FRLS FE180',
+      configuration: '1х1,5ок',
+      voltageKv: 0.66,
+    });
+    expect(fireResistantRows).toMatchObject([
+      { sourceId: 'energokab_catalog', sourcePage: 104, massKgPerKm: 63, diameterMm: 6.4 },
+    ]);
+
+    const wireRows = getCableMassRows({
+      mark: 'H07V-K',
+      configuration: '1×2,50',
+      voltageKv: 0.75,
+    });
+    expect(wireRows.map((row) => row.sourceId)).toEqual([
+      'topcable_v_k', 'prysmian_h07v_k', 'hka',
+    ]);
+    const average = getCableManufacturerAverage(wireRows, 100);
+    expect(average.count).toBe(3);
+    expect(average.massKg).toBeCloseTo(3.03);
+    expect(average.diameterMm).toBeCloseTo(3.6567);
+  });
+  it('matches two manufacturer tables for КВВГнг(А) at 0.66 kV', () => {
+    const rows = getCableMassRows({
+      mark: 'КВВГнг(А)',
+      configuration: '4×1',
+      voltageKv: 0.66,
+    });
+    expect(rows).toMatchObject([
+      { sourceId: 'energokab_catalog', sourcePage: 186, massKgPerKm: 83, diameterMm: 7.3 },
+      { sourceId: 'kamkabel_oilgas', massKgPerKm: 88, diameterMm: 7.6 },
+    ]);
+    const average = getCableManufacturerAverage(rows, 100);
+    expect(average.count).toBe(2);
+    expect(average.massKg).toBeCloseTo(8.55);
+    expect(average.diameterMm).toBeCloseTo(7.45);
+  });
+
+  it('keeps screen size and voltage for medium-voltage catalog entries', () => {
+    const rows = getCableMassRows({
+      mark: 'АПвП',
+      configuration: '1х50мк/16',
+      voltageKv: 10,
+    });
+    expect(rows).toMatchObject([
+      { sourceId: 'hka', sourcePage: 174, diameterMm: 25.7, massKgPerKm: 695 },
+    ]);
+    expect(
+      getCableMassRows({ mark: 'АПвП', configuration: '1х50мк/25', voltageKv: 10 })
+    ).toEqual([]);
+  });
+
 });

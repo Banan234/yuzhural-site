@@ -38,6 +38,27 @@ beforeEach(() => {
 });
 
 describe('ProductCard', () => {
+  it('показывает диаметр и число пар у кабеля с диаметральной маркировкой', () => {
+    render(
+      <MemoryRouter>
+        <ProductCard
+          variant="catalog-list"
+          product={{
+            ...baseProduct,
+            cores: 10,
+            crossSection: 0.5,
+            conductorDiameter: 0.5,
+          }}
+        />
+      </MemoryRouter>
+    );
+    const card = screen.getByRole('article');
+    expect(card).toHaveTextContent('Количество пар');
+    expect(card).toHaveTextContent('Диаметр жилы');
+    expect(card).toHaveTextContent('0,5 мм');
+    expect(card).not.toHaveTextContent('мм²');
+  });
+
   it.each(['default', 'stock', 'catalog-list', 'catalog-tile'])(
     'adds the cheapest available source balance directly (%s)',
     (variant) => {

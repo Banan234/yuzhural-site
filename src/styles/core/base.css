@@ -2,6 +2,8 @@
 
 /* TOKENS */
 :root {
+  --site-content-max-width: 1800px;
+  --site-gutter: clamp(12px, 2.5vw, 30px);
   --text-caption: 0.875rem;
   --text-small: 0.9375rem;
   --text-ui: 1rem;
@@ -107,7 +109,10 @@ textarea,
 
 /* LAYOUT */
 .container {
-  width: min(1400px, calc(100% - 90px));
+  width: min(
+    var(--site-content-max-width),
+    calc(100% - 2 * var(--site-gutter))
+  );
   margin: 0 auto;
 }
 

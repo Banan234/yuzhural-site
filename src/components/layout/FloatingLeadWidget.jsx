@@ -97,7 +97,7 @@ export default function FloatingLeadWidget({
   const renderedAtRef = useRef(Date.now());
   const autoOpenTrackedRef = useRef(false);
   const sessionRef = useRef(session);
-  const messagesEndRef = useRef(null);
+  const messagesRef = useRef(null);
   const commentFieldRef = useRef(null);
   const panelRef = useRef(null);
   const launcherRef = useRef(null);
@@ -153,8 +153,9 @@ export default function FloatingLeadWidget({
   }, [autoOpen, sourceLabel]);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView?.({ block: 'end' });
-  }, [conversationMessages, conversation]);
+    const messages = messagesRef.current;
+    if (messages) messages.scrollTop = messages.scrollHeight;
+  }, [conversationMessages, conversation, isOpen]);
 
   useEffect(() => {
     if (!session) {
@@ -414,7 +415,7 @@ export default function FloatingLeadWidget({
                 </div>
               ) : null}
 
-              <div className="floating-lead-widget__messages">
+              <div ref={messagesRef} className="floating-lead-widget__messages">
                 {isConversationLoading ? (
                   <div className="floating-lead-widget__loading">
                     Загружаем диалог...
@@ -445,7 +446,6 @@ export default function FloatingLeadWidget({
                     </div>
                   );
                 })}
-                <div ref={messagesEndRef} />
               </div>
             </div>
 

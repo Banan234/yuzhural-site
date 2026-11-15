@@ -29,7 +29,7 @@ describe('complete service flows', () => {
     expect(screen.getAllByRole('button', { name: /^удалить /i })).toHaveLength(
       2
     );
-    expect(screen.getByText(/15–15,3/)).toBeInTheDocument();
+    expect(screen.getByText(/14,6–15,3/)).toBeInTheDocument();
     let detail;
     const listener = (event) => {
       detail = event.detail;
@@ -39,7 +39,7 @@ describe('complete service flows', () => {
       screen.getByRole('button', { name: 'Проверить с менеджером' })
     );
     window.removeEventListener('open-lead-modal', listener);
-    expect(detail.comment).toContain('15–15,3 кг');
+    expect(detail.comment).toContain('14,6–15,3 кг');
     expect(detail.comment).toContain('100 м');
     expect(detail.comment).toContain('200 м');
   });

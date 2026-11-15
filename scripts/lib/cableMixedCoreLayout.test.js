@@ -24,7 +24,8 @@ describe('mixed-size cores are structural, not overall scale', () => {
       auxiliarySize: 'reduced',
     });
     expect(b.visualClassification).toBe('needs_review');
-    expect(b.visualProfile.visualizationType).toBe('NEEDS_REVIEW');
+    expect(b.visualProfile.visualizationType).toBeNull();
+    expect(b.visualization.visualizationType).toBe('NEEDS_REVIEW');
   });
   it('groups the reduced-core construction without exact nominal sizes or numeric diameter formulas', () => {
     const examples = [

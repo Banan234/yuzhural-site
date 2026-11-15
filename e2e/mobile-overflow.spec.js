@@ -2,7 +2,7 @@
 
 import { expect, test } from '@playwright/test';
 
-const VIEWPORT_WIDTHS = [360, 390, 414];
+const VIEWPORT_WIDTHS = [320, 360, 390, 414];
 const ROUTES = [
   '/',
   '/catalog',
@@ -97,4 +97,28 @@ test.describe('mobile header overflow', () => {
       }
     });
   }
+});
+
+test('desktop navigation and carousel arrows fit near the header breakpoint', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1181, height: 720 });
+  await page.goto('/');
+  await expect(
+    page.locator('.home-stock-showcase__arrow').first()
+  ).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+  await expectVisibleControlsInsideViewport(
+    page,
+    '.site-header a, .home-stock-showcase__arrow'
+  );
+});
+
+test('calculator navigation wraps at 320px', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.goto('/calculator/section/');
+  const nav = page.getByRole('navigation', { name: 'Сервисы кабеля' });
+  await expect(nav).toBeVisible();
+  await expectVisibleControlsInsideViewport(page, '.services-nav a');
+  await expectNoHorizontalOverflow(page);
 });

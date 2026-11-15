@@ -25,6 +25,19 @@ describe('factory manuals and constructor additions, November 10', () => {
       expect(result.officialComplete).toBe(false);
     }
   );
+  it('matches the factory-backed ТПП HF configuration with the abbreviated fire index', () => {
+    const result = decode({
+      mark: 'ТПП',
+      sourceName: 'ТППнг 10х2х0.5 HF',
+      attributes: ['нг-HF'],
+    });
+    expect(result.status).toBe('reviewed');
+    expect(result.unknown).toEqual([]);
+    expect(result.warnings).toEqual([]);
+    expect(result.sources[0]?.url).toContain('catalog.pdf#page=94');
+    expect(result.officialComplete).toBe(false);
+  });
+
   it.each([
     ['FireLine 750', 'FireLine 750 19х4', []],
     ['ВСЭК', 'ВСЭК 5х2х0.5', []],
@@ -33,7 +46,7 @@ describe('factory manuals and constructor additions, November 10', () => {
     ['КУПЭКШВ', 'КУПЭКШВ 61х35 нг(А)LS', ['нг(А)-LS']],
     ['КУПЭКШВ', 'КУПЭКШВ 37х3х1 нг(А)LS', ['нг(А)-LS']],
     ['КУПЭКШВ', 'КУПЭКШВ 2х1.5 нг(А)HF', ['нг(А)-HF']],
-    ['ТПП', 'ТППнг 10х2х0.5 HF', ['нг-HF']],
+    ['ТПП', 'ТППнг 10х2х0.6 HF', ['нг-HF']],
     ['ПБВВ', 'ПБВВ 3х2.5 (ДРУГОЙ)', ['(ДРУГОЙ)']],
   ])(
     'keeps conflicting or unconfirmed variants incomplete: %s',

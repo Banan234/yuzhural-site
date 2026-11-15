@@ -17453,6 +17453,374 @@
       "sourceSha256": "f20bfba4ec44b3a1376dac63d8d3e08316c1f60e7cc83f576b741356bde75c82",
       "id": "manufacturer-text-7fee9e5d8ce6d016",
       "contentHash": "7fee9e5d8ce6d01656fe96bd45130ffdd81e114754790ca81e86fae84024637c"
+    },
+    {
+      "documentId": "spec-main-2019-copy",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Применение и конструкция",
+      "kind": "description",
+      "text": "Кабель витой пары категории 5е для структурированных кабельных сетей, с низкой токсичностью продуктов горения. Симметричный кабель парной скрутки с однопроволочными медными жилами и сплошной полиэтиленовой изоляцией. Нераспространение горения при групповой прокладке категории С. ПВХ заполнение и оболочка с пониженным дымо- и газовыделением и низкой токсичностью продуктов горения. Категория передачи данных 5е.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov11d-source-7517"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        97
+      ],
+      "reviewedAt": "2026-11-11",
+      "sourceSha256": "3a7cab106824e4830c67b453ee3b4798752111ce7120a4d83942607cac327c11",
+      "id": "manufacturer-text-37724692a5db0b93",
+      "contentHash": "37724692a5db0b93332fde71dc2e71c399ac62dcfa4e2f6832ceafe2db20f2f9"
+    },
+    {
+      "documentId": "nov11d-doc-nov11d-sentek-ptgvev",
+      "manufacturer": "СЕНТЕК",
+      "originalHeading": "Применение и конструкция",
+      "kind": "description",
+      "text": "Гибкий термоэлектродный провод для соединения термопары с измерительным прибором. Провод термоэлектродный. Многопроволочные жилы. ПВХ изоляция и оболочка. Внутренний экран из алюмофлекса. Термоэлектродная пара хромель–алюмель.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov11d-source-5614"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-11-11",
+      "sourceSha256": "54c68bc16e910c5581612e929a7f8047dabfb97a49c156009aba16353e2d696e",
+      "id": "manufacturer-text-d127a8c94a70fbc5",
+      "contentHash": "d127a8c94a70fbc5bd1ee0a297f77ac7451247cc3f6a614b34ba6c4b6074d8fb"
+    },
+    {
+      "documentId": "sentek-ptvev",
+      "manufacturer": "СЕНТЕК",
+      "originalHeading": "Применение и конструкция",
+      "kind": "description",
+      "text": "Теплостойкий экранированный термоэлектродный провод для подключения термопары к измерительному прибору. Провод термоэлектродный. ПВХ изоляция и оболочка. Внутренний экран из алюмофлекса. Теплостойкое исполнение, до 105 °C. Пара медь–константан.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov11d-source-5610"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-11-11",
+      "sourceSha256": "07ca2b6db16f8672fc90b43ee31486c625783ea045a17181f8530f9cf6b98efe",
+      "id": "manufacturer-text-4494bcd7003c2cba",
+      "contentHash": "4494bcd7003c2cba44a0d473535b5fd65a3033013453b9f74dd36b7bd15d6141"
+    },
+    {
+      "documentId": "nov11d-doc-nov11d-spets-kap-hf",
+      "manufacturer": "Спецкабель",
+      "originalHeading": "Применение и конструкция",
+      "kind": "description",
+      "text": "Симметричный кабель для сетей LonWorks и стационарной групповой прокладки. Неэкранированный кабель парной скрутки с медными однопроволочными жилами и изоляцией из вспененного полиэтилена. Нераспространение горения при групповой прокладке категории А. Оболочка из безгалогенной полимерной композиции.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov11d-source-3135"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [],
+      "reviewedAt": "2026-11-11",
+      "sourceSha256": "683157a895a44c12a2644020cc65c16b0c072d74707dc286c30519a1ce4850a1",
+      "id": "manufacturer-text-8e5179adeffd2f49",
+      "contentHash": "8e5179adeffd2f4976a870da8a0c80602916a8a5d2445551190e47aed0c0f570"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Применение и конструкция",
+      "kind": "description",
+      "text": "Термоэлектродный провод для подключения средств измерения температуры и прокладки в помещениях и внутри приборов с защитой от внешних электромагнитных полей. Провод с обмоткой из полиэтилентерефталатной плёнки и пропитанной клеем оплёткой из полиэфирных нитей. Экран из медной лужёной проволоки. Термоэлектродная пара медь–константан.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov11d-source-5506"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        500,
+        501,
+        502
+      ],
+      "reviewedAt": "2026-11-11",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-a4fafb335eb3355e",
+      "contentHash": "a4fafb335eb3355ed00f72eaa9e6820992636b7062943d9ae69c369fa99e1cea"
+    },
+    {
+      "documentId": "hka",
+      "manufacturer": "ХКА",
+      "originalHeading": "Применение и конструкция",
+      "kind": "description",
+      "text": "Термоэлектродный провод для подключения средств измерения температуры и прокладки в помещениях и внутри приборов с защитой от внешних электромагнитных полей. Провод с обмоткой из полиэтилентерефталатной плёнки и пропитанной клеем оплёткой из полиэфирных нитей. Экран из медной лужёной проволоки. Термоэлектродная пара медь–константан.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov11d-source-5509"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        500,
+        501,
+        502
+      ],
+      "reviewedAt": "2026-11-11",
+      "sourceSha256": "25f730fec297391fc422c461fc181b462a9d0836f1b45706334ad7760a6d2de6",
+      "id": "manufacturer-text-f8099fca456433a2",
+      "contentHash": "f8099fca456433a20c42b675c7bc1a8ef3a69c02346375c5f090d95095a8610d"
+    },
+    {
+      "documentId": "nov12q-doc-nov12q-lapp-eb-cy",
+      "manufacturer": "LAPP",
+      "originalHeading": "Application",
+      "kind": "application",
+      "text": "Для искробезопасных цепей в устройствах и системах с видом взрывозащиты «i». Стационарная прокладка и редкие изгибы без растягивающего усилия.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12q-source-2156"
+      ],
+      "scope": "documented-configuration",
+      "pages": [
+        1
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "9ff0a2645424ece42ccbebf55883dfc7c74a8a5d49cad983fedc5e90998353b2",
+      "id": "manufacturer-text-1bcb133b265d67da",
+      "contentHash": "1bcb133b265d67daa01a55f9f803c84ef2cce7a1459ef449b394135ea644e2f2"
+    },
+    {
+      "documentId": "nov12q-doc-nov12q-lapp-eb-cy",
+      "manufacturer": "LAPP",
+      "originalHeading": "Product design",
+      "kind": "description",
+      "text": "25 многопроволочных медных жил класса 5 с номинальным сечением 1,5 мм². Изоляция и синяя оболочка из ПВХ. Общий экран включает алюминиевую ламинированную фольгу и оплётку из лужёной меди.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12q-source-2156"
+      ],
+      "scope": "documented-configuration",
+      "pages": [
+        1,
+        3
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "9ff0a2645424ece42ccbebf55883dfc7c74a8a5d49cad983fedc5e90998353b2",
+      "id": "manufacturer-text-2d356f36160941b5",
+      "contentHash": "2d356f36160941b572019b0b69e6fb4493ed845b373df8c1842dd0a1723c03e5"
+    },
+    {
+      "documentId": "nov12r-doc-nov12r-gerda-ekol",
+      "manufacturer": "ГЕРДА",
+      "originalHeading": "Назначение и маркировка",
+      "kind": "description",
+      "text": "Кабели LAN ЭКОЛ различают по назначению, материалу оболочки, наличию брони, общих и индивидуальных экранов. Размерная запись задаёт число пар и номинальный диаметр медной жилы.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12r-source-2455",
+        "nov12r-source-7259",
+        "nov12r-source-2458",
+        "nov12r-source-2460",
+        "nov12r-source-2461"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "32dee43fdf5bc9877b132f4bebbb588a274293cd2ec13a97f8ba2a96fad6706f",
+      "id": "manufacturer-text-e8b7ca5f60278753",
+      "contentHash": "e8b7ca5f60278753bd898e1985177997d2cc7a5bc5c5d9850e45d34d190482b6"
+    },
+    {
+      "documentId": "nov12r-doc-nov12r-gefest-salamandra",
+      "manufacturer": "Гефест",
+      "originalHeading": "Назначение",
+      "kind": "application",
+      "text": "Гибкие огнестойкие кабели Саламандра предназначены для пожарной сигнализации, оповещения и управления эвакуацией, автоматического пожаротушения.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12r-source-3315"
+      ],
+      "scope": "base-family-purpose",
+      "pages": [
+        144
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "543434b74908d2c6b034b7d0df3f6f3a935e2b983008647c78f12b1bdf79136b",
+      "id": "manufacturer-text-cd2def43898ba42a",
+      "contentHash": "cd2def43898ba42a36d3879235cf98e53548af8bef965976aec1321bcc35cfb2"
+    },
+    {
+      "documentId": "nov12r-doc-nov12r-gefest-salamandra",
+      "manufacturer": "Гефест",
+      "originalHeading": "Характеристики",
+      "kind": "description",
+      "text": "В исполнении КГОс медные жилы изолированы кремнийорганической резиной. Поверх кабеля наложена оплётка из стекловолокна, пропитанного термостойким составом. Для двухжильного кабеля приведены параметры при номинальном сечении 0,5 мм².",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12r-source-3315"
+      ],
+      "scope": "documented-configuration",
+      "pages": [
+        144,
+        145
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "543434b74908d2c6b034b7d0df3f6f3a935e2b983008647c78f12b1bdf79136b",
+      "id": "manufacturer-text-89f01e183cc8c66f",
+      "contentHash": "89f01e183cc8c66ff145ce72b4a80d6c0e02dbff977b28f1b93ce3348ccff130"
+    },
+    {
+      "documentId": "nov12r-doc-nov12r-gerda-ekol",
+      "manufacturer": "ГЕРДА",
+      "originalHeading": "Назначение и маркировка",
+      "kind": "description",
+      "text": "Магистральный кабель витой пары в стальной ленточной броне и полиэтиленовом защитном шланге.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12s-source-6949"
+      ],
+      "scope": "documented-configuration",
+      "pages": [
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "32dee43fdf5bc9877b132f4bebbb588a274293cd2ec13a97f8ba2a96fad6706f",
+      "id": "manufacturer-text-fd49a0d0654bf7c5",
+      "contentHash": "fd49a0d0654bf7c55ef925cbf4f3dd69580665c501c6b8c20fe116f95684b7b4"
+    },
+    {
+      "documentId": "gerda",
+      "manufacturer": "ГЕРДА",
+      "originalHeading": "Условное обозначение",
+      "kind": "description",
+      "text": "Монтажный кабель парной скрутки с проволочной бронёй. Для марки с индексом В и исполнением FRLS применяются ПВХ-пластикаты пониженной пожарной опасности.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12s-source-3708"
+      ],
+      "scope": "documented-configuration",
+      "pages": [
+        3,
+        4
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "c305c2c6a6d8b956de037bf6b9c5e3ce6be4318096d09b47b963967fd399d6af",
+      "id": "manufacturer-text-f014134965ec96e2",
+      "contentHash": "f014134965ec96e2ee7e3564347949e143d5d0e7a31227d49652164a2dc5bb5e"
+    },
+    {
+      "documentId": "rkz-kupr",
+      "manufacturer": "Рыбинсккабель",
+      "originalHeading": "Применение и маркоразмеры",
+      "kind": "description",
+      "text": "Кабель управления для передачи электрических сигналов малой мощности. В размерном ряду 16/9Э×0,5 указаны 16 жил, из которых девять экранированы.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12s-source-4490"
+      ],
+      "scope": "documented-configuration",
+      "pages": [],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "b1083f9a021983a0894d6cd35590bcf4d049f4ecd9de64ce30c34d5e7eba40ca",
+      "id": "manufacturer-text-e3f017cef6c77621",
+      "contentHash": "e3f017cef6c77621a0bcd2794893620ba47a31cbb55158441c475f3adab85131"
+    },
+    {
+      "documentId": "nov12r-doc-nov12r-gefest-salamandra",
+      "manufacturer": "Гефест",
+      "originalHeading": "Назначение и конструкция",
+      "kind": "description",
+      "text": "Кабель для систем пожарной сигнализации, оповещения, управления эвакуацией и автоматического пожаротушения. Медные жилы с кремнийорганической изоляцией, термостойкая стекловолоконная оплётка.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12s-source-3316"
+      ],
+      "scope": "documented-configuration",
+      "pages": [
+        144,
+        145
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "543434b74908d2c6b034b7d0df3f6f3a935e2b983008647c78f12b1bdf79136b",
+      "id": "manufacturer-text-0fad39086dc7420b",
+      "contentHash": "0fad39086dc7420b0369818fd8164290943fa32d1001ede9a93d8bc09a270727"
+    },
+    {
+      "documentId": "nov11c-doc-nov11c-coax-pmsp",
+      "manufacturer": "Коаксиалкабель",
+      "originalHeading": "Монтажные провода",
+      "kind": "description",
+      "text": "Размерный ряд монтажных проводов для передачи сигналов включает двух- и четырёхжильные варианты с жилами диаметром 1,2 мм.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12s-source-5463",
+        "nov12s-source-5464"
+      ],
+      "scope": "documented-configuration",
+      "pages": [
+        6
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "b77aa23a79eb7b17309c3ac5d66f580f240bc8a138eb296f935cf760978cd71f",
+      "id": "manufacturer-text-aaac8431581d18e2",
+      "contentHash": "aaac8431581d18e23cc468cde74dc2068c4ce6e054464fc0360bf73f5a0ac498"
+    },
+    {
+      "documentId": "nov12t-doc-nov12t-kloepper",
+      "manufacturer": "Klöpper-Therm",
+      "originalHeading": "TCTEX-H",
+      "kind": "description",
+      "text": "Резистивный нагревательный кабель с изоляцией и оболочкой PFA и металлической оплёткой. Для исполнения TCTEX-H-31.5 сопротивление нагревательной жилы при +20 °C составляет 31,5 Ом/км.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12t-source-1868"
+      ],
+      "scope": "documented-configuration",
+      "pages": [
+        31,
+        32
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "de7bc6df2a2acca2df0a910ff51e39d98da7929a6dd859bb5eea5354a0dda625",
+      "id": "manufacturer-text-33bb346b947a4695",
+      "contentHash": "33bb346b947a4695bc81240b9b8538d363ed07af7bb68fc9d203439ff5a1ab7f"
+    },
+    {
+      "documentId": "nov12t-doc-nov12t-belden-h126",
+      "manufacturer": "Belden",
+      "originalHeading": "H126A00",
+      "kind": "description",
+      "text": "Коаксиальный кабель для распределительных сетей с медным центральным проводником диаметром 1,00 мм, диэлектриком из вспененного полиэтилена диаметром 4,57 мм и наружной оболочкой из ПВХ.",
+      "textForm": "technical-summary",
+      "language": "ru",
+      "familyIds": [
+        "nov12t-source-3336"
+      ],
+      "scope": "documented-configuration",
+      "pages": [
+        13
+      ],
+      "reviewedAt": "2026-11-12",
+      "sourceSha256": "cda2c4dc1763816157a64302052b13412c8ad65c0a46aa5f2e5f0b3a37ca9072",
+      "id": "manufacturer-text-3c99f3bb6044fe18",
+      "contentHash": "3c99f3bb6044fe188de31a1619fd769f2db635d2ab2e44f6e80dc640d9b76eab"
     }
   ]
 }

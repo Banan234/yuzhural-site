@@ -77,6 +77,7 @@ export default function HeaderSearch() {
     useState(-1);
   const searchLoadControllerRef = useRef(null);
   const searchSuggestionsDebounceTimerRef = useRef(null);
+  const suggestionListRef = useRef(null);
   const normalizedHeaderSearch = normalizeSearchSuggestionKey(headerSearch);
   const shouldShowSearchSuggestions = Boolean(
     isSearchSuggestionsOpen &&
@@ -94,6 +95,20 @@ export default function HeaderSearch() {
   const activeSearchSuggestionId = activeSearchSuggestion
     ? getHeaderSearchSuggestionId(activeSearchSuggestionIndex)
     : undefined;
+
+  useEffect(() => {
+    const list = suggestionListRef.current;
+    const option = activeSearchSuggestionId
+      ? document.getElementById(activeSearchSuggestionId)
+      : null;
+    if (!list || !option || !shouldShowSearchSuggestions) return;
+
+    const { top, bottom } = option.getBoundingClientRect();
+    const visibleTop = list.getBoundingClientRect().top + list.clientTop;
+    const visibleBottom = visibleTop + list.clientHeight;
+    if (top < visibleTop) list.scrollTop += top - visibleTop;
+    else if (bottom > visibleBottom) list.scrollTop += bottom - visibleBottom;
+  }, [activeSearchSuggestionId, shouldShowSearchSuggestions]);
 
   useEffect(() => {
     if (isSearchFocused) {
@@ -397,6 +412,7 @@ export default function HeaderSearch() {
 
         <div
           id={HEADER_SEARCH_LISTBOX_ID}
+          ref={suggestionListRef}
           className="site-header__search-suggestions"
           role="listbox"
           aria-label="Подсказки поиска по каталогу"
@@ -427,7 +443,7 @@ export default function HeaderSearch() {
                     isActive ? ' site-header__search-suggestion--active' : ''
                   }`}
                   onMouseDown={(event) => event.preventDefault()}
-                  onMouseEnter={() => setActiveSearchSuggestionIndex(index)}
+                  onMouseMove={() => setActiveSearchSuggestionIndex(index)}
                   onClick={() => handleSearchSuggestionSelect(suggestion)}
                 >
                   <span className="site-header__search-suggestion-mark">

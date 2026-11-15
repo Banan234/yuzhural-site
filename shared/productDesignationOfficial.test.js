@@ -146,9 +146,17 @@ describe('official manufacturer decoding', () => {
   });
 
   it('abstains when an importer separated an unsupported suffix from the original mark', () => {
-    const d = buildProductDesignation(product('КММ', 'КММЭф 3х0,35', ['ЭФ']));
+    const d = buildProductDesignation(product('КММ', 'КММЭф 5х0,35', ['ЭФ']));
     expect(d.family).toBeNull();
     expect(d.officialComplete).toBe(false);
+    expect(text(d)).not.toContain('ПВХ');
+  });
+
+  it('uses documented KMM fluoropolymer executions without substituting the PVC base family', () => {
+    const d = buildProductDesignation(product('КММ', 'КММЭф 3х0,35', ['ЭФ']));
+    expect(d.family).toBe('КММЭФ');
+    expect(d.officialComplete).toBe(false);
+    expect(text(d)).toContain('фторопласта');
     expect(text(d)).not.toContain('ПВХ');
   });
 

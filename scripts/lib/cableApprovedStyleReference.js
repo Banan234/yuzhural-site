@@ -1,30 +1,104 @@
-import { isCableReferenceCompatible } from './cableReferenceCompatibility.js';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-const hash=b=>createHash('sha256').update(b).digest('hex');
-/** Rank the entire durable approved library for style transfer, never technical identity reuse. */
-export async function selectApprovedStyleReference(root,target){
- let librarySize=0; const registry=JSON.parse(await fs.readFile(path.join(root,'data/cable-approved-results/registry.json'))), candidates=[];
- for(const e of Object.values(registry.byVisualKey)){
-  if(e.status!=='APPROVED'||e.APPROVED_AS_REFERENCE!==true)continue; librarySize++;
-  const dir=path.resolve(root,e.draftDir);if(!dir.startsWith(path.join(root,'data/cable-approved-results')+path.sep))throw Error('Invalid approved path');
-  const image=await fs.readFile(path.join(dir,'image.png')),approval=JSON.parse(await fs.readFile(path.join(dir,'approval.json'))),group=JSON.parse(await fs.readFile(path.join(dir,'group.json')));
-  if(approval.APPROVED_AS_REFERENCE!==true)continue;
-  if(hash(image)!==e.sha256||approval.status!=='APPROVED'||approval.sha256!==e.sha256||approval.visualKey!==e.visualKey)throw Error('Approved reference integrity mismatch');
-  const p=group.profile; if(!isCableReferenceCompatible(p,target))continue; let score=0;
-  // Family preference applies only within compatible construction layers.
-  const sameLayers=p.armor===target.armor && p.shield===target.shield && !!p.family?.includes('frls')===!!target.family?.includes('frls');
-  if(sameLayers){
-   if(p.family===target.family)score+=60;
-   else if(p.productType===target.productType)score+=8;
+import { isCableReferenceCompatible } from './cableReferenceCompatibility.js';
+import { buildCableTechnicalProfile } from './cableTechnicalProfile.js';
+
+const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+const equal = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+const match = (a, b, fields) => fields.every(field => equal(a[field], b[field]));
+
+function layers(profile) {
+  const contract = buildCableTechnicalProfile(profile);
+  return {
+    innerSheath: contract.innerSheath,
+    outerSheath: contract.outerSheath.status,
+    outerSheathMaterial: profile.technicalConstruction?.outerSheathMaterial ?? profile.outerJacketMaterial ?? null,
+    filling: contract.interstitialFilling,
+    separator: contract.separator ?? profile.technicalConstruction?.separator ?? null,
+    roles: contract.layers.map(layer => layer.role),
+    armorType: contract.armor.type,
+    screenType: contract.screen.type,
+    drain: contract.additionalConductors.length,
+  };
+}
+
+/** Lexicographic priorities keep family preference from outweighing real geometry. */
+export function compareCableReferenceProfile(reference, target) {
+  if (!isCableReferenceCompatible(reference, target)) return null;
+  let referenceLayers;
+  try {
+    referenceLayers = layers(reference);
+  } catch {
+    // An older permission is preserved, but incomplete anatomy cannot guide a new request.
+    return null;
   }
-  // A single-core reference is preferable for single-core anatomy even if a
-  // second reference must supply the common jacket/style separately.
-  if(target.cores===1 && p.cores===1)score+=85;
-for(const [field,weight]of Object.entries({geometry:12,hasOuterJacket:18,conductorMaterial:12,conductorConstruction:18,shield:target.shield ? 60 : 24,armor:20,cores:10,outerJacket:2}))if(p[field]===target[field])score+=weight;
-  const fr=x=>x.family?.includes('frls')||x.specialElements?.some(s=>String(s).includes('fire'));if(fr(p)===fr(target))score+=30;
-  const differences=Object.keys(target).filter(k=>JSON.stringify(target[k])!==JSON.stringify(p[k]));candidates.push({path:path.join(dir,'image.png'),sha256:e.sha256,visualKey:e.visualKey,profile:p,score,differences});
- }
- candidates.sort((a,b)=>b.score-a.score||a.visualKey.localeCompare(b.visualKey));if(!candidates.length)throw Error('No compatible manually APPROVED reference');return{...candidates[0],librarySize, compatibleReferenceCount:candidates.length,ranking:candidates.map(c=>({visualKey:c.visualKey,score:c.score}))};
+  const targetLayers = layers(target);
+  const sameConstruction = match(reference, target, [
+    'productType', 'conductorShape', 'geometry', 'conductorMaterial', 'conductorConstruction',
+  ]);
+  const sameLayout = match(reference, target, ['cores', 'coreLayout', 'pairedGroupSize']);
+  const sameSheaths = match(referenceLayers, targetLayers, ['innerSheath', 'outerSheath', 'outerSheathMaterial', 'filling', 'separator']);
+  const sameLayers = match(referenceLayers, targetLayers, ['roles', 'armorType', 'screenType', 'drain']) &&
+    equal([...(reference.specialElements || [])].sort(), [...(target.specialElements || [])].sort());
+  const sameComposition = reference.visualizationType === target.visualizationType;
+  return {
+    role: sameConstruction && sameLayout && sameSheaths && sameLayers && sameComposition
+      ? 'GEOMETRY_MATCH' : 'STYLE_ONLY',
+    rank: [
+      Number(sameConstruction), Number(sameLayout), Number(sameSheaths), Number(sameLayers),
+      Number(sameComposition), Number(reference.family === target.family),
+      Number(equal(reference.coreColors, target.coreColors)),
+      -Math.abs(reference.cores - target.cores),
+    ],
+  };
+}
+
+function compareCandidates(a, b) {
+  if (a.role !== b.role) return a.role === 'GEOMETRY_MATCH' ? -1 : 1;
+  for (const [index, value] of a.rank.entries()) {
+    if (value !== b.rank[index]) return b.rank[index] - value;
+  }
+  return a.visualKey.localeCompare(b.visualKey);
+}
+
+export async function loadApprovedStyleReferences(root) {
+  const archive = path.join(root, 'data/cable-approved-results');
+  const registry = JSON.parse(await fs.readFile(path.join(archive, 'registry.json')));
+  const archivePath = await fs.realpath(archive);
+  const library = [];
+  for (const entry of Object.values(registry.byVisualKey)) {
+    if (entry.status !== 'APPROVED' || entry.APPROVED_AS_REFERENCE !== true) continue;
+    const dir = await fs.realpath(path.resolve(root, entry.draftDir));
+    if (!dir.startsWith(archivePath + path.sep)) throw Error('Invalid approved path');
+    const [image, approval, group] = await Promise.all([
+      fs.readFile(path.join(dir, 'image.png')),
+      fs.readFile(path.join(dir, 'approval.json')).then(JSON.parse),
+      fs.readFile(path.join(dir, 'group.json')).then(JSON.parse),
+    ]);
+    if (approval.APPROVED_AS_REFERENCE !== true) continue;
+    if (hash(image) !== entry.sha256 || approval.status !== 'APPROVED' ||
+        approval.sha256 !== entry.sha256 || approval.visualKey !== entry.visualKey)
+      throw Error('Approved reference integrity mismatch');
+    library.push({ path: path.join(dir, 'image.png'), sha256: entry.sha256, visualKey: entry.visualKey, profile: group.profile });
+  }
+  return library;
+}
+
+/** Select a permitted supplemental image. Protected style input remains separate. */
+export async function selectApprovedStyleReference(root, target) {
+  const library = await loadApprovedStyleReferences(root);
+  const candidates = [];
+  for (const entry of library) {
+    const comparison = compareCableReferenceProfile(entry.profile, target);
+    if (comparison) candidates.push({ ...entry, ...comparison });
+  }
+  candidates.sort(compareCandidates);
+  if (!candidates.length) throw Error('No compatible manually APPROVED reference');
+  return {
+    ...candidates[0],
+    librarySize: library.length,
+    compatibleReferenceCount: candidates.length,
+    ranking: candidates.map(({ visualKey, role, rank }) => ({ visualKey, role, rank })),
+  };
 }

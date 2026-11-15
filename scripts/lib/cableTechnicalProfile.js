@@ -73,17 +73,19 @@ export function buildCableTechnicalProfile(p) {
         'around-each-conductor-under-individual-insulation')
   )
     fail('unsupported or unknown fire barrier material/placement');
-  const innerSheath = {
-    status:
-      explicit?.innerSheath === false ? 'absent' :
-      explicit?.innerSheath ? 'present' : 'unknown',
-    material: explicit?.innerSheath || null,
-  };
-  if (innerSheath.status === 'present' && typeof innerSheath.material !== 'string')
+  const innerMaterial = explicit?.innerSheath;
+  if (
+    innerMaterial != null &&
+    innerMaterial !== false &&
+    (typeof innerMaterial !== 'string' || !innerMaterial.trim())
+  )
     fail('inner sheath material requires documentation');
+  const innerSheath = {
+    status: innerMaterial === false ? 'absent' : innerMaterial ? 'present' : 'unknown',
+    material: innerMaterial || null,
+  };
 
-  const filling = explicit?.interstitialFilling;
-  const interstitialFilling = filling ?? { status: 'unknown' };
+  const interstitialFilling = explicit?.interstitialFilling ?? { status: 'unknown' };
   if (
     !['present', 'absent', 'unknown'].includes(interstitialFilling.status) ||
     (interstitialFilling.status === 'present' &&
@@ -94,13 +96,14 @@ export function buildCableTechnicalProfile(p) {
         !interstitialFilling.placement.trim()))
   )
     fail('interstitial filling requires documented material and placement');
-  if (interstitialFilling.status !== 'present' &&
-      (interstitialFilling.material || interstitialFilling.placement))
+  if (
+    interstitialFilling.status !== 'present' &&
+    (interstitialFilling.material || interstitialFilling.placement)
+  )
     fail('conflicting interstitial filling details');
+
   const outerSheath = {
-    status:
-      p.hasOuterJacket === true ? 'present' :
-      p.hasOuterJacket === false ? 'absent' : 'unknown',
+    status: p.hasOuterJacket === true ? 'present' : p.hasOuterJacket === false ? 'absent' : 'unknown',
     appearance: p.hasOuterJacket === true ? p.outerJacket || 'catalog polymer' : null,
   };
 
@@ -154,6 +157,13 @@ export function buildCableTechnicalProfile(p) {
       material: interstitialFilling.material,
       placement: interstitialFilling.placement,
     });
+  const separator = explicit?.separator || null;
+  if (separator)
+    layers.push({
+      role: 'separator',
+      scope: 'documented-interface-only',
+      appearance: separator,
+    });
   layers.push({ role: 'individual-insulation', scope: 'each-core' });
   if (fire)
     layers.push({
@@ -173,6 +183,7 @@ export function buildCableTechnicalProfile(p) {
     coreMetalEndCount: p.cores,
     conductorMaterial: p.conductorMaterial,
     conductorConstruction: p.conductorConstruction,
+    conductorShape: p.conductorShape ?? null,
     armor: { present: p.armor, type: p.armorType || null },
     screen: { present: p.shield, type: screenType },
     screenVisualStandard: p.shield ? screenVisualStandard : null,
@@ -201,6 +212,7 @@ export function buildCableTechnicalProfile(p) {
       relativeDiameter: 1,
     })),
     innerSheath,
+    separator,
     interstitialFilling,
     outerSheath,
     verification: {
@@ -226,5 +238,5 @@ function sheathAndFillingPrompt(t) {
 }
 
 export function technicalProfilePrompt(t) {
-  return `STYLE INPUT ONLY: the attached PNG is NOT a technical drawing of this cable. It supplies camera, scale, composition, tilt, lighting and render quality ONLY. Discard its internal geometry completely and rebuild the target core assembly from the following construction contract. Do not mechanically add or remove a reference wire. Technical contract overrides reference anatomy. EXACTLY ${t.insulatedCoreCount} insulated cores and EXACTLY ${t.coreMetalEndCount} corresponding exposed core ends. One-to-one numbered core/end mapping; every end must be individually visible and centered in its own insulation. No extra core, hidden stub, duplicate end, cap or dummy cylinder. ${t.armor.present ? 'Use ONLY the specified armor.' : 'ABSOLUTELY NO ARMOR: no overlapping steel tapes, no steel wires, even if visible in reference.'} ${t.screen.present ? 'SCREEN serves electromagnetic shielding; ARMOR serves mechanical protection. UNIVERSAL SYMBOLIC SCREEN: render ONE thin flexible SILVER metallic foil-like layer with a fine clearly legible CROSSHATCH MESH texture of crossing lines. Combine delicate continuous foil with fine woven-wire-like texture. The mesh must be visible, never coarse. Silver like aluminium or tinned copper is a VISUAL CONVENTION, not the actual manufacturer material. Technical screen type/material in metadata MUST NOT override this visual convention. No copper-coloured screen, no thick spiral tape, broad strips, raised armor seams or rigid cylinder. Place beneath outer protection around the inner assembly. If armor is present show TWO separate layers: inner silver fine-mesh screen and outer documented mechanical armor. Keep core metal materials, colors, mica barriers, count, scale and composition unchanged. Never infer screen or armor from the style PNG.' : 'NO SCREEN and NO DRAIN wire.'} ${t.fireBarrier ? 'MANDATORY VISIBLE MICA STRIPPING STEP on EVERY core: bare metal tip -> short exposed thin pale mica-containing tape winding directly around metal -> colored insulation. Render a short axially exposed segment of actual fine tape texture between bare metal and insulation, not merely a flat pale end ring. Keep overall stripping length and scale; distribute this short step within that length. Mica is under insulation, never a common outer silver sleeve, armor or screen.' : 'NO fire barrier.'} ${t.additionalConductors.length ? 'Exactly ONE documented thin bare screen drain separately beside the screen; NOT an insulated core, NOT an extra full-size core end.' : 'NO additional conductors and NO drain wire; do not copy the previous draft drain.'} Layer roles are explicit: do not invent bedding/filler/tape layers from the PNG. ${sheathAndFillingPrompt(t)} Preserve overall reference envelope and scale while rebuilding internal geometry. Construction contract: ${JSON.stringify(t)}. Before rendering verify a bijection of all insulated cores and their metal ends; after rendering the result still requires independent pixel/manual verification.`;
+  return `PROTECTED STYLE INPUT 1 ONLY: the first PNG supplies camera, scale, outer framing, lighting and render quality. Do not transfer its internal geometry. Rebuild the target core assembly from the construction contract. If a compatible geometry input is explicitly identified below, use it for the spatial arrangement only. Do not mechanically add or remove a reference wire. Technical contract overrides reference anatomy. EXACTLY ${t.insulatedCoreCount} insulated cores and EXACTLY ${t.coreMetalEndCount} corresponding exposed core ends. One-to-one numbered core/end mapping; every end must be individually visible and centered in its own insulation. No extra core, hidden stub, duplicate end, cap or dummy cylinder. ${t.armor.present ? 'Use ONLY the specified armor.' : 'ABSOLUTELY NO ARMOR: no overlapping steel tapes, no steel wires, even if visible in reference.'} ${t.screen.present ? 'SCREEN serves electromagnetic shielding; ARMOR serves mechanical protection. UNIVERSAL SYMBOLIC SCREEN: render ONE thin flexible SILVER metallic foil-like layer with a fine clearly legible CROSSHATCH MESH texture of crossing lines. Combine delicate continuous foil with fine woven-wire-like texture. The mesh must be visible, never coarse. Silver like aluminium or tinned copper is a VISUAL CONVENTION, not the actual manufacturer material. Technical screen type/material in metadata MUST NOT override this visual convention. No copper-coloured screen, no thick spiral tape, broad strips, raised armor seams or rigid cylinder. Place beneath outer protection around the inner assembly. If armor is present show TWO separate layers: inner silver fine-mesh screen and outer documented mechanical armor. Keep core metal materials, colors, mica barriers, count, scale and composition unchanged. Never infer screen or armor from the style PNG.' : 'NO SCREEN and NO DRAIN wire.'} ${t.fireBarrier ? 'MANDATORY VISIBLE MICA STRIPPING STEP on EVERY core: bare metal tip -> short exposed thin pale mica-containing tape winding directly around metal -> colored insulation. Render a short axially exposed segment of actual fine tape texture between bare metal and insulation, not merely a flat pale end ring. Keep overall stripping length and scale; distribute this short step within that length. Mica is under insulation, never a common outer silver sleeve, armor or screen.' : 'NO fire barrier.'} ${t.additionalConductors.length ? 'Exactly ONE documented thin bare screen drain separately beside the screen; NOT an insulated core, NOT an extra full-size core end.' : 'NO additional conductors and NO drain wire; do not copy the previous draft drain.'} Layer roles are explicit: do not invent bedding/filler/tape layers from the PNG. ${sheathAndFillingPrompt(t)} Preserve overall reference envelope and scale while rebuilding internal geometry. Construction contract: ${JSON.stringify(t)}. Before rendering verify a bijection of all insulated cores and their metal ends; after rendering the result still requires independent pixel/manual verification.`;
 }

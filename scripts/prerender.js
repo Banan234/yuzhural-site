@@ -66,6 +66,11 @@ import {
 import { buildMarkIndex } from '../shared/markIndex.js';
 import { getFeaturedProducts } from '../shared/featuredProducts.js';
 import { buildProductDesignationHtml } from '../shared/productDesignationHtml.js';
+import { buildProductDesignation } from '../shared/productDesignation.js';
+import {
+  getBuyerDesignation,
+  getProductDescriptionBlocks,
+} from '../shared/productBuyerContent.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -984,13 +989,22 @@ export function buildProductBodyShell(product) {
 }
 
 export function buildCompactProductBodyShell(product) {
-  const description = buildProductMetaDescription(product);
+  const { description, sections } = getProductDescriptionBlocks(product);
+  const decoded = getBuyerDesignation(
+    product.designationDecoded || buildProductDesignation(product)
+  );
   const heading =
     product.title || product.fullName || product.name || product.mark || '';
+  const content = [
+    description && `<p>${escapeHtml(description)}</p>`,
+    ...sections.map(
+      ([label, text]) => `<h3>${escapeHtml(label)}</h3><p>${escapeHtml(text)}</p>`
+    ),
+  ].filter(Boolean).join('');
 
   return `<div class="prerender-only"><h1>${escapeHtml(
     heading
-  )}</h1><p>${escapeHtml(description)}</p>${buildProductDesignationHtml(product, { decoded: product.designationDecoded })}</div>`;
+  )}</h1>${content ? `<section><h2>Описание</h2>${content}</section>` : ''}${decoded ? buildProductDesignationHtml(product, { decoded }) : ''}</div>`;
 }
 
 export function buildStaticBodyShell(route) {
@@ -1770,14 +1784,10 @@ export async function prerenderProducts(
         }
       : product;
     const productImage = getProductImage(product);
-    const productWithImage = prepareProductDetail({
-      ...groupedProduct,
-      image: productImage,
-      shortDescription:
-        groupedProduct.shortDescription ||
-        buildShortDescription(groupedProduct),
-      specs: groupedProduct.specs || buildSpecs(groupedProduct),
-    }, productImage);
+    const productWithImage = prepareProductDetail(
+      { ...groupedProduct, image: productImage },
+      productImage
+    );
     const canonical = absoluteUrl(`/product/${productWithImage.slug}`);
     const productLabel = buildProductMetaTitle(productWithImage, {
       disambiguate:

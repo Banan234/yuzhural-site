@@ -14,7 +14,7 @@ function setup() {
 }
 
 describe('HomeHeroCarousel', () => {
-  it('автоматически переключается через шесть секунд и приостанавливается при наведении', () => {
+  it('автоматически переключается через шесть секунд даже при наведении', () => {
     vi.useFakeTimers();
     const view = setup();
     try {
@@ -22,17 +22,16 @@ describe('HomeHeroCarousel', () => {
       const counter = () =>
         document.querySelector('.home-concept__hero-counter').textContent;
       act(() => vi.advanceTimersByTime(5999));
-      expect(counter()).toContain('01 / 03');
+      expect(counter()).toContain('01 / 04');
       act(() => vi.advanceTimersByTime(1));
-      expect(counter()).toContain('02 / 03');
+      expect(counter()).toContain('02 / 04');
       fireEvent.mouseEnter(hero);
-      act(() => vi.advanceTimersByTime(12000));
-      expect(counter()).toContain('02 / 03');
-      fireEvent.mouseLeave(hero);
       act(() => vi.advanceTimersByTime(6000));
-      expect(counter()).toContain('03 / 03');
+      expect(counter()).toContain('03 / 04');
       act(() => vi.advanceTimersByTime(6000));
-      expect(counter()).toContain('01 / 03');
+      expect(counter()).toContain('04 / 04');
+      act(() => vi.advanceTimersByTime(6000));
+      expect(counter()).toContain('01 / 04');
     } finally {
       view.unmount();
       vi.useRealTimers();
@@ -82,7 +81,7 @@ describe('HomeHeroCarousel', () => {
     ).toHaveAttribute('aria-current', 'true');
     expect(
       document.querySelectorAll('.home-concept__hero-slide[inert]')
-    ).toHaveLength(2);
+    ).toHaveLength(3);
   });
   it('поддерживает клавиатуру без перехвата сочетаний с модификаторами', () => {
     setup();

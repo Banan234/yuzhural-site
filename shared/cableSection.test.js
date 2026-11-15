@@ -90,4 +90,53 @@ describe('section selection', () => {
     expect(r.selected).toBeNull();
     expect(r.rows).toHaveLength(12);
   });
+  it('считает ток по кВА и по мощности на валу для обеих сетей', () => {
+    for (const [phases, voltage, phaseFactor] of [
+      ['1', '230', 1],
+      ['3', '400', Math.sqrt(3)],
+    ]) {
+      const settings = { ...base, phases, voltage, cosPhi: '0,8', load: '10' };
+      const apparent = calculateCableSection({
+        ...settings,
+        loadMode: 'apparent',
+      });
+      expect(apparent.current).toBeCloseTo(
+        10000 / (phaseFactor * Number(voltage))
+      );
+      const motor = calculateCableSection({
+        ...settings,
+        loadMode: 'motor',
+        efficiencyPercent: '92,5',
+      });
+      expect(motor.current).toBeCloseTo(
+        10000 / (phaseFactor * Number(voltage) * 0.8 * 0.925)
+      );
+    }
+    for (const efficiencyPercent of ['', '0', '100,1', '1e-320']) {
+      expect(
+        calculateCableSection({ ...base, loadMode: 'motor', efficiencyPercent })
+          .errors.efficiencyPercent
+      ).toBeTruthy();
+    }
+  });
+  it('применяет таблицу В.52.18 по зазору и числу цепей D2', () => {
+    const group = { ...base, method: 'D2', temperature: '20', circuits: '3' };
+    expect(calculateCableSection(group).errors.directBurialGap).toBeTruthy();
+    const spaced = { ...group, directBurialGap: '0.25' };
+    expect(calculateCableSection(spaced).rows[0].ampacity).toBeCloseTo(
+      22 * 0.8
+    );
+    expect(
+      calculateCableSection({ ...spaced, directBurialGap: 'touching' })
+        .groupingFactor
+    ).toBe(0.65);
+    expect(
+      calculateCableSection({ ...spaced, soilResistivity: '3' }).errors
+        .soilResistivity
+    ).toBeTruthy();
+    expect(
+      calculateCableSection({ ...base, method: 'B2', circuits: '20' })
+        .groupingFactor
+    ).toBe(0.38);
+  });
 });
