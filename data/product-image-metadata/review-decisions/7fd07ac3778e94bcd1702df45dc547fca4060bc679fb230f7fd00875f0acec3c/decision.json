@@ -1,0 +1,18 @@
+{
+  "decision": {
+    "sha256": "7fd07ac3778e94bcd1702df45dc547fca4060bc679fb230f7fd00875f0acec3c",
+    "sku": "YU-0001159",
+    "disposition": "NEEDS_CORRECTION",
+    "note": "Слишком длинные и неравномерно расположенные участки изоляции. Состав конструкции сохранить.",
+    "reviewer": "Пользователь · решения по партии ВВГ",
+    "status": "NEEDS_REVIEW",
+    "APPROVED_FOR_CATALOG": false,
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "vvgng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-d35f14de582e6319",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-15T16:55:00.546Z"
+  },
+  "claimKey": "a14a0674cf1e684c7ee50ef55a3ed11ce40ffb735a279eb3f97d5fa916c64ba0",
+  "originalDraft": "outputs/cable-vvg-typical-2026-11-15/drafts/477916a2708d55e5ef7c0226d5c0503da3b4b86ed6ae6ed3bab138db4d1e915e",
+  "previous": []
+}

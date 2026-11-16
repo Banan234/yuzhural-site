@@ -1,22 +1,30 @@
+import { cableSharedVisualKey, cableReusableConstructionKey, CABLE_SHARED_VISUAL_REUSE, cableVisibleConstructionKey, CABLE_VISUAL_GROUP_REUSE, cableSchematicSignature, CABLE_SCHEMATIC_REUSE } from './cableReferenceCompatibility.js';
+import { cableReviewCheckAccepted } from './cableIllustrationDefects.js';
+import { blocksCableCatalogAssignment } from './cableReviewPolicy.js';
+import { cableIllustrationDefects } from './cableIllustrationDefects.js';
+import { CATALOG_CABLE_VERSION, readCableCatalogProfile, requireCableCatalogProfile } from './cableCatalogProfile.js';
+import { persistCableReviewDecision } from './cableReviewDecisions.js';
+import { cableGenerationClaimKey } from './cableGenerationClaims.js';
+import { assertCableIllustrationPrompt, cableIllustrationRulesHash, selectCableIllustrationRules } from './cableIllustrationRules.js';
+import { vvgCutHold, vvgCutQuality } from './cableVvgCutQuality.js';
 import {
+  approvedCableVerificationContext,
   archiveApprovedCableResult,
   findApprovedCableResult,
 } from './cableApprovedResults.js';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { cableFamilyScope } from './cableVisualClassification.js';
 import { createHash } from 'node:crypto';
-import {
-  loadCableImageStyle,
-  prepareCableStyleRequest,
-  generateCableStyleDraft,
-} from './cableImageStyle.js';
+import { loadCableImageStyle } from './cableImageStyle.js';
 import { validateCableImagePng } from './cableImagePng.js';
 import { PNG } from 'pngjs';
 import { buildCableTechnicalProfile } from './cableTechnicalProfile.js';
-import { inspectMulticoreComposition, multicoreCompositionReviewChecks } from './cableMulticoreComposition.js';
-import { CABLE_STYLE_REVIEW_CHECKS } from './cableCoreGeometry.js';
-import { classifyPracticalCableVisualProduct } from './familyVisualRules.js';
-import { approvedCableImagePath, getCatalogPhoto, getGeneratedProductImage } from '../../shared/productImages.js';
+import { deriveMulticoreComposition, inspectMulticoreComposition, multicoreCompositionReviewChecks } from './cableMulticoreComposition.js';
+import { CABLE_FRAME_REVIEW_CHECKS, CABLE_STYLE_REVIEW_CHECKS } from './cableCoreGeometry.js';
+import { getVvgIllustrationSignature, VVG_TYPICAL_ILLUSTRATION } from './cableVvgIllustration.js';
+import { approvedCableImagePath, getGeneratedProductImage } from '../../shared/productImages.js';
+import { imageDisposition } from './cableSkuImageFacts.js';
 import { acquirePriceImportLock } from './importLock.js';
 import { commitArtifactBatch } from './artifactTransaction.js';
 import { rebuildCatalogImagePages } from './rebuildCatalogImagePages.js';
@@ -42,425 +50,69 @@ const atomic = async (file, value) => {
   await fs.writeFile(temp, JSON.stringify(value, null, 2) + '\n');
   await fs.rename(temp, file);
 };
-const normalized = (s) =>
-  String(s || '')
-    .replace(/\s+/gu, ' ')
-    .trim();
-/** A known generated binding is replaceable; unknown/manual provenance is protected. */
-export function imageDisposition(product, visible, binding, overrides = {}) {
-  const names = [
-    product.name,
-    product.sourceName,
-    product.fullName,
-    visible?.title,
-    visible?.name,
-  ].map(normalized);
-  const explicit =
-    Object.entries(overrides.overrides || {}).some(
-      ([name, value]) => getCatalogPhoto(value?.image) && names.includes(normalized(name))
-    ) ||
-    (overrides.matchers || []).some(
-      (m) =>
-        getCatalogPhoto(m.image) &&
-        normalized(m.mark).replaceAll(' ', '').toUpperCase() ===
-          normalized(product.mark).replaceAll(' ', '').toUpperCase()
-    );
-  if (explicit || getCatalogPhoto(product.image))
-    return { protected: true, reason: 'manual/raw image override' };
-  if (binding && binding.kind !== 'generated-illustration')
-    return {
-      protected: true,
-      reason: 'binding provenance is not generated illustration',
-    };
-  const image = visible?.image || product.image || '';
-  if (
-    getCatalogPhoto(image) &&
-    !(binding?.kind === 'generated-illustration' && binding.image === image)
-  )
-    return {
-      protected: true,
-      reason: 'visible image has manual/unknown provenance',
-    };
-  return {
-    protected: false,
-    image: image || null,
-    oldGenerated: binding?.kind === 'generated-illustration' ? binding : null,
-  };
-}
-export async function planCableStyleBatch({
-  root,
-  products,
-  visibleProducts,
-  bindings,
-  overrides,
-  context,
-  cacheDir,
-}) {
-  const style = await loadCableImageStyle(root),
-    visible = new Map(visibleProducts.map((p) => [p.sku, p])),
-    groups = new Map(),
-    rows = [];
-  const bySku = new Map(products.map(product => [product.sku, product]));
-  for (const p of products) {
-    const classified = classifyPracticalCableVisualProduct(p, context),
-      disposition = imageDisposition(
-        p,
-        visible.get(p.sku),
-        bindings.bySku?.[p.sku],
-        overrides
-      );
-    let reason = null,
-      request = null;
-    if (
-      classified.visualClassification !== 'AUTO_APPROVED' ||
-      classified.visualization.visualizationType === 'NEEDS_REVIEW'
-    )
-      reason =
-        classified.issues.map((i) => i.message).join('; ') ||
-        classified.visualization.reasons.map((i) => i.message).join('; ');
-    const row = {
-      sku: p.sku,
-      name: p.name,
-      sourceName: p.sourceName,
-      id: p.id,
-      slug: p.slug,
-      section: p.crossSection,
-      primaryCores: p.cores,
-      visualKey: classified.visualKey,
-      visualizationType: classified.visualProfile.visualizationType,
-      productHash: digest(p),
-      oldBinding: bindings.bySku?.[p.sku] || null,
-      disposition,
-      reason,
-    };
-    let g = groups.get(row.visualKey);
-    if (!g) {
-      g = {
-        visualKey: row.visualKey,
-        profile: classified.visualProfile,
-        members: [],
-        eligibleSkus: [],
-        status: 'NEEDS_REVIEW',
-        reasons: [],
-        request: null,
-      };
-      groups.set(row.visualKey, g);
-    }
-    if (!reason && !disposition.protected) {
-      try {
-        request =
-          g.request ||
-          (await prepareCableStyleRequest(root, classified.visualProfile));
-      } catch (e) {
-        reason = e.message;
-      }
-    }
-    row.reason = reason;
-    row.status = disposition.protected
-      ? 'PROTECTED'
-      : reason
-        ? 'NEEDS_REVIEW'
-        : disposition.oldGenerated
-          ? 'REPLACE_LEGACY'
-          : 'GENERATE_MISSING';
-    g.members.push(row);
-    if (reason) g.reasons.push(reason);
-    if (!reason && !disposition.protected) {
-      g.eligibleSkus.push(p.sku);
-      g.request = request;
-      g.status = 'READY';
-    }
-    rows.push(row);
-  }
-  const batch = [...groups.values()];
-  for (const g of batch) {
-    g.reasons = [...new Set(g.reasons)];
-    g.profileHash = digest(g.profile);
-    g.draftKey = digest({
-      visualKey: g.visualKey,
-      standard: style.version,
-      request: g.request?.prompt,
-      reference: g.request?.reference.sha256,
-      referenceInputs: g.request?.referenceInputs,
-    });
-    if (g.status === 'READY') {
-      const approved = await findApprovedCableResult({
-        root,
-        visualKey: g.visualKey,
-        profile: g.profile,
-        request: g.request,
-      });
-      if (approved) {
-        g.status = 'APPROVED_DRAFT_NOT_PUBLISHED';
-        g.approvedDraftDir = approved.absoluteDraftDir;
-        g.approvedSha256 = approved.sha256;
-        const registry = { byVisualKey: { [g.visualKey]: approved } };
-        for (const member of g.members) {
-          const product = bySku.get(member.sku);
-          const image = getGeneratedProductImage(product, bindings, registry);
-          if (!image) continue;
-          const bytes = await fs.readFile(path.join(root, 'public', image.slice(1))).catch(error => {
-            if (error.code === 'ENOENT') return null;
-            throw error;
-          });
-          if (bytes && digest(bytes) === approved.sha256) {
-            g.status = 'EXISTING_STANDARD_APPROVED';
-            g.approvedImage = image;
-            break;
-          }
-        }
-      }
-    }
-    if (g.status === 'READY' && g.request.referenceStatus === 'NEEDS_APPROVED_GEOMETRY_REFERENCE') {
-      g.status = 'NEEDS_TECHNICAL_REVIEW';
-      g.eligibleSkus = [];
-      g.reasons.push('no-approved-compatible-multicore-geometry-reference');
-    }
-    if (g.status === 'READY' && cacheDir) {
-      const record = await optional(
-        path.join(cacheDir, g.draftKey, 'review.json')
-      );
-      const claim = await optional(
-        path.join(cacheDir, g.draftKey, 'request.json')
-      );
-      let image;
-      try {
-        image = await fs.readFile(path.join(cacheDir, g.draftKey, 'image.png'));
-      } catch (e) {
-        if (e.code !== 'ENOENT') throw e;
-      }
-      if (image) {
-        try {
-          validateCableImagePng(image, {
-            background: 'transparent',
-            composition: { rightEdgeCrop: false },
-          });
-          const approval = await optional(
-            path.join(cacheDir, g.draftKey, 'approval.json')
-          );
-          const manuallyApproved =
-            approval?.status === 'APPROVED' &&
-            approval.standardVersion === style.version &&
-            approval.visualKey === g.visualKey &&
-            approval.sha256 === digest(image) &&
-            approval.reviewer &&
-            CABLE_STYLE_REVIEW_CHECKS.every(
-              (k) => approval.checks?.[k] === true
-            );
-          g.status = manuallyApproved
-            ? 'APPROVED_DRAFT_NOT_PUBLISHED'
-            : 'CACHED_NEEDS_REVIEW';
-          g.cachedSha256 = digest(image);
-        } catch {
-          g.status = 'FAILED_CACHED';
-        }
-      } else if (record || claim)
-        g.status =
-          record?.status === 'FAILED'
-            ? 'FAILED_CACHED'
-            : 'REQUEST_OUTCOME_UNKNOWN';
-    }
-  }
-  const ready = batch.filter((g) => g.status === 'READY');
-  const buckets = [
-    'SIMPLE',
-    'MULTICORE',
-    'LAYERED',
-    'MULTICORE + LAYERED',
-    'NEEDS_REVIEW',
-  ].map((type) => ({
-    type,
-    products: rows.filter((r) => r.visualizationType === type).length,
-    visualKeys: batch.filter((g) => g.profile.visualizationType === type)
-      .length,
-    readyRequests: ready.filter((g) => g.profile.visualizationType === type)
-      .length,
-  }));
-  const summary = {
-    products: products.length,
-    visualKeys: batch.length,
-    types: buckets,
-    needsReviewProducts: rows.filter((r) => r.status === 'NEEDS_REVIEW').length,
-    protectedProducts: rows.filter((r) => r.status === 'PROTECTED').length,
-    eligibleProducts: rows.filter((r) =>
-      ['GENERATE_MISSING', 'REPLACE_LEGACY'].includes(r.status)
-    ).length,
-    legacyReplacementProducts: rows.filter((r) => r.status === 'REPLACE_LEGACY')
-      .length,
-    missingProducts: rows.filter((r) => r.status === 'GENERATE_MISSING').length,
-    existingGeneratedBindings: products.filter(
-      (p) => bindings.bySku?.[p.sku]?.kind === 'generated-illustration'
-    ).length,
-    existingGeneratedImages: new Set(
-      products.flatMap((p) =>
-        bindings.bySku?.[p.sku]?.kind === 'generated-illustration'
-          ? [bindings.bySku[p.sku].image]
-          : []
-      )
-    ).size,
-    readyVisualKeys: ready.length,
-    replacementVisualKeys: ready.filter((g) =>
-      g.members.some((r) => r.status === 'REPLACE_LEGACY')
-    ).length,
-    missingVisualKeys: ready.filter((g) =>
-      g.members.some((r) => r.status === 'GENERATE_MISSING')
-    ).length,
-    existingStandardApprovedVisualKeys: batch.filter(
-      (g) => g.status === 'EXISTING_STANDARD_APPROVED'
-    ).length,
-    cachedVisualKeys: batch.filter((g) => g.status === 'CACHED_NEEDS_REVIEW')
-      .length,
-    expectedPaidRequests: ready.length,
-    apiRequestsPerformed: 0,
-  };
-  return {
-    schemaVersion: 1,
-    groupingVersion: 'core-layout-v2',
-    standardVersion: style.version,
-    createdAt: new Date().toISOString(),
-    catalogHash: digest(products),
-    planId: digest({
-      catalog: products,
-      standard: style.version,
-      groups: batch.map((g) => ({
-        key: g.visualKey,
-        draftKey: g.draftKey,
-        skus: g.eligibleSkus,
-      })),
-    }),
-    summary,
-    groups: batch,
-    rows,
-  };
-}
-/** Sequential, explicit execution only. Cache/claims are never charged twice. */
-export async function runCableStyleBatch({
-  root,
-  plan,
-  cacheDir,
-  env,
-  providerFactory,
-}) {
-  const style = await loadCableImageStyle(root);
-  if (plan.standardVersion !== style.version)
-    throw Error(
-      'Style version changed: refresh dry-run; do not reuse prior generation approval'
-    );
-  if (plan.groupingVersion !== 'core-layout-v2')
-    throw Error('Obsolete grouping: refresh dry-run before generation');
-  const live = await read(
-    path.join(root, 'data/catalog-current/products.json')
-  );
-  if (digest(live) !== plan.catalogHash)
-    throw Error('Catalogue changed: refresh dry-run');
-  await fs.mkdir(cacheDir, { recursive: true });
-  const lock = await fs.open(path.join(cacheDir, '.batch.lock'), 'wx');
-  try {
-    const results = [];
-    for (const g of plan.groups.filter(
-      (g) =>
-        g.eligibleSkus.length &&
-        ![
-          'EXISTING_STANDARD_APPROVED',
-          'APPROVED_DRAFT_NOT_PUBLISHED',
-        ].includes(g.status)
-    )) {
-      const freshRequest = await prepareCableStyleRequest(root, g.profile);
-      const approved = await findApprovedCableResult({
-        root,
-        visualKey: g.visualKey,
-        profile: g.profile,
-        request: freshRequest,
-      });
-      if (approved) {
-        results.push({
-          visualKey: g.visualKey,
-          status: 'APPROVED_DRAFT_NOT_PUBLISHED',
-          approvedDraftDir: approved.absoluteDraftDir,
-          cache: true,
-        });
-        continue;
-      }
-      const dir = path.join(cacheDir, g.draftKey);
-      let result;
-      try {
-        let image;
-        try {
-          image = await fs.readFile(path.join(dir, 'image.png'));
-        } catch (e) {
-          if (e.code !== 'ENOENT') throw e;
-        }
-        if (image) {
-          const validation = validateCableImagePng(image, {
-            background: 'transparent',
-            composition: freshRequest.config.composition,
-          });
-          result = { status: 'NEEDS_REVIEW', cache: true, validation, compositionCheck: validation.compositionCheck };
-        } else if (await optional(path.join(dir, 'request.json'))) {
-          result = {
-            status: 'REQUEST_OUTCOME_UNKNOWN',
-            cache: true,
-            reason: 'Request already claimed; no automatic retry/payment',
-          };
-        } else {
-          const currentRequest = await prepareCableStyleRequest(
-            root,
-            g.profile
-          );
-          if (currentRequest.prompt !== g.request?.prompt ||
-              digest(currentRequest.referenceInputs) !== digest(g.request?.referenceInputs || []))
-            throw Error(
-              'Stale construction contract: refresh dry-run before API'
-            );
-          result = await generateCableStyleDraft({
-            root,
-            profile: g.profile,
-            visualKey: g.visualKey,
-            outputDir: dir,
-            env,
-            providerFactory,
-          });
-        }
-      } catch (e) {
-        result = { status: 'FAILED', reason: e.message };
-      }
-      await fs.mkdir(dir, { recursive: true });
-      const record = {
-        ...result,
-        visualKey: g.visualKey,
-        draftKey: g.draftKey,
-        profile: g.profile,
-        geometryRequirements: g.request?.geometryRequirements,
-        geometryCheck: {
-          status: 'NEEDS_REVIEW',
-          pixelVerification: 'NOT_AUTOMATED',
-        },
-        members: g.members.filter((r) => g.eligibleSkus.includes(r.sku)),
-        standardVersion: plan.standardVersion,
-      };
-      await atomic(path.join(dir, 'group.json'), record);
-      results.push(record);
-      await atomic(path.join(cacheDir, 'batch-report.json'), {
-        planId: plan.planId,
-        results,
-      });
-    }
-    return results;
-  } finally {
-    await lock.close();
-    await fs.unlink(path.join(cacheDir, '.batch.lock'));
-  }
+export function cableStyleReviewRequirements(group, request) {
+  const historicalTargetedEdit = Boolean(request?.editTarget);
+  const composition = deriveMulticoreComposition(group.profile, { historicalTargetedEdit });
+  const technical = buildCableTechnicalProfile(group.profile);
+  const activeRules = selectCableIllustrationRules(group.profile, technical, { editTarget: historicalTargetedEdit });
+  const required = [...new Set([
+    ...CABLE_STYLE_REVIEW_CHECKS, ...CABLE_FRAME_REVIEW_CHECKS,
+    ...(vvgCutQuality(group.profile, technical)?.checks ?? []),
+    ...multicoreCompositionReviewChecks(composition),
+    ...(request?.cutRevision?.version === 'vvg-review-revision-1' ? ['targetAnatomyPreserved'] : []),
+    ...(request?.coreArrangement?.id === 'five-perimeter' ? ['fivePerimeterAllCoresInsideJacket'] : []),
+    ...activeRules.flatMap(rule => rule.review ?? []),
+  ])];
+  return { composition, technical, activeRules, required };
 }
 /** Explicit review only; no binding. Exact PNG hash, reviewer and checks required. */
-export async function recordCableStyleReview({ root, draftDir, decision }) {
+export async function recordCableStyleReview({ root, draftDir, decision, verifyOnly = false }) {
   const style = await loadCableImageStyle(root);
   const group = await read(path.join(draftDir, 'group.json')),
     image = await fs.readFile(path.join(draftDir, 'image.png'));
-  validateCableImagePng(image, {
-    background: 'transparent',
-    composition: { rightEdgeCrop: false },
+  const actualRoot = await fs.realpath(root);
+  const actualDraft = await fs.realpath(draftDir);
+  const allowedRoots = ['outputs', 'data/product-image-metadata/review-decisions'];
+  if (!allowedRoots.some(folder => actualDraft.startsWith(path.join(actualRoot, folder) + path.sep)))
+    throw Error('Review must target a draft or a durable review copy');
+  if (group.status === 'APPROVED' && decision.status !== 'APPROVED')
+    throw Error('Approved decisions require the separate withdrawal procedure');
+  const request = await optional(path.join(draftDir, 'request.json'));
+  if (decision.status === 'APPROVED' && (request?.catalogSource?.version === CATALOG_CABLE_VERSION ||
+      group.profile.technicalConstruction?.source === CATALOG_CABLE_VERSION)) {
+    if (!group.members?.length) throw Error('Catalog draft has no SKU identity');
+    for (const { sku } of group.members) {
+      const catalog = await requireCableCatalogProfile(root, sku);
+      if (catalog.visualKey !== group.visualKey || digest(catalog.profile) !== digest(group.profile)) {
+        const construction = group.visibleConstructionGroup && cableReusableConstructionKey(group.profile);
+        if (!construction || cableReusableConstructionKey(catalog.profile) !== construction)
+          throw Error('Catalog changed after draft generation: ' + sku);
+      }
+    }
+  }
+  const composition = deriveMulticoreComposition(group.profile, {
+    historicalTargetedEdit: Boolean(request?.editTarget),
   });
-  const required = [...CABLE_STYLE_REVIEW_CHECKS, ...multicoreCompositionReviewChecks(group.multicoreComposition)];
+  const validation = validateCableImagePng(image, {
+    background: decision.status === 'APPROVED' ? 'transparent' : undefined,
+    composition: { rightEdgeCrop: true },
+  });
+  if (decision.status === 'APPROVED' && vvgCutHold(validation.sha256))
+    throw Error('VVG source has an open cut-quality correction');
+  const compositionChecks = multicoreCompositionReviewChecks(composition);
+  const { activeRules, required } = decision.status === 'APPROVED'
+    ? cableStyleReviewRequirements(group, request) : { activeRules: [], required: [] };
+  if (request?.ruleTrace && decision.status === 'APPROVED') {
+    if (request.ruleTrace.sha256 !== cableIllustrationRulesHash ||
+        digest(request.ruleTrace.ids) !== digest(activeRules.map(rule => rule.id)))
+      throw Error('Draft rule trace differs from the active standard');
+    assertCableIllustrationPrompt(activeRules, request.prompt);
+  }
+  if (decision.status === 'APPROVED' &&
+      (!validation.bounds || !validation.has_transparency ||
+        (request && (digest(request.profile) !== digest(group.profile) ||
+          request.standardVersion !== group.standardVersion))))
+    throw Error('Draft pixels or request profile do not support approval');
   if (group.standardVersion !== style.version && decision.status === 'APPROVED')
     throw Error(
       'Draft uses an older style standard; cannot approve under current geometry rules'
@@ -468,20 +120,16 @@ export async function recordCableStyleReview({ root, draftDir, decision }) {
   if (
     decision.sha256 !== digest(image) ||
     !decision.reviewer ||
-    !['APPROVED', 'REJECTED'].includes(decision.status)
+    !['APPROVED', 'REJECTED', 'NEEDS_REVIEW'].includes(decision.status)
   )
     throw Error('Review requires exact PNG hash, reviewer and decision');
   if (
     decision.status === 'APPROVED' &&
-    !required.every((k) => decision.checks?.[k] === true)
+    !required.every(k => cableReviewCheckAccepted(decision, k))
   )
     throw Error('All manual checks must pass before approval');
   let pixelReview;
-  if (decision.status === 'APPROVED' && multicoreCompositionReviewChecks(group.multicoreComposition).length) {
-    const validation = validateCableImagePng(image, {
-      background: 'transparent',
-      composition: { rightEdgeCrop: true },
-    });
+  if (decision.status === 'APPROVED' && compositionChecks.length) {
     pixelReview = inspectMulticoreComposition(
       PNG.sync.read(image), validation, group.profile,
       buildCableTechnicalProfile(group.profile), decision.observations
@@ -489,30 +137,49 @@ export async function recordCableStyleReview({ root, draftDir, decision }) {
     if (pixelReview.findings.length || pixelReview.missing.length)
       throw Error('Multicore verification incomplete: ' + [...pixelReview.findings, ...pixelReview.missing].join(', '));
   }
+  const linkedDefects = cableIllustrationDefects.filter(defect =>
+    defect.observedSha256?.includes(decision.sha256) ||
+    defect.hold?.some(item => item.sha256 === decision.sha256) ||
+    defect.catalogAcceptances?.some(item => item.sha256 === decision.sha256));
   const record = {
+    reviewSchemaVersion: 'cable-review-2',
+    scope: { family: group.profile.family, skus: [...new Set(group.members?.map(member => member.sku) ?? [])] },
+    defectRules: linkedDefects.map(defect => ({
+      defectId: defect.id, ruleId: defect.ruleId, version: defect.ruleVersion ?? null,
+      rulesSha256: defect.rulesSha256 ?? null, requirement: defect.expected ?? defect.description,
+    })),
+
     ...decision,
     ...(pixelReview ? { pixelReview } : {}),
-    APPROVED_FOR_CATALOG: decision.APPROVED_FOR_CATALOG !== false,
-    APPROVED_AS_REFERENCE: decision.APPROVED_AS_REFERENCE === true,
+    ...(activeRules.length ? { reviewedRules: { sha256: cableIllustrationRulesHash,
+      ids: activeRules.map(rule => rule.id), checks: required } } : {}),
+    APPROVED_FOR_CATALOG: decision.status === 'APPROVED' && !decision.archiveOnly && decision.APPROVED_FOR_CATALOG !== false,
+    APPROVED_AS_REFERENCE: decision.status === 'APPROVED' && !decision.archiveOnly && decision.APPROVED_AS_REFERENCE === true,
     visualKey: group.visualKey,
     standardVersion: group.standardVersion,
     reviewedAt: new Date().toISOString(),
   };
+  if (verifyOnly) return record;
   if (record.status === 'APPROVED')
     await archiveApprovedCableResult({
       root,
       draftDir,
-      group,
+      group: { ...group, multicoreComposition: composition },
       approval: record,
     });
-  await atomic(path.join(draftDir, 'approval.json'), record);
+  const durableDecision = await persistCableReviewDecision({
+    root, draftDir, image, group: { ...group, status: record.status }, request, decision: record,
+    claimKey: cableGenerationClaimKey(group.profile, request?.cutRevision ?? group.cutRevision),
+  });
+  await atomic(path.join(draftDir, 'approval.json'), durableDecision);
   await atomic(path.join(draftDir, 'group.json'), {
     ...group,
     status: decision.status,
-    manualReview: record,
+    multicoreComposition: composition,
+    manualReview: durableDecision,
     automaticProductionBinding: false,
   });
-  return record;
+  return durableDecision;
 }
 /** Prepare a reviewable patch first. Does not write public files, bindings or production manifest. */
 export async function prepareApprovedBindingPatch({
@@ -523,11 +190,17 @@ export async function prepareApprovedBindingPatch({
   bindings,
   overrides,
   currentGroup,
+  typicalVvg: explicitReuse = false,
+  onlyUnboundInFamily = false,
+  reusePolicy = VVG_TYPICAL_ILLUSTRATION,
 }) {
   const style = await loadCableImageStyle(root),
     group = await read(path.join(draftDir, 'group.json')),
     approval = await read(path.join(draftDir, 'approval.json')),
     png = await fs.readFile(path.join(draftDir, 'image.png'));
+  const registry = await optional(path.join(root, 'data/cable-approved-results/registry.json'));
+  if (registry && blocksCableCatalogAssignment(registry, approval))
+    throw Error('Manual gallery review blocks new catalog assignments');
   if (
     approval.status !== 'APPROVED' ||
     approval.APPROVED_FOR_CATALOG !== true ||
@@ -536,9 +209,13 @@ export async function prepareApprovedBindingPatch({
     approval.standardVersion !== style.version ||
     group.standardVersion !== style.version ||
     !approval.reviewer ||
-    ![...CABLE_STYLE_REVIEW_CHECKS, ...multicoreCompositionReviewChecks(group.multicoreComposition)].every((k) => approval.checks?.[k] === true)
+    ![...CABLE_STYLE_REVIEW_CHECKS, ...multicoreCompositionReviewChecks(group.multicoreComposition)].every(k => cableReviewCheckAccepted(approval, k))
   )
     throw Error('Image not manually approved for current standard');
+  if (approval.reviewedRules &&
+      (!Array.isArray(approval.reviewedRules.checks) ||
+        !approval.reviewedRules.checks.every(key => cableReviewCheckAccepted(approval, key))))
+    throw Error('Archived approval is missing recorded visual checks');
   const live = new Map(products.map((p) => [p.sku, p])),
     visible = new Map(visibleProducts.map((p) => [p.sku, p]));
   if (
@@ -547,16 +224,33 @@ export async function prepareApprovedBindingPatch({
       digest(currentGroup.profile) !== digest(group.profile))
   )
     throw Error('Current SKU group construction differs from approved image');
+  const typicalVvg = explicitReuse || group.visibleConstructionGroup === true;
+  if (group.visibleConstructionGroup && !explicitReuse) reusePolicy = cableSharedVisualKey(group.profile) ? CABLE_SHARED_VISUAL_REUSE : CABLE_VISUAL_GROUP_REUSE;
   const members = currentGroup
     ? currentGroup.members.filter((m) =>
         currentGroup.eligibleSkus.includes(m.sku)
       )
     : group.members;
+  if (members.length && vvgCutHold(approval.sha256))
+    throw Error('VVG source has an open cut-quality correction; new bindings are held');
   const changes = [];
   for (const member of members) {
     const p = live.get(member.sku);
     if (!p || digest(p) !== member.productHash)
       throw Error('SKU source changed after dry-run');
+    const catalog = readCableCatalogProfile(p);
+    if (onlyUnboundInFamily && (bindings.bySku?.[p.sku] || !visible.has(p.sku) ||
+        !cableFamilyScope(group.profile.family) ||
+        (reusePolicy !== CABLE_SHARED_VISUAL_REUSE &&
+          cableFamilyScope(catalog.profile?.family) !== cableFamilyScope(group.profile.family))))
+      throw Error('SKU is already assigned, hidden or outside the approved family: ' + p.sku);
+    const signature = reusePolicy === CABLE_SHARED_VISUAL_REUSE ? cableSharedVisualKey :
+      reusePolicy === CABLE_VISUAL_GROUP_REUSE ? cableVisibleConstructionKey :
+      reusePolicy === CABLE_SCHEMATIC_REUSE ? cableSchematicSignature : getVvgIllustrationSignature;
+    const equivalent = typicalVvg && signature(catalog.profile);
+    if ((catalog.visualKey !== group.visualKey || digest(catalog.profile) !== digest(group.profile)) &&
+        (!equivalent || equivalent !== signature(group.profile)))
+      throw Error('Approved PNG differs from current catalog facts: ' + p.sku);
     if (
       imageDisposition(
         p,
@@ -589,11 +283,15 @@ export async function prepareApprovedBindingPatch({
         visualKey: group.visualKey,
         sha256: approval.sha256,
         styleVersion: style.version,
+        ...(typicalVvg && {
+          typicalIllustration: { policy: reusePolicy, profile: group.profile },
+        }),
         manualReview: {
           status: 'APPROVED',
           sha256: approval.sha256,
           reviewer: approval.reviewer,
           checks: approval.checks,
+          ...(approval.acceptedCatalogChecks && { acceptedCatalogChecks: approval.acceptedCatalogChecks }),
           reviewedAt: approval.reviewedAt,
         },
         referenceSha256:
@@ -611,7 +309,11 @@ export async function prepareApprovedBindingPatch({
 }
 /** Explicit final application. Whole binding file atomically replaced, unrelated entries preserved. */
 export async function applyApprovedBindingPatch(args) {
-  const { root, draftDir } = args;
+  const [patch] = await applyApprovedBindingPatches({ root: args.root, assignments: [args] });
+  return patch;
+}
+
+export async function applyApprovedBindingPatches({ root, assignments = [], catalogRevision, restore = [] }) {
   const lockFile = path.join(
     root,
     'data/product-image-metadata/.pipeline.lock'
@@ -632,51 +334,81 @@ export async function applyApprovedBindingPatch(args) {
     const overrides =
       (await optional(path.join(root, 'data/priceOverrides.json'))) || {};
     const { createCatalogStore } = await import('../../lib/catalog.js');
-    const visibleProducts = await createCatalogStore({
+    if (catalogRevision && catalogRevision !== digest({products, bindings,
+        overrides: await optional(path.join(root, 'data/priceOverrides.json'))}))
+      throw Error('Каталог изменился. Пересчитайте охват.');
+    const cards = await createCatalogStore({
       productsFile: path.join(root, 'data/catalog-current/products.json'),
       overridesFile: path.join(root, 'data/priceOverrides.json'),
     }).loadCatalogProducts();
-    const patch = await prepareApprovedBindingPatch({
-      ...args,
-      products,
-      visibleProducts,
-      overrides,
-      bindings,
-    });
-    if (!patch.changes.length) return patch;
-    const group = await read(path.join(draftDir, 'group.json'));
-    const request = await prepareCableStyleRequest(root, group.profile);
-    const archived = await findApprovedCableResult({
-      root, visualKey: group.visualKey, profile: group.profile, request,
-    });
-    if (archived?.APPROVED_FOR_CATALOG !== true || archived.sha256 !== patch.pngSha256)
-      throw Error('Image is not approved for the catalog in the permanent registry');
+    const visibleProducts = cards.flatMap(card => card.offers?.length ?
+      card.offers.map(offer => ({ ...card, ...offer, image:offer.image || card.image })) : [card]);
     const next = structuredClone(bindings);
     const productsBySku = new Map(products.map(product => [product.sku, product]));
-    for (const { sku, after } of patch.changes) {
-      next.bySku[sku] = after;
-      if (getGeneratedProductImage(productsBySku.get(sku), next, registry) !== after.image)
-        throw Error('Catalog image approval or construction mismatch: ' + sku);
+    const patches = [];
+    const transactions = [];
+    const changedSkus = new Set();
+    for (const { draftDir, placementHash, expectedHead } of restore) {
+      const file = path.join(draftDir, 'binding-transaction.json');
+      const transaction = await read(file);
+      const approval = await read(path.join(draftDir, 'approval.json'));
+      if (!transaction.galleryPlacement || !['APPLIED', 'PREPARED'].includes(transaction.status) ||
+          transaction.patch.pngSha256 !== approval.sha256 || !transaction.patch.changes.length)
+        throw Error('Нет применённой операции для восстановления.');
+      if (placementHash && placementHash !== digest(transaction.patch.changes))
+        throw Error('После утверждения появились новые привязки. Отмена остановлена.');
+      if (expectedHead !== undefined && expectedHead !== (registry.reviewBySha256?.[approval.sha256]?.at(-1)?.hash ?? null))
+        throw Error('После утверждения появились новые решения. Отмена остановлена.');
+      for (const { sku, before, after } of transaction.patch.changes) {
+        if (changedSkus.has(sku) || before !== null || after.sha256 !== approval.sha256 ||
+            digest(bindings.bySku?.[sku] ?? null) !== digest(after))
+          throw Error('Привязка изменилась после утверждения: ' + sku);
+        changedSkus.add(sku);
+        delete next.bySku[sku];
+      }
+      transactions.push({ file, patch:transaction.patch, restoring:true, galleryPlacement:true });
+      patches.push(transaction.patch);
     }
-    const destination = path.join(root, 'public', patch.changes[0].after.image.slice(1));
-    const buffer = await fs.readFile(patch.sourcePng);
-    validateCableImagePng(buffer, {
-      background: 'transparent',
-      composition: { rightEdgeCrop: false },
-    });
-    try {
-      await fs.writeFile(destination, buffer, { flag: 'wx' });
-    } catch (e) {
-      if (
-        e.code !== 'EEXIST' ||
-        digest(await fs.readFile(destination)) !== patch.pngSha256
-      )
-        throw e;
+    for (const assignment of assignments) {
+      const { draftDir } = assignment;
+      const patch = await prepareApprovedBindingPatch({
+        ...assignment, root, products, visibleProducts, overrides, bindings,
+      });
+      patches.push(patch);
+      if (!patch.changes.length) continue;
+
+      const group = await read(path.join(draftDir, 'group.json'));
+      const request = approvedCableVerificationContext(await loadCableImageStyle(root), group.profile);
+      const archived = await findApprovedCableResult({
+        root, visualKey: group.visualKey, profile: group.profile, request,
+      });
+      if (archived?.APPROVED_FOR_CATALOG !== true || archived.sha256 !== patch.pngSha256)
+        throw Error('Image is not approved for the catalog in the permanent registry');
+      for (const { sku, after } of patch.changes) {
+        if (changedSkus.has(sku)) throw Error('SKU occurs in multiple assignments: ' + sku);
+        changedSkus.add(sku);
+        next.bySku[sku] = after;
+        if (getGeneratedProductImage(productsBySku.get(sku), next, registry) !== after.image)
+          throw Error('Catalog image approval or construction mismatch: ' + sku);
+      }
+      const destination = path.join(root, 'public', patch.changes[0].after.image.slice(1));
+      const buffer = await fs.readFile(patch.sourcePng);
+      validateCableImagePng(buffer, {
+        background: 'transparent',
+        composition: { rightEdgeCrop: false },
+      });
+      try {
+        await fs.writeFile(destination, buffer, { flag: 'wx' });
+      } catch (error) {
+        if (error.code !== 'EEXIST' || digest(await fs.readFile(destination)) !== patch.pngSha256)
+          throw error;
+      }
+      transactions.push({ file: path.join(draftDir, 'binding-transaction.json'), patch,
+        galleryPlacement:assignment.onlyUnboundInFamily === true });
     }
-    await atomic(path.join(draftDir, 'binding-transaction.json'), {
-      status: 'PREPARED',
-      patch,
-    });
+    if (!transactions.length) return patches;
+    for (const { file, patch, restoring, galleryPlacement } of transactions)
+      if (!restoring) await atomic(file, { status: 'PREPARED', patch, ...(galleryPlacement && { galleryPlacement }) });
     if ((await fs.lstat(catalogDir)).isSymbolicLink()) {
       stage = await fs.mkdtemp(path.join(root, 'data/.image-publication-'));
       await fs.cp(await fs.realpath(catalogDir), stage, { recursive: true, preserveTimestamps: true });
@@ -695,11 +427,9 @@ export async function applyApprovedBindingPatch(args) {
     } else {
       await atomic(bindingFile, next);
     }
-    await atomic(path.join(draftDir, 'binding-transaction.json'), {
-      status: 'APPLIED',
-      patch,
-    });
-    return patch;
+    for (const { file, patch, restoring, galleryPlacement } of transactions)
+      await atomic(file, { status: restoring ? 'RESTORED' : 'APPLIED', patch, ...(galleryPlacement && { galleryPlacement }) });
+    return patches;
   } finally {
     try {
       if (stage) await fs.rm(stage, { recursive: true, force: true });

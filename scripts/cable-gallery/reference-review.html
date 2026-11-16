@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="write-token" content="LOCAL_WRITE_TOKEN">
+<title>Ревизия референсов · ЮУЭК</title>
+<link rel="stylesheet" href="/standards.css">
+<script type="module" src="/reference-review.js"></script>
+<style>
+.review-nav,.review-actions{display:flex;flex-wrap:wrap;gap:8px 16px}
+.review-workspace{max-width:1440px;margin-inline:auto}
+.review-intro{max-width:70ch}
+.review-tools{margin-block:20px;align-items:end}
+.review-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr))}
+.review-card{gap:12px}
+.review-card h2{font-size:1.05rem}
+.review-card textarea{width:100%;resize:vertical}
+.review-card p,.review-card code{overflow-wrap:anywhere}
+.review-facts{display:grid;gap:4px}
+.review-permissions{margin:0;padding-inline-start:20px}
+.review-status{min-height:1.55em}
+.review-actions [data-decision="redo"][aria-pressed="true"]{background:#fff0dd;border-color:#9b5c19;color:#673900}
+.review-protected{margin-block-start:24px}
+.review-protected summary{cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+<h1>Ревизия референсов</h1>
+<nav class="review-nav" aria-label="Разделы галереи">
+<a href="/">Все PNG</a>
+<a href="/standards">Эталоны изображений</a>
+</nav>
+</header>
+<main class="review-workspace">
+<p class="review-intro">Решения и замечания сохраняются в этом браузере по SHA-256 изображения. Скачайте список «Переделать», чтобы передать замечания на следующий этап.</p>
+<div class="toolbar review-tools">
+<label class="field">Поиск по названию, SKU или SHA <input type="search" id="search"></label>
+<label class="field">Решение
+<select id="decision-filter">
+<option value="">Все</option>
+<option value="pending">Без решения</option>
+<option value="keep">Оставить</option>
+<option value="redo">Переделать</option>
+</select>
+</label>
+<button type="button" id="export-redo" disabled>Скачать список «Переделать»</button>
+<button type="button" id="refresh">Обновить из реестра</button>
+</div>
+<p id="status" role="status">Загружаю референсы…</p>
+<p id="counts" role="status"></p>
+<div class="cards review-grid" id="review-grid"></div>
+<p id="empty" hidden>По выбранным условиям референсов нет.</p>
+<details class="review-protected" id="protected" hidden>
+<summary id="protected-label">Защищённые эталоны стиля</summary>
+<div class="cards" id="protected-grid"></div>
+</details>
+</main>
+<template id="reference-card">
+<article class="card review-card">
+  <a class="image checker" target="_blank" rel="noopener">
+    <img alt="" loading="lazy" decoding="async">
+  </a>
+  <div class="review-facts"></div>
+  <p class="coverage"></p>
+  <label class="field">Замечания <textarea rows="2"></textarea></label>
+  <div class="review-actions" role="group" aria-label="Решение по изображению">
+    <button type="button" data-decision="keep" aria-pressed="false">Оставить</button>
+    <button type="button" data-decision="redo" aria-pressed="false">Переделать</button>
+  </div>
+  <small class="review-status" role="status"></small>
+</article>
+</template>
+</body>
+</html>

@@ -1,0 +1,246 @@
+{
+  "status": "APPLIED",
+  "patch": {
+    "status": "PREPARED_NOT_APPLIED",
+    "pngSha256": "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350",
+    "sourcePng": "/Users/Shared/yuzhural-site/data/cable-approved-results/44333897ceb6ea47af6658fd5402a56e82fffa8396fcf8d3ad89732464f475aa-5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350-d094fdcc-2be0-4cd3-92b3-d45e96c074d8/image.png",
+    "changes": [
+      {
+        "sku": "YU-0000793",
+        "before": null,
+        "after": {
+          "image": "/product-images/generated/style1_036026235d4cef2f945d43f6af56ecedebbdf8b2229b1214c5e260299a652cd7.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": true,
+          "productId": 793,
+          "sourceName": "ВВГ  2х 16 нг(А)FRLS",
+          "productName": "ВВГнг(А)-FRLS 2х16",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 16,
+          "visualKey": "vvgng-a-frls__2c__solid__round__2core-brown-blue__p-9590a1cabe1988d6",
+          "sha256": "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "typicalIllustration": {
+            "policy": "cable-schematic-1",
+            "profile": {
+              "family": "vvgng-a-frls",
+              "productType": "power-cable",
+              "cores": 2,
+              "conductorMaterial": "copper",
+              "conductorConstruction": "solid",
+              "conductorShape": "circular",
+              "geometry": "round",
+              "hasOuterJacket": true,
+              "outerJacket": "black",
+              "armor": false,
+              "armorType": null,
+              "shield": false,
+              "shieldType": null,
+              "specialElements": [
+                "fire-barrier"
+              ],
+              "coreColors": [
+                "brown",
+                "blue"
+              ],
+              "coreColorScheme": "2core-brown-blue",
+              "pairedGroupSize": null,
+              "sectionKey": null,
+              "unresolvedModifiers": [],
+              "unresolvedFamilySuffix": null,
+              "visualizationType": "LAYERED"
+            }
+          },
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350",
+            "reviewer": "Владелец каталога",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true,
+              "frameAndLeftMargin": true,
+              "visibleConstruction": true,
+              "individualStripping": true
+            },
+            "reviewedAt": "2026-11-16T08:21:40.344Z"
+          },
+          "referenceSha256": "77faedb4e001968085053f1b01e247fa431990302bb63f286af27eb810ca100f"
+        }
+      },
+      {
+        "sku": "YU-0000870",
+        "before": null,
+        "after": {
+          "image": "/product-images/generated/style1_036026235d4cef2f945d43f6af56ecedebbdf8b2229b1214c5e260299a652cd7.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": true,
+          "productId": 870,
+          "sourceName": "ВВГ  2х1.5 нг(А)FRLS",
+          "productName": "ВВГнг(А)-FRLS 2х1.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 1.5,
+          "visualKey": "vvgng-a-frls__2c__solid__round__2core-brown-blue__p-9590a1cabe1988d6",
+          "sha256": "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "typicalIllustration": {
+            "policy": "cable-schematic-1",
+            "profile": {
+              "family": "vvgng-a-frls",
+              "productType": "power-cable",
+              "cores": 2,
+              "conductorMaterial": "copper",
+              "conductorConstruction": "solid",
+              "conductorShape": "circular",
+              "geometry": "round",
+              "hasOuterJacket": true,
+              "outerJacket": "black",
+              "armor": false,
+              "armorType": null,
+              "shield": false,
+              "shieldType": null,
+              "specialElements": [
+                "fire-barrier"
+              ],
+              "coreColors": [
+                "brown",
+                "blue"
+              ],
+              "coreColorScheme": "2core-brown-blue",
+              "pairedGroupSize": null,
+              "sectionKey": null,
+              "unresolvedModifiers": [],
+              "unresolvedFamilySuffix": null,
+              "visualizationType": "LAYERED"
+            }
+          },
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350",
+            "reviewer": "Владелец каталога",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true,
+              "frameAndLeftMargin": true,
+              "visibleConstruction": true,
+              "individualStripping": true
+            },
+            "reviewedAt": "2026-11-16T08:21:40.344Z"
+          },
+          "referenceSha256": "77faedb4e001968085053f1b01e247fa431990302bb63f286af27eb810ca100f"
+        }
+      },
+      {
+        "sku": "YU-0000884",
+        "before": null,
+        "after": {
+          "image": "/product-images/generated/style1_036026235d4cef2f945d43f6af56ecedebbdf8b2229b1214c5e260299a652cd7.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": true,
+          "productId": 884,
+          "sourceName": "ВВГ  2х2.5 нг(А)FRLS",
+          "productName": "ВВГнг(А)-FRLS 2х2.5",
+          "primaryCores": 2,
+          "cores": 2,
+          "section": 2.5,
+          "visualKey": "vvgng-a-frls__2c__solid__round__2core-brown-blue__p-9590a1cabe1988d6",
+          "sha256": "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350",
+          "styleVersion": "approved-cable-style-1.1.0",
+          "typicalIllustration": {
+            "policy": "cable-schematic-1",
+            "profile": {
+              "family": "vvgng-a-frls",
+              "productType": "power-cable",
+              "cores": 2,
+              "conductorMaterial": "copper",
+              "conductorConstruction": "solid",
+              "conductorShape": "circular",
+              "geometry": "round",
+              "hasOuterJacket": true,
+              "outerJacket": "black",
+              "armor": false,
+              "armorType": null,
+              "shield": false,
+              "shieldType": null,
+              "specialElements": [
+                "fire-barrier"
+              ],
+              "coreColors": [
+                "brown",
+                "blue"
+              ],
+              "coreColorScheme": "2core-brown-blue",
+              "pairedGroupSize": null,
+              "sectionKey": null,
+              "unresolvedModifiers": [],
+              "unresolvedFamilySuffix": null,
+              "visualizationType": "LAYERED"
+            }
+          },
+          "manualReview": {
+            "status": "APPROVED",
+            "sha256": "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350",
+            "reviewer": "Владелец каталога",
+            "checks": {
+              "coreCount": true,
+              "material": true,
+              "colours": true,
+              "layers": true,
+              "direction": true,
+              "proportions": true,
+              "stripping": true,
+              "background": true,
+              "referenceMatch": true,
+              "metalEndCount": true,
+              "equalDiameters": true,
+              "relativeDiameters": true,
+              "coaxialStripping": true,
+              "geometryConsistency": true,
+              "noExtraCylinders": true,
+              "frameAndLeftMargin": true,
+              "visibleConstruction": true,
+              "individualStripping": true
+            },
+            "reviewedAt": "2026-11-16T08:21:40.344Z"
+          },
+          "referenceSha256": "77faedb4e001968085053f1b01e247fa431990302bb63f286af27eb810ca100f"
+        }
+      }
+    ],
+    "productionManifestChanged": false
+  },
+  "galleryPlacement": true
+}

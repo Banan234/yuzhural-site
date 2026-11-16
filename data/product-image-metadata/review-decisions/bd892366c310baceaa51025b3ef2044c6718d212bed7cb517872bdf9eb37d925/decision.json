@@ -1,0 +1,18 @@
+{
+  "decision": {
+    "sha256": "bd892366c310baceaa51025b3ef2044c6718d212bed7cb517872bdf9eb37d925",
+    "sku": "YU-0000917",
+    "disposition": "NEEDS_CORRECTION",
+    "note": "Слишком длинная зачистка до металла относительно экрана и оболочки. Состав конструкции сохранить.",
+    "reviewer": "Пользователь · решения по партии ВВГ",
+    "status": "NEEDS_REVIEW",
+    "APPROVED_FOR_CATALOG": false,
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "vvgng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-63fa42b7d6312ce8",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-15T16:55:00.345Z"
+  },
+  "claimKey": "78940486b66f5d59c950af42181273ced00294bb6a42c18001e63688bb6a23ad",
+  "originalDraft": "outputs/cable-vvg-typical-2026-11-15/drafts/4046babbfd587d73f9c65ffff5c088b0080e888d13d38c191c58d25e9759f930",
+  "previous": []
+}

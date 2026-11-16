@@ -34,6 +34,12 @@ export const BACKUP_FILES = Object.freeze([
 
 export const BACKUP_PUBLIC_ARTIFACTS = 'public';
 
+const CABLE_HISTORY = path.join('product-image-metadata', 'historical-generation-claims.json');
+const CABLE_RESERVATIONS = path.join('product-image-metadata', 'generation-claims');
+const isReservation = name => /^[a-f0-9]{64}\.json$/u.test(name);
+const isCableClaim = relative => relative === CABLE_HISTORY ||
+  (path.dirname(relative) === CABLE_RESERVATIONS && isReservation(path.basename(relative)));
+
 function parseRetention(value) {
   const parsed = Number(value);
   return Number.isFinite(parsed) && parsed > 0
@@ -193,6 +199,14 @@ async function createBackupUnlocked({
       relative,
       source: path.join(projectPath, 'data', relative),
     }));
+    const data = path.join(projectPath, 'data');
+    const reservations = await fs.readdir(path.join(data, CABLE_RESERVATIONS)).catch(error => {
+      if (error.code === 'ENOENT') return [];
+      throw error;
+    });
+    for (const relative of [CABLE_HISTORY, ...reservations.filter(isReservation)
+      .map(name => path.join(CABLE_RESERVATIONS, name))])
+      sources.push({ relative, source: path.join(data, relative) });
     const active = path.join(projectPath, 'data', 'catalog-current');
     const activeStat = await fs.lstat(active).catch((error) => {
       if (error.code === 'ENOENT') return null;
@@ -262,7 +276,7 @@ export async function readBackupManifest(backupPath) {
       entry.path.split(path.sep).includes('..') ||
       seen.has(entry.path) ||
       !(
-        BACKUP_FILES.includes(root) ||
+        BACKUP_FILES.includes(root) || isCableClaim(entry.path) ||
         (root === 'catalog-release' && manifest.catalogRelease)
       )
     ) {
@@ -388,8 +402,25 @@ export async function restoreBackup(
       publicDir: path.join(stagedRelease, 'public'),
       overridesPath: path.join(await exists(path.join(stage, 'priceOverrides.json')) ? stage : data, 'priceOverrides.json'),
     });
+    // Reservations are write-once. Keep attempts made after this backup and
+    // install missing keys exclusively, just as the generator reserves a key.
+    const dataRoot = await fs.realpath(data);
+    for (const { path: relative, sha256 } of manifest.files.filter(entry => isCableClaim(entry.path))) {
+      const destination = path.join(dataRoot, relative);
+      const parent = path.dirname(destination);
+      await fs.mkdir(parent, { recursive: true });
+      if (await fs.realpath(parent) !== parent)
+        throw new Error(`Недопустимый путь журнала запросов: ${parent}`);
+      await fs.link(path.join(stage, relative), destination).catch(async error => {
+        if (error.code !== 'EEXIST') throw error;
+        if (!(await fs.lstat(destination)).isFile())
+          throw new Error(`Недопустимый файл журнала запросов: ${destination}`);
+        if (relative === CABLE_HISTORY && await hashFile(destination) !== sha256)
+          throw new Error('История запросов кабелей в backup отличается от действующего индекса.');
+      });
+    }
     const roots = (await fs.readdir(stage)).filter(
-      (name) => name !== 'catalog-release'
+      (name) => name !== 'catalog-release' && name !== 'product-image-metadata'
     );
     const artifacts = roots.map((name) => ({
       stagedPath: path.join(stage, name),

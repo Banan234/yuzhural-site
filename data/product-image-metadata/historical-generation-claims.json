@@ -1,0 +1,4031 @@
+{
+  "version": 1,
+  "claims": [
+    {
+      "key": "b8e693dff4c8b5b6ac16078d56f763e028c08e959c76ae57bf565b042d6fd1eb",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/ee3b0503177f7b58e3592b57e25c7a1b090b59fccca9dd806ee1403b75854a0d-3df8ee1f6e752d2d8c9567951daa957440c3e138fa749143bfbc206ac6a155c8",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-ls-ltx",
+          "productType": "power-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "screenType": null,
+            "armor": false,
+            "armorType": null,
+            "innerSheath": "low-toxicity PVC",
+            "drainWire": false,
+            "source": "https://www.energokab.ru/katalog/silovye-kabeli-3kv/ng-ltx/vvgnga-lsltx-vvg-pnga-lsltx-vvgenga-lsltx-vbshvnga-lsltx-avvgnga-lsltx-avvg-pnga-lsltx-avvgenga-lsltx-avbshvnga-lsltx-po-tu-16k121-018-2011/vvgnga-lsltx/",
+            "basis": "Manufacturer documented family allows round stranded copper class 2. User specifically requests round stranded 5x70. Inner and outer low-toxicity PVC sheaths. Illustration variant, not supplier identification or catalog reclassification."
+          }
+        },
+        "members": [
+          {
+            "sku": "YU-0007248"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ec5300514043a487017182dbe95493957ade1415cb895c5fcd454ef2d76177cd",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/25edf3d341e48dc308383f65ba60b49f8a80315d5b9c224b0c34636dec39de68-8736f662c829998eb87fa653aa36b442ef4b1d21e584d0557179abafd5eb9a9c",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvg",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000163"
+          },
+          {
+            "sku": "YU-0000166"
+          },
+          {
+            "sku": "YU-0000169"
+          },
+          {
+            "sku": "YU-0000170"
+          },
+          {
+            "sku": "YU-0000173"
+          },
+          {
+            "sku": "YU-0000175"
+          },
+          {
+            "sku": "YU-0000177"
+          },
+          {
+            "sku": "YU-0000180"
+          },
+          {
+            "sku": "YU-0000185"
+          },
+          {
+            "sku": "YU-0000186"
+          },
+          {
+            "sku": "YU-0000189"
+          },
+          {
+            "sku": "YU-0000193"
+          },
+          {
+            "sku": "YU-0000196"
+          }
+        ]
+      }
+    },
+    {
+      "key": "598a4803e66307ba9550ef1cb7dff16827e6b49d8f330bf153350a9ba5789374",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/2c99f821cddd5a79264eeab70d22709c7e5ce47f1cbc4b9dba980ec46b21174c-7d1b214abdf8c0951d818f2d224dd369c2186e54de7e6f73998933f2504e669c",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0001126"
+          },
+          {
+            "sku": "YU-0001136"
+          },
+          {
+            "sku": "YU-0001146"
+          },
+          {
+            "sku": "YU-0001156"
+          },
+          {
+            "sku": "YU-0001165"
+          },
+          {
+            "sku": "YU-0001044"
+          },
+          {
+            "sku": "YU-0001053"
+          },
+          {
+            "sku": "YU-0001061"
+          },
+          {
+            "sku": "YU-0001065"
+          },
+          {
+            "sku": "YU-0001069"
+          },
+          {
+            "sku": "YU-0007914"
+          },
+          {
+            "sku": "YU-0001073"
+          },
+          {
+            "sku": "YU-0001076"
+          },
+          {
+            "sku": "YU-0006790"
+          },
+          {
+            "sku": "YU-0001078"
+          }
+        ]
+      }
+    },
+    {
+      "key": "a56c1da379a57c1e459df3f6bfac49d206b50e88a2e0d0a4df2ba708d46b5920",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/779d972cbb95651b2b256b792aad83203b0e136ebaba37f06c8501801bb64584-2838ba45e1387b4bd4457893a45d685c241d1a7aad50741bd5081c3cf9bcd20c",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-frls",
+          "productType": "power-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [
+            "fire-barrier"
+          ],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0001134"
+          },
+          {
+            "sku": "YU-0001143"
+          },
+          {
+            "sku": "YU-0001154"
+          },
+          {
+            "sku": "YU-0001164"
+          },
+          {
+            "sku": "YU-0001043"
+          },
+          {
+            "sku": "YU-0001052"
+          },
+          {
+            "sku": "YU-0001060"
+          },
+          {
+            "sku": "YU-0001064"
+          },
+          {
+            "sku": "YU-0001068"
+          },
+          {
+            "sku": "YU-0007247"
+          },
+          {
+            "sku": "YU-0001077"
+          }
+        ]
+      }
+    },
+    {
+      "key": "3890e71f4d6c62db36acc901487e878f2f95c37ba7dd5cdb9a6b80b021d46af2",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/f7be54daf27359568d34cf8dc7997ed0c0c78894b3feed8c881876f6c38e2e7b-6adcf0538169f513217ba37d4f7f760fc6e003639ab3c4b45585090bf7836926",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgeng-a-ls",
+          "productType": "control-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": true,
+          "shieldType": "overall-foil-with-drain",
+          "specialElements": [
+            "drain-wire"
+          ],
+          "coreColors": [
+            "black",
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-black-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0002706"
+          },
+          {
+            "sku": "YU-0002722"
+          },
+          {
+            "sku": "YU-0002738"
+          },
+          {
+            "sku": "YU-0002750"
+          },
+          {
+            "sku": "YU-0007955"
+          },
+          {
+            "sku": "YU-0002758"
+          },
+          {
+            "sku": "YU-0002634"
+          },
+          {
+            "sku": "YU-0006850"
+          }
+        ]
+      }
+    },
+    {
+      "key": "7dab060f8ad9a9dc6446a6f92f668ca7019e1e9b9bc0dd27b53c68569af4adf9",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/7cabb1821acd9b5bf9c90c7268f164fd8259097c861cc0e4a8d0cf8b63a8c26e-996238fff8bd9a589d99b87029408181cf487152d0c2178f502e2eb002506d0a",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "pvs",
+          "productType": "flexible-wire",
+          "cores": 3,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "white",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0004902"
+          },
+          {
+            "sku": "YU-0004906"
+          },
+          {
+            "sku": "YU-0004909"
+          },
+          {
+            "sku": "YU-0004912"
+          },
+          {
+            "sku": "YU-0004915"
+          },
+          {
+            "sku": "YU-0004916"
+          },
+          {
+            "sku": "YU-0004921"
+          },
+          {
+            "sku": "YU-0004922"
+          },
+          {
+            "sku": "YU-0004925"
+          },
+          {
+            "sku": "YU-0004926"
+          },
+          {
+            "sku": "YU-0004927"
+          },
+          {
+            "sku": "YU-0007899"
+          }
+        ]
+      }
+    },
+    {
+      "key": "9244aede5fd287e21682ef0447c49116f19bee4ed2f06a4a753b2086e57db270",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/f4fc860b4fc327d163c288be60541acbe635a18aab5b1b7ba3ea2d3578024eb4-00580128cf3ae65425cf89e62d88f8815e5c058aeed73970b3282a463b23b1ee",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvg",
+          "productType": "power-cable",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000866"
+          },
+          {
+            "sku": "YU-0000776"
+          },
+          {
+            "sku": "YU-0000786"
+          },
+          {
+            "sku": "YU-0000805"
+          },
+          {
+            "sku": "YU-0002700"
+          }
+        ]
+      }
+    },
+    {
+      "key": "5d4ebb6f9896f61443263ed6cfcd47cda76b8943d5a83bc91c323cf08eb4367d",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/e01b04237417b50e306952f1e2b1633c43319017174980231c91f1cb36a05048-fa09adc3a70052bdf2fd3430608218ef631284e80c3ef3026be36f7d878e9eb4",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 2,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0007005"
+          }
+        ]
+      }
+    },
+    {
+      "key": "9fe731e719c989dbb3fea46393210a43c17d42427dd7addbd6d341aba3388221",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/16aafc94181d6fed0b3aba229c255f636c74f129242afb52eab171e533c8191c-7249e86446c90f543c9a80fc794450ec304d1abd762af74225ddcc54f08de1c6",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvgng",
+          "productType": "power-cable",
+          "cores": 2,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000122"
+          },
+          {
+            "sku": "YU-0000123"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ce1e56ef92d07f83b114ad4a37f0c45adb857f1bbfe8fc82185c99a12365aa31",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/3b1c48c2a856a49a7fcd81869d9273f0a9a8173f67fc115ba324f8dea886a654-a2c44c1c20c84e895045268c215b14d87eeb63b5b39538662b8ef8cde3aa7767",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "pvsng-a-ls",
+          "productType": "flexible-wire",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0004905"
+          }
+        ]
+      }
+    },
+    {
+      "key": "f51be597858f29f86b250c2b99002b34db908b634771a0ea2631fd6702fc0a4c",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/b8eb77f6ed3ef27bbad547e8894c157903be92c1b2f2fa40814f58ad0f363ed6-4fcafc51e6eb8416182154e600766189d788027e25175330965fe5a28bf76569",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kg-hl",
+          "productType": "flexible-cable",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0004030"
+          }
+        ]
+      }
+    },
+    {
+      "key": "8cd847815cea78c6962e4e19e18c55885a8d113e4be8d312f0fcb5e86b2e72ff",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/72f5db37b6ba2f6708d200108194f6654b793e4353e8fd2e3eba3684a5d58ae4-837b28fbd545d13956326286fc6d3c1803c17ac539ff060de6636ad2033e8a23",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a",
+          "productType": "power-cable",
+          "cores": 1,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown"
+          ],
+          "coreColorScheme": "1core-brown",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000766"
+          },
+          {
+            "sku": "YU-0000772"
+          },
+          {
+            "sku": "YU-0000843"
+          },
+          {
+            "sku": "YU-0000846"
+          },
+          {
+            "sku": "YU-0000851"
+          },
+          {
+            "sku": "YU-0000859"
+          },
+          {
+            "sku": "YU-0007780"
+          }
+        ]
+      }
+    },
+    {
+      "key": "15c125fe5549bbc4a3e8fd656d844f0a498d78cdb02276a131cccb9584b55153",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/34bfebc4aa3add146dd30f1ccd3e6278f187878891b697993a35da6338fbd913-91b6e51eaa80fef3a9beb3d161439351f31f62e2346209f0b6b720629e18c82e",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "pvs",
+          "productType": "flexible-wire",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "white",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0004899"
+          },
+          {
+            "sku": "YU-0004900"
+          },
+          {
+            "sku": "YU-0004903"
+          },
+          {
+            "sku": "YU-0004907"
+          },
+          {
+            "sku": "YU-0004911"
+          },
+          {
+            "sku": "YU-0004913"
+          },
+          {
+            "sku": "YU-0004914"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cc0c52a652f3ad6e324b3f94e1fff4677d408ff29f6ef7e2fb81e80bdc7a5806",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/7cff5315988005baa7a81328d21bbedbbaffb927246e455cafe82c1ec26c0caf-f533364a79a13e41d719402e54eedc166b1edc1a3b957da52149a9796919dea2",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kg",
+          "productType": "flexible-cable",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0003901"
+          },
+          {
+            "sku": "YU-0006870"
+          },
+          {
+            "sku": "YU-0003904"
+          }
+        ]
+      }
+    },
+    {
+      "key": "b9a41723c509193554afa292f276baaf08a4580a98a124a83ae845bce4647107",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/32087f74975b3946811d9c8881f6116677c301ebd396d5bf087fc57fa69459c8-4efb92fc38e017b25b7e11029f15fd6c70ed8df236bfc22ad7ac6b445fb9098e",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "pvs",
+          "productType": "flexible-wire",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0004901"
+          },
+          {
+            "sku": "YU-0004904"
+          },
+          {
+            "sku": "YU-0004908"
+          }
+        ]
+      }
+    },
+    {
+      "key": "f69d3cc6edc1547640ebfd9a2dee290fd420bce0d8963a8b846ff788c65ff4bc",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/4cd8739660e42d827d78830a80da1054d362a980954cc67716d14773ca751df7-1a9e794ac3e153bda7df0d07cd022127df1cdc4e592d609f779e3b432ba1f06e",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvg",
+          "productType": "power-cable",
+          "cores": 2,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000057"
+          },
+          {
+            "sku": "YU-0000113"
+          },
+          {
+            "sku": "YU-0000115"
+          },
+          {
+            "sku": "YU-0000119"
+          }
+        ]
+      }
+    },
+    {
+      "key": "a7eaa5fcb70fba4f027d125c7ff554a09d92e2e5d7719b838be8e05c37b2ef12",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/6e3f4009d08f54c3aa874b6f20d2e1290f672b1ca0f130d1fc890489e4b2e124-1ad7377218e29853fb775364c829a1fc8185b238894203d88579ab1edadb1a00",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvg",
+          "productType": "power-cable",
+          "cores": 1,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown"
+          ],
+          "coreColorScheme": "1core-brown",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000049"
+          },
+          {
+            "sku": "YU-0000050"
+          },
+          {
+            "sku": "YU-0000051"
+          },
+          {
+            "sku": "YU-0000052"
+          },
+          {
+            "sku": "YU-0000053"
+          },
+          {
+            "sku": "YU-0000054"
+          }
+        ]
+      }
+    },
+    {
+      "key": "3fd24b4e15b6c8eae7254901323525f4a2895a5c62e2e48afb751b3a7628c5c9",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/e9f1b94d6ed138eac00d9eadb05b5d58c3f6aaa20c9481828e72e82482d58691-ef11541d25c689554c1852433935fad6fa8a1a9d2ae74cd2ac8872dd21d65fa6",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kg-hl",
+          "productType": "flexible-cable",
+          "cores": 1,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown"
+          ],
+          "coreColorScheme": "1core-brown",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0004021"
+          },
+          {
+            "sku": "YU-0004023"
+          },
+          {
+            "sku": "YU-0004024"
+          },
+          {
+            "sku": "YU-0004026"
+          },
+          {
+            "sku": "YU-0004028"
+          }
+        ]
+      }
+    },
+    {
+      "key": "937780299acdbf3b4ef2a946c39dc5d54ac6c3068b32af8ab6db483319cde725",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/41753e4dee3a1154d0cf26a7d47bc16f3f0d912a443c8b861f28f90243f77f2b-22a063b4711f201a4846cdebb3c1ce49b6adbbfd7cda5d790f217a1052a07f2a",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 1,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown"
+          ],
+          "coreColorScheme": "1core-brown",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000055"
+          },
+          {
+            "sku": "YU-0000056"
+          }
+        ]
+      }
+    },
+    {
+      "key": "bead94402cd86f3e28be3a0064bd33ce5e8bab710fccc30c737b3e28145a46dc",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/c85db40820d4fe89d6e252249b130f341bf31378d64541e6d8335407bb1a813e-6d874aaf056eb3350df03120d6a250da3b9afc8ff4839b8f5ad44f36dfba1286",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvg",
+          "productType": "power-cable",
+          "cores": 3,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000124"
+          },
+          {
+            "sku": "YU-0000128"
+          },
+          {
+            "sku": "YU-0000132"
+          },
+          {
+            "sku": "YU-0000135"
+          }
+        ]
+      }
+    },
+    {
+      "key": "0614aec648b64bfab8aca9e718caf5f284a0afc106b4b432bbb5b38187da215b",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/fdd99e64ef34885b94bcd9d52730690f77c9a580ca70ee7c5c3c9721f1a2c7ff-6248d45b9a866b1010ab925e7bfef29a6dcc7b6f59ab7bde47d7d66d66720207",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 3,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000130"
+          },
+          {
+            "sku": "YU-0000137"
+          },
+          {
+            "sku": "YU-0000139"
+          }
+        ]
+      }
+    },
+    {
+      "key": "e8008ae7adaff5d8443c7e0d2b97339aa89b06e2b54572bba2aef19d809407a8",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/b150fedbdaaf68990fda66a17458ba7b29cce2cf20d1dfa66e55dad93ed66d2e-26f756b1c70c97032d8def2e8eec8d6cac8f589398f3a6cfb4ffae4348c9626e",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kg",
+          "productType": "flexible-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0003944"
+          },
+          {
+            "sku": "YU-0003945"
+          },
+          {
+            "sku": "YU-0003947"
+          },
+          {
+            "sku": "YU-0003948"
+          },
+          {
+            "sku": "YU-0003949"
+          },
+          {
+            "sku": "YU-0003951"
+          },
+          {
+            "sku": "YU-0003952"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ca9ed11ddb4ac8041a1a3da5099e94bbb22fab6075d484c3798a88ec9ad4b357",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/f2e5be750722f3262e7ead53f3c6c7c213fdc3f363106d0295ccf39f31832f85-6b4a5d1fb5985efa85c547b206638fa0eecefc15f3240ff51108246dc515aaaf",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kg-hl",
+          "productType": "flexible-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0003956"
+          },
+          {
+            "sku": "YU-0004084"
+          },
+          {
+            "sku": "YU-0004076"
+          },
+          {
+            "sku": "YU-0004078"
+          },
+          {
+            "sku": "YU-0004080"
+          },
+          {
+            "sku": "YU-0004082"
+          },
+          {
+            "sku": "YU-0004085"
+          },
+          {
+            "sku": "YU-0003954"
+          }
+        ]
+      }
+    },
+    {
+      "key": "c11b14fc7c1f052d6813816b4458deda5728802c30e20406a6d3981eb24f3421",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/fe63edf0cd7344ac90747b25028f4aec13a951dc0583f77e8a8db5600b535b5b-954b0e76be7c30e9e708460bca0978272effb8beea4973af9a1166a77a899e13",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kg",
+          "productType": "flexible-cable",
+          "cores": 1,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown"
+          ],
+          "coreColorScheme": "1core-brown",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0003891"
+          },
+          {
+            "sku": "YU-0003892"
+          },
+          {
+            "sku": "YU-0003895"
+          },
+          {
+            "sku": "YU-0003896"
+          },
+          {
+            "sku": "YU-0003898"
+          },
+          {
+            "sku": "YU-0003899"
+          },
+          {
+            "sku": "YU-0003900"
+          }
+        ]
+      }
+    },
+    {
+      "key": "b15df5be6d03960cd440d9365ea64026393261b0cb8c11049f1ed46ee7df9b62",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/1e8b4dd6811f46ca167433e8d98afd4aabe65842c836fa9428bf6ba21c960587-b72ecb7b14f18998e41cd72c9de8f67ec1f91a11bd4a341082224a0ee896e715",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "sip-4",
+          "productType": "sip",
+          "cores": 4,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "twisted-bundle",
+          "hasOuterJacket": false,
+          "outerJacket": "none",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [
+            "twisted-insulated-cores"
+          ],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "4core-black-black-black-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0004818"
+          }
+        ]
+      }
+    },
+    {
+      "key": "506dda02084c4ba7023a0325962332d4ef25d4057c23435112358bb41afa7860",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/3b0c6f691ff9684577187650a5b209f6668632d79939551bebe6bfcc7c201be0-a7eab8f177df9f4716459f75e8f0f11ee1433a264a8555ec3ee78fc98a5970a6",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "pugv",
+          "productType": "installation-wire",
+          "cores": 1,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": false,
+          "outerJacket": "none",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "white"
+          ],
+          "coreColorScheme": "1core-white",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0005011"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ab16459af5da5d9c574b57f2445e15d8e7dcf1ff8754e523b3d3adfede55659e",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/b88ca66a736dfdb989f87546acc14b4af5915df08b17f64ec4eb0870d52bacab-aa06dcd1c84205cba42b72baed935a17eaf4b82cfa1f0227d27d7d8cf4084bea",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "shvvp",
+          "productType": "cord",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "flat",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0005219"
+          }
+        ]
+      }
+    },
+    {
+      "key": "5b5b5bfbf632cd850dd55e650cf9fbd35361d01974e2fac9432cd9e6d5d53a72",
+      "outputDir": "outputs/cable-next-ten-56-review/01-YU-0003932",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kg",
+          "productType": "flexible-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "armor": false,
+            "innerSheath": false,
+            "interstitialFilling": {
+              "status": "absent"
+            },
+            "separator": "one thin nonmetallic PET film or nonwoven separator around the assembly",
+            "source": "https://kamkabel.ru/upload/iblock/e54/3jmohqdxy89f8pqelhibxzay952tlxh2.pdf",
+            "basis": "Documented family illustration of the rubber-jacket construction with separator and without separate filling; SKU source does not identify the manufacturer."
+          }
+        }
+      }
+    },
+    {
+      "key": "439718f541c667291eb6bcdb54417a27bdfcf1618ce72221f6493d9902fa75a9",
+      "outputDir": "outputs/cable-next-ten-56-review/02-YU-0004044",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kg-hl",
+          "productType": "flexible-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "armor": false,
+            "innerSheath": false,
+            "interstitialFilling": {
+              "status": "absent"
+            },
+            "separator": "one thin nonmetallic PET film or nonwoven separator around the assembly",
+            "source": "https://kamkabel.ru/upload/iblock/e54/3jmohqdxy89f8pqelhibxzay952tlxh2.pdf",
+            "basis": "Documented family illustration of the rubber-jacket construction with separator and without separate filling; SKU source does not identify the manufacturer."
+          }
+        }
+      }
+    },
+    {
+      "key": "41d8a1af5f84896d4c70d7453e4163b74688eb578acd34464fdd404293ceee36",
+      "outputDir": "outputs/cable-kvvg-visual-groups-2026-11-16/review/f44da5b8ad22bf2bac7120c636d3488415a0671fccf16d5662a7cb38eb0e03ea",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgng-a-ls",
+          "productType": "control-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-black-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0002704"
+          },
+          {
+            "sku": "YU-0002713"
+          },
+          {
+            "sku": "YU-0002731"
+          },
+          {
+            "sku": "YU-0002746"
+          },
+          {
+            "sku": "YU-0007090"
+          },
+          {
+            "sku": "YU-0002762"
+          }
+        ]
+      }
+    },
+    {
+      "key": "17abd3036815562311629406fef1c84903aa6c54038d20e8aea7bdec321f7f61",
+      "outputDir": "outputs/cable-kvvg-visual-groups-2026-11-16/review-2637/a0df8dfeaf8699b634deb291ec76c8dd3d3ff42bdf693fd509ba67cd3576fe50",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgng-a-ls",
+          "productType": "control-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "brown",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-black-brown-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0002637"
+          },
+          {
+            "sku": "YU-0002695"
+          },
+          {
+            "sku": "YU-0002646"
+          },
+          {
+            "sku": "YU-0002662"
+          },
+          {
+            "sku": "YU-0002679"
+          },
+          {
+            "sku": "YU-0002689"
+          }
+        ]
+      }
+    },
+    {
+      "key": "507b62ba467b74bfa15aee0fc0e31a4dfd8e99ea01588296b578e1f536ea7651",
+      "outputDir": "outputs/cable-kvvg-visual-groups-2026-11-16/review-2637-avvg-layout",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgng-a-ls",
+          "productType": "control-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "brown",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-black-brown-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0002637"
+          }
+        ],
+        "catalogSource": {
+          "sku": "YU-0002637"
+        }
+      }
+    },
+    {
+      "key": "76b7c3f79180795d358d31fa18d1418cb1526efbd565ae54a6996c8d69cac9c5",
+      "outputDir": "outputs/cable-kvvg-visual-groups-2026-11-16/review-2637-centered",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgng-a-ls",
+          "productType": "control-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "brown",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-black-brown-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0002637"
+          }
+        ],
+        "catalogSource": {
+          "sku": "YU-0002637"
+        }
+      }
+    },
+    {
+      "key": "cc84b076c20a11328a2c5b9659f699c6f851db549aaa78a156011bb3b8fe8521",
+      "outputDir": "outputs/cable-kvvg-visual-groups-2026-11-16/review-2637-five-perimeter",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgng-a-ls",
+          "productType": "control-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "brown",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-black-brown-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0002637"
+          }
+        ],
+        "catalogSource": {
+          "sku": "YU-0002637"
+        }
+      }
+    },
+    {
+      "key": "02af19fca8ea33c1d6b43cdab3cbde6346c589b254c09a5ec2ad4b66947f67bb",
+      "outputDir": "outputs/cable-multicore-next-ten-2026-11-10/drafts/09-YU-0000991",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-hl",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        }
+      }
+    },
+    {
+      "key": "99a43483e55aeadd418a4a880dd53bce024e0273b4d5f719c829d24c9a57e063",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/5b5db7560a2cc5ef5e4f07e885d08c4625798fbdec04c24d8fe2a136d28800fd-156f0de4e5738941b7b35c426f0cf98bc69a509a457fe25c9cf0f20b9b71db61",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgng-a-ls",
+          "productType": "control-cable",
+          "cores": 7,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "7core-control-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE"
+        },
+        "members": [
+          {
+            "sku": "YU-0002764"
+          },
+          {
+            "sku": "YU-0002776"
+          },
+          {
+            "sku": "YU-0002797"
+          },
+          {
+            "sku": "YU-0002813"
+          },
+          {
+            "sku": "YU-0007956"
+          },
+          {
+            "sku": "YU-0002821"
+          },
+          {
+            "sku": "YU-0002827"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ba9461c7e4565a40a3d48591558065955a82e3cafe5c997fd88873c6cf7b7a48",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/f5408d3e4d5d1636612c842975a0caa7a0e33e180d0016e5517095c25f89936e-4ab76c845a5593d5a386ddc0dfc98de63322aa446c28a174450d52012b374d95",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvg",
+          "productType": "power-cable",
+          "cores": 5,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000198"
+          },
+          {
+            "sku": "YU-0000200"
+          },
+          {
+            "sku": "YU-0000204"
+          },
+          {
+            "sku": "YU-0000205"
+          },
+          {
+            "sku": "YU-0000207"
+          },
+          {
+            "sku": "YU-0000209"
+          },
+          {
+            "sku": "YU-0000213"
+          },
+          {
+            "sku": "YU-0000217"
+          },
+          {
+            "sku": "YU-0000221"
+          }
+        ]
+      }
+    },
+    {
+      "key": "90dcd38473dd707609b873657b3fa0334925642c36dd9e72f764630f2b79fa35",
+      "outputDir": "outputs/cable-recovery-four-2026-11-09/drafts/YU-0000758",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 1,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown"
+          ],
+          "coreColorScheme": "1core-brown",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000758"
+          },
+          {
+            "sku": "YU-0000761"
+          },
+          {
+            "sku": "YU-0000768"
+          },
+          {
+            "sku": "YU-0000839"
+          },
+          {
+            "sku": "YU-0000844"
+          },
+          {
+            "sku": "YU-0000848"
+          },
+          {
+            "sku": "YU-0000852"
+          },
+          {
+            "sku": "YU-0000855"
+          },
+          {
+            "sku": "YU-0000864"
+          }
+        ]
+      }
+    },
+    {
+      "key": "dba23920a8a8c6281a1f0b071ebe822becf723806ccce67a3869ce8f1c3dc3b1",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/c8d27aff25f4877d318e193fb3ef7be65245d2090e7cb62329b3f74366ca45a4-2a980f7d6023c092b3c3912bcbb749997b3f06512a08406489366cdb9619e620",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 3,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000838"
+          },
+          {
+            "sku": "YU-0007910"
+          },
+          {
+            "sku": "YU-0000926"
+          },
+          {
+            "sku": "YU-0000940"
+          },
+          {
+            "sku": "YU-0000954"
+          },
+          {
+            "sku": "YU-0000964"
+          },
+          {
+            "sku": "YU-0000968"
+          },
+          {
+            "sku": "YU-0000969"
+          },
+          {
+            "sku": "YU-0000971"
+          },
+          {
+            "sku": "YU-0000973"
+          },
+          {
+            "sku": "YU-0000815"
+          },
+          {
+            "sku": "YU-0000974"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ff22cb29873d012843db5cfa00e11612f656d410a6730e68841e55bae824242d",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/02fb835b62320e4df44380a5af32d7459b62159d79cea3ebb42dd4b632ae93d0-e88278c1858cd352858353972ca9867611983b2a565dfbc990218dc6b5fcb1e4",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-frls",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [
+            "fire-barrier"
+          ],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000979"
+          },
+          {
+            "sku": "YU-0000989"
+          },
+          {
+            "sku": "YU-0001001"
+          },
+          {
+            "sku": "YU-0001011"
+          },
+          {
+            "sku": "YU-0001017"
+          },
+          {
+            "sku": "YU-0007912"
+          },
+          {
+            "sku": "YU-0001109"
+          },
+          {
+            "sku": "YU-0001116"
+          },
+          {
+            "sku": "YU-0007133"
+          }
+        ]
+      }
+    },
+    {
+      "key": "f3c310986ab8ebcfbf7c21febd4c5ff1f02c7657d78d74e3e0df1b30932abeaa",
+      "outputDir": "outputs/cable-recovery-four-2026-11-09/drafts/YU-0002954",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kgvvng-a-ls",
+          "productType": "flexible-cable",
+          "cores": 1,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown"
+          ],
+          "coreColorScheme": "1core-brown",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0002954"
+          },
+          {
+            "sku": "YU-0002946"
+          },
+          {
+            "sku": "YU-0002947"
+          },
+          {
+            "sku": "YU-0002949"
+          },
+          {
+            "sku": "YU-0002950"
+          },
+          {
+            "sku": "YU-0002951"
+          },
+          {
+            "sku": "YU-0002952"
+          },
+          {
+            "sku": "YU-0002953"
+          },
+          {
+            "sku": "YU-0007958"
+          },
+          {
+            "sku": "YU-0003978"
+          }
+        ]
+      }
+    },
+    {
+      "key": "2a8c08337d5fd1d892948e7b205e8a3301f92f102edb2b46f0d3c9ce80e0cb6a",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/8905dd6d944a12274f9084ea3efb21f3bd09d5bcdea1b7ffd5492786083974bd-cdde581a09a13a7c563fe9387b81e5c4b8cedd8fac1bb3bc03b5907122a2c87b",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "ppgng-a-hf",
+          "productType": "power-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0003196"
+          },
+          {
+            "sku": "YU-0003198"
+          },
+          {
+            "sku": "YU-0003199"
+          },
+          {
+            "sku": "YU-0003201"
+          },
+          {
+            "sku": "YU-0003203"
+          },
+          {
+            "sku": "YU-0003206"
+          },
+          {
+            "sku": "YU-0003208"
+          },
+          {
+            "sku": "YU-0003210"
+          },
+          {
+            "sku": "YU-0003211"
+          },
+          {
+            "sku": "YU-0003213"
+          }
+        ]
+      }
+    },
+    {
+      "key": "3120c702d96ec898ecdb01da90cf8dc509cb21a08a09263f53ebef71f3d9e390",
+      "outputDir": "outputs/cable-style-batch-drafts/f6cc47ac5f53415bd63ec564a1dbee07870beb146cb469968e7d5ffd0240f1f1",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kg",
+          "productType": "flexible-cable",
+          "cores": 3,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0003905"
+          },
+          {
+            "sku": "YU-0003906"
+          },
+          {
+            "sku": "YU-0003907"
+          },
+          {
+            "sku": "YU-0003909"
+          },
+          {
+            "sku": "YU-0003911"
+          },
+          {
+            "sku": "YU-0003912"
+          },
+          {
+            "sku": "YU-0003913"
+          },
+          {
+            "sku": "YU-0003914"
+          },
+          {
+            "sku": "YU-0003915"
+          }
+        ]
+      }
+    },
+    {
+      "key": "e03c0b3f1dda4f9ab55f95fa83cfc3ae3930c59919d7e023af3522f861202bd6",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/7deb6595074e19a351d9bfde044bc673d19195b3b04b66a1c2ae72b702797cc2-95351a5935b282a5f191ad0682da00fb46a1a6fa33d5d859f1ae65b0f9d49cb5",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "pvs",
+          "productType": "flexible-wire",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "white",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0004924"
+          },
+          {
+            "sku": "YU-0004928"
+          },
+          {
+            "sku": "YU-0004929"
+          },
+          {
+            "sku": "YU-0004932"
+          },
+          {
+            "sku": "YU-0004934"
+          },
+          {
+            "sku": "YU-0004937"
+          },
+          {
+            "sku": "YU-0002002"
+          },
+          {
+            "sku": "YU-0004939"
+          },
+          {
+            "sku": "YU-0004940"
+          }
+        ]
+      }
+    },
+    {
+      "key": "da39fc96c5e0fbcd228ff6f19947a11465e803ebf327f22e26dbe693cbf6fe59",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/1076d0a2496341967416f0fe8536c42cd8c7e86a48a022317b74e4806337b3ce-90fedcde8595457b0de94c097dad039e06698ea6695220d43fdc927522074a3b",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "pvs",
+          "productType": "flexible-wire",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "stranded",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "white",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0004936"
+          },
+          {
+            "sku": "YU-0004941"
+          },
+          {
+            "sku": "YU-0004942"
+          },
+          {
+            "sku": "YU-0004943"
+          },
+          {
+            "sku": "YU-0004944"
+          },
+          {
+            "sku": "YU-0004945"
+          },
+          {
+            "sku": "YU-0004946"
+          },
+          {
+            "sku": "YU-0004947"
+          },
+          {
+            "sku": "YU-0004948"
+          }
+        ]
+      }
+    },
+    {
+      "key": "85e33b811603516e14c9deb44d8acab0a56bb6c7c516687407cc9c5a857d1fbb",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/a2a6f7f80a32a6364bce4b13140a9fe39568c8c12d01b4a86b9f546c09eb87ec-5a94a906cd7ad746e986578d0cda433addc71b0ca9bd24d1ffda82033189548b",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000146"
+          },
+          {
+            "sku": "YU-0000171"
+          },
+          {
+            "sku": "YU-0000174"
+          },
+          {
+            "sku": "YU-0000176"
+          },
+          {
+            "sku": "YU-0000179"
+          },
+          {
+            "sku": "YU-0000184"
+          },
+          {
+            "sku": "YU-0000188"
+          },
+          {
+            "sku": "YU-0000192"
+          },
+          {
+            "sku": "YU-0000195"
+          },
+          {
+            "sku": "YU-0000197"
+          }
+        ]
+      }
+    },
+    {
+      "key": "626e99b344e5a82134b401718f3b2b5f2ab03fb7f6f6f7c0225fefb1a7cd1c6c",
+      "outputDir": "outputs/cable-style-batch-drafts/eb07cd80a30b66e5922c00ab805f4e72a806a9f7f92e7a719615069b184c5ffa",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "akvvg",
+          "productType": "control-cable",
+          "cores": 10,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "10core-control-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000310"
+          },
+          {
+            "sku": "YU-0006932"
+          }
+        ]
+      }
+    },
+    {
+      "key": "059ed21fa391610657e1a2a293f1f8d63fe45f3ec0b5ea0d95bfc5a9cdfbe36e",
+      "outputDir": "outputs/catalog-safe-release-2026-11-14/candidate/data/cable-approved-results/f3a1f91865b543ef2c6ade7872857a9c3f83fe789dc655abf4ccbc73b7fd2727-a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgeng-a-frls",
+          "productType": "control-cable",
+          "cores": 7,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": true,
+          "shieldType": "overall-foil-with-drain",
+          "specialElements": [
+            "drain-wire",
+            "fire-barrier"
+          ],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "7core-control-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE + LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0002767"
+          },
+          {
+            "sku": "YU-0002784"
+          },
+          {
+            "sku": "YU-0002804"
+          },
+          {
+            "sku": "YU-0002817"
+          }
+        ]
+      }
+    },
+    {
+      "key": "46d0898e794a18ab9d165b9c2022677fa465f1e7c54f9ea8e3998c66b59bdcf8",
+      "outputDir": "outputs/cable-style-batch-drafts/af5cf58322f9c9a45f00fdf903d5d14e8de4cf6c165184ec2d36ba9b8f9d25a5",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vbshvng-a-ls",
+          "productType": "power-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": true,
+          "armorType": "steel-tapes",
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000556"
+          },
+          {
+            "sku": "YU-0000561"
+          },
+          {
+            "sku": "YU-0000567"
+          },
+          {
+            "sku": "YU-0000572"
+          },
+          {
+            "sku": "YU-0000644"
+          },
+          {
+            "sku": "YU-0000649"
+          },
+          {
+            "sku": "YU-0000654"
+          },
+          {
+            "sku": "YU-0000658"
+          },
+          {
+            "sku": "YU-0000660"
+          },
+          {
+            "sku": "YU-0000664"
+          },
+          {
+            "sku": "YU-0000667"
+          }
+        ]
+      }
+    },
+    {
+      "key": "249eeed8cbd6f921636b8a8e603ab426698ffc494a4edd4648f51347472fa826",
+      "outputDir": "outputs/cable-style-batch-drafts/28eb39e6cee7a4354c9ae966169fac6150cfbbe048fd65545003d9aee11c7a73",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "akvvg",
+          "productType": "control-cable",
+          "cores": 7,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "7core-control-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000242"
+          }
+        ]
+      }
+    },
+    {
+      "key": "66e532cedbf6865d7e029b0697a95479a8c8caa2bb5a0848c56ad9f21958c916",
+      "outputDir": "outputs/cable-vvg-typical-2026-11-15/drafts/d2291a5c83c3935cb0c9281bbf6bab458b02ac936c063d1a44b25d5f14682572",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-frls",
+          "productType": "power-cable",
+          "cores": 3,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [
+            "fire-barrier"
+          ],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000924"
+          },
+          {
+            "sku": "YU-0000937"
+          },
+          {
+            "sku": "YU-0000953"
+          },
+          {
+            "sku": "YU-0000962"
+          },
+          {
+            "sku": "YU-0000812"
+          },
+          {
+            "sku": "YU-0000834"
+          }
+        ]
+      }
+    },
+    {
+      "key": "002d01c5c600ef1557cec7d0b3231175a038af3d9f1aae98929d58255d4906b2",
+      "outputDir": "outputs/cable-style-batch-drafts/37c7af59fd0e95375180322437d9946eff1f6d788b97302685f6091731b0ee12",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "ppgeng-a-hf",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": true,
+          "shieldType": "overall-copper-tape",
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0003190"
+          },
+          {
+            "sku": "YU-0007521"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ab7b50c9187c36f07adb695b13743a5795fa2daec5e35c5a66df863c720a6934",
+      "outputDir": "outputs/cable-style-batch-drafts/4af555e6e5b97cdd90ea89bf6035399172b3f3b36524649963d2e1581b246c76",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvkbshv",
+          "productType": "control-cable",
+          "cores": 7,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": true,
+          "armorType": "steel-wires",
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "7core-control-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE + LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0006848"
+          }
+        ]
+      }
+    },
+    {
+      "key": "f791f99ae0792fbffbf5bb9f4cd36fd0f87339bea24965aa18dc57820dc6d5c7",
+      "outputDir": "outputs/cable-style-batch-drafts/55f7756af50652128011b457b17d836172ae9eeabac9ebb8a272734342ea79cb",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vbshvng-a-ls",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": true,
+          "armorType": "steel-tapes",
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000521"
+          },
+          {
+            "sku": "YU-0000524"
+          },
+          {
+            "sku": "YU-0000529"
+          },
+          {
+            "sku": "YU-0000535"
+          },
+          {
+            "sku": "YU-0000540"
+          },
+          {
+            "sku": "YU-0000545"
+          },
+          {
+            "sku": "YU-0000552"
+          },
+          {
+            "sku": "YU-0007126"
+          },
+          {
+            "sku": "YU-0000638"
+          },
+          {
+            "sku": "YU-0000511"
+          },
+          {
+            "sku": "YU-0000515"
+          }
+        ]
+      }
+    },
+    {
+      "key": "b4090c94c66d7f55acec57e4d9fa67746eff3fa5307d111d902c3851442ca883",
+      "outputDir": "outputs/cable-style-batch-drafts/60e55caf7b45a54656b099d14628306cadc4a559808cac121663f2bd517d62ed",
+      "status": "REQUEST_OUTCOME_UNKNOWN",
+      "draft": {
+        "profile": {
+          "family": "kvbbshv",
+          "productType": "control-cable",
+          "cores": 14,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": true,
+          "armorType": "steel-tapes",
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "14core-control-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE + LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0002430"
+          }
+        ]
+      }
+    },
+    {
+      "key": "42656a558bdc275b55b35c96679a8a30d98d3c708d877fb498a66e8e4150e254",
+      "outputDir": "outputs/cable-style-batch-drafts/6c50e524d3248018e14fae40ed83086b046d52a653e97ba34ddf6c44e802d17a",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "nym",
+          "productType": "power-cable",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "grey",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000060"
+          },
+          {
+            "sku": "YU-0000061"
+          },
+          {
+            "sku": "YU-0000062"
+          },
+          {
+            "sku": "YU-0000063"
+          }
+        ]
+      }
+    },
+    {
+      "key": "a1a35071ef0dc563f84debd07f36485398b4c705a89276febf62a902eb76cddd",
+      "outputDir": "outputs/cable-style-batch-drafts/9e4193e68ef47110fcbd5f1e9f7284dd3f51e78de004c74737eab7d0dacf90f4",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgeng-a-ls",
+          "productType": "control-cable",
+          "cores": 7,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": true,
+          "shieldType": "overall-foil-with-drain",
+          "specialElements": [
+            "drain-wire"
+          ],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "7core-control-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE + LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0002768"
+          },
+          {
+            "sku": "YU-0002785"
+          },
+          {
+            "sku": "YU-0002805"
+          },
+          {
+            "sku": "YU-0002818"
+          },
+          {
+            "sku": "YU-0002823"
+          },
+          {
+            "sku": "YU-0002829"
+          },
+          {
+            "sku": "YU-0002831"
+          }
+        ]
+      }
+    },
+    {
+      "key": "bdeda96d80d61292b662e52a48cba23dc103647590f8de6325108c3bb93d9f67",
+      "outputDir": "outputs/cable-style-batch-drafts/a59dbb5ae9a15a9918d80695750c61cf61ccf6f72ac1551f46371ac2c6492757",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "nym",
+          "productType": "power-cable",
+          "cores": 12,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "grey",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "yellow-green"
+          ],
+          "coreColorScheme": "12core-power-palette-6447e623",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE"
+        },
+        "members": [
+          {
+            "sku": "YU-0006775"
+          }
+        ]
+      }
+    },
+    {
+      "key": "d7d64c25f59156e6c4f35d7fb1d4a76d55fb9265362d783a0c021e7a05ed2483",
+      "outputDir": "outputs/cable-style-batch-drafts/a756f65d0c5c4ba6cb6b1c3b3274141635aefc42540f74cfaeaf4538e2508a06",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "avbshv",
+          "productType": "power-cable",
+          "cores": 3,
+          "conductorMaterial": "aluminium",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": true,
+          "armorType": "steel-tapes",
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000016"
+          },
+          {
+            "sku": "YU-0000018"
+          },
+          {
+            "sku": "YU-0000019"
+          },
+          {
+            "sku": "YU-0000020"
+          }
+        ]
+      }
+    },
+    {
+      "key": "545a6be3b2bc52aeff7298a718aec7bea7b798eedda81858822efd7bf049b2d5",
+      "outputDir": "outputs/cable-style-batch-drafts/bb2bc43034b4ce6b663740c485bf7a11187d6bbc771905654449a8eae1b0ec90",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgng",
+          "productType": "control-cable",
+          "cores": 27,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "27core-control-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE"
+        },
+        "members": [
+          {
+            "sku": "YU-0002900"
+          },
+          {
+            "sku": "YU-0002912"
+          }
+        ]
+      }
+    },
+    {
+      "key": "fb2e14dc0c43cca9d93dc67dac6293b09ed2d529c75d5880f350f7445d113775",
+      "outputDir": "outputs/cable-style-batch-drafts/f430a71b16e8c43a76199fc86c7ecec2a80ebea213dbc92ffa375531c3accf6f",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "kvvgeng-a-ls",
+          "productType": "control-cable",
+          "cores": 14,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": true,
+          "shieldType": "overall-foil-with-drain",
+          "specialElements": [
+            "drain-wire"
+          ],
+          "coreColors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "coreColorScheme": "14core-control-black",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "MULTICORE + LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0002887"
+          },
+          {
+            "sku": "YU-0002966"
+          },
+          {
+            "sku": "YU-0002981"
+          },
+          {
+            "sku": "YU-0002992"
+          },
+          {
+            "sku": "YU-0002995"
+          }
+        ]
+      }
+    },
+    {
+      "key": "e81004714a06f1b9f7dd1165506a0b3ea4951e6b0224a6daab747c3a64a0d39a",
+      "outputDir": "outputs/cable-vvg-cut-revisions-2026-11-15/YU-0000777",
+      "status": "REQUEST_OUTCOME_UNKNOWN",
+      "draft": {
+        "profile": {
+          "family": "vvg",
+          "productType": "power-cable",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "armor": false,
+            "innerSheath": false,
+            "interstitialFilling": {
+              "status": "present",
+              "material": "PVC plastic compound",
+              "placement": "only the spaces between insulated cores at the outer jacket mouth; flush with the jacket cut, never a separate sleeve"
+            },
+            "maxSection": 35,
+            "source": "https://podolskkabel.ru/res/content/docs/f2065_download_0_file.pdf",
+            "basis": "Illustration of the explicitly marked filled VVG execution, with PVC filling between cores. Scope limited to round, solid typage; no claim of manufacturer or lot identity."
+          }
+        },
+        "members": [
+          {
+            "sku": "YU-0000777"
+          }
+        ]
+      }
+    },
+    {
+      "key": "2560948a8a82044f2af682d81ebfc78fa7a51211b7f2d8419f765a1c640656e1",
+      "outputDir": "outputs/cable-vvg-cut-revisions-2026-11-15/YU-0000920",
+      "status": "REQUEST_OUTCOME_UNKNOWN",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a",
+          "productType": "power-cable",
+          "cores": 3,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "armor": false,
+            "innerSheath": false,
+            "interstitialFilling": {
+              "status": "present",
+              "material": "PVC plastic compound",
+              "placement": "only the spaces between insulated cores at the outer jacket mouth; flush with the jacket cut, never a separate sleeve"
+            },
+            "maxSection": 35,
+            "source": "https://podolskkabel.ru/res/content/docs/f2065_download_0_file.pdf",
+            "basis": "Illustration of the explicitly marked filled VVG execution, with PVC filling between cores. Scope limited to round, solid typage; no claim of manufacturer or lot identity."
+          }
+        },
+        "members": [
+          {
+            "sku": "YU-0000920"
+          }
+        ]
+      }
+    },
+    {
+      "key": "d79ee68af1d2be1f85e0ffbf0f6f5c0a550083be831e7660691c265b630d1909",
+      "outputDir": "outputs/cable-vvg-cut-revisions-2026-11-15/YU-0000984",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE"
+        },
+        "members": [
+          {
+            "sku": "YU-0000984"
+          }
+        ]
+      }
+    },
+    {
+      "key": "724a21c57112fbb34c7ff4fbb50668964193cf05d2ade6188ec55eb2f1f942e6",
+      "outputDir": "outputs/cable-vvg-cut-revisions-2026-11-15/YU-0001039",
+      "status": "REQUEST_OUTCOME_UNKNOWN",
+      "draft": {
+        "profile": {
+          "family": "vvgng",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "armor": false,
+            "innerSheath": false,
+            "interstitialFilling": {
+              "status": "present",
+              "material": "PVC plastic compound",
+              "placement": "only the spaces between insulated cores at the outer jacket mouth; flush with the jacket cut, never a separate sleeve"
+            },
+            "maxSection": 35,
+            "source": "https://podolskkabel.ru/res/content/docs/f2065_download_0_file.pdf",
+            "basis": "Illustration of the explicitly marked filled VVG execution, with PVC filling between cores. Scope limited to round, solid typage; no claim of manufacturer or lot identity."
+          }
+        },
+        "members": [
+          {
+            "sku": "YU-0001039"
+          }
+        ]
+      }
+    },
+    {
+      "key": "bc33c64d651fdce7922b12b0f61540308a290ae5557f3162fd79ef91742d874c",
+      "outputDir": "outputs/cable-vvg-new-2026-11-15/067cfe37bbd584834451997d1175dd0ee6496d5880502095e82199a76a2d5d0a",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng",
+          "productType": "power-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "armor": false,
+            "innerSheath": false,
+            "interstitialFilling": {
+              "status": "present",
+              "material": "PVC plastic compound",
+              "placement": "only the spaces between insulated cores at the outer jacket mouth; flush with the jacket cut, never a separate sleeve"
+            },
+            "maxSection": 35,
+            "source": "https://podolskkabel.ru/res/content/docs/f2065_download_0_file.pdf",
+            "basis": "Illustration of the explicitly marked filled VVG execution, with PVC filling between cores. Scope limited to round, solid typage; no claim of manufacturer or lot identity."
+          }
+        },
+        "members": [
+          {
+            "sku": "YU-0001129"
+          }
+        ]
+      }
+    },
+    {
+      "key": "1212b5fed55764f59bc9f64ec0bd990bc49704c858f8312b0d07e919e5ea17dd",
+      "outputDir": "outputs/cable-vvg-new-2026-11-15/b8d630af3fe4fca410f37f1bd85ffe87a699b180f93e33c9dbe285a4c2486905",
+      "status": "HELD_DEFECT",
+      "draft": {
+        "profile": {
+          "family": "vvgng",
+          "productType": "power-cable",
+          "cores": 3,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "armor": false,
+            "innerSheath": false,
+            "interstitialFilling": {
+              "status": "present",
+              "material": "PVC plastic compound",
+              "placement": "only the spaces between insulated cores at the outer jacket mouth; flush with the jacket cut, never a separate sleeve"
+            },
+            "maxSection": 35,
+            "source": "https://podolskkabel.ru/res/content/docs/f2065_download_0_file.pdf",
+            "basis": "Illustration of the explicitly marked filled VVG execution, with PVC filling between cores. Scope limited to round, solid typage; no claim of manufacturer or lot identity."
+          }
+        },
+        "members": [
+          {
+            "sku": "YU-0000809"
+          },
+          {
+            "sku": "YU-0000830"
+          }
+        ]
+      }
+    },
+    {
+      "key": "b82722d88dda82b4dde45fe932ffc20f09ac23561d72d1eaf4ed4a26f463b88d",
+      "outputDir": "outputs/cable-vvg-new-2026-11-15/d1d3efe385e4524e705dd5c938f5f1d581643f9ef7b839e3f87b74b9df12a4d1",
+      "status": "HELD_DEFECT",
+      "draft": {
+        "profile": {
+          "family": "vvg",
+          "productType": "power-cable",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "armor": false,
+            "innerSheath": false,
+            "interstitialFilling": {
+              "status": "present",
+              "material": "PVC plastic compound",
+              "placement": "only the spaces between insulated cores at the outer jacket mouth; flush with the jacket cut, never a separate sleeve"
+            },
+            "maxSection": 35,
+            "source": "https://podolskkabel.ru/res/content/docs/f2065_download_0_file.pdf",
+            "basis": "Illustration of the explicitly marked filled VVG execution, with PVC filling between cores. Scope limited to round, solid typage; no claim of manufacturer or lot identity."
+          }
+        },
+        "members": [
+          {
+            "sku": "YU-0000777"
+          }
+        ]
+      }
+    },
+    {
+      "key": "c685fbb31968bec2c5a90849853a768ba3b71f4d3d638e512b560868d9f33ea5",
+      "outputDir": "outputs/cable-vvg-new-2026-11-15/ea4018c0e46c573c6610b204e9744026aee0f790f3a3f01d163dac820433345d",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "SIMPLE",
+          "technicalConstruction": {
+            "fireBarrier": false,
+            "screen": false,
+            "armor": false,
+            "innerSheath": false,
+            "interstitialFilling": {
+              "status": "present",
+              "material": "PVC plastic compound",
+              "placement": "only the spaces between insulated cores at the outer jacket mouth; flush with the jacket cut, never a separate sleeve"
+            },
+            "maxSection": 35,
+            "source": "https://podolskkabel.ru/res/content/docs/f2065_download_0_file.pdf",
+            "basis": "Illustration of the explicitly marked filled VVG execution, with PVC filling between cores. Scope limited to round, solid typage; no claim of manufacturer or lot identity."
+          }
+        },
+        "members": [
+          {
+            "sku": "YU-0001039"
+          }
+        ]
+      }
+    },
+    {
+      "key": "2accac20ec33275bfdaf0bcb57da892186418fba2fe568fc582fab73c661378f",
+      "outputDir": "outputs/cable-vvg-typical-2026-11-15/drafts/036026235d4cef2f945d43f6af56ecedebbdf8b2229b1214c5e260299a652cd7",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-frls",
+          "productType": "power-cable",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [
+            "fire-barrier"
+          ],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000870"
+          },
+          {
+            "sku": "YU-0000884"
+          },
+          {
+            "sku": "YU-0000793"
+          }
+        ]
+      }
+    },
+    {
+      "key": "78940486b66f5d59c950af42181273ced00294bb6a42c18001e63688bb6a23ad",
+      "outputDir": "outputs/cable-vvg-typical-2026-11-15/drafts/4046babbfd587d73f9c65ffff5c088b0080e888d13d38c191c58d25e9759f930",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 3,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": true,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "3core-brown-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000917"
+          },
+          {
+            "sku": "YU-0000918"
+          },
+          {
+            "sku": "YU-0000949"
+          },
+          {
+            "sku": "YU-0000827"
+          },
+          {
+            "sku": "YU-0007341"
+          }
+        ]
+      }
+    },
+    {
+      "key": "a14a0674cf1e684c7ee50ef55a3ed11ce40ffb735a279eb3f97d5fa916c64ba0",
+      "outputDir": "outputs/cable-vvg-typical-2026-11-15/drafts/477916a2708d55e5ef7c0226d5c0503da3b4b86ed6ae6ed3bab138db4d1e915e",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 5,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": true,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "blue",
+            "yellow-green"
+          ],
+          "coreColorScheme": "5core-brown-black-grey-blue-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0001159"
+          },
+          {
+            "sku": "YU-0006947"
+          },
+          {
+            "sku": "YU-0006994"
+          },
+          {
+            "sku": "YU-0006788"
+          }
+        ]
+      }
+    },
+    {
+      "key": "9efe6330c7df8ba60cd9826bf89a8c37b7c35ac8519e4c7d75b3c86cb55fad0f",
+      "outputDir": "outputs/cable-vvg-typical-2026-11-15/drafts/61248838dc24dd0edf1d7facf5e2b20c358a1094698b6f01532e131a2336b2fb",
+      "status": "REQUEST_OUTCOME_UNKNOWN",
+      "draft": {
+        "profile": {
+          "family": "vvgng",
+          "productType": "power-cable",
+          "cores": 4,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": true,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "black",
+            "grey",
+            "yellow-green"
+          ],
+          "coreColorScheme": "4core-brown-black-grey-yellow-green",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000982"
+          },
+          {
+            "sku": "YU-0000983"
+          },
+          {
+            "sku": "YU-0007139"
+          },
+          {
+            "sku": "YU-0007379"
+          },
+          {
+            "sku": "YU-0001015"
+          },
+          {
+            "sku": "YU-0001021"
+          },
+          {
+            "sku": "YU-0001036"
+          },
+          {
+            "sku": "YU-0001037"
+          }
+        ]
+      }
+    },
+    {
+      "key": "feac664712c4272842636c79ad40dc5e323b412d7a166520b05407ed89ad2a2b",
+      "outputDir": "outputs/cable-vvg-typical-2026-11-15/drafts/7414d887c828fd8419a4cb119b3b8e95aa71179aced6927725f63d4e439d3a80",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-frls",
+          "productType": "power-cable",
+          "cores": 1,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": false,
+          "shieldType": null,
+          "specialElements": [
+            "fire-barrier"
+          ],
+          "coreColors": [
+            "brown"
+          ],
+          "coreColorScheme": "1core-brown",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000757"
+          },
+          {
+            "sku": "YU-0000767"
+          },
+          {
+            "sku": "YU-0000847"
+          }
+        ]
+      }
+    },
+    {
+      "key": "7414dc70ab61c66942b91159cfd47707aea3c1ed7fcda10a0b228328fc116b1e",
+      "outputDir": "outputs/cable-vvg-typical-2026-11-15/drafts/95d6554a2a71ea9edf66aa185098396e097ac57ab60acd85ceb5ae2abc8a534f",
+      "status": "PENDING_REVIEW",
+      "draft": {
+        "profile": {
+          "family": "vvgng-a-ls",
+          "productType": "power-cable",
+          "cores": 2,
+          "conductorMaterial": "copper",
+          "conductorConstruction": "solid",
+          "conductorShape": "circular",
+          "geometry": "round",
+          "hasOuterJacket": true,
+          "outerJacket": "black",
+          "armor": false,
+          "armorType": null,
+          "shield": true,
+          "shieldType": null,
+          "specialElements": [],
+          "coreColors": [
+            "brown",
+            "blue"
+          ],
+          "coreColorScheme": "2core-brown-blue",
+          "pairedGroupSize": null,
+          "sectionKey": null,
+          "unresolvedModifiers": [],
+          "unresolvedFamilySuffix": null,
+          "visualizationType": "LAYERED"
+        },
+        "members": [
+          {
+            "sku": "YU-0000879"
+          },
+          {
+            "sku": "YU-0000897"
+          },
+          {
+            "sku": "YU-0000898"
+          },
+          {
+            "sku": "YU-0000775"
+          },
+          {
+            "sku": "YU-0000785"
+          },
+          {
+            "sku": "YU-0000792"
+          },
+          {
+            "sku": "YU-0000797"
+          }
+        ]
+      }
+    }
+  ]
+}

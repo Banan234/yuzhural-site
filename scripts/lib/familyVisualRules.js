@@ -321,6 +321,7 @@ export function classifyPracticalCableVisualProduct(product, context) {
         (/^(?:0[.,]66|1)(?:КВ)?$/iu.test(suffix || '') &&
           ['power-cable', 'control-cable'].includes(p.productType));
     }
+    if (issue.code === 'special_configuration' && context.catalogCoreLayout?.grouped) covered = true;
     if (issue.code === 'shield_detail_unknown') covered = !!p.shieldType;
     if (issue.code === 'armor_detail_unknown') covered = !!p.armorType;
     if (covered)
@@ -361,12 +362,19 @@ export function classifyPracticalCableVisualProduct(product, context) {
         auxiliaryCores: strict.auxiliaryCores,
         auxiliarySize: relation,
       };
-      // Never infer that the reduced core is PE/N from a parser ground* field.
-      add(
+      if (context.catalogCoreLayout?.mixed && p.conductorShape === 'circular' &&
+          (rule.structure.conductorConstruction === p.conductorConstruction ||
+            product.visualCharacteristics?.conductorConstruction === p.conductorConstruction)) {
+        coreLayout = { sectionGroups: context.catalogCoreLayout.sectionGroups };
+      } else add(
         'mixed_core_layout_review',
         'Разноразмерные жилы: нужно подтвердить цвет, назначение и исполнение уменьшенной/дополнительной жилы; одинаковый общий масштаб сохраняется'
       );
     }
+  }
+  if (coreLayout?.sectionGroups && colors) {
+    colors = [...colors];
+    colors[colors.length - 1] = coreLayout.sectionGroups[1].role === 'PE' ? 'yellow-green' : 'blue';
   }
   const issues = [
     ...new Map(critical.map((i) => [`${i.code}:${i.message}`, i])).values(),

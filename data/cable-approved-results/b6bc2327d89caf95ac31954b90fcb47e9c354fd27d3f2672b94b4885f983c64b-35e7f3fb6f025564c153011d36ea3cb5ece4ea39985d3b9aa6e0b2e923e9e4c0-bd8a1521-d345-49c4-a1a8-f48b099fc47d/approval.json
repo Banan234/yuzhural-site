@@ -1,0 +1,99 @@
+{
+  "reviewSchemaVersion": "cable-review-2",
+  "scope": {
+    "family": "vvgng",
+    "skus": [
+      "YU-0001039"
+    ]
+  },
+  "defectRules": [
+    {
+      "defectId": "DEF-VVGZ-001",
+      "ruleId": "vvgz.flush",
+      "version": "cable-illustration-rules-2",
+      "rulesSha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+      "requirement": "Заполнение между жилами у плоскости среза без отдельного рукава."
+    }
+  ],
+  "sha256": "35e7f3fb6f025564c153011d36ea3cb5ece4ea39985d3b9aa6e0b2e923e9e4c0",
+  "reviewer": "Пользователь",
+  "note": "Пользователь прямо утвердил этот PNG для каталога и принял отмеченные визуальные замечания. Решение зафиксировано для точного SHA-256.",
+  "status": "APPROVED",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": false,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true,
+    "frameAndLeftMargin": true,
+    "visibleConstruction": true,
+    "individualStripping": true,
+    "flushFilling": false,
+    "compactPack": true
+  },
+  "preserveExistingApproval": true,
+  "archiveOnly": false,
+  "acceptedCatalogChecks": [
+    "background",
+    "flushFilling"
+  ],
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": false,
+  "manualGallery": true,
+  "reviewedRules": {
+    "sha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+    "ids": [
+      "frame.horizontal",
+      "frame.style",
+      "frame.background",
+      "frame.right-edge",
+      "core.count",
+      "core.geometry",
+      "core.stripping",
+      "layers.contract",
+      "geometry.sheath",
+      "multi.stripping",
+      "vvg.compact",
+      "vvgz.flush",
+      "references.permissions",
+      "catalog.preserve",
+      "generation.claim",
+      "catalog.scope"
+    ],
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders",
+      "frameAndLeftMargin",
+      "visibleConstruction",
+      "individualStripping",
+      "flushFilling",
+      "compactPack"
+    ]
+  },
+  "visualKey": "vvgng__4c__solid__round__4core-brown-black-grey-yellow-green__p-8d10be205690f0ef",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-15T19:09:02.641Z"
+}

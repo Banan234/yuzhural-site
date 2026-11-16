@@ -8,6 +8,20 @@
     "alumoflex"
   ],
   "families": {
+    "vvgz": {
+      "fireBarrier": false,
+      "screen": false,
+      "armor": false,
+      "innerSheath": false,
+      "interstitialFilling": {
+        "status": "present",
+        "material": "PVC plastic compound",
+        "placement": "only the spaces between insulated cores at the outer jacket mouth; flush with the jacket cut, never a separate sleeve"
+      },
+      "maxSection": 35,
+      "source": "https://podolskkabel.ru/res/content/docs/f2065_download_0_file.pdf",
+      "basis": "Illustration of the explicitly marked filled VVG execution, with PVC filling between cores. Scope limited to round, solid typage; no claim of manufacturer or lot identity."
+    },
     "vvgng-a-frls": {
       "fireBarrier": true,
       "fireBarrierMaterial": "mica-containing-tapes",
@@ -35,6 +49,30 @@
       "basis": "Manufacturer family documentation permits copper foil or tape. Copper foil selected for this illustration; not proof of supplier identity for each SKU.",
       "screenFunction": "electromagnetic-screening",
       "screenRendering": "paper-thin flexible copper foil with fine natural wrinkles and a small lifted/peeled edge revealing negligible thickness; wraps close against inner PVC sheath; no rigid smooth copper cylinder, thick rim, raised diagonal armor seam, steel tapes or wire mesh"
+    }
+  },
+  "referenceEvidence": {
+    "frls": {
+      "family": "vvgng-a-frls",
+      "source": "https://www.uncomtech.ru/marks/V13A",
+      "documentedLayers": [
+        "outer-jacket",
+        "inner-sheath",
+        "individual-insulation",
+        "fire-barrier"
+      ],
+      "scope": "Manufacturer construction variant; no individual manufacturer attribution."
+    },
+    "screenedVvgLs": {
+      "family": "vvgng-a-ls",
+      "requiresShield": true,
+      "sources": [
+        "https://www.uncomtech.ru/marks/V122",
+        "https://www.energokab.ru/assets/data/reklamnyie-materialyi/Katalog_AO_Zavod_Energokabel.pdf"
+      ],
+      "placement": "overall screen under outer jacket",
+      "actualType": "supplier-specific; preserve explicit evidence or unknown",
+      "scope": "Only screen presence and position shared; does not infer additional layers."
     }
   }
 }

@@ -1,0 +1,14 @@
+{
+  "groups": {
+    "a37de0cbf25301565072c371cb3e756705262eaefae0734673aa31c12f0daeac": {
+      "primary": "5af20ccaf5a2ddcbfa59abe80a4a1d7a86f2ba8235c452d1bd939b24fcc5a2c2",
+      "geometry": "156f0de4e5738941b7b35c426f0cf98bc69a509a457fe25c9cf0f20b9b71db61",
+      "updatedAt": "2026-11-16T10:25:31.347Z"
+    },
+    "f07f14b8e8264c86de7c48e107ddd99690f61dcc9725b96175be0fd460f8d018": {
+      "primary": "6adcf0538169f513217ba37d4f7f760fc6e003639ab3c4b45585090bf7836926",
+      "geometry": "156f0de4e5738941b7b35c426f0cf98bc69a509a457fe25c9cf0f20b9b71db61",
+      "updatedAt": "2026-11-16T10:24:50.510Z"
+    }
+  }
+}

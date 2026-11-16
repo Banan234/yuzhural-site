@@ -1,0 +1,81 @@
+{
+  "reviewSchemaVersion": "cable-review-2",
+  "scope": {
+    "family": "h05v-k",
+    "skus": [
+      "YU-0006811"
+    ]
+  },
+  "defectRules": [],
+  "sha256": "73158445e19ef74c3ff3a0c9fb3de80c8bac33a36111fd7dc26f8075bd3b0c73",
+  "reviewer": "Пользователь",
+  "note": "Пользователь визуально одобрил PNG для YU-0006811 и поручил назначить его SKU с той же видимой конструкцией.",
+  "status": "APPROVED",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true,
+    "frameAndLeftMargin": true,
+    "visibleConstruction": true,
+    "individualStripping": true
+  },
+  "preserveExistingApproval": true,
+  "manualGallery": true,
+  "APPROVED_FOR_CATALOG": true,
+  "visualAttestation": true,
+  "reviewedRules": {
+    "sha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+    "ids": [
+      "frame.horizontal",
+      "frame.style",
+      "frame.background",
+      "frame.right-edge",
+      "core.count",
+      "core.geometry",
+      "core.stripping",
+      "layers.contract",
+      "geometry.sheath",
+      "references.permissions",
+      "catalog.preserve",
+      "generation.claim",
+      "catalog.scope"
+    ],
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders",
+      "frameAndLeftMargin",
+      "visibleConstruction",
+      "individualStripping"
+    ]
+  },
+  "APPROVED_AS_REFERENCE": false,
+  "visualKey": "h05v-k__1c__stranded__round__1core-yellow-green__p-31c804f9999a35f8",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-16T14:27:34.546Z",
+  "archiveOnly": false
+}

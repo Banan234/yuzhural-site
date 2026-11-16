@@ -58,6 +58,28 @@ const slug = (value) =>
     .replace(/[а-яё]/gu, (c) => letters[c])
     .replace(/[^a-z0-9]+/gu, '-')
     .replace(/^-|-$/gu, '');
+// Match trailing execution tokens. FR, filling, screen and armour markers are retained.
+const nonVisualExecution = /(?:[ -]*(?:нг|ng)(?:[ -]*(?:\(\s*[a-dабвгд]\s*\)|[aа]))?|[ -]+(?:ls|hf|ltx|lsltx|hfltx)|(?:[ -]|(?<=\p{L}))(?:ухл|uhl|хл|hl)(?:[1-5](?:\.\d+)?)?|[ -]+(?:тс|тв|ом|т|у|о|м|в)[1-5](?:\.\d+)?)$/iu;
+
+export function cableExecutionFamilyName(family) {
+  if (typeof family !== 'string') return family;
+  let base = family.trim();
+  for (;;) {
+    const reduced = base.replace(nonVisualExecution,'').trimEnd();
+    if (reduced === base) return base;
+    base = reduced;
+  }
+}
+
+const nonVisualAttribute = value => !cableExecutionFamilyName('КВВГ-'+String(value).trim()).replace(/^КВВГ-?/u,'');
+/** Keep execution suffixes out of reference scope; anatomy is compared separately. */
+export function cableFamilyScope(family) {
+  const key = slug(cableExecutionFamilyName(family) ?? '');
+  return key.replace(/(?:-catalog(?:-frls)?|ng(?:-[a-z0-9-]+)?|-hl)$/u, '')
+    .replace(/^(vvg|avvg)-p$/u, '$1')
+    .replace(/^(kvvg|vvg|ppg)e$/u, '$1');
+}
+
 const number = (value) =>
   value != null &&
   value !== '' &&
@@ -245,7 +267,7 @@ export function normalizeCableFamily(product, { knowledge, rules }) {
   let suffix = heading.startsWith(rawBase) ? heading.slice(rawBase.length) : '';
   const designation = [suffix, ...attributes].join(' ').toUpperCase();
   const fire = designation.match(
-    /НГ\s*(?:\(([АAБВГД])\))?\s*-?\s*(FRLS|FRHF|LSLTX|LS|HF)?/u
+    /НГ\s*(?:\(([АAБBВCГDД])\))?\s*-?\s*(FRLS|FRHF|LSLTX|LS|HF)?/u
   );
   const modification = fire
     ? `ng${fire[1] ? `-${fire[1].replace('А', 'A').toLowerCase()}` : ''}${fire[2] ? `-${fire[2].toLowerCase()}` : ''}`
@@ -263,8 +285,8 @@ export function normalizeCableFamily(product, { knowledge, rules }) {
     .filter(Boolean)
     .join('-');
   const baseId = slug(rawBase);
-  const unresolvedFamilySuffix = suffix
-    .replace(/НГ(?:\([АAБВГД]\))?-?(?:FRLS|FRHF|LSLTX|LS|HF)?/gu, '')
+  const unresolvedFamilySuffix = cableExecutionFamilyName('КВВГ-'+suffix).slice('КВВГ'.length)
+    .replace(/НГ(?:\([АAБBВCГDД]\))?-?(?:FRLS|FRHF|LSLTX|LS|HF)?/gu, '')
     .replace(/ХЛ|LTX/gu, '')
     .replace(/[-\s]/gu, '');
   const familyId = `${baseId}${suffixKey ? `${modification ? '' : '-'}${suffixKey}` : ''}`;
@@ -664,7 +686,7 @@ export function classifyCableVisualProduct(product, context) {
     }
   const unknownAttrs = family.attributes.filter(
     (a) =>
-      !/^(?:нг(?:\([АAБВГД]\))?(?:-?(?:LS|HF|FRLS|FRHF|LSLTx))?(?:-ХЛ)?|ХЛ|LTx|LS|FRLS|FRHF|HF|п|мк|мж|мс|ок|ож|ос|Э|ЭФ|ЭМ|Б|ГОСТ|ТУ|-|черн\.?|черный|чёрный|бел|белый|оранж|ж\/з|синий|син|голубой|коричневый|красный|серый|желтый|зеленый|розовый|фиолетовый)$/iu.test(
+      !nonVisualAttribute(a) && !/^(?:нг(?:\([АAБBВCГDД]\))?(?:-?(?:LS|HF|FRLS|FRHF|LSLTx))?(?:-ХЛ)?|ХЛ|LTx|LS|FRLS|FRHF|HF|п|мк|мж|мс|ок|ож|ос|Э|ЭФ|ЭМ|Б|ГОСТ|ТУ|-|черн\.?|черный|чёрный|бел|белый|оранж|ж\/з|синий|син|голубой|коричневый|красный|серый|желтый|зеленый|розовый|фиолетовый)$/iu.test(
         a
       ) && !normalizeCoreColor(a)
   );

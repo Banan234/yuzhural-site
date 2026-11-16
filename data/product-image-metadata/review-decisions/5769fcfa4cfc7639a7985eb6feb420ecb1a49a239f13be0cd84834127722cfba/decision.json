@@ -1,0 +1,18 @@
+{
+  "decision": {
+    "sha256": "5769fcfa4cfc7639a7985eb6feb420ecb1a49a239f13be0cd84834127722cfba",
+    "sku": "YU-0000757",
+    "disposition": "NEEDS_CORRECTION",
+    "note": "Лишняя визуальная ступень. Сохранить подтверждённую внутреннюю оболочку, изоляцию и слюдяной барьер; исключить лишний слой и сохранить геометрию.",
+    "reviewer": "Пользователь · решения по партии ВВГ",
+    "status": "NEEDS_REVIEW",
+    "APPROVED_FOR_CATALOG": false,
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "vvgng-a-frls__1c__solid__round__1core-brown__p-3cbd07de24e1e9ca",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-15T16:55:00.233Z"
+  },
+  "claimKey": "feac664712c4272842636c79ad40dc5e323b412d7a166520b05407ed89ad2a2b",
+  "originalDraft": "outputs/cable-vvg-typical-2026-11-15/drafts/7414d887c828fd8419a4cb119b3b8e95aa71179aced6927725f63d4e439d3a80",
+  "previous": []
+}

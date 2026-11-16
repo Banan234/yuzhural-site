@@ -238,7 +238,7 @@ it('adds only a documented interstitial filling role without adding either sheat
   expect(result.innerSheath.status).toBe('absent');
   expect(result.layers.map(layer => layer.role)).toEqual(['interstitial-filling', 'individual-insulation']);
   expect(result.interstitialFilling).toEqual(interstitialFilling);
-  expect(technicalProfilePrompt(result)).toContain('Do not draw an inner sheath.');
+  expect(technicalProfilePrompt(result)).toContain('Do not draw a separate inner sheath');
   expect(technicalProfilePrompt(result)).toContain('Do not add an outer sheath.');
   expect(() => build({
     ...profile,
@@ -253,4 +253,16 @@ it.each([1, 2])('keeps filling independent for %i-core construction', cores => {
   expect(result.interstitialFilling.status).toBe('unknown');
   expect(result.layers.map(layer => layer.role)).toEqual(['outer-jacket', 'individual-insulation']);
   expect(result.coreMetalEndCount).toBe(cores);
+});
+
+it('draws only the jacket and individual insulation for ordinary VVG', () => {
+  const contract = build({
+    ...base, family: 'vvg', cores: 3, coreColors: ['brown', 'blue', 'yellow-green'],
+    hasOuterJacket: true, shield: false, shieldType: null, specialElements: [],
+  });
+  expect(contract.layers.map(layer => layer.role)).toEqual(['outer-jacket', 'individual-insulation']);
+  expect(contract.innerSheath.status).toBe('unknown');
+  expect(contract.interstitialFilling.status).toBe('unknown');
+  expect(contract.separator).toBeNull();
+  expect(technicalProfilePrompt(contract)).toContain('Visible layers are an exhaustive allowlist');
 });

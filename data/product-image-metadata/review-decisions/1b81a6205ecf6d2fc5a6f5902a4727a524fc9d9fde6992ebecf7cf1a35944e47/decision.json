@@ -1,0 +1,35 @@
+{
+  "decision": {
+    "sha256": "1b81a6205ecf6d2fc5a6f5902a4727a524fc9d9fde6992ebecf7cf1a35944e47",
+    "sku": "YU-0000920",
+    "disposition": "REJECT",
+    "note": "Неверная укладка жил, заполнение выступает за границу среза.",
+    "reviewer": "Пользователь · решения по партии ВВГ",
+    "status": "REJECTED",
+    "APPROVED_FOR_CATALOG": false,
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "vvgng-a__3c__solid__round__3core-brown-blue-yellow-green__p-6f35b4f95d03332d",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-15T16:55:00.401Z"
+  },
+  "claimKey": "2560948a8a82044f2af682d81ebfc78fa7a51211b7f2d8419f765a1c640656e1",
+  "originalDraft": "data/product-image-metadata/review-decisions/1b81a6205ecf6d2fc5a6f5902a4727a524fc9d9fde6992ebecf7cf1a35944e47",
+  "previous": [
+    {
+      "sku": "YU-0000920",
+      "status": "NEEDS_REVIEW",
+      "reason": "Новый черновик не утверждён. Нужна дополнительная визуальная проверка заполнения.",
+      "sha256": "1b81a6205ecf6d2fc5a6f5902a4727a524fc9d9fde6992ebecf7cf1a35944e47",
+      "reviewer": "Пользователь",
+      "source": "Явное решение в чате",
+      "preserveSourceSha256": "00a6fbdff85ec5b76faa85001e916be0c499fad6125295d198bc7702625127f0",
+      "APPROVED_FOR_CATALOG": false,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "vvgng-a__3c__solid__round__3core-brown-blue-yellow-green__p-6f35b4f95d03332d",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "reviewedAt": "2026-11-15T16:15:39.459Z"
+    }
+  ],
+  "imageRemovedAt": "2026-11-15T19:19:45+00:00",
+  "imageRemovedReason": "Явное решение пользователя удалить все копии отклонённого PNG."
+}

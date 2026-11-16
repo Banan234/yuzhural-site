@@ -1,0 +1,838 @@
+{
+  "date": "2026-11-10",
+  "status": "LOCAL_CATALOG_VERIFIED",
+  "styleVersion": "approved-cable-style-1.1.0",
+  "snapshot": {
+    "productsSha256": "45d554dbe88f7ebd7fd82bbb7747f51d7a838937ded5565e2fc1a47971ffccbd",
+    "releaseSku": 5682,
+    "visibleSku": 5654,
+    "cards": 5623,
+    "approvedImages": 52,
+    "referencePermissions": 21,
+    "approvedBindingsInRelease": 294,
+    "visibleApprovedSku": 290,
+    "visiblePlaceholderSku": 5364
+  },
+  "cleanup": {
+    "previousApprovedImages": 48,
+    "previousApprovedBindings": 311,
+    "previousVisibleApprovedSku": 310,
+    "removedBindingsCurrentRelease": 1303,
+    "removedBindingsAbsentSku": 22,
+    "replacedBindings": 22,
+    "newBindingsExistingApproved": 3,
+    "previousApprovedBindingsRetained": 269,
+    "previousApprovedBindingsExcluded": 42,
+    "approvedBindingsOutsideStorefront": 4
+  },
+  "batch": [
+    {
+      "number": 1,
+      "sku": "YU-0003954",
+      "visualKey": "kg-hl__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-bd0ed17f11fe35b3",
+      "status": "APPROVED_FOR_CATALOG",
+      "reason": "Пять изолированных жил и пять соосных многопроволочных медных концов, равный визуальный диаметр, компактный пучок без лишних слоёв.",
+      "sha256": "6b4a5d1fb5985efa85c547b206638fa0eecefc15f3240ff51108246dc515aaaf",
+      "assignedSku": [
+        "YU-0003956",
+        "YU-0004084",
+        "YU-0004076",
+        "YU-0004078",
+        "YU-0004080",
+        "YU-0004082",
+        "YU-0004085",
+        "YU-0003954"
+      ],
+      "approvedAsReference": false
+    },
+    {
+      "number": 2,
+      "sku": "YU-0001046",
+      "visualKey": "vvgng-a-hl__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-e4a93d102e504f2a",
+      "status": "NEEDS_REVIEW",
+      "reason": "Пять цельных медных концов. Наружная оболочка показана свободной трубкой с заметными пустотами сверху и снизу. Документация марки предусматривает заполнение наружных промежутков.",
+      "sha256": "ced3e8ff12a0a5baf0ff259518a40187eb0e87e57eaa4267bbe4af4cda6ff0e4"
+    },
+    {
+      "number": 3,
+      "sku": "YU-0007248",
+      "visualKey": "vvgng-a-ls-ltx__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-36a0f6e183952c0b",
+      "status": "NEEDS_REVIEW",
+      "reason": "Пять цельных медных концов. Для медной круглой однопроволочной жилы 70 мм² выходит за предел 50 мм² по ГОСТ 31996-2012. В исходном SKU исполнение жилы не указано. Заполнение у среза также не показано.",
+      "sha256": "8ed98603e59d7efdd80d11e0d5c0c5634ffaa79ced5adacc1b8039c96f70b6b1"
+    },
+    {
+      "number": 4,
+      "sku": "YU-0007384",
+      "visualKey": "vvgng-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-89ffbb40a7b76ca3",
+      "status": "NEEDS_REVIEW",
+      "reason": "Пять цельных медных концов. У среза хорошо видны крупные незаполненные наружные промежутки. Конструкция круглого кабеля предусматривает заполнение.",
+      "sha256": "7f6c9af063ec4aa32efb5b87f7f340ddaf362c615330dde749a0234ba551158e"
+    },
+    {
+      "number": 5,
+      "sku": "YU-0000130",
+      "visualKey": "avvgng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-e442dc8e87d72633",
+      "status": "APPROVED_FOR_CATALOG",
+      "reason": "Три соосных цельных алюминиевых конца, равные видимые диаметры, заданные цвета. Небольшая тень у кромки, без явной отдельной полости. Допуск только для подтверждённой простой низковольтной конструкции.",
+      "sha256": "6248d45b9a866b1010ab925e7bfef29a6dcc7b6f59ab7bde47d7d66d66720207",
+      "assignedSku": [
+        "YU-0000130",
+        "YU-0000137",
+        "YU-0000139"
+      ],
+      "approvedAsReference": false
+    },
+    {
+      "number": 6,
+      "sku": "YU-0003944",
+      "visualKey": "kg__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-026eabb4d4aad318",
+      "status": "APPROVED_FOR_CATALOG",
+      "reason": "Пять изолированных жил и пять соосных многопроволочных медных концов, равный визуальный диаметр, компактный пучок без лишних слоёв.",
+      "sha256": "26f756b1c70c97032d8def2e8eec8d6cac8f589398f3a6cfb4ffae4348c9626e",
+      "assignedSku": [
+        "YU-0003944",
+        "YU-0003945",
+        "YU-0003947",
+        "YU-0003948",
+        "YU-0003949",
+        "YU-0003951",
+        "YU-0003952"
+      ],
+      "approvedAsReference": false
+    },
+    {
+      "number": 7,
+      "sku": "YU-0001047",
+      "visualKey": "vvg__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-c4775fbfff6c3b16",
+      "status": "FAILED",
+      "reason": "Image API returned HTTP 404"
+    },
+    {
+      "number": 8,
+      "sku": "YU-0001048",
+      "visualKey": "vvgng__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-f3a543eb49972bfa",
+      "status": "FAILED",
+      "reason": "Image API returned HTTP 404"
+    },
+    {
+      "number": 9,
+      "sku": "YU-0000991",
+      "visualKey": "vvgng-a-hl__4c__solid__round__4core-brown-black-grey-yellow-green__p-2bd6176bb8a20efd",
+      "status": "NEEDS_REVIEW",
+      "reason": "Четыре цельных медных конца. Под жёлто-зелёной жилой виден широкий незаполненный участок внутри оболочки. Документация марки предусматривает заполнение наружных промежутков.",
+      "sha256": "16e25040f7ce258c3481067f9a85e002d292ef6af705e6201e638d95d306f173"
+    },
+    {
+      "number": 10,
+      "sku": "YU-0000124",
+      "visualKey": "avvg__3c__solid__round__3core-brown-blue-yellow-green__p-40bcb5195d5cce3c",
+      "status": "APPROVED_FOR_CATALOG",
+      "reason": "Три соосных цельных алюминиевых конца, равные видимые диаметры, заданные цвета. Небольшая тень у кромки. Допуск только для подтверждённой простой низковольтной конструкции.",
+      "sha256": "6d874aaf056eb3350df03120d6a250da3b9afc8ff4839b8f5ad44f36dfba1286",
+      "assignedSku": [
+        "YU-0000124",
+        "YU-0000128",
+        "YU-0000132",
+        "YU-0000135"
+      ],
+      "approvedAsReference": false
+    }
+  ],
+  "archiveQueue": {
+    "historical": 83,
+    "covered": 2,
+    "open": 81,
+    "fullyTechnicalBlocked": 31,
+    "anyTechnicalBlock": 50
+  },
+  "newPaidRequests": 0,
+  "coverageReconciliation": "docs/reports/cable-image-coverage-2026-11-10.csv",
+  "latest": {
+    "date": "2026-11-11",
+    "status": "GEOMETRY_PLAN_AWAITING_APPROVAL",
+    "productsFileSha256": "01629a912e5b244cc466e85021ef6a21145b1ddbff7e273aad17477e1546b0a7",
+    "queueCatalogHash": "b7bfb0b8d10a717aa15cbf389b13d1ea511f23f05fe1f68b57dc12003616c568",
+    "source": {
+      "historical": "data/product-image-metadata/production-v1/plan.json",
+      "queueCommand": "node scripts/planCableStyleBatch.js --dry-run",
+      "queueVersion": "technical-evidence-v2",
+      "queueReport": "outputs/cable-generation-queue/queue.json",
+      "registry": "data/cable-approved-results/registry.json",
+      "bindings": "shared/generatedProductImages.json",
+      "geometryAnnotations": "docs/reports/cable-kg-composition-points-2026-11-11.json",
+      "geometryCommand": "node scripts/inspectCableImageComposition.js docs/reports/cable-kg-composition-points-2026-11-11.json"
+    },
+    "catalog": {
+      "releaseSku": 5664,
+      "listingSku": 5653,
+      "cards": 5621,
+      "approvedPngs": 53,
+      "allowedReferences": 21,
+      "mappingEntries": 301,
+      "compatibleReleaseBindings": 291,
+      "listingSkuWithApprovedPng": 291
+    },
+    "queue": {
+      "releaseSku": 5664,
+      "visibleSku": 5653,
+      "historicalOriginalSku": 1877,
+      "historicalOriginalKeys": 565,
+      "historicalPresent": {
+        "sku": 1850,
+        "visualKeys": 578,
+        "technicallyDeterminedSku": 221,
+        "technicallyDeterminedKeys": 45,
+        "coveredKeys": 52,
+        "coveredSku": 281,
+        "readyKeys": 0,
+        "readySku": 0
+      },
+      "historicalStillAutoApproved": {
+        "sku": 1743,
+        "visualKeys": 543,
+        "technicallyDeterminedSku": 221,
+        "technicallyDeterminedKeys": 45,
+        "coveredKeys": 52,
+        "coveredSku": 281,
+        "readyKeys": 0,
+        "readySku": 0
+      },
+      "currentAutoApproved": {
+        "sku": 1771,
+        "visualKeys": 544,
+        "technicallyDeterminedSku": 224,
+        "technicallyDeterminedKeys": 45,
+        "coveredKeys": 52,
+        "coveredSku": 291,
+        "readyKeys": 0,
+        "readySku": 0
+      },
+      "categories": {
+        "READY_FOR_GENERATION": 2,
+        "NEEDS_TECHNICAL_REVIEW": 3350,
+        "ALREADY_COVERED": 52
+      },
+      "blockedAutoApprovedKeys": 490,
+      "queuedKeys": 0,
+      "additionalSku": 0,
+      "pendingDraftSku": 14,
+      "automaticallyRefinedSku": 77,
+      "automaticallyDeterminedSku": 0,
+      "automaticallyQueuedSku": 0,
+      "apiRequests": 0
+    },
+    "blockers": [
+      {
+        "reason": "unconfirmed-core-colors",
+        "affectedSku": 1066,
+        "affectedKeys": 393,
+        "soleBlockerSku": 15,
+        "soleBlockerKeys": 8
+      },
+      {
+        "reason": "unconfirmed-outer-sheath",
+        "affectedSku": 1017,
+        "affectedKeys": 367,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "unconfirmed-interstitial-filling",
+        "affectedSku": 1009,
+        "affectedKeys": 360,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "unconfirmed-inner-sheath",
+        "affectedSku": 982,
+        "affectedKeys": 356,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "unconfirmed-conductorShape",
+        "affectedSku": 721,
+        "affectedKeys": 248,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "unconfirmed-conductorConstruction",
+        "affectedSku": 703,
+        "affectedKeys": 239,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "unconfirmed-geometry",
+        "affectedSku": 229,
+        "affectedKeys": 120,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "unconfirmed-hasOuterJacket",
+        "affectedSku": 229,
+        "affectedKeys": 120,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "unconfirmed-shield",
+        "affectedSku": 227,
+        "affectedKeys": 119,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "NEEDS_REVIEW: no approved reference for this geometry/jacket construction",
+        "affectedSku": 192,
+        "affectedKeys": 42,
+        "soleBlockerSku": 192,
+        "soleBlockerKeys": 42
+      },
+      {
+        "reason": "unconfirmed-armor-type",
+        "affectedSku": 157,
+        "affectedKeys": 88,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "unconfirmed-conductorMaterial",
+        "affectedSku": 122,
+        "affectedKeys": 58,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "NEEDS_REVIEW: manufacturer fire barrier documentation required",
+        "affectedSku": 111,
+        "affectedKeys": 54,
+        "soleBlockerSku": 111,
+        "soleBlockerKeys": 54
+      },
+      {
+        "reason": "unverified-conductor-section-band",
+        "affectedSku": 107,
+        "affectedKeys": 31,
+        "soleBlockerSku": 97,
+        "soleBlockerKeys": 29
+      },
+      {
+        "reason": "unconfirmed-armor",
+        "affectedSku": 52,
+        "affectedKeys": 25,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "existing-approval-requires-reconciliation",
+        "affectedSku": 48,
+        "affectedKeys": 18,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      },
+      {
+        "reason": "unconfirmed-screen-type",
+        "affectedSku": 2,
+        "affectedKeys": 1,
+        "soleBlockerSku": 0,
+        "soleBlockerKeys": 0
+      }
+    ],
+    "generationHistory": [
+      {
+        "subject": "ВВГнг(А)-LS-LTx 5×70",
+        "sku": "YU-0007248",
+        "status": "APPROVED",
+        "catalog": true,
+        "reference": false,
+        "compare": "outputs/cable-7248-stranded-2026-11-11/comparison.html"
+      },
+      {
+        "subject": "КГ и КГ-ХЛ, первый проход",
+        "apiRequests": 2,
+        "report": "outputs/cable-next-ten-56-review/report.html"
+      },
+      {
+        "subject": "КГ и КГ-ХЛ, исправление кромки и ширины",
+        "apiRequests": 2,
+        "report": "outputs/cable-kg-revision-and-queue/report.html",
+        "drafts": [
+          {
+            "sku": "YU-0003932",
+            "png": "outputs/cable-kg-revision-and-queue/01-YU-0003932/image.png",
+            "sha256": "6cb11137120955437935546ba138925d8a4a407154da7a56d201abad5cf9f4f4",
+            "status": "NEEDS_REVIEW",
+            "potentialSku": 7,
+            "occupiedWidthPct": 89.1,
+            "tipSpreadPerpendicularPx": 334,
+            "tipCenterOffsetPx": 45.9
+          },
+          {
+            "sku": "YU-0004044",
+            "png": "outputs/cable-kg-revision-and-queue/02-YU-0004044/image.png",
+            "sha256": "069731751f1f316fedcdcd43adf7b1ebf5eb63d3294829df77d7dfef05e771d7",
+            "status": "NEEDS_REVIEW",
+            "potentialSku": 7,
+            "occupiedWidthPct": 88.1,
+            "tipSpreadPerpendicularPx": 359.6,
+            "tipCenterOffsetPx": 5.5
+          }
+        ]
+      }
+    ],
+    "newPaidRequests": 0,
+    "referenceAudit": {
+      "date": "2026-11-11",
+      "paidRequests": 0,
+      "checkedApprovedPngs": 53,
+      "catalogCoverage": 291,
+      "allowedReferences": [
+        {
+          "visualKey": "kvvgeng-a-frls__7c__solid__round__7core-control-black__p-e2b81602676203f1",
+          "sha256": "a0a59ae805b76ba75fd4cee390eb3512ba73ef4f4b16cbdaee827935362082df",
+          "family": "kvvgeng-a-frls",
+          "cores": 7,
+          "visualizationType": "MULTICORE + LAYERED",
+          "conductorConstruction": "solid",
+          "screen": true,
+          "armor": false
+        },
+        {
+          "visualKey": "avvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-4b690fd988f163a5",
+          "sha256": "5a94a906cd7ad746e986578d0cda433addc71b0ca9bd24d1ffda82033189548b",
+          "family": "avvgng-a-ls",
+          "cores": 4,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "kvvgng-a-ls__7c__solid__round__7core-control-black__p-5ddfe9e44500c0ff",
+          "sha256": "156f0de4e5738941b7b35c426f0cf98bc69a509a457fe25c9cf0f20b9b71db61",
+          "family": "kvvgng-a-ls",
+          "cores": 7,
+          "visualizationType": "MULTICORE",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "pugv__1c__stranded__round__1core-white__p-158003053538284a",
+          "sha256": "a7eab8f177df9f4716459f75e8f0f11ee1433a264a8555ec3ee78fc98a5970a6",
+          "family": "pugv",
+          "cores": 1,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "stranded",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "sip-4__4c__stranded__twisted-bundle__4core-black-black-black-black__p-35a9ef805227b5ad",
+          "sha256": "b72ecb7b14f18998e41cd72c9de8f67ec1f91a11bd4a341082224a0ee896e715",
+          "family": "sip-4",
+          "cores": 4,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "stranded",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "shvvp__2c__stranded__flat__2core-brown-blue__p-3e347be614526744",
+          "sha256": "aa06dcd1c84205cba42b72baed935a17eaf4b82cfa1f0227d27d7d8cf4084bea",
+          "family": "shvvp",
+          "cores": 2,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "stranded",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "vvgng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-0700c23a8e1611d2",
+          "sha256": "7d1b214abdf8c0951d818f2d224dd369c2186e54de7e6f73998933f2504e669c",
+          "family": "vvgng-a-ls",
+          "cores": 5,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "avvg__4c__solid__round__4core-brown-black-grey-yellow-green__p-b14bd71a5cde934d",
+          "sha256": "8736f662c829998eb87fa653aa36b442ef4b1d21e584d0557179abafd5eb9a9c",
+          "family": "avvg",
+          "cores": 4,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "pvs__3c__stranded__round__3core-brown-blue-yellow-green__p-f426943bb179b11b",
+          "sha256": "996238fff8bd9a589d99b87029408181cf487152d0c2178f502e2eb002506d0a",
+          "family": "pvs",
+          "cores": 3,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "stranded",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "vvgng-a-frls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-5696dc8c8ace7065",
+          "sha256": "2838ba45e1387b4bd4457893a45d685c241d1a7aad50741bd5081c3cf9bcd20c",
+          "family": "vvgng-a-frls",
+          "cores": 5,
+          "visualizationType": "LAYERED",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "kvvgeng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-948d5c297ffa969d",
+          "sha256": "6adcf0538169f513217ba37d4f7f760fc6e003639ab3c4b45585090bf7836926",
+          "family": "kvvgeng-a-ls",
+          "cores": 4,
+          "visualizationType": "LAYERED",
+          "conductorConstruction": "solid",
+          "screen": true,
+          "armor": false
+        },
+        {
+          "visualKey": "vvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-efab82e5a582c255",
+          "sha256": "3d5be3694ad1f7f4950de556839fa5b13cb5af91be76f4dce93fa82cc98b532e",
+          "family": "vvgng-a-ls",
+          "cores": 4,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "vvgng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-976663aeb43b59a1",
+          "sha256": "2a980f7d6023c092b3c3912bcbb749997b3f06512a08406489366cdb9619e620",
+          "family": "vvgng-a-ls",
+          "cores": 3,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "ppgng-a-hf__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-7adfee411ceefd4a",
+          "sha256": "cdde581a09a13a7c563fe9387b81e5c4b8cedd8fac1bb3bc03b5907122a2c87b",
+          "family": "ppgng-a-hf",
+          "cores": 5,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "avvg__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-44e7dbca3237d981",
+          "sha256": "4ab76c845a5593d5a386ddc0dfc98de63322aa446c28a174450d52012b374d95",
+          "family": "avvg",
+          "cores": 5,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2",
+          "sha256": "0ecef0b0968fc278477a6a4c0c38303a75a9b7fddba6334bd6a04eaa2be79291",
+          "family": "kg",
+          "cores": 3,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "stranded",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "pvs__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-daa81db690414ad6",
+          "sha256": "90fedcde8595457b0de94c097dad039e06698ea6695220d43fdc927522074a3b",
+          "family": "pvs",
+          "cores": 5,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "stranded",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "pvs__4c__stranded__round__4core-brown-black-grey-yellow-green__p-e7ee66de6d3c8eb0",
+          "sha256": "95351a5935b282a5f191ad0682da00fb46a1a6fa33d5d859f1ae65b0f9d49cb5",
+          "family": "pvs",
+          "cores": 4,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "stranded",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "vvgng-a-frls__4c__solid__round__4core-brown-black-grey-yellow-green__p-dfd2d82eaac43722",
+          "sha256": "e88278c1858cd352858353972ca9867611983b2a565dfbc990218dc6b5fcb1e4",
+          "family": "vvgng-a-frls",
+          "cores": 4,
+          "visualizationType": "LAYERED",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "kgvvng-a-ls__1c__stranded__round__1core-brown__p-29aa123557a0ad22",
+          "sha256": "e962e763d2a8271e11e38fcc8a6f4ce2f120115cc6924e1a7e920960a80a061b",
+          "family": "kgvvng-a-ls",
+          "cores": 1,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "stranded",
+          "screen": false,
+          "armor": false
+        },
+        {
+          "visualKey": "vvgng-a-ls__1c__solid__round__1core-brown__p-15ca2bb68392acf7",
+          "sha256": "2eb8cdcce4757a3f929171575ba210379fcf218737c79b190794983390486ef6",
+          "family": "vvgng-a-ls",
+          "cores": 1,
+          "visualizationType": "SIMPLE",
+          "conductorConstruction": "solid",
+          "screen": false,
+          "armor": false
+        }
+      ],
+      "kg": [
+        {
+          "visualKey": "kg__4c__stranded__round__4core-brown-black-grey-yellow-green__p-c63dc84b713bf477",
+          "referenceStatus": "NEEDS_APPROVED_GEOMETRY_REFERENCE",
+          "closest": "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2",
+          "referenceInputs": [
+            {
+              "role": "protected-style",
+              "sha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2"
+            }
+          ],
+          "report": {
+            "status": "NEEDS_REVIEW",
+            "findings": [
+              "excessive-tip-spread",
+              "core-group-off-axis",
+              "diagonal-tip-staircase"
+            ],
+            "missing": [],
+            "measurements": {
+              "tipSpreadPerSheathDiameter": 0.7291987013783066,
+              "tipCenterOffsetPerSheathDiameter": 0.10027623576270182,
+              "tipDepthSpreadPerSheathDiameter": 0.501836629384347,
+              "staircaseOrder": 0.8333333333333334
+            }
+          }
+        },
+        {
+          "visualKey": "kg-hl__4c__stranded__round__4core-brown-black-grey-yellow-green__p-4a2ab8dd8bd47f36",
+          "referenceStatus": "NEEDS_APPROVED_GEOMETRY_REFERENCE",
+          "closest": "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2",
+          "referenceInputs": [
+            {
+              "role": "protected-style",
+              "sha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2"
+            }
+          ],
+          "report": {
+            "status": "NEEDS_REVIEW",
+            "findings": [
+              "excessive-tip-spread",
+              "diagonal-tip-staircase"
+            ],
+            "missing": [],
+            "measurements": {
+              "tipSpreadPerSheathDiameter": 0.7513826112574739,
+              "tipCenterOffsetPerSheathDiameter": 0.011479098729518512,
+              "tipDepthSpreadPerSheathDiameter": 0.21070086622596976,
+              "staircaseOrder": 1
+            }
+          }
+        }
+      ],
+      "queue": {
+        "releaseSku": 5664,
+        "visibleSku": 5653,
+        "historicalOriginalSku": 1877,
+        "historicalOriginalKeys": 565,
+        "historicalPresent": {
+          "sku": 1850,
+          "visualKeys": 578,
+          "technicallyDeterminedSku": 221,
+          "technicallyDeterminedKeys": 45,
+          "coveredKeys": 52,
+          "coveredSku": 281,
+          "readyKeys": 0,
+          "readySku": 0
+        },
+        "historicalStillAutoApproved": {
+          "sku": 1743,
+          "visualKeys": 543,
+          "technicallyDeterminedSku": 221,
+          "technicallyDeterminedKeys": 45,
+          "coveredKeys": 52,
+          "coveredSku": 281,
+          "readyKeys": 0,
+          "readySku": 0
+        },
+        "currentAutoApproved": {
+          "sku": 1771,
+          "visualKeys": 544,
+          "technicallyDeterminedSku": 224,
+          "technicallyDeterminedKeys": 45,
+          "coveredKeys": 52,
+          "coveredSku": 291,
+          "readyKeys": 0,
+          "readySku": 0
+        },
+        "categories": {
+          "READY_FOR_GENERATION": 0,
+          "NEEDS_TECHNICAL_REVIEW": 3352,
+          "ALREADY_COVERED": 52
+        },
+        "blockedAutoApprovedKeys": 492,
+        "queuedKeys": 0,
+        "additionalSku": 0,
+        "pendingDraftSku": 14,
+        "automaticallyRefinedSku": 77,
+        "automaticallyDeterminedSku": 0,
+        "automaticallyQueuedSku": 0,
+        "apiRequests": 0
+      },
+      "blockers": [
+        {
+          "reason": "unconfirmed-core-colors",
+          "affectedSku": 1066,
+          "affectedKeys": 393,
+          "soleBlockerSku": 15,
+          "soleBlockerKeys": 8
+        },
+        {
+          "reason": "unconfirmed-outer-sheath",
+          "affectedSku": 1017,
+          "affectedKeys": 367,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "unconfirmed-interstitial-filling",
+          "affectedSku": 1009,
+          "affectedKeys": 360,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "unconfirmed-inner-sheath",
+          "affectedSku": 982,
+          "affectedKeys": 356,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "unconfirmed-conductorShape",
+          "affectedSku": 721,
+          "affectedKeys": 248,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "unconfirmed-conductorConstruction",
+          "affectedSku": 703,
+          "affectedKeys": 239,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "unconfirmed-geometry",
+          "affectedSku": 229,
+          "affectedKeys": 120,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "unconfirmed-hasOuterJacket",
+          "affectedSku": 229,
+          "affectedKeys": 120,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "unconfirmed-shield",
+          "affectedSku": 227,
+          "affectedKeys": 119,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "NEEDS_REVIEW: no approved reference for this geometry/jacket construction",
+          "affectedSku": 192,
+          "affectedKeys": 42,
+          "soleBlockerSku": 192,
+          "soleBlockerKeys": 42
+        },
+        {
+          "reason": "unconfirmed-armor-type",
+          "affectedSku": 157,
+          "affectedKeys": 88,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "unconfirmed-conductorMaterial",
+          "affectedSku": 122,
+          "affectedKeys": 58,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "NEEDS_REVIEW: manufacturer fire barrier documentation required",
+          "affectedSku": 111,
+          "affectedKeys": 54,
+          "soleBlockerSku": 111,
+          "soleBlockerKeys": 54
+        },
+        {
+          "reason": "unverified-conductor-section-band",
+          "affectedSku": 107,
+          "affectedKeys": 31,
+          "soleBlockerSku": 97,
+          "soleBlockerKeys": 29
+        },
+        {
+          "reason": "unconfirmed-armor",
+          "affectedSku": 52,
+          "affectedKeys": 25,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "existing-approval-requires-reconciliation",
+          "affectedSku": 48,
+          "affectedKeys": 18,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        },
+        {
+          "reason": "no-approved-compatible-multicore-geometry-reference",
+          "affectedSku": 14,
+          "affectedKeys": 2,
+          "soleBlockerSku": 14,
+          "soleBlockerKeys": 2
+        },
+        {
+          "reason": "unconfirmed-screen-type",
+          "affectedSku": 2,
+          "affectedKeys": 1,
+          "soleBlockerSku": 0,
+          "soleBlockerKeys": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="write-token" content="LOCAL_WRITE_TOKEN">
+  <title>Референсы для генерации</title>
+  <link rel="stylesheet" href="/standards.css">
+  <script type="module" src="/references.js"></script>
+</head>
+<body>
+<header>
+  <h1>Референсы для генерации</h1>
+  <nav class="toolbar" aria-label="Разделы галереи">
+    <a href="/standards">Эталоны изображений</a>
+    <a href="/">Полный архив</a>
+  </nav>
+</header>
+<main class="reference-workspace">
+  <div class="toolbar transfer-tools">
+    <button id="export-open">Экспортировать назначения</button>
+    <button id="copy-codex">Скопировать инструкцию для Codex</button>
+    <span id="transfer-info" class="metadata"></span>
+  </div>
+  <div class="panel">
+    <div class="toolbar">
+      <label class="field">Семейство<select id="family"></select></label>
+      <label class="field">Визуальная группа<select id="group"></select></label>
+    </div>
+    <p id="group-info"></p>
+    <details id="members" hidden>
+      <summary id="sku-count"></summary>
+      <ul id="skus"></ul>
+    </details>
+  </div>
+  <p id="status" role="status" aria-live="polite"></p>
+  <section class="panel" id="editor" hidden aria-label="Назначения группы">
+    <section id="assignment-conflict" hidden aria-label="Конфликт ручных назначений"></section>
+    <div class="media compare">
+      <div>
+        <label class="field">Основной референс<select id="primary"></select></label>
+        <button type="button" data-gallery="primary">Выбрать из галереи</button>
+        <p class="metadata">Оболочка, материалы и внешний вид в пределах конструкции группы.</p>
+        <a class="image reference-preview" id="primary-preview" target="_blank" rel="noopener" hidden><img alt=""></a>
+      </div>
+      <div>
+        <label class="field">Геометрический референс<select id="geometry"></select></label>
+        <button type="button" data-gallery="geometry">Выбрать из галереи</button>
+        <p class="metadata">Число и расположение жил. Цвета, материалы и слои задаёт профиль группы.</p>
+        <a class="image reference-preview" id="geometry-preview" target="_blank" rel="noopener" hidden><img alt=""></a>
+      </div>
+    </div>
+    <div class="toolbar">
+      <button class="primary" id="save">Сохранить для группы</button>
+      <button id="remove">Удалить назначения</button>
+    </div>
+  </section>
+</main>
+<dialog id="picker" aria-labelledby="picker-title">
+  <div class="toolbar dialog-head"><h2 id="picker-title"></h2><button id="picker-close">Закрыть</button></div>
+  <div class="toolbar filters">
+    <label class="field">Название или SKU<input id="picker-search" type="search"></label>
+    <label class="field">Статус<select id="picker-status"><option value="APPROVED">APPROVED</option><option value="">Все</option><option>NEEDS_REVIEW</option><option>NEEDS_CORRECTION</option><option>REJECTED</option><option>ARCHIVED</option></select></label>
+    <label class="field">Семейство<select id="picker-family"></select></label>
+    <label class="field">Жилы<select id="picker-cores"></select></label>
+    <label class="field">Экран<select id="picker-shield"><option value="">Любой</option><option value="yes">Есть</option><option value="no">Нет</option></select></label>
+    <label class="field">Броня<select id="picker-armor"><option value="">Любая</option><option value="yes">Есть</option><option value="no">Нет</option></select></label>
+    <label class="field">Форма<select id="picker-geometry"><option value="">Любая</option><option value="round">Круглая</option><option value="flat">Плоская</option></select></label>
+    <label><input id="picker-compatible" type="checkbox" checked> Только подходящие</label>
+  </div>
+  <p id="picker-count" role="status"></p>
+  <div id="picker-grid" class="cards"></div>
+  <button id="picker-more" hidden>Показать ещё</button>
+</dialog>
+<dialog id="export-dialog" aria-labelledby="export-title">
+  <div class="toolbar dialog-head"><h2 id="export-title">Экспорт назначений</h2><button id="export-close">Закрыть</button></div>
+  <label class="field">Охват<select id="export-scope"><option value="family">Текущее семейство</option><option value="all">Все семейства</option></select></label>
+  <label class="check"><input id="export-assigned" type="checkbox" checked> Только группы с назначениями</label>
+  <label class="check"><input id="export-changed" type="checkbox"> Только изменённые после предыдущего экспорта</label>
+  <p id="export-count" role="status"></p>
+  <button class="primary" id="export-download">Скачать JSON</button>
+</dialog>
+</body>
+</html>

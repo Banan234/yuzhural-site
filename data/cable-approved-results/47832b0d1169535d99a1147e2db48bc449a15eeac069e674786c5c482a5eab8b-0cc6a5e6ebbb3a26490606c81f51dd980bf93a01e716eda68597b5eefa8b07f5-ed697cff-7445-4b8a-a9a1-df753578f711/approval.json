@@ -1,0 +1,81 @@
+{
+  "reviewSchemaVersion": "cable-review-2",
+  "scope": {
+    "family": "h05v-k",
+    "skus": [
+      "YU-0002079"
+    ]
+  },
+  "defectRules": [],
+  "sha256": "0cc6a5e6ebbb3a26490606c81f51dd980bf93a01e716eda68597b5eefa8b07f5",
+  "reviewer": "Пользователь",
+  "note": "Пользователь визуально одобрил оба PNG и явно разрешил размещение в каталоге и использование как дополнительные референсы.",
+  "status": "APPROVED",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true,
+    "frameAndLeftMargin": true,
+    "visibleConstruction": true,
+    "individualStripping": true
+  },
+  "preserveExistingApproval": true,
+  "manualGallery": true,
+  "APPROVED_FOR_CATALOG": true,
+  "visualAttestation": true,
+  "reviewedRules": {
+    "sha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+    "ids": [
+      "frame.horizontal",
+      "frame.style",
+      "frame.background",
+      "frame.right-edge",
+      "core.count",
+      "core.geometry",
+      "core.stripping",
+      "layers.contract",
+      "geometry.sheath",
+      "references.permissions",
+      "catalog.preserve",
+      "generation.claim",
+      "catalog.scope"
+    ],
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders",
+      "frameAndLeftMargin",
+      "visibleConstruction",
+      "individualStripping"
+    ]
+  },
+  "APPROVED_AS_REFERENCE": true,
+  "visualKey": "h05v-k__1c__stranded__round__1core-black__p-b02acd9450eb9820",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-16T16:22:36.057Z",
+  "archiveOnly": false
+}

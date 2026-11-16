@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="write-token" content="LOCAL_WRITE_TOKEN">
+  <title>Эталоны изображений</title>
+  <link rel="stylesheet" href="/standards.css">
+  <script type="module" src="/standards.js"></script>
+</head>
+<body>
+<header>
+  <div><h1>Эталоны изображений</h1><p id="overall">Загружаю каталог…</p><progress id="overall-progress" aria-label="Покрытие каталога"></progress></div>
+  <div class="toolbar"><button id="undo" hidden>Отменить последнее действие</button><button id="refresh">Обновить</button><a href="/">Полный архив</a></div>
+</header>
+<div class="workspace">
+  <aside aria-label="Семейства"><h2>Семейства</h2><label class="field">Найти семейство<input id="family-search" type="search" placeholder="Например, КВВГ"></label><nav id="families"></nav></aside>
+  <main>
+    <nav class="toolbar modes" aria-label="Режим просмотра">
+      <a class="mode-link" href="/references">Референсы для генерации</a>
+      <button data-mode="detail" aria-pressed="true">Подробный просмотр</button>
+      <button data-mode="grid" aria-pressed="false">Быстрая проверка</button>
+      <button data-mode="library" aria-pressed="false">Библиотека эталонов</button>
+    </nav>
+    <div class="toolbar filters">
+      <label class="field">Поиск<input id="search" type="search" placeholder="Маркировка, SKU или SHA"></label>
+      <label class="field">Жилы<select id="cores"><option value="">Все</option></select></label>
+      <label class="field">Конструкция<select id="construction"><option value="">Все</option><option value="shield">С экраном</option><option value="armor">С бронёй</option><option value="flat">Плоская</option><option value="plain">Без экрана и брони</option></select></label>
+      <label class="field">Фон<select id="background"><option value="light">Белый</option><option value="dark">Тёмный</option><option value="checker">Шахматный</option></select></label>
+    </div>
+    <div class="toolbar"><p id="status" role="status" aria-live="polite"></p><button id="undo-approval" aria-label="Отменить последнее утверждение" hidden>Отменить</button></div>
+    <section id="view" aria-label="Изображения"></section>
+    <p class="keys">Клавиши ← → для навигации, A для утверждения, R для исправления, S для пропуска.</p>
+  </main>
+</div>
+<dialog id="dialog" aria-labelledby="dialog-title">
+  <div class="toolbar dialog-head"><h2 id="dialog-title"></h2><button id="close">Закрыть</button></div>
+  <p id="dialog-status" role="status" aria-live="polite"></p>
+  <div id="dialog-body"></div>
+</dialog>
+</body>
+</html>

@@ -26,6 +26,8 @@ const esc = (value) =>
   );
 
 export async function main() {
+  if (process.argv.includes('--finalize-quality'))
+    throw Error('Legacy quality finalization is disabled; record decisions in the cable gallery.');
   const plan = await read(path.relative(root, path.join(state, 'plan.json')));
   const manifest = await read(
     path.relative(root, path.join(state, 'manifest.json'))
@@ -35,53 +37,6 @@ export async function main() {
   );
   const binding = await read('shared/generatedProductImages.json');
   const rejections = await read('shared/rejectedProductImages.json');
-  if (process.argv.includes('--finalize-quality')) {
-    const locked = await fs
-      .access(path.join(root, 'data/product-image-metadata/.pipeline.lock'))
-      .then(
-        () => true,
-        (e) => {
-          if (e.code === 'ENOENT') return false;
-          throw e;
-        }
-      );
-    assert.equal(
-      locked,
-      false,
-      'Wait for active production writers before finalizing visual QA'
-    );
-    for (const [key, rejection] of Object.entries(rejections.byVisualKey)) {
-      const group = plan.groups.find((g) => g.visualKey === key);
-      assert.equal(
-        group?.action,
-        'MISSING',
-        'Visual QA must not replace an existing approved image'
-      );
-      const record = manifest.groups[key];
-      assert.ok(record, 'Rejected image has no production checkpoint');
-      for (const member of group.members) {
-        if (baseline.bySku[member.sku])
-          binding.bySku[member.sku] = baseline.bySku[member.sku];
-        else delete binding.bySku[member.sku];
-      }
-      Object.assign(record, {
-        status: 'failed',
-        bound: false,
-        qualityRejected: true,
-        error: rejection.reason,
-        visualReview: rejection,
-        updatedAt: new Date().toISOString(),
-      });
-      const file = path.join(state, 'groups', `${key}.json`);
-      const metadata = JSON.parse(await fs.readFile(file, 'utf8'));
-      await writeProductionJson(file, { ...metadata, ...record });
-    }
-    await writeProductionJson(
-      path.join(root, 'shared/generatedProductImages.json'),
-      binding
-    );
-    await writeProductionJson(path.join(state, 'manifest.json'), manifest);
-  }
   const audit = await read(
     'outputs/cable-visual-practical-2026-10-16/audit.json'
   );
@@ -235,7 +190,7 @@ export async function main() {
     : 'Нет.';
   await fs.writeFile(
     path.join(out, 'summary.md'),
-    `# Production, этап 1\n\n| Показатель | Результат |\n|---|---:|\n| REUSE existing | ${summary.reuseExisting.visualKeys} visualKey / ${summary.reuseExisting.products} товаров |\n| Generated and bound after visual QA | ${summary.generated.visualKeys} visualKey / ${summary.generated.products} товаров |\n| PNG received and decoded before visual QA | ${summary.decodedNewPngReceived} |\n| Failed | ${summary.failed.length} visualKey |\n| Skipped/cache | ${summary.skippedCache} |\n| API requests | ${summary.apiRequests} |\n| Products with illustrations | ${summary.productsWithIllustrations} |\n| NEEDS_REVIEW untouched | ${summary.needsReviewUntouched} |\n| Pending | ${summary.pending} |\n\n## Проверка\n\nИсходный каталог и ${oldFiles} защищённых существующих файлов не изменились. Все 119 утверждённых PNG сохранены. Привязки всех 3831 NEEDS_REVIEW сохранены. ${bound} назначенных SKU разрешаются через штатный getHistoricalGeneratedProductImage; сечения сохранены по SKU. PNG проверены декодированием, CRC, alpha и SHA-256. Проверка структуры пикселей требует визуального просмотра; программная проверка не считает жилы.\n\nПолучено ${summary.decodedNewPngReceived} PNG; из них ${Object.keys(rejections.byVisualKey).length} результатов исключены из новых привязок после визуальной проверки. Причины включают неверное число жил и невозможность достоверно проверить число из-за перекрывающихся концов. Исходные файлы сохранены, повторной генерации ради другого варианта не было. FAILED также включает ошибки API после ограниченных повторов.\n\n## FAILED\n\n${failed}\n\n## Возобновление\n\nАвторитетный manifest: data/product-image-metadata/production-v1/manifest.json. Команда: npm run images:cables:production -- --run. Успешные файлы и FAILED не генерируются заново.\n`
+    `# Production, этап 1\n\n| Показатель | Результат |\n|---|---:|\n| REUSE existing | ${summary.reuseExisting.visualKeys} visualKey / ${summary.reuseExisting.products} товаров |\n| Generated and bound after visual QA | ${summary.generated.visualKeys} visualKey / ${summary.generated.products} товаров |\n| PNG received and decoded before visual QA | ${summary.decodedNewPngReceived} |\n| Failed | ${summary.failed.length} visualKey |\n| Skipped/cache | ${summary.skippedCache} |\n| API requests | ${summary.apiRequests} |\n| Products with illustrations | ${summary.productsWithIllustrations} |\n| NEEDS_REVIEW untouched | ${summary.needsReviewUntouched} |\n| Pending | ${summary.pending} |\n\n## Проверка\n\nИсходный каталог и ${oldFiles} защищённых существующих файлов не изменились. Все 119 утверждённых PNG сохранены. Привязки всех 3831 NEEDS_REVIEW сохранены. ${bound} назначенных SKU разрешаются через штатный getHistoricalGeneratedProductImage; сечения сохранены по SKU. PNG проверены декодированием, CRC, alpha и SHA-256. Проверка структуры пикселей требует визуального просмотра; программная проверка не считает жилы.\n\nПолучено ${summary.decodedNewPngReceived} PNG; из них ${Object.keys(rejections.byVisualKey).length} результатов исключены из новых привязок после визуальной проверки. Причины включают неверное число жил и невозможность достоверно проверить число из-за перекрывающихся концов. Исходные файлы сохранены, повторной генерации ради другого варианта не было. FAILED также включает ошибки API после ограниченных повторов.\n\n## FAILED\n\n${failed}\n\n## Исторический статус\n\nИсточник: data/product-image-metadata/production-v1/manifest.json. Статус доступен через npm run images:cables:production -- --status.\n`
   );
   console.log(
     JSON.stringify(

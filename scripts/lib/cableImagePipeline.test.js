@@ -8,9 +8,6 @@ import {
   loadCableImageConfig,
   loadCableImageProducts,
   planCableImages,
-  runCableImages as runCableImagePipeline,
-  approveCableImage,
-  approveCableImageGroups,
 } from './cableImagePipeline.js';
 import {
   buildCableImageJob,
@@ -23,10 +20,6 @@ import {
   prepareCableImagePng,
 } from './cableImagePng.js';
 import { createImageProvider } from './cableImageProvider.js';
-import {
-  getProductImage,
-  getGeneratedProductImage,
-} from '../../shared/productImages.js';
 
 const defaults = JSON.parse(
   await fs.readFile(
@@ -103,41 +96,8 @@ async function fixture(products = [product()]) {
     JSON.stringify(products)
   );
   const loaded = await loadCableImageConfig(root, undefined, { env: {} });
-  const provider = {
-    generate: vi.fn(async (job, { onAttempt }) => {
-      await onAttempt(1);
-      return {
-        buffer: image(),
-        provider: 'test',
-        model: 'test-model',
-        attempts: 1,
-      };
-    }),
-  };
-  return { root, products, ...loaded, provider, options: { limit: 10 } };
+  return { root, products, ...loaded, options: { limit: 10 } };
 }
-// Every mutating fixture run goes through the same mandatory saved-plan gate.
-async function runCableImages(context) {
-  if (context.options?.dryRun) return runCableImagePipeline(context);
-  const plan = await planCableImages(context);
-  return runCableImagePipeline({
-    ...context,
-    options: { ...context.options, planId: plan.planId },
-  });
-}
-const groupMetadata = async (f, key = 'vvgnga-ls__3core') =>
-  JSON.parse(
-    await fs.readFile(
-      path.join(f.config.groupMetadataDir, `${key}.json`),
-      'utf8'
-    )
-  );
-const metadata = async (f, sku = 'TEST-1') =>
-  JSON.parse(
-    await fs.readFile(path.join(f.config.metadataDir, `${sku}.json`), 'utf8')
-  );
-const manifest = async (f) =>
-  JSON.parse(await fs.readFile(f.config.manifestFile, 'utf8'));
 
 describe('cable image specification and prompt', () => {
   it.each(['3x1.5', '3х1,5', '3×1.5', '3Х1,5'])(
@@ -374,61 +334,6 @@ describe('approved final cable style', () => {
       'Intact jacket does not reach the right edge; visual review required'
     );
   });
-  it('preserves approved images across a template/model change without a second request', async () => {
-    const f = await fixture();
-    await runCableImages(f);
-    await approveCableImage({ ...f, sku: 'TEST-1', review });
-    const old = await groupMetadata(f);
-    const config = {
-      ...f.config,
-      model: 'another-image-model',
-      templateVersion: 'next-template',
-    };
-    const plan = await planCableImages({
-      ...f,
-      config,
-      products: [product(), product(4, 3, 'TEST-2')],
-    });
-    expect(plan.summary).toMatchObject({
-      existing_group_images: 1,
-      generate: 0,
-      reuse: 1,
-    });
-    await runCableImages({
-      ...f,
-      config,
-      products: [product(), product(4, 3, 'TEST-2')],
-    });
-    expect(f.provider.generate).toHaveBeenCalledTimes(1);
-    expect((await groupMetadata(f)).render_fingerprint).toBe(
-      old.render_fingerprint
-    );
-    expect((await groupMetadata(f)).template_version).toBe(
-      old.template_version
-    );
-    expect((await manifest(f)).bySku['TEST-2'].image).toBe(old.public_url);
-  });
-});
-
-describe('group visual approval batch', () => {
-  it('binds reviewed groups, continues after a wrong review and never invokes a provider', async () => {
-    const f = await fixture([
-      product(),
-      product(2.5, 3, 'TEST-2'),
-      product(4, 4, 'TEST-3'),
-    ]);
-    await runCableImages(f);
-    const result = await approveCableImageGroups({
-      ...f,
-      reviews: [
-        { visualKey: 'vvgnga-ls__4core', review },
-        { visualKey: 'vvgnga-ls__3core', review },
-      ],
-    });
-    expect(result).toMatchObject({ approved: 1, failed: 1 });
-    expect(Object.keys((await manifest(f)).bySku)).toHaveLength(2);
-    expect(f.provider.generate).toHaveBeenCalledTimes(2);
-  });
 });
 
 describe('codex.sale settings and optional canvas', () => {
@@ -505,20 +410,6 @@ describe('codex.sale settings and optional canvas', () => {
     expect(pixels.data[(32 * 128 + 50) * 4 + 3]).toBe(255);
     expect(pixels.data[(32 * 128 + 10) * 4 + 3]).toBe(0);
   });
-  it('stores actual source and optional normalized output dimensions independently', async () => {
-    const f = await fixture();
-    f.config.size = '128x128';
-    f.config.normalization = { enabled: true, width: 128, height: 64 };
-    const result = await runCableImages(f);
-    expect(result.results[0]).toMatchObject({
-      status: 'needs_review',
-      source_validation: { width: 64, height: 64 },
-      validation: { width: 128, height: 64 },
-      normalization: { applied: true },
-    });
-    expect(f.provider.generate).toHaveBeenCalledTimes(1);
-    expect((await planCableImages(f)).summary.pending_review_groups).toBe(1);
-  });
   it('always posts JSON generations for codex.sale even when a local style reference exists', async () => {
     const f = await fixture();
     const transport = vi
@@ -560,7 +451,7 @@ describe('generation state, persistence and publication', () => {
   it('dry-run requires no key and performs no writes or provider calls', async () => {
     const f = await fixture();
     const before = await fs.readdir(f.root);
-    const result = await runCableImages({
+    const result = await planCableImages({
       ...f,
       options: { limit: 1, dryRun: true },
     });
@@ -569,11 +460,18 @@ describe('generation state, persistence and publication', () => {
     await expect(fs.stat(f.config.metadataDir)).rejects.toMatchObject({
       code: 'ENOENT',
     });
-    expect(f.provider.generate).not.toHaveBeenCalled();
+  });
+  it('ignores generation journals when reading historical per-SKU metadata', async () => {
+    const f = await fixture();
+    await fs.mkdir(f.config.metadataDir, { recursive: true });
+    for (const file of ['generation-state.json', 'historical-generation-claims.json'])
+      await fs.writeFile(path.join(f.config.metadataDir, file), '{}');
+    const report = await planCableImages(f);
+    expect(report.jobs[0]).toMatchObject({ sku: 'TEST-1', action: 'generate' });
   });
   it('preserves existing storefront overrides even when absent from raw catalog rows', async () => {
     const f = await fixture();
-    const report = await runCableImages({
+    const report = await planCableImages({
       ...f,
       options: {
         limit: 1,
@@ -582,15 +480,11 @@ describe('generation state, persistence and publication', () => {
     });
     expect(report.jobs).toHaveLength(0);
     expect(report.skipped[0].reason).toBe('existing_product_image');
-    expect(f.provider.generate).not.toHaveBeenCalled();
   });
-  it('never selects the whole catalog implicitly and validates duplicate SKU data', async () => {
+  it('limits visual groups and validates duplicate SKU data', async () => {
     const f = await fixture([product(), product(2.5, 3, 'TEST-2')]);
-    await expect(runCableImages({ ...f, options: {} })).rejects.toThrow(
-      'Choose'
-    );
     expect(
-      (await runCableImages({ ...f, options: { dryRun: true, limit: 1 } })).jobs
+      (await planCableImages({ ...f, options: { dryRun: true, limit: 1 } })).jobs
     ).toHaveLength(1);
     await fs.writeFile(
       f.config.catalogFile,
@@ -600,223 +494,15 @@ describe('generation state, persistence and publication', () => {
       'Duplicate SKU'
     );
   });
-  it('generates once, keeps pending jobs cached, approves exact review and survives catalog reimport', async () => {
-    const f = await fixture();
-    const first = await runCableImages(f);
-    expect(first.results[0].status).toBe('needs_review');
-    await expect(fs.stat(f.config.manifestFile)).rejects.toMatchObject({
-      code: 'ENOENT',
-    });
-    expect((await runCableImages(f)).skipped[0].reason).toBe(
-      'already_generated_needs_review'
-    );
-    expect(f.provider.generate).toHaveBeenCalledTimes(1);
-    await expect(
-      approveCableImage({
-        ...f,
-        sku: 'TEST-1',
-        review: { ...review, cores: 4 },
-      })
-    ).rejects.toThrow('Visual review');
-    await approveCableImage({ ...f, sku: 'TEST-1', review });
-    const map = await manifest(f);
-    const importedAgain = {
-      ...product(),
-      price: 999,
-      stock: 2,
-      image: '/category-placeholders/power-cable.svg',
-    };
-    expect(getProductImage(importedAgain, map)).toBe('/category-placeholders/power-cable.svg');
-    expect(
-      getGeneratedProductImage({ ...product(), name: 'ВВГ 5х10' }, map)
-    ).toBe('');
-    expect(getGeneratedProductImage({ ...product(), id: 999 }, map)).toBe('');
-    expect(
-      getProductImage({ ...importedAgain, image: '/supplier-photo.webp' }, map)
-    ).toBe('/supplier-photo.webp');
-    expect(
-      (await runCableImages({ ...f, products: [importedAgain] })).skipped[0]
-        .reason
-    ).toBe('already_approved');
-  });
-  it('reuses an approved visual for another section, retaining independent SKU metadata', async () => {
-    const f = await fixture();
-    await runCableImages(f);
-    await approveCableImage({ ...f, sku: 'TEST-1', review });
-    const result = await runCableImages({
-      ...f,
-      products: [product(6, 3, 'TEST-2')],
-    });
-    expect(result.results[0]).toMatchObject({
-      status: 'approved',
-      parameters: { section: 6 },
-    });
-    expect(f.provider.generate).toHaveBeenCalledTimes(1);
-    expect((await manifest(f)).bySku['TEST-2'].image).toBe(
-      (await manifest(f)).bySku['TEST-1'].image
-    );
-    expect((await metadata(f, 'TEST-2')).parameters.section).toBe(6);
-  });
-  it('keeps original files and published binding during forced regeneration until new review', async () => {
-    const f = await fixture();
-    await runCableImages(f);
-    await approveCableImage({ ...f, sku: 'TEST-1', review });
-    const original = await metadata(f);
-    await runCableImages({ ...f, options: { skus: ['TEST-1'], force: true } });
-    const replacement = await metadata(f);
-    expect(replacement.output_filename).not.toBe(original.output_filename);
-    expect(
-      await fs.readFile(path.join(f.root, original.output_filename))
-    ).toEqual(image());
-    expect((await manifest(f)).bySku['TEST-1'].image).toBe(original.public_url);
-    expect(
-      await fs.readdir(path.join(f.config.metadataDir, 'history'))
-    ).toHaveLength(1);
-  });
-  it('does not silently regenerate failed, interrupted, stale or corrupt cached images', async () => {
-    const f = await fixture();
-    await runCableImages(f);
-    const first = await metadata(f);
-    const firstGroup = await groupMetadata(f);
-    for (const status of ['generating', 'failed']) {
-      await fs.writeFile(
-        path.join(f.config.groupMetadataDir, 'vvgnga-ls__3core.json'),
-        JSON.stringify({ ...firstGroup, status })
-      );
-      expect((await runCableImages(f)).skipped[0].reason).toBe(
-        `${status}_requires_force`
-      );
-    }
-    await fs.writeFile(
-      path.join(f.config.groupMetadataDir, 'vvgnga-ls__3core.json'),
-      JSON.stringify(firstGroup)
-    );
-    expect(
-      (await runCableImages({ ...f, products: [product(2.5)] })).skipped[0]
-        .reason
-    ).toBe('already_generated_needs_review');
-    expect(
-      (
-        await runCableImages({
-          ...f,
-          config: { ...f.config, templateVersion: 'v2' },
-        })
-      ).skipped[0].reason
-    ).toBe('changed_template_requires_force');
-    await fs.writeFile(path.join(f.root, first.output_filename), 'broken');
-    expect((await runCableImages(f)).skipped[0].reason).toBe(
-      'cached_asset_invalid_requires_force'
-    );
-    expect(f.provider.generate).toHaveBeenCalledTimes(1);
-  });
-  it('preserves an orphan asset and rejects a changed asset at approval', async () => {
-    const f = await fixture();
-    const plan = await planCableImages(f);
-    await fs.mkdir(f.config.outputDir, { recursive: true });
-    await fs.writeFile(
-      path.join(f.root, plan.jobs[0].output_filename),
-      image()
-    );
-    expect((await runCableImages(f)).skipped[0].reason).toBe(
-      'orphan_asset_requires_force'
-    );
-    await runCableImages({ ...f, options: { limit: 1, force: true } });
-    const record = await metadata(f);
-    await fs.writeFile(
-      path.join(f.root, record.output_filename),
-      image({ cropped: true })
-    );
-    await expect(
-      approveCableImage({ ...f, sku: 'TEST-1', review })
-    ).rejects.toThrow('completed image');
-  });
-  it('records invalid API images as failed without publishing and respects a process lock', async () => {
-    const f = await fixture();
-    f.provider.generate.mockResolvedValue({
-      buffer: Buffer.from('not a PNG'),
-      model: 'test',
-      provider: 'test',
-      attempts: 1,
-    });
-    const result = await runCableImages(f);
-    expect(result.summary.failed).toBe(1);
-    expect((await metadata(f)).status).toBe('failed');
-    await fs.writeFile(
-      path.join(f.config.metadataDir, '.pipeline.lock'),
-      '{"pid":1}'
-    );
-    await expect(runCableImages(f)).rejects.toThrow('lock exists');
-  });
-  it('enforces configured concurrency', async () => {
-    const f = await fixture([
-      product(),
-      product(2.5, 4, 'TEST-2'),
-      product(4, 5, 'TEST-3'),
-      product(6, 2, 'TEST-4'),
-    ]);
-    let active = 0,
-      max = 0;
-    f.provider.generate.mockImplementation(async () => {
-      active++;
-      max = Math.max(max, active);
-      await new Promise((r) => setTimeout(r, 5));
-      active--;
-      return { buffer: image(), model: 'test', provider: 'test', attempts: 1 };
-    });
-    expect((await runCableImages(f)).summary.needs_review).toBe(4);
-    expect(max).toBe(2);
-  });
-  it('holds the lock until other workers settle after a worker failure', async () => {
-    const f = await fixture([product(), product(2.5, 4, 'TEST-2')]);
-    let secondFinished = false;
-    f.provider.generate.mockImplementation(async () => {
-      await new Promise((r) => setTimeout(r, 10));
-      await fs.access(path.join(f.config.metadataDir, '.pipeline.lock'));
-      secondFinished = true;
-      return { buffer: image(), provider: 'test', model: 'test', attempts: 1 };
-    });
-    await expect(
-      runCableImages({
-        ...f,
-        onProgress: (event) => {
-          if (event.sku === 'TEST-1') throw new Error('progress failure');
-        },
-      })
-    ).rejects.toThrow('worker');
-    expect(secondFinished).toBe(true);
-    await expect(
-      fs.stat(path.join(f.config.metadataDir, '.pipeline.lock'))
-    ).rejects.toMatchObject({ code: 'ENOENT' });
-  });
-  it('ingests one externally generated file with actual provenance through the same PNG/metadata flow', async () => {
-    const f = await fixture();
-    const input = path.join(f.root, 'external.png');
-    await fs.writeFile(input, image());
-    const result = await runCableImages({
-      ...f,
-      ingest: {
-        file: input,
-        provider: 'codex-imagegen',
-        model: 'tool-managed',
-      },
-    });
-    expect(result.results[0]).toMatchObject({
-      status: 'needs_review',
-      provider: 'codex-imagegen',
-      model: 'tool-managed',
-      requested_api_model: 'gpt-image-2.5-flare',
-    });
-    expect(f.provider.generate).not.toHaveBeenCalled();
-  });
 });
 
-describe('visual group planning and execution', () => {
-  it('plans all SKU first, generates once for five sections and binds all members after one review', async () => {
+describe('historical visual group planning', () => {
+  it('plans one visual group for five sections', async () => {
     const products = [1.5, 2.5, 4, 6, 10].map((s, i) =>
       product(s, 3, `TEST-${i + 1}`)
     );
     const f = await fixture(products);
-    const plan = await runCableImagePipeline({
+    const plan = await planCableImages({
       ...f,
       options: { dryRun: true },
     });
@@ -838,29 +524,6 @@ describe('visual group planning and execution', () => {
     expect(plan.groups[0].products.map((p) => p.section)).toEqual([
       1.5, 2.5, 4, 6, 10,
     ]);
-    const report = await runCableImages(f);
-    expect(f.provider.generate).toHaveBeenCalledTimes(1);
-    expect(report.results).toHaveLength(1);
-    expect(await fs.readdir(f.config.outputDir)).toEqual([
-      'vvgnga-ls__3core.png',
-    ]);
-    expect((await groupMetadata(f)).products).toHaveLength(5);
-    await expect(fs.stat(f.config.manifestFile)).rejects.toMatchObject({
-      code: 'ENOENT',
-    });
-    await approveCableImage({ ...f, sku: 'TEST-3', review });
-    const bindings = (await manifest(f)).bySku;
-    expect(Object.keys(bindings)).toHaveLength(5);
-    expect(new Set(Object.values(bindings).map((p) => p.image)).size).toBe(1);
-    for (const p of products) {
-      expect(bindings[p.sku].section).toBe(p.crossSection);
-      expect((await metadata(f, p.sku)).parameters.section).toBe(
-        p.crossSection
-      );
-      expect(getProductImage(p, { schemaVersion: 1, bySku: bindings })).toBe(
-        '/category-placeholders/power-cable.svg'
-      );
-    }
   });
 
   it('applies SKU selection and limits to complete groups, never to member rows', async () => {
@@ -993,76 +656,6 @@ describe('visual group planning and execution', () => {
     ).toEqual(['vvgnga-ls__3core__s1p5', 'vvgnga-ls__3core__s4']);
   });
 
-  it('blocks missing or stale saved plans before provider calls or group writes', async () => {
-    const f = await fixture();
-    await expect(runCableImagePipeline(f)).rejects.toThrow('saved dry-run');
-    const plan = await planCableImages(f);
-    await expect(
-      runCableImagePipeline({
-        ...f,
-        products: [...f.products, product(4, 3, 'TEST-2')],
-        options: { limit: 10, planId: plan.planId },
-      })
-    ).rejects.toThrow('saved dry-run');
-    await expect(
-      runCableImagePipeline({
-        ...f,
-        config: { ...f.config, model: 'changed' },
-        options: { limit: 10, planId: plan.planId },
-      })
-    ).rejects.toThrow('saved dry-run');
-    expect(f.provider.generate).not.toHaveBeenCalled();
-    await expect(fs.stat(f.config.groupMetadataDir)).rejects.toMatchObject({
-      code: 'ENOENT',
-    });
-  });
-
-  it('reuses pending groups without duplicate requests and approves current matching members', async () => {
-    const f = await fixture([product(), product(2.5, 3, 'TEST-2')]);
-    await runCableImages(f);
-    const updated = [...f.products, product(6, 3, 'TEST-3')];
-    const plan = await runCableImages({
-      ...f,
-      products: updated,
-      options: { dryRun: true },
-    });
-    expect(plan.summary).toMatchObject({
-      existing_group_images: 1,
-      api_requests_planned: 0,
-      pending_review_groups: 1,
-    });
-    expect(plan.groups[0].products).toHaveLength(3);
-    await approveCableImage({ ...f, products: updated, sku: 'TEST-2', review });
-    expect(Object.keys((await manifest(f)).bySku)).toHaveLength(3);
-    expect(f.provider.generate).toHaveBeenCalledTimes(1);
-  });
-
-  it('keeps an individual supplier image while assigning the group image to other members', async () => {
-    const f = await fixture([
-      product(),
-      { ...product(2.5, 3, 'TEST-2'), image: '/supplier.webp' },
-    ]);
-    await runCableImages(f);
-    await approveCableImage({ ...f, sku: 'TEST-1', review });
-    const bindings = (await manifest(f)).bySku;
-    expect(bindings['TEST-1'].visualKey).toBe('vvgnga-ls__3core');
-    expect(bindings['TEST-2']).toBeUndefined();
-    expect(getProductImage(f.products[1], { bySku: bindings })).toBe(
-      '/supplier.webp'
-    );
-    expect((await groupMetadata(f)).products).toHaveLength(2);
-  });
-
-  it('carries an explicitly forced replacement through the group review', async () => {
-    const f = await fixture([
-      { ...product(), image: '/supplier.webp' },
-      product(4, 3, 'TEST-2'),
-    ]);
-    await runCableImages({ ...f, options: { limit: 1, force: true } });
-    await approveCableImage({ ...f, sku: 'TEST-1', review });
-    expect(Object.keys((await manifest(f)).bySku)).toHaveLength(2);
-  });
-
   it('adopts only the matching legacy pilot without dry-run mutation or new generation', async () => {
     const f = await fixture([
       product(),
@@ -1102,7 +695,7 @@ describe('visual group planning and execution', () => {
     const oldMetadataFile = path.join(f.config.metadataDir, 'TEST-1.json');
     await fs.writeFile(oldMetadataFile, JSON.stringify(legacy));
     const before = await fs.readFile(oldMetadataFile);
-    const plan = await runCableImages({
+    const plan = await planCableImages({
       ...f,
       options: { dryRun: true, skus: ['TEST-2'] },
     });
@@ -1114,16 +707,6 @@ describe('visual group planning and execution', () => {
     expect(await fs.readFile(oldMetadataFile)).toEqual(before);
     await expect(fs.stat(f.config.groupMetadataDir)).rejects.toMatchObject({
       code: 'ENOENT',
-    });
-    await runCableImages({ ...f, options: { skus: ['TEST-2'] } });
-    expect(f.provider.generate).not.toHaveBeenCalled();
-    const bindings = (await manifest(f)).bySku;
-    expect(bindings['TEST-1'].image).toBe(bindings['TEST-2'].image);
-    expect(bindings['TEST-3']).toBeUndefined();
-    expect(await groupMetadata(f)).toMatchObject({
-      prompt: legacyPrompt,
-      model: 'tool-managed',
-      products: expect.any(Array),
     });
   });
 });

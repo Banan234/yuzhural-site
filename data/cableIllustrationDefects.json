@@ -1,0 +1,311 @@
+{
+  "version": "cable-illustration-defects-1",
+  "defects": [
+    {
+      "id": "DEF-VVGZ-001",
+      "family": "ВВГз",
+      "description": "Заполнение визуально выступает влево за плоскость среза.",
+      "cause": "Причина на уровне модели не установлена; видимая граница заполнения трактуется как выступающий слой.",
+      "expected": "Заполнение между жилами у плоскости среза без отдельного рукава.",
+      "ruleId": "vvgz.flush",
+      "detection": "Визуальная проверка пользователя и сравнение до/после",
+      "test": "cableVvgCutQuality.test.js",
+      "source": "outputs/cable-vvg-cut-revisions-2026-11-15/report.html",
+      "status": "CORRECTION_PENDING_REVIEW",
+      "fixedAt": null,
+      "hold": [
+        {
+          "sha256": "a419f1e7327459b33f9b39c29e6e66c33ae7dfd03a017c8150262e2b9a92a22b",
+          "revisionMode": "flush-filling"
+        },
+        {
+          "sha256": "00a6fbdff85ec5b76faa85001e916be0c499fad6125295d198bc7702625127f0",
+          "revisionMode": "flush-filling"
+        }
+      ],
+      "catalogAcceptances": [
+        {
+          "sha256": "35e7f3fb6f025564c153011d36ea3cb5ece4ea39985d3b9aa6e0b2e923e9e4c0",
+          "checks": ["flushFilling", "background"],
+          "reason": "Пользователь утвердил исходный PNG для каталога с видимым заполнением у среза и краевыми артефактами."
+        }
+      ],
+      "observedSha256": [
+        "1139e1147810b4e609c1a9bd2972a65df642d1b156dd9421f2a32967639841d2",
+        "1b81a6205ecf6d2fc5a6f5902a4727a524fc9d9fde6992ebecf7cf1a35944e47"
+      ],
+      "ruleVersion": "cable-illustration-rules-2",
+      "rulesSha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14"
+    },
+    {
+      "id": "DEF-VVG-001",
+      "family": "ВВГ",
+      "description": "Чрезмерная пустота по периметру внутри общей оболочки.",
+      "cause": "Компоновка жил слишком свободна; причина поведения модели не установлена.",
+      "expected": "Плотный пучок, естественная стенка, отдельные жилы без заполнителя.",
+      "ruleId": "vvg.compact",
+      "detection": "Осмотр у кромки, верхний зазор ещё заметен",
+      "test": "cableVvgCutQuality.test.js",
+      "source": "outputs/cable-vvg-cut-revisions-2026-11-15/report.html",
+      "status": "CORRECTION_PENDING_REVIEW",
+      "fixedAt": null,
+      "hold": [
+        {
+          "sha256": "3d5be3694ad1f7f4950de556839fa5b13cb5af91be76f4dce93fa82cc98b532e",
+          "revisionMode": "compact-pack"
+        }
+      ]
+    },
+    {
+      "id": "DEF-MULTI-001",
+      "family": "КГ / КГ-ХЛ",
+      "description": "Разлёт жил и диагональная лестница.",
+      "cause": "Исторический референс мог иметь другое число жил; точная причина пикселей не установлена.",
+      "expected": "Компактная двухпарная укладка четырёх круглых жил.",
+      "ruleId": "multi.layout",
+      "detection": "Измерения по размеченным центрам концов",
+      "test": "cableStyleRequest.integration.test.js",
+      "source": "docs/reports/cable-kg-composition-points-2026-11-11.json",
+      "status": "CONTROL_ACTIVE",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-MULTI-002",
+      "family": "КГ / КГ-ХЛ",
+      "description": "Смещение группы концов относительно оси.",
+      "cause": "Точный механизм смещения моделью не установлен.",
+      "expected": "Центр концов согласован с проекцией оси оболочки.",
+      "ruleId": "multi.layout",
+      "detection": "Координаты концов и ось по исходному PNG",
+      "test": "cableStyleRequest.integration.test.js",
+      "source": "docs/reports/cable-kg-composition-points-2026-11-11.json",
+      "status": "CONTROL_ACTIVE",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-ALPHA-001",
+      "family": "ВВГ",
+      "description": "Цветной ореол вокруг медных концов.",
+      "cause": "Видимый остаток полупрозрачного фона; alpha на PNG сам по себе его не исключает.",
+      "expected": "Чистый край на белом, тёмном и шахматном фоне.",
+      "ruleId": "frame.background",
+      "detection": "Осмотр на трёх фонах",
+      "test": "cableComposition.test.js",
+      "source": "outputs/cable-vvg-batch-test-2026-11-15/report.html",
+      "status": "CONTROL_ACTIVE",
+      "fixedAt": null,
+      "catalogAcceptances": [
+        {
+          "sha256": "d0a4172a01c6668115fa6fcdda2165377eb41d89152f12946cef405f4b211ed3",
+          "checks": ["background"],
+          "reason": "Пользователь утвердил этот PNG для каталога с цветным ореолом."
+        }
+      ]
+    },
+    {
+      "id": "DEF-REF-001",
+      "family": "КГ / КГ-ХЛ",
+      "description": "Для геометрии мог браться пример с другим числом жил.",
+      "cause": "Вес семейства в прежнем подборе мог перевесить совпадение конструкции.",
+      "expected": "Для обязательного геометрического референса совпадают число жил, укладка, оболочки и слои.",
+      "ruleId": "references.permissions",
+      "detection": "Сверка журнала и тест ранжирования",
+      "test": "cableApprovedStyleReference.test.js",
+      "source": "docs/cable-style-batch.md",
+      "status": "CONTROL_ACTIVE",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-LEGACY-001",
+      "family": "Все",
+      "description": "Старый маршрут сравнения моделей допускал платный запуск.",
+      "cause": "Исторический CLI продолжал принимать --run с live-провайдером.",
+      "expected": "Платная генерация доступна через утверждённую сборку запроса.",
+      "ruleId": "references.permissions",
+      "detection": "Проверка отказа до live-провайдера",
+      "test": "testCableImageModels.test.js",
+      "source": "scripts/testCableImageModels.js",
+      "status": "FIXED_CODE",
+      "fixedAt": "2026-11-15"
+    },
+    {
+      "id": "DEF-CORE-001",
+      "family": "Все",
+      "description": "Неверное число жил или лишний металлический конец.",
+      "cause": "Конкретный экземпляр и его причина ещё не подтверждены в доступной записи.",
+      "expected": "Точное число жил, без лишних выводов; один медный или алюминиевый срез на каждую жилу.",
+      "ruleId": "core.count",
+      "detection": "Контракт и осмотр; разметка MULTICORE",
+      "test": "cableTechnicalProfile.test.js",
+      "source": "CABLE_IMAGE_STYLE.md",
+      "status": "WATCH",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-LAYER-001",
+      "family": "Все",
+      "description": "Лишняя внутренняя оболочка.",
+      "cause": "Конкретный экземпляр и его причина ещё не подтверждены в доступной записи.",
+      "expected": "Показывать только перечисленные роли слоёв, соблюдая их назначение. Unknown остаётся неизвестным.",
+      "ruleId": "layers.contract",
+      "detection": "Контракт и осмотр; сверка наблюдений MULTICORE",
+      "test": "cableTechnicalProfile.test.js",
+      "source": "CABLE_IMAGE_STYLE.md",
+      "status": "WATCH",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-LAYER-002",
+      "family": "ВВГнг(А)-FRLS",
+      "description": "Лишняя броня.",
+      "cause": "Причина поведения модели не установлена; изображение противоречит техническому профилю.",
+      "expected": "Показывать только перечисленные роли слоёв, соблюдая их назначение. Unknown остаётся неизвестным.",
+      "ruleId": "layers.contract",
+      "detection": "На исходном PNG видно широкую металлическую спираль; armor=false и shield=false.",
+      "test": "cableStyleRequest.integration.test.js",
+      "source": "outputs/cable-style-batch-drafts/2f9211bf6d4757775ef28317db5f611af6df05390b797e0d767d90231e89e711/image.png",
+      "status": "CONTROL_ACTIVE",
+      "fixedAt": null,
+      "hold": [
+        {
+          "sha256": "4bb4859485e129ca4f552888765335cbc46606c74dbf2fc239028b432db3cb8b"
+        }
+      ]
+    },
+    {
+      "id": "DEF-SCREEN-001",
+      "family": "Экранированные",
+      "description": "Отсутствует предусмотренный экран.",
+      "cause": "Конкретный экземпляр и его причина ещё не подтверждены в доступной записи.",
+      "expected": "Подтверждённый экран изображается тонким серебристым сетчато-фольгированным слоем.",
+      "ruleId": "layers.screen",
+      "detection": "Проверка отдельной роли и визуальный осмотр",
+      "test": "cableTechnicalProfile.test.js",
+      "source": "CABLE_IMAGE_STYLE.md",
+      "status": "WATCH",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-SCREEN-002",
+      "family": "Экранированные",
+      "description": "Экран выглядит как бронирование.",
+      "cause": "Конкретный экземпляр и его причина ещё не подтверждены в доступной записи.",
+      "expected": "Подтверждённый экран изображается тонким серебристым сетчато-фольгированным слоем.",
+      "ruleId": "layers.screen",
+      "detection": "Проверка отдельной роли и визуальный осмотр",
+      "test": "cableStyleRequest.integration.test.js",
+      "source": "CABLE_IMAGE_STYLE.md",
+      "status": "WATCH",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-FRLS-001",
+      "family": "ВВГнг(А)-FRLS",
+      "description": "Барьер отсутствует или расположен вне индивидуальной изоляции.",
+      "cause": "Причина поведения модели не установлена; изображение противоречит техническому профилю.",
+      "expected": "Подтверждённая слюда видна под индивидуальной изоляцией каждой жилы.",
+      "ruleId": "layers.frls",
+      "detection": "На исходном PNG медь непосредственно граничит с цветной изоляцией; видимой ступени слюды нет.",
+      "test": "cableTechnicalProfile.test.js",
+      "source": "outputs/cable-style-batch-drafts/2f9211bf6d4757775ef28317db5f611af6df05390b797e0d767d90231e89e711/image.png",
+      "status": "CONTROL_ACTIVE",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-FLAT-001",
+      "family": "Плоские",
+      "description": "Плоская оболочка изображена круглой.",
+      "cause": "Конкретный экземпляр и его причина ещё не подтверждены в доступной записи.",
+      "expected": "FLAT, ROUND и NO_COMMON_SHEATH разделены; неизвестная форма блокирует запрос.",
+      "ruleId": "geometry.sheath",
+      "detection": "Геометрический контракт и визуальная сверка",
+      "test": "cableOuterSheathGeometry.test.js",
+      "source": "CABLE_IMAGE_STYLE.md",
+      "status": "WATCH",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-STRIP-001",
+      "family": "Все",
+      "description": "Зачистка короткая, неверного порядка или жилы не разделены.",
+      "cause": "Конкретный экземпляр и его причина ещё не подтверждены в доступной записи.",
+      "expected": "Металл виден; раздельная последовательная зачистка каждой жилы; компактный пучок.",
+      "ruleId": "core.stripping",
+      "detection": "Осмотр зачистки и укладки",
+      "test": "cableStyleRequest.integration.test.js",
+      "source": "CABLE_IMAGE_STYLE.md",
+      "status": "WATCH",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-FRAME-001",
+      "family": "Все",
+      "description": "Слишком большие пустые поля.",
+      "cause": "Конкретный экземпляр и его причина ещё не подтверждены в доступной записи.",
+      "expected": "Горизонтальная композиция, небольшой наклон, минимум пустого поля слева, целые концы, ориентир 80–90%.",
+      "ruleId": "frame.horizontal",
+      "detection": "Альфа-поля и осмотр кадра",
+      "test": "cableComposition.test.js",
+      "source": "CABLE_IMAGE_STYLE.md",
+      "status": "WATCH",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-FRAME-002",
+      "family": "Все",
+      "description": "Излишний левый отступ или обрезанные концы.",
+      "cause": "Конкретный экземпляр и его причина ещё не подтверждены в доступной записи.",
+      "expected": "Горизонтальная композиция, небольшой наклон, минимум пустого поля слева, целые концы, ориентир 80–90%.",
+      "ruleId": "frame.horizontal",
+      "detection": "Альфа-поля и осмотр кадра",
+      "test": "cableComposition.test.js",
+      "source": "CABLE_IMAGE_STYLE.md",
+      "status": "WATCH",
+      "fixedAt": null
+    },
+    {
+      "id": "DEF-VVG-FRLS-EXTRA",
+      "family": "ВВГнг(А)-FRLS",
+      "ruleId": "layers.contract",
+      "description": "Лишняя ступень в одножильном ВВГнг(А)-FRLS; документированные слюда и внутренняя оболочка обязательны.",
+      "observedSha256": [
+        "5769fcfa4cfc7639a7985eb6feb420ecb1a49a239f13be0cd84834127722cfba"
+      ],
+      "ruleVersion": "cable-illustration-rules-2",
+      "rulesSha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+      "detection": "Визуальная проверка пользователя; привязка к SHA PNG",
+      "test": "cableVvgContracts.integration.test.js",
+      "status": "CONTROL_ACTIVE_MANUAL_REVIEW_REQUIRED"
+    },
+    {
+      "id": "DEF-VVG-SCREEN-STRIP",
+      "family": "ВВГЭнг(А)-LS",
+      "ruleId": "vvg.screened.strip",
+      "description": "Избыточное выступание индивидуальной изоляции относительно экрана и оболочки.",
+      "observedSha256": [
+        "174e13bd1b706552552cd0f1fe47ec4679c7901fba51f7a4312220863549db1c",
+        "bd892366c310baceaa51025b3ef2044c6718d212bed7cb517872bdf9eb37d925",
+        "7fd07ac3778e94bcd1702df45dc547fca4060bc679fb230f7fd00875f0acec3c"
+      ],
+      "ruleVersion": "cable-illustration-rules-2",
+      "rulesSha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+      "detection": "Визуальная проверка пользователя; привязка к SHA PNG",
+      "test": "cableVvgContracts.integration.test.js",
+      "status": "CONTROL_ACTIVE_MANUAL_REVIEW_REQUIRED"
+    },
+    {
+      "id": "DEF-VVG-SCREEN-LAYOUT",
+      "family": "ВВГЭнг",
+      "ruleId": "multi.layout",
+      "description": "Неверная укладка четырёх жил; утверждение исключено решением по SHA.",
+      "observedSha256": [
+        "60758f923c8d2f84825f84aed007b769cfa2bfd22bdb9c6946bd1d91af2fc65a"
+      ],
+      "ruleVersion": "cable-illustration-rules-2",
+      "rulesSha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+      "detection": "Визуальная проверка пользователя; привязка к SHA PNG",
+      "test": "cableVvgContracts.integration.test.js",
+      "status": "CONTROL_ACTIVE_MANUAL_REVIEW_REQUIRED"
+    }
+  ]
+}

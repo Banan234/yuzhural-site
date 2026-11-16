@@ -1,5 +1,8 @@
 {
   "version": "multicore-composition-1.0.0",
+  "reviewedGeometryBySha256": {
+    "4ab76c845a5593d5a386ddc0dfc98de63322aa446c28a174450d52012b374d95": "five-perimeter"
+  },
   "types": [
     "MULTICORE",
     "MULTICORE + LAYERED"

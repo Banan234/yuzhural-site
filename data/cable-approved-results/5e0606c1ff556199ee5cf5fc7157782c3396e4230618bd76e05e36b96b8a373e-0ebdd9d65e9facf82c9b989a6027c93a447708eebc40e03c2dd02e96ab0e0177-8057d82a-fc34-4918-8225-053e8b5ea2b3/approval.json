@@ -1,0 +1,172 @@
+{
+  "reviewSchemaVersion": "cable-review-2",
+  "scope": {
+    "family": "akvvg",
+    "skus": [
+      "YU-0000310"
+    ]
+  },
+  "defectRules": [],
+  "status": "APPROVED",
+  "sha256": "0ebdd9d65e9facf82c9b989a6027c93a447708eebc40e03c2dd02e96ab0e0177",
+  "reviewer": "Пользователь",
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": true,
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true,
+    "frameAndLeftMargin": true,
+    "visibleConstruction": true,
+    "individualStripping": true,
+    "silhouette-centered-vertically": true,
+    "core-group-balanced-around-sheath-axis": true,
+    "no-diagonal-staircase": true,
+    "all-metal-ends-complete-and-visible": true,
+    "comparable-axial-stripping": true,
+    "real-core-geometry-and-layer-roles": true
+  },
+  "note": "Пользователь утвердил замену версии v4 для каталога и использования как референса.",
+  "observations": {
+    "sha256": "0ebdd9d65e9facf82c9b989a6027c93a447708eebc40e03c2dd02e96ab0e0177",
+    "ends": [
+      {
+        "x": 120,
+        "y": 385,
+        "complete": true
+      },
+      {
+        "x": 244,
+        "y": 399,
+        "complete": true
+      },
+      {
+        "x": 349,
+        "y": 441,
+        "complete": true
+      },
+      {
+        "x": 94,
+        "y": 516,
+        "complete": true
+      },
+      {
+        "x": 210,
+        "y": 548,
+        "complete": true
+      },
+      {
+        "x": 350,
+        "y": 581,
+        "complete": true
+      },
+      {
+        "x": 94,
+        "y": 650,
+        "complete": true
+      },
+      {
+        "x": 214,
+        "y": 689,
+        "complete": true
+      },
+      {
+        "x": 349,
+        "y": 720,
+        "complete": true
+      },
+      {
+        "x": 203,
+        "y": 824,
+        "complete": true
+      }
+    ],
+    "insulatedCoreCount": 10,
+    "additionalConductorCount": 0,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "coreColors": [
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black"
+    ],
+    "layerRoles": [
+      "outer-jacket",
+      "individual-insulation"
+    ]
+  },
+  "pixelReview": {
+    "status": "NEEDS_REVIEW",
+    "findings": [],
+    "missing": []
+  },
+  "reviewedRules": {
+    "sha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+    "ids": [
+      "frame.horizontal",
+      "frame.style",
+      "frame.background",
+      "frame.right-edge",
+      "core.count",
+      "core.geometry",
+      "core.stripping",
+      "layers.contract",
+      "geometry.sheath",
+      "multi.layout",
+      "multi.stripping",
+      "references.permissions",
+      "catalog.preserve",
+      "generation.claim",
+      "catalog.scope"
+    ],
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders",
+      "frameAndLeftMargin",
+      "visibleConstruction",
+      "individualStripping",
+      "silhouette-centered-vertically",
+      "core-group-balanced-around-sheath-axis",
+      "no-diagonal-staircase",
+      "all-metal-ends-complete-and-visible",
+      "comparable-axial-stripping",
+      "real-core-geometry-and-layer-roles"
+    ]
+  },
+  "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-16T18:19:40.209Z"
+}

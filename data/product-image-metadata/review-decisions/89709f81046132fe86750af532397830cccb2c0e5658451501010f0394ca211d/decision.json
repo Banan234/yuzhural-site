@@ -1,0 +1,25 @@
+{
+  "decision": {
+    "reviewSchemaVersion": "cable-review-2",
+    "scope": {
+      "family": "kvvgng-a-ls",
+      "skus": [
+        "YU-0002637"
+      ]
+    },
+    "defectRules": [],
+    "status": "NEEDS_REVIEW",
+    "disposition": "NEEDS_CORRECTION",
+    "reviewer": "Владелец каталога",
+    "sha256": "89709f81046132fe86750af532397830cccb2c0e5658451501010f0394ca211d",
+    "note": "Пять жил компактно по периметру внутри общей оболочки, центр без жилы. Чёрная жила выглядит выходящей снаружи оболочки. Каждая жила должна выходить изнутри среза, все пять медных концов видны отдельно.",
+    "APPROVED_FOR_CATALOG": false,
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "kvvgng-a-ls__5c__solid__round__5core-black-brown-grey-blue-yellow-green__p-71382f6ad24b4406",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-16T07:20:12.424Z"
+  },
+  "claimKey": "507b62ba467b74bfa15aee0fc0e31a4dfd8e99ea01588296b578e1f536ea7651",
+  "originalDraft": "outputs/cable-kvvg-visual-groups-2026-11-16/review-2637-avvg-layout",
+  "previous": []
+}

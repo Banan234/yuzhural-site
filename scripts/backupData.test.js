@@ -3,6 +3,9 @@
 import { describe, expect, it } from 'vitest';
 import { mkdir, mkdtemp, readFile, rm, writeFile, symlink, realpath as fsRealpath } from 'fs/promises';
 import { createCatalogStore } from '../lib/catalog.js';
+import {
+  cableGenerationClaimKey, readCableGenerationClaims, reserveCableGeneration,
+} from './lib/cableGenerationClaims.js';
 import os from 'os';
 import { execFileSync } from 'node:child_process';
 import { chmod } from 'node:fs/promises';
@@ -376,5 +379,46 @@ it('blocks an archived catalog with legacy generated HTML if it cannot be rebuil
     expect(await readFile(path.join(archived, 'public/product/legacy.html'), 'utf8')).toBe(legacy);
   } finally {
     await rm(projectPath, { recursive: true, force: true });
+  }
+});
+
+it('restores paid-request protection without outputs and keeps newer reservations', async () => {
+  const base = await mkdtemp(path.join(os.tmpdir(), 'cable-backup-'));
+  try {
+    const source = path.join(base, 'source');
+    const target = path.join(base, 'target');
+    const metadata = path.join('data', 'product-image-metadata');
+    const history = path.join(metadata, 'historical-generation-claims.json');
+    const active = { family: 'test', cores: 2 };
+    const archived = { family: 'test', cores: 3 };
+    const newer = { family: 'test', cores: 4 };
+    await mkdir(path.join(source, metadata), { recursive: true });
+    await mkdir(path.join(target, metadata), { recursive: true });
+    await reserveCableGeneration({ root: source, profile: active, outputDir: path.join(source, 'outputs/active') });
+    await reserveCableGeneration({ root: target, profile: newer, outputDir: path.join(target, 'outputs/newer') });
+    const archivedKey = cableGenerationClaimKey(archived);
+    await writeFile(path.join(source, history), JSON.stringify({ version: 1, claims: [{
+      key: archivedKey, outputDir: 'outputs/offline', status: 'REQUEST_OUTCOME_UNKNOWN',
+      draft: { profile: archived, members: [{ sku: 'OLD' }] },
+    }] }));
+    await writeFile(path.join(source, metadata, 'generation-claims', 'uncommitted.pending'), '{}');
+    const backup = await createBackup({
+      projectPath: source, env: { BACKUP_DIR: path.join(base, 'backups') }, backupId: 'cable',
+    });
+    expect(backup.files.map(entry => entry.path)).toEqual([
+      'product-image-metadata/generation-claims/' + cableGenerationClaimKey(active) + '.json',
+      'product-image-metadata/historical-generation-claims.json',
+    ]);
+    await restoreBackup(backup.backupPath, { projectPath: target, apply: true });
+    const claims = await readCableGenerationClaims(target);
+    expect([...claims.keys()].sort()).toEqual([
+      cableGenerationClaimKey(active), archivedKey, cableGenerationClaimKey(newer),
+    ].sort());
+    await expect(reserveCableGeneration({ root: target, profile: active, outputDir: path.join(target, 'outputs/retry') }))
+      .resolves.toMatchObject({ status: 'REQUEST_OUTCOME_UNKNOWN' });
+    await expect(reserveCableGeneration({ root: target, profile: archived, outputDir: path.join(target, 'outputs/retry') }))
+      .resolves.toMatchObject({ status: 'REQUEST_OUTCOME_UNKNOWN' });
+  } finally {
+    await rm(base, { recursive: true, force: true });
   }
 });

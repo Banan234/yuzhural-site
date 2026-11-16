@@ -1,0 +1,21 @@
+{
+  "decision": {
+    "sku": "YU-0001039",
+    "status": "REJECTED",
+    "reason": "Пользователь отклонил исправленный черновик. Исходник сохранить.",
+    "sha256": "e8bfa2e5b1dbccfbfcfbadbbeae0f99a4ab09dd063a245dc8f5d1b64637f5a64",
+    "reviewer": "Пользователь",
+    "source": "Явное решение в чате",
+    "preserveSourceSha256": "35e7f3fb6f025564c153011d36ea3cb5ece4ea39985d3b9aa6e0b2e923e9e4c0",
+    "APPROVED_FOR_CATALOG": false,
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "vvgng__4c__solid__round__4core-brown-black-grey-yellow-green__p-8d10be205690f0ef",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-15T16:15:39.507Z"
+  },
+  "claimKey": "724a21c57112fbb34c7ff4fbb50668964193cf05d2ade6188ec55eb2f1f942e6",
+  "originalDraft": "outputs/cable-vvg-cut-revisions-2026-11-15/YU-0001039",
+  "previous": [],
+  "imageRemovedAt": "2026-11-15T19:19:45+00:00",
+  "imageRemovedReason": "Явное решение пользователя удалить все копии отклонённого PNG."
+}

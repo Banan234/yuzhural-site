@@ -1,12 +1,19 @@
+import { usesScreenedVvgStripping } from './cableStrippingComposition.js';
 import rules from '../../data/cableMulticoreCompositionRules.json' with { type: 'json' };
 
+export function hasFourEqualRoundCores(profile) {
+  return profile.cores === 4 && profile.geometry === 'round' &&
+    profile.conductorShape === 'circular' && !profile.coreLayout && !profile.pairedGroupSize;
+}
+
 export function deriveMulticoreComposition(profile, { historicalTargetedEdit = false } = {}) {
-  if (historicalTargetedEdit || !rules.types.includes(profile.visualizationType))
+  if (historicalTargetedEdit || (!rules.types.includes(profile.visualizationType) && !usesScreenedVvgStripping(profile)))
     return null;
   return {
     version: rules.version,
     frame: rules.frame,
-    bundle: rules.bundle,
+    bundle: hasFourEqualRoundCores(profile) ? rules.bundle :
+      rules.bundle.split(' For four equal round cores')[0],
     stripping: rules.stripping,
     review: rules.review,
   };
@@ -73,7 +80,7 @@ export function inspectMulticoreComposition(png, validation, profile, technical,
 
   let measurements;
   if (Array.isArray(tips) && tips.length === 4 && !missing.includes('annotated-metal-end-centers') &&
-      profile.cores === 4 && profile.geometry === 'round' && profile.conductorShape === 'circular' && !profile.coreLayout) {
+      hasFourEqualRoundCores(profile)) {
     const axis = measureMulticoreSheathAxis(png);
     if (!axis) missing.push('sheath-axis');
     else {

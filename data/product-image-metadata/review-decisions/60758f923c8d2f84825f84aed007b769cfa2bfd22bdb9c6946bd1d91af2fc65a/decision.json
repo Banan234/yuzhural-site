@@ -1,0 +1,20 @@
+{
+  "decision": {
+    "sha256": "60758f923c8d2f84825f84aed007b769cfa2bfd22bdb9c6946bd1d91af2fc65a",
+    "sku": "YU-0000982",
+    "disposition": "REJECT",
+    "note": "Неверная компоновка четырёх жил. Запрещён как положительный референс.",
+    "reviewer": "Пользователь · решения по партии ВВГ",
+    "status": "REJECTED",
+    "APPROVED_FOR_CATALOG": false,
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "vvgng__4c__solid__round__4core-brown-black-grey-yellow-green__p-4821ce67141527c6",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-15T16:55:00.498Z"
+  },
+  "claimKey": "9efe6330c7df8ba60cd9826bf89a8c37b7c35ac8519e4c7d75b3c86cb55fad0f",
+  "originalDraft": "outputs/cable-vvg-typical-2026-11-15/drafts/61248838dc24dd0edf1d7facf5e2b20c358a1094698b6f01532e131a2336b2fb",
+  "previous": [],
+  "imageRemovedAt": "2026-11-15T19:19:45+00:00",
+  "imageRemovedReason": "Явное решение пользователя удалить все копии отклонённого PNG."
+}

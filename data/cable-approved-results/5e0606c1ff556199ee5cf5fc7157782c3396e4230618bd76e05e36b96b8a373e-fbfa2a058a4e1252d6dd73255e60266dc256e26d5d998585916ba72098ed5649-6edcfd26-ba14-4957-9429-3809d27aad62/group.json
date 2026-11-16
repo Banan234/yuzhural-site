@@ -1,0 +1,571 @@
+{
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2",
+  "model": "gpt-image-2.5-flare",
+  "httpStatus": 200,
+  "validation": {
+    "width": 1536,
+    "height": 1024,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.583984375,
+    "has_transparency": true,
+    "transparent_ratio": 0.4314886728922526,
+    "non_opaque_ratio": 1,
+    "foreground_ratio": 0.5678609212239584,
+    "bounds": {
+      "minX": 72,
+      "minY": 76,
+      "maxX": 1535,
+      "maxY": 908
+    },
+    "warnings": [
+      "PNG subject touches the frame margin; review cropping"
+    ],
+    "sha256": "fbfa2a058a4e1252d6dd73255e60266dc256e26d5d998585916ba72098ed5649",
+    "bytes": 1751621
+  },
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 10,
+    "expectedMetalEndCount": 10,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 10,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "technicalProfile": {
+    "version": "construction-contract-1",
+    "family": "akvvg",
+    "insulatedCoreCount": 10,
+    "coreMetalEndCount": 10,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "armor": {
+      "present": false,
+      "type": null
+    },
+    "screen": {
+      "present": false,
+      "type": null
+    },
+    "fireBarrier": false,
+    "layers": [
+      {
+        "role": "outer-jacket",
+        "scope": "overall",
+        "appearance": "black"
+      },
+      {
+        "role": "individual-insulation",
+        "scope": "each-core"
+      }
+    ],
+    "layerRoleCount": 2,
+    "layerCountScope": "role count; each-core roles repeat on every core; not a count of manufacturing tape wraps",
+    "additionalConductors": [],
+    "cores": [
+      {
+        "id": 1,
+        "color": "black",
+        "metalEndId": 1,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 2,
+        "color": "black",
+        "metalEndId": 2,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 3,
+        "color": "black",
+        "metalEndId": 3,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 4,
+        "color": "black",
+        "metalEndId": 4,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 5,
+        "color": "black",
+        "metalEndId": 5,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 6,
+        "color": "black",
+        "metalEndId": 6,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 7,
+        "color": "black",
+        "metalEndId": 7,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 8,
+        "color": "black",
+        "metalEndId": 8,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 9,
+        "color": "black",
+        "metalEndId": 9,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 10,
+        "color": "black",
+        "metalEndId": 10,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "unknownInternalFillers": "not specified: do not invent visible layers",
+    "verification": {
+      "status": "NEEDS_REVIEW",
+      "pixelVerification": "NOT_AUTOMATED",
+      "insulatedCoreCount": null,
+      "coreMetalEndCount": null,
+      "additionalConductorCount": null,
+      "layerRoles": null
+    }
+  },
+  "constructionCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "insulatedCoreCount": null,
+    "coreMetalEndCount": null,
+    "additionalConductorCount": null,
+    "layerRoles": null
+  },
+  "geometryCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED"
+  },
+  "status": "APPROVED",
+  "automaticProductionBinding": false,
+  "manualChecksRequired": [
+    "coreCount",
+    "material",
+    "colours",
+    "layers",
+    "direction",
+    "proportions",
+    "stripping",
+    "background",
+    "referenceMatch",
+    "metalEndCount",
+    "equalDiameters",
+    "relativeDiameters",
+    "coaxialStripping",
+    "geometryConsistency",
+    "noExtraCylinders"
+  ],
+  "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+  "draftKey": "eb07cd80a30b66e5922c00ab805f4e72a806a9f7f92e7a719615069b184c5ffa",
+  "profile": {
+    "family": "akvvg",
+    "productType": "control-cable",
+    "cores": 10,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black"
+    ],
+    "coreColorScheme": "10core-control-black",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "MULTICORE"
+  },
+  "members": [
+    {
+      "sku": "YU-0000310",
+      "name": "АКВВГ 10х2.5",
+      "sourceName": "АКВВГ 10х2.5",
+      "id": 310,
+      "slug": "akvvg-10h2-5-8m",
+      "section": 2.5,
+      "primaryCores": 10,
+      "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+      "visualizationType": "MULTICORE",
+      "productHash": "e7ef01814dbb3c15eb9f7ada1d824529a1f1cca1ae5ed8df7028b1277cf0367a",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 310,
+        "sourceName": "АКВВГ 10х2.5",
+        "productName": "АКВВГ 10х2.5",
+        "primaryCores": 10,
+        "cores": 10,
+        "section": 2.5,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "akvvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black"
+        ],
+        "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+        "sha256": "e34fbbcc495de4e85a436d57f956b38e230fe1821eae7d9dccd4fb199cc5f7c0",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 310,
+          "sourceName": "АКВВГ 10х2.5",
+          "productName": "АКВВГ 10х2.5",
+          "primaryCores": 10,
+          "cores": 10,
+          "section": 2.5,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "akvvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+          "sha256": "e34fbbcc495de4e85a436d57f956b38e230fe1821eae7d9dccd4fb199cc5f7c0",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    },
+    {
+      "sku": "YU-0006932",
+      "name": "АКВВГ 10х4",
+      "sourceName": "АКВВГ 10х4",
+      "id": 6932,
+      "slug": "akvvg-10h4-5ck",
+      "section": 4,
+      "primaryCores": 10,
+      "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+      "visualizationType": "MULTICORE",
+      "productHash": "2efec495b32da11214a896f789b72e6e477123faa0d81b75ac8a186d2c439834",
+      "oldBinding": {
+        "image": "/product-images/generated/pr1_akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12.png",
+        "status": "approved",
+        "kind": "generated-illustration",
+        "productId": 6932,
+        "sourceName": "АКВВГ 10х4",
+        "productName": "АКВВГ 10х4",
+        "primaryCores": 10,
+        "cores": 10,
+        "section": 4,
+        "auxiliaryCores": 0,
+        "auxiliarySection": null,
+        "family": "akvvg",
+        "sectionAffectsVisual": false,
+        "colors": [
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black"
+        ],
+        "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+        "sha256": "e34fbbcc495de4e85a436d57f956b38e230fe1821eae7d9dccd4fb199cc5f7c0",
+        "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+      },
+      "disposition": {
+        "protected": false,
+        "image": "/product-images/generated/pr1_akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12.png",
+        "oldGenerated": {
+          "image": "/product-images/generated/pr1_akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12.png",
+          "status": "approved",
+          "kind": "generated-illustration",
+          "productId": 6932,
+          "sourceName": "АКВВГ 10х4",
+          "productName": "АКВВГ 10х4",
+          "primaryCores": 10,
+          "cores": 10,
+          "section": 4,
+          "auxiliaryCores": 0,
+          "auxiliarySection": null,
+          "family": "akvvg",
+          "sectionAffectsVisual": false,
+          "colors": [
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black",
+            "black"
+          ],
+          "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+          "sha256": "e34fbbcc495de4e85a436d57f956b38e230fe1821eae7d9dccd4fb199cc5f7c0",
+          "productionPlanId": "99b436af3f40b68bf660da28c3b70ad8f952ca8cf369c59a37ca9ec8df8d7764"
+        }
+      },
+      "reason": null,
+      "status": "REPLACE_LEGACY"
+    }
+  ],
+  "manualReview": {
+    "reviewSchemaVersion": "cable-review-2",
+    "scope": {
+      "family": "akvvg",
+      "skus": [
+        "YU-0000310",
+        "YU-0006932"
+      ]
+    },
+    "defectRules": [],
+    "sha256": "fbfa2a058a4e1252d6dd73255e60266dc256e26d5d998585916ba72098ed5649",
+    "reviewer": "Пользователь",
+    "note": "Пользователь утвердил PNG для каталога и разрешил использование как дополнительного референса.",
+    "status": "APPROVED",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true,
+      "frameAndLeftMargin": true,
+      "visibleConstruction": true,
+      "individualStripping": true,
+      "silhouette-centered-vertically": true,
+      "core-group-balanced-around-sheath-axis": true,
+      "no-diagonal-staircase": true,
+      "all-metal-ends-complete-and-visible": true,
+      "comparable-axial-stripping": true,
+      "real-core-geometry-and-layer-roles": true
+    },
+    "observations": {
+      "sha256": "fbfa2a058a4e1252d6dd73255e60266dc256e26d5d998585916ba72098ed5649",
+      "ends": [
+        {
+          "x": 128,
+          "y": 389,
+          "complete": true
+        },
+        {
+          "x": 256,
+          "y": 399,
+          "complete": true
+        },
+        {
+          "x": 348,
+          "y": 445,
+          "complete": true
+        },
+        {
+          "x": 92,
+          "y": 509,
+          "complete": true
+        },
+        {
+          "x": 205,
+          "y": 544,
+          "complete": true
+        },
+        {
+          "x": 350,
+          "y": 578,
+          "complete": true
+        },
+        {
+          "x": 93,
+          "y": 647,
+          "complete": true
+        },
+        {
+          "x": 214,
+          "y": 693,
+          "complete": true
+        },
+        {
+          "x": 349,
+          "y": 722,
+          "complete": true
+        },
+        {
+          "x": 198,
+          "y": 826,
+          "complete": true
+        }
+      ],
+      "insulatedCoreCount": 10,
+      "additionalConductorCount": 0,
+      "conductorMaterial": "aluminium",
+      "conductorConstruction": "solid",
+      "conductorShape": "circular",
+      "coreColors": [
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black"
+      ],
+      "layerRoles": [
+        "outer-jacket",
+        "individual-insulation"
+      ]
+    },
+    "preserveExistingApproval": true,
+    "archiveOnly": false,
+    "APPROVED_FOR_CATALOG": true,
+    "APPROVED_AS_REFERENCE": false,
+    "manualGallery": true,
+    "pixelReview": {
+      "status": "NEEDS_REVIEW",
+      "findings": [],
+      "missing": []
+    },
+    "reviewedRules": {
+      "sha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+      "ids": [
+        "frame.horizontal",
+        "frame.style",
+        "frame.background",
+        "frame.right-edge",
+        "core.count",
+        "core.geometry",
+        "core.stripping",
+        "layers.contract",
+        "geometry.sheath",
+        "multi.layout",
+        "multi.stripping",
+        "references.permissions",
+        "catalog.preserve",
+        "generation.claim",
+        "catalog.scope"
+      ],
+      "checks": [
+        "coreCount",
+        "material",
+        "colours",
+        "layers",
+        "direction",
+        "proportions",
+        "stripping",
+        "background",
+        "referenceMatch",
+        "metalEndCount",
+        "equalDiameters",
+        "relativeDiameters",
+        "coaxialStripping",
+        "geometryConsistency",
+        "noExtraCylinders",
+        "frameAndLeftMargin",
+        "visibleConstruction",
+        "individualStripping",
+        "silhouette-centered-vertically",
+        "core-group-balanced-around-sheath-axis",
+        "no-diagonal-staircase",
+        "all-metal-ends-complete-and-visible",
+        "comparable-axial-stripping",
+        "real-core-geometry-and-layer-roles"
+      ]
+    },
+    "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-15T19:24:00.250Z"
+  }
+}

@@ -238,22 +238,6 @@
       "APPROVED_FOR_CATALOG": true,
       "APPROVED_AS_REFERENCE": true
     },
-    "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2": {
-      "status": "APPROVED",
-      "visualKey": "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2",
-      "sha256": "0ecef0b0968fc278477a6a4c0c38303a75a9b7fddba6334bd6a04eaa2be79291",
-      "standardVersion": "approved-cable-style-1.1.0",
-      "profileHash": "87023d82b083339343e997b394cd0bb168ef301481645d76e119292121fb1f5f",
-      "outerSheathGeometry": "ROUND",
-      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
-      "screenVisualVersion": null,
-      "draftKey": "29166f3a0546c5480f4fbbb96b0701521f4dfaebdaf222b2fe69371215e3615d",
-      "draftDir": "data/cable-approved-results/40d4d1c118e2d81e6604dbbb4874f159d215fd0e83a867520557d575d8ff7807-0ecef0b0968fc278477a6a4c0c38303a75a9b7fddba6334bd6a04eaa2be79291",
-      "reviewedAt": "2026-11-09T12:31:12.505Z",
-      "previousApprovedResults": [],
-      "APPROVED_FOR_CATALOG": true,
-      "APPROVED_AS_REFERENCE": true
-    },
     "pvs__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-daa81db690414ad6": {
       "status": "APPROVED",
       "visualKey": "pvs__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-daa81db690414ad6",
@@ -845,6 +829,1377 @@
       "draftDir": "data/cable-approved-results/ee3b0503177f7b58e3592b57e25c7a1b090b59fccca9dd806ee1403b75854a0d-3df8ee1f6e752d2d8c9567951daa957440c3e138fa749143bfbc206ac6a155c8",
       "reviewedAt": "2026-11-11T09:11:16.092Z",
       "previousApprovedResults": []
+    },
+    "vvg__3c__solid__round__3core-brown-blue-yellow-green__p-2c3d18d33bbb4957": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "vvg__3c__solid__round__3core-brown-blue-yellow-green__p-2c3d18d33bbb4957",
+      "sha256": "d0a4172a01c6668115fa6fcdda2165377eb41d89152f12946cef405f4b211ed3",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "0720dc1b235c3ec6e9beaff1c4d89b5b806f26fc9af5b0c0f8721a2591f0589f",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "3d1954ad960ab98b05cc1666b33934e8295a33bcf6c028d0d3fc181886df6772",
+      "draftDir": "data/cable-approved-results/9a5b31f2b5bc8c232e08ef5baaa875457d04c56a7ee0a526580b00cd62e44438-d0a4172a01c6668115fa6fcdda2165377eb41d89152f12946cef405f4b211ed3-9e30a8ca-907c-4b6c-8d18-8a5c69ffb810",
+      "reviewedAt": "2026-11-15T19:09:02.593Z",
+      "previousApprovedResults": []
+    },
+    "vvgng__4c__solid__round__4core-brown-black-grey-yellow-green__p-8d10be205690f0ef": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "vvgng__4c__solid__round__4core-brown-black-grey-yellow-green__p-8d10be205690f0ef",
+      "sha256": "35e7f3fb6f025564c153011d36ea3cb5ece4ea39985d3b9aa6e0b2e923e9e4c0",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "6b3e2db142624b94567ca579aae5564a28a5e6bb68a45da47c3c2d4db63a596f",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "ea4018c0e46c573c6610b204e9744026aee0f790f3a3f01d163dac820433345d",
+      "draftDir": "data/cable-approved-results/b6bc2327d89caf95ac31954b90fcb47e9c354fd27d3f2672b94b4885f983c64b-35e7f3fb6f025564c153011d36ea3cb5ece4ea39985d3b9aa6e0b2e923e9e4c0-bd8a1521-d345-49c4-a1a8-f48b099fc47d",
+      "reviewedAt": "2026-11-15T19:09:02.641Z",
+      "previousApprovedResults": []
+    },
+    "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+      "sha256": "fbfa2a058a4e1252d6dd73255e60266dc256e26d5d998585916ba72098ed5649",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "e7de3daecaac05d6ad4fe05b41aa928ef0fa6ce367cb0db8e3b6b91ff3d20b11",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2",
+      "screenVisualVersion": null,
+      "draftKey": "eb07cd80a30b66e5922c00ab805f4e72a806a9f7f92e7a719615069b184c5ffa",
+      "draftDir": "data/cable-approved-results/5e0606c1ff556199ee5cf5fc7157782c3396e4230618bd76e05e36b96b8a373e-fbfa2a058a4e1252d6dd73255e60266dc256e26d5d998585916ba72098ed5649-6edcfd26-ba14-4957-9429-3809d27aad62",
+      "reviewedAt": "2026-11-15T19:24:00.250Z",
+      "previousApprovedResults": []
+    },
+    "akvvg__7c__solid__round__7core-control-black__p-d04c65292065966e": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "akvvg__7c__solid__round__7core-control-black__p-d04c65292065966e",
+      "sha256": "403f79ce26e95405751a1b3d5d6d5b50540821dc8c0b84927fb6f3008fd211ff",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "ff180d53dee481a377986a44623a3f853ca7804efd7c969c298cb8c81596d035",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2",
+      "screenVisualVersion": null,
+      "draftKey": "28eb39e6cee7a4354c9ae966169fac6150cfbbe048fd65545003d9aee11c7a73",
+      "draftDir": "data/cable-approved-results/7bb477ebdbb7e2469382854c309f699459e9476e75d63a736662874d5555e2e0-403f79ce26e95405751a1b3d5d6d5b50540821dc8c0b84927fb6f3008fd211ff-71a34d74-decb-4aff-b446-33818d1d02ec",
+      "reviewedAt": "2026-11-15T19:24:00.353Z",
+      "previousApprovedResults": []
+    },
+    "nym__12c__solid__round__12core-power-palette-6447e623__p-a8205303b736f7a9": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "nym__12c__solid__round__12core-power-palette-6447e623__p-a8205303b736f7a9",
+      "sha256": "c9f897b26564747bf75b995dd6e80ead323e8116bda2fc3a1fe592369bffe135",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "33563ab2dc4963ca95c04cdbc059d2bd0cd6379ae438d3b193aed9797a9c5bb9",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "3688eeb28e629b9e4312fec88f8fdb747b57638c0201ce8d32b7929f8506bec2",
+      "screenVisualVersion": null,
+      "draftKey": "a59dbb5ae9a15a9918d80695750c61cf61ccf6f72ac1551f46371ac2c6492757",
+      "draftDir": "data/cable-approved-results/0e32a72aac3b5863821c5961f6a198d55f988500ba4dc35ed531c131a380e3d0-c9f897b26564747bf75b995dd6e80ead323e8116bda2fc3a1fe592369bffe135-2f94370f-ffda-496e-a3ae-48ffa45abceb",
+      "reviewedAt": "2026-11-16T04:12:02.884Z",
+      "previousApprovedResults": []
+    },
+    "nym__2c__solid__round__2core-brown-blue__p-032bbb9eba0baed6": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "nym__2c__solid__round__2core-brown-blue__p-032bbb9eba0baed6",
+      "sha256": "580101be416b5ec7982a0e78ce9331421dac74edc847bf1bf6b7789001ecaf6a",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "3189fef6cb1aabcf3239639302713b282542b2fb4fa904a3e29d26b8282cdecc",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "6c50e524d3248018e14fae40ed83086b046d52a653e97ba34ddf6c44e802d17a",
+      "draftDir": "data/cable-approved-results/b5df09ad6cd463ca168b4d6caefd81282345d4000981997c914639f7373ffa4b-580101be416b5ec7982a0e78ce9331421dac74edc847bf1bf6b7789001ecaf6a-09cd889e-13fc-4e6d-a238-238e49a4ad20",
+      "reviewedAt": "2026-11-16T04:12:02.940Z",
+      "previousApprovedResults": []
+    },
+    "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2": {
+      "status": "APPROVED",
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": true,
+      "visualKey": "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2",
+      "sha256": "73c3cba107b5cd3e1015fcc927d726abff0ab890d3ce56e6a07fa6c43947000e",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "87023d82b083339343e997b394cd0bb168ef301481645d76e119292121fb1f5f",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "8af73084d1cf0bd0e3bb87f74f8566daed09e0b525c291df23d488cdd23498c9",
+      "draftDir": "data/cable-approved-results/40d4d1c118e2d81e6604dbbb4874f159d215fd0e83a867520557d575d8ff7807-73c3cba107b5cd3e1015fcc927d726abff0ab890d3ce56e6a07fa6c43947000e-5408abe3-642b-472d-895c-e8757a54d000",
+      "reviewedAt": "2026-11-16T04:20:56.768Z",
+      "previousApprovedResults": [
+        {
+          "status": "APPROVED",
+          "visualKey": "kg__3c__stranded__round__3core-brown-blue-yellow-green__p-4b8515812e0fe4a2",
+          "sha256": "0ecef0b0968fc278477a6a4c0c38303a75a9b7fddba6334bd6a04eaa2be79291",
+          "standardVersion": "approved-cable-style-1.1.0",
+          "profileHash": "87023d82b083339343e997b394cd0bb168ef301481645d76e119292121fb1f5f",
+          "outerSheathGeometry": "ROUND",
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+          "screenVisualVersion": null,
+          "draftKey": "29166f3a0546c5480f4fbbb96b0701521f4dfaebdaf222b2fe69371215e3615d",
+          "draftDir": "data/cable-approved-results/40d4d1c118e2d81e6604dbbb4874f159d215fd0e83a867520557d575d8ff7807-0ecef0b0968fc278477a6a4c0c38303a75a9b7fddba6334bd6a04eaa2be79291",
+          "reviewedAt": "2026-11-09T12:31:12.505Z",
+          "previousApprovedResults": [],
+          "APPROVED_FOR_CATALOG": false,
+          "APPROVED_AS_REFERENCE": false,
+          "retiredAt": "2026-11-16T04:20:56.771Z",
+          "replacedBySha256": "73c3cba107b5cd3e1015fcc927d726abff0ab890d3ce56e6a07fa6c43947000e"
+        }
+      ]
+    },
+    "kvvgng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-93995f70fb348732": {
+      "status": "APPROVED",
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": true,
+      "visualKey": "kvvgng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-93995f70fb348732",
+      "sha256": "5af20ccaf5a2ddcbfa59abe80a4a1d7a86f2ba8235c452d1bd939b24fcc5a2c2",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "0e27357a52d02d86c04872e0362accf2b086103895a56c9adab1ed11f700e276",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "f44da5b8ad22bf2bac7120c636d3488415a0671fccf16d5662a7cb38eb0e03ea",
+      "draftDir": "data/cable-approved-results/47a9f86ac3d1160ae0dc0abf0491f13567e4435997455a04fdd1b259189a9dd3-5af20ccaf5a2ddcbfa59abe80a4a1d7a86f2ba8235c452d1bd939b24fcc5a2c2",
+      "reviewedAt": "2026-11-16T06:39:06.892Z",
+      "previousApprovedResults": []
+    },
+    "kvvgng-a-ls__5c__solid__round__5core-black-brown-grey-blue-yellow-green__p-71382f6ad24b4406": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": true,
+      "visualKey": "kvvgng-a-ls__5c__solid__round__5core-black-brown-grey-blue-yellow-green__p-71382f6ad24b4406",
+      "sha256": "f77368d82b2c99a1aeffdc648937efbc1bcabe3d2a59759f02941de59e19cb8a",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "a6a4fce156514f9e49bf0a35efe0015597505382eda4d3e657fd72f61345d90e",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "21ee021d847469e7faa5bbf45c8811ce95b985a421049ef1e8e35a23d23b7832",
+      "draftDir": "data/cable-approved-results/ff115cb299faf607fb3ce5a9639d4ad062f77a086974dc7f58746073499ccc48-f77368d82b2c99a1aeffdc648937efbc1bcabe3d2a59759f02941de59e19cb8a-69f50fd8-a820-400c-8ee0-bc3a8003fdb7",
+      "reviewedAt": "2026-11-16T08:12:35.160Z",
+      "previousApprovedResults": []
+    },
+    "vvgng-a-frls__2c__solid__round__2core-brown-blue__p-9590a1cabe1988d6": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": true,
+      "visualKey": "vvgng-a-frls__2c__solid__round__2core-brown-blue__p-9590a1cabe1988d6",
+      "sha256": "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "d3c943415ec57c40c5763c8f2d3a316af7edce6a7240c831c8e248390a6845f5",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "77faedb4e001968085053f1b01e247fa431990302bb63f286af27eb810ca100f",
+      "screenVisualVersion": null,
+      "draftKey": "036026235d4cef2f945d43f6af56ecedebbdf8b2229b1214c5e260299a652cd7",
+      "draftDir": "data/cable-approved-results/44333897ceb6ea47af6658fd5402a56e82fffa8396fcf8d3ad89732464f475aa-5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350-d094fdcc-2be0-4cd3-92b3-d45e96c074d8",
+      "reviewedAt": "2026-11-16T08:21:40.344Z",
+      "previousApprovedResults": []
+    },
+    "h05v-k__1c__stranded__round__1core-yellow-green__p-31c804f9999a35f8": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "h05v-k__1c__stranded__round__1core-yellow-green__p-31c804f9999a35f8",
+      "sha256": "73158445e19ef74c3ff3a0c9fb3de80c8bac33a36111fd7dc26f8075bd3b0c73",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "e10e3448157afdc3f19e5e8cb9e48e68855f8ff7a5d0a696e85754a590e55de2",
+      "outerSheathGeometry": "NO_COMMON_SHEATH",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "93f1193ab285d63582e0dbf57d6143a271a48a037b06de3104d6c02245a09054",
+      "draftDir": "data/cable-approved-results/8246cee4be9142593b9199cbfd2944ca56ee54199c8aaa3283e5a16c78dd8525-73158445e19ef74c3ff3a0c9fb3de80c8bac33a36111fd7dc26f8075bd3b0c73-f73a2313-4cee-4bcb-af42-0cd39f2441af",
+      "reviewedAt": "2026-11-16T14:27:34.546Z",
+      "previousApprovedResults": []
+    },
+    "vbbshvng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-fd0f284b819e96a1": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "vbbshvng-a-ls__3c__solid__round__3core-brown-blue-yellow-green__p-fd0f284b819e96a1",
+      "sha256": "5bbc79bac93723d26e79e8ba5a107252418ca0f705a1310a8b0188e7141a57b0",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "fe5bfcd40ed3db79eb6a90739985807a3d7dc8c942ede413cf9e6d8899af0bed",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "77faedb4e001968085053f1b01e247fa431990302bb63f286af27eb810ca100f",
+      "screenVisualVersion": null,
+      "draftKey": "33c9018aca81df1f881a8d4712cc108ecf0c53a89c6153e10f030ecd9a4958f6",
+      "draftDir": "data/cable-approved-results/cc3db39689721d6496c737e17892cee3e96734445448abffedc4dca97d1e379a-5bbc79bac93723d26e79e8ba5a107252418ca0f705a1310a8b0188e7141a57b0-066a49b4-ab8b-49ee-a9bc-a28ce78ed998",
+      "reviewedAt": "2026-11-16T14:56:56.637Z",
+      "previousApprovedResults": []
+    },
+    "vbshvng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-61555309cba118d1": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": true,
+      "visualKey": "vbshvng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-61555309cba118d1",
+      "sha256": "a05ac4db587347e3ccf94d2e72cacb5e5b94e41796eec659f518eaa7fc8b1c0d",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "e6e3ad8cf17f1bf1ad0f1ca9fb3894078a03548b1367dab3659e1b39cfecdf13",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "77faedb4e001968085053f1b01e247fa431990302bb63f286af27eb810ca100f",
+      "screenVisualVersion": null,
+      "draftKey": "af5cf58322f9c9a45f00fdf903d5d14e8de4cf6c165184ec2d36ba9b8f9d25a5",
+      "draftDir": "data/cable-approved-results/2505b35b4ac8668fed3a23c4cc08087c64a74ab406371de9951552d10dc2970d-a05ac4db587347e3ccf94d2e72cacb5e5b94e41796eec659f518eaa7fc8b1c0d-c56ded48-9ba9-4da7-b52e-1d404fec2824",
+      "reviewedAt": "2026-11-16T15:10:12.190Z",
+      "previousApprovedResults": []
+    },
+    "vbshvng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-b5afecbd49f1a632": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": true,
+      "visualKey": "vbshvng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-b5afecbd49f1a632",
+      "sha256": "e75f66dbf1c7a730fe0a77c739b3630cbd927f9c00f9392b3eecc144159665ef",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "6647451680674b63889c2c145b878ea8d66c563ccb10d8f5d15dc58bc05cb741",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "77faedb4e001968085053f1b01e247fa431990302bb63f286af27eb810ca100f",
+      "screenVisualVersion": null,
+      "draftKey": "55f7756af50652128011b457b17d836172ae9eeabac9ebb8a272734342ea79cb",
+      "draftDir": "data/cable-approved-results/6ca8915c103e06f75e8144c05a01453e120c60a3be570ea0c7e5141308017c78-e75f66dbf1c7a730fe0a77c739b3630cbd927f9c00f9392b3eecc144159665ef-fc30f74b-8595-4030-835b-735ba6896b56",
+      "reviewedAt": "2026-11-16T15:10:12.402Z",
+      "previousApprovedResults": []
+    },
+    "h05v-k__1c__stranded__round__1core-blue__p-92cf9e0e29ad766e": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": true,
+      "visualKey": "h05v-k__1c__stranded__round__1core-blue__p-92cf9e0e29ad766e",
+      "sha256": "4494e526669755c7ccdc29fa2d4699d08722da4c751cb7e045b73358bee5a3ab",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "8255bed4aff33f3df87c0312e87b5bfa9ba96462daf12d3a5846d3db55cddea4",
+      "outerSheathGeometry": "NO_COMMON_SHEATH",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "e1bf83451b30ff994d4bae7aa2a4397b98a7eeec37da8f9a87da2148acd9c4bb",
+      "draftDir": "data/cable-approved-results/b182455d8955a800d9625d7c4d00231ade9051b3a5034d908fe22d6cfb73c990-4494e526669755c7ccdc29fa2d4699d08722da4c751cb7e045b73358bee5a3ab-2d7abd4f-6d44-460e-a617-9c8a0666b663",
+      "reviewedAt": "2026-11-16T16:22:35.928Z",
+      "previousApprovedResults": []
+    },
+    "h05v-k__1c__stranded__round__1core-black__p-b02acd9450eb9820": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": true,
+      "visualKey": "h05v-k__1c__stranded__round__1core-black__p-b02acd9450eb9820",
+      "sha256": "0cc6a5e6ebbb3a26490606c81f51dd980bf93a01e716eda68597b5eefa8b07f5",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "df749e6bcc97734797246dec97aedf4d767ebcbdd88d95adae552b43d5dea0d7",
+      "outerSheathGeometry": "NO_COMMON_SHEATH",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "dc4af70132970c61f94f4b866cfb321ca01998505c98fda078fcc81a15f00223",
+      "draftDir": "data/cable-approved-results/47832b0d1169535d99a1147e2db48bc449a15eeac069e674786c5c482a5eab8b-0cc6a5e6ebbb3a26490606c81f51dd980bf93a01e716eda68597b5eefa8b07f5-ed697cff-7445-4b8a-a9a1-df753578f711",
+      "reviewedAt": "2026-11-16T16:22:36.057Z",
+      "previousApprovedResults": []
+    },
+    "h05v-k__1c__stranded__round__1core-red__p-b615d32588418535": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": true,
+      "APPROVED_AS_REFERENCE": true,
+      "visualKey": "h05v-k__1c__stranded__round__1core-red__p-b615d32588418535",
+      "sha256": "04913d3bcceefddd5f057b4939b4857b72d3eb6667cb1bed5b0a962864aeed37",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "38af2618ec75d8d59771464157af26b7043d5b7cc76f2d8c0b52ffc9a3a5124b",
+      "outerSheathGeometry": "NO_COMMON_SHEATH",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "3db04b270e85f375ccf5f59ed41a696bc08de1e2e0c5052afe40ad8c32505301",
+      "draftDir": "data/cable-approved-results/e9dd73301ce6de0d3c065af60139ef45e84fa5707b468dca221de8e0a9c353bc-04913d3bcceefddd5f057b4939b4857b72d3eb6667cb1bed5b0a962864aeed37-823e2785-4c39-46c0-84d8-f0212c3af85c",
+      "reviewedAt": "2026-11-16T16:35:05.392Z",
+      "previousApprovedResults": []
     }
+  },
+  "alternativesBySha256": {
+    "bf523a54e40235f1fc274c59212f83e5f02c858fd41c50c75bad6782a56c5ce5": {
+      "status": "APPROVED",
+      "APPROVED_FOR_CATALOG": false,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "vvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-efab82e5a582c255",
+      "sha256": "bf523a54e40235f1fc274c59212f83e5f02c858fd41c50c75bad6782a56c5ce5",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "afd7269a880644cfeb5547ce5f90d10a29d1f8b5667d0c30ceb2f094d2ce5871",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "6fa758adc4d23b275835dbf5a4785c3b66633f54e7fe32a1e53dce85dffff86e",
+      "draftDir": "data/cable-approved-results/4e90dd769f143e187bb4316412f39b466011ce0735883f97691512c5d5577fc8-bf523a54e40235f1fc274c59212f83e5f02c858fd41c50c75bad6782a56c5ce5",
+      "reviewedAt": "2026-11-15T16:16:21.870Z",
+      "previousApprovedResults": [
+        {
+          "status": "APPROVED",
+          "visualKey": "vvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-efab82e5a582c255",
+          "sha256": "3d5be3694ad1f7f4950de556839fa5b13cb5af91be76f4dce93fa82cc98b532e",
+          "standardVersion": "approved-cable-style-1.1.0",
+          "profileHash": "afd7269a880644cfeb5547ce5f90d10a29d1f8b5667d0c30ceb2f094d2ce5871",
+          "outerSheathGeometry": "ROUND",
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+          "screenVisualVersion": null,
+          "draftKey": "c30ee17b6b86d4b922a78e46f86d0314ac0ea3410b8e78ab142af25d3be9ed6d",
+          "draftDir": "data/cable-approved-results/4e90dd769f143e187bb4316412f39b466011ce0735883f97691512c5d5577fc8-3d5be3694ad1f7f4950de556839fa5b13cb5af91be76f4dce93fa82cc98b532e",
+          "reviewedAt": "2026-11-09T12:31:12.311Z",
+          "previousApprovedResults": [],
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": true
+        }
+      ],
+      "archiveOnly": true
+    },
+    "253bb540272b40985ae3e6701e3d3a40529ce478df12cbf01e48465a163936e7": {
+      "status": "APPROVED",
+      "manualGallery": true,
+      "APPROVED_FOR_CATALOG": false,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "pvs__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-daa81db690414ad6",
+      "sha256": "253bb540272b40985ae3e6701e3d3a40529ce478df12cbf01e48465a163936e7",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "profileHash": "a43d795ca47ab25650e29d02331a6e41c7f568860b9b073a718fe109bbb08bbf",
+      "outerSheathGeometry": "ROUND",
+      "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "screenVisualVersion": null,
+      "draftKey": "e569808423e5642fd193d1396014aa9fdbea101a513eb3a0a4696e8c0d8d4870",
+      "draftDir": "data/cable-approved-results/1076d0a2496341967416f0fe8536c42cd8c7e86a48a022317b74e4806337b3ce-253bb540272b40985ae3e6701e3d3a40529ce478df12cbf01e48465a163936e7-a17139d0-95c5-4b83-9932-015c3a9f16ea",
+      "reviewedAt": "2026-11-16T04:28:11.416Z",
+      "previousApprovedResults": [
+        {
+          "status": "APPROVED",
+          "visualKey": "pvs__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-daa81db690414ad6",
+          "sha256": "90fedcde8595457b0de94c097dad039e06698ea6695220d43fdc927522074a3b",
+          "standardVersion": "approved-cable-style-1.1.0",
+          "profileHash": "a43d795ca47ab25650e29d02331a6e41c7f568860b9b073a718fe109bbb08bbf",
+          "outerSheathGeometry": "ROUND",
+          "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+          "screenVisualVersion": null,
+          "draftKey": "ac10570728708691e3499fb81e991ae10698e193f57858a52051cf969258ec2d",
+          "draftDir": "data/cable-approved-results/1076d0a2496341967416f0fe8536c42cd8c7e86a48a022317b74e4806337b3ce-90fedcde8595457b0de94c097dad039e06698ea6695220d43fdc927522074a3b",
+          "reviewedAt": "2026-11-09T12:31:12.553Z",
+          "previousApprovedResults": [],
+          "APPROVED_FOR_CATALOG": true,
+          "APPROVED_AS_REFERENCE": true
+        }
+      ],
+      "archiveOnly": true
+    }
+  },
+  "reviewBySha256": {
+    "d0a4172a01c6668115fa6fcdda2165377eb41d89152f12946cef405f4b211ed3": [
+      {
+        "sha256": "d0a4172a01c6668115fa6fcdda2165377eb41d89152f12946cef405f4b211ed3",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь утвердил этот PNG визуально (2-я и 4-я карточки на скриншоте). Допуск в каталог ожидает снятия технического удержания.",
+        "at": "2026-11-15T19:04:37.041Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "effectiveBefore": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": "UNDECIDED"
+        },
+        "hash": "c5a57dd3bfb0f3d05d1a2b480f9e91beb08b72b6fc38b4870961b41814076883"
+      },
+      {
+        "sha256": "d0a4172a01c6668115fa6fcdda2165377eb41d89152f12946cef405f4b211ed3",
+        "parent": "c5a57dd3bfb0f3d05d1a2b480f9e91beb08b72b6fc38b4870961b41814076883",
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь прямо утвердил этот PNG для каталога и принял отмеченные визуальные замечания. Решение зафиксировано для точного SHA-256.",
+        "at": "2026-11-15T19:09:02.593Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "75d71c35b52161bc81a0c77ed7d56905a81c68c45dab92549fed1029cf940fc9"
+      }
+    ],
+    "35e7f3fb6f025564c153011d36ea3cb5ece4ea39985d3b9aa6e0b2e923e9e4c0": [
+      {
+        "sha256": "35e7f3fb6f025564c153011d36ea3cb5ece4ea39985d3b9aa6e0b2e923e9e4c0",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь утвердил этот PNG визуально (2-я и 4-я карточки на скриншоте). Допуск в каталог ожидает снятия технического удержания.",
+        "at": "2026-11-15T19:04:37.043Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "effectiveBefore": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": "UNDECIDED"
+        },
+        "hash": "53886f82e1eaf016a09e68c602dc7f0bc9815629459735b2ee9c2f6debf0efc3"
+      },
+      {
+        "sha256": "35e7f3fb6f025564c153011d36ea3cb5ece4ea39985d3b9aa6e0b2e923e9e4c0",
+        "parent": "53886f82e1eaf016a09e68c602dc7f0bc9815629459735b2ee9c2f6debf0efc3",
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь прямо утвердил этот PNG для каталога и принял отмеченные визуальные замечания. Решение зафиксировано для точного SHA-256.",
+        "at": "2026-11-15T19:09:02.641Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "d8d2ecd95b2c9671b08737c10d11a5b296be2fb078ea5c5a8e0e1df5c46d0298"
+      }
+    ],
+    "fbfa2a058a4e1252d6dd73255e60266dc256e26d5d998585916ba72098ed5649": [
+      {
+        "sha256": "fbfa2a058a4e1252d6dd73255e60266dc256e26d5d998585916ba72098ed5649",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "akvvg__10c__solid__round__10core-control-black__p-bda076ce299c7b12",
+            "profileHash": "e7de3daecaac05d6ad4fe05b41aa928ef0fa6ce367cb0db8e3b6b91ff3d20b11",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь утвердил PNG для каталога и разрешил использование как дополнительного референса.",
+        "at": "2026-11-15T19:24:00.251Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "hash": "3d8cfc8e53a94685c32f3077fda4f33eba5423855987814b16318319c4232437"
+      }
+    ],
+    "403f79ce26e95405751a1b3d5d6d5b50540821dc8c0b84927fb6f3008fd211ff": [
+      {
+        "sha256": "403f79ce26e95405751a1b3d5d6d5b50540821dc8c0b84927fb6f3008fd211ff",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "akvvg__7c__solid__round__7core-control-black__p-d04c65292065966e",
+            "profileHash": "ff180d53dee481a377986a44623a3f853ca7804efd7c969c298cb8c81596d035",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь утвердил PNG для каталога и разрешил использование как дополнительного референса.",
+        "at": "2026-11-15T19:24:00.353Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "hash": "12b4ae6064d7399c67180011c343a4613a44de51c8e46d8821d3723ec63fcb40"
+      }
+    ],
+    "cd8cff8cfe708818482f1da7cec80e7066577dcd9d9ac14cb5614bb52cfddba4": [
+      {
+        "sha256": "cd8cff8cfe708818482f1da7cec80e7066577dcd9d9ac14cb5614bb52cfddba4",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь выбрал PNG для каталога и референсов. Допуск ожидает подтверждения отдельного полимерного слоя под бронёй в текущем профиле.",
+        "at": "2026-11-15T19:24:00.771Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "2e2bd49f35ec51623f3f117a4a85200e3073dbe7d998a22da3c35c80cfb85ea4"
+      }
+    ],
+    "73c3cba107b5cd3e1015fcc927d726abff0ab890d3ce56e6a07fa6c43947000e": [
+      {
+        "sha256": "73c3cba107b5cd3e1015fcc927d726abff0ab890d3ce56e6a07fa6c43947000e",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь выбрал этот PNG для каталога и дополнительных референсов. В этом сеансе пользователь попросил пропустить визуальную проверку; результаты ручных проверок не заявлены.",
+        "at": "2026-11-15T19:26:26.599Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "db24ba2b877736fd910853d6c4a7191b04dd298273fa5a5bfae17e173ec7395e"
+      }
+    ],
+    "c9f897b26564747bf75b995dd6e80ead323e8116bda2fc3a1fe592369bffe135": [
+      {
+        "sha256": "c9f897b26564747bf75b995dd6e80ead323e8116bda2fc3a1fe592369bffe135",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь выбрал этот PNG для каталога и дополнительных референсов. В этом сеансе пользователь попросил пропустить визуальную проверку; результаты ручных проверок не заявлены.",
+        "at": "2026-11-15T19:26:26.602Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "26e79b7758f23af48ef1a78eb2de939fa1aa0b796360962a74c2288a8ae9b4ba"
+      },
+      {
+        "sha256": "c9f897b26564747bf75b995dd6e80ead323e8116bda2fc3a1fe592369bffe135",
+        "parent": "26e79b7758f23af48ef1a78eb2de939fa1aa0b796360962a74c2288a8ae9b4ba",
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "nym__12c__solid__round__12core-power-palette-6447e623__p-a8205303b736f7a9",
+            "profileHash": "33563ab2dc4963ca95c04cdbc059d2bd0cd6379ae438d3b193aed9797a9c5bb9",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "",
+        "at": "2026-11-16T04:12:02.884Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "hash": "36f463dd25212fd90f593109577d9c0995c6439e589ccb9cdf0905933f3db909"
+      }
+    ],
+    "580101be416b5ec7982a0e78ce9331421dac74edc847bf1bf6b7789001ecaf6a": [
+      {
+        "sha256": "580101be416b5ec7982a0e78ce9331421dac74edc847bf1bf6b7789001ecaf6a",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь выбрал этот PNG для каталога и дополнительных референсов. В этом сеансе пользователь попросил пропустить визуальную проверку; результаты ручных проверок не заявлены.",
+        "at": "2026-11-15T19:26:26.604Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "4fd5933e9b654641018df3305b61c08e5eb5fd9220e1581f32354e7fbcaf2c72"
+      },
+      {
+        "sha256": "580101be416b5ec7982a0e78ce9331421dac74edc847bf1bf6b7789001ecaf6a",
+        "parent": "4fd5933e9b654641018df3305b61c08e5eb5fd9220e1581f32354e7fbcaf2c72",
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "nym__2c__solid__round__2core-brown-blue__p-032bbb9eba0baed6",
+            "profileHash": "3189fef6cb1aabcf3239639302713b282542b2fb4fa904a3e29d26b8282cdecc",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "",
+        "at": "2026-11-16T04:12:02.940Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "hash": "aac1538b25ed674ba084cb74afccfbf8bd4abf08f5a29e3f0ad04fa759928ec9"
+      }
+    ],
+    "253bb540272b40985ae3e6701e3d3a40529ce478df12cbf01e48465a163936e7": [
+      {
+        "sha256": "253bb540272b40985ae3e6701e3d3a40529ce478df12cbf01e48465a163936e7",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "pvs__5c__stranded__round__5core-brown-black-grey-blue-yellow-green__p-daa81db690414ad6",
+            "profileHash": "a43d795ca47ab25650e29d02331a6e41c7f568860b9b073a718fe109bbb08bbf",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "",
+        "at": "2026-11-16T04:28:11.417Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "UNDECIDED",
+          "reference": "ADDITIONAL"
+        },
+        "hash": "cd23e5c6f4309150611928f6d4171219d6362b2100ab84eaa94329c1b21a1663"
+      }
+    ],
+    "ca449f57817d94ab700cd595d2247751516773d7871f6d1377cfa89e6627945e": [
+      {
+        "sha256": "ca449f57817d94ab700cd595d2247751516773d7871f6d1377cfa89e6627945e",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null,
+          "visualApproval": {
+            "status": "APPROVED",
+            "reason": "Геометрия PNG ещё не подтверждена измерениями.",
+            "name": "КВВГэнг(А)-LS 7х0.75",
+            "family": "kvvgeng-a-ls",
+            "visualKey": "kvvgeng-a-ls__7c__solid__round__7core-control-black__p-42c369b1522c96fe"
+          }
+        },
+        "reviewer": "Владелец каталога",
+        "note": "",
+        "at": "2026-11-16T08:12:34.992Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "2465e721b33a2753318f31729a016f614e373a18bc8f8f773f1f6df6cf30a9af"
+      }
+    ],
+    "f77368d82b2c99a1aeffdc648937efbc1bcabe3d2a59759f02941de59e19cb8a": [
+      {
+        "sha256": "f77368d82b2c99a1aeffdc648937efbc1bcabe3d2a59759f02941de59e19cb8a",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "kvvgng-a-ls__5c__solid__round__5core-black-brown-grey-blue-yellow-green__p-71382f6ad24b4406",
+            "profileHash": "a6a4fce156514f9e49bf0a35efe0015597505382eda4d3e657fd72f61345d90e",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Владелец каталога",
+        "note": "",
+        "at": "2026-11-16T08:12:35.161Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "hash": "a56ac9b7368b4c791060324c11efcd05b5439ecae31d36030d0db928488d420d"
+      }
+    ],
+    "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350": [
+      {
+        "sha256": "5ad1c32aff3386a70ae9774fa99c900fe053215341f85a0c66f11135d16ee350",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "vvgng-a-frls__2c__solid__round__2core-brown-blue__p-9590a1cabe1988d6",
+            "profileHash": "d3c943415ec57c40c5763c8f2d3a316af7edce6a7240c831c8e248390a6845f5",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Владелец каталога",
+        "note": "",
+        "at": "2026-11-16T08:21:40.345Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "hash": "fa7ab0c21dcc1b1a26d0d28b97296e2f269568f64f7f9a51177989884197dbb8"
+      }
+    ],
+    "bf523a54e40235f1fc274c59212f83e5f02c858fd41c50c75bad6782a56c5ce5": [
+      {
+        "sha256": "bf523a54e40235f1fc274c59212f83e5f02c858fd41c50c75bad6782a56c5ce5",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null,
+          "visualApproval": {
+            "status": "APPROVED",
+            "reason": "Для профиля уже сохранён другой эталон каталога.",
+            "name": "ВВГ 4х1.5",
+            "family": "vvgng-a-ls",
+            "visualKey": "vvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-efab82e5a582c255"
+          }
+        },
+        "reviewer": "Владелец каталога",
+        "note": "",
+        "at": "2026-11-16T08:21:40.346Z",
+        "legacyRevision": "2ffc5908cf712d8e2bcbad8cb37656fb7bcf4f2504783b52446fae425b42a900",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "c8c98bbd94868dc0f4d49e4f933c75d3d5330bc51dec96a5593a44fe15774753"
+      }
+    ],
+    "42ab68638e22f230fc4fc694b92ee0d13a9f5d10e52e61e06fa38903d0483344": [
+      {
+        "sha256": "42ab68638e22f230fc4fc694b92ee0d13a9f5d10e52e61e06fa38903d0483344",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null,
+          "visualApproval": {
+            "status": "APPROVED",
+            "reason": "Для профиля уже сохранён другой эталон каталога.",
+            "name": "ВВГнг(А)-FRLS 4х1",
+            "family": "vvgng-a-frls",
+            "visualKey": "vvgng-a-frls__4c__solid__round__4core-brown-black-grey-yellow-green__p-dfd2d82eaac43722"
+          }
+        },
+        "reviewer": "Владелец каталога",
+        "note": "",
+        "at": "2026-11-16T08:21:40.348Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "29973b3d2357ec95f5f5ea639747598f2d138ec025049c6970f5ec2c7539fcfd"
+      }
+    ],
+    "75ecc5b4b496635c20a23919c32481d2c8ad675ecf0af2ead79f94b16e08b83b": [
+      {
+        "sha256": "75ecc5b4b496635c20a23919c32481d2c8ad675ecf0af2ead79f94b16e08b83b",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null,
+          "visualApproval": {
+            "status": "APPROVED",
+            "reason": "Для профиля уже сохранён другой эталон каталога.",
+            "name": "ВВГнг(А)-LS 5х1.0",
+            "family": "vvgng-a-ls",
+            "visualKey": "vvgng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-0700c23a8e1611d2"
+          }
+        },
+        "reviewer": "Владелец каталога",
+        "note": "",
+        "at": "2026-11-16T08:21:40.350Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "34fdea999b3962973a54a42191e72f5651683f853936695608326b75ee58b12d"
+      }
+    ],
+    "3d5be3694ad1f7f4950de556839fa5b13cb5af91be76f4dce93fa82cc98b532e": [
+      {
+        "sha256": "3d5be3694ad1f7f4950de556839fa5b13cb5af91be76f4dce93fa82cc98b532e",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null,
+          "visualApproval": {
+            "status": "APPROVED",
+            "reason": "Действует ограничение DEF-VVG-001; текущие привязки сохранены.",
+            "name": "ВВГнг(А)-LS 4х1",
+            "family": "vvgng-a-ls",
+            "visualKey": "vvgng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-efab82e5a582c255"
+          }
+        },
+        "reviewer": "Владелец каталога",
+        "note": "",
+        "at": "2026-11-16T08:25:18.338Z",
+        "legacyRevision": "81cbcdc98c783bc20b0c9f7de61e0c51f161b7306a937475cb365ea58b0950a4",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": "ADDITIONAL"
+        },
+        "effectiveAfter": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": "ADDITIONAL"
+        },
+        "hash": "fcdbc209eeda4f1decbb94fecb8f5537a16d7503ec13e67365ef0d34be658b8b"
+      }
+    ],
+    "73158445e19ef74c3ff3a0c9fb3de80c8bac33a36111fd7dc26f8075bd3b0c73": [
+      {
+        "sha256": "73158445e19ef74c3ff3a0c9fb3de80c8bac33a36111fd7dc26f8075bd3b0c73",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь визуально одобрил PNG для YU-0006811 и поручил назначить его SKU с той же видимой конструкцией.",
+        "at": "2026-11-16T14:27:34.546Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "bece42f1d76999e85081f82769463f4b4e9fb2dda6fc4797f6456788b18fc1b3"
+      }
+    ],
+    "5bbc79bac93723d26e79e8ba5a107252418ca0f705a1310a8b0188e7141a57b0": [
+      {
+        "sha256": "5bbc79bac93723d26e79e8ba5a107252418ca0f705a1310a8b0188e7141a57b0",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": null,
+          "referenceScope": null
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь визуально одобрил PNG для YU-0000435 и поручил назначить его 47 SKU той же визуальной группы.",
+        "at": "2026-11-16T14:56:56.640Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "UNDECIDED"
+        },
+        "hash": "5d7458523f793ea29bb23042946c1afcbb8797c96f555327d469593e6e7d8e99"
+      }
+    ],
+    "a05ac4db587347e3ccf94d2e72cacb5e5b94e41796eec659f518eaa7fc8b1c0d": [
+      {
+        "sha256": "a05ac4db587347e3ccf94d2e72cacb5e5b94e41796eec659f518eaa7fc8b1c0d",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "vbshvng-a-ls__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-61555309cba118d1",
+            "profileHash": "e6e3ad8cf17f1bf1ad0f1ca9fb3894078a03548b1367dab3659e1b39cfecdf13",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Codex",
+        "note": "Проверены число и расположение жил, палитра, ленточная броня и круглая оболочка. По поручению пользователя явно разрешено использование для каталога и как дополнительного референса.",
+        "at": "2026-11-16T15:10:12.192Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "referenceExplicit": true,
+        "hash": "bb7248a121abcd2d9ebfec0fc62293c4125c852e79e4805b76fc4d13f2a22fce"
+      }
+    ],
+    "e75f66dbf1c7a730fe0a77c739b3630cbd927f9c00f9392b3eecc144159665ef": [
+      {
+        "sha256": "e75f66dbf1c7a730fe0a77c739b3630cbd927f9c00f9392b3eecc144159665ef",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "vbshvng-a-ls__4c__solid__round__4core-brown-black-grey-yellow-green__p-b5afecbd49f1a632",
+            "profileHash": "6647451680674b63889c2c145b878ea8d66c563ccb10d8f5d15dc58bc05cb741",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Codex",
+        "note": "Проверены число и расположение жил, палитра, ленточная броня и круглая оболочка. По поручению пользователя явно разрешено использование для каталога и как дополнительного референса.",
+        "at": "2026-11-16T15:10:12.418Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "referenceExplicit": true,
+        "hash": "ee8ab42212a44fce3b5f453b3b3714e1e7c9552daf9a699408fd30aa7ace65a9"
+      }
+    ],
+    "4494e526669755c7ccdc29fa2d4699d08722da4c751cb7e045b73358bee5a3ab": [
+      {
+        "sha256": "4494e526669755c7ccdc29fa2d4699d08722da4c751cb7e045b73358bee5a3ab",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "h05v-k__1c__stranded__round__1core-blue__p-92cf9e0e29ad766e",
+            "profileHash": "8255bed4aff33f3df87c0312e87b5bfa9ba96462daf12d3a5846d3db55cddea4",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь визуально одобрил оба PNG и явно разрешил размещение в каталоге и использование как дополнительные референсы.",
+        "at": "2026-11-16T16:22:35.929Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "referenceExplicit": true,
+        "hash": "aa6d900e7ab32962dca276c09008361940aa3774f3fbc9853d8e34dc66ff225a"
+      }
+    ],
+    "0cc6a5e6ebbb3a26490606c81f51dd980bf93a01e716eda68597b5eefa8b07f5": [
+      {
+        "sha256": "0cc6a5e6ebbb3a26490606c81f51dd980bf93a01e716eda68597b5eefa8b07f5",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "h05v-k__1c__stranded__round__1core-black__p-b02acd9450eb9820",
+            "profileHash": "df749e6bcc97734797246dec97aedf4d767ebcbdd88d95adae552b43d5dea0d7",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь визуально одобрил оба PNG и явно разрешил размещение в каталоге и использование как дополнительные референсы.",
+        "at": "2026-11-16T16:22:36.060Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "referenceExplicit": true,
+        "hash": "b136999340bab7d0a2f9272a2ad81f37b7a4de24ccc4fb94393489d2551f761a"
+      }
+    ],
+    "04913d3bcceefddd5f057b4939b4857b72d3eb6667cb1bed5b0a962864aeed37": [
+      {
+        "sha256": "04913d3bcceefddd5f057b4939b4857b72d3eb6667cb1bed5b0a962864aeed37",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL",
+          "referenceScope": {
+            "visualKey": "h05v-k__1c__stranded__round__1core-red__p-b615d32588418535",
+            "profileHash": "38af2618ec75d8d59771464157af26b7043d5b7cc76f2d8c0b52ffc9a3a5124b",
+            "APPROVED_AS_REFERENCE": true
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "Пользователь визуально одобрил красный PNG и разрешил размещение и использование как дополнительного референса.",
+        "at": "2026-11-16T16:35:05.393Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "referenceExplicit": true,
+        "hash": "9a5c101aa9062523b794f3356e7f51186e768fd06a58e705c7336ed61e7598c0"
+      }
+    ],
+    "8736f662c829998eb87fa653aa36b442ef4b1d21e584d0557179abafd5eb9a9c": [
+      {
+        "sha256": "8736f662c829998eb87fa653aa36b442ef4b1d21e584d0557179abafd5eb9a9c",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": null,
+          "reference": "DENIED",
+          "referenceScope": null
+        },
+        "reviewer": "Codex",
+        "note": "По поручению пользователя исключить из новых генераций: у двух ближних жил обратный осевой вынос относительно дальней пары. Каталожный допуск и назначения сохранить; серебристые концы — алюминиевые жилы.",
+        "at": "2026-11-16T16:38:32.225Z",
+        "legacyRevision": "90f0637a35d2da7293e96a85a27249b86033a8bc1f8c9e1b1271612d89b59e46",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "APPROVED",
+          "reference": "ADDITIONAL"
+        },
+        "effectiveAfter": {
+          "catalog": "APPROVED",
+          "reference": "DENIED"
+        },
+        "hash": "1c0a4df76884904f5fe176cfa14539b69d50caf1acc7ca2a94d8331d53cd8f30"
+      }
+    ],
+    "61fc1bb9f870c31d94cc92ff92f9b19d31b611ec1ac199c8fb8289fd08b42f40": [
+      {
+        "sha256": "61fc1bb9f870c31d94cc92ff92f9b19d31b611ec1ac199c8fb8289fd08b42f40",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": null,
+          "referenceScope": null,
+          "correction": {
+            "reason": "Две передние жилы выступают, две дальние слегка утоплены. Слои строго по техническому профилю.",
+            "visualKey": "kvbshv__4c__solid__round__4core-black-brown-blue-yellow-green__p-99a7613ec691e0b4",
+            "profileHash": "9952e2680ff8daf7a09b14fd462ba76b36a8f07cb7eb1ebb3114a3a4ac1835c0",
+            "references": {
+              "geometry": "95351a5935b282a5f191ad0682da00fb46a1a6fa33d5d859f1ae65b0f9d49cb5"
+            }
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "Make exactly four centred copper ends in a compact three-dimensional 2×2 bundle: the two cores nearer the viewer form the physically longer foreground pair, reaching farther LEFT along the cable axis; set BOTH rear cores one small axial step back to the RIGHT. Move each insulated core and its bare end together; keep the four bare-metal lengths visually equal and all four faces visible. The geometry reference supplies cross-sectional packing only; the depth order and axial stagger are defined here. No flat fan, single diagonal row, crossing or large separation. Preserve the target colours, conductor construction, camera and overall scale. For the target with armor.present=true (КВБШв), keep a short compact step of two thin overlapping steel armor tapes under the black outer jacket, with offset seams. No separate screen or extra sleeve. For the target with armor.present=false (КГВВнг(А)-LS), depict only the black outer jacket and the four insulated stranded copper cores. No silver ring, metal layer, shield, foil or armor.",
+        "at": "2026-11-16T16:38:32.501Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": "UNDECIDED"
+        },
+        "hash": "ff7d6c04474cbed47f693c80cf171fd864b13c5414d5b659f979fd550989a9c0"
+      }
+    ],
+    "9952200d9bfbd1440c2509ee3b56b73242bbbb7c92397f1297815aa420072e1e": [
+      {
+        "sha256": "9952200d9bfbd1440c2509ee3b56b73242bbbb7c92397f1297815aa420072e1e",
+        "parent": null,
+        "before": {
+          "catalog": null,
+          "reference": null,
+          "referenceScope": null
+        },
+        "after": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": null,
+          "referenceScope": null,
+          "correction": {
+            "reason": "Две передние жилы выступают, две дальние слегка утоплены. Слои строго по техническому профилю.",
+            "visualKey": "kgvvng-a-ls__4c__stranded__round__4core-brown-black-grey-yellow-green__p-5f2d8b4accf05e10",
+            "profileHash": "f0342162b89a95789af4ce44f0dc5f91ba9653fb36555d4aca4bce880f85ace0",
+            "references": {
+              "geometry": "95351a5935b282a5f191ad0682da00fb46a1a6fa33d5d859f1ae65b0f9d49cb5"
+            }
+          }
+        },
+        "reviewer": "Пользователь",
+        "note": "Make exactly four centred copper ends in a compact three-dimensional 2×2 bundle: the two cores nearer the viewer form the physically longer foreground pair, reaching farther LEFT along the cable axis; set BOTH rear cores one small axial step back to the RIGHT. Move each insulated core and its bare end together; keep the four bare-metal lengths visually equal and all four faces visible. The geometry reference supplies cross-sectional packing only; the depth order and axial stagger are defined here. No flat fan, single diagonal row, crossing or large separation. Preserve the target colours, conductor construction, camera and overall scale. For the target with armor.present=true (КВБШв), keep a short compact step of two thin overlapping steel armor tapes under the black outer jacket, with offset seams. No separate screen or extra sleeve. For the target with armor.present=false (КГВВнг(А)-LS), depict only the black outer jacket and the four insulated stranded copper cores. No silver ring, metal layer, shield, foil or armor.",
+        "at": "2026-11-16T16:38:32.539Z",
+        "legacyRevision": "fbdb8b103b7fa1efe768e82537ddf0c50151891dfbcdcdb6d3480e7bcb4b069d",
+        "resolved": true,
+        "effectiveBefore": {
+          "catalog": "UNDECIDED",
+          "reference": "UNDECIDED"
+        },
+        "effectiveAfter": {
+          "catalog": "NEEDS_CORRECTION",
+          "reference": "UNDECIDED"
+        },
+        "hash": "7879f3543276499c0e3a5794d974bc38f31d8ce907a5685b129dfc2ba0f8b6cb"
+      }
+    ]
   }
 }

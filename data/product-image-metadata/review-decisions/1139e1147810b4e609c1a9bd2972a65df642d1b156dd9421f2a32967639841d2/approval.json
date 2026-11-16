@@ -1,0 +1,13 @@
+{
+  "sha256": "1139e1147810b4e609c1a9bd2972a65df642d1b156dd9421f2a32967639841d2",
+  "sku": "YU-0000777",
+  "disposition": "REJECT",
+  "note": "Заполнение выступает за плоскость среза. Исходный PNG сохраняется.",
+  "reviewer": "Пользователь · решения по партии ВВГ",
+  "status": "REJECTED",
+  "APPROVED_FOR_CATALOG": false,
+  "APPROVED_AS_REFERENCE": false,
+  "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-de323cc8a44c2360",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-15T16:55:00.447Z"
+}

@@ -1,0 +1,13 @@
+{
+  "sha256": "1b81a6205ecf6d2fc5a6f5902a4727a524fc9d9fde6992ebecf7cf1a35944e47",
+  "sku": "YU-0000920",
+  "disposition": "REJECT",
+  "note": "Неверная укладка жил, заполнение выступает за границу среза.",
+  "reviewer": "Пользователь · решения по партии ВВГ",
+  "status": "REJECTED",
+  "APPROVED_FOR_CATALOG": false,
+  "APPROVED_AS_REFERENCE": false,
+  "visualKey": "vvgng-a__3c__solid__round__3core-brown-blue-yellow-green__p-6f35b4f95d03332d",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-15T16:55:00.401Z"
+}

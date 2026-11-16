@@ -1,8 +1,16 @@
+import { cableReviewCheckAccepted } from '../scripts/lib/cableIllustrationDefects.js';
+import { readCableCatalogProfile, CATALOG_CABLE_VERSION } from '../scripts/lib/cableCatalogProfile.js';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { createHash } from 'node:crypto';
 import { readFileSync, statSync } from 'node:fs';
 import { CABLE_STYLE_REVIEW_CHECKS } from '../scripts/lib/cableCoreGeometry.js';
+import { cableSharedVisualKey, CABLE_SHARED_VISUAL_REUSE, cableVisibleConstructionKey, CABLE_VISUAL_GROUP_REUSE, cableSchematicSignature, CABLE_SCHEMATIC_REUSE, isExactCableImageReuseCompatible } from '../scripts/lib/cableReferenceCompatibility.js';
 import { classifyPracticalCableVisualProduct } from '../scripts/lib/familyVisualRules.js';
+import {
+  getVvgIllustrationSignature,
+  getVvgProductIllustrationSignature,
+  VVG_TYPICAL_ILLUSTRATION,
+} from '../scripts/lib/cableVvgIllustration.js';
 import imageStyle from '../cable-image-style.json' with { type: 'json' };
 import responsiveImages from './responsiveImageManifest.json' with { type: 'json' };
 import rules from '../data/cableVisualClassificationRules.json' with { type: 'json' };
@@ -85,20 +93,36 @@ export function approvedCableImagePath(approval) {
     : '';
 }
 
-export function matchesApprovedCableConstruction(product, approval) {
+export function matchesApprovedCableConstruction(product, approval, illustration, catalog) {
+  if ([CABLE_SCHEMATIC_REUSE,CABLE_VISUAL_GROUP_REUSE,CABLE_SHARED_VISUAL_REUSE].includes(illustration?.policy)) {
+    const key = illustration.policy === CABLE_SHARED_VISUAL_REUSE ? cableSharedVisualKey :
+      illustration.policy === CABLE_VISUAL_GROUP_REUSE ? cableVisibleConstructionKey : cableSchematicSignature;
+    const signature = key((catalog ?? readCableCatalogProfile(product)).profile);
+    return Boolean(signature && illustration.profile &&
+      createHash('sha256').update(JSON.stringify(illustration.profile)).digest('hex') === approval.profileHash &&
+      signature === key(illustration.profile));
+  }
+  if (approval.technicalSourceVersion === CATALOG_CABLE_VERSION) {
+    catalog ??= readCableCatalogProfile(product);
+    return Boolean(catalog.profile && catalog.visualKey === approval.visualKey &&
+      createHash('sha256').update(JSON.stringify(catalog.profile)).digest('hex') === approval.profileHash);
+  }
   let result = classifications.get(product);
   if (!result) {
     result = classifyPracticalCableVisualProduct(product, context);
     classifications.set(product, result);
   }
   const profile = result.visualProfile;
-  if (
-    result.visualClassification !== 'AUTO_APPROVED' ||
-    result.visualKey !== approval.visualKey ||
-    createHash('sha256').update(JSON.stringify(profile)).digest('hex') !==
-      approval.profileHash
-  )
-    return false;
+  if (illustration?.policy === VVG_TYPICAL_ILLUSTRATION) {
+    const approvedProfile = illustration.profile;
+    const signature = getVvgProductIllustrationSignature(product, result);
+    return Boolean(
+      signature && approvedProfile &&
+      createHash('sha256').update(JSON.stringify(approvedProfile)).digest('hex') === approval.profileHash &&
+      signature === getVvgIllustrationSignature(approvedProfile)
+    );
+  }
+  if (!isExactCableImageReuseCompatible(result, approval)) return false;
 
   if (profile.productType !== 'power-cable') return true;
   const section = Number(product.crossSection);
@@ -149,10 +173,12 @@ export function getGeneratedProductImage(product, manifest, registry) {
     entry.manualReview?.status !== 'APPROVED' ||
     entry.manualReview.sha256 !== approval.sha256 ||
     !CABLE_STYLE_REVIEW_CHECKS.every(
-      (check) => entry.manualReview.checks?.[check] === true
+      check => cableReviewCheckAccepted({ ...entry.manualReview,
+        APPROVED_FOR_CATALOG: approval.APPROVED_FOR_CATALOG,
+        APPROVED_AS_REFERENCE: entry.APPROVED_AS_REFERENCE }, check)
     ) ||
     !matchesProductImageBinding(product, entry) ||
-    !matchesApprovedCableConstruction(product, approval)
+    !matchesApprovedCableConstruction(product, approval, entry.typicalIllustration)
   )
     return '';
   return entry.image;

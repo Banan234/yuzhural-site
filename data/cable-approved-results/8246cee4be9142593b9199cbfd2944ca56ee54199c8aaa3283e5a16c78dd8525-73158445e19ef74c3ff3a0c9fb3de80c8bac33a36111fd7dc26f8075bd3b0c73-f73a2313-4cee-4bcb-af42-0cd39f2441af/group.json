@@ -1,0 +1,451 @@
+{
+  "ruleTrace": {
+    "version": "cable-illustration-rules-2",
+    "sha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+    "ids": [
+      "frame.horizontal",
+      "frame.style",
+      "frame.background",
+      "frame.right-edge",
+      "core.count",
+      "core.geometry",
+      "core.stripping",
+      "layers.contract",
+      "geometry.sheath",
+      "references.permissions",
+      "catalog.preserve",
+      "generation.claim",
+      "catalog.scope"
+    ]
+  },
+  "standardVersion": "approved-cable-style-1.1.0",
+  "referenceSha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+  "model": "gpt-image-2.5-flare",
+  "httpStatus": 200,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.2593010146561443,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 230,
+        "longestSupportedRun": 230,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "framing": {
+        "horizontalCanvas": true,
+        "occupiedWidthRatio": 0.9182638105975197,
+        "leftMarginRatio": 0.08173618940248027,
+        "topMarginRatio": 0.19165727170236754,
+        "bottomMarginRatio": 0.29312288613303267,
+        "semanticVerification": "MANUAL_REQUIRED: alpha bounds can include residual background"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.775428365886302,
+    "non_opaque_ratio": 0.9995684883364748,
+    "foreground_ratio": 0.22396472153834227,
+    "bounds": {
+      "minX": 145,
+      "minY": 170,
+      "maxX": 1773,
+      "maxY": 626
+    },
+    "warnings": [],
+    "sha256": "73158445e19ef74c3ff3a0c9fb3de80c8bac33a36111fd7dc26f8075bd3b0c73",
+    "bytes": 706634
+  },
+  "compositionCheck": {
+    "rightEdge": {
+      "status": "EDGE_EVIDENCE_PRESENT",
+      "supportedPixels": 230,
+      "longestSupportedRun": 230,
+      "minimumRun": 18,
+      "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+      "automaticRegeneration": false,
+      "required": true
+    },
+    "leftTips": {
+      "status": "LEFT_MARGIN_PRESENT",
+      "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+    },
+    "framing": {
+      "horizontalCanvas": true,
+      "occupiedWidthRatio": 0.9182638105975197,
+      "leftMarginRatio": 0.08173618940248027,
+      "topMarginRatio": 0.19165727170236754,
+      "bottomMarginRatio": 0.29312288613303267,
+      "semanticVerification": "MANUAL_REQUIRED: alpha bounds can include residual background"
+    },
+    "automaticRegeneration": false
+  },
+  "multicorePixelReview": null,
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 1,
+    "expectedMetalEndCount": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "technicalProfile": {
+    "version": "construction-contract-4",
+    "outerSheathGeometry": "NO_COMMON_SHEATH",
+    "family": "h05v-k",
+    "insulatedCoreCount": 1,
+    "coreMetalEndCount": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "armor": {
+      "present": false,
+      "type": null
+    },
+    "screen": {
+      "present": false,
+      "type": null
+    },
+    "screenVisualStandard": null,
+    "screenType": null,
+    "screenFunction": null,
+    "armorFunction": null,
+    "screenRendering": null,
+    "armorType": null,
+    "fireBarrierMaterial": null,
+    "fireBarrierPlacement": null,
+    "layerOrder": "outside-to-conductor; interstitial filler occupies spaces, not a concentric envelope",
+    "constructionSource": null,
+    "constructionEvidence": null,
+    "constructionBasis": null,
+    "fireBarrier": false,
+    "layers": [
+      {
+        "role": "individual-insulation",
+        "scope": "each-core"
+      }
+    ],
+    "layerRoleCount": 1,
+    "layerCountScope": "role count; each-core roles repeat on every core; not a count of manufacturing tape wraps",
+    "additionalConductors": [],
+    "cores": [
+      {
+        "id": 1,
+        "color": "yellow-green",
+        "metalEndId": 1,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "innerSheath": {
+      "status": "unknown",
+      "material": null
+    },
+    "separator": null,
+    "interstitialFilling": {
+      "status": "unknown"
+    },
+    "outerSheath": {
+      "status": "absent",
+      "appearance": null
+    },
+    "verification": {
+      "status": "NEEDS_REVIEW",
+      "pixelVerification": "NOT_AUTOMATED",
+      "insulatedCoreCount": null,
+      "coreMetalEndCount": null,
+      "additionalConductorCount": null,
+      "layerRoles": null
+    }
+  },
+  "visualCompositionContract": {
+    "version": "cable-illustration-rules-2",
+    "rulesSha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+    "framing": "horizontal with protected slight tilt, all tips intact, roughly 80–90% width where practical, intact cable continuing right",
+    "layout": "preserve target cross-section and core arrangement; keep the visible ends compact",
+    "cutPlane": "match documented interfaces; interstitial fill must stay within the jacket cut plane",
+    "insulationExposure": "PROTECTED_BASELINE",
+    "multicoreComposition": null,
+    "prohibitedChanges": [
+      "core count",
+      "core geometry",
+      "materials",
+      "layer inventory",
+      "layer order"
+    ]
+  },
+  "multicoreStripping": null,
+  "multicoreComposition": null,
+  "strippingComposition": null,
+  "layerContact": {
+    "version": "layer-contact-1.0.0",
+    "scope": "Prospective rendering and manual QA only; never change approved PNGs or visualKey",
+    "confirmedSingleCoreFamilies": [
+      "kgvvng-a-ls",
+      "vvgng-a-ls"
+    ],
+    "basis": "User-confirmed rendering requirement for the existing single-core technical profiles: common jacket tightly encloses the individually insulated core.",
+    "directContact": "For a confirmed directly adjacent jacket/insulation interface, show continuous tight contact, no visible air annulus and no free hollow tube. Preserve the distinct cut edges, order and realistic thickness of actual layers.",
+    "exceptions": "Do not remove or compress documented fillers, separators, screens, armour, fire barriers, spacers, tubes or intentional voids. Unknown adjacency is not evidence of direct contact. Do not infer direct contact from core count alone.",
+    "verification": "Manual pixel inspection required. HTTP success and PNG alpha do not verify layer contact. Unverifiable geometry remains NEEDS_REVIEW.",
+    "mode": "PRESERVE_DOCUMENTED_INTERFACES_NO_ASSUMPTION",
+    "status": "MANUAL_REVIEW_REQUIRED"
+  },
+  "geometryPilot": null,
+  "geometryRevision": null,
+  "outerSheathGeometry": "NO_COMMON_SHEATH",
+  "constructionCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "insulatedCoreCount": null,
+    "coreMetalEndCount": null,
+    "additionalConductorCount": null,
+    "layerRoles": null
+  },
+  "geometryCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED",
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "status": "APPROVED",
+  "automaticProductionBinding": false,
+  "manualChecksRequired": [
+    "coreCount",
+    "material",
+    "colours",
+    "layers",
+    "direction",
+    "proportions",
+    "stripping",
+    "background",
+    "referenceMatch",
+    "metalEndCount",
+    "equalDiameters",
+    "relativeDiameters",
+    "coaxialStripping",
+    "geometryConsistency",
+    "noExtraCylinders",
+    "frameAndLeftMargin",
+    "visibleConstruction",
+    "individualStripping"
+  ],
+  "visualKey": "h05v-k__1c__stranded__round__1core-yellow-green__p-31c804f9999a35f8",
+  "profile": {
+    "family": "h05v-k",
+    "productType": "installation-wire",
+    "cores": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "stranded",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": false,
+    "outerJacket": "none",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "yellow-green"
+    ],
+    "coreColorScheme": "1core-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "catalogSource": {
+    "version": "catalog-construction-1",
+    "sku": "YU-0006811",
+    "family": "H05V-K",
+    "fields": {
+      "cores": 1,
+      "Материал жилы": "Медь",
+      "Конструкция токопроводящей жилы": "Многопроволочная",
+      "Материал изоляции": "ПВХ-пластикат"
+    },
+    "provenance": {
+      "cores": [
+        {
+          "value": 1,
+          "source": "product.cores"
+        }
+      ],
+      "Материал жилы": [
+        {
+          "value": "Медь",
+          "source": "specs.Материал жилы"
+        }
+      ],
+      "Конструкция токопроводящей жилы": [
+        {
+          "value": "Многопроволочная",
+          "source": "designationDecoded.tokens[3]",
+          "statement": "Гибкая многопроволочная жила"
+        }
+      ],
+      "Материал изоляции": [
+        {
+          "value": "ПВХ-пластикат",
+          "source": "specs.Материал изоляции"
+        }
+      ]
+    },
+    "recovered": {
+      "Конструкция токопроводящей жилы": [
+        {
+          "value": "Многопроволочная",
+          "source": "designationDecoded.tokens[3]",
+          "statement": "Гибкая многопроволочная жила"
+        }
+      ]
+    },
+    "renderingBasis": "h05v-k",
+    "unspecifiedCardFields": [
+      "catalog-missing-or-ambiguous: Форма токопроводящей жилы",
+      "catalog-missing-or-ambiguous: Форма кабеля",
+      "catalog-missing-or-ambiguous: Наружная оболочка",
+      "catalog-missing-or-ambiguous: Экранированный",
+      "catalog-missing-or-ambiguous: Бронированный"
+    ]
+  },
+  "members": [
+    {
+      "sku": "YU-0006811",
+      "name": "H05V-K 1х0.5 жёлто-зелёный",
+      "productHash": "ad846cbc3aa452c5e31c643222260862ccb0ea2d7b60e09d17b9c4a5db57b364",
+      "oldBinding": null
+    }
+  ],
+  "draftKey": "93f1193ab285d63582e0dbf57d6143a271a48a037b06de3104d6c02245a09054",
+  "manualReview": {
+    "reviewSchemaVersion": "cable-review-2",
+    "scope": {
+      "family": "h05v-k",
+      "skus": [
+        "YU-0006811"
+      ]
+    },
+    "defectRules": [],
+    "sha256": "73158445e19ef74c3ff3a0c9fb3de80c8bac33a36111fd7dc26f8075bd3b0c73",
+    "reviewer": "Пользователь",
+    "note": "Пользователь визуально одобрил PNG для YU-0006811 и поручил назначить его SKU с той же видимой конструкцией.",
+    "status": "APPROVED",
+    "checks": {
+      "coreCount": true,
+      "material": true,
+      "colours": true,
+      "layers": true,
+      "direction": true,
+      "proportions": true,
+      "stripping": true,
+      "background": true,
+      "referenceMatch": true,
+      "metalEndCount": true,
+      "equalDiameters": true,
+      "relativeDiameters": true,
+      "coaxialStripping": true,
+      "geometryConsistency": true,
+      "noExtraCylinders": true,
+      "frameAndLeftMargin": true,
+      "visibleConstruction": true,
+      "individualStripping": true
+    },
+    "preserveExistingApproval": true,
+    "manualGallery": true,
+    "APPROVED_FOR_CATALOG": true,
+    "visualAttestation": true,
+    "reviewedRules": {
+      "sha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+      "ids": [
+        "frame.horizontal",
+        "frame.style",
+        "frame.background",
+        "frame.right-edge",
+        "core.count",
+        "core.geometry",
+        "core.stripping",
+        "layers.contract",
+        "geometry.sheath",
+        "references.permissions",
+        "catalog.preserve",
+        "generation.claim",
+        "catalog.scope"
+      ],
+      "checks": [
+        "coreCount",
+        "material",
+        "colours",
+        "layers",
+        "direction",
+        "proportions",
+        "stripping",
+        "background",
+        "referenceMatch",
+        "metalEndCount",
+        "equalDiameters",
+        "relativeDiameters",
+        "coaxialStripping",
+        "geometryConsistency",
+        "noExtraCylinders",
+        "frameAndLeftMargin",
+        "visibleConstruction",
+        "individualStripping"
+      ]
+    },
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "h05v-k__1c__stranded__round__1core-yellow-green__p-31c804f9999a35f8",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-16T14:27:34.546Z",
+    "archiveOnly": false
+  }
+}

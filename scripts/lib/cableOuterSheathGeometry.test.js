@@ -50,25 +50,25 @@ it('separates flat/round/no-sheath identity and asset reuse without resetting es
     ).compatible
   ).toBe(false);
 });
-it('reuses approved PUGV through the normal generator without provider invocation', () =>
+it('reuses the verified historical PUGV geometry without invoking the provider', () =>
   withCableStyleSandbox(async ({ root, classify }) => {
     const { visualProfile: profile, visualKey } = classify('YU-0005011');
     const r = await prepareCableStyleRequest(root, profile);
     expect(r.outerSheathGeometry).toBe('NO_COMMON_SHEATH');
     expect(r.geometryReference.status).toBe('APPROVED');
     let calls = 0;
-    const out = await generateCableStyleDraft({
+    await expect(generateCableStyleDraft({
       root,
       profile,
       visualKey,
+      sku: 'YU-0005011',
       outputDir: path.join(root, 'outputs/should-not-generate-pugv'),
       providerFactory: () => {
         calls++;
         throw Error('MUST NOT CALL');
       },
-    });
+    })).resolves.toMatchObject({status: 'APPROVED_DRAFT_NOT_PUBLISHED'});
     expect(calls).toBe(0);
-    expect(out.status).toBe('APPROVED_DRAFT_NOT_PUBLISHED');
   }));
 it('prepares two exact geometry revisions with previous-image input and no geometry transfer', () =>
   withCableStyleSandbox(async ({ root, classify, editTarget }) => {

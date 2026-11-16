@@ -1,0 +1,18 @@
+{
+  "decision": {
+    "sha256": "174e13bd1b706552552cd0f1fe47ec4679c7901fba51f7a4312220863549db1c",
+    "sku": "YU-0000879",
+    "disposition": "NEEDS_CORRECTION",
+    "note": "Слишком длинные участки индивидуальной изоляции относительно экрана и оболочки. Состав конструкции сохранить.",
+    "reviewer": "Пользователь · решения по партии ВВГ",
+    "status": "NEEDS_REVIEW",
+    "APPROVED_FOR_CATALOG": false,
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "vvgng-a-ls__2c__solid__round__2core-brown-blue__p-ea6231932884ead2",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-15T16:55:00.290Z"
+  },
+  "claimKey": "7414dc70ab61c66942b91159cfd47707aea3c1ed7fcda10a0b228328fc116b1e",
+  "originalDraft": "outputs/cable-vvg-typical-2026-11-15/drafts/95d6554a2a71ea9edf66aa185098396e097ac57ab60acd85ceb5ae2abc8a534f",
+  "previous": []
+}

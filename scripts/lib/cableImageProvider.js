@@ -1,3 +1,8 @@
+import { vvgCutHold } from './cableVvgCutQuality.js';
+import { blocksFromLegacyReview, cableReferencePermission } from './cableReviewPolicy.js';
+import path from 'node:path';
+import { loadCableReviewDecisions } from './cableReviewDecisions.js';
+import { cableIllustrationHold } from './cableIllustrationDefects.js';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { setTimeout as delay } from 'node:timers/promises';
@@ -47,25 +52,49 @@ export function createImageProvider(
         throw new Error(
           'Required style reference missing or changed before upload'
         );
+      const inputs = config.additionalReferenceImages || [];
+      if (inputs.length > 2 || (inputs.length && !reference))
+        throw Error('An edit accepts one protected PNG and up to two additional PNGs');
+      const seen = new Set(reference ? [createHash('sha256').update(reference).digest('hex')] : []);
       const additionalReferences = [];
-      for (const r of config.additionalReferenceImages || []) {
-        const bytes = await readFile(r.path);
+      for (const r of inputs) {
+        if (!r.permission || !['FAMILY_PRIMARY', 'GEOMETRY_MATCH'].includes(r.role))
+          throw Error('Supplemental reference permission required');
+        const bytes = await readFile(r.path).catch(error=>{
+          if (error.code==='ENOENT') throw Error('Файл референса отсутствует перед отправкой: '+r.role+' '+r.sha256,{cause:error});
+          throw error;
+        });
         if (
           !r.sha256 ||
           createHash('sha256').update(bytes).digest('hex') !== r.sha256
         )
-          throw Error('Edit target SHA-256 mismatch');
-        if (r.permission) {
-          const [registry, approval] = await Promise.all([
-            readFile(r.permission.registry).then(JSON.parse),
-            readFile(r.permission.approval).then(JSON.parse),
-          ]);
-          const record = registry.byVisualKey?.[r.permission.visualKey];
-          for (const entry of [record, approval])
-            if (entry?.status !== 'APPROVED' || entry.APPROVED_AS_REFERENCE !== true ||
-                entry.visualKey !== r.permission.visualKey || entry.sha256 !== r.sha256)
-              throw Error('Supplemental reference permission changed before upload');
-        }
+          throw Error('Supplemental reference SHA-256 mismatch');
+        if (seen.has(r.sha256)) throw Error('Duplicate image reference');
+        seen.add(r.sha256);
+        if (cableIllustrationHold(r.sha256) || vvgCutHold(r.sha256))
+          throw Error('Supplemental reference is held in the defect registry');
+        const [registry, approval] = await Promise.all([
+          readFile(r.permission.registry).then(JSON.parse),
+          readFile(r.permission.approval).then(JSON.parse),
+        ]);
+        const reviewRoot = path.dirname(path.dirname(path.dirname(r.permission.registry)));
+        const decisions = await loadCableReviewDecisions(reviewRoot);
+        if (decisions.some(({ decision }) => decision.sha256 === r.sha256 &&
+            blocksFromLegacyReview(registry, decision)))
+          throw Error('Supplemental reference denied by durable review');
+        const record = r.permission.archiveOnly
+          ? registry.alternativesBySha256?.[r.sha256] : registry.byVisualKey?.[r.permission.visualKey];
+        if (!record || !cableReferencePermission(registry, record, approval))
+          throw Error('Supplemental reference permission changed before upload');
+        for (const entry of [record, approval])
+          if (entry?.status !== 'APPROVED' ||
+              entry.visualKey !== r.permission.visualKey || entry.sha256 !== r.sha256)
+            throw Error('Supplemental reference permission changed before upload');
+        const group = JSON.parse(await readFile(r.permission.group, 'utf8'));
+        const profileHash = createHash('sha256').update(JSON.stringify(group.profile)).digest('hex');
+        if (group.visualKey !== record.visualKey || profileHash !== record.profileHash ||
+            profileHash !== r.permission.profileHash)
+          throw Error('Supplemental reference profile changed before upload');
         additionalReferences.push({ bytes, role: r.role });
       }
       for (let attempt = 1; attempt <= config.retries + 1; attempt += 1) {
@@ -95,7 +124,7 @@ export function createImageProvider(
               body.append(
                 'image[]',
                 new Blob([bytes], { type: 'image/png' }),
-                `${role === 'approved-compatible-geometry' ? 'geometry-reference' : 'edit-target'}-${i + 1}.png`
+                `${role.toLowerCase()}-${i + 1}.png`
               );
           } else {
             headers['Content-Type'] = 'application/json';

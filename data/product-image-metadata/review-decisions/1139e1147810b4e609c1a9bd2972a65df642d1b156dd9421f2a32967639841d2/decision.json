@@ -1,0 +1,35 @@
+{
+  "decision": {
+    "sha256": "1139e1147810b4e609c1a9bd2972a65df642d1b156dd9421f2a32967639841d2",
+    "sku": "YU-0000777",
+    "disposition": "REJECT",
+    "note": "Заполнение выступает за плоскость среза. Исходный PNG сохраняется.",
+    "reviewer": "Пользователь · решения по партии ВВГ",
+    "status": "REJECTED",
+    "APPROVED_FOR_CATALOG": false,
+    "APPROVED_AS_REFERENCE": false,
+    "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-de323cc8a44c2360",
+    "standardVersion": "approved-cable-style-1.1.0",
+    "reviewedAt": "2026-11-15T16:55:00.447Z"
+  },
+  "claimKey": "e81004714a06f1b9f7dd1165506a0b3ea4951e6b0224a6daab747c3a64a0d39a",
+  "originalDraft": "data/product-image-metadata/review-decisions/1139e1147810b4e609c1a9bd2972a65df642d1b156dd9421f2a32967639841d2",
+  "previous": [
+    {
+      "sku": "YU-0000777",
+      "status": "REJECTED",
+      "reason": "Пользователь отклонил исправленный черновик. Исходник сохранить.",
+      "sha256": "1139e1147810b4e609c1a9bd2972a65df642d1b156dd9421f2a32967639841d2",
+      "reviewer": "Пользователь",
+      "source": "Явное решение в чате",
+      "preserveSourceSha256": "a419f1e7327459b33f9b39c29e6e66c33ae7dfd03a017c8150262e2b9a92a22b",
+      "APPROVED_FOR_CATALOG": false,
+      "APPROVED_AS_REFERENCE": false,
+      "visualKey": "vvg__2c__solid__round__2core-brown-blue__p-de323cc8a44c2360",
+      "standardVersion": "approved-cable-style-1.1.0",
+      "reviewedAt": "2026-11-15T16:15:39.401Z"
+    }
+  ],
+  "imageRemovedAt": "2026-11-15T19:19:45+00:00",
+  "imageRemovedReason": "Явное решение пользователя удалить все копии отклонённого PNG."
+}

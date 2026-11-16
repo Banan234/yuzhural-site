@@ -61,6 +61,8 @@ export async function runCableImageModelComparison({
     results: IMAGE_MODEL_TESTS.map((test) => ({ ...test, status: 'pending' })),
   };
   if (dryRun) return initial;
+  if (providerFactory === createImageProvider)
+    throw Error('Legacy live model comparisons are disabled; use the approved cable style pipeline');
   if (!env.IMAGE_API_KEY)
     throw new Error('Set the separate IMAGE_API_KEY before model comparison');
   const resolvedOutput = path.resolve(outputDir);
@@ -205,6 +207,7 @@ export async function main(args = process.argv.slice(2)) {
     },
     strict: true,
   });
+  if (values.run) throw Error('Legacy live model comparisons are disabled; use the approved cable style pipeline');
   const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   dotenv.config({ path: path.join(root, '.env'), quiet: true });
   const { config } = await loadCableImageConfig(root, values.config);

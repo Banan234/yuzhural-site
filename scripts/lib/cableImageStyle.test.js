@@ -1,3 +1,5 @@
+import { catalogCableSpecs, writeCatalogImageFixture } from './fixtures/cableCatalogFixture.js';
+import os from 'node:os';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -74,7 +76,7 @@ describe('approved cable style protection', () => {
   it('blocks ambiguous/unsupported geometry and contradictory layer types before API', async () => {
     for (const extra of [
       { visualizationType: 'NEEDS_REVIEW' },
-      { geometry: 'flat' },
+      { geometry: 'flat', family: 'unknown-flat-family' },
       { hasOuterJacket: false },
       { cores: 7 },
       { conductorMaterial: null },
@@ -94,7 +96,10 @@ describe('approved cable style protection', () => {
     expect(r.prompt).toContain('STRANDED');
   });
   it('saves a pending draft and refuses a repeated paid request; mocked provider only', async () => {
-    const out = await fs.mkdtemp(path.join(root, 'outputs/style-test-'));
+    const sandbox = await fs.mkdtemp(path.join(os.tmpdir(), 'cable-claim-test-'));
+    const out = path.join(sandbox, 'outputs', 'draft');
+    await fs.cp(path.join(root, 'assets'), path.join(sandbox, 'assets'), { recursive: true, filter: file => file === path.join(root, 'assets') || file.startsWith(path.join(root, 'assets/cable-style-reference')) });
+    await fs.copyFile(path.join(root, 'cable-image-style.json'), path.join(sandbox, 'cable-image-style.json'));
     const generate = vi.fn(async () => ({
       buffer: await fs.readFile(
         path.join(root, 'assets/cable-style-reference/simple.png')
@@ -102,9 +107,10 @@ describe('approved cable style protection', () => {
       httpStatus: 200,
     }));
     try {
+      await writeCatalogImageFixture(sandbox, [{ sku: 'TEST', markFamily: 'ВВГ', cores: 1, specs: catalogCableSpecs }]);
       const args = {
-        root,
-        profile: p,
+        root: sandbox,
+        sku: 'TEST',
         outputDir: out,
         providerFactory: () => ({ generate }),
       };
@@ -115,10 +121,10 @@ describe('approved cable style protection', () => {
       expect(r.manualChecksRequired).toContain('geometryConsistency');
       expect(r.manualChecksRequired).toContain('metalEndCount');
       expect(r.validation.has_transparency).toBe(true);
-      await expect(generateCableStyleDraft(args)).rejects.toThrow();
+      await expect(generateCableStyleDraft({ ...args, outputDir: path.join(sandbox, 'outputs', 'other', 'nested') })).resolves.toMatchObject({ status: 'PENDING_REVIEW' });
       expect(generate).toHaveBeenCalledTimes(1);
     } finally {
-      await fs.rm(out, { recursive: true, force: true });
+      await fs.rm(sandbox, { recursive: true, force: true });
     }
   });
 });

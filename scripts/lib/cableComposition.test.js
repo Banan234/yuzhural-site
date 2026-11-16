@@ -1,3 +1,5 @@
+import { catalogCableSpecs, writeCatalogImageFixture } from './fixtures/cableCatalogFixture.js';
+import os from 'node:os';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { PNG } from 'pngjs';
@@ -79,14 +81,18 @@ it('main generator records a real PNG composition warning with one stubbed call,
   );
   expect(request.prompt).toContain('Preserve reference global scale');
   expect(request.config.composition.rightEdgeCrop).toBe(true);
-  const out = await fs.mkdtemp(path.join(root, 'outputs/composition-test-'));
+  const sandbox = await fs.mkdtemp(path.join(os.tmpdir(), 'cable-claim-test-'));
+    const out = path.join(sandbox, 'outputs', 'draft');
+    await fs.cp(path.join(root, 'assets'), path.join(sandbox, 'assets'), { recursive: true, filter: file => file === path.join(root, 'assets') || file.startsWith(path.join(root, 'assets/cable-style-reference')) });
+    await fs.copyFile(path.join(root, 'cable-image-style.json'), path.join(sandbox, 'cable-image-style.json'));
   const bytes = image({ gap: 20 }),
     generate = vi.fn(async () => ({ buffer: bytes, httpStatus: 200 }));
   try {
-    const args = {
-      root,
-      profile,
-      outputDir: out,
+    await writeCatalogImageFixture(sandbox, [{ sku: 'TEST', markFamily: 'ВВГ', cores: 1, specs: catalogCableSpecs }]);
+      const args = {
+        root: sandbox,
+        sku: 'TEST',
+        outputDir: out,
       providerFactory: () => ({ generate }),
     };
     const result = await generateCableStyleDraft(args);
@@ -100,10 +106,10 @@ it('main generator records a real PNG composition warning with one stubbed call,
       JSON.parse(await fs.readFile(path.join(out, 'review.json')))
         .compositionCheck
     ).toEqual(result.compositionCheck);
-    await expect(generateCableStyleDraft(args)).rejects.toThrow();
+    await expect(generateCableStyleDraft({ ...args, outputDir: path.join(sandbox, 'outputs', 'other', 'nested') })).resolves.toMatchObject({ status: 'PENDING_REVIEW' });
     expect(generate).toHaveBeenCalledTimes(1);
   } finally {
-    await fs.rm(out, { recursive: true, force: true });
+    await fs.rm(sandbox, { recursive: true, force: true });
   }
 });
 it('report images use natural proportions; comparison widths preserve the same pixel scale', async () => {

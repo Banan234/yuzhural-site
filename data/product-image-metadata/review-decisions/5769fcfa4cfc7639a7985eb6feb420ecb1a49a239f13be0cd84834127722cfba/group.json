@@ -1,0 +1,149 @@
+{
+  "status": "NEEDS_REVIEW",
+  "cache": true,
+  "validation": {
+    "width": 1774,
+    "height": 887,
+    "has_alpha_channel": true,
+    "touches_right_edge": true,
+    "right_edge_foreground_ratio": 0.5062006764374295,
+    "compositionCheck": {
+      "rightEdge": {
+        "status": "EDGE_EVIDENCE_PRESENT",
+        "supportedPixels": 448,
+        "longestSupportedRun": 448,
+        "minimumRun": 18,
+        "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+        "automaticRegeneration": false,
+        "required": true
+      },
+      "leftTips": {
+        "status": "LEFT_MARGIN_PRESENT",
+        "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+      },
+      "automaticRegeneration": false
+    },
+    "has_transparency": true,
+    "transparent_ratio": 0.6247647022188215,
+    "non_opaque_ratio": 0.9996072544800316,
+    "foreground_ratio": 0.3746417309273751,
+    "bounds": {
+      "minX": 167,
+      "minY": 85,
+      "maxX": 1773,
+      "maxY": 658
+    },
+    "warnings": [],
+    "sha256": "5769fcfa4cfc7639a7985eb6feb420ecb1a49a239f13be0cd84834127722cfba",
+    "bytes": 955945
+  },
+  "compositionCheck": {
+    "rightEdge": {
+      "status": "EDGE_EVIDENCE_PRESENT",
+      "supportedPixels": 448,
+      "longestSupportedRun": 448,
+      "minimumRun": 18,
+      "semanticVerification": "MANUAL_REQUIRED: edge pixels must belong to intact sheath/body",
+      "automaticRegeneration": false,
+      "required": true
+    },
+    "leftTips": {
+      "status": "LEFT_MARGIN_PRESENT",
+      "semanticVerification": "MANUAL_REQUIRED: all metal tips fully visible"
+    },
+    "automaticRegeneration": false
+  },
+  "visualKey": "vvgng-a-frls__1c__solid__round__1core-brown__p-3cbd07de24e1e9ca",
+  "draftKey": "7414d887c828fd8419a4cb119b3b8e95aa71179aced6927725f63d4e439d3a80",
+  "profile": {
+    "family": "vvgng-a-frls",
+    "productType": "power-cable",
+    "cores": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [
+      "fire-barrier"
+    ],
+    "coreColors": [
+      "brown"
+    ],
+    "coreColorScheme": "1core-brown",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "LAYERED"
+  },
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 1,
+    "expectedMetalEndCount": 1,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "geometryCheck": {
+    "status": "NEEDS_REVIEW",
+    "pixelVerification": "NOT_AUTOMATED"
+  },
+  "members": [
+    {
+      "sku": "YU-0000757",
+      "id": 757,
+      "sourceName": "ВВГ  1х1.5 нг(А)FRLS",
+      "slug": "vvg-1h1-5-ng-a-frls-l1",
+      "section": 1.5,
+      "productHash": "bf324496018728e1f06bfd72a462ce5c2b2670218e83504127ca8f9e207e3b16",
+      "oldBinding": null
+    },
+    {
+      "sku": "YU-0000767",
+      "id": 767,
+      "sourceName": "ВВГ  1х4 нг(А)FRLS",
+      "slug": "vvg-1h4-ng-a-frls-lb",
+      "section": 4,
+      "productHash": "bcf52ca668449ae76989886f40700a6a8e5d4d3b9b7a6de441c7fe7cb7871449",
+      "oldBinding": null
+    },
+    {
+      "sku": "YU-0000847",
+      "id": 847,
+      "sourceName": "ВВГ  1х 16 нг(А)FRLS",
+      "slug": "vvg-1h16-ng-a-frls-nj",
+      "section": 16,
+      "productHash": "26cb4f75785804db37aeef8d108e621c0cb3cf2057858498aad9a481f95c8681",
+      "oldBinding": null
+    }
+  ],
+  "standardVersion": "approved-cable-style-1.1.0"
+}

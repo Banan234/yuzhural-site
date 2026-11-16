@@ -37,6 +37,14 @@ export const CABLE_STYLE_REVIEW_LABELS = [
   'Нет лишних цилиндров, утолщений, сужений и деформаций',
 ];
 
+// Prospective checks. Historical APPROVED records retain their original checklist.
+export const CABLE_FRAME_REVIEW_LABELS = {
+  frameAndLeftMargin: 'Горизонтальная композиция, минимальный левый отступ, концы целиком; ориентир ширины 80–90%',
+  visibleConstruction: 'Форма, исполнение жил, роль каждого слоя и прилегание соответствуют контракту',
+  individualStripping: 'Металл и изоляция различимы отдельно на каждой жиле, пучок компактный',
+};
+export const CABLE_FRAME_REVIEW_CHECKS = Object.keys(CABLE_FRAME_REVIEW_LABELS);
+
 export function deriveCableCoreGeometry(profile, input = {}) {
   const fail = (reason) => ({
     status: 'NEEDS_REVIEW',
@@ -47,7 +55,7 @@ export function deriveCableCoreGeometry(profile, input = {}) {
   if (!Number.isInteger(profile.cores) || profile.cores < 1)
     return fail('Exact insulated core count required');
   const groups =
-    input.sectionGroups ||
+    profile.coreLayout?.sectionGroups ?? input.sectionGroups ??
     (profile.coreLayout
       ? null
       : [{ count: profile.cores, section: input.section ?? null }]);
@@ -80,7 +88,8 @@ export function deriveCableCoreGeometry(profile, input = {}) {
     constructions.every(
       (c) => c === constructions[0] && ['solid', 'stranded'].includes(c)
     );
-  if (!comparable)
+  const qualitative = !uniform && profile.coreLayout?.qualitative === true;
+  if (!comparable && !qualitative && !(uniform && shape === 'sector' && profile.schematicAssumptions))
     return fail(
       'Round conductors of the same known construction required; no invented diameter formula for sector/mixed construction'
     );
@@ -96,9 +105,11 @@ export function deriveCableCoreGeometry(profile, input = {}) {
     // Only relative ratios enter the geometry contract. Absolute sizes stay in SKU metadata.
     metalDiameterGroups: groups.map((g) => ({
       count: g.count,
-      relativeDiameter: uniform ? 1 : Math.sqrt(g.section / maximum),
+      ...(qualitative ? { relativeSection: g.section / maximum, shape: g.conductorShape ?? shape }
+        : { relativeDiameter: uniform ? 1 : Math.sqrt(g.section / maximum) }),
     })),
-    ratioFormula: uniform
+    ...(qualitative && { qualitative: true }),
+    ratioFormula: qualitative ? null : uniform
       ? 'all relative diameters = 1'
       : 'd2/d1 = sqrt(S2/S1)',
     insulationOuterDiameterRule: uniform
@@ -116,5 +127,5 @@ export function deriveCableCoreGeometry(profile, input = {}) {
 }
 
 export function coreGeometryPrompt(requirements) {
-  return `MANDATORY CORE GEOMETRY: ${requirements.expectedInsulatedCoreCount} insulated cores and ${requirements.expectedMetalEndCount} separate exposed metallic ends. ${requirements.mode === 'UNIFORM' ? 'All metal conductors must be copies of the SAME-diameter geometry, with only natural perspective differences. Insulated core outer diameters must also match if insulation construction and wall thickness are the same.' : 'Mixed-size round conductors of identical construction: relative metal DIAMETERS, not radii/areas, obey sqrt(section ratio).'} Relative metal diameter groups (count and normalized diameter): ${JSON.stringify(requirements.metalDiameterGroups)}. Every bare end exits the CENTRE of its corresponding insulation, with a sharp stripping boundary and constant diameter. Circular solid ends must be true cylinders, no swelling, narrowing, distortion, caps or sleeves. Keep stranded construction where specified. Material: ${requirements.conductorMaterial}. No extra stumps/cylinders. Correct all cores as a consistent geometric set, never patch one defective core in isolation. Preserve reference global scale regardless of nominal section, composition, camera, tilt, stripping lengths, transparency and lighting. Insulation rule: ${requirements.insulationOuterDiameterRule}.`;
+  return `MANDATORY CORE GEOMETRY: ${requirements.expectedInsulatedCoreCount} insulated cores and ${requirements.expectedMetalEndCount} separate exposed metallic ends. ${requirements.qualitative ? 'Keep the known groups of larger and smaller conductors and preserve their known shapes. Use relative section only to order sizes; no diameter formula is specified.' : requirements.mode === 'UNIFORM' ? 'All metal conductors must be copies of the SAME-diameter geometry, with only natural perspective differences. Insulated core outer diameters must also match if insulation construction and wall thickness are the same.' : 'Mixed-size round conductors of identical construction: relative metal DIAMETERS, not radii/areas, obey sqrt(section ratio).'} Relative metal diameter groups (count and normalized diameter): ${JSON.stringify(requirements.metalDiameterGroups)}. Every bare end exits the CENTRE of its corresponding insulation, with a sharp stripping boundary and constant diameter. Circular solid ends must be true cylinders, no swelling, narrowing, distortion, caps or sleeves. Keep stranded construction where specified. Material: ${requirements.conductorMaterial}. No extra stumps/cylinders. Correct all cores as a consistent geometric set, never patch one defective core in isolation. Preserve reference global scale regardless of nominal section, composition, camera, tilt, stripping lengths, transparency and lighting. Insulation rule: ${requirements.insulationOuterDiameterRule}.`;
 }

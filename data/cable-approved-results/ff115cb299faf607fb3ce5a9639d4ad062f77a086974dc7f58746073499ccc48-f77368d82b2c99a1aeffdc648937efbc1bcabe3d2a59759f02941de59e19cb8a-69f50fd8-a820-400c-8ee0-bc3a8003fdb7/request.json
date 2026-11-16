@@ -1,0 +1,499 @@
+{
+  "ruleTrace": {
+    "version": "cable-illustration-rules-2",
+    "sha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+    "ids": [
+      "frame.horizontal",
+      "frame.style",
+      "frame.background",
+      "frame.right-edge",
+      "core.count",
+      "core.geometry",
+      "core.stripping",
+      "layers.contract",
+      "geometry.sheath",
+      "multi.stripping",
+      "references.permissions",
+      "catalog.preserve",
+      "generation.claim",
+      "catalog.scope"
+    ]
+  },
+  "standardVersion": "approved-cable-style-1.1.0",
+  "standardSha256": "9efe6f176dd789859814e89c2e41571c3d8c18268fabb662ab5e1893e95dfa60",
+  "reference": {
+    "path": "assets/cable-style-reference/simple.png",
+    "source": "outputs/visual-reference-v2.1/simple-round.png",
+    "sha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44"
+  },
+  "endpoint": "images/edits",
+  "model": "gpt-image-2.5-flare",
+  "prompt": "TECHNICAL_CONTRACT (immutable anatomy). PROTECTED STYLE INPUT 1 ONLY: the first PNG supplies camera, scale, outer framing, lighting and render quality. Do not transfer its internal geometry. Rebuild the target core assembly from the construction contract. If a compatible geometry input is explicitly identified below, use it for the spatial arrangement only. Do not mechanically add or remove a reference wire. Technical contract overrides reference anatomy. EXACTLY 5 insulated cores and EXACTLY 5 corresponding exposed core ends.   One-to-one numbered core/end mapping; every end must be individually visible and centered in its own insulation. No extra core, hidden stub, duplicate end, cap or dummy cylinder.  ABSOLUTELY NO ARMOR: no overlapping steel tapes, no steel wires, even if visible in reference. NO SCREEN. NO fire barrier. NO additional conductors and NO drain wire; do not copy the previous draft drain. Visible layers are an exhaustive allowlist with no extra steps: outer-jacket, individual-insulation. Do not draw a visible separator. Unknown entries are metadata only; do not expose an unknown interface as a separate layer. The inner sheath, interstitial filling and outer sheath are independent. Do not draw a separate inner sheath, backing sleeve, or extra polymer envelope. Interstitial filling is undocumented. Do not depict filling or assert empty cavities. Keep core outlines readable and leave the undocumented interface visually unexposed. If it must be shown, obtain manufacturer documentation before generation. Show the documented outer sheath as the exterior envelope. If its material is unknown, use a neutral illustrative surface without asserting its real material or color.  Preserve overall reference envelope and scale while rebuilding internal geometry. Construction contract: {\"version\":\"construction-contract-4\",\"outerSheathGeometry\":\"ROUND\",\"family\":\"kvvgng-a-ls\",\"insulatedCoreCount\":5,\"coreMetalEndCount\":5,\"conductorMaterial\":\"copper\",\"conductorConstruction\":\"solid\",\"conductorShape\":\"circular\",\"armor\":{\"present\":false,\"type\":null},\"screen\":{\"present\":false,\"type\":null},\"screenVisualStandard\":null,\"screenType\":null,\"screenFunction\":null,\"armorFunction\":null,\"screenRendering\":null,\"armorType\":null,\"fireBarrierMaterial\":null,\"fireBarrierPlacement\":null,\"layerOrder\":\"outside-to-conductor; interstitial filler occupies spaces, not a concentric envelope\",\"constructionSource\":null,\"constructionEvidence\":null,\"constructionBasis\":null,\"fireBarrier\":false,\"layers\":[{\"role\":\"outer-jacket\",\"scope\":\"overall\",\"appearance\":\"black\"},{\"role\":\"individual-insulation\",\"scope\":\"each-core\"}],\"layerRoleCount\":2,\"layerCountScope\":\"role count; each-core roles repeat on every core; not a count of manufacturing tape wraps\",\"additionalConductors\":[],\"cores\":[{\"id\":1,\"color\":\"black\",\"metalEndId\":1,\"metalEndCount\":1,\"relativeDiameter\":1},{\"id\":2,\"color\":\"brown\",\"metalEndId\":2,\"metalEndCount\":1,\"relativeDiameter\":1},{\"id\":3,\"color\":\"grey\",\"metalEndId\":3,\"metalEndCount\":1,\"relativeDiameter\":1},{\"id\":4,\"color\":\"blue\",\"metalEndId\":4,\"metalEndCount\":1,\"relativeDiameter\":1},{\"id\":5,\"color\":\"yellow-green\",\"metalEndId\":5,\"metalEndCount\":1,\"relativeDiameter\":1}],\"innerSheath\":{\"status\":\"unknown\",\"material\":null},\"separator\":null,\"interstitialFilling\":{\"status\":\"unknown\"},\"outerSheath\":{\"status\":\"present\",\"appearance\":\"black\"},\"verification\":{\"status\":\"NEEDS_REVIEW\",\"pixelVerification\":\"NOT_AUTOMATED\",\"insulatedCoreCount\":null,\"coreMetalEndCount\":null,\"additionalConductorCount\":null,\"layerRoles\":null}}. Before rendering verify a bijection of all insulated cores and their metal ends; after rendering the result still requires independent pixel/manual verification. VISUAL_COMPOSITION_CONTRACT {\"version\":\"cable-illustration-rules-2\",\"rulesSha256\":\"9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14\",\"framing\":\"horizontal with protected slight tilt, all tips intact, roughly 80–90% width where practical, intact cable continuing right\",\"layout\":\"preserve target cross-section and core arrangement; keep the visible ends compact\",\"cutPlane\":\"match documented interfaces; interstitial fill must stay within the jacket cut plane\",\"insulationExposure\":{\"version\":\"common-sheath-stripping-composition-1.0.0\",\"mode\":\"conditional-composition-preference\",\"insulatedCoreExposedLengthRatio\":{\"min\":1.2,\"max\":1.3},\"bareMetalLengthRatio\":1,\"overallScaleRatio\":1,\"baseline\":\"current selected APPROVED reference; one extension only, never compound with multicore-stripping-1.0.0\",\"applicability\":\"Confirmed common outer sheath and at least two individually insulated cores; only where the cable construction and composition permit. Do not infer a common sheath from core count.\",\"exceptions\":\"Do not apply to sheathless wires, twisted sheathless bundles or single-core constructions mechanically. If constructionAllowsExtendedStripping is false, retain safe stripping geometry; never sacrifice documented layer visibility or invent bends.\",\"preserve\":[\"bare-metal-length\",\"core-count\",\"core-diameters\",\"colors\",\"jacket-thickness\",\"overall-scale\",\"camera\",\"tilt\",\"direction\",\"composition\",\"documented-layer-visibility\"],\"approvedResults\":\"Future requests only. Existing APPROVED pixels, statuses and bindings remain unchanged; this preference never triggers regeneration.\",\"status\":\"CONDITIONAL_PREFERENCE_NOT_PIXEL_VERIFIED\",\"pixelVerification\":\"MANUAL_REQUIRED\"},\"multicoreComposition\":null,\"prohibitedChanges\":[\"core count\",\"core geometry\",\"materials\",\"layer inventory\",\"layer order\"]} Use the target construction and composition contracts for target layout; images define style and only their permitted reference features.  Composition adjustments must never change the technical contract. LAYER CONTACT RULE layer-contact-1.0.0: Preserve actual documented layer interfaces. Do not assume adjacent contact or invent an air gap for unspecified constructions. Do not remove or compress documented fillers, separators, screens, armour, fire barriers, spacers, tubes or intentional voids. Unknown adjacency is not evidence of direct contact. Do not infer direct contact from core count alone. Manual pixel inspection required. HTTP success and PNG alpha do not verify layer contact. Unverifiable geometry remains NEEDS_REVIEW. INPUT 2 (FAMILY_PRIMARY): use only family appearance, surface finish, jacket appearance, lighting and stripping proportions where consistent with the target contract. Do not transfer core count or arrangement, any layer, colour or material that differs from the target contract. INPUT 3 (GEOMETRY_MATCH): use only positions of the insulated cores only. Do not transfer colours, metal, stripping lengths, materials, screens, armor, fillers and other layers, style. The target contract governs all core counts, colours, conductor properties and layers. Input 1 controls the protected camera and scale. CORE ARRANGEMENT: Looking down the cable axis, arrange five equal cores compactly in a ring inside the jacket opening. Leave the centre of the ring free of any core. Every insulated core, including the black one, must visibly emerge from inside the same inner jacket rim. No core may emerge from the outer wall, pass through the rim or run outside the jacket. Show all five distinct copper tips without fanning. Use the geometry image for positions only. The cable is predominantly horizontal with the protected slight diagonal. Leave the smallest practical clear left margin with every end fully in frame. Aim for 80–90% silhouette width when this preserves every tip, the protected scale and right-edge continuation. Avoid excessive blank margins. Keep every applicable stripping step separately legible. Show adequate exposed metal and strip each insulated conductor individually without a planar fan. Use the attached USER-APPROVED SIMPLE reference as the mandatory visual standard, version approved-cable-style-1.1.0. This reference defines style, scale, composition, tilt, camera, materials appearance, lighting, detail, left margin, proportions and exposed metal/insulation lengths, except the applicable insulated-core exposure amendment below. Preserve these parameters; no artistic experiments. Rebuild internal geometry as required by the supplied technical contract: exact insulated core count, colours, actual conductor material, solid/stranded construction and documented layers/family details. Do not copy the reference core count when it differs from target. COPPER conductors. Each core contains one SOLID conductor. EXACTLY 5 insulated cores. Compact volumetric bundle, never flat fan. Intact body on RIGHT continues beyond right canvas edge; stripped end and bare conductor extensions on LEFT fully visible. Match reference bare-metal length with clear insulation boundary; no ferrules/lugs. Include only documented construction layers; never add screen/armour if false. True transparent PNG, no dark halos, haze, baked shadows, background residue, text or logos. Nominal section does not change overall reference scale. MANDATORY CORE GEOMETRY: 5 insulated cores and 5 separate exposed metallic ends. All metal conductors must be copies of the SAME-diameter geometry, with only natural perspective differences. Insulated core outer diameters must also match if insulation construction and wall thickness are the same. Relative metal diameter groups (count and normalized diameter): [{\"count\":5,\"relativeDiameter\":1}]. Every bare end exits the CENTRE of its corresponding insulation, with a sharp stripping boundary and constant diameter. Circular solid ends must be true cylinders, no swelling, narrowing, distortion, caps or sleeves. Keep stranded construction where specified. Material: copper. No extra stumps/cylinders. Correct all cores as a consistent geometric set, never patch one defective core in isolation. Preserve reference global scale regardless of nominal section, composition, camera, tilt, stripping lengths, transparency and lighting. Insulation rule: Equal outer diameters when insulation construction and wall thickness are equal. Target visualProfile: {\"family\":\"kvvgng-a-ls\",\"productType\":\"control-cable\",\"cores\":5,\"conductorMaterial\":\"copper\",\"conductorConstruction\":\"solid\",\"conductorShape\":\"circular\",\"geometry\":\"round\",\"hasOuterJacket\":true,\"outerJacket\":\"black\",\"armor\":false,\"armorType\":null,\"shield\":false,\"shieldType\":null,\"specialElements\":[],\"coreColors\":[\"black\",\"brown\",\"grey\",\"blue\",\"yellow-green\"],\"coreColorScheme\":\"5core-black-brown-grey-blue-yellow-green\",\"pairedGroupSize\":null,\"sectionKey\":null,\"unresolvedModifiers\":[],\"unresolvedFamilySuffix\":null,\"visualizationType\":\"SIMPLE\"}. Mandatory constraints: [\"no decorative experiments\",\"no text logos or watermark\",\"transparent PNG; no halo baked shadow or residual background\",\"no invented or missing cores/layers\",\"actual flat/twisted/non-round constructions require separate approved reference; never force round\"]. FUTURE COMMON-SHEATH COMPOSITION PREFERENCE common-sheath-stripping-composition-1.0.0: where technically and visually appropriate, expose approximately 20-30% more INDIVIDUALLY INSULATED core length between the common jacket cut and metal ends than in the CURRENT selected APPROVED reference (INPUT 2). This is a conditional preference, not a mechanical transformation for every construction. Remove more common sheath, not more individual insulation. Keep bare metal length unchanged; no proportional metal extension. Keep global scale, pose, tilt, direction and tidy composition. No crowded cores, intersections, extra bends or stretched geometry. Preserve every documented layer and its readable step length. If this cannot be achieved naturally, retain safe construction and flag manual review rather than forcing extension. This is ONE 1.2-1.3 adjustment, replacing the older 1.2-1.25 multicore composition target for this request, NEVER multiplying the two. Do not modify or regenerate existing APPROVED. Rule: {\"version\":\"common-sheath-stripping-composition-1.0.0\",\"mode\":\"conditional-composition-preference\",\"insulatedCoreExposedLengthRatio\":{\"min\":1.2,\"max\":1.3},\"bareMetalLengthRatio\":1,\"overallScaleRatio\":1,\"baseline\":\"current selected APPROVED reference; one extension only, never compound with multicore-stripping-1.0.0\",\"applicability\":\"Confirmed common outer sheath and at least two individually insulated cores; only where the cable construction and composition permit. Do not infer a common sheath from core count.\",\"exceptions\":\"Do not apply to sheathless wires, twisted sheathless bundles or single-core constructions mechanically. If constructionAllowsExtendedStripping is false, retain safe stripping geometry; never sacrifice documented layer visibility or invent bends.\",\"preserve\":[\"bare-metal-length\",\"core-count\",\"core-diameters\",\"colors\",\"jacket-thickness\",\"overall-scale\",\"camera\",\"tilt\",\"direction\",\"composition\",\"documented-layer-visibility\"],\"approvedResults\":\"Future requests only. Existing APPROVED pixels, statuses and bindings remain unchanged; this preference never triggers regeneration.\",\"status\":\"CONDITIONAL_PREFERENCE_NOT_PIXEL_VERIFIED\",\"pixelVerification\":\"MANUAL_REQUIRED\"}.   OUTER_SHEATH_GEOMETRY=ROUND. Geometry is determined by the technical profile, NEVER by the number of cores or the word flat in a title. Use a ROUND common outer sheath, even with only TWO cores; do not copy the flat SHVVP geometry.  ",
+  "profile": {
+    "family": "kvvgng-a-ls",
+    "productType": "control-cable",
+    "cores": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "geometry": "round",
+    "hasOuterJacket": true,
+    "outerJacket": "black",
+    "armor": false,
+    "armorType": null,
+    "shield": false,
+    "shieldType": null,
+    "specialElements": [],
+    "coreColors": [
+      "black",
+      "brown",
+      "grey",
+      "blue",
+      "yellow-green"
+    ],
+    "coreColorScheme": "5core-black-brown-grey-blue-yellow-green",
+    "pairedGroupSize": null,
+    "sectionKey": null,
+    "unresolvedModifiers": [],
+    "unresolvedFamilySuffix": null,
+    "visualizationType": "SIMPLE"
+  },
+  "geometryRequirements": {
+    "status": "REQUIREMENTS_DEFINED_NOT_PIXEL_VERIFIED",
+    "mode": "UNIFORM",
+    "expectedInsulatedCoreCount": 5,
+    "expectedMetalEndCount": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "metalDiameterGroups": [
+      {
+        "count": 5,
+        "relativeDiameter": 1
+      }
+    ],
+    "ratioFormula": "all relative diameters = 1",
+    "insulationOuterDiameterRule": "Equal outer diameters when insulation construction and wall thickness are equal",
+    "globalScale": "UNCHANGED_REFERENCE_SCALE",
+    "metalEndRule": "Own centred bare conductor extension per core; constant cylindrical diameter for circular solid conductor; stranded remains stranded",
+    "geometryScope": "Conductor geometry only; preserve approved composition, tilt, stripping length, material and lighting",
+    "pixelVerification": "NOT_AUTOMATED",
+    "automaticApproval": false,
+    "mandatoryReviewChecks": [
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders"
+    ]
+  },
+  "technicalProfile": {
+    "version": "construction-contract-4",
+    "outerSheathGeometry": "ROUND",
+    "family": "kvvgng-a-ls",
+    "insulatedCoreCount": 5,
+    "coreMetalEndCount": 5,
+    "conductorMaterial": "copper",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "armor": {
+      "present": false,
+      "type": null
+    },
+    "screen": {
+      "present": false,
+      "type": null
+    },
+    "screenVisualStandard": null,
+    "screenType": null,
+    "screenFunction": null,
+    "armorFunction": null,
+    "screenRendering": null,
+    "armorType": null,
+    "fireBarrierMaterial": null,
+    "fireBarrierPlacement": null,
+    "layerOrder": "outside-to-conductor; interstitial filler occupies spaces, not a concentric envelope",
+    "constructionSource": null,
+    "constructionEvidence": null,
+    "constructionBasis": null,
+    "fireBarrier": false,
+    "layers": [
+      {
+        "role": "outer-jacket",
+        "scope": "overall",
+        "appearance": "black"
+      },
+      {
+        "role": "individual-insulation",
+        "scope": "each-core"
+      }
+    ],
+    "layerRoleCount": 2,
+    "layerCountScope": "role count; each-core roles repeat on every core; not a count of manufacturing tape wraps",
+    "additionalConductors": [],
+    "cores": [
+      {
+        "id": 1,
+        "color": "black",
+        "metalEndId": 1,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 2,
+        "color": "brown",
+        "metalEndId": 2,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 3,
+        "color": "grey",
+        "metalEndId": 3,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 4,
+        "color": "blue",
+        "metalEndId": 4,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      },
+      {
+        "id": 5,
+        "color": "yellow-green",
+        "metalEndId": 5,
+        "metalEndCount": 1,
+        "relativeDiameter": 1
+      }
+    ],
+    "innerSheath": {
+      "status": "unknown",
+      "material": null
+    },
+    "separator": null,
+    "interstitialFilling": {
+      "status": "unknown"
+    },
+    "outerSheath": {
+      "status": "present",
+      "appearance": "black"
+    },
+    "verification": {
+      "status": "NEEDS_REVIEW",
+      "pixelVerification": "NOT_AUTOMATED",
+      "insulatedCoreCount": null,
+      "coreMetalEndCount": null,
+      "additionalConductorCount": null,
+      "layerRoles": null
+    }
+  },
+  "visualCompositionContract": {
+    "version": "cable-illustration-rules-2",
+    "rulesSha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+    "framing": "horizontal with protected slight tilt, all tips intact, roughly 80–90% width where practical, intact cable continuing right",
+    "layout": "preserve target cross-section and core arrangement; keep the visible ends compact",
+    "cutPlane": "match documented interfaces; interstitial fill must stay within the jacket cut plane",
+    "insulationExposure": {
+      "version": "common-sheath-stripping-composition-1.0.0",
+      "mode": "conditional-composition-preference",
+      "insulatedCoreExposedLengthRatio": {
+        "min": 1.2,
+        "max": 1.3
+      },
+      "bareMetalLengthRatio": 1,
+      "overallScaleRatio": 1,
+      "baseline": "current selected APPROVED reference; one extension only, never compound with multicore-stripping-1.0.0",
+      "applicability": "Confirmed common outer sheath and at least two individually insulated cores; only where the cable construction and composition permit. Do not infer a common sheath from core count.",
+      "exceptions": "Do not apply to sheathless wires, twisted sheathless bundles or single-core constructions mechanically. If constructionAllowsExtendedStripping is false, retain safe stripping geometry; never sacrifice documented layer visibility or invent bends.",
+      "preserve": [
+        "bare-metal-length",
+        "core-count",
+        "core-diameters",
+        "colors",
+        "jacket-thickness",
+        "overall-scale",
+        "camera",
+        "tilt",
+        "direction",
+        "composition",
+        "documented-layer-visibility"
+      ],
+      "approvedResults": "Future requests only. Existing APPROVED pixels, statuses and bindings remain unchanged; this preference never triggers regeneration.",
+      "status": "CONDITIONAL_PREFERENCE_NOT_PIXEL_VERIFIED",
+      "pixelVerification": "MANUAL_REQUIRED"
+    },
+    "multicoreComposition": null,
+    "prohibitedChanges": [
+      "core count",
+      "core geometry",
+      "materials",
+      "layer inventory",
+      "layer order"
+    ]
+  },
+  "referenceSelection": {
+    "librarySize": 26,
+    "compatible": 2,
+    "ranking": [
+      {
+        "visualKey": "kvvgng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-93995f70fb348732",
+        "role": "FAMILY_PRIMARY"
+      },
+      {
+        "visualKey": "avvg__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-44e7dbca3237d981",
+        "role": "GEOMETRY_MATCH"
+      }
+    ]
+  },
+  "coreArrangement": {
+    "id": "five-perimeter",
+    "requiresReviewedLayout": true,
+    "instruction": "Looking down the cable axis, arrange five equal cores compactly in a ring inside the jacket opening. Leave the centre of the ring free of any core. Every insulated core, including the black one, must visibly emerge from inside the same inner jacket rim. No core may emerge from the outer wall, pass through the rim or run outside the jacket. Show all five distinct copper tips without fanning.",
+    "mode": "GEOMETRIC_REFERENCE"
+  },
+  "multicoreStripping": null,
+  "multicoreComposition": null,
+  "strippingComposition": {
+    "version": "common-sheath-stripping-composition-1.0.0",
+    "mode": "conditional-composition-preference",
+    "insulatedCoreExposedLengthRatio": {
+      "min": 1.2,
+      "max": 1.3
+    },
+    "bareMetalLengthRatio": 1,
+    "overallScaleRatio": 1,
+    "baseline": "current selected APPROVED reference; one extension only, never compound with multicore-stripping-1.0.0",
+    "applicability": "Confirmed common outer sheath and at least two individually insulated cores; only where the cable construction and composition permit. Do not infer a common sheath from core count.",
+    "exceptions": "Do not apply to sheathless wires, twisted sheathless bundles or single-core constructions mechanically. If constructionAllowsExtendedStripping is false, retain safe stripping geometry; never sacrifice documented layer visibility or invent bends.",
+    "preserve": [
+      "bare-metal-length",
+      "core-count",
+      "core-diameters",
+      "colors",
+      "jacket-thickness",
+      "overall-scale",
+      "camera",
+      "tilt",
+      "direction",
+      "composition",
+      "documented-layer-visibility"
+    ],
+    "approvedResults": "Future requests only. Existing APPROVED pixels, statuses and bindings remain unchanged; this preference never triggers regeneration.",
+    "status": "CONDITIONAL_PREFERENCE_NOT_PIXEL_VERIFIED",
+    "pixelVerification": "MANUAL_REQUIRED"
+  },
+  "layerContact": {
+    "version": "layer-contact-1.0.0",
+    "scope": "Prospective rendering and manual QA only; never change approved PNGs or visualKey",
+    "confirmedSingleCoreFamilies": [
+      "kgvvng-a-ls",
+      "vvgng-a-ls"
+    ],
+    "basis": "User-confirmed rendering requirement for the existing single-core technical profiles: common jacket tightly encloses the individually insulated core.",
+    "directContact": "For a confirmed directly adjacent jacket/insulation interface, show continuous tight contact, no visible air annulus and no free hollow tube. Preserve the distinct cut edges, order and realistic thickness of actual layers.",
+    "exceptions": "Do not remove or compress documented fillers, separators, screens, armour, fire barriers, spacers, tubes or intentional voids. Unknown adjacency is not evidence of direct contact. Do not infer direct contact from core count alone.",
+    "verification": "Manual pixel inspection required. HTTP success and PNG alpha do not verify layer contact. Unverifiable geometry remains NEEDS_REVIEW.",
+    "mode": "PRESERVE_DOCUMENTED_INTERFACES_NO_ASSUMPTION",
+    "status": "MANUAL_REVIEW_REQUIRED"
+  },
+  "editTarget": null,
+  "geometryPilot": null,
+  "geometryRevision": null,
+  "cutQuality": null,
+  "cutRevision": {
+    "version": "family-layout-revision-1",
+    "mode": "five-perimeter",
+    "sourceSha256": "89709f81046132fe86750af532397830cccb2c0e5658451501010f0394ca211d"
+  },
+  "geometryReference": null,
+  "outerSheathGeometry": "ROUND",
+  "approvedStyleReference": {
+    "path": "/Users/Shared/yuzhural-site/data/cable-approved-results/47a9f86ac3d1160ae0dc0abf0491f13567e4435997455a04fdd1b259189a9dd3-5af20ccaf5a2ddcbfa59abe80a4a1d7a86f2ba8235c452d1bd939b24fcc5a2c2/image.png",
+    "sha256": "5af20ccaf5a2ddcbfa59abe80a4a1d7a86f2ba8235c452d1bd939b24fcc5a2c2",
+    "visualKey": "kvvgng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-93995f70fb348732",
+    "profile": {
+      "family": "kvvgng-a-ls",
+      "productType": "control-cable",
+      "cores": 4,
+      "conductorMaterial": "copper",
+      "conductorConstruction": "solid",
+      "conductorShape": "circular",
+      "geometry": "round",
+      "hasOuterJacket": true,
+      "outerJacket": "black",
+      "armor": false,
+      "armorType": null,
+      "shield": false,
+      "shieldType": null,
+      "specialElements": [],
+      "coreColors": [
+        "black",
+        "brown",
+        "blue",
+        "yellow-green"
+      ],
+      "coreColorScheme": "4core-black-brown-blue-yellow-green",
+      "pairedGroupSize": null,
+      "sectionKey": null,
+      "unresolvedModifiers": [],
+      "unresolvedFamilySuffix": null,
+      "visualizationType": "SIMPLE"
+    },
+    "familyAnchor": true,
+    "reviewedCoreLayout": null,
+    "archiveOnly": false,
+    "approvalStatus": "APPROVED",
+    "permission": "ADDITIONAL",
+    "role": "FAMILY_PRIMARY",
+    "allowedUse": "family appearance, surface finish, jacket appearance, lighting and stripping proportions where consistent with the target contract",
+    "usefulStyle": false,
+    "rank": [
+      1,
+      0,
+      1,
+      1,
+      1,
+      -1,
+      1,
+      0
+    ],
+    "evidence": {
+      "technicalFamily": "kvvgng-a-ls",
+      "approvalStatus": "APPROVED",
+      "prohibitedTransfer": [
+        "core count or arrangement",
+        "any layer, colour or material that differs from the target contract"
+      ]
+    }
+  },
+  "referenceStatus": "FAMILY_PRIMARY",
+  "referenceInputs": [
+    {
+      "position": 1,
+      "role": "protected-style",
+      "sha256": "125293395238ae58681f1fc53425ebf944095437812c166e0af9b38debaf9d44",
+      "evidence": {
+        "approvalStatus": "PROTECTED_STYLE",
+        "technicalFamily": null,
+        "prohibitedTransfer": [
+          "all construction anatomy"
+        ]
+      }
+    },
+    {
+      "position": 2,
+      "role": "FAMILY_PRIMARY",
+      "sha256": "5af20ccaf5a2ddcbfa59abe80a4a1d7a86f2ba8235c452d1bd939b24fcc5a2c2",
+      "visualKey": "kvvgng-a-ls__4c__solid__round__4core-black-brown-blue-yellow-green__p-93995f70fb348732",
+      "allowedUse": "family appearance, surface finish, jacket appearance, lighting and stripping proportions where consistent with the target contract",
+      "evidence": {
+        "technicalFamily": "kvvgng-a-ls",
+        "approvalStatus": "APPROVED",
+        "prohibitedTransfer": [
+          "core count or arrangement",
+          "any layer, colour or material that differs from the target contract"
+        ]
+      },
+      "rank": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        0
+      ]
+    },
+    {
+      "position": 3,
+      "role": "GEOMETRY_MATCH",
+      "sha256": "4ab76c845a5593d5a386ddc0dfc98de63322aa446c28a174450d52012b374d95",
+      "visualKey": "avvg__5c__solid__round__5core-brown-black-grey-blue-yellow-green__p-44e7dbca3237d981",
+      "allowedUse": "positions of the insulated cores only",
+      "evidence": {
+        "technicalFamily": "avvg",
+        "approvalStatus": "APPROVED",
+        "prohibitedTransfer": [
+          "colours",
+          "metal",
+          "stripping lengths",
+          "materials",
+          "screens",
+          "armor",
+          "fillers and other layers",
+          "style"
+        ]
+      }
+    }
+  ],
+  "qualityStatus": "NEEDS_REVIEW",
+  "automaticProductionBinding": false,
+  "catalogSource": {
+    "version": "catalog-construction-1",
+    "sku": "YU-0002637",
+    "family": "КВВГ",
+    "fields": {
+      "cores": 5,
+      "Материал жилы": "Медь",
+      "Материал изоляции": "ПВХ-пластикат",
+      "Материал оболочки": "ПВХ-пластикат",
+      "Экранированный": "Нет",
+      "Бронированный": "Нет"
+    },
+    "provenance": {
+      "cores": [
+        {
+          "value": 5,
+          "source": "product.cores"
+        }
+      ],
+      "Материал жилы": [
+        {
+          "value": "Медь",
+          "source": "specs.Материал жилы"
+        }
+      ],
+      "Материал изоляции": [
+        {
+          "value": "ПВХ-пластикат",
+          "source": "specs.Материал изоляции"
+        }
+      ],
+      "Наружная оболочка": [],
+      "Материал оболочки": [
+        {
+          "value": "ПВХ-пластикат",
+          "source": "specs.Материал оболочки"
+        }
+      ],
+      "Экранированный": [
+        {
+          "value": "Нет",
+          "source": "specs.Экранированный"
+        }
+      ],
+      "Бронированный": [
+        {
+          "value": "Нет",
+          "source": "specs.Бронированный"
+        }
+      ]
+    },
+    "recovered": {},
+    "derivations": {
+      "hasOuterJacket": "Материал оболочки"
+    },
+    "renderingBasis": "kvvg",
+    "unspecifiedCardFields": [
+      "catalog-missing-or-ambiguous: Конструкция токопроводящей жилы",
+      "catalog-missing-or-ambiguous: Форма токопроводящей жилы",
+      "catalog-missing-or-ambiguous: Форма кабеля"
+    ]
+  },
+  "visualKey": "kvvgng-a-ls__5c__solid__round__5core-black-brown-grey-blue-yellow-green__p-71382f6ad24b4406",
+  "status": "requesting"
+}

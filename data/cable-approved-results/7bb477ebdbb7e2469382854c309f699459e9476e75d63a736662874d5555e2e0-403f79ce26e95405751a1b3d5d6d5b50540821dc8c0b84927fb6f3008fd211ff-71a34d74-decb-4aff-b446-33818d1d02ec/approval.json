@@ -1,0 +1,157 @@
+{
+  "reviewSchemaVersion": "cable-review-2",
+  "scope": {
+    "family": "akvvg",
+    "skus": [
+      "YU-0000242"
+    ]
+  },
+  "defectRules": [],
+  "sha256": "403f79ce26e95405751a1b3d5d6d5b50540821dc8c0b84927fb6f3008fd211ff",
+  "reviewer": "Пользователь",
+  "note": "Пользователь утвердил PNG для каталога и разрешил использование как дополнительного референса.",
+  "status": "APPROVED",
+  "checks": {
+    "coreCount": true,
+    "material": true,
+    "colours": true,
+    "layers": true,
+    "direction": true,
+    "proportions": true,
+    "stripping": true,
+    "background": true,
+    "referenceMatch": true,
+    "metalEndCount": true,
+    "equalDiameters": true,
+    "relativeDiameters": true,
+    "coaxialStripping": true,
+    "geometryConsistency": true,
+    "noExtraCylinders": true,
+    "frameAndLeftMargin": true,
+    "visibleConstruction": true,
+    "individualStripping": true,
+    "silhouette-centered-vertically": true,
+    "core-group-balanced-around-sheath-axis": true,
+    "no-diagonal-staircase": true,
+    "all-metal-ends-complete-and-visible": true,
+    "comparable-axial-stripping": true,
+    "real-core-geometry-and-layer-roles": true
+  },
+  "observations": {
+    "sha256": "403f79ce26e95405751a1b3d5d6d5b50540821dc8c0b84927fb6f3008fd211ff",
+    "ends": [
+      {
+        "x": 178,
+        "y": 413,
+        "complete": true
+      },
+      {
+        "x": 342,
+        "y": 475,
+        "complete": true
+      },
+      {
+        "x": 106,
+        "y": 555,
+        "complete": true
+      },
+      {
+        "x": 239,
+        "y": 616,
+        "complete": true
+      },
+      {
+        "x": 420,
+        "y": 601,
+        "complete": true
+      },
+      {
+        "x": 166,
+        "y": 739,
+        "complete": true
+      },
+      {
+        "x": 333,
+        "y": 759,
+        "complete": true
+      }
+    ],
+    "insulatedCoreCount": 7,
+    "additionalConductorCount": 0,
+    "conductorMaterial": "aluminium",
+    "conductorConstruction": "solid",
+    "conductorShape": "circular",
+    "coreColors": [
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black",
+      "black"
+    ],
+    "layerRoles": [
+      "outer-jacket",
+      "individual-insulation"
+    ]
+  },
+  "preserveExistingApproval": true,
+  "archiveOnly": false,
+  "APPROVED_FOR_CATALOG": true,
+  "APPROVED_AS_REFERENCE": false,
+  "manualGallery": true,
+  "pixelReview": {
+    "status": "NEEDS_REVIEW",
+    "findings": [],
+    "missing": []
+  },
+  "reviewedRules": {
+    "sha256": "9bb3d75ea45c835eb79db63f9861f0b80fa2d61059ffd606bb46fb66cb758b14",
+    "ids": [
+      "frame.horizontal",
+      "frame.style",
+      "frame.background",
+      "frame.right-edge",
+      "core.count",
+      "core.geometry",
+      "core.stripping",
+      "layers.contract",
+      "geometry.sheath",
+      "multi.layout",
+      "multi.stripping",
+      "references.permissions",
+      "catalog.preserve",
+      "generation.claim",
+      "catalog.scope"
+    ],
+    "checks": [
+      "coreCount",
+      "material",
+      "colours",
+      "layers",
+      "direction",
+      "proportions",
+      "stripping",
+      "background",
+      "referenceMatch",
+      "metalEndCount",
+      "equalDiameters",
+      "relativeDiameters",
+      "coaxialStripping",
+      "geometryConsistency",
+      "noExtraCylinders",
+      "frameAndLeftMargin",
+      "visibleConstruction",
+      "individualStripping",
+      "silhouette-centered-vertically",
+      "core-group-balanced-around-sheath-axis",
+      "no-diagonal-staircase",
+      "all-metal-ends-complete-and-visible",
+      "comparable-axial-stripping",
+      "real-core-geometry-and-layer-roles"
+    ]
+  },
+  "visualKey": "akvvg__7c__solid__round__7core-control-black__p-d04c65292065966e",
+  "standardVersion": "approved-cable-style-1.1.0",
+  "reviewedAt": "2026-11-15T19:24:00.353Z"
+}

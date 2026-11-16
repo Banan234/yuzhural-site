@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="write-token" content="LOCAL_WRITE_TOKEN">
+<title>Ревизия кабельных PNG · ЮУЭК</title>
+<style>
+:root{color-scheme:light;--ink:#142c3d;--muted:#40596d;--border:#a1b3c0;--blue:#164e70;--surface:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:#edf2f6;color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+main{max-width:1540px;margin:auto;padding:clamp(12px,3vw,36px)}
+h1,h2,h3,p{margin:0 0 .65rem}h1{font-size:clamp(1.7rem,4vw,2.5rem)}
+small,.muted{color:var(--muted)}code,pre,article{overflow-wrap:anywhere}
+header,.toolbar,article,dialog,.stats li{background:var(--surface);border:1px solid var(--border);border-radius:10px}
+header,.toolbar,article{padding:14px;margin-bottom:14px}
+header{padding:clamp(16px,3vw,28px)}
+button,select,input,textarea,.button{font:inherit;color:inherit;padding:6px 10px;min-height:36px}
+button,.button{cursor:pointer;background:white;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+button.primary{background:var(--blue);color:white;border-color:var(--blue)}
+button:disabled{cursor:default;opacity:.6}
+:focus-visible{outline:3px solid #0069a4;outline-offset:2px}
+label{display:block;margin:6px 0}
+input[type=checkbox]{min-height:auto;width:1.1em;height:1.1em;vertical-align:middle}
+input,textarea,select{max-width:100%;border:1px solid var(--border);border-radius:5px;background:white}
+textarea{width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,155px),1fr));gap:8px;margin:14px 0;padding:0;list-style:none}
+.stats li{padding:8px 12px;background:#f6f9fb;color:var(--muted);font-size:.85rem}
+.stats strong{display:block;font-size:1.35rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.toolbar,.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.toolbar{align-items:end}.toolbar label{margin:0}.toolbar label:not(.inline) select,.toolbar label input[type=search]{display:block}
+.toolbar input[type=search]{width:min(100%,320px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:12px}
+.grid article{min-width:0;margin:0}.meta{margin:8px 0}
+.picture{background:white;border:1px solid var(--border);overflow:auto}
+.thumb{width:100%;display:block;padding:0;background:none;border:0;text-align:left}
+.thumb img{width:100%;height:clamp(145px,18vw,235px);object-fit:contain;display:block}
+.dark{background:#182839}
+.checker{background:repeating-conic-gradient(#b6c1ce 0 25%,#e1e7ee 0 50%) 0/20px 20px}
+dialog{width:min(1450px,calc(100% - 20px));max-height:94vh;padding:clamp(12px,2vw,22px);color:var(--ink)}
+dialog::backdrop{background:#102536b5}.dialog-head{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.detail-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(295px,1fr);gap:20px}
+#preview{max-height:62vh} #preview img{display:block;width:100%;max-width:none;height:auto}
+pre{white-space:pre-wrap;font-size:.85rem;margin:.5em 0}
+details{margin:8px 0}summary{cursor:pointer;padding:5px 0}
+fieldset{border:1px solid var(--border);border-radius:8px;margin:12px 0;padding:10px;min-width:0}
+.notice{border-left:3px solid #986000;background:#fff6e5;padding:8px 12px}
+output{display:block;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:.5em}
+#dialog-message:empty,#message:empty{display:none}
+.history{padding-left:1.4rem}.history li{margin-bottom:.65rem}
+footer{padding:16px 0}.file-input{max-width:min(100%,290px)}
+@media (max-width:790px){.detail-grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script type="module" src="/client.js"></script>
+</head>
+<body>
+<main>
+<header>
+<h1>Ревизия кабельных PNG</h1>
+<nav class="row" aria-label="Разделы галереи">
+<a href="/standards">Эталоны изображений</a>
+<a href="/reference-review">Ревизия референсов</a>
+</nav>
+<ul class="stats" id="stats" aria-label="Сводка инвентаря"></ul>
+<div class="row"><button id="scan">Пересканировать</button><button id="issues">Целостность</button>
+<a class="button" href="/api/export" download="cable-review-decisions.json">Экспорт JSON</a>
+<label>Импорт JSON <input class="file-input" id="import" type="file" accept=".json,application/json"></label></div>
+<output id="message" aria-live="polite">Загрузка инвентаря…</output>
+</header>
+<section id="work" aria-labelledby="work-title" hidden>
+<h2 id="work-title">Группы без изображения в каталоге</h2>
+<div class="row">
+<label>Визуальная группа <select id="work-group" disabled></select></label>
+<button id="generate" class="primary" disabled>Создать PNG</button>
+</div>
+<output id="generation-message" aria-live="polite"></output>
+<details id="work-products" hidden><summary>Товары группы без PNG</summary><ul></ul></details>
+<div id="work-images" class="row"></div>
+</section>
+<section aria-label="Фильтры и пакетные решения">
+<div class="toolbar">
+<label>Поиск <input id="q" type="search" placeholder="Название, SKU, SHA или visualKey"></label>
+<label>Каталог <select id="status"></select></label>
+<label>Референс <select id="reference"></select></label>
+<label>Семейство <select id="family"></select></label>
+<label>Происхождение <select id="origin"></select></label>
+<label>Привязки <select id="bindings"><option value="">Все</option><option value="yes">Действующие</option><option value="no">Без привязок</option></select></label>
+<label>Показать <select id="view"><option value="">Все</option><option value="unknown">Неизвестная совместимость</option><option value="conflict">Конфликты</option><option value="duplicates">Дубликаты</option><option value="archive">Архив без привязок</option></select></label>
+<label>Фон <select id="background"><option value="">Белый</option><option value="dark">Тёмный</option><option value="checker">Шахматный</option></select></label>
+</div>
+<div class="toolbar"><button id="select-page">Выбрать на странице</button><button id="clear">Снять выбор</button>
+<button id="bulk" class="primary">Пакетное решение</button><span id="selected" role="status"></span></div>
+</section>
+<section aria-label="Изображения" id="grid" class="grid"></section>
+<footer class="row" aria-label="Страницы"><button id="prev">Предыдущая</button><span id="page" role="status"></span><button id="next">Следующая</button></footer>
+</main>
+<dialog id="detail" aria-labelledby="title">
+<div class="dialog-head"><h2 id="title" tabindex="-1"></h2><button id="close" autofocus>Закрыть</button></div>
+<div id="contents"></div>
+<output id="dialog-message" aria-live="polite"></output>
+</dialog>
+</body>
+</html>
